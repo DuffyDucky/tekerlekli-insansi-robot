@@ -1869,3 +1869,28 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - `kafa-yerlesim/rapor.html` HEAD hâlinde (ESP32 USB 971 / 1.360, ses kartı satırları); `uygulama-notu.md` yalnız ESP32 satırı elle
     güncel, ses kartı satırları (217 / 270, 3,5 mm → PAM, Pi 2) eski. Üretici düzeltilip ikisi birlikte yeniden üretilmeli (yukarıdaki
     açık iş).
+
+**P10.8a kupon dosyalarından açık iş (19.11, `planlama/d158/P108a-gunluk.md`, `P108a-kontrol.md`; karar değil, iş)**
+  - **M7 D / E onarımı:** `tasarim/freecad/test/m7_kuponlari.py`'nin D / E bölümü Y2a'dan beri koşmuyor (`arayuz.DIRSEK["tup_uc_y"]`
+    −140 → −170; betikteki `Y_KAPAK` −148 sabit, "width of box too small"). D1 / D2 / E STL'leri 15.10 koşusundan (commit `6bb1eff`).
+    Bölüm bugünkü dirseğe uyarlanmalı, D1'in FCStd doğrulaması yeniden koşulmalı, kupon D1 / D2 / E Parti 0'dan önce yeniden üretilmeli
+    ya da bilerek eski hâliyle basılmalı. Uyarı baskı listesinde ve `F4c-partiler.md`'de (`F4c-partiler.py` `m7_eski_uyari`; tam koşu
+    `yalniz_c` alanını silince kendiliğinden kalkar). Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py` ("BİLİNEN ESKİ").
+  - **K55 rehber metni (O1):** rehberde K55 a cümlesi "dilini orta bandın (göğüs bandının) arkasına sok" geometriye ters. Dil alttaki
+    bandın iç yarısı; üstteki bandın alt kenarı dış yarıdır (dudak) ve dilin dışından geçer. Cümle F1 (adım 33 grup 2 / 4, etek ön), F3
+    (adım 35 grup 0 / 1, göğüs), çerçeve (adım 35 grup 4) ve F4 (adım 36 grup 0 / 1, omuz) metinlerinde var (terslik göğüs | orta dikişinde ölçüldü, `bant-kuponu.json` yan hat; öbür bantlarda aynı kalıp, tek tek
+    bakılmadı). Ayrıca F3 göğüs bandı sağı için
+    "+x'ten getir" diyor; ölçümde +x yolunda orta bantla 1–159 mm ortak hacim var, +y'de 1–13 mm (F10d § 11.5; kupon diliminde +x 1–160,
+    `bant-kuponu.json` `inis_x`). Ters dil cümlesi kupon sonucunu beklemeden bir sonraki rehber üretimli pakette düzeltilmeli. Önerilen
+    metin: "alt kenarı alttaki bandın dilinin dışından geçir". Yol cümlesi (+x / +y) kupon sonucuyla yazılır (`test/README.md` K55 karar
+    ağacı). Kupon geçerse F3 / F4 takma metni kupondaki yola göre yeniden yazılır; geçmezse K55 b.
+  - **Etek ön kuponu (O2):** rehber F1 (adım 33 grup 2 / 4) "kuponda bu bant ayrıca, somun takılıyken denenir" diyor; kupon yok. Engel
+    2 mm alüminyum L etek braketindeki M3 perçin somunu (+z'de 1–7 mm, F10d § 11.5). `bant_kuponu.py` kalıbıyla çıkmıyor: braketin basılı
+    eşi yok, perçin somunu PETG'ye alüminyumdaki gibi oturmaz, bant için iki bacaklı yol (F10d-K1 c) de ölçülmedi. Yeni tasarım işi: etek ön
+    sağ bandının z +105 boss dilimi + braket ayağı (gerçek alüminyum braket ya da ölçülü eş) + yol ölçümü.
+  - **K55 çıkarım notu:** bant kuponu yalnız orta–göğüs dikişinin sağ yarısını dener (+y ve +x). Sol yarı (F10d: sol göğüs bandı +y'de sağ
+    bantla da 1–19 mm), x = 0 dikişi, etek ön, omuz ve çerçeve için yazılacak sonuç "sağ yarı kuponundan çıkarım"dır, deneme değildir.
+    Rehberdeki "baskı kuponunda denenir" sözü bu bantlarda ancak bu anlamda doğru; rehber düzeltmesinde (yukarıda) birlikte ele alınmalı.
+  - **Ahmet'e sorular (satın alma ve sıra; karar açılmadı):** (1) yanak kuponunun sol ölçümü için bir 625ZZ ile Rhino M3 / M5 insertler
+    Parti 0 gününe yetişir mi (K29 / K31 / K43 alımları)? (2) bant kuponu (≈ 1,5 sa, 51 g PETG) Parti 0 ile mi basılsın, yoksa modelde
+    önde 6,8 mm, ön-yan köşede 7,8 mm girişim göründüğü için doğrudan K55 b'ye mi geçilsin?

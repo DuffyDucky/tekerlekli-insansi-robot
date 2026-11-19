@@ -4,7 +4,9 @@
 #
 # Kupon C  Isil gomme somun deligi, derinlik L + 1 (arayuz.INSERT boy + 1), M3 ve M5; dikey ve YATAY basilmis (M4 bulgusu:
 #          omuz yuvasi M3 x 4 ve gobek M5 yatay basiliyor, kupon B'nin delikleri dikey). Her boyda: 1 dikey (nominal O),
-#          1 yatay yuvarlak (nominal), 3 yatay damla (45 derece sivri ust; M3 -0,1/0/+0,1, M5 -0,2/0/+0,2).
+#          1 yatay yuvarlak (nominal), 3 yatay damla (45 derece sivri ust; M3 -0,1/0/+0,1, M5 -0,1/0/+0,1).
+#          M5 nominali 19.11.2026'dan (P10.8 1. basamak) yerel M5_K31 (6,7): K31 teknik yarisi Rhino ID5 OD7 L7, satici kurali
+#          delik O6,7-6,8; onceki nominal arayuz.INSERT_DELIK[5] 6,4 (-+0,2). arayuz.py DEGISMEDI (asil parcalar 6,4; tam taramali CAD paketi).
 # Kupon D1 Dirsek sikma bilezigi, KESIKSIZ: dirsek catalinin y -148...-115 dilimi (alin kapagi + kopru bandi + pim + yarikli
 #          bilezik + kulaklar + 2 x M3 delik), arayuz.DIRSEK / GECME / TUP_PIM_R + dirsek_parcalar.py:97-127 ile birebir.
 #          Dogrulama: dirsek/dirsek-montaj.FCStd'deki "Dirsek catali" ayni dilimle kesilip hacim / simetrik fark karsilastirilir.
@@ -77,11 +79,64 @@ def damla_delik(r, p0, eksen, L, sivri=True):
     return c.fuse(f.extrude(V(ex * L, ey * L, 0))).removeSplitter()
 
 
+# ====================================================================== baski kontrolu (mesh): 45 derece ustu asagi bakan yuz
+def baski_kontrol(s, ad):
+    m = MeshPart.meshFromShape(Shape=s, LinearDeflection=0.02, AngularDeflection=0.2)
+    alan, bolge = 0.0, []
+    for f in m.Facets:
+        n = f.Normal
+        zc = sum(p[2] for p in f.Points) / 3
+        if n.z < -math.cos(math.radians(44.0)) and zc > 0.05:       # 46 derece ustu (normal -Z ile 44 dereceden dar); tam 45 derece yuzler (koni, V oluk) tessellation payiyla haric
+            alan += f.Area
+            bolge.append((round(zc, 1), f.Area))
+    # buyuk yatay tavanlar (n.z ~ -1, 0,5 mm2 ustu alanlar, z'ye gore grupla)
+    gr = {}
+    for zc, a in bolge:
+        gr[zc] = gr.get(zc, 0.0) + a
+    en = sorted(gr.items(), key=lambda kv: -kv[1])[:6]
+    yatay = sum(f.Area for f in m.Facets if f.Normal.z < -0.98 and sum(p[2] for p in f.Points) / 3 > 0.05)
+    return dict(cikinti_46ustu_mm2=round(alan, 1), yatay_tavan_mm2=round(yatay, 1), en_buyuk_z_mm2=[(z, round(a, 1)) for z, a in en])
+
+
+RHO = A.PETG_RHO
+HIZ = A.PETG_HACIM_HIZI
+
+
+def kupon_bilgi(ad, s, malz):
+    """STL'yi yazar, olcu / kutle / sure / baski kaydini dondurur (19.11.2026: dongu govdesinden fonksiyona; yontem ayni)."""
+    bb = s.BoundBox
+    assert s.isValid() and len(s.Solids) == 1, ad
+    assert abs(bb.ZMin) < 1e-6, (ad, bb.ZMin)
+    os.makedirs(os.path.join(HERE, "stl"), exist_ok=True)
+    MeshPart.meshFromShape(Shape=s, LinearDeflection=0.01, AngularDeflection=0.1).write(os.path.join(HERE, "stl", ad + ".stl"))
+    # dilimleyici benzeri tahmin: 4 cevre (1,6 mm kabuk) + %25 dolgu (tahmini)
+    kab = min(s.Volume, s.Area * 1.6 * 0.5)          # alanin yarisi kadar kabuk (ic/dis yuzler ortak; kaba tahmin)
+    v_eff = kab + 0.25 * max(0.0, s.Volume - kab)
+    taban = s.common(box(bb.XMin - 1, bb.XMax + 1, bb.YMin - 1, bb.YMax + 1, -0.01, 0.2)).Volume / 0.21
+    return dict(ad=ad, stl="test/stl/%s.stl" % ad, malzeme=malz,
+                olcu_mm=[round(bb.XLength, 1), round(bb.YLength, 1), round(bb.ZLength, 1)],
+                hacim_cm3=round(s.Volume / 1000, 2), kutle_100_g=round(s.Volume / 1000 * RHO, 1),
+                kutle_tahmini_g=round(v_eff / 1000 * RHO, 1), sure_tahmini_dk=round(v_eff / HIZ / 60 * 1.3, 0),
+                tabla_temas_mm2=round(taban, 0), baski=baski_kontrol(s, ad))
+
+
+def toplam(kuponlar):
+    return dict(kutle_100_g=round(sum(k["kutle_100_g"] for k in kuponlar), 1),
+                kutle_tahmini_g=round(sum(k["kutle_tahmini_g"] for k in kuponlar), 1),
+                sure_tahmini_dk=round(sum(k["sure_tahmini_dk"] for k in kuponlar), 0),
+                not_="tahmini: 4 cevre + %25 dolgu, 10 mm3/s ortalama debi (arayuz.PETG_HACIM_HIZI) x 1,3 hareket payi; "
+                     "kupon C iki malzemede basilirsa iki kez sayilir")
+
+
 # ====================================================================== Kupon C: isil gomme somun, L + 1, dikey + yatay
-PAY = 1.0                                                     # derinlik = L + 1 (kupon B: L + 0,5)
+PAY = 1.0                                                    # derinlik = L + 1 (kupon B: L + 0,5)
 L3 = A.INSERT[3][1] + PAY                                     # 6,7
 L5 = A.INSERT[5][1] + PAY                                     # 8,0
-D3, D5 = A.INSERT_DELIK[3], A.INSERT_DELIK[5]                 # 4,0 / 6,4 (nominal)
+M5_K31 = dict(nominal=6.7, adim=0.1, cad=A.INSERT_DELIK[5],
+              kaynak="karar-kuyrugu.md K31 teknik yari (17.11.2026): M5 Rhino ID5 OD7 L7, kupon M5 delikleri O6,7-6,8")
+assert A.INSERT[5] == (7.0, 7.0), "M5 insert (dis cap, boy) degisti: M5_K31 ve L5 gozden gecir"
+D3, D5 = A.INSERT_DELIK[3], M5_K31["nominal"]                 # 4,0 (arayuz) / 6,7 (yerel; arayuz 6,4)
+D5A = M5_K31["adim"]
 DUVAR = 2.5                                                   # M3 ve M5 delik diplerinin arasindaki ortak arka duvar
 Y_TOP = L3 + DUVAR + L5                                       # 17,2
 H3, H5 = 11.0, 14.0                                           # blok yukseklikleri
@@ -95,7 +150,8 @@ kc = c3.fuse(c5).removeSplitter()
 C_DELIK = []
 # yatay: [yuvarlak nominal, damla -, damla nominal, damla +]
 v3 = [(D3, False), (D3 - 0.1, True), (D3, True), (D3 + 0.1, True)]
-v5 = [(D5, False), (D5 - 0.2, True), (D5, True), (D5 + 0.2, True)]
+v5 = [(D5, False), (D5 - D5A, True), (D5, True), (D5 + D5A, True)]     # 6,7 yuvarlak, 6,6 / 6,7 / 6,8 damla
+SONUC["k31_m5"] = dict(M5_K31, delikler=[round(d, 2) for d, _ in v5] + [D5])
 for i, (d, sv) in enumerate(v3):
     kc = kc.cut(damla_delik(d / 2, (X3[i], -1.0, Z3), (0, 1, 0), L3 + 1.0, sv))
     kc = kc.cut(noktalar(i + 1, X3[i] - 3.9, 1.3, H3))
@@ -114,6 +170,62 @@ kc = kc.cut(cyl(D5 / 2, (XV5, YV5, H5 - L5), (XV5, YV5, H5 + 1)))
 C_DELIK.append(dict(boy="M3", yon="dikey", bicim="yuvarlak", cap=D3, derinlik=L3, nokta=0, agiz="ust yuz", x=XV3, z=H3))
 C_DELIK.append(dict(boy="M5", yon="dikey", bicim="yuvarlak", cap=D5, derinlik=L5, nokta=0, agiz="ust yuz", x=XV5, z=H5))
 kupon_c = kc.removeSplitter()
+
+# ---------------------------------------------------------------------- yalniz kupon C (19.11.2026, P10.8 1. basamak)
+# Bu betigin D / E bolumu Y2a'dan beri (arayuz.DIRSEK tup_uc_y -140 -> -170) KOSMUYOR: asagidaki Y_KAPAK / Y_TABLA sabitleri 125 cm
+# dirseginden, box(..., Y_KAPAK, TUC, ...) "width of box too small" verir. Duzeltmek ayri is (D1 / D2 / E kuponlarini ve D1'in FCStd
+# dogrulamasini degistirir). M7_YALNIZ_C=1 ile yalniz kupon C yeniden yazilir: STL, m7-kupon-sonuc.json'daki C kaydi + kupon_c_delikler
+# + toplam, STEP'te C govdesi; D1 / D2 / E STL'leri, kayitlari ve STEP govdeleri 15.10.2026 kosusundan aynen kalir.
+if os.environ.get("M7_YALNIZ_C") == "1":
+    import Import
+    AD_C = "kupon-c-isil-gomme-L1"
+    YOL_J, YOL_S = os.path.join(HERE, "m7-kupon-sonuc.json"), os.path.join(HERE, "m7-kuponlari.step")
+    ESKI = json.load(open(YOL_J, encoding="utf-8"))
+    sira = [x["ad"] for x in ESKI["kuponlar"]]
+    assert sira[0] == AD_C, sira
+    kc_bilgi = kupon_bilgi(AD_C, kupon_c, ESKI["kuponlar"][0]["malzeme"])
+    print(kc_bilgi)
+    # STEP: mevcut dosyadaki govdeler (sira C, D1, D2, E; hacimle eslenir), C yenisiyle degisir
+    d0 = App.newDocument("m7eski")
+    Import.insert(YOL_S, d0.Name)
+    gov = [o.Shape.copy() for o in sorted(d0.Objects, key=lambda o: o.Name) if o.TypeId == "Part::Feature" and o.Shape.Solids]
+    assert len(gov) == len(sira), len(gov)
+    for x, g in zip(ESKI["kuponlar"][1:], gov[1:]):
+        assert abs(g.Volume / 1000 - x["hacim_cm3"]) < 0.01, (x["ad"], g.Volume)
+    App.closeDocument(d0.Name)
+    d1 = App.newDocument("m7kupon")
+    for ad, s in zip(sira, [kupon_c] + gov[1:]):
+        d1.addObject("Part::Feature", ad.replace("-", "_")).Shape = s
+    Part.export(list(d1.Objects), YOL_S)
+    App.closeDocument(d1.Name)
+    ESKI["kuponlar"][0] = kc_bilgi
+    ESKI["kupon_c_delikler"] = C_DELIK
+    ESKI["k31_m5"] = SONUC["k31_m5"]
+    ESKI["arayuz"]["INSERT_DELIK"] = A.INSERT_DELIK
+    # D4 (P10.8a kontrol): arayuz blogu karisik tarihli; hangi anahtarin hangi kosudan yazildigi ve bugunku arayuzle farki
+    _yeni = ("INSERT", "INSERT_DELIK")
+    ESKI["arayuz_kosu"] = {k: ("2026-11-19 M7_YALNIZ_C=1 (kupon C)" if k in _yeni else "2026-10-15 tam kosu (D1 / D2 / E; commit 6bb1eff)")
+                           for k in ESKI["arayuz"]}
+    _fark = {}
+    for k, v in ESKI["arayuz"].items():
+        bug = getattr(A, k, None)
+        if isinstance(v, dict) and isinstance(bug, dict):
+            for kk, vv in v.items():
+                b_ = bug.get(kk, bug.get(int(kk)) if str(kk).isdigit() else None)
+                if b_ is not None and json.loads(json.dumps(b_)) != vv:
+                    _fark["%s.%s" % (k, kk)] = dict(kayit=vv, bugun=b_)
+        elif bug is not None and json.loads(json.dumps(bug)) != v:
+            _fark[k] = dict(kayit=v, bugun=bug)
+    ESKI["arayuz_fark_bugun"] = _fark
+    ESKI["toplam"] = toplam(ESKI["kuponlar"])
+    ESKI["yalniz_c"] = dict(tarih="2026-11-19", paket="P10.8 1. basamak (kupon dosyalari)", kip="M7_YALNIZ_C=1",
+                            neden="D / E bolumu Y2a'dan beri kosmuyor (arayuz.DIRSEK tup_uc_y -170, betikteki Y_KAPAK -148 sabit)",
+                            d1_d2_e="STL, kayit ve STEP govdeleri 15.10.2026 kosusundan (commit 6bb1eff); D1 FCStd dogrulamasi o tarihin")
+    with open(YOL_J, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(ESKI, f, ensure_ascii=False, indent=1)
+    print("yalniz C bitti", kc_bilgi["olcu_mm"], kc_bilgi["kutle_tahmini_g"], ESKI["toplam"])
+    sys.stdout.flush()
+    os._exit(0)
 
 # ====================================================================== Kupon D: dirsek sikma bilezigi (dirsek yerel koordinati)
 D = A.DIRSEK
@@ -274,56 +386,19 @@ kupon_e.transformShape(mt)
 SONUC["tup"] = dict(r_ic=R_TUP_IC, r_dis=R_TUP_DIS, boy=TUP_BOY, giris=TUP_GIRIS, kol_deligi=dict(d=6.0, z=YK))
 
 
-# ====================================================================== baski kontrolu (mesh): 45 derece ustu asagi bakan yuz
-def baski_kontrol(s, ad):
-    m = MeshPart.meshFromShape(Shape=s, LinearDeflection=0.02, AngularDeflection=0.2)
-    alan, bolge = 0.0, []
-    for f in m.Facets:
-        n = f.Normal
-        zc = sum(p[2] for p in f.Points) / 3
-        if n.z < -math.cos(math.radians(44.0)) and zc > 0.05:       # 46 derece ustu (normal -Z ile 44 dereceden dar); tam 45 derece yuzler (koni, V oluk) tessellation payiyla haric
-            alan += f.Area
-            bolge.append((round(zc, 1), f.Area))
-    # buyuk yatay tavanlar (n.z ~ -1, 0,5 mm2 ustu alanlar, z'ye gore grupla)
-    gr = {}
-    for zc, a in bolge:
-        gr[zc] = gr.get(zc, 0.0) + a
-    en = sorted(gr.items(), key=lambda kv: -kv[1])[:6]
-    yatay = sum(f.Area for f in m.Facets if f.Normal.z < -0.98 and sum(p[2] for p in f.Points) / 3 > 0.05)
-    return dict(cikinti_46ustu_mm2=round(alan, 1), yatay_tavan_mm2=round(yatay, 1), en_buyuk_z_mm2=[(z, round(a, 1)) for z, a in en])
-
-
-# ====================================================================== cikti
+# ====================================================================== cikti (baski_kontrol ve kupon_bilgi yukarida, Kupon C'den once)
 os.makedirs(os.path.join(HERE, "stl"), exist_ok=True)
 KUPON = [("kupon-c-isil-gomme-L1", kupon_c, "PETG-CF ve PETG (iki kez; kabuk PETG, omuz PETG-CF)", 0.0),
          ("kupon-d1-kelepce-kesiksiz", kupon_d1, "catalin malzemesi (dirsek_parcalar: PETG; D6 degistirirse o)", 0.0),
          ("kupon-d2-kelepce-bosaltmali", kupon_d2, "D1 ile ayni", 0.0),
          ("kupon-e-tup-halkasi", kupon_e, "ust kol tupunun malzemesi (beyaz PETG)", 0.0)]
-RHO = A.PETG_RHO
-HIZ = A.PETG_HACIM_HIZI
 SONUC["kuponlar"] = []
 for ad, s, malz, _ in KUPON:
-    bb = s.BoundBox
-    assert s.isValid() and len(s.Solids) == 1, ad
-    assert abs(bb.ZMin) < 1e-6, (ad, bb.ZMin)
-    MeshPart.meshFromShape(Shape=s, LinearDeflection=0.01, AngularDeflection=0.1).write(os.path.join(HERE, "stl", ad + ".stl"))
-    # dilimleyici benzeri tahmin: 4 cevre (1,6 mm kabuk) + %25 dolgu (tahmini)
-    kab = min(s.Volume, s.Area * 1.6 * 0.5)          # alanin yarisi kadar kabuk (ic/dis yuzler ortak; kaba tahmin)
-    v_eff = kab + 0.25 * max(0.0, s.Volume - kab)
-    taban = s.common(box(bb.XMin - 1, bb.XMax + 1, bb.YMin - 1, bb.YMax + 1, -0.01, 0.2)).Volume / 0.21
-    k = dict(ad=ad, stl="test/stl/%s.stl" % ad, malzeme=malz,
-             olcu_mm=[round(bb.XLength, 1), round(bb.YLength, 1), round(bb.ZLength, 1)],
-             hacim_cm3=round(s.Volume / 1000, 2), kutle_100_g=round(s.Volume / 1000 * RHO, 1),
-             kutle_tahmini_g=round(v_eff / 1000 * RHO, 1), sure_tahmini_dk=round(v_eff / HIZ / 60 * 1.3, 0),
-             tabla_temas_mm2=round(taban, 0), baski=baski_kontrol(s, ad))
+    k = kupon_bilgi(ad, s, malz)
     SONUC["kuponlar"].append(k)
     print(k)
 SONUC["kupon_c_delikler"] = C_DELIK
-SONUC["toplam"] = dict(kutle_100_g=round(sum(k["kutle_100_g"] for k in SONUC["kuponlar"]), 1),
-                       kutle_tahmini_g=round(sum(k["kutle_tahmini_g"] for k in SONUC["kuponlar"]), 1),
-                       sure_tahmini_dk=round(sum(k["sure_tahmini_dk"] for k in SONUC["kuponlar"]), 0),
-                       not_="tahmini: 4 cevre + %25 dolgu, 10 mm3/s ortalama debi (arayuz.PETG_HACIM_HIZI) x 1,3 hareket payi; "
-                            "kupon C iki malzemede basilirsa iki kez sayilir")
+SONUC["toplam"] = toplam(SONUC["kuponlar"])
 doc = App.newDocument("m7kupon")
 for ad, s, _, _ in KUPON:
     doc.addObject("Part::Feature", ad.replace("-", "_")).Shape = s

@@ -8,15 +8,33 @@ tek başına basılır. Ölçüler `arayuz.py`'den okunur. Kupon betikleri aray�
 |---|---|---|
 | `tolerans_kuponu.py` (11 Ekim) | A: 6808 dış bilezik Ø52 yuvaları · B: 625ZZ yuvası, 6808 iç bilezik mili, M3/M5 ısıl gömme (dikey, L + 0,5) | `stl/kupon-a-*`, `stl/kupon-b-*`, `tolerans-kuponu.step` |
 | `m7_kuponlari.py` (15 Ekim, M7) | C: ısıl gömme L + 1, dikey + yatay · D1/D2: dirsek sıkma bileziği · E: üst kol tüpü halkası | `stl/kupon-c..e-*`, `m7-kuponlari.step`, `m7-kupon-sonuc.json` |
+| `../kafa/yanak_kuponu.py` (19 Kasım, K54 c) | Yanak kuponu (kafa iskeleti dilimi) + yığın mastarı | `../kafa/stl/yanak-kuponu.stl`, `../kafa/stl/yanak-kuponu-mastar.stl`, `../kafa/yanak-kuponu.json` |
+| `../kabuk/bant_kuponu.py` (19 Kasım, K55 a) | Bant kuponu: orta bant dilimi (dil) + göğüs bandı dilimi (dudak) | `../kabuk/stl/bant-kuponu-alt.stl`, `../kabuk/stl/bant-kuponu-ust.stl`, `../kabuk/bant-kuponu.json` |
+
+**M5 ısıl gömme delikleri (19 Kasım, P10.8):** K31'in teknik yarısı M5 için Rhino ID5 OD7 L7'yi seçti; satıcı kuralı delik Ø6,7–6,8.
+Kupon B'nin M5 delikleri Ø6,6 / 6,7 / 6,8, kupon C'ninki Ø6,6 … 6,8 oldu (eskiden ikisinde de Ø6,2 … 6,6). Değer kupon betiğinde yerel
+parametre (`M5_DELIK_K31`, `M5_K31`). Asıl parçaların deliği `arayuz.INSERT_DELIK[5]` hâlâ 6,4. Kupon sonucu bu değere sonraki tam
+taramalı CAD paketinde yazılır (`arayuz.py` çarpışma taramasının izlediği dosya). Deneme aralığı tek yönlü: üstte satıcı kuralının
+üst ucu (6,8) var, üstü yok. PETG-CF'de basılan delik genelde küçük çıktığı için 6,8 de sıkı gelirse kupon C 6,9 ile yeniden üretilip
+basılır (`M5_K31` nominalini 6,8 yapmak damlaları 6,7 / 6,8 / 6,9 yapar; delik sayısı ve K43 sayımı değişmez).
 
 Çalıştırma (README'deki başlatıcıyla, ~10 s):
 `FC_SCRIPT=$R/test/m7_kuponlari.py "$FC" $L`
+
+**Uyarı (19 Kasım):** `m7_kuponlari.py`'nin D / E bölümü Y2a'dan beri çalışmıyor. `arayuz.DIRSEK["tup_uc_y"]` −140'tan −170'e indi, betikteki
+`Y_KAPAK` (−148) sabit kaldı; koşu "width of box too small" hatasıyla durur (`freecadcmd` yine de çıkış 0 verir). Kupon C yalnız
+`M7_YALNIZ_C=1` ile yeniden üretilir. Bu kip C'nin STL'sini, `m7-kupon-sonuc.json`'daki C kaydını ve STEP'teki C gövdesini yazar. D1, D2
+ve E'nin STL'leri, kayıtları ve STEP gövdeleri 15 Ekim koşusundan kalır; D1'in FCStd doğrulaması da o güne aittir. JSON'da
+`arayuz_kosu` her arayüz anahtarının hangi koşudan yazıldığını, `arayuz_fark_bugun` bugünkü `arayuz.py` ile farkını tutar.
+**D1 / D2 / E basmadan önce yeniden üretilmeli** (D / E onarımı açık iş, `karar-kuyrugu.md` "Karar değil, iş") ya da bilerek eski hâliyle
+basılmalı; radyal geçme ölçüleri (`GECME`, `TUP_PIM_R`) değişmedi, değişen tüp ucu (`tup_uc_y`).
+`M7_YALNIZ_C=1 FC_SCRIPT=$R/test/m7_kuponlari.py "$FC" $L`
 
 ## M7 kuponları (`m7_kuponlari.py`)
 
 | Kupon | Ölçü (mm) | Malzeme | Kütle %100 / tahmini | Süre (tahmini) | Baskı |
 |---|---|---|---|---|---|
-| C ısıl gömme L + 1 | 61 × 17,2 × 14 | PETG **ve** PETG-CF (iki kez) | 13,4 / 7,5 g | 13 dk | 46° üstü çıkıntı yalnız yatay delik tepeleri (≤ Ø6,6) |
+| C ısıl gömme L + 1 | 61 × 17,2 × 14 | PETG **ve** PETG-CF (iki kez) | 13,2 / 7,4 g | 13 dk | 46° üstü çıkıntı yalnız yatay delik tepeleri (≤ Ø6,8) |
 | D1 kelepçe, kesiksiz | 71 × 72 × 33 | çatalın malzemesi (şu an PETG) | 87,9 / 40,9 g | 70 dk | ters (bilezik ağzı tablada); yatay tavan yalnız V oluğun 0,25 mm basamakları |
 | D2 kelepçe, kökte boşaltmalı | 71 × 72 × 33 | D1 ile aynı | 86,2 / 41,4 g | 71 dk | aynı; boşaltma dik yarık (köprü yok) |
 | E tüp halkası | Ø56 × 36 | üst kol tüpünün malzemesi (PETG) | 17,9 / 14,3 g | 24 dk | dik, uç tablada; 5 mm brim |
@@ -36,11 +54,14 @@ arka duvar var. Derinlik `INSERT` boyu + 1: M3 6,7, M5 8,0. Üst yüzdeki nokta 
 
 | Nokta | M3 (yatay, eksen z 5) | M5 (yatay, eksen z 6,5) |
 |---|---|---|
-| 1 | Ø4,0 yuvarlak | Ø6,4 yuvarlak |
-| 2 | Ø3,9 damla | Ø6,2 damla |
-| 3 | Ø4,0 damla | Ø6,4 damla |
-| 4 | Ø4,1 damla | Ø6,6 damla |
-| noktasız (üst yüz) | Ø4,0 dikey, 6,7 derin | Ø6,4 dikey, 8,0 derin |
+| 1 | Ø4,0 yuvarlak | Ø6,7 yuvarlak |
+| 2 | Ø3,9 damla | Ø6,6 damla |
+| 3 | Ø4,0 damla | Ø6,7 damla |
+| 4 | Ø4,1 damla | Ø6,8 damla |
+| noktasız (üst yüz) | Ø4,0 dikey, 6,7 derin | Ø6,7 dikey, 8,0 derin |
+
+M5 sütunu 19 Kasım'dan (K31, yukarıda); önceki değerler Ø6,4 / 6,2 / 6,4 / 6,6 / 6,4. M3 sütunu değişmedi: K31 M3 seçeneği A'nın
+(Rhino ID3 OD4 L4) kuralı Ø3,8–3,9; C'de Ø3,9 damla, B'de Ø3,8 / 3,9 dikey bunu dener. Derinlik L4 için fazla (6,7), deneme için engel değil.
 
 Damla: daire + üstte 45° sivri uç (tepe merkezden r·√2 yukarıda).
 
@@ -138,3 +159,143 @@ yalnız uçtaki ~5,6 mm boyunca bastırılır.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | | D1 | | | | | | | | | | |
 | | D2 | | | | | | | | | | |
+
+## K54 yanak kuponu (`../kafa/yanak_kuponu.py`, 19 Kasım)
+
+Neden: K54 seçenek c (`planlama/d158/karar-kuyrugu.md`). Kafa iskeletinin iki yanağı arası 54,4 mm. Aradaki yığın da 54,4 mm: solda
+eğme çatalının dayaması ve 625ZZ iç bileziği, sağda tilt hornunun dış yüzü. Kafa bu yüzden iki yanda sıfır boşlukla iner. Baskı
+toleransında zorlamadan inip inmediği ölçülmedi.
+
+Yapı (iki baskı, ölçüler `kafa/kafa-montaj.FCStd`'den okunur, elle yazılmaz):
+- **Yanak kuponu:** gerçek "Kafa iskeleti" ile bir kutunun kesişimi. İçinde iki yanak (sol 11 mm, 625ZZ yuvalı; sağ 5 mm, horn
+  delikli) ve aralarındaki tabla dilimi var. Ekleme yok. Baskı yönü kafa iskeletininki: tabla dilimi tablada, yanaklar yukarı.
+- **Yığın mastarı:** tilt ekseni boyunca tek parça. Çatal dayaması (r 4, 625ZZ iç bileziğine dayanır), çatal kolu çapında gövde (r 15;
+  sol yanağa 1 mm, gerçek çatal kolu gibi) ve tilt hornu diski (r 12,5, 3,3 mm). Boyu dayama yüzünden horn dış yüzüne 54,4 mm. Horn
+  diski tablada, dik basılır.
+- Kaynakla karşılaştırma `kafa/yanak-kuponu.json` → `karsilastirma`. Yanak aralığı dört hatta 54,4 = 54,4, mastar boyu 54,4 = yığın
+  54,4, fark 0. İniş yolunda (+y, 0–30 mm) ortak hacim 0; yüzler temas ediyor.
+
+| Parça | Ölçü (mm) | Malzeme | Kütle tahmini / %100 | Süre (tahmini) | Destek |
+|---|---|---|---|---|---|
+| Yanak kuponu | 72,4 × 40 × 48 | PETG (kafa iskeletinin malzemesi) | 20,6 / 41,2 g | 35 dk | desteksiz (kafa iskeleti gibi; yatay delik tepeleri köprü) |
+| Yığın mastarı | 30 × 30 × 54,4 | PETG | 16,5 / 46,7 g | 28 dk | desteksiz |
+
+Gerekenler: kumpas, sentil. İnsert ve vida gerekmez. **Sol taraf ölçümü için bir 625ZZ şart** (aşağıda). Rulman yoksa yalnız sağ taraf
+ve yuvanın altındaki şerit sınanır.
+
+Sol yanağın iç yüzünde Ø16 rulman yuvası var: 5 mm derin, dibi x −29,2. Rulman takılı değilken yuva hizasında yanak aralığı **59,4 mm**,
+öbür her yerde 54,4 (P108a-kontrol § 3.3, STL ışın ölçümü). Mastarın dayaması r 4, yani rulman yokken dayama yuvaya düşer ve sol yanağa
+değmez. Sıfır boşluklu iniş (54,4 = 54,4) solda yalnız 625ZZ iç bileziği yuvada, yüzü yanağın iç yüzüyle aynı düzlemdeyken sınanır.
+
+**Test:**
+1. **Ölçüm:** kumpasın iç çenesiyle yanaklar arasını ölçün. Rulman yuvasının dışında, üç yerde ölçün: tablaya yakın, yuvanın altındaki
+   şerit (eksenden 8–16 mm), yanak ucu (nominal 54,4). Rulman yokken yuva hizasında 59,4 ölçülür; bu beklenen değerdir, kusur değildir.
+   Mastarın boyunu dış çeneyle dayama yüzünden horn diski yüzüne kadar iki yönde ölçün (nominal 54,4).
+2. **625ZZ'yi takın:** rulmanı sol yanağın Ø16 yuvasına bastırın (asıl montajdaki E3a gibi). İç bileziğin yüzü yanağın iç yüzüyle aynı
+   düzlemde olmalı. Sonra yuva hizasında aralığı yeniden ölçün: rulman iç bileziğinden sağ yanağa nominal 54,4.
+3. **İniş:** mastarı yatay tutun. Yanak kuponunu tabla dilimi üstte olacak şekilde üstüne indirin. Dayama sol yanağa (625ZZ tarafı),
+   horn diski sağ yanağa (dört küçük delikli taraf) gelmeli. Eksenler hizalanana kadar yalnız elle bastırın; yanakları elle açmayın.
+   Rulman yoksa "eksenler hizalandı" denemez; o zaman iniş yalnız sağ yanak ↔ horn diski ve yuvanın altındaki şerit için yazılır.
+4. İndikten sonra sentille ölçün, ikişer noktada: **sağda** yanak ↔ horn diski; **solda** yalnız 625ZZ takılıyken, iç bilezik ↔ dayama.
+   Rulmansız denemede sol sentil sütununa "rulman yok" yazın.
+5. Eğme çatalı (Parti 2), MG996R ve 25T horn gelince aynı inişi asıl yığına yapın: çatal, servo ve horn E2 sırasıyla takılır. Bunu kafa
+   iskeletini (Parti 3) basmadan önce yapın.
+
+**Geçti:** 625ZZ takılıyken kupon alet kullanmadan ve yanaklar açılmadan iner (hafif sürtünme kabul). Yanakta beyazlama ya da çatlak
+olmaz. Bu durumda K54 a geçerli olur ve CAD değişmez. Bu sonuç asıl yığınla (adım 5) da tekrarlanmalı. Rulmansız deneme yalnız sağ
+tarafı geçirir; sol taraf için sonuç "denenmedi" kalır.
+
+**Kaldı:** kupon inmez ya da ancak yanaklar açılarak iner. Bu durumda K54 b uygulanır: yanak iç yüzlerine her yanda pay verilir.
+Pay = (mastar boyu − yanak aralığı) / 2 + 0,1 mm, karar aralığı 0,2–0,3 mm. Değişecek asıl ölçüler: sağ yanağın iç yüzü
+(`kafa7_parcalar.py` `X_SAG[0]` = horn dış yüzü 30,2) ve sol yanağın iç yüzü (`X_SOL[1]` −24,2; 625ZZ yuvası `X_RUL` aynı düzlemde).
+Bu bir kafa geometrisi değişikliğidir ve kafa çakışma taraması gerekir. Sağda 4 × M3×8 sıkılınca yanak horna çekilir. Solda pim
+sıkılınca 625ZZ iç bileziği dayamaya çekilir; şim ya da eksenel yük o zaman ölçülür (K54 b).
+
+| Tarih | Malzeme | Yanak aralığı (3 yer; 625ZZ var / yok) | Mastar boyu | İniş (elle / zor / inmedi) | Sentil sol / sağ | Asıl yığınla | Not |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+
+## K55 bant kuponu (`../kabuk/bant_kuponu.py`, 19 Kasım)
+
+Neden: K55 seçenek a, geçici çözüm. Rehber metni "bandı hafifçe esneterek dili alttaki bandın arkasına sok" diyor. Üst bant alttaki
+bandın 12 mm bindirme diline hiçbir düz yoldan girmiyor (`planlama/d158/F10d-gunluk.md` §11.5). Gövde yukarı doğru genişliyor; bu
+yüzden göğüs bandı yukarıdan inerken son 13 mm'de orta bandın diliyle çakışıyor.
+
+Yapı (iki baskı, gerçek CAD dilimi, `kabuk/kabuk-montaj.FCStd`):
+- **Alt:** "Govde orta bandi sag", y 995 … dil ucu. Dil yukarıda, 1,25 mm (yarım duvar 1,5 − 0,25 boşluk).
+- **Üst:** "Gogus bandi sag", y 1005–1025. Dudak aşağıda, 1,5 mm dış yarı, 12 mm boyunda. Üstünde 8 mm tam duvar var; göğüs ekranı
+  cebinin altında kalır.
+- İkisi de bantların baskı yönünde basılır: dik, alt kenarı tablada. Kaynakla karşılaştırma `kabuk/bant-kuponu.json`. Duvar katmanları
+  yan, ön ve arka hatta kaynakla aynı; dil 1,25, dudak 1,5, boşluk yanda ve önde 0,25.
+- Modelde iniş: üst parça dinlenme konumundan 14 mm yukarıdayken serbest, altında ortak hacimli. Dudağın iç yüzü ile dilin dış yüzü
+  arasındaki radyal girişim (`inis.girisim_mm`):
+
+  | Kalan iniş | Önde | Yanda | Arkada |
+  |---|---|---|---|
+  | 2 mm | 1,2 mm | 0,2 mm | 0 |
+  | 6 mm | 4,0 mm | 1,2 mm | 0 |
+  | 10 mm | 6,8 mm | 2,1 mm | 0 |
+
+  En zor yer ön bölüm, yani bel–göğüs geçişi.
+
+| Parça | Ölçü (mm) | Malzeme | Kütle tahmini / %100 | Süre (tahmini) | Destek |
+|---|---|---|---|---|---|
+| Alt (orta bant dilimi) | 161,8 × 214,2 × 23,4 | PETG (beyaz) | 24,5 / 24,8 g | 42 dk | desteksiz (orta bant gibi) |
+| Üst (göğüs bandı dilimi) | 164 × 217,2 × 20 | PETG (beyaz) | 26,9 / 29,5 g | 46 dk | **destekli**: z 12'deki iç yarı basamağı (6,6 cm²). Göğüs bandının "z 12–15 alt kenar çıkıntısı" ile aynı yer (`baski-analiz.json`); destek dudağın içinden temiz çıkmalı |
+
+Kısıt: dilimler kısa (alt 24, üst 20 mm), gerçek banttan daha esnek. Kupon geçerse gerçek bant için kesin sonuç değildir; kalırsa
+gerçek bant da kalır.
+
+**Kapsam: bu kupon neyi dener, neyi denemez (19 Kasım, P10.8a düzeltme 1).**
+- Dener: orta–göğüs dikişinin (y 1005) **sağ yarısı**. Dil / dudak geçmesi iki yoldan: +y (yukarıdan iniş) ve +x (rehberin yolu).
+- Denemez: sol yarı, x = 0 dikişi, etek ön bandı (perçin somunu engeli), omuz bandı (rulman kapağı engeli) ve göğüs ekranı çerçevesi.
+  Bunlar için sonuç bu kupondan **çıkarımdır, deneme değildir**. Dil, boşluk ve duvar bütün bantlarda aynı (`KABUK_BINDIRME` 12,
+  `KABUK_BINDIRME_BOSLUK` 0,25, `KABUK_T` 3), ama girişim ve engel bant başına farklı. Sol göğüs bandı +y yolunda sağ bantla da
+  1–19 mm ortak hacimli (F10d § 11.5); bu kuponda yok.
+- Etek ön için rehberin sözünü verdiği "somun takılıyken" kuponu yok. Engel 2 mm alüminyum L braketteki M3 perçin somunu; aynı kalıpla
+  basılabilecek bir eş yok. Açık iş olarak kuyrukta (`karar-kuyrugu.md` "Karar değil, iş").
+
+**Neden iki yol.** Rehber F3 (adım 35) "Göğüs bandı sağı +x'ten getir … dilini orta bandın arkasına sok" diyor. Geometride durum
+bunun tersi. Dil orta bandın iç yarısı; göğüs bandının alt kenarı dış yarıdır (dudak) ve dilin dışından geçer (yan hatta dil x 147,1–148,4,
+dudak 148,6–150,1). +x yolunda kupon dilimi alt parçayla 1–160 mm boyunca ortak hacimli, 170 mm'de serbest (`bant-kuponu.json`
+`inis_x`; tam bantla F10d'de 1–159 / 173). +y yolunda yalnız son 13 mm ortak hacimli (`inis`). Bu yüzden ana deneme +y. +x denemesi
+rehberdeki yolun kendisini sınar.
+
+**Test:**
+1. **Deneme 1 (+y, ana deneme):** alt parçayı dil yukarı bakacak şekilde masaya koyun. Üst parçayı dudak aşağı bakacak şekilde
+   yukarıdan getirin. Dudak dilin dışında kalmalı. Önce arka ve yan bölümü indirin, en son ön bölümü. Ön bölümde dudağı dışa, dili içe
+   hafifçe esnetin. Alet kullanmayın. Modelde en büyük girişim ön-yan köşede: 10 mm kala 7,8 mm (P108a-kontrol § 3.4).
+2. Dudağın alt kenarı alt parçanın dış yarısına dayanınca dikiş aralığını sentille ölçün: önde, yanda ve arkada.
+3. Söküp üç kez tekrarlayın. Dilde ve dudakta beyazlama, çatlak ya da kalıcı eğilme var mı bakın.
+4. **Deneme 2 (+x, rehberin yolu):** üst parçayı alt parçanın +x yanında, dinlenme yüksekliğinde tutun: dudağın alt kenarı alt parçanın dış
+   yarısının üst kenarında (y 1005 omzu) dursun. Omuz yüksekliği tutar. Üst parçayı −x yönünde, omuz üstünde kaydırarak yerine getirmeyi
+   deneyin; alt parçayı kaldırmayın. Modelde yol boyunca 1–160 mm ortak hacim var, girmesi beklenmez. Nerede durduğunu (dinlenmeden kaç mm
+   önce) ve hangi kolun takıldığını (ön / arka) yazın.
+
+**Karar ağacı (sonuç tabloya yazılınca):**
+- **Deneme 1 geçer** (aletsiz, üç tekrarda dil çatlamaz ve kalıcı eğilmez, dikiş her yerde ≤ 0,5 mm kapanır): K55 a kalır. Rehber F3 / F4
+  takma metni kupondaki yola göre yeniden yazılır: "yukarıdan (+y) indir; alt kenar alttaki bandın dilinin dışından geçer, önce arka ve
+  yan, en son ön". Rehber "+x'ten getir" yolunu yalnız deneme 2 de geçerse tutar; deneme 2 geçmezse rehber +y yolunu yazar.
+- **Deneme 1 geçmez** (dil ya da dudak kırılır, ön bölüm girmez ya da dikiş açık kalır): K55 b sonraki geometri paketinde uygulanır. Dilde
+  pah ya da ön / arka yarıda ters bindirme olur. Değişecek yer bindirme dili (`kabuk_parcalar.py` dil bölgesi; `arayuz.KABUK_BINDIRME` 12,
+  `KABUK_BINDIRME_BOSLUK` 0,25); kabuk çakışma taraması gerekir. Hangi bölümün takıldığını (ön / yan / arka) yazın.
+- Her iki durumda sol yarı, x = 0 dikişi, etek ön, omuz ve çerçeve için yazılan sonuç "sağ yarı kuponundan çıkarım" diye işaretlenir.
+
+| Tarih | Malzeme | Deneme 1 +y (elle / zor / girmedi) | Takılan bölüm | Dikiş aralığı ön / yan / arka | 3 tekrar sonrası dil | Deneme 2 +x (durduğu yer, kol) | Not |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+
+Gerekenler: sentil, kumpas. İnsert ve vida gerekmez; dilimdeki ısıl gömme boss'ları ve delikleri kullanılmaz.
+
+## Kupon tazeliği denetimi (`kupon_tazelik.py`, 19 Kasım)
+
+Kupon betikleri ölçüyü kaynak parçadan okur. Kaynak değişirse kupon, betik yeniden koşulana kadar eski kalır. Denetim FreeCAD istemez
+ve depoya yazmaz:
+- yanak ve bant kuponlarında JSON'daki kaynak FCStd md5'ini ve STL md5'ini bugünkü dosyalarla karşılaştırır;
+- M7'de `m7-kupon-sonuc.json` `arayuz` bloğunu bugünkü `arayuz.py` ile karşılaştırır. Fark, `arayuz_fark_bugun` kaydıyla
+  (anahtar, kayıtlı eski değer, o günkü değer) tam aynıysa "BİLİNEN ESKİ" diye yazılır; bugün `DIRSEK.tup_uc_y` −140 → −170. Bugünkü
+  değer o kayıttan farklıysa ya da kayıtta olmayan bir anahtar değiştiyse "YENİ ESKİME" olur.
+
+`py -3 tasarim/freecad/test/kupon_tazelik.py` (depo kökünden). Çıkış 0: taze (bilinen eski olabilir); 1: en az bir eski ya da yeni eskime. `--kati` ile
+bilinen eski de 1 verir. Zincire bağlı değil; kupon basmadan önce ve kafa ya da kabuk değişen her paketin sonunda elle koşulur. Eski
+çıkarsa ilgili kupon betiğini yeniden koşun (`../kafa/yanak_kuponu.py`, `../kabuk/bant_kuponu.py`, `m7_kuponlari.py`).

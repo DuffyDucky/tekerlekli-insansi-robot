@@ -215,6 +215,8 @@ s += ["## Tolerans (CAD'de)", "", "| Geçme | CAD değeri | Not |", "|---|---|--
       "| Kupon | Malzeme | Ne denenir | Filament (g) |", "|---|---|---|---|"]
 for x in P["partiler"]["0"]["kuponlar"]:
     s.append("| %s%s | %s | %s | %s |" % (x["kod"], " (koşullu)" if x["kosullu"] else "", x["malzeme"], x["denenen"], ar(x["g"], 1)))
+if P["partiler"]["0"].get("m7_uyari"):          # P10.8a duzeltme 1 (19.11): D1 / D2 / E eski kosudan (F4c-partiler.py m7_eski_uyari)
+    s += ["", P["partiler"]["0"]["m7_uyari"]]
 s += ["",
       "Rulman elle (ya da mengeneyle hafif) bastırınca oturmalı; ısıl gömme somun havyayla düz girmeli, vida sıkınca dönmemeli. Sonuç CAD'e uygulanır ve STL'ler",
       "yeniden çıkarılır.", ""]

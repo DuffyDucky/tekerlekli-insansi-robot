@@ -32,13 +32,13 @@
      "malzeme": "PETG-CF",
      "g": [
       60.0,
-      87.9
+      87.8
      ],
      "sa": [
       1.706,
-      2.499
+      2.497
      ],
-     "denenen": "625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,2…6,6 dikey (L + 0,5)",
+     "denenen": "625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,6…6,8 dikey (L + 0,5)",
      "kutle_kaynak": "alt 60 g: 03.11 listesi (kaynağı yazılmamış); üst STL %100",
      "kosullu": false
     },
@@ -48,11 +48,11 @@
      "malzeme": "PETG",
      "g": [
       60.0,
-      87.9
+      87.8
      ],
      "sa": [
       1.706,
-      2.499
+      2.497
      ],
      "denenen": "aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri)",
      "kutle_kaynak": "aynı",
@@ -63,14 +63,14 @@
      "stl": "tasarim/freecad/test/stl/kupon-c-isil-gomme-L1.stl",
      "malzeme": "PETG-CF",
      "g": [
-      7.5,
-      13.4
+      7.4,
+      13.2
      ],
      "sa": [
-      0.213,
-      0.381
+      0.21,
+      0.375
      ],
-     "denenen": "Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,2…6,6, yatay + dikey",
+     "denenen": "Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,6…6,8, yatay + dikey",
      "kutle_kaynak": "m7-kupon-sonuc.json",
      "kosullu": false
     },
@@ -79,12 +79,12 @@
      "stl": "tasarim/freecad/test/stl/kupon-c-isil-gomme-L1.stl",
      "malzeme": "PETG",
      "g": [
-      7.5,
-      13.4
+      7.4,
+      13.2
      ],
      "sa": [
-      0.213,
-      0.381
+      0.21,
+      0.375
      ],
      "denenen": "aynı kupon beyaz PETG'de",
      "kutle_kaynak": "m7-kupon-sonuc.json",
@@ -142,26 +142,27 @@
    "toplam": {
     "adet": 8,
     "g": [
-     257.6,
-     420.6
+     257.4,
+     420.0
     ],
     "sa": [
      7.32,
-     11.96
+     11.94
     ],
     "cf_g": [
-     175.8,
-     301.4
+     175.7,
+     301.1
     ],
     "petg_g": [
-     81.8,
-     119.2
+     81.7,
+     118.9
     ],
     "d2siz_sa": [
-     6.15,
-     9.51
+     6.14,
+     9.49
     ]
    },
+   "m7_uyari": "**Uyarı (D1 / D2 / E eski):** bu üç kupon 15.10 koşusundan (Y2a öncesi dirsek); o günden beri `DIRSEK[\"tup_uc_y\"]` -140 → -170 değişti. `m7_kuponlari.py`'nin D / E bölümü bugünkü dirsekle koşmuyor (açık iş, `karar-kuyrugu.md` \"Karar değil, iş\"). Basmadan önce yeniden üretilmeli ya da bilerek eski hâliyle basılmalı. Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py`.",
    "omuz_disi_koku": "Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)"
   },
   "1": {

@@ -164,9 +164,9 @@ def kuponlar():
     c, d1, d2, e = (m7["kupon-c-isil-gomme-L1"], m7["kupon-d1-kelepce-kesiksiz"], m7["kupon-d2-kelepce-bosaltmali"], m7["kupon-e-tup-halkasi"])
     K = [
         ("A", "kupon-a-rulman-O52.stl", "PETG-CF", (a100, a100), "6808-2RS dış bileziği: Ø52,0 / 52,1 / 52,2 / 52,3 (omuz rulman kapağı, kafa rulman yuvası)", "STL hacmi × 1,27 (%100; tahmini değer yok)", False),
-        ("B", "kupon-b-yuva-mil-somun.stl", "PETG-CF", (60.0, b100), "625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,2…6,6 dikey (L + 0,5)", "alt 60 g: 03.11 listesi (kaynağı yazılmamış); üst STL %100", False),
+        ("B", "kupon-b-yuva-mil-somun.stl", "PETG-CF", (60.0, b100), "625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,6…6,8 dikey (L + 0,5)", "alt 60 g: 03.11 listesi (kaynağı yazılmamış); üst STL %100", False),
         ("B", "kupon-b-yuva-mil-somun.stl", "PETG", (60.0, b100), "aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri)", "aynı", False),
-        ("C", "kupon-c-isil-gomme-L1.stl", "PETG-CF", (c["kutle_tahmini_g"], c["kutle_100_g"]), "Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,2…6,6, yatay + dikey", "m7-kupon-sonuc.json", False),
+        ("C", "kupon-c-isil-gomme-L1.stl", "PETG-CF", (c["kutle_tahmini_g"], c["kutle_100_g"]), "Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,6…6,8, yatay + dikey", "m7-kupon-sonuc.json", False),
         ("C", "kupon-c-isil-gomme-L1.stl", "PETG", (c["kutle_tahmini_g"], c["kutle_100_g"]), "aynı kupon beyaz PETG'de", "m7-kupon-sonuc.json", False),
         ("D1", "kupon-d1-kelepce-kesiksiz.stl", "PETG-CF", (d1["kutle_tahmini_g"], d1["kutle_100_g"]), "Dirsek kelepçesi (çatal dilimi), kesiksiz", "m7-kupon-sonuc.json", False),
         ("D2", "kupon-d2-kelepce-bosaltmali.stl", "PETG-CF", (d2["kutle_tahmini_g"], d2["kutle_100_g"]), "Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma)", "m7-kupon-sonuc.json", True),
@@ -180,6 +180,24 @@ def kuponlar():
 
 
 # ---------------------------------------------------------------- kaynak anahtari ve X2D
+
+
+def m7_eski_uyari():
+    """P10.8a duzeltme 1 (19.11.2026): m7-kupon-sonuc.json D1 / D2 / E kaydi eski kosudan kaldiysa (yalniz_c alani) uyari metni; arayuz farki
+    bugunku arayuz.py ile karsilastirilir. Tam kosu (D / E onarimi) yalniz_c alanini silince uyari kendiliginden kalkar."""
+    m = json.load(open(os.path.join(FC, "test", "m7-kupon-sonuc.json"), encoding="utf-8"))
+    if "yalniz_c" not in m:
+        return ""
+    import importlib.util
+    sp = importlib.util.spec_from_file_location("arayuz_f4c", os.path.join(FC, "arayuz.py"))
+    A = importlib.util.module_from_spec(sp)
+    sp.loader.exec_module(A)
+    fk = ["`DIRSEK[\"%s\"]` %s → %s" % (k, f(v, 0), f(A.DIRSEK[k], 0)) for k, v in sorted(m["arayuz"]["DIRSEK"].items())
+          if k in A.DIRSEK and abs(float(A.DIRSEK[k]) - float(v)) > 1e-9]
+    return ("**Uyarı (D1 / D2 / E eski):** bu üç kupon 15.10 koşusundan (Y2a öncesi dirsek); o günden beri %s değişti. "
+            "`m7_kuponlari.py`'nin D / E bölümü bugünkü dirsekle koşmuyor (açık iş, `karar-kuyrugu.md` \"Karar değil, iş\"). "
+            "Basmadan önce yeniden üretilmeli ya da bilerek eski hâliyle basılmalı. Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py`."
+            % (", ".join(fk) if fk else "arayüz değeri"))
 
 
 def kaynaklar():
@@ -247,7 +265,7 @@ def main():
               cf_g=[round(sum(x["g"][i] for x in kup if x["malzeme"] == "PETG-CF"), 1) for i in (0, 1)],
               petg_g=[round(sum(x["g"][i] for x in kup if x["malzeme"] == "PETG"), 1) for i in (0, 1)],
               d2siz_sa=[round(sum(x["sa"][i] for x in kup if not x["kosullu"]), 2) for i in (0, 1)])
-    P[0] = dict(PARTI[0], parti=0, kuponlar=kup, toplam=k0,
+    P[0] = dict(PARTI[0], parti=0, kuponlar=kup, toplam=k0, m7_uyari=m7_eski_uyari(),
                 omuz_disi_koku="Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)")
     liste = topla(rows)
     y2 = Y["toplam"]
@@ -307,12 +325,13 @@ def md(o):
           "Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/s × 1,3; alt değer tahmini kütle, üst değer %%100 dolu. "
           "Dilimleyicinin verdiği esastır. D2 basılmazsa (D1 geçerse) ≈ %s sa. `proje-plani.md`'deki \"≈ 3 sa\" yalnız M7 kuponları (C bir kez, D1, D2, E);"
           " A, B ve iki malzemeli B/C eklenince ≈ %s sa (tahmini kütleyle)." % (aralik(k0["d2siz_sa"], 1), f(k0["sa"][0], 1)), "",
+          ] + ([P[0]["m7_uyari"], ""] if P[0].get("m7_uyari") else []) + [
           "**Isıl gömme (K31 açık; A/B/C seçeneğine göre kupon):**", "",
           "| K31 seçeneği | Delik (satıcı kuralı, `F8a-siparis.md` §4.1) | Kupon B / C | Parti 0'a etkisi |", "|---|---|---|---|",
           "| A: Rhino ID3 OD4 L4 (önerilen varsayılan) | Ø3,8–3,9 | B'de Ø3,8 / 3,9 (dikey), C'de Ø3,9 damla | Kupon değişmez; C'nin derinliği 6,7 (L 5,7 + 1) L4 için fazla ama deneme için engel değil |",
           "| B: Rhino ID3 OD5 L6 | Ø4,8–4,9 | Uymaz (Ø3,8–4,1) | B ve C yeniden üretilir (`arayuz.INSERT`, FreeCAD); A, D1, D2, E beklemeden basılır, B/C gecikir |",
           "| C: ruthex RX-M3x5.7 | Ø4,0–4,2 | B'de Ø4,0 / 4,1, C'de Ø4,0 / 4,1 | Kupon değişmez; tedarik takvime yetişmez (K31) |",
-          "| M5: Rhino ID5 OD7 L7 | Ø6,7–6,8 | Uymaz (Ø6,2–6,6) | M5 delikleri büyütülür ya da başka ürün (K31, önerilen varsayılan yok) |", "",
+          "| M5: Rhino ID5 OD7 L7 (K31 teknik yarı, 17.11) | Ø6,7–6,8 | B'de Ø6,6 / 6,7 / 6,8 (dikey), C'de Ø6,6…6,8 damla, Ø6,7 yuvarlak ve dikey | Kupon delikleri 19.11'de büyütüldü (P10.8 1. basamak, kupon betiğinde yerel parametre; `arayuz.INSERT_DELIK[5]` 6,4 değişmedi) |", "",
           "**Omuz dişi kökü:** " + P[0]["omuz_disi_koku"] + ".", ""]
     # Parti 1-4
     for k in (1, 2, 3, 4):

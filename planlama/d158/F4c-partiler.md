@@ -9,7 +9,7 @@ QLED, uzatma bandı, hoparlör ve hub adımları henüz yok). Toplamların doğr
 
 | Parti | Ne zaman | Adet | PETG | PETG-CF | Toplam | Süre | Durum A takvimi (`proje-plani.md`) |
 |---|---|---|---|---|---|---|---|
-| Parti 0 | İlk gün (S'den önce) | 8 baskı (6 kupon) | 0,08–0,12 kg | 0,18–0,30 kg | 0,26–0,42 kg | ≈ 7,3–12,0 sa | S = 16.11 için 9–10.11 (proje-plani.md, Durum A) |
+| Parti 0 | İlk gün (S'den önce) | 8 baskı (6 kupon) | 0,08–0,12 kg | 0,18–0,30 kg | 0,26–0,42 kg | ≈ 7,3–11,9 sa | S = 16.11 için 9–10.11 (proje-plani.md, Durum A) |
 | Parti 1 | Hemen (Parti 0 sonucu CAD'e girip STL çıkınca) | 27 | 3,19 kg | 0,18 kg | 3,37 kg | ≈ 70,2–70,3 sa | ≈ S−0,5 → S+1,5; akü takozu (Parti 4) bu partinin arasında basılır |
 | Parti 2 | Servo ve horn gelip kumpasla ölçülünce | 25 | 0,32 kg | 1,02–1,07 kg | 1,33–1,39 kg | ≈ 27,9–29,0 sa | ≈ S+1,5 → S+2,3 |
 | Parti 3 | QLED gelip ölçülünce | 9 | 0,76 kg | 0,00 kg | 0,76 kg | ≈ 15,7 sa | ≈ S+2,3 → S+2,8 |
@@ -26,16 +26,18 @@ Sonrası: Sonuç CAD'e (arayuz.INSERT_DELIK, rulman yuvaları, GECME) → STL d�
 | Kupon | STL | Malzeme | Ne denenir | Filament (g) | Süre (sa) | Kütle kaynağı |
 |---|---|---|---|---|---|---|
 | A | `kupon-a-rulman-O52.stl` | PETG-CF | 6808-2RS dış bileziği: Ø52,0 / 52,1 / 52,2 / 52,3 (omuz rulman kapağı, kafa rulman yuvası) | 26,0 | 0,74 | STL hacmi × 1,27 (%100; tahmini değer yok) |
-| B | `kupon-b-yuva-mil-somun.stl` | PETG-CF | 625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,2…6,6 dikey (L + 0,5) | 60,0–87,9 | 1,71–2,50 | alt 60 g: 03.11 listesi (kaynağı yazılmamış); üst STL %100 |
-| B | `kupon-b-yuva-mil-somun.stl` | PETG | aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri) | 60,0–87,9 | 1,71–2,50 | aynı |
-| C | `kupon-c-isil-gomme-L1.stl` | PETG-CF | Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,2…6,6, yatay + dikey | 7,5–13,4 | 0,21–0,38 | m7-kupon-sonuc.json |
-| C | `kupon-c-isil-gomme-L1.stl` | PETG | aynı kupon beyaz PETG'de | 7,5–13,4 | 0,21–0,38 | m7-kupon-sonuc.json |
+| B | `kupon-b-yuva-mil-somun.stl` | PETG-CF | 625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,6…6,8 dikey (L + 0,5) | 60,0–87,8 | 1,71–2,50 | alt 60 g: 03.11 listesi (kaynağı yazılmamış); üst STL %100 |
+| B | `kupon-b-yuva-mil-somun.stl` | PETG | aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri) | 60,0–87,8 | 1,71–2,50 | aynı |
+| C | `kupon-c-isil-gomme-L1.stl` | PETG-CF | Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,6…6,8, yatay + dikey | 7,4–13,2 | 0,21–0,38 | m7-kupon-sonuc.json |
+| C | `kupon-c-isil-gomme-L1.stl` | PETG | aynı kupon beyaz PETG'de | 7,4–13,2 | 0,21–0,38 | m7-kupon-sonuc.json |
 | D1 | `kupon-d1-kelepce-kesiksiz.stl` | PETG-CF | Dirsek kelepçesi (çatal dilimi), kesiksiz | 40,9–87,9 | 1,16–2,50 | m7-kupon-sonuc.json |
 | D2 (koşullu) | `kupon-d2-kelepce-bosaltmali.stl` | PETG-CF | Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma) | 41,4–86,2 | 1,18–2,45 | m7-kupon-sonuc.json |
 | E | `kupon-e-tup-halkasi.stl` | PETG | Üst kol tüpü halkası (tüp–pim / tüp–bilezik geçmesi) | 14,3–17,9 | 0,41–0,51 | m7-kupon-sonuc.json |
-| **Toplam** | | | | **257,6–420,6** | **7,32–11,96** | PETG 81,8–119,2 g, PETG-CF 175,8–301,4 g |
+| **Toplam** | | | | **257,4–420,0** | **7,32–11,94** | PETG 81,7–118,9 g, PETG-CF 175,7–301,1 g |
 
-Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/s × 1,3; alt değer tahmini kütle, üst değer %100 dolu. Dilimleyicinin verdiği esastır. D2 basılmazsa (D1 geçerse) ≈ 6,2–9,5 sa. `proje-plani.md`'deki "≈ 3 sa" yalnız M7 kuponları (C bir kez, D1, D2, E); A, B ve iki malzemeli B/C eklenince ≈ 7,3 sa (tahmini kütleyle).
+Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/s × 1,3; alt değer tahmini kütle, üst değer %100 dolu. Dilimleyicinin verdiği esastır. D2 basılmazsa (D1 geçerse) ≈ 6,1–9,5 sa. `proje-plani.md`'deki "≈ 3 sa" yalnız M7 kuponları (C bir kez, D1, D2, E); A, B ve iki malzemeli B/C eklenince ≈ 7,3 sa (tahmini kütleyle).
+
+**Uyarı (D1 / D2 / E eski):** bu üç kupon 15.10 koşusundan (Y2a öncesi dirsek); o günden beri `DIRSEK["tup_uc_y"]` -140 → -170 değişti. `m7_kuponlari.py`'nin D / E bölümü bugünkü dirsekle koşmuyor (açık iş, `karar-kuyrugu.md` "Karar değil, iş"). Basmadan önce yeniden üretilmeli ya da bilerek eski hâliyle basılmalı. Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py`.
 
 **Isıl gömme (K31 açık; A/B/C seçeneğine göre kupon):**
 
@@ -44,7 +46,7 @@ Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/
 | A: Rhino ID3 OD4 L4 (önerilen varsayılan) | Ø3,8–3,9 | B'de Ø3,8 / 3,9 (dikey), C'de Ø3,9 damla | Kupon değişmez; C'nin derinliği 6,7 (L 5,7 + 1) L4 için fazla ama deneme için engel değil |
 | B: Rhino ID3 OD5 L6 | Ø4,8–4,9 | Uymaz (Ø3,8–4,1) | B ve C yeniden üretilir (`arayuz.INSERT`, FreeCAD); A, D1, D2, E beklemeden basılır, B/C gecikir |
 | C: ruthex RX-M3x5.7 | Ø4,0–4,2 | B'de Ø4,0 / 4,1, C'de Ø4,0 / 4,1 | Kupon değişmez; tedarik takvime yetişmez (K31) |
-| M5: Rhino ID5 OD7 L7 | Ø6,7–6,8 | Uymaz (Ø6,2–6,6) | M5 delikleri büyütülür ya da başka ürün (K31, önerilen varsayılan yok) |
+| M5: Rhino ID5 OD7 L7 (K31 teknik yarı, 17.11) | Ø6,7–6,8 | B'de Ø6,6 / 6,7 / 6,8 (dikey), C'de Ø6,6…6,8 damla, Ø6,7 yuvarlak ve dikey | Kupon delikleri 19.11'de büyütüldü (P10.8 1. basamak, kupon betiğinde yerel parametre; `arayuz.INSERT_DELIK[5]` 6,4 değişmedi) |
 
 **Omuz dişi kökü:** Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39).
 

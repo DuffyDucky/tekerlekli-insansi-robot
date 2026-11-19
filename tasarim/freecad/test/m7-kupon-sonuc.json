@@ -105,25 +105,29 @@
     17.2,
     14.0
    ],
-   "hacim_cm3": 10.55,
-   "kutle_100_g": 13.4,
-   "kutle_tahmini_g": 7.5,
+   "hacim_cm3": 10.43,
+   "kutle_100_g": 13.2,
+   "kutle_tahmini_g": 7.4,
    "sure_tahmini_dk": 13.0,
    "tabla_temas_mm2": 904.0,
    "baski": {
-    "cikinti_46ustu_mm2": 59.7,
-    "yatay_tavan_mm2": 18.1,
+    "cikinti_46ustu_mm2": 61.5,
+    "yatay_tavan_mm2": 18.7,
     "en_buyuk_z_mm2": [
      [
-      9.7,
-      7.7
+      9.8,
+      13.4
      ],
      [
-      9.6,
-      7.7
+      9.7,
+      5.3
      ],
      [
       6.9,
+      5.3
+     ],
+     [
+      9.6,
       5.3
      ],
      [
@@ -131,12 +135,8 @@
       5.3
      ],
      [
-      9.3,
-      5.1
-     ],
-     [
-      9.5,
-      5.1
+      6.6,
+      2.7
      ]
     ]
    }
@@ -326,7 +326,7 @@
    "boy": "M5",
    "yon": "yatay",
    "bicim": "yuvarlak",
-   "cap": 6.4,
+   "cap": 6.7,
    "derinlik": 8.0,
    "nokta": 1,
    "agiz": "+Y yuzu",
@@ -337,7 +337,7 @@
    "boy": "M5",
    "yon": "yatay",
    "bicim": "damla",
-   "cap": 6.2,
+   "cap": 6.6,
    "derinlik": 8.0,
    "nokta": 2,
    "agiz": "+Y yuzu",
@@ -348,7 +348,7 @@
    "boy": "M5",
    "yon": "yatay",
    "bicim": "damla",
-   "cap": 6.4,
+   "cap": 6.7,
    "derinlik": 8.0,
    "nokta": 3,
    "agiz": "+Y yuzu",
@@ -359,7 +359,7 @@
    "boy": "M5",
    "yon": "yatay",
    "bicim": "damla",
-   "cap": 6.6,
+   "cap": 6.8,
    "derinlik": 8.0,
    "nokta": 4,
    "agiz": "+Y yuzu",
@@ -381,7 +381,7 @@
    "boy": "M5",
    "yon": "dikey",
    "bicim": "yuvarlak",
-   "cap": 6.4,
+   "cap": 6.7,
    "derinlik": 8.0,
    "nokta": 0,
    "agiz": "ust yuz",
@@ -390,9 +390,42 @@
   }
  ],
  "toplam": {
-  "kutle_100_g": 205.4,
-  "kutle_tahmini_g": 104.1,
+  "kutle_100_g": 205.2,
+  "kutle_tahmini_g": 104.0,
   "sure_tahmini_dk": 178.0,
   "not_": "tahmini: 4 cevre + %25 dolgu, 10 mm3/s ortalama debi (arayuz.PETG_HACIM_HIZI) x 1,3 hareket payi; kupon C iki malzemede basilirsa iki kez sayilir"
+ },
+ "k31_m5": {
+  "nominal": 6.7,
+  "adim": 0.1,
+  "cad": 6.4,
+  "kaynak": "karar-kuyrugu.md K31 teknik yari (17.11.2026): M5 Rhino ID5 OD7 L7, kupon M5 delikleri O6,7-6,8",
+  "delikler": [
+   6.7,
+   6.6,
+   6.7,
+   6.8,
+   6.7
+  ]
+ },
+ "yalniz_c": {
+  "tarih": "2026-11-19",
+  "paket": "P10.8 1. basamak (kupon dosyalari)",
+  "kip": "M7_YALNIZ_C=1",
+  "neden": "D / E bolumu Y2a'dan beri kosmuyor (arayuz.DIRSEK tup_uc_y -170, betikteki Y_KAPAK -148 sabit)",
+  "d1_d2_e": "STL, kayit ve STEP govdeleri 15.10.2026 kosusundan (commit 6bb1eff); D1 FCStd dogrulamasi o tarihin"
+ },
+ "arayuz_kosu": {
+  "INSERT": "2026-11-19 M7_YALNIZ_C=1 (kupon C)",
+  "INSERT_DELIK": "2026-11-19 M7_YALNIZ_C=1 (kupon C)",
+  "GECME": "2026-10-15 tam kosu (D1 / D2 / E; commit 6bb1eff)",
+  "TUP_PIM_R": "2026-10-15 tam kosu (D1 / D2 / E; commit 6bb1eff)",
+  "DIRSEK": "2026-10-15 tam kosu (D1 / D2 / E; commit 6bb1eff)"
+ },
+ "arayuz_fark_bugun": {
+  "DIRSEK.tup_uc_y": {
+   "kayit": -140.0,
+   "bugun": -170.0
+  }
  }
 }

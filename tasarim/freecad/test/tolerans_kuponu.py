@@ -6,7 +6,9 @@
 #   - 625ZZ yuvasi (O16) 4 delik: O16,0 / 16,1 / 16,2 / 16,3, kalinlik 5 (rulman eni)
 #   - 6808 ic bilezigi (O40) icin 4 boru mil: O39,8 / 39,9 / 40,0 / 40,1, boy 8
 #   - M3 isil gomme somun deligi 4 adet: O3,8 / 3,9 / 4,0 / 4,1, derinlik 6,2 (arayuz.INSERT boy 5,7 + 0,5)
-#   - M5 isil gomme somun deligi 3 adet: O6,2 / 6,4 / 6,6, derinlik 7,5
+#   - M5 isil gomme somun deligi 3 adet: O6,6 / 6,7 / 6,8 (M5_DELIK_K31), derinlik 7,5
+#     (19.11.2026, P10.8 1. basamak: K31 teknik yarisi M5 icin Rhino ID5 OD7 L7, satici kurali delik O6,7-6,8; onceki O6,2 / 6,4 / 6,6.
+#     Yerel parametre: arayuz.INSERT_DELIK[5] (6,4; asil parcalar) DEGISMEDI, sonraki tam taramali CAD paketine kalir.)
 # Her olcunun yaninda nokta sayisi = sira (1 nokta en kucuk olcu). Secilen olcu arayuz.py'ye (INSERT_DELIK, rulman yuvasi) girer.
 import os, sys
 import FreeCAD as App
@@ -22,6 +24,8 @@ import arayuz as A
 
 L_I3 = A.INSERT[3][1] + 0.5
 L_I5 = A.INSERT[5][1] + 0.5
+M5_DELIK_K31 = (6.6, 6.7, 6.8)        # K31 (Rhino ID5 OD7 L7; kural O6,7-6,8) + bir alt olcu; onceki A.INSERT_DELIK[5] -+ 0,2 (6,2 / 6,4 / 6,6)
+assert A.INSERT[5] == (7.0, 7.0), "M5 insert (dis cap, boy) degisti: M5_DELIK_K31 ve derinligi gozden gecir"
 
 
 def noktalar(n, x, y, z_ust, aralik=3.0):
@@ -71,7 +75,7 @@ for i in range(4):
     b = b.cut(noktalar(i + 1, x - 4.0, 2.0, B_T, aralik=2.6))
 for i in range(3):
     x = 116 + i * 30
-    b = b.cut(cyl(3.1 + 0.1 * i, (x, Y2, 11 - L_I5), (x, Y2, 12)))       # O6,2 + 0,2 * i
+    b = b.cut(cyl(M5_DELIK_K31[i] / 2, (x, Y2, 11 - L_I5), (x, Y2, 12)))  # O6,6 / 6,7 / 6,8
     b = b.cut(noktalar(i + 1, x - 4.0, 25.8, B_T, aralik=2.6))
 r_mil = [19.9, 19.95, 20.0, 20.05]                                        # 6808 ic bilezik mili: O39,8 / 39,9 / 40,0 / 40,1
 Y3 = 70.0

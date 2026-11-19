@@ -1,0 +1,400 @@
+{
+ "betik": "tasarim/freecad/kabuk/bant_kuponu.py",
+ "paket": "P10.8 1. basamak (kupon dosyalari)",
+ "tarih": "2026-11-19",
+ "karar": "karar-kuyrugu.md K55 seçenek a (17.11.2026, P10.9b)",
+ "kaynak": {
+  "fcstd": "tasarim/freecad/kabuk/kabuk-montaj.FCStd",
+  "md5": "54273a1bd6f57811241edad59b489cff",
+  "alt": "Govde orta bandi sag",
+  "ust": "Gogus bandi sag",
+  "hacim_mm3": {
+   "Govde orta bandi sag": 226584.08,
+   "Gogus bandi sag": 182215.06
+  },
+  "uretici": "kabuk_montaj.py (bantlar: kabuk_parcalar.py:128-165)",
+  "dikis_y": 1005.0,
+  "dil_mm": 12.0,
+  "bosluk_arayuz_mm": 0.25,
+  "duvar_mm": 3.0,
+  "cep_alt_y": 1026.57
+ },
+ "kutu_mm": {
+  "x": [
+   -200.0,
+   200.0
+  ],
+  "y": [
+   995.0,
+   1025.0
+  ],
+  "z": [
+   -200.0,
+   200.0
+  ]
+ },
+ "kesilen_kutu_ici_mm3": {
+  "Govde orta bandi sag": 0.0,
+  "Gogus bandi sag": -0.0002
+ },
+ "kaynak_olcu": {
+  "yan_dikis_alti": {
+   "alt": [
+    [
+     144.516,
+     147.516
+    ]
+   ],
+   "ust": []
+  },
+  "yan_dil_orta": {
+   "alt": [
+    [
+     147.133,
+     148.383
+    ]
+   ],
+   "ust": [
+    [
+     148.633,
+     150.133
+    ]
+   ],
+   "dil_mm": 1.25,
+   "dudak_mm": 1.5,
+   "bosluk_mm": 0.25
+  },
+  "yan_dil_ustu": {
+   "alt": [],
+   "ust": [
+    [
+     149.0,
+     152.0
+    ]
+   ]
+  },
+  "on_dikis_alti": {
+   "alt": [
+    [
+     113.025,
+     116.025
+    ]
+   ],
+   "ust": []
+  },
+  "on_dil_orta": {
+   "alt": [
+    [
+     120.732,
+     121.982
+    ]
+   ],
+   "ust": [
+    [
+     122.232,
+     123.732
+    ]
+   ],
+   "dil_mm": 1.25,
+   "dudak_mm": 1.5,
+   "bosluk_mm": 0.25
+  },
+  "on_dil_ustu": {
+   "alt": [],
+   "ust": [
+    [
+     125.652,
+     128.652
+    ]
+   ]
+  },
+  "arka_dikis_alti": {
+   "alt": [
+    [
+     -87.93,
+     -84.93
+    ]
+   ],
+   "ust": []
+  },
+  "arka_dil_orta": {
+   "alt": [
+    [
+     -86.5,
+     -80.3
+    ],
+    [
+     -80.3,
+     -79.3
+    ]
+   ],
+   "ust": [
+    [
+     -88.0,
+     -86.5
+    ]
+   ],
+   "dil_mm": 6.2,
+   "dudak_mm": 1.5,
+   "bosluk_mm": 0.0
+  },
+  "arka_dil_ustu": {
+   "alt": [],
+   "ust": [
+    [
+     -87.914,
+     -84.914
+    ]
+   ]
+  }
+ },
+ "karsilastirma": {
+  "tolerans_mm": 0.01,
+  "olcumler": {
+   "yan_dikis_alti": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": null,
+    "bosluk_kupon": null
+   },
+   "yan_dil_orta": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": 0.25,
+    "bosluk_kupon": 0.25
+   },
+   "yan_dil_ustu": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": null,
+    "bosluk_kupon": null
+   },
+   "on_dikis_alti": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": null,
+    "bosluk_kupon": null
+   },
+   "on_dil_orta": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": 0.25,
+    "bosluk_kupon": 0.25
+   },
+   "on_dil_ustu": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": null,
+    "bosluk_kupon": null
+   },
+   "arka_dikis_alti": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": null,
+    "bosluk_kupon": null
+   },
+   "arka_dil_orta": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": 0.0,
+    "bosluk_kupon": 0.0
+   },
+   "arka_dil_ustu": {
+    "alt_fark": 0.0,
+    "ust_fark": 0.0,
+    "bosluk_kaynak": null,
+    "bosluk_kupon": null
+   }
+  },
+  "sonuc": true
+ },
+ "inis": {
+  "yon": "ust parca +y'den iner (d: dinlenmeden yukarida kalan boy, mm)",
+  "ortak_hacim_mm3": {
+   "0.5": 191.094,
+   "1.0": 780.321,
+   "2.0": 2221.156,
+   "4.0": 1443.729,
+   "6.0": 1458.178,
+   "8.0": 896.396,
+   "10.0": 261.799,
+   "12.0": 4.985,
+   "13.0": 0.371,
+   "14.0": 0.0,
+   "16.0": 0.0
+  },
+  "dinlenme_ortak_mm3": 0.0,
+  "serbest_d_mm": 14.0,
+  "girisim_mm": {
+   "2": {
+    "yan": -0.226,
+    "on": -1.151,
+    "arka": 0.0
+   },
+   "6": {
+    "yan": -1.177,
+    "on": -3.954,
+    "arka": 0.0
+   },
+   "10": {
+    "yan": -2.129,
+    "on": -6.756,
+    "arka": 0.25
+   }
+  },
+  "not_": "girisim < 0: dudak ic yuzu dilin dis yuzunun icinde (dudak disa / dil ice esnemeli); F10d §11.5 gogus bandi +y 1-13 mm ile karsilastir"
+ },
+ "inis_x": {
+  "yon": "rehber F3 (adim 35) yolu: ust parca dinlenme yuksekliginde, +x'ten gelir (dx: dinlenmeden +x'te kalan boy, mm)",
+  "ortak_hacim_mm3": {
+   "1": 15.0,
+   "2": 30.0,
+   "5": 75.0,
+   "10": 150.0,
+   "20": 292.105,
+   "40": 594.572,
+   "80": 961.263,
+   "120": 546.694,
+   "150": 96.696,
+   "160": 0.421,
+   "170": 0.0,
+   "175": 0.0,
+   "180": 0.0,
+   "200": 0.0
+  },
+  "serbest_dx_mm": 170.0,
+  "not_": "F10d §11.5 tam bant +x: orta bant 1-159 mm, 173 mm'de ayrilma; kupon dilimi ayni egriyi vermeli"
+ },
+ "parcalar": [
+  {
+   "stl": "tasarim/freecad/kabuk/stl/bant-kuponu-alt.stl",
+   "stl_md5": "d0d39af1cb15bf3d99092379d6b27904",
+   "malzeme": "PETG (beyaz; bantlarin malzemesi)",
+   "yon": "dik: dilimin alt kesiti tablada, dil yukari (orta bant gibi)",
+   "olcu_mm": [
+    161.8,
+    214.2,
+    23.4
+   ],
+   "kati": 1,
+   "gecerli": true,
+   "hacim_cm3": 19.54,
+   "kutle_100_g": 24.8,
+   "kutle_tahmini_g": 24.5,
+   "sure_tahmini_dk": 42.0,
+   "tabla_temas_mm2": 1212.0,
+   "baski": {
+    "cikinti_46ustu_mm2": 48.9,
+    "en_buyuk_z_mm2": [
+     [
+      18.0,
+      6.2
+     ],
+     [
+      18.8,
+      5.6
+     ],
+     [
+      17.9,
+      4.3
+     ],
+     [
+      18.7,
+      3.7
+     ],
+     [
+      18.4,
+      3.7
+     ],
+     [
+      17.8,
+      3.1
+     ]
+    ],
+    "not_": "46 derece ustu asagi bakan yuzler (tablanin ustunde)"
+   },
+   "stl_karsilastirma": {
+    "olcumler": {
+     "hacim_brep_mm3": 19539.66,
+     "hacim_stl_mm3": 19543.24,
+     "hacim_fark_yuzde": 0.018,
+     "bb_fark_mm": 0.001,
+     "kapali": true,
+     "manifold_disi": false,
+     "ucgen": 22490
+    },
+    "sonuc": true
+   },
+   "x2d_sigar": true,
+   "okul_sigar": true,
+   "tahmin_not": "tahmini: 4 cevre + %25 dolgu, arayuz.PETG_HACIM_HIZI x 1,3 (test/m7_kuponlari.py ile ayni yontem); ince duvarda hemen hepsi cevre",
+   "ad": "alt parca (orta bant dilimi, dil)"
+  },
+  {
+   "stl": "tasarim/freecad/kabuk/stl/bant-kuponu-ust.stl",
+   "stl_md5": "858f9e86aa3af08d8ad66a97d848fb0d",
+   "malzeme": "PETG (beyaz; bantlarin malzemesi)",
+   "yon": "dik: dudagin alt kenari tablada (gogus bandi gibi)",
+   "olcu_mm": [
+    164.0,
+    217.2,
+    20.0
+   ],
+   "kati": 1,
+   "gecerli": true,
+   "hacim_cm3": 23.25,
+   "kutle_100_g": 29.5,
+   "kutle_tahmini_g": 26.9,
+   "sure_tahmini_dk": 46.0,
+   "tabla_temas_mm2": 874.0,
+   "baski": {
+    "cikinti_46ustu_mm2": 728.8,
+    "en_buyuk_z_mm2": [
+     [
+      12.0,
+      656.5
+     ],
+     [
+      13.5,
+      6.0
+     ],
+     [
+      18.8,
+      5.7
+     ],
+     [
+      19.1,
+      5.5
+     ],
+     [
+      13.0,
+      4.0
+     ],
+     [
+      13.6,
+      4.0
+     ]
+    ],
+    "not_": "46 derece ustu asagi bakan yuzler (tablanin ustunde)"
+   },
+   "stl_karsilastirma": {
+    "olcumler": {
+     "hacim_brep_mm3": 23252.65,
+     "hacim_stl_mm3": 23252.83,
+     "hacim_fark_yuzde": 0.001,
+     "bb_fark_mm": 0.0,
+     "kapali": true,
+     "manifold_disi": false,
+     "ucgen": 21720
+    },
+    "sonuc": true
+   },
+   "x2d_sigar": true,
+   "okul_sigar": true,
+   "tahmin_not": "tahmini: 4 cevre + %25 dolgu, arayuz.PETG_HACIM_HIZI x 1,3 (test/m7_kuponlari.py ile ayni yontem); ince duvarda hemen hepsi cevre",
+   "ad": "ust parca (gogus bandi dilimi, dudak)"
+  }
+ ],
+ "stl_sonuc": true,
+ "sure_s": 8.8
+}
