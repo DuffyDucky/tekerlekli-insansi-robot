@@ -48,6 +48,11 @@ RV = "rehber/veri/rehber-veri.json"
 ML = "planlama/maliyet.json"
 SP = "planlama/d158/F8a-siparis.json"
 DEMO = "tasarim/Robot-Tasarim-Demosu.html"
+# P10.9c (F10 sonu): tam çakışma taraması, F10y kapanış günlüğü, bu paketin günlüğü (F10 tablosundaki Echo sırası)
+CS = "tasarim/freecad/carpisma-sonuc.json"
+F10Y = "planlama/d158/F10y-gunluk.md"
+GUN = "planlama/d158/P109c-gunluk.md"
+P109A, P109B = "planlama/d158/P109a-gunluk.md", "planlama/d158/P109b-gunluk.md"
 EMOJI = "✅🟡⛔🔄⏳"
 
 
@@ -420,8 +425,10 @@ PAKET_SONUC = {
     # başlar; faz sonu (P10.9) bu satırları günceller. Kalıp ve gerekçe P109a-gunluk.md § 4.
     "P10.1": ("Seçim vurgusu, öncekiler yarı saydam, küçük görünüm, internetsiz açılma; 1 düzeltme turu (yazdırma kareleri 19/50 boştu → 50/50).", [DONGU]),
     # P10.7b2g kapanışı: K53 17.11'de kapandı (P10.9b; a + iii, çentik); model değişikliği sonraki tam taramalı CAD paketinde
-    "P10.2": ("Açık: K53 kapandı (17.11, çentik); girişim ölçüldü, 3,13 mm³, taşma 0,425 mm; model değişmedi; çentik bir sonraki "
-              "tam taramalı CAD paketinde.", [DONGU]),
+    # P10.9c düzeltme turu 1 (orkestratör kararı, Echo, geri alınabilir): P10.2 ✅ 19.11; çentik kabulün dört maddesini sağlıyor
+    "P10.2": ("Kapandı 19.11 (orkestratör kararı, Echo): K53 a çentiği P10.7b2j'de modelde; iniş boyunca ortak hacim 0, en küçük boşluk "
+              "0,5 mm, taban içi çakışma 0, korunan değerler GEÇER. Girişim önce 3,13 mm³, taşma 0,425 mm idi. b2j'deki parça artışı K51 ve "
+              "K64'ten, çentikten değil; burç 2'nin oturması ayrı iş (P10.8 satırında).", [DONGU, "planlama/d158/F10s-gunluk.md"]),
     "P10.3": ("E4 sırası, E3 625ZZ + pim, kalıcı sıra denetimi; 1 düzeltme turu (E3 \"geometrik kilitli\" sonucu yanlıştı); K54 sıfır boşluk.", [DONGU]),
     "P10.4": ("Kabuk adımları alt adımlara bölündü; açık 34 / zor 8 / anlaşılmıyor 0; 1 düzeltme turu (34 somun yanlış yerde); K55 bindirme dilleri.", [DONGU]),
     "P10.4b": ("Gerçek parça rengi, bağlandığı yer vurgusu, cıvata yeri işaretleri; 1 düzeltme turu, ikinci kontrol GEÇER; açık 40 / zor 2.", [DONGU]),
@@ -431,24 +438,41 @@ PAKET_SONUC = {
     # Kalan: plandaki "Sıradaki: P10.7b2" listesinden b2a–b2c'nin kapattıkları çıkarıldı (P10.9a kontrolü B3);
     # b2d 78d160d ile kapandı, "Sürüyor" listesinden kapalılara geçti (P10.9a commit turu); b2e b5fc255 ile kapandı, K52 kuyrukta
     # kapalı (P10.7b2f bakım; F10n-gunluk.md)
-    "P10.7": ("Açık. Kapalı alt paketler: P10.7a (74 kablo tek kaynakta, `kablolar.json`; 16.11 sipariş listesi genel 120.852,43 TL), "
+    # P10.9c düzeltme turu 1 (orkestratör kararı, Echo, geri alınabilir): P10.7 ✅ 19.11; "Kalan" adlarıyla P10.8 satırına devredildi.
+    # G19 / G20 / G24 / G26 maddesi çıktı: P10.7b2b'de (15.11) eşleme dişleri onaysız yakalanıyor (P109c-kontrol O1).
+    "P10.7": ("Kapandı 19.11 (orkestratör kararı, Echo). Kapalı alt paketler: P10.7a (74 kablo tek kaynakta, `kablolar.json`; 16.11 "
+              "sipariş listesi genel 120.852,43 TL), "
               "P10.7b1, P10.7b2a (74 / 74 kablo talimatta, PDF 80 sayfa), P10.7b2b, P10.7b2c, P10.7b2d (K1 / K2 demet alt adımları, PDF 84 sayfa), "
               "P10.7b2e (K52 a, K64 a, sağ / sol K65, kare düzeltmeleri; PDF 86 sayfa), "
-              # P10.7b2g kapanışı: b2f 9b019d2 ile kapandı; b2g bu commit'le (F10o-gunluk.md)
               "P10.7b2f (Kablo yolu 12 gerilemesi, uç etiketleri; kayıt düzeltmeleri, VIN'e seri Schottky K66), "
               "P10.7b2g (boyun tüneli deneme parçası; rehberde K2 alt adım 5'e bağlandı). "
-              # P10.7b2h kapanışı (F10q-gunluk.md § 10): bu commit'le kapandı
               "P10.7b2h (17.11 kararlarının rehber metni: K40, K50 b, K51, K55, K60). "
-              # P10.7b2i kapanışı (F10r-gunluk.md § 8): bu commit'le kapandı
-              "P10.7b2i (yol 9 eski kısmı rehberde kırpıldı, U06 şeması ESP32 portuna yeniden çizildi, U06 boyu 1.560). "
-              # P10.7b2f kısım 2: Efe'nin iki cevabı 14.11'de geldi (pano #7 mesaj #28), kayda 16.11'de geçti; "Kalan"dan çıktı
-              # P10.9b (17.11.2026, orkestratör kararı): K60 (A + köprülü klemens) ve K61 (a) kapandı; "Kalan"dan çıktı (P109b-gunluk.md)
-              "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, G19 / G20 / G24 / G26 "
-              "(yalnız onayla).", [DONGU]),
-    "P10.8": ("Açık: satın alınan parça modelleri parçalar gelince.", [DONGU]),
-    "P10.9": ("Açık: bu sayfanın F10 yenilemesi. P10.9a ön paketi üretici ve denetimi iki basamaklı faza açtı; sayılar ve son üretim faz sonunda.",
-              [DONGU, "planlama/d158/P109a-gunluk.md"]),
+              "P10.7b2i (yol 9 eski kısmı rehberde kırpıldı, U06 şeması ESP32 portuna yeniden çizildi, U06 boyu 1.560), "
+              "P10.7b2j (K2 a boss, K53 a çentik, K51 a TVS, K64 a iki bara tutucusu ve dokuz saplama; USB ses kartı modelden çıktı; "
+              "tam tarama eklem aralığında 0 çakışma), P10.7b2k (rehber b2j CAD'ine uyduruldu; PDF 87 sayfa). "
+              "Devredilen (P10.8 satırına, adlarıyla): kablo boylarının ölçümü, CAD kablo yolu 10 / 11 / 12, göğüs regülatörü kartının "
+              "zarfı, K31 insert boyu, rehberin açık işleri.", [DONGU]),
+    # P10.9c düzeltme turu 1: P10.7'nin "Kalan"ı ve parça bekleyen işler bu satırda adlarıyla (plan P10.8 Durum hücresiyle aynı)
+    "P10.8": ("Açık: ayrıntılı satın alınan parça modelleri ve fotoğraf kartı parçalar gelince. Devralınan (19.11): parça ya da ölçüm "
+              "bekleyen: kablo boylarının ölçümü, D24V50F5 pin kenarı, ESP32 DevKit portu ve yönü (180° ters kart denetimde yakalanmaz; "
+              "ters takılırsa ilk enerjide 5 V bir GPIO pinine gelir), PC817 çıkış jumper'ı, göğüs regülatörü kartının ürünü ve ölçüsü, "
+              "RV 5.5 pabuç kalınlığı, M5 bara saplaması başı, kabuk ve etek takılıyken bara somunlarına erişim, boyun tüneli fiş "
+              "denemesi, masa denemeleri KT1–KT7 ve K66 tezgâh denemesi, KT2'den sonra AU1 / AU2 ses şeması, fiş boyları ve talimat ↔ "
+              "kayıt boyları, G07 bölücü dirençlerinin toleransı; sonraki tam taramalı CAD paketinde: CAD kablo yolu 10, 11 ve "
+              "12, göğüs regülatörü kartının zarfı ve yeri, burç 2'nin oturması, K31 insert boyu, dikiş bindirmesi ölçümü, acil stop "
+              "düğüm kartının CAD modeli, dağıtım kartı C'nin güç panelindeki yeri ve bağlantı elemanı, çarpışma taramasından geçmeyen "
+              "11 taban ve 5 kafa içi şeması, geniş `TABAN_DISI_BOLGE`; rehber: 17.4, "
+              "32.1, 17.10 kare okunurluğu, 17.11 karesinde U06, `rehber_denetim --kaynak` CAD adı açığı, D6, `kafa-yerlesim` raporu. "
+              "P10.7b'nin öbür açık işleri kuyruğun \"Karar değil, iş\" bölümünde izlenir. Önerilen sıra (Echo kararı, geri alınabilir) bu "
+              "sayfanın F10 tablosunda.", [DONGU, GUN]),
+    # P10.9c düzeltme turu 1 (D4): P10.9 metni plan durumundan seçilir (commit'te eskiyecek "commit bekliyor" ifadesi yok);
+    # kapalı metin uret() içinde (P10_9_KAPALI)
+    "P10.9": ("Açık: bu sayfanın F10 yenilemesi (P10.9c, 19.11; günlük `P109c-gunluk.md`); plan durumu kapanınca sayfa yeniden üretilir. "
+              "Ön paketler: P10.9a üretici ve denetimi iki basamaklı faza açtı; P10.9b 17.11 kararlarını kuyruğa işledi (22 kapandı).",
+              [DONGU, P109A, P109B, GUN]),
 }
+P10_9_KAPALI = ("Bu sayfa, F10'un faz sonu yenilemesi (P10.9c, 19.11; günlük `P109c-gunluk.md`). Ön paketler: P10.9a üretici ve denetimi "
+                "iki basamaklı faza açtı; P10.9b 17.11 kararlarını kuyruğa işledi (22 kapandı).", [DONGU, P109A, P109B, GUN])
 
 FAZ_SONUC = {
     "F0": ("Zemin: 9 commit grubu, karar kuyruğu, korunan 10 değeri toplayan regresyon betiği.", [DONGU]),
@@ -461,9 +485,42 @@ FAZ_SONUC = {
     "F7": ("3B rehber 50 adım / 1192 parça; yazdırılabilir PDF 54 sayfa, elektrik güvenliği denetimi.", [DONGU]),
     "F8": ("Sipariş paketi 136 satır, baskı partileri, T1–T13 test kâğıtları; sipariş verilmedi.", [DONGU]),
     "F9": ("Takvim: S = 16.11 yalnız durum A'da sığar (bir hafta tampon); demo 127 anahtar, depo temizliği; bu rapor son paket.", [PLAN, DONGU]),
-    # P10.9a TASLAĞI: faz açık; P10.9 faz sonunda yeniden yazar.
-    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g, b2h, b2i alt paketleri. "
-            "Açık: P10.2 (K53 kapandı, çentik sonraki CAD paketinde), P10.7, P10.8, P10.9.", [DONGU]),
+    # P10.9c düzeltme turu 1: P10.2 ve P10.7 kapandı (19.11); F10 cümlesi uret() içinde plandaki açık paketlerden tamamlanır
+    "F10": ("P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g, b2h, "
+            "b2i, b2j, b2k alt paketleri.", [DONGU]),
+}
+
+# P10.9c (F10 sonu) kayıt notları; F9 sonu notları (TUTARSIZ) tarihî, olduğu gibi altında
+TUTARSIZ_F10 = [
+    ("Plan kaydı (P10.9c, Echo kararı, geri alınabilir): P10.7b2j ve P10.7b2k kapanışları `dongu-158.md` P10.7 hücresine işlendi. F10y "
+     "kapanışı planı güncellememişti; üretici alt paketleri plandan okuduğu için bu iki paket sayfada görünmüyordu.", [DONGU, F10Y, GUN]),
+    ("P10.2 19.11'de kapandı (P10.9c düzeltme turu 1, orkestratör kararı (Echo), geri alınabilir): K53 a çentiği kabulün dört maddesini "
+     "sağlıyor (iniş boyunca ortak hacim 0, en küçük boşluk 0,5 mm, taban içi çakışma 0, korunan değerler GEÇER); b2j'deki parça artışı "
+     "K51 ve K64'ten, çentikten değil.", [DONGU, "planlama/d158/F10s-gunluk.md"]),
+    ("P10.7 19.11'de kapandı (P10.9c düzeltme turu 1, orkestratör kararı (Echo), geri alınabilir): kabul ölçütü 14.11'den beri sağlanıyor, "
+     "CAD'li alt paketler bitti; kalan işler parça ya da sonraki tam taramalı CAD paketini beklediği için adlarıyla P10.8 satırına "
+     "devredildi. G19 / G20 / G24 / G26 maddesi P10.7b2b'de (15.11) kapanmıştı, listeden çıktı.", [DONGU]),
+    ("P10.9 19.11'de kapandı (P10.9c düzeltme turu 2, orkestratör kararı (Echo), geri alınabilir): kabul ölçütü (`F9c-dogrula` 0, "
+     "tek tablo özet) sağlandı, iki bağımsız kontrol. Faz 10 açık kalıyor: P10.8 parça bekliyor. Devir taraması (düzeltme turu 2) "
+     "kuyruğun \"Karar değil, iş\" bölümündeki P10.7b işlerini P10.8 satırına ekledi.", [DONGU, GUN, "planlama/d158/P109c-kontrol.md"]),
+    ("Açık düşükler bölümü F9 sonu (09.11) hâlidir. \"Kapandı\" notu yalnız elle doğrulanan iki satırda (ikinci P6KE6V8A, K11 · K52); "
+     "öbür notlar kararın kuyrukta kapandığını söyler, satırdaki ölçümü ya da işi kapatmaz (ör. K10 masa testi, K39 DS3235 düşme ölçümü; "
+     "P10.9c düzeltme turu 2).", [GUN, KUYRUK, "planlama/d158/P109c-kontrol.md"]),
+    ("F8a sipariş sayacı ve sipariş paketi toplamları 09.11 listesidir (P8.1 satırı, \"Sipariş paketi toplamı\", \"Bütçe farkı\"); güncel "
+     "sipariş listesi `maliyet.json`. Sayfada etiketlenmedi, kaldırılmadı (P10.9a § 5.2 sorusu açık).", [P109A]),
+    ("Aciliyet gruplarının F10 taslağı (P10.9a § 3): açık kalan tek F10 kararı K62 (C); K53, K54, K55, K60, K61 kapandı, grupları sayfaya girmiyor.",
+     [P109A, KUYRUK]),
+    ("Pakete bağlanamayan 2 commit (`9145164`, `f658f15`, 13.11 gizlilik denetimi, konu öneki \"Lale:\") paket dışı bırakıldı.", [P109A]),
+    ("Tasarım demosu bu pakette yeniden üretilmedi: karar kuyruğu ve demonun kaynak dosyaları değişmedi (demo P10.7b2j'de üretildi).", [GUN, F10Y]),
+]
+
+# P10.9c düzeltme turu 1 (O5): açık düşüklerin F9 sonu satırlarına F10 notu. Anahtar F9c-dusukler.json "kod" alanı; bu sözlükte
+# olmayan satıra kuyrukta kapanmış K kodları için kendiliğinden "kuyrukta kapandı" notu düşer (kaynak karar kuyruğu).
+DUSUK_F10 = {
+    "O-3 · K51 (KT-F7c-2)": ("F10 sonu: kapandı. K51 a (17.11, Echo); ikinci P6KE6V8A P10.7b2j'de modele ve BOM'a girdi.",
+                             [KUYRUK, DONGU]),
+    "K11 · K52 (KT-F7c-3)": ("F10 sonu: K11 (14.11) ve K52 (16.11) kapandı: kutunun F6 3 A yuvası, regülatör güç panelinde (rehber "
+                             "B5a). Regülatör kartının modeli hâlâ yok (ürün ölçüsü bekliyor; P10.8 satırında).", [KUYRUK, DONGU]),
 }
 
 # Orkestratöre giden tutarsızlıklar (F9c-gunluk.md §7 ile aynı; her sayı kaynağında)
@@ -528,6 +585,7 @@ tr:last-child td{border-bottom:none}
 td.kod{font-weight:650;white-space:nowrap}
 th.kod,#takvim-tablo th{white-space:nowrap}
 td.n{font-variant-numeric:tabular-nums}
+@media (min-width:641px){#f10-tablo td:first-child{width:9.5em;overflow-wrap:normal}#paket-tablo td:nth-child(2){min-width:11em;overflow-wrap:normal}th{overflow-wrap:normal}}
 ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
 ol.list li,ul.list li{margin:4px 0}
 .oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
@@ -596,12 +654,13 @@ def uret():
     w = o.append
     w('<!doctype html>\n<html lang="tr">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">')
     w("<title>Lale 1,58 m Sonuç Raporu</title>\n<style>\n%s\n</style>\n</head>\n<body data-hazir=\"1\">\n<main>" % STIL)
-    w('<header>\n<div>\n<h1>%s</h1>' % K("Lale 1,58 m döngüsü: sonuç raporu (P9.3)", BRIEF))
-    w('<p class="sub">Ajan A · %s · dal <code>lale-duzeltme</code> · üretici <code>planlama/d158/F9c-uret.py</code>, denetim '
+    # P10.9c: başlık ve tarih F10 sonuna (F9 sonu sayfası: "(P9.3)", 09.11.2026, Ajan A)
+    w('<header>\n<div>\n<h1>%s</h1>' % K("Lale 1,58 m döngüsü: sonuç raporu (F10 sonu, P10.9)", DONGU))
+    w('<p class="sub">Uygulama ajanı (P10.9c) · %s · dal <code>lale-duzeltme</code> · üretici <code>planlama/d158/F9c-uret.py</code>, denetim '
       '<code>F9c-dogrula.py</code> · kaynaklar: <code>dongu-158.md</code>, <code>karar-kuyrugu.md</code>, paket raporları, '
-      'regresyon JSON\'ları, <code>git log</code></p>' % K("09.11.2026", BRIEF))
+      'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026", GUN, F10Y))
     w('</div>\n<button class="tema" type="button" id="tema">Tema: sistem</button>\n</header>')
-    w('<nav class="ic"><a href="#ozet">Özet</a><a href="#yapilacak">Ahmet\'in yapacakları</a><a href="#kararlar">Açık kararlar</a>'
+    w('<nav class="ic"><a href="#f10">F10 sonu</a><a href="#ozet">Özet</a><a href="#yapilacak">Ahmet\'in yapacakları</a><a href="#kararlar">Açık kararlar</a>'
       '<a href="#korunan">Korunan değerler</a><a href="#sayilar">Sayılarla robot</a><a href="#takvim">Takvim</a>'
       '<a href="#paketler">Paketler</a><a href="#dusukler">Açık düşükler</a><a href="#tutarlilik">Kayıt notları</a></nav>')
 
@@ -618,11 +677,106 @@ def uret():
         J(REG_SON, "cikis_kodu"), J(REG_SON, "kotulesen#say")))
     w('<div class="card"><div class="k">Boy · kütle</div><div class="v">%s mm</div><div class="d">ana montaj %s g; kablo payıyla %s g</div></div>' % (
         J(LK, "toplam_boy_mm", "i"), J(MA, "kutle_g", "2"), J(UI, "ev.kutle_g", "1")))
-    w('<div class="card"><div class="k">Maliyet</div><div class="v">%s TL</div><div class="d">V3, yazıcı, yedek, pay dahil; sipariş verilmedi</div></div>' % (
+    w('<div class="card"><div class="k">Maliyet</div><div class="v">%s TL</div><div class="d">V3, yazıcı, yedek, pay dahil; siparişin durumu kayıtta yok</div></div>' % (
         J(ML, "=genel", "2")))
     w('<div class="card"><div class="k">Commit</div><div class="v">%s</div><div class="d">döngü boyunca (<code>%s</code> → <code>%s</code>)</div></div>' % (
         H("komit_sayisi", len(kom)), kom[-1][0], kom[0][0]))
     w("</div>")
+
+    # 0. F10 sonu: tek tablo (P10.9c). F9 sonunun kalıbı faz başına özet (aşağıda "Ahmet için özet"); F10 sonu için konu başına
+    # bitti / açık iş / Ahmet'in kararı. Sayılar JSON'dan (data-j) ya da sayımdan (data-h), metin kaynağıyla (data-kaynak).
+    n_kapali, gA_n = len(kr) - len(acik), sum(1 for k in acik if GRUP[k["k"]][0] == "A")
+    # P10.9c düzeltme turu 1: plan durumları plandan (elle yazılmaz; P10.2 ve P10.7 19.11'de kapandı, P10.9 commit'te kapanır)
+    f10_durum = ", ".join("%s %s" % (p["kod"], p["emoji"]) for p in paket if p["faz"] == "F10")
+    w('<h2 id="f10">%s</h2>' % K("Faz 10 sonu: tek tablo (Ahmet için)", DONGU))
+    w('<p class="note">%s Plan durumları (<code>dongu-158.md</code>): %s.</p>' % (K(
+        "Konu başına üç sütun: bitenler, açık iş (karar değil, iş) ve Ahmet'in kararını bekleyenler. Kodlar: K = karar kuyruğu maddesi "
+        "(`karar-kuyrugu.md`; yanındaki a / b seçilen seçenek), P = plan paketi (`dongu-158.md`; P10.7b2j gibi harfli olanlar alt paket), "
+        "17.4 gibi sayılar rehberin alt adımı, E4 / B6a gibi kodlar rehber adımı, G19 / U06 / N02 gibi kodlar kablo kimliği "
+        "(`kablolar.json`), KT1–KT7 masa denemeleri. Kapanan kararların sahibi hücrede yazılı: Ahmet ya da orkestratör (Echo); Echo "
+        "kararları geri alınabilir. Teknik sıralar Echo kararıdır; alım, bütçe ve sipariş Ahmet'te, tabloda yalnız soru olarak. P10.7 "
+        "kapanınca kalan işleri adlarıyla P10.8 satırına devredildi.", DONGU, KUYRUK, GUN), html.escape(f10_durum)))
+    w('<div class="tbl"><table class="yigin" id="f10-tablo"><thead><tr><th>Konu</th><th>Bitti</th><th>Açık iş</th>'
+      '<th>Ahmet\'in kararı</th></tr></thead><tbody>')
+    f10 = [
+        ("Montaj rehberi (3B + PDF)",
+         K("Adım ", DONGU) + J(RK, "ozet.adim") + K(", alt adım 91; seçim vurgusu, kabuk alt adımları, kol içi kablo yolu, K1 / K2 demet alt "
+                                                   "adımları; 74 / 74 kablo bağlama talimatında; rehber b2j CAD'ine uyduruldu (P10.7b2k). PDF ", DONGU)
+         + J(RK, "yazdir.pdf_sayfa") + K(" sayfa. Makine denetimi geçti; F10y'de 17.8–17.12, 32.x'in kalanı, B5a / B6 / E3a kareleri ve PDF "
+                                        "sayfaları gözle bakılmadı.", DONGU, F10Y),
+         K("P10.8 satırında (rehber, üretimli paket): 17.4, 32.1 ve 17.10 karelerinin okunurluğu; 17.11 karesinde U06; `rehber_denetim "
+           "--kaynak` yeni CAD adlarını üretimden önce görmüyor; D6 (`{boy.U06}` yer tutucusu).", DONGU, KUYRUK),
+         "—"),
+        ("CAD ve çakışma taraması",
+         K("P10.7b2j (Echo kararları: K2 a, K51 a, K53 a 17.11'de Ahmet'in devriyle; K64 a 16.11): K2 a boss, K53 a çentik, K51 a TVS, "
+           "K64 a iki bara tutucusu ve dokuz saplama; USB ses kartı modelden çıktı. Parça ", DONGU, KUYRUK)
+         + J(MA, "parca_sayisi", "i") + K(", kütle ", DONGU) + J(MA, "kutle_g", "k2") + K(" kg, baskı ", DONGU) + J(BA, "toplam.adet")
+         + K(" adet, bağlantı elemanı ", DONGU) + J(DEMO, "anahtarlar.p_bag.deger", "i") + K(". Tam tarama tek koşu ", DONGU)
+         + J(CS, "bolumler.statik.kosu", "s") + K(" (", DONGU) + J(CS, "bolumler#say") + K(" bölüm): eklem aralığında ", DONGU)
+         + J(CS, "toplam.eklem_araliginda") + K(" çakışma; tarama toplamında ", DONGU) + J(CS, "toplam.cakisma")
+         + K(" çakışma, hepsi eklem aralığı dışında.", DONGU, "planlama/d158/F10x-gunluk.md"),
+         K("P10.8 satırında, sonraki tam taramalı CAD paketine: CAD kablo yolu 10 (ön şarj kartına 0,1 mm değiyor), 11 ve 12 (elektronik "
+           "katını ön kesiğin dışından deliyor); göğüs regülatörü kartının (K52) zarfı ve panel yeri (modelde yok); burç 2'nin oturması; "
+           "K31 insert boyu (`arayuz.py`); E4 için dikey dikiş bindirmesi ölçümü (rehber sırayı öneri olarak veriyor); acil stop düğüm "
+           "kartının CAD modeli (yok); dağıtım kartı C'nin güç panelindeki yeri ve bağlantı elemanı (A12); 11 taban ve 5 kafa içi / ses "
+           "şeması çarpışma taramasından geçmedi; `TABAN_DISI_BOLGE` gövde bölgesi geniş. Ayrıca "
+           "`kafa-yerlesim` raporu ve notu birlikte yeniden üretilmeli; göğüs ekranı port girintisi ekran gelince (P1.4 koşullu).",
+           KUYRUK, DONGU, "planlama/d158/F10v-gunluk.md"),
+         K("K2 bütçe yarısı: AI HAT+ okul bütçesinden mi (teknik yarı a, boss modelde).", KUYRUK)),
+        ("Elektrik ve kablolama",
+         K("74 kablo tek kaynakta (`kablolar.json`); pin haritası K58 (orkestratör, Ahmet'in 13.11 yetkisiyle); K63 talimat boşlukları; "
+           "K52 a göğüs regülatörü güç panelinde ve K66 ESP32 VIN'e seri 1N5819 (Echo, 16.11); K60 A (Echo, 17.11, Ahmet'in devriyle): "
+           "elde taşınan acil stop yok, köprülü klemens var, demoda mantarın yanında bir kişi durur. Kararlar rehberde.", DONGU, KUYRUK),
+         K("P10.8 satırında: kablo boylarının ölçümü (kablolar gelince); ESP32 DevKit yönü: `u06_port_denetle` 180° ters takılmış kartı "
+           "yakalamaz, ters takılırsa ilk enerjide 5 V bir GPIO pinine gelir (rehberdeki yön kontrolü tek önlem); kabuk ve etek takılıyken "
+           "güç panelindeki bara somunlarına üstten erişim ölçülmedi; PC817 çıkış jumper'ı modül gelince seçilecek; KT2 sonucundan sonra "
+           "AU1 / AU2 ses şeması ve kaydı; fiş boyları ve talimat ↔ kayıt boyları (ör. E3a K03) kablolar gelince; G07 bölücü "
+           "dirençlerinin toleransı kayıtta yok. P10.7b'nin öbür açık işleri kuyruğun \"Karar değil, iş\" bölümünde. K61 düğmesinin "
+           "`maliyet.json`'dan düşülmesi (sipariş kararıyla).", DONGU, KUYRUK),
+         K("K50 alım yarısı (XT60E-F dişi panel); K13 ReSpeaker LED'leri görünsün mü.", KUYRUK)),
+        ("Kararlar",
+         H("karar_kapali", n_kapali) + K(" madde kapandı; 17.11'de 22'si orkestratörce (Echo), Ahmet'in devriyle (P10.9b).", KUYRUK),
+         "—",
+         H("karar_acik", len(acik)) + " / " + H("karar_toplam", len(kr)) + K(" açık; ", KUYRUK) + H("grup_A", gA_n)
+         + K(" madde sipariş ya da güvenlik öncesi. Ortak ön soru: 16.11 siparişi verildi mi, hangi listeyle?", KUYRUK)),
+        ("Sipariş ve maliyet",
+         K("Güncel liste `maliyet.json`, genel ", ML) + J(ML, "=genel", "2") + K(" TL.", ML),
+         K("F8a sipariş paketi satırları (P8.1, sipariş paketi toplamı, bütçe farkı) 09.11 listesidir, güncel değil.", P109A),
+         K("K27–K30, K32, K34–K37, K42; K31 / K33 / K43 / K50 alım yarıları; K64 alım kalemleri (M5 saplama başının altıgen olması, "
+           "pullar, M3 vidalar); göğüs regülatörü kartının (K52) ürünü ve ölçüsü; N02'nin N01 boyunda alınması; kondansatör yedeği "
+           "(sipariş 5, kullanım 5); KT2 geçmezse gereken USB-A uzatma ve L dirsek şimdi mi alınsın.", KUYRUK, "planlama/d158/F10u-gunluk.md")),
+        ("Parçalar gelince (P10.8 ve devralınan işler)",
+         "—",
+         K("Önerilen sıra (Echo kararı, geri alınabilir): 1) parça beklemeden yalnız kupon dosyaları: K54 c ve K55 a kuponları, kupon C "
+           "M5 delikleri kupon betiğinde yerel parametreyle (izlenen `arayuz.py`'ye dokunmadan); 2) Parti 0 ilk gün: tolerans kuponları, "
+           "K54 / K55 kuponları, boyun tüneli deneme parçası; 3) gelen parçayı kumpasla teyit et: D24V50F5 pin kenarı, ESP32 DevKit micro "
+           "USB portu ve yönü, PC817 çıkış jumper'ı, göğüs regülatörü kartının ölçüsü, RV 5.5 pabuç kalınlığı, M5 saplama başı, göğüs "
+           "ekranı portu, AI HAT+ zarfı; 4) boyun tüneli fiş denemesi, kablo boylarının ve fiş boylarının ölçümü (kablolar gelince); 5) masa denemeleri "
+           "KT1–KT7 (önce KT1 ve KT2, alımı belirliyorlar; KT2'den sonra AU1 / AU2 şeması) ve K66 tezgâh denemesi; 6) P10.8: satın alınan parça modelleri ve fotoğraf "
+           "kartı, tek tam taramalı CAD paketinde şunlarla birlikte: K52 kart zarfı ve yeri, CAD kablo yolu 10 / 11 / 12, burç 2, K31 "
+           "insert boyu (`arayuz.py`), dikiş ölçümü, acil stop düğüm kartı ve dağıtım kartı C modeli, taranmamış 16 şemanın taraması, teyitlerden çıkan değişiklikler; ardından bir rehber üretimi; 7) montajda: bara "
+           "somunlarına kabuk takılıyken erişim, ölçümler K39, K45, K12, K6.", GUN, DONGU),
+         K("Parti 0 değerlendirmesi rulman (6808-2RS, 625ZZ), M3 / M5 ısıl gömme somun ve kupon D vidası ister (K29 erken alım; K31, K43 "
+           "insert); CF kuponları PETG-CF'ye bağlı (K42). K54 / K55 kuponları ve boyun tüneli parçası insert istemez.", KUYRUK, GUN, "planlama/d158/F4c-partiler.json")),
+        ("Yazılım (Efe'nin alanı)",
+         K("Efe'nin iki cevabı (reset DTR / RTS, ReSpeaker 16 kHz) kayıtta; 17.11 kararları pano #7 mesaj #34 ile Efe'ye bildirildi.",
+           DONGU, P109B),
+         K("K38 / K45 hız sınırları ve kapanma sırası, K41 S1 −45…135, K44 `eklem_sinirlari.json` üretimi, K3 / K9 el yükü kuralı, "
+           "K65 sağ / sol yazılım düzeltmesi.", KUYRUK),
+         "—"),
+        ("Depo, yayın ve kayıt",
+         K("P10.7b2j ve P10.7b2k push edildi. Push öncesi kanca iki yanlış alarm verdi (STEP koordinatlarının ondalık kesri, gömülü "
+           "resim verisi); orkestratör eklenen satırları kancanın kalıplarıyla kendisi taradıktan sonra iki commit kanca atlanarak "
+           "gönderildi (Echo kararı); ardından günlük commit'i `89134d5` kancadan geçti.", F10Y),
+         K("K48 dosyasının depo dışına taşınması, K49 `.gitignore` girdileri, pre-push kancasına STEP koordinatı ve gömülü görsel verisi "
+           "istisnası.", KUYRUK, F10Y),
+         K("K18–K26 depo içeriği, gizlilik ve hesap adı; `main`'e birleştirme (Pages) onayı; K62 tur sayısı kaydı; `uygulama-notu.md`'deki "
+           "kişi adı geçen satırlar.", KUYRUK, DONGU, F10Y)),
+    ]
+    for konu, bitti, acik_is, ahmet in f10:
+        w('<tr data-f10="1">%s%s%s%s</tr>' % (td("<b>%s</b>" % K(konu, DONGU), "Konu"), td(bitti, "Bitti"), td(acik_is, "Açık iş"),
+                                               td(ahmet, "Ahmet'in kararı")))
+    w("</tbody></table></div>")
 
     # 1. Ahmet için özet
     w('<h2 id="ozet">Ahmet için özet</h2>')
@@ -630,6 +784,13 @@ def uret():
     for f, ad in fazlar:
         ems = [p["emoji"] for p in paket if p["faz"] == f]
         metin, kay = FAZ_SONUC[f]
+        if f == "F10":   # P10.9c düzeltme turu 1: açık paketler plandan (P10.9 kapanınca cümle kendiliğinden değişir)
+            ack_ = [p["kod"] for p in paket if p["faz"] == "F10" and p["emoji"] != "✅"]
+            ACK_AD = {"P10.8": "parçalar gelince; devralınan işlerle", "P10.9": "bu sayfa"}
+            kap_ = [p["kod"] for p in paket if p["faz"] == "F10" and p["emoji"] == "✅"]
+            metin = "Kapalı: " + ", ".join(kap_) + " ve " + metin
+            if ack_:
+                metin = "Faz açık. " + metin + " Açık: " + ", ".join("%s (%s)" % (x, ACK_AD.get(x, "plan")) for x in ack_) + "."
         w("<tr>%s%s%s%s</tr>" % (td("<b>%s</b> · %s" % (f, K(ad, DONGU)), "Faz"), td(durum_tag(faz_durum(ems)), "Durum"),
                                  td(K(metin, *kay), "Ana sonuç"),
                                  td('<b>%s</b>%s' % (H("faz_karar_" + f, len(fk.get(f, []))),
@@ -640,7 +801,7 @@ def uret():
     w("</tbody></table></div>")
     w('<p class="note">Faz durumu, fazdaki paketlerin en kötüsüdür (🔄 &gt; ⛔ &gt; 🟡 &gt; ⏳ &gt; ✅). Açık kararlar faza şu kuralla '
       'bağlandı: kuyruğun Durum hücresindeki paket etiketi (ör. F8a → F8); yoksa Bloke hücresindeki ilk P kodu; yoksa Durum hücresindeki '
-      'ilk P kodu (ör. K62 → F10); yoksa F0. F10 açık; bu sayfanın faz sonu yenilemesi P10.9.</p>')
+      'ilk P kodu (ör. K62 → F10); yoksa F0. F10 paketleri: %s; bu sayfa P10.9\'un faz sonu yenilemesidir.</p>' % html.escape(f10_durum))
 
     # 2. Ahmet'in yapacakları
     gA = [k["k"] for k in acik if GRUP[k["k"]][0] == "A"]
@@ -652,17 +813,18 @@ def uret():
         "demo ve rehber yalnız `lale-duzeltme` dalında; birleştirme Ahmet'in onayına bağlı (KT-F9b-1). Birleştirme commit'inde README "
         "demo satırındaki \"bu sürüm `lale-duzeltme` dalında\" ifadesi kaldırılmalı (F9d D-4). Öneri: önce K25 ve K26.", DONGU,
         "planlama/d158/F9d-rapor.html"))
+    # P10.9c: üç madde F10 kayıtlarına göre (K47, K48, K49 17.11'de kapandı; K1, K14 14.11'de; Efe'nin iki cevabı kayıtta)
     w("<li><b>Silme gerektirenler:</b> %s</li>" % K(
-        "K48 `tasarim/cad/lale158-model.js` (3,4 MB, takip dışı artık; varsayılan a: sil, yalnız Ahmet'in onayıyla). Yanlışlıkla "
-        "yayımlanan özel sayfanın silinmesi (Ahmet).", KUYRUK, DONGU, "planlama/d158/F9b-kontrol.md"))
+        "Yanlışlıkla yayımlanan özel sayfanın silinmesi (Ahmet; kayıtta kapanış yok). K48 kapandı (17.11, a: `tasarim/cad/lale158-model.js` "
+        "depo dışına taşınır; taşıma açık iş).", KUYRUK, DONGU))
     w("<li><b><code>.gitignore</code> kararları:</b> %s</li>" % K(
-        "K47 rehber kontrol görüntüleri (önerilen varsayılan b: yalnız sürüm commit'inde; beklettiği: rehber turlarının `git add` "
-        "listesi, depo büyümesi). K49 kalıcı izlenmeyenler (önerilen varsayılan: 5 girdi `.gitignore`, 5 dosya commit, kalanı bağlı "
-        "kararını bekler; K18–K24 ile birlikte). İkisi de karar bekliyor; `.gitignore` değişikliği Ahmet'in kararından sonra.", KUYRUK))
-    w("<li><b>Efe'den beklenen pano yanıtları:</b> %s</li>" % K(
-        "#5 altıncı USB cihazı (K1); #6 10 servo kanal tablosu ve kablo kuralı, ek bilgi: tilt ±20 güncel kafada çakışıyor, "
-        "\"±13 mümkün mü\" (mesaj 17); #7 güvenlik ve ses: yankı giderme, \"devreden çıkar\", kopma, uzaktan acil stop, ESP32 reset, "
-        "fren. K14 boyun demeti teyidi ve K44 eklem sınırı dosyası bilgisi de Efe'de.", DONGU))
+        "K47 ve K49 kapandı (17.11, P10.9b); K49'un dört klasör girdisi K18–K21 kararıyla birlikte, onlar Ahmet'te. Uygulaması açık iş.", KUYRUK))
+    w("<li><b>Efe'nin alanı:</b> %s</li>" % K(
+        "K1 ve K14 kapandı (14.11); Efe'nin iki cevabı (reset DTR / RTS, ReSpeaker 16 kHz) kayıtta. Efe'ye bildirilen iş (pano #7 mesaj #34): "
+        "K38 / K45 hız sınırları ve kapanma sırası, K41 S1 −45…135, K44 `eklem_sinirlari.json` üretimi, K3 / K9 el yükü kuralı; ayrıca "
+        "K65 sağ / sol yazılım düzeltmesi.", KUYRUK, DONGU, P109B))
+    w("<li><b>Ortak ön soru:</b> %s</li>" % K(
+        "16.11 siparişi verildi mi, hangi listeyle? Kayıtta yok; K27–K37, K42, K43, K50 ve K61'in maliyet işi bu cevaba bağlı.", KUYRUK))
     w("</ol>")
 
     # 3. Açık kararlar
@@ -712,7 +874,15 @@ def uret():
         w("<tr>%s%s%s</tr>" % (td(konu, "Konu"), td(deger, "Değer", "n"), td(kay, "Kaynak")))
     sat("Boy", J(LK, "toplam_boy_mm", "1") + " mm", "<code>%s</code> · <code>toplam_boy_mm</code>" % LK)
     sat("Parça (ana montaj)", J(MA, "parca_sayisi", "i"), "<code>%s</code> · <code>parca_sayisi</code>" % MA)
+    # P10.9c: bağlantı elemanı sayısı demo ile aynı kaynaktan (demo anahtarı p_bag = montaj-analiz.json, tür Baglanti)
+    sat("Bağlantı elemanı (ana montaj)", J(DEMO, "anahtarlar.p_bag.deger", "i"),
+        "<code>%s</code> · <code>script#kaynak</code> <code>p_bag</code> (<code>%s</code>, tür <code>Baglanti</code>)" % (DEMO, MA))
     sat("Kütle, ana montaj", J(MA, "kutle_g", "2") + " g", "<code>%s</code> · <code>kutle_g</code>" % MA)
+    # P10.9c: tam çakışma taraması (P10.7b2j, tek koşu)
+    sat("Tam çakışma taraması", "koşu %s, %s bölüm, eklem aralığında %s çakışma (toplam %s çakışma, hepsi eklem aralığı dışında); tarama kütlesi %s kg" % (
+        J(CS, "bolumler.statik.kosu", "s"), J(CS, "bolumler#say"), J(CS, "toplam.eklem_araliginda"), J(CS, "toplam.cakisma"), J(CS, "kutle_toplam_g", "k2")),
+        "<code>%s</code> · <code>bolumler.statik.kosu</code>, <code>bolumler#say</code>, <code>toplam.eklem_araliginda</code>, <code>toplam.cakisma</code>, "
+        "<code>kutle_toplam_g</code>" % CS)
     sat("Kütle, ev pozu, kablo payıyla", "%s g (pay %s g)" % (J(UI, "ev.kutle_g", "1"), J(UI, "kablo_payi.kutle_g", "0")),
         "<code>%s</code> · <code>ev.kutle_g</code>, <code>kablo_payi.kutle_g</code>" % UI)
     sat("Servo", "%s (DS3235 %s, MG996R %s)" % (J(DEMO, "anahtarlar.servo.deger", "0"), J(DEMO, "anahtarlar.s_ds.deger", "0"), J(DEMO, "anahtarlar.s_mg.deger", "0")),
@@ -768,13 +938,15 @@ def uret():
     w('<p class="note">%s</p>' % K("Kaynaktaki sonuç: **S = 16.11:** **yalnız durum A'da** sığar (bir hafta tampon). Bunun için erken kupon alımı "
                                    "ve DXF/teklif **bu hafta (H7)** olmalı.", PLAN))
     w('<p class="note">%s</p>' % K("Kritik yol ve hafta tablosu: `proje-plani.md`; rapor P9.1 (F9a). Sipariş 08.11 itibarıyla verilmedi; her hafta gecikme demoyu bir hafta kaydırır.", PLAN, DONGU))
+    w('<p class="note">%s</p>' % K("F10 sonu notu: takvim F9 sonu (09.11) hâlidir, F10'da yenilenmedi; 16.11 siparişinin verilip verilmediği "
+                                   "kayıtta yok (karar kuyruğunun ortak ön sorusu).", KUYRUK, GUN))
 
     # 7. Paket envanteri
     w('<h2 id="paketler">Paket envanteri (%s)</h2>' % H("paket_sayisi", len(paket)))
     w('<p class="note">%s</p>' % K(
         "Durum `dongu-158.md` §3 tablolarından (çalışma ağacı), commit'ler `git log`'dan: konu satırındaki P kodu, paket etiketi "
         "(brief başlığındaki P kodlarıyla) ve §5'te tek başlıklı ✅ kayıt satırı. Her paket bu tabloda bir kez.", DONGU))
-    w('<div class="tbl"><table class="yigin"><thead><tr><th>Kod</th><th>İş</th><th>Durum</th><th>Sonuç</th><th>Commit</th><th>Rapor</th></tr></thead><tbody>')
+    w('<div class="tbl"><table class="yigin" id="paket-tablo"><thead><tr><th>Kod</th><th>İş</th><th>Durum</th><th>Sonuç</th><th>Commit</th><th>Rapor</th></tr></thead><tbody>')
     for p in paket:
         is_ = re.split(r"[:(;]", p["is_"], maxsplit=1)[0].strip().rstrip(".")
         if len(is_) > 90:
@@ -791,7 +963,7 @@ def uret():
         elif p["kod"] == "P9.3":   # kapalı paket: F9 sonu sayfasının değerleri, canlı sayım değil (P10.9a kontrolü B7)
             son = K("F9 sonu sayfası (09.11): 36 paket, 47 / 52 açık karar, 10 korunan değer; F10 yenilemesi P10.9.", DONGU, BRIEF)
         else:
-            m, kay = PAKET_SONUC[p["kod"]]
+            m, kay = P10_9_KAPALI if (p["kod"] == "P10.9" and p["emoji"] == "✅") else PAKET_SONUC[p["kod"]]
             son = K(m, *kay)
         hs = '<span data-muaf="komit">%s</span>' % (", ".join("<code>%s</code>" % h for h in harita[p["kod"]]) or "—")
         rp = ", ".join('<a href="%s">%s</a>' % (r, "bu rapor" if r == "sonuc-rapor.html" else r[:-11]) for r in raporlar(p["kod"], etk)) or "—"
@@ -809,6 +981,22 @@ def uret():
         "Kaynak: paketlerin `*-kontrol.md` dosyalarının son hâli (yeniden kontrol bölümleri dahil); veri `F9c-dusukler.json`. Sonraki pakette "
         "kapanan, kayıt ajanının uyguladığı koşullar ve eylemsiz bilgi notları dışarıda; liste ve gerekçe `F9c-gunluk.md` §6. Aynı konudaki "
         "bulgular tek satırda; satır numaraları kontrol dosyasınındır.", "planlama/d158/F9c-gunluk.md"))
+    # P10.9c düzeltme turu 1 (O5): bölüm F9 sonu hâli; kayıtla çelişen satırlara F10 notu (DUSUK_F10 ya da kuyrukta kapanan K kodları)
+    kkapali = {k["k"] for k in kr if not k["acik"]}
+    w('<p class="note">%s</p>' % K(
+        "F10 sonu notu: bu bölüm F9 sonu (09.11) itibarıyla; satırlar F10'da yeniden değerlendirilmedi. \"Önerilen sonraki adım\" "
+        "hücresindeki F10 notları iki türlü: \"kapandı\" diyen not yalnız elle kayıtla doğrulanan satırda (ikinci P6KE6V8A P10.7b2j'de "
+        "modelde; K11 · K52); öbür satırlarda not yalnız ilgili kararın kuyrukta kapandığını söyler, bulgudaki ölçüm ya da iş ayrıca açık "
+        "olabilir.",
+        GUN, KUYRUK))
+
+    def dusuk_not(d):
+        if d["kod"] in DUSUK_F10:
+            m_, k_ = DUSUK_F10[d["kod"]]
+            return ' <span class="note">%s</span>' % K(m_, *k_)
+        ks_ = sorted({x for x in re.findall(r"\bK\d+\b", " ".join((d["kod"], d["cumle"], d["adim"]))) if x in kkapali},
+                     key=lambda x: int(x[1:]))
+        return (' <span class="note">%s</span>' % K("F10 sonu: karar kuyrukta kapandı (%s); bu satırdaki ölçüm / iş ayrıca açık olabilir, kuyruğa bak." % ", ".join(ks_), KUYRUK)) if ks_ else ""
     for baslik, liste, gid in (("Elektrik ve acil stop güvenliği", ge, "elektrik"), ("Diğer", gd, "diger")):
         w("<h3>%s (%s)</h3>" % (baslik, H("dusuk_" + gid, len(liste))))
         w('<div class="tbl"><table class="yigin"><thead><tr><th>Paket</th><th>Kod</th><th>Tür</th><th>Bulgu</th><th>Önerilen sonraki adım</th></tr></thead><tbody>')
@@ -817,11 +1005,15 @@ def uret():
                 html.escape(d["yer"]), html.escape(d["yer"])), "Paket"),
                                                       td(K(d["kod"], *d["kaynak"]), "Kod"),
                                                       td('<span class="tag %s">%s</span>' % ("crit" if d["tur"] == "doğrulanmadı" else "wait", d["tur"]), "Tür"),
-                                                      td(K(d["cumle"], *d["kaynak"]), "Bulgu"), td(K(d["adim"], *d["kaynak"]), "Sonraki adım")))
+                                                      td(K(d["cumle"], *d["kaynak"]), "Bulgu"), td(K(d["adim"], *d["kaynak"]) + dusuk_not(d), "Sonraki adım")))
         w("</tbody></table></div>")
 
     # 9. Kayıt notları
-    w('<h2 id="tutarlilik">Kayıt notları (orkestratöre)</h2><ol class="list">')
+    w('<h2 id="tutarlilik">Kayıt notları (orkestratöre)</h2>')
+    w('<h3>%s</h3><ol class="list">' % K("F10 sonu (19.11.2026, P10.9c)", GUN, F10Y))
+    for m, kay in TUTARSIZ_F10:
+        w("<li>%s</li>" % K(m, *kay))
+    w('</ol><h3>%s</h3><ol class="list">' % K("F9 sonu (09.11.2026, P9.3; tarihî, olduğu gibi)", BRIEF))
     for m, kay in TUTARSIZ:
         w("<li>%s</li>" % K(m, *kay))
     w("</ol>")
@@ -835,9 +1027,10 @@ def uret():
     w(" · ".join('<a href="%s">%s</a>' % (r, r[:-11]) for r in rr))
     w('</p><p class="note">Plan: <a href="../dongu-158.md">dongu-158.md</a> · karar kuyruğu: <a href="karar-kuyrugu.md">karar-kuyrugu.md</a> · '
       'regresyon: <a href="regresyon.json">regresyon.json</a>, <a href="regresyon-son-kosu.json">regresyon-son-kosu.json</a> · '
-      'brief: <a href="F9c-brief.md">F9c-brief.md</a> · günlük: <a href="F9c-gunluk.md">F9c-gunluk.md</a>.</p>')
-    w('<footer>Ajan A · F9c (P9.3) · %s · %s paket, %s açık karar, korunan değer %s/%s aynı · Üretici <code>F9c-uret.py</code>, denetim <code>F9c-dogrula.py</code> %s.</footer>' % (
-        K("09.11.2026", BRIEF), H("paket_sayisi", len(paket)), H("karar_acik", len(acik)),
+      'brief: <a href="F9c-brief.md">F9c-brief.md</a> · günlük: <a href="F9c-gunluk.md">F9c-gunluk.md</a> · F10 sonu günlüğü: '
+      '<a href="P109c-gunluk.md">P109c-gunluk.md</a>.</p>')
+    w('<footer>Uygulama ajanı · P10.9c (F10 sonu) · %s · %s paket, %s açık karar, korunan değer %s/%s aynı · Üretici <code>F9c-uret.py</code>, denetim <code>F9c-dogrula.py</code> %s.</footer>' % (
+        K("19.11.2026", GUN, F10Y), H("paket_sayisi", len(paket)), H("karar_acik", len(acik)),
         H("reg_ayni", sum(1 for x in r1["karsilastirma"] if x["durum"] == "aynı")), H("reg_sayi", len(r1["degerler"])),
         K("(çıkış 0 = JSON değerleri kaynakla aynı; metin sayıları kaynak dosyada geçiyor; takvim, P8.1 ve düşük satırları kaynağa karşı "
           "ayrıca denetlendi; sınırlı denetimler günlükte)", "planlama/d158/F9c-dogrula.py")))
