@@ -2411,7 +2411,7 @@
     "vekil": "bara → sigorta kutusu vekil"
    },
    "sema_boy": {
-    "mm": 240,
+    "mm": 160,
     "sema": "taban:G16",
     "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
     "etiket": "gösterim şeması yolu; ölçüm değil"
@@ -3350,7 +3350,7 @@
     "vekil": "bara → sigorta kutusu vekil"
    },
    "sema_boy": {
-    "mm": 240,
+    "mm": 258,
     "sema": "taban:G22",
     "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
     "etiket": "gösterim şeması yolu; ölçüm değil"

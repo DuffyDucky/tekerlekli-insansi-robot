@@ -1,6 +1,6 @@
 # Kafa modulu raporu (rapor.html, gorseller gomulu). Sistem Python'u ile calisir (FreeCAD gerekmez).
 # Girdiler: kafa-analiz.json (kafa_montaj.py), gorsel/*.png (kafa_gorsel.py), ../arayuz.py.
-# F1a P1.6 (08.11.2026): 1,58 m kafasina (10,1 in QLED, Pi 5, ReSpeaker, USB ses karti + PAM8403) gore yenilendi; 125 cm
+# F1a P1.6 (08.11.2026): 1,58 m kafasina (10,1 in QLED, Pi 5, ReSpeaker, PAM8403; P10.7b2k: USB ses karti yedek, modelden cikti) gore yenilendi; 125 cm
 # metinleri ve kafa-analiz.json'da artik olmayan anahtarlar (olcu.ACIKLIK / Y_CAM, pi.konum_T / cevirici / amfi, isi.hava.giris_y ...)
 # kaldirildi. Ozet: kafa grubu (tork kutlesi, kablo payi dahil), tilt payi tilt +-15 (pay_tilt15), pan payi pay_iki_hane.
 # 2. asama: ../carpisma-sonuc.json (kafa_tarama), ../montaj/montaj-analiz.json, eklem-dogrulama.json, gui-kontrol.json ve
@@ -153,12 +153,12 @@ BAGLANTI = [
     ("Kamera → ön kabuk", "PCB boss'lara dayalı, lens ekranın üstünde ortada", "4× M2×8 PT vida (plastik için, tahmini)"),
     ("Raspberry Pi 5 + Active Cooler → kafa tablası", "4× M2,5×8 pirinç burç", "alttan 4× M2,5×8, üstten 4× M2,5×5"),
     ("ReSpeaker Mic Array v2.0 → kafa tepesi", "Dizi kartı tepe duvarına dayalı (mikrofonlar yukarı)", "3× M2×8 PT vida"),
-    ("USB ses kartı, PAM8403, SY8205, TVS, 5 V çevirici", "Kafa içinde (PAM8403 sol duvarda), köpük bantla", "1 mm çift taraflı köpük bant (VHB)"),
+    ("PAM8403, SY8205, iki TVS, 5 V çevirici", "Kafa içinde (PAM8403 sol duvarda), köpük bantla", "1 mm çift taraflı köpük bant (VHB)"),
 ]
 
 KARAR = [
     "**Yapı (1,58 m):** boyun plakası → pan MG996R → pan karşı yatağı → eğme çatalı + tilt MG996R → boyun yükseltme adaptörü → kafa iskeleti → "
-    "yüz ve arka kabuk (sağ/sol yarılar) + 10,1\" QLED yüz ekranı + kamera + Pi 5 + ReSpeaker + ses (USB ses kartı + PAM8403). "
+    "yüz ve arka kabuk (sağ/sol yarılar) + 10,1\" QLED yüz ekranı + kamera + Pi 5 + ReSpeaker + ses (PAM8403; USB ses kartı yedek, modelde yok). "
     "Boyun ve pan grubu 125 cm kafasıyla aynı geometri (`kafa7_parcalar`), baş `kafa10_lib`'den. Kafa kutusu %s × %s × %s mm (`arayuz.KAFA`)."
     % tuple(sayi(x, 0) for x in K["kafa_kutu"]),
     "**Boyun plakası:** 70 × 70 × 3 Al + iki yan kulak; 2× M6 traversin üst kanalına (x = ±40). Plaka kabuk üst kapağının altında "
@@ -185,7 +185,7 @@ KARAR = [
     "%%%d, kabuklarda %%%d etkin doluluk (**tahmini**). Tork kütlesine kablo payı %s g ve kafa içi kablo/fiş kalemleri eklenir (tahmini)."
     % (round(100 * d["doluluk"]), round(100 * d["doluluk_kabuk"]), sayi(tt["kablo_payi"]["kutle_g"], 0)),
     "**Tork varsayımları (tahmini):** %s; MG996R 9,4 kg·cm @4,8 V; rulman sürtünme katsayısı 0,0015; kablo halkası direnci ≈ 0,3 kg·cm." % d["tork"]["profil"],
-    "**Tahmini ölçüler:** Camera Module 3 delik dizisinin dikey yeri, QLED toplam kalınlık 15,03 (STEP 14,38), fiş zarfları, USB ses kartı ve PAM8403 "
+    "**Tahmini ölçüler:** Camera Module 3 delik dizisinin dikey yeri, QLED toplam kalınlık 15,03 (STEP 14,38), fiş zarfları, PAM8403 "
     "ölçüleri, M2 PT vida ve PETG'ye vida kavraması, 25T horn yüksekliği (dirsekle aynı).",
 ]
 
@@ -200,7 +200,7 @@ SIRA = [
     "625ZZ'yi kafa iskeletinin sol yanağına pres et; iskeleti indir, sağ yanağı horn'a 4× M3×8, sol pimi M5×12 + pul ile sık; boyun yükseltme "
     "adaptörünü 4× M3×73 saplamayla bağla.",
     "Boyun grubunu traverse oturt: 2× M6×20 + pul + çekiç somun (somunlar traversin üst kanalında, uzun kenarı kanala dik).",
-    "Pi 5'i burçlara, ReSpeaker'ı tepeye, ses kartı / PAM8403 / SY8205 / TVS'yi köpük bantla yerleştir; QLED'i ön kabuğa oturt, 4 tırnakla "
+    "Pi 5'i burçlara, ReSpeaker'ı tepeye, PAM8403 / SY8205 / TVS'leri köpük bantla yerleştir; QLED'i ön kabuğa oturt, 4 tırnakla "
     "(4× M3×6 + köpük bant) arkadan tut, kamerayı (4× M2×8) tak; kabloları zarflarda gösterilen yollardan geçir (pan ±90 ve tilt için gevşek halka).",
     "Arka kabuk yarılarını, sonra ön kabuk yarılarını yerleştir; tabla cıvataları (4× M3×10) ve kabuk cıvataları (M3 ISO 7380).",
 ]
@@ -208,7 +208,7 @@ SIRA = [
 ACIK = [
     "**K4 (14-15 Ekim 2026): Pi 5 kafada.** Kamera FPC 300 mm ve micro HDMI → HDMI 25–30 cm kafa içinde kalır; boyundan HDMI ve CSI geçmez. "
     "Isı testi (kafa kapalı, stres): SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Active Cooler debisi üreticiden yok (varsayım 1,0–1,55 L/s); yarıklı tahmin bir aralık (doğal çekiş ile fanın tam katkısı arası), test şart. Aşılırsa üst bant arkasına 25–30 mm egzoz fanı.",
-    "**Ses:** mikrofon dizisi (ReSpeaker) kafa tepesinde, USB ses kartı + PAM8403 kafada (PAM8403 sol duvarda); hoparlör gövdede (kabuk, "
+    "**Ses:** mikrofon dizisi (ReSpeaker) kafa tepesinde, sesi 3,5 mm çıkışından bölücüyle PAM8403'e verir (PAM8403 sol duvarda; USB ses kartı yedek, takılmaz, modelde yok); hoparlör gövdede (kabuk, "
     "göğüs bandı arkası). Mikrofon–hoparlör uzaklığı `lale158/kafa-yerlesim/uygulama-olcum.json` (ölçüt ≥ 400 mm).",
     "**AI HAT+ (K2, karar Ahmet'te):** ana modelde yok. Pi 5 üstüne yığın arka üst dikiş boss'uyla çakışıyor; iki seçenek "
     "`lale158/kafa-yerlesim/hat_secenek.py` ile ölçüldü (`hat-secenek-a/b.json`, F1a raporu).",
@@ -508,7 +508,7 @@ H.append("<li><b>Boyun (gövdeye sabit)</b>: boyun plakası, servo yuvası, rulm
 H.append("<li><b>Pan grubu</b> (dikey eksende döner): pan horn'u, boyun mili, 6808 iç bilezikleri, eğme çatalı, tilt MG996R, 625ZZ iç bileziği + M5 pim · %s g</li>"
          % sayi(gr["Pan"]["m"], 0))
 H.append("<li><b>Kafa grubu</b> (tilt ekseninde döner): tilt horn'u, kafa iskeleti, 625ZZ dış bileziği, yüz ve arka kabuk (sağ/sol), 10,1\" QLED, tırnaklar, kamera, "
-         "Pi 5 + Active Cooler, ReSpeaker, USB ses kartı, PAM8403, SY8205, TVS, 5 V çevirici · %s g, "
+         "Pi 5 + Active Cooler, ReSpeaker, PAM8403, SY8205, iki TVS, 5 V çevirici · %s g, "
          "kütle merkezi (%s; %s; %s)</li>" % (sayi(gr["Kafa"]["m"], 0), *[sayi(x, 1) for x in gr["Kafa"]["am"]]))
 H.append("<li>Pan ekseni yerel Y ekseni (x = z = 0; kabuk R62 açıklığının merkezi), pan horn'u y = %s. Tilt ekseni X'e paralel, (y, z) = (%s, %s). "
          "Yerel orijin = traversin üst yüzünün ortası (global 0, %s, 0).</li>" % (sayi(K["pan_nokta"][1], 1), sayi(K["tilt_nokta"][1], 0),
@@ -626,8 +626,8 @@ if PI_ and ISI_:
     H.append("<ul><li>Pi 5 + Active Cooler kafa tablasının üstünde: kart köşesi baş çerçevesinde (x %s, y %s, z %s; baş çerçevesi = tilt ekseni), "
              "4× M2,5×8 pirinç burç (alttan M2,5×8, üstten M2,5×5).</li>"
              % (sayi(PI_["konum_T_bas_cercevesi"][0], 1), sayi(PI_["konum_T_bas_cercevesi"][1], 1), sayi(PI_["konum_T_bas_cercevesi"][2], 1)))
-    H.append("<li>5 V çevirici Pololu D24V50F5 tablada (x %s, z %s; baş çerçevesi); ses yükseltici PAM8403, USB ses kartının analog çıkışından, "
-             "sol duvarda (y %s, z %s); kafa ekranı için ayrı SY8205 + P6KE6V8A TVS. Boyundan: %s.</li>"
+    H.append("<li>5 V çevirici Pololu D24V50F5 tablada (x %s, z %s; baş çerçevesi); ses yükseltici PAM8403, ReSpeaker'ın 3,5 mm çıkışından (bölücüyle), "
+             "sol duvarda (y %s, z %s); kafa ekranı için ayrı SY8205; iki 5 V hattında birer P6KE6V8A TVS. Boyundan: %s.</li>"
              % (sayi(PI_["cevirici_xz"][0], 0), sayi(PI_["cevirici_xz"][1], 0), sayi(PI_["amfi_sol_duvar_yz"][0], 0),
                 sayi(PI_["amfi_sol_duvar_yz"][1], 1), esc(PI_["boyun_kablolari"])))
     hv = ISI_["hava"]

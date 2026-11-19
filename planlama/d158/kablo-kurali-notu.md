@@ -31,7 +31,7 @@ Aynı sürümde göğüs ekranı Nextion'du ve "K4 sonrası boyundan ayrı sinya
 
 Demet kesiti 69,9 mm²; en dolu dar kesit servo yuvası arka kanalı %44,8 (20 × 7,8 mm), mil arka penceresi %39,9, alt çıkış %34,3 (LK `boyun_demet_alan_mm2`, `gecis`).
 
-**Boyundan geçmeyenler:** göğüs USB dokunmatiği (hub → ekran, 395 / 640), ESP32 USB (hub → taban, 971 / 1.360; → 19.11 P10.7b2i: 1.129 / 1.560), göğüs ekranı 12 V
+**Boyundan geçmeyenler:** göğüs USB dokunmatiği (hub → ekran, 395 / 640), ESP32 USB (hub → taban, 1.129 / 1.560; P10.7b2i'den önce 971 / 1.360), göğüs ekranı 12 V
 (taban → ekran, 1.376 / 1.720), kafa ekranı HDMI 30 cm şerit (kafa içi), CSI (LK `kablo`; EL:44; EL:267).
 
 **Yollar kesin değil:** göğüsteki şema yollarının kablo tüpleri göğüs ekranı kasasıyla kesişiyor (HDMI 897,1 / 12 V 617,3 / USB dokunmatik 167,6 mm³;

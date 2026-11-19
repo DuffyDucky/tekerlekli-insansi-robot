@@ -234,6 +234,9 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   kablo boyu / kütle yeniden hesaplanmadı (not 3). Ahmet'te açık: TÜBİTAK desteği gelmezse AI HAT+ (6.978,88 TL) okul bütçesine mi
   eklenir (F8a notu; takılması KT1 denemesine de bağlı, K10). Uygulaması açık: `KY/hat_secenek.py` a → kafa modeli, tam taramalı CAD
   paketinde (P6.1); rehber kafa adımı.
+- **Uygulama (19.11.2026):** P10.7b2j'de modele girdi (paralel CAD dalı `lale-cad-b2j`; boss (x −8, y 60) → (x −5, y 76),
+  `kafa10_lib.py`; `planlama/d158/F10s-gunluk.md` § 1, kontrol `F10t-gunluk.md` § 1.6). Ana dala birleşmesi ve tam üretim açık
+  (`F10u-gunluk.md` "Birleştirme ve kapanış tarifi"). Rehber kafa adımında boss'un yeri yazılmıyor: metin değişmedi. Bütçe yarısı açık.
 
 ## K3 · Düz zeminde elde yük sınırı — KAPANDI
 - **Soru:** Robot elinde en çok ne kadar yük taşısın (düz zemin)?
@@ -1046,6 +1049,14 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**: modele D24V50F5 çıkışına 1 P6KE6V8A, BOM'a +1 (toplam 2); 0 TL
   (`maliyet.json:103` adet zaten 2). Uygulaması açık: tam taramalı CAD paketinde (K52 zarfı, K53, K64 ile); rehber E3a "ikinci TVS"
   metni b'deki düzeltmeyle birlikte (üretimli paket).
+- **Uygulama (19.11.2026):** P10.7b2j'de modele girdi ("TVS P6KE6V8A Pi hatti" + köpük bandı, D24V50F5'in önünde tablada;
+  `F10s-gunluk.md` § 3, kontrol `F10t-gunluk.md` § 1.5). Rehber E3a P10.7b2k'da uyumlandı ("ikisi de modelde ve BOM'da var (K51 a)";
+  `F10u-gunluk.md` § A2); birleşme ve üretim açık. F10t'nin notu: D24V50F5'in çıkış ucu yönü doğrulanmadı (rehber "lehim yeri kart
+  yazısıyla teyit" der).
+- **Açık (19.11.2026, `F10v-gunluk.md` § 3):** D24V50F5 tek sıra 5 pin (EN, VIN, GND, GND, VOUT; giriş ve çıkış aynı kenarda), modelde
+  pinsiz blok; pin kenarının hangi yanda olduğu ürün sayfasında yok. TVS'nin "çıkışın yanında" olması pin kenarının +z'ye (TVS'ye)
+  bakmasına bağlı. Rehber E3a (P10.7b2k düzeltme turu 2): "pin kenarı +z'ye bakacak şekilde tak; ürün gelince kart yazısıyla doğrula".
+  Kapanış: ürün gelince pin kenarı ve sırası ölçülür; ters çıkarsa kart ya da TVS yeri değişir.
 
 ---
 
@@ -1081,6 +1092,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   zarfı K51 ve K53 ile birlikte sonraki tam taramalı CAD paketinde girer. O zamana dek kart ölçüsü, panel üstündeki yeri ve bağlantı
   elemanı kayıtta yok (rehber "modelde yok, doğrulanmadı" der). Uygulama: P10.7b2e (yalnız kayıt ve rehber metni; `kablolar.json` G20
   "karara bağlı" → "kablajda teyit edilecek", `elektrik.md`, rehber B5a / K1 / K2 / F3 / şema). Ayrıntı `planlama/d158/F10m-gunluk.md`.
+- **Not (19.11.2026):** P10.7b2j'de de **model hâlâ yok** (`F10t-gunluk.md` § 1.8): kart ölçüsü ve panel yeri kayıtta yok. Rehber
+  B5a / K1 "modelde yok" cümleleri P10.7b2k'da değişmedi. Açık iş: ürün ölçüsü + yer, sonraki tam taramalı CAD paketi.
+- **Not (19.11.2026, `F10v-gunluk.md` § 3):** güç panelinde parça kutularıyla bulunan boş alanlardan bara kablo koridorunun dışındaki ikisi (üstlerinden tek yol geçer, aşağıda):
+  sigorta kutusunun sağı x 56…93 × z −247…−170 (**37 × 77 mm**; yol 10 F5 çıkışı üstünden geçer, acil stop gövdesi y ≥ 214) ve solu
+  x −89…−56 × z −247…−170 (**33 × 77 mm**; ana anahtar y ≥ 216 üstte, yol 1 z −210'da geçer). Kart ölçüsü bilinmediği için seçilmedi.
 
 ---
 
@@ -1120,6 +1136,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): a + iii**: elektronik katında 1,5 mm çentik (x −136…−60,75, yana açık), bir sonraki
   tam taramalı CAD paketinde, lazer kesim dosyası çıkmadan önce; o zamana dek rehber B6 notu. Uygulaması açık: `arayuz.py`,
   `taban_parcalar.py`, lazer kesim dosyası; burç 2 oturma sorunu ayrı iş (yukarıdaki ilgili not).
+- **Uygulama (19.11.2026):** P10.7b2j'de modele girdi (`arayuz.TABAN["kat_on_centik"]` x −136…−60,75, kat kenarı z 25,75; iniş
+  boyunca ortak hacim 0, en küçük boşluk 0,5 mm, `F10s-K53-olcum.json`; `F10s-gunluk.md` § 2, kontrol `F10t-gunluk.md` § 1.4). Rehber
+  B6 notu P10.7b2k'da "çentik var (K53 a)" oldu (`F10u-gunluk.md` § A1). Birleşme, üretim ve lazer kesim dosyası açık; burç 2 oturma
+  sorunu ayrı iş olarak açık.
 
 ---
 
@@ -1384,6 +1404,29 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   ile aynı) tasarlanıp basılır; satın alma yok. O zamana dek rehber tutucunun yerini ve bağlantı elemanını yazmaz: B5a not_ "henüz
   tasarlanmadı … CAD paketinde tasarlanıp basılacak, satın alınmayacak (K64 a)"; K1 17.1 "Karede görünmez: iki bara ve tutucuları
   modelde yok". Açılış 16.11.2026, P10.7b2e; uygulama P10.7b2e kısım 2 (`planlama/d158/F10m-gunluk.md` § 11). Açık iş: CAD paketi.
+- **Uygulama (19.11.2026):** P10.7b2j'de modele girdi: iki PETG tutucu (yıldız 5, anahtarlı 4 saplama; `arayuz.TABAN["bara_tutucu"]`,
+  yıldız z −55, anahtarlı z −115), saplama M5×25 altıgen başlı alttan, tutucu panele 2 × M3×10 ISO 7380 + ısıl gömme somunla alttan
+  (`F10s-gunluk.md` § 4, kontrol `F10t-gunluk.md` § 1.2). Rehber P10.7b2k'da uyumlandı: B5a montaj sırası ve kilitleri, K1 17.1 numara
+  yönü / sıkma / U06 şeridi notu, G16 ve G22 şeması anahtarlı baranın saplamasından (`F10u-gunluk.md` § A3–A4). Birleşme ve üretim açık.
+  **Ahmet'e sorulacak (alım):** 9 M5 düz pul (DIN 125), 4 M3×10 ISO 7380, 4 M3 ısıl gömme somun ve saplama baş tipinin altıgen olması
+  (`F10s-gunluk.md` § 4); `maliyet.json`'a eklenmedi. Açık iş: CAD yolları (taban_parcalar `YOL`) hâlâ eski WAGO noktasında / röleden
+  bitiyor (rehber_kablo `MODELSIZ_KONUM`).
+- **Düzeltme turu 1 (19.11.2026, `F10u-kontrol.md` 1–3, 7):** CAD yolları 1, 2, 3, 5, 7, 8, 9 tutucuların ve saplamaların içinden
+  geçiyor; eski vekil kararı geri alındı. Yollar CAD dalında tutuculara taşınıyor (ayrı CAD tasarım ajanı; hedef saplama listesi
+  `F10u-gunluk.md` "CAD tasarım ajanına"). Kilit: `rehber_kablo.bara_yol_denetle` (yol × tutucu / saplama takımı girişimi, her bara
+  damarı kendi saplamasında; hedefler `kablolar.json` bara-pabuc yerleşiminden) + beş diferansiyel bozma. Yollar taşınana dek kırmızı
+  (beklenen). Rehber: K1 17.1 / 17.4 / 17.6 ve F1'deki "bara modelde yok" cümleleri kalktı (`YASAK` "bara modelde yok"); bara
+  somunlarının yeniden sıkılması F1'de "İlk enerji, aşama 1"in önüne kontrol maddesi oldu (akü XT60'tan ayrık, ana anahtar kapalı).
+  G22 şemasının yatay kısmı z −80'e (iki baranın ortası).
+  - **Açık (ölçülmedi):** kabuk ve etek takılıyken güç panelindeki bara somunlarına üstten anahtarla erişim (ilk hafta sonu sıkması
+    için). Rehber "ölçülmedi, doğrulanmadı" diyor; erişim yoksa sıkma kabuk sökülerek yapılır, yöntem montajda belirlenir.
+  - **Açık, CAD (düzeltme turu 3, `F10u-kontrol.md` tur 2):** CAD kablo yolu 11 (Q03) ve kırpılmış yol 12 (B01) elektronik katını ön
+    kat kesiğinin dışından deliyor (eski kusur; `F10v-gunluk.md` "önceden olan"). Rehber K1 17.10 ve iki şema adı "kablo ön kat
+    kesiğinden geçer; çizimdeki yol kesiğin dışında görünür" diyor. Kapanış: `taban_parcalar.py` YOL 11 / 12 kesikten geçirilir
+    (izlenen dosya: taramadan sonra, yeni CAD turu), not kalkar.
+  - **Not (düzeltme turu 3):** `F10v-gunluk.md` yol tablosunda yol 4'ün yabancı saplamaya uzaklığı "> 15 mm" yazıyor; kontrol ölçtü:
+    yıldız 3 civata / somununa 6,0 / 6,1 mm (eşiğin üstünde, sonuç değişmez). Düzeltmeyi kapanış ajanı commit'ten önce yapar
+    (`F10u-gunluk.md` § 7.8). → 19.11 kapanış (F10y): yapıldı.
 
 ## K65 · Sağ / sol tanımı: CAD'in sağı robotun kendi solu, yazılım robotun kendi sağını kullanıyor (P10.7b2e kısım 2) — KAPANDI
 - **Bulgu:** CAD'de +X "sağ" adını taşır ve robota önden bakanın sağıdır; eksenler sağ elli (+Y yukarı, +Z ön), yani +X robotun
@@ -1611,6 +1654,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
       y + z kesimi; F10r-gunluk § 1); yol 12 P10.7b2f'de `CAD_KIRP` ile.
     - CAD'de E4 adımında duran USB ses kartı parçası: adımdan / modelden çıkarılması P10.7b2'de (CAD kaynağı değişikliği). O zamana dek
       rehberde "USB ses kartı (yedek, takılmaz)" adı ve E4 metnindeki "bu adımda takılmaz, yeri boş kalır" cümlesi.
+      → 19.11: CAD tarafı P10.7b2j'de yama olarak hazır, uygulanmadı (`planlama/d158/F10s-ses-karti-cikar.patch`, paralel CAD dalı;
+      `F10t-gunluk.md` § 4: birleşmeden sonra uygulanır). CAD'den bağımsız bağımlılıklar P10.7b2k'da yapıldı (rehber E4 "çizimde de
+      yok", ad çevirileri ve seçici desenleri kalktı, `kablo_yolu_ekran` iki ses yolu, `uygulama_*`, `kafa_rapor`; `F10u-gunluk.md` § B).
+      Yama uygulanınca kapanır.
+      → 19.11 düzeltme turu 1 (`F10u-kontrol.md` 8): E4 artık KT2 geçmezse kartla birlikte siparişten çıkan ~30 cm USB-A uzatma
+      (MJ:136) ve L USB-A dirseğin (MJ:138) de gerektiğini söylüyor (`planlama/adim3/kablolama-on-kararlar.md` § 5, § 17).
+      **Ahmet'e sorulacak:** bu ikisi yedek olarak şimdi mi alınsın, KT2 sonucuna mı kalsın; sipariş listesine dokunulmadı.
 - P10.7b1'den (rehberin elektrik tarafı tek kablo kaynağına bağlandı, 14.11.2026) açık iş, paketi durdurmuyor; hepsi P10.7b2, karar
   orkestratörün (devre değeri değişen olursa Ahmet). Kaynak: `planlama/d158/F10h-gunluk.md` § 13.7, § 14.4, § 15, § 16;
   `F10h-kontrol-2.md` § 3, `-3.md` § 3, `-4.md` § 3, `-5.md` § 6. Montajdan önce kapanacak iki boşluk K63'te.
@@ -1782,3 +1832,40 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Kapanışta gözle (F10r-gunluk § 8): K1 alt adım 17.11 karesinde U06 çizilmiyor (şema 32.4'te; karedeki tek uç etiketi "1 PCA9685",
     P03), oysa 17.11 metni micro USB fişini ESP32 portuna taktırıyor. 32.4'ün geniş karesinde de port ucu seçilemiyor. 17.11'e U06'nın
     taban kısmı (`sema_ok` / uç etiketi "ESP32 micro USB") ya da port yakın karesi eklensin.
+  - → 19.11 P10.7b2k (`F10u-gunluk.md` § C): **D4 yapıldı** (`geometri_denetle` kullanılmayan `GEO_ISTISNA`'yı hata sayar; bozma
+    b99), **D5 yapıldı** (`u06_port_denetle`: `ESP_PORT` ESP32 DevKit kutusunun +x yüzünde, şema son noktası port ağzının 2,5 mm önünde;
+    bozma b103), **D7 yapıldı** (onay girdisi `cad_kirp_metin` ile; onay kaydı yenilendi), **B1 yapıldı** (B6a'da DevKit yönü cümlesi
+    + kontrol satırı + `ZORUNLU`; "Yukarısı K2'de." tekrarı kalktı). **Açık:** D3 (`uygulama_olc` FreeCAD koşusu birleşmeden sonra;
+    tarif), D6 (`{boy.U06}` yer tutucusu; rehber_deger'e yeni tür, bu pakette yapılmadı), 17.11 karesinde U06 (üretim ister).
+  - → 19.11 P10.7b2k düzeltme turu 1 (`F10u-kontrol.md` 4, 7): B6a ters takılmanın sonucu "porta ulaşmaz" değil, F1'deki ilk enerjide
+    5 V'un bir GPIO pinine gelmesi; F1'de enerjiden önce yön bakışı (kontrol maddesi + `ZORUNLU`). **Açık:** `u06_port_denetle` 180°
+    dönmüş DevKit'i yakalamaz (analizdeki DevKit kutusu taşıyıcıya simetrik, x 54…107; yön yalnız `taban_lib.esp_local`'da, FreeCAD
+    ister). Ucuz kilit yok; ileride analiz JSON'una WROOM / port alt kutusu yazılırsa sınanır (CAD işi).
+  - → 19.11 07:50 düzeltme turu 2: **D3 hâlâ açık.** `uygulama-olcum.json` 09.11 tarihli (ESP32 USB 971 / 1.360), `lale158-kontrol.json`
+    07:49 (08:00'den önce; F10x'in `lale158_kontrol` / `uygulama_olc` → `uygulama_rapor` koşusu bekleniyor). Kayıt ve notlar değişmedi;
+    koşudan sonra 1.129 / 1.560 ile tutarlılık bakılır.
+  - → 19.11 düzeltme turu 3: **D3 KAPANDI.** F10x adım 0 (`planlama/d158/F10x-gunluk.md` § 1): `uygulama-olcum.json` 07:56'da yenilendi,
+    `kablo_listesi["ESP32 USB"]` 1.129 / 1.560; `lale158-kontrol.json` aynı. `uygulama-notu.md` ESP32 USB satırı ve
+    `kablo-kurali-notu.md` yeni değere çekildi. `uygulama_rapor.py` F10x'te `uygulama_metin.py:58` IndexError ile düştü (HEAD'de de;
+    "Gogus bandi" hoparlör ön halkasının en yakın beşinde yok): `_yak_tr` ile giderildi, ama yeniden üretilen not başka satırları
+    da değiştirdiği için (aşağıda) yazılmadı, yalnız ESP32 satırı elle güncellendi.
+  - **Açık (düzeltme turu 3'te bulundu, düzeltilmedi):** `uygulama_rapor.py` yeniden koşunca not (1) kafa kütlesi 1.570,8 → 1.542,7 g,
+    toplam 25.910,6 → 26.120,6 g, tilt payı 3,64 → 3,78, ızgara payı 1,517 → 1,519 (F10w montajı: beklenen yönde ama D3 dışı), (2) 12 V
+    satırı "tabandan, boyundan geçmez" elle düzeltmesini kaybedip "(boyundan) … Değişmedi" yazıyor (üreticide eski metin), (3) "Listede
+    olmayan 6 kalem" başlığı dört kalem sayıyor ve L USB-A dirseği hâlâ anıyor. Not kapanışta üreticisi düzeltilip yeniden üretilmeli.
+
+**P10.7b2j / b2k kapanışından açık iş (19.11, `planlama/d158/F10y-gunluk.md`)**
+  - ~~F9b GEÇMEZ (163 hata): tasarım demosu b2j öncesi sayılarla~~ → 19.11 kararla çözüldü: `tasarim/cad/demo_uret.py` ile yeniden
+    üretildi (17 sayı anahtarı: kütle 25,84 kg, parça 1.225, GLB düğüm 1.238, baskı 74 …), CAD commit'inde; F9b yeniden 0 (F10y § 8).
+  - ~~Engelleyici: `rehber_sira` E4 ters sıra negatif kontrolü~~ → 19.11 kararla çözüldü (F10y § 5): (b) E4 ters sıra beklentisi
+    "yalnız +x açık" (değer sınanıyor), F10c gerekçesi ve E4 metni yumuşatıldı ("bu sırayla takmak kolaydır"); (a) yeni negatif
+    kontrol: E4 PAM8403 kafa kapandıktan sonra +x kapalı (sağ arka kabuğa 24 mm derinlik, 1.812 ışın), eşi masada +x açık.
+  - **Açık (c):** CAD'de dikey dikiş bindirmesinin sırayı gerçekten zorlayıp zorlamadığını ölçmek (dikiş ölçümü). Rehber artık sırayı
+    yalnız öneri olarak veriyor.
+  - `rehber_denetim --kaynak` yeni CAD ad / kodlarını görmedi (kaynakta ASCII 0, veride 10): kaynak modu CAD adlarını üretimden önceki
+    veriden okuyor. Yeni modelden gelen kelimeler ancak FreeCAD üretiminden sonra yakalanıyor (bu kez `TR_EK`'e 9 kelime eklendi).
+  - Kare okunurluğu: 17.1 ve 17.6 19.11'de düzeldi (odak + ön-üst kamera + Gövde direği saydam; F10y § 6). Açık: 17.4 ve 32.1'de
+    saplama sırası bu ölçekte seçilemiyor; 17.10'da yol 11 / 12'nin kesikten geçişi ayırt edilemiyor (veri doğru, 2a hata 0).
+  - `kafa-yerlesim/rapor.html` HEAD hâlinde (ESP32 USB 971 / 1.360, ses kartı satırları); `uygulama-notu.md` yalnız ESP32 satırı elle
+    güncel, ses kartı satırları (217 / 270, 3,5 mm → PAM, Pi 2) eski. Üretici düzeltilip ikisi birlikte yeniden üretilmeli (yukarıdaki
+    açık iş).

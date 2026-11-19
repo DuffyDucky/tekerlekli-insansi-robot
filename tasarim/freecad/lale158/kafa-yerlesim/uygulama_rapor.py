@@ -131,20 +131,19 @@ ROW = [
 # kablo satirlari: (ad, nereden -> nereye, yol, siparis, liste durumu)
 K_BILGI = [
     ("Hub uzatmasi", "Pi 3 → hub (boyundan, koridor z ≈ -14)", "Hub 130 mm + ~1 m USB-A uzatma: listede yok"),
-    ("Ses karti uzatmasi", "Pi 2 → L dirsek → ses kartı", "~30 cm USB-A uzatma + L dirsek: listede yok"),
     ("Dizi USB", "Pi 1 → ReSpeaker micro B", "Kısa micro USB: listede yok"),
     ("USB dokunmatik", "Hub → göğüs ekranı TOUCH", "v4 satır 58, 2 m: yeter"),
     ("ESP32 USB", "Hub → ESP32 (taban), VBUS'ta 1N5819", "v4, 2 m: yeter"),
     ("Hoparlor", "PAM8403 → hoparlör (boyundan)", "~1,1 m: robot için listede yok"),
-    ("3,5 mm -> PAM", "Ses kartı L 3,5 mm → PAM girişi", "L 3,5 mm fişli kısa kablo: listede yok"),
+    # P10.7b2k: "Ses karti uzatmasi" ve "3,5 mm -> PAM" satırları kalktı (yollar kablo_yolu_ekran.py'den çıktı; kart yedek)
     ("PAM 5 V", "D24V50F5 → PAM (VARSAYIM)", "Sarf; besleme noktası doğrulanmadı"),
     ("HDMI", "Pi HDMI 1 → göğüs ekranı (boyundan)", "v4, 1,5 m: yeter"),
     ("12 V", "Taban → göğüs ekranı (boyundan)", "Değişmedi"),
 ]
-K_AD = {"Hub uzatmasi": "Hub uzatması", "Ses karti uzatmasi": "Ses kartı uzatması", "USB dokunmatik": "Göğüs dokunmatik USB", "Hoparlor": "Hoparlör", "3,5 mm -> PAM": "3,5 mm → PAM"}
+K_AD = {"Hub uzatmasi": "Hub uzatması", "USB dokunmatik": "Göğüs dokunmatik USB", "Hoparlor": "Hoparlör"}
 KI_BILGI = {"Touch USB (kutu kablosu)": "Pi 4 → kafa ekranı TOUCH", "HDMI (serit, 2 lehimsiz fis)": "Pi HDMI 0 → kafa ekranı", "Power USB (30 cm, A ucu kesik)": "SY8205 → kafa ekranı Power"}
 KI_AD = {"HDMI (serit, 2 lehimsiz fis)": "HDMI (şerit, 2 lehimsiz fiş)", "Touch USB (kutu kablosu)": "Touch USB (kutu kablosu)", "Power USB (30 cm, A ucu kesik)": "Power USB (30 cm, A ucu kesik)"}
-PORT = [("Pi 1", "ReSpeaker Mic Array v2.0"), ("Pi 2", "USB ses kartı (uzatma + L dirsek)"), ("Pi 3", "Hub (hub 130 mm + uzatma)"), ("Pi 4", "Kafa ekranı dokunmatik"),
+PORT = [("Pi 1", "ReSpeaker Mic Array v2.0"), ("Pi 2", "Boş (USB ses kartı yedek, takılmaz)"), ("Pi 3", "Hub (hub 130 mm + uzatma)"), ("Pi 4", "Kafa ekranı dokunmatik"),
         ("Hub 1", "Göğüs ekranı dokunmatik"), ("Hub 2", "ESP32"), ("Hub 3", "Boş"), ("Hub 4", "Boş")]
 
 # ---------------------------------------------------------------------------------- 5 V butcesi (elektrik.md satir 24, 245; hoparlor 3 W tepe, verim VARSAYIM)
@@ -243,7 +242,7 @@ KART = [("Boy", tr(BOY, 1) + " mm", "sınır 1.580,0"), ("Kafa grubu", tr(TT["ku
         ("Tilt / pan payı", "%s / %s" % (tr(TT["pay_tilt15"], 2), tr(TP["pay_iki_hane"], 2)), "beklenen 3,64 / 2,21"), ("Mikrofon-hoparlör", tr(MH["poz_min_mm"], 1) + " mm", "tüm pozlarda en az; H1 ≥ 400"),
         ("Boyun kanalı", "%" + tr(GEC_K["doluluk"] * 100, 1), "önceki %44,8"), ("SY8205 × USB", tr(SY_V, 2) + " mm³", "önceki 249,7; açıklık %s mm" % tr(HUB_SY, 2)),
         ("Devrilme, ızgara yüksüz", tr(IZG, 3), "eşik 1,5; önceki 1,523"), ("Devrilme, ev", tr(EV_R, 2), "rampa 5°; önceki 1,62"), ("Parça", tr(KON["parca"], 0), "önceki 1.168")]
-GOR = [("SON-kafa-arka-acik.png", "Kafa, arka kabuk sökülmüş: dizi, ses kartı, PAM, koridor"), ("SON-kafa-kesit.png", "Mikrofon deliğinden yan kesit"), ("SON-govde.png", "Üst gövde yandan: dizi, hoparlör, hub, mikrofon-hoparlör mesafesi"), ("SON-hub-kapak.png", "Hub, üst arka servis kapağının iç yüzünde")]
+GOR = [("SON-kafa-arka-acik.png", "Kafa, arka kabuk sökülmüş: dizi, PAM, koridor"), ("SON-kafa-kesit.png", "Mikrofon deliğinden yan kesit"), ("SON-govde.png", "Üst gövde yandan: dizi, hoparlör, hub, mikrofon-hoparlör mesafesi"), ("SON-hub-kapak.png", "Hub, üst arka servis kapağının iç yüzünde")]
 CSS = """:root{--z:#f7f8f9;--y:#1a1d21;--i:#5c6670;--c:#d8dde2;--k:#fff;--v:#0b6bcb;--u:#b45309}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--z:#14171a;--y:#e8eaed;--i:#9aa4ae;--c:#2c3238;--k:#1c2024;--v:#6db3f2;--u:#f0a94a}}
 *{box-sizing:border-box}body{margin:0;padding:24px 16px;background:var(--z);color:var(--y);font:15px/1.55 system-ui,Segoe UI,Arial,sans-serif}

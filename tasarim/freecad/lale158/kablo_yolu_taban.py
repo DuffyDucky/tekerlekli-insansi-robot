@@ -9,9 +9,13 @@
 #   kat: ön kattaki kablo kesiği (TABAN kat_kesik_on, x −60…60, z 150…175: "kablo geçişi XL4016 / BTS → kat"), güç panelindeki akü
 #   kablo yarıkları (x ±40…80, z −37…−23; taban_parcalar.py), ray üstü (y 134,5) ile kat altı (y 174,5) arasındaki boşluk.
 # TAHMİN (kaynakta yok): kart üstündeki klemens / pin başlığı yeri (uç noktaları kart kutusunun kenarında alındı), kablonun kat üstünde
-# kartların arasından geçiş çizgisi, sonar pin bloğundan çıkış, arka motor enkoder kablosunun motordan çıkışı. Modelsiz uçlar (anahtarlı
-# bara, dağıtım kartı C) rehber_kablo.MODELSIZ_KONUM kuralıyla: bara için vekil röle K1 kutusu; dağıtım kartı C için şemaya özgü
-# nominal nokta DAGITIM_C (rehber_kablo.SEMA_KONUM; yeri yaklaşık).
+# kartların arasından geçiş çizgisi, sonar pin bloğundan çıkış, arka motor enkoder kablosunun motordan çıkışı. Dağıtım kartı C
+# modelsiz: şemaya özgü nominal nokta DAGITIM_C (rehber_kablo.SEMA_KONUM; yeri yaklaşık).
+# P10.7b2k (planlama/d158/F10u-gunluk.md § A4): bara tutucuları P10.7b2j'de modelde (K64 a; arayuz TABAN["bara_tutucu"]). G16 ve
+# G22 anahtarlı baradaki kendi saplamasından başlar (kablolar.json bara-pabuc yerleşimi; numara = modeldeki saplama sırası, önden
+# bakınca soldan sağa, rehber B5a). Şema uçları rehber_kablo.SEMA_KONUM'daki vekil (Bara tutucusu …) kutusuyla sınanır; ölçüler
+# aşağıda sabit (bu dosya arayuz'u yalnız okur, tutucu birleşmeden önce de içe aktarılabilsin), rehber_kablo.bara_tutarlilik arayuz
+# TABAN["bara_tutucu"] ile aynı olduklarını sınar.
 # Yol uzunluğu boy ölçümü değildir (kablolar.json boy alanları bu dosyadan yazılmadı).
 import math
 import os
@@ -45,6 +49,19 @@ DX = A.TABAN_DX
 # rehber_kablo.SEMA_KONUM'daki nominal noktası (P10.7b2c düzeltme turu 1; şema sınaması ikisinin aynı olduğunu sınar). Yer TAHMİN:
 # XL4016 C'nin −z yanında, kutusunun −z kenarından 36,5 mm ötede, kart üstü yüksekliğinin 4 mm altında. Yeri yaklaşık.
 DAGITIM_C = (XL_C[0] + 2.5, Y_KART - 4.0, -60.0)
+# Bara tutucuları (arayuz TABAN["bara_tutucu"], P10.7b2j): saplama x'leri ve tutucu ekseni z; pabuç yığını tutucu üstünde (y 179,5 + 10,
+# 4 × 1,2 mm VARSAYIM), şema ucu yığının ortasında, saplamanın 5 mm önünde (+z: pabuç dili).
+BARA = dict(yildiz=dict(z=-55.0, saplama_x=(-50.0, -25.0, 0.0, 25.0, 50.0)),
+            anahtarli=dict(z=-115.0, saplama_x=(-37.5, -12.5, 12.5, 37.5)))
+BARA_H = 10.0
+Y_PABUC = Y_KAT1 + BARA_H + 2.4                    # 191,9
+Y_BARA_UST = Y_KAT1 + BARA_H + 5.5                 # 195: tutucu üstü + pabuç yığını; bara kabloları bu yükseklikte yatay (F10t § 1.3)
+
+
+def bara_saplama(bara, no):
+    """Baranın no numaralı (1'den, modeldeki sıra) saplamasındaki şema ucu (global)."""
+    b = BARA[bara]
+    return (b["saplama_x"][no - 1], Y_PABUC, b["z"] + 5.0)
 
 
 def _ak_kenar(z=None, x=None):
@@ -75,12 +92,17 @@ def yollar():
         # bölücünün orta noktası. x −56 hattı: sigorta kutusunun (x ≥ −52) ile ön şarj kartının (x ≤ −62) arası.
         "G07": [(ANA["merkez"][0] + ANA["olcu"][0] / 2 - 3.0, 214.0, ANA["merkez"][1] + ANA["olcu"][1] / 2 - 3.0),
                 (-56.0, Y_UST, -165.0), (-56.0, Y_UST, 45.0), _ak_kenar(x=-70.0, z="arka")],
-        # G16: anahtarlı bara (modelde yok; vekil röle K1 kutusunun yanı) → hat sigortası (bara ucunda, modelde yok) → XL4016 C IN (−x kenarı)
-        "G16": [(RL["merkez"][0] + RL["olcu"][0] / 2 + 2.0, 205.0, RL["merkez"][1] - 5.0), (-88.0, Y_UST, -90.0), (40.0, Y_UST, -40.0),
-                (55.0, Y_UST, -5.0), (XL_C[0] - 32.5 - 4.0, Y_KART, XL_C[1])],
-        # G22: anahtarlı bara (vekil röle K1) → hat sigortası → PC817 #2 (arayüz kartının +x kenarı)
-        "G22": [(RL["merkez"][0] + RL["olcu"][0] / 2 + 2.0, 200.0, RL["merkez"][1] + 10.0), (-45.0, Y_UST, -110.0), (-45.0, Y_UST, 60.0),
-                _ak_kenar(z=70.0)],
+        # G16: anahtarlı baranın 2. saplaması (G13 / G16) → hat sigortası (bara ucunda, modelde yok) → XL4016 C IN (−x kenarı). Panel
+        # üstünde pabuç yüksekliğinde (y 195) yatay: yıldız barasının 2. ve 3. saplamasının arasından (x −12,5), U06 şeridinin
+        # (x 14…40, z −40…−30, y ≥ 205) altından (F10t § 1.3).
+        "G16": [bara_saplama("anahtarli", 2), (-12.5, Y_BARA_UST, -95.0), (-12.5, Y_BARA_UST, -30.0), (55.0, Y_BARA_UST, -5.0),
+                (XL_C[0] - 32.5 - 4.0, Y_KART, XL_C[1])],
+        # G22: anahtarlı baranın 4. saplaması → hat sigortası → PC817 #2 (arayüz kartının +x kenarı); yıldız barasının 1. ve 2.
+        # saplamasının arasından (x −37,5) öne, kat üstüne. Düzeltme turu 1 (F10u-kontrol 7): yatay kısım iki baranın ortasında z −80
+        # (eskisi −95: anahtarlı somunlarına 10,4 mm). Eksenlere 30 / 25 mm, tutucu kutularına 24 / 14 mm (anahtarlı z −126…−104,
+        # yıldız −66…−44); M5 halka pabucun halkası eksenden ≈ 5 mm, dili kablosu yönünde (Echo kararı, geri alınabilir).
+        "G22": [bara_saplama("anahtarli", 4), (37.5, Y_BARA_UST, -80.0), (-37.5, Y_BARA_UST, -80.0), (-37.5, Y_BARA_UST, 40.0),
+                (-45.0, Y_BARA_UST, 60.0), _ak_kenar(z=70.0)],
         # SV3: XL4016 C OUT (−z kenarı) → dağıtım kartı C (modelde yok; güç panelinde XL4016 C'nin yanında, YERİ YAKLAŞIK)
         "SV3": [(XL_C[0] + 2.5, Y_KART, XL_C[1] - 23.5 - 4.0), (XL_C[0] + 2.5, Y_UST, -40.0), DAGITIM_C],
         # G19: XL4016 çevre OUT (alt kat) → ray üstü hat → ön kat kesiği → kat üstü → arayüz kartının çevre 5 V klemensi (+x kenarı)

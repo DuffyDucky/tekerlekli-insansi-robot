@@ -299,7 +299,7 @@ def go():
     y = kaydet("SON-kafa-arka-acik.png")
     etiketle(y, k, "Son model: arka kabuk sökülmüş, kafa arkadan", [
         ("ReSpeaker Mic Array v2.0 (tavan altı, sağ yarı)", m("ReSpeaker"), R["dizi"]),
-        ("USB ses kartı (y 47)", m("USB ses"), R["ses"]),
+        # P10.7b2k: USB ses kartı P10.7b2j'de modelden çıktı (yedek, takılmaz): etiketi kalktı
         ("PAM8403 (y 72)", m("PAM8403"), R["pam"]),
         ("SY8205", m("SY8205"), R["sy"]),
         ("Raspberry Pi 5", m("Raspberry"), R["pi"]),

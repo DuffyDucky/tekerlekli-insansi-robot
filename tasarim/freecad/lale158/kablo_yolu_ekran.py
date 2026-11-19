@@ -4,7 +4,11 @@
 # servo yuvasi arka kanali -> alt cikis). Govdede: traversin arkasi -> direk solu -> ekran arkasi -> port girintisi (-X; port yeri DOGRULANMADI, arayuz.GOGUS_EKRAN port).
 # Bu cizim semadir: kablo capi tahmini, kablo gercek bukum yaricapi ve fis olcusu dogrulanmadi.
 # Secim B + R1 (Ahmet 05.11.2026; lale158/kafa-yerlesim): hub gogus ust arka kapaginin icinde. Boyundan HDMI, Hub uzatmasi, Hoparlor, 12 V, tilt iner; gogus dokunmatigi ve ESP32 USB hub'dan, kafaya girmez.
-# Pi portlari: 1 ReSpeaker, 2 ses karti, 3 hub, 4 kafa dokunmatik. Hub: gogus dokunmatik, ESP32, 2 bos. Boyuna inen USB z ~ -14'te SY8205'in onunden (A.SES_USB koridor).
+# Pi portlari: 1 ReSpeaker, 2 bos, 3 hub, 4 kafa dokunmatik. Hub: gogus dokunmatik, ESP32, 2 bos. Boyuna inen USB z ~ -14'te SY8205'in onunden (A.SES_USB koridor).
+# P10.7b2k (planlama/d158/F10u-gunluk.md § B): "Ses karti uzatmasi" (Pi 2 -> ses karti) ve "3,5 mm -> PAM" (ses karti -> PAM) yollari kalkti.
+# 14.11 karariyla ses ReSpeaker 3,5 mm -> bolucu -> PAM8403 (AU1, AU2; lale158/kablo_yolu_kafa.py); USB ses karti yedek, takilmaz (KT2
+# gecmezse Pi port 2'ye) ve P10.7b2j'de modelden cikti (F10s-ses-karti-cikar.patch). Iki yol kafa_montaj KABLO_EK'te kutle tasiyordu:
+# kafa_montaj, lale158_kontrol ve uygulama_olc yeniden kosulur (birlestirme tarifi).
 import math
 import os
 import sys
@@ -21,9 +25,7 @@ KABLO = {
     "Hub uzatmasi": (4.0, "Pi port 3 -> hub: hub'in sabit 130 mm kablosu + ~1 m USB-A uzatma; listede yok"),
     "ESP32 USB": (4.0, "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"),
     "Hoparlor": (4.0, "PAM8403 -> hoparlor, boyundan iner; listede robot icin yok (2 x 0,75 kordon test duzeneginin sarfi)"),
-    "Ses karti uzatmasi": (4.0, "Pi port 2 -> L dirsek -> ses karti; USB-A erkek -> disi, listede yok"),
     "Dizi USB": (4.0, "Pi port 1 -> ReSpeaker micro B; kisa kablo listede yok"),
-    "3,5 mm -> PAM": (3.5, "ses karti L 3,5 mm fis -> PAM girisi; AUX kablosu kesilir, listede robot icin yok"),
     "PAM 5 V": (3.0, "D24V50F5 ustu -> PAM 5 V; besleme noktasi ONERI, elektrik.md'de dogrulanmadi"),
     "12 V": (5.0, "ekran 12 V ~0,5 A, taban guc panelinden; LiFePO4 12,8-14,4 V ile dogrudan baglama dogrulanmadi: regulator/sigorta karari acik"),
 }
@@ -102,12 +104,9 @@ def yollar():
     PI, HB = S["pi_usb"], S["hub"]
     koridor = [bas(*q) for q in S["koridor"]]
     x_ic = K["kafa_kutu"][0] / 2 - 2.5
-    D_, SK, PM = S["dizi"], S["ses"], S["pam"]
+    D_, PM = S["dizi"], S["pam"]
     y_pcb = K["denge"]["dy"] + K["govde_y"][1] - 2.5 - D_["gap_jak"] - D_["jak_ust"]
     d_uc = (D_["cx"] + 35.0 + D_["fis"]["boy"], y_pcb + 1.4, D_["cz"] - D_["usb_x"])
-    fz = SK["zc"] - SK["olcu"][0] / 2
-    s_uc = (-(x_ic - 43.0), SK["y"], fz - 20.0)
-    j_uc = (-(x_ic - 12.0), SK["y"] - 5.0, SK["zc"] + SK["olcu"][0] / 2 + 8.0)
     ym, lz = 0.5 * sum(HB["y"]), HB["lz"]
     hc = hoparlor_merkez()
     a_ = tuple(hc["C"][k] - hc["n"][k] * (0.5 + S["hoparlor"]["boy"]) for k in range(3))    # hoparlor arka yuzu
@@ -116,16 +115,14 @@ def yollar():
     e2_ = (0.0, hc["n"][2], -hc["n"][1])
     hop_uc = [(30.0, 1190.0, -32.0), (62.0, 1185.0, -32.0), (62.0, 1185.0, 35.0), (62.0, 1060.0, 35.0), (62.0, 1003.0, 62.0),
               tuple(a_[k] + (4.0, 0.0, 0.0)[k] - 14.0 * e2_[k] - 2.5 * hc["n"][k] for k in range(3))]
-    p1, p2, p3 = PI["p1"], PI["p2"], PI["p3"]
+    p1, p3 = PI["p1"], PI["p3"]
     yol = {
         "HDMI": pi_hdmi + trunk + inis + ekran_ucu(5.0, 0.0),
         "Hub uzatmasi": [bas(*p3)] + koridor + trunk[2:] + inis + [(30.0, 1190.0, -40.0), (47.5, HB["y"][1] + 4.0, lz + 10.0)],
         "USB dokunmatik": [(47.5, ym, lz + 60.0), (24.0, 1190.0, -30.0)] + ekran_ucu(-15.0, 7.0),
         "ESP32 USB": [(47.5, ym - 20.0, lz + 60.0), (14.0, 1060.0, -26.0), (14.0, 300.0, -26.0), (14.0, 262.0, -40.0)] + ESP_USB_TABAN,
         "Hoparlor": [bas(-(x_ic - 7.0), PM["y"], -28.0), bas(-100.0, 60.0, -13.0), bas(-50.0, 42.0, -13.0), bas(-43.5, 38.0, -13.0)] + trunk[2:] + inis + hop_uc,
-        "Ses karti uzatmasi": [bas(*p2), bas(60.0, 52.0, -25.0), bas(40.0, 58.0, -14.0), bas(-60.0, 58.0, -14.0), bas(-80.0, 58.0, -60.0), bas(*s_uc)],
         "Dizi USB": [bas(*d_uc), bas(d_uc[0] + 6.0, 72.0, d_uc[2] - 6.0), bas(68.0, 55.0, p1[2]), bas(p1[0] + 16.0, p1[1], p1[2]), bas(*p1)],
-        "3,5 mm -> PAM": [bas(*j_uc), bas(-(x_ic - 8.0), 50.0, 4.0), bas(-(x_ic - 7.0), PM["y"], -8.0)],
         "PAM 5 V": [bas(-(x_ic - 12.0), PM["y"], -32.0), bas(-100.0, 50.0, -13.0), bas(*S["d24_5v"])],
         "12 V": [(45.0, 215.0, -160.0), (8.0, 262.0, -40.0), (8.0, 300.0, -28.0), (8.0, Y_KOSE - 15.0, -28.0), (-46.0, Y_KOSE - 15.0, -28.0)] + ekran_ucu(-27.0, 14.0)[1:],
     }

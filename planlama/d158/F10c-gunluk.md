@@ -412,6 +412,13 @@ duvarının içinde). Varyantlar tek tek, art arda koşuldu (tek süreç), her b
 
 Sonuç: C5'in üç grubu girer, ama **arka kabuklar ayrı iki birimdir ve sıra önemli: önce sağ, sonra sol.** Sol önce takılırsa sağ
 hiçbir düz yönden girmiyor (dikey dikişte sağ kabuğun bindirmesi solun altında). Rehberde sıra buna göre düzeltildi:
+
+> **19.11.2026 güncellemesi (P10.7b2j kapanışı, `F10y-gunluk.md`; Echo kararı, geri alınabilir):** "hiçbir düz yönden" sonucu +x'te
+> yalnız 29 mm'de Raspberry Pi'ye 0,65 mm'lik, 5 ışınlık bir değmeye dayanıyordu (fiziksel engel değil). Birleşik modelde (K2 a boss'u
+> taşındı, ses kartı çıktı) sol takılıyken sağ arka kabuk +x'te 129 mm serbest. Sıra geometriyle zorlanmıyor; "önce sağ, sonra sol"
+> öneri / kolaylık düzeyinde kalır (bindirme sağ kabuğu arkadan koymayı kolaylaştırır). Sınama "yalnız +x açık" bekler; aracın
+> "kapalı"yı yakaladığının kanıtı PAM8403 çifti (masada +x açık, kafa kapalıyken +x sağ arka kabukta 24 mm, 1.812 ışınla kapalı).
+> Dikiş bindirmesinin sırayı gerçekten zorlayıp zorlamadığı CAD ölçümü kuyrukta.
 - `rehber_metin.py` E4 `sira`: "Masada: arka kabuklar + ReSpeaker, ses kartı, PAM8403" grubu ikiye bölündü: "Masada: sağ arka kabuk +
   ReSpeaker" (p:0 sağ arka kabuk, p:1 ReSpeaker, b:0 dizi vidaları) → "Masada: sol arka kabuk + USB ses kartı, PAM8403" (p:2 sol arka
   kabuk, p:3 köpük bant, p:4 ses kartı, p:5 PAM8403) → tabla cıvataları (b:1, b:2) → yüz grubu (p:6–p:11, b:3–b:5) → dikiş (b:6–b:8).

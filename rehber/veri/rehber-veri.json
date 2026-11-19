@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-19 02:16",
+"uretim": "2026-11-19 12:51",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -8,20 +8,20 @@
 "sema": "tasarim/freecad/lale158/kablo_yolu_ekran.py (gösterim şemaları; parça değil)",
 "cad": {
 "iskelet": "2026-11-09 14:27",
-"omuz_sag": "2026-11-09 14:27",
+"omuz_sag": "2026-11-19 07:45",
 "kabuk": "2026-11-09 14:28",
 "dirsek_sag": "2026-11-09 14:28",
-"kafa": "2026-11-09 08:54",
-"taban": "2026-11-09 14:29"
+"kafa": "2026-11-19 07:33",
+"taban": "2026-11-19 07:39"
 }
 },
 "koordinat": "mm; +X robota önden bakanın sağı (robotun kendi solu), +Y yukarı, +Z ileri (yüz); eksenler sağ elli",
 "m6_bayrak": {},
 "mesh": {
-"benzersiz": 288,
-"parca": 1192,
-"ucgen": 189360,
-"glb_mb": 2.55
+"benzersiz": 297,
+"parca": 1238,
+"ucgen": 197088,
+"glb_mb": 2.65
 },
 "atanmamis": [],
 "kablo_ad_uyari": [],
@@ -946,29 +946,29 @@
 }
 },
 {
-"ad": "XL4016 C girişi (G16, 16 AWG): anahtarlı bara (yeri yaklaşık: modelde yok, röle yanından çizildi) → hat sigortası → XL4016 C IN",
+"ad": "XL4016 C girişi (G16, 16 AWG): anahtarlı baranın 2 numaralı saplaması → hat sigortası → XL4016 C IN",
 "kaynak": "taban:G16",
 "a": 17,
-"boy_mm": 240,
+"boy_mm": 160,
 "pts": [
 [
--95.0,
-205.0,
--135.0
+-12.5,
+191.9,
+-110.0
 ],
 [
--88.0,
-184.0,
--90.0
+-12.5,
+195.0,
+-95.0
 ],
 [
-40.0,
-184.0,
--40.0
+-12.5,
+195.0,
+-30.0
 ],
 [
 55.0,
-184.0,
+195.0,
 -5.0
 ],
 [
@@ -992,24 +992,34 @@
 }
 },
 {
-"ad": "Bara durumu (G22, 22 AWG): anahtarlı bara (yeri yaklaşık: modelde yok, röle yanından çizildi) → hat sigortası → arayüz kartı, PC817 #2 girişi",
+"ad": "Bara durumu (G22, 22 AWG): anahtarlı baranın 4 numaralı saplaması → hat sigortası → arayüz kartı, PC817 #2 girişi",
 "kaynak": "taban:G22",
 "a": 17,
-"boy_mm": 240,
+"boy_mm": 258,
 "pts": [
 [
--95.0,
-200.0,
--120.0
-],
-[
--45.0,
-184.0,
+37.5,
+191.9,
 -110.0
 ],
 [
+37.5,
+195.0,
+-80.0
+],
+[
+-37.5,
+195.0,
+-80.0
+],
+[
+-37.5,
+195.0,
+40.0
+],
+[
 -45.0,
-184.0,
+195.0,
 60.0
 ],
 [
@@ -7267,8 +7277,8 @@
 "kablo_kaynak": "planlama/adim3/kablolar.json (rehber_kablo.py: renk = devre sınıfı, şema yarıçapı = kesit)",
 "isil_gomme": {
 "yontem": "ev sahibi: somunun 0,8 mm dışındaki 24 halka noktasından en çoğunu malzemesinin içinde tutan ana parça (Part isInside, bütün ana parçalar aday; somunun sınır kutusu merkezine 8 mm'den yakın kutulu olanlar). Somun ev sahibinin adımına ve alt montajına taşınır.",
-"toplam": 164,
-"ev_sahipli": 164,
+"toplam": 168,
+"ev_sahipli": 168,
 "skor_alt": 24,
 "evsiz": [],
 "tasinan": [
@@ -8086,7 +8096,11 @@
 "p0793": 24,
 "p0797": 24,
 "p0976": 24,
-"p0978": 24
+"p0978": 24,
+"p1106": 24,
+"p1108": 24,
+"p1127": 24,
+"p1129": 24
 }
 },
 "adimlar": [
@@ -9017,6 +9031,7 @@
 "Alt kat klemensleri bu adımda bağlanır, üstü açıkken: iki BTS7960B'nin güç girişi ve motor çıkışı (motor uçları B2b'de plaka üstüne alındı), üç XL4016 kartının (A, B, çevre) giriş ve çıkışı. Güç paneli ve elektronik katı gelince (B5, B6) bu klemenslere el dar kalır: kart üstünden kata 69 mm, yanda 40–150 mm (K1 erişim notu). Akü ayrık",
 "Öbür ucu henüz yerinde olmayan hat (bara, sigorta kutusu, hat sigortası; K1'de bağlanır): iki ucundan etiketle (kart, klemens, hat adı), K1'deki yerine yetecek boyda bırak, ucu bantla; hatları kablo bağıyla demetleyip plaka üstünde topla, kat burçlarının (B4) ve kart üstlerinin yolunu kapatmasın. Bu sıra ve toplama yeri kaynakta yok, doğrulanmadı",
 "Akü kayışlarının tokası yanda, kablo yolunun üstünde değil",
+"Plaka altından geçen motor kablolarını (Kablo yolu 4) akü kayışıyla plaka arasına sıkıştırma, kayışa bağlama: kayış gerildiğinde kabloyu ezer",
 "Arka sol motor hattının (M02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Arka kablo deliği ve plaka altı modelden; motor kablosunun motordan çıkışı ve BTS7960 klemensine gelişi tahmin"
 ],
 "not_": [],
@@ -9284,7 +9299,7 @@
 "no": "12",
 "faz": "Taban",
 "baslik": "Tezgâh: güç paneli",
-"is_": "Tezgâh: güç paneline sigorta kutusu, röle ve ana sigorta yuvası. XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada. Ana anahtar bu panele girmez: etek üst plakasının altına F1'de takılır.\nDağıtım kartı C, tezgâhta: kartın 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü − bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına. Gövdedeki eksi şeridi okunmuyorsa kondansatörü takma (kablajda teyit). Sonra SV3'ü (16 AWG) XL4016 C'nin OUT+ / OUT− klemensinden dağıtım kartı C'nin 2 pin 5,08 mm giriş klemensine bağla: OUT+ → V+, OUT− → GND. Bağlamadan önce telin iki ucunu etiketle, XL4016 C'nin ve kartın + / − yazısını karşılaştır: ters bağlanan kondansatör ısınır, kafa servoları zarar görür. Kafa servolarının sinyal köprüsü (P03) K1'de, uzatmaları (S09, S10) K2'de takılır.\nGöğüs ekranı regülatörü (LM2577 + LM2596; K52 a): ekrana ve panele bağlamadan, tezgâhta çıkışını multimetreyle 12 V'a ayarla ve trimpotun konumunu boya noktasıyla işaretle (`planlama/d158/testler/T7-gogus-ekrani-12v.md` B). Sonra kartı güç paneline tak; giriş (IN+ / IN−) ve çıkış (OUT+ / OUT−) klemensleri erişilebilir kalsın. Kart, ölçüsü ve panel üstündeki yeri modelde yok; yeri ve bağlantı elemanı kaynakta yok, doğrulanmadı. Girişi (G20) K1'de, çıkışı (G21) K2'de bağlanır.",
+"is_": "Tezgâh: güç paneline sigorta kutusu, röle ve ana sigorta yuvası. XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada. Ana anahtar bu panele girmez: etek üst plakasının altına F1'de takılır.\nBara tutucuları (K64 a; baskı listesinde iki PETG parça: yıldız barasınınki 5, anahtarlı barasınınki 4 saplamalı), tezgâhta, panel burçlara inmeden, altı açıkken: önce her tutucunun alt yüzündeki iki deliğe M3 ısıl gömme somunu havyayla göm. Dokuz M5×25 altıgen başlı saplamayı alttan tutucunun altıgen ceplerine sok, üstten M5 somununu elle birkaç tur tak (saplama düşmesin; pabuçlar, pul ve yaylı pul K1'de). Sonra tutucuyu panelin üstüne koy: yıldız barasınınki akü kablo yarıklarının hemen arkasına, anahtarlı barasınınki onun arkasına, röle hizasına (karede yerleri). Panelin altından tutucu başına 2 × ISO 7380 M3×10 ile ısıl gömme somunlara sık. Saplamalar robota önden bakınca soldan sağa 1'den numaralıdır (yıldız 1–5, anahtarlı 1–4; K1'deki saplama numaraları bu sırayla). Saplamalar panele değmez, yalıtım tutucudadır; saplama sonradan yalnız tutucu (ve panel) sökülerek değişir.\nDağıtım kartı C, tezgâhta: kartın 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü − bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına. Gövdedeki eksi şeridi okunmuyorsa kondansatörü takma (kablajda teyit). Sonra SV3'ü (16 AWG) XL4016 C'nin OUT+ / OUT− klemensinden dağıtım kartı C'nin 2 pin 5,08 mm giriş klemensine bağla: OUT+ → V+, OUT− → GND. Bağlamadan önce telin iki ucunu etiketle, XL4016 C'nin ve kartın + / − yazısını karşılaştır: ters bağlanan kondansatör ısınır, kafa servoları zarar görür. Kafa servolarının sinyal köprüsü (P03) K1'de, uzatmaları (S09, S10) K2'de takılır.\nGöğüs ekranı regülatörü (LM2577 + LM2596; K52 a): ekrana ve panele bağlamadan, tezgâhta çıkışını multimetreyle 12 V'a ayarla ve trimpotun konumunu boya noktasıyla işaretle (`planlama/d158/testler/T7-gogus-ekrani-12v.md` B). Sonra kartı güç paneline tak; giriş (IN+ / IN−) ve çıkış (OUT+ / OUT−) klemensleri erişilebilir kalsın. Kart, ölçüsü ve panel üstündeki yeri modelde yok; yeri ve bağlantı elemanı kaynakta yok, doğrulanmadı. Girişi (G20) K1'de, çıkışı (G21) K2'de bağlanır.",
 "baglanti_md": "3 × M4×16 + naylon somun",
 "alet": "alyan 3 + 7 mm anahtar",
 "erisim": "düz / lokma",
@@ -9374,6 +9389,28 @@
 "p1082"
 ],
 "ad": "Ana sigorta yuvası 30 A (tahmini zarf)"
+},
+{
+"kod": "Bara tutucusu yıldız barası (GND), PETG baskı (K64 a)",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
+"p1085"
+],
+"ad": "Bara tutucusu yıldız barası (GND) (5 saplama)"
+},
+{
+"kod": "Bara tutucusu anahtarlı bara (+), PETG baskı (K64 a)",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
+"p1110"
+],
+"ad": "Bara tutucusu anahtarlı bara (+) (4 saplama)"
 }
 ],
 "baglantilar": [
@@ -9441,10 +9478,103 @@
 "p1081"
 ],
 "onceden": false
+},
+{
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"adet": 9,
+"m6": 0,
+"ids": [
+"p1086",
+"p1090",
+"p1094",
+"p1098",
+"p1102",
+"p1111",
+"p1115",
+"p1119",
+"p1123"
+],
+"onceden": false
+},
+{
+"kod": "M5 DIN 125 pul",
+"adet": 9,
+"m6": 0,
+"ids": [
+"p1087",
+"p1091",
+"p1095",
+"p1099",
+"p1103",
+"p1112",
+"p1116",
+"p1120",
+"p1124"
+],
+"onceden": false
+},
+{
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"adet": 9,
+"m6": 0,
+"ids": [
+"p1088",
+"p1092",
+"p1096",
+"p1100",
+"p1104",
+"p1113",
+"p1117",
+"p1121",
+"p1125"
+],
+"onceden": false
+},
+{
+"kod": "M5 DIN 934 somun (takım)",
+"adet": 9,
+"m6": 0,
+"ids": [
+"p1089",
+"p1093",
+"p1097",
+"p1101",
+"p1105",
+"p1114",
+"p1118",
+"p1122",
+"p1126"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 4,
+"m6": 0,
+"ids": [
+"p1106",
+"p1108",
+"p1127",
+"p1129"
+],
+"onceden": true
+},
+{
+"kod": "M3x10 ISO 7380",
+"adet": 4,
+"m6": 0,
+"ids": [
+"p1107",
+"p1109",
+"p1128",
+"p1130"
+],
+"onceden": false
 }
 ],
 "kontrol": [
 "Sigorta kutusu, röle ve ana sigorta yuvası panele (M4 + naylon somun)",
+"İki bara tutucusu panelde, panelin altından 2'şer M3×10 ile sıkı; dokuz saplama altıgen ceplerinde, elle döndürünce dönmüyor, üstte somunu elle takılı; yıldız barasınınki önde (akü kablo yarıklarının arkasında), anahtarlı barasınınki arkada (röle hizasında)",
 "Göğüs ekranı regülatörü (LM2577 + LM2596) panelde; panele takılmadan önce tezgâhta, ekran bağlı değilken çıkışı 12 V'a ayarlandı, trimpotu boya noktasıyla işaretli (T7 B)",
 "Dağıtım kartı C: kondansatörün eksi şeritli bacağı GND barasında; SV3 bağlandı (XL4016 C OUT+ → kartın V+, OUT− → GND). Akü ayrıkken multimetrenin direnç kademesinde kartın V+ ile GND arası sıfırda kalmıyor (kısa devre yok; kondansatör dolarken değer yükselir)",
 "Ön şarj direnci (5,6 Ω) panelden ≥ 5 mm yüksekte, kablo demetine değmez (E9)",
@@ -9457,12 +9587,12 @@
 "SV3'ün çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık"
 ],
 "not_": [
-"Bara tutucusu (yıldız barasının ve anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça; `planlama/adim3/kablolar.json` bara pabuç kaydı) henüz tasarlanmadı: modelde ve baskı listesinde yok, sonraki tam taramalı CAD paketinde tasarlanıp basılacak, satın alınmayacak (K64 a). O zamana dek rehber panelde yerini ve bağlantı elemanını yazmaz. K1'in \"Toprak ve iki bara\" alt adımı iki barayı panelde varsayar",
+"Bara tutucuları P10.7b2j'de modele girdi (K64 a, `planlama/d158/F10s-gunluk.md` § 4; basılır, satın alınmaz). Saplamanın altıgen başlı olması varsayım: bara saplaması takımının baş tipi kayıtta yok; silindir başlı gelirse altıgen cep dönmeyi tutmaz, tutucu yeniden tasarlanır (siparişte altıgen baş seçilmeli). Altıgen cep baskıda dar çıkabilir: baş girmezse cep ısıyla oturtulur. Tutucu başına iki M3×10 ISO 7380 ve iki M3 ısıl gömme somun ile dokuz M5 düz pul satın alma listesinde ayrıca teyit edilir",
 "Göğüs ekranı regülatörü (K52 a) modelde yok: karede görünmez, model sonraki tam taramalı CAD paketinde"
 ],
 "kamera": null,
 "m6": [],
-"sure_dk": 37,
+"sure_dk": 55,
 "sure_tahmini": true,
 "kablolama": false,
 "ev": [
@@ -9556,7 +9686,7 @@
 "no": "14",
 "faz": "Taban",
 "baslik": "Tezgâh: elektronik katı",
-"is_": "Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı), sonra kat üstündeki kartlar arası kabloları bağla. Hepsi dişi uçlu sinyal teli (O-4 r); uçlar ve pinler `planlama/adim3/kablolar.md` tablolarında, kart üstü yazıya göre bağla:\n1. Dağıtım kartı A ve B: her kartın iki 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü − bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına; eksi şeridi okunmuyorsa takma (kablajda teyit).\n2. Arayüz kartı → ESP32 (X01): bölücü çıkışları, iki röle sürücüsünün taban girişi, PC817 çıkışları, BTS EN düğümü, çevre 5 V → ESP32 VIN, GND → GND. VIN'e seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66; çevre hat sigortası atınca çevre yükleri USB'den beslenmesin diye). Diyodun takılacağı yer (arayüz kartı üstü ya da X01'in 5 V damarı) kayıtta yok, kablajda belirlenir. PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin 3V3 pinine bağla (X01): 5 V'a bağlama. Modülün çıkışları PC817 #1 (acil stop, GPIO23) ve PC817 #2 (bara, GPIO5) pinlerine gider; besleme 5 V olursa bu pinler 5 V görür, ESP32 girişleri en çok 3,6 V'a dayanır (pin haritası D3).\n3. I2C: ESP32 → PCA9685 giriş başlığı (I01: SDA, SCL, 3V3 → VCC, GND); PCA9685 çıkış başlığı → BNO055 (I02: SDA, SCL, VCC → VIN, GND). PCA9685'in OE ucunu kart üstünde GND'ye bağla.\n4. Servo sinyalleri, yalnız sinyal teli: PCA9685'in sağ kol kanallarının sinyal pinlerini dağıtım kartı A'nın sinyal girişlerine (P01), sol kol kanallarınınkini dağıtım kartı B'ninkilere (P02) tek telli dişi uçlarla bağla. PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma; dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir. 3 telli hazır servo kablosu kullanırsan V+ damarını iki ucundan kes, makaronla yalıt. Neden: PCA9685'te kanal başlıklarının V+ pinleri V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer, dönüştürücüler zarar görebilir (kart içi ortak V+ sırası kablajda teyit). Hangi kanalın hangi girişe gittiği kablolar.md'de (P01, P02).\nKarede bağlantı kablolarının uç kartları numaralı (etkileşimli sayfada adıyla, basılı sayfada adları karenin altında); yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda. BNO055'in yön oku karede çizili değil: kartın üstündeki X okunu robotun önüne (yüz tarafı) çevir (kontrol).",
+"is_": "Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı). ESP32 DevKit'i taşıyıcının başlıklarına micro USB portu robota önden bakınca sağda (WROOM modülü solda) olacak yönde tak: kart başlığa ters yönde de girer; ters takılırsa bütün pinler yer değiştirir: taşıyıcının 5 V hattı bir GPIO pinine gelir ve F1'deki ilk enerjide (F4 takılınca) kart zarar görür (F1'de enerjiden önce yön bakışı var). Sonra kat üstündeki kartlar arası kabloları bağla. Hepsi dişi uçlu sinyal teli (O-4 r); uçlar ve pinler `planlama/adim3/kablolar.md` tablolarında, kart üstü yazıya göre bağla:\n1. Dağıtım kartı A ve B: her kartın iki 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü − bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına; eksi şeridi okunmuyorsa takma (kablajda teyit).\n2. Arayüz kartı → ESP32 (X01): bölücü çıkışları, iki röle sürücüsünün taban girişi, PC817 çıkışları, BTS EN düğümü, çevre 5 V → ESP32 VIN, GND → GND. VIN'e seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66; çevre hat sigortası atınca çevre yükleri USB'den beslenmesin diye). Diyodun takılacağı yer (arayüz kartı üstü ya da X01'in 5 V damarı) kayıtta yok, kablajda belirlenir. PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin 3V3 pinine bağla (X01): 5 V'a bağlama. Modülün çıkışları PC817 #1 (acil stop, GPIO23) ve PC817 #2 (bara, GPIO5) pinlerine gider; besleme 5 V olursa bu pinler 5 V görür, ESP32 girişleri en çok 3,6 V'a dayanır (pin haritası D3).\n3. I2C: ESP32 → PCA9685 giriş başlığı (I01: SDA, SCL, 3V3 → VCC, GND); PCA9685 çıkış başlığı → BNO055 (I02: SDA, SCL, VCC → VIN, GND). PCA9685'in OE ucunu kart üstünde GND'ye bağla.\n4. Servo sinyalleri, yalnız sinyal teli: PCA9685'in sağ kol kanallarının sinyal pinlerini dağıtım kartı A'nın sinyal girişlerine (P01), sol kol kanallarınınkini dağıtım kartı B'ninkilere (P02) tek telli dişi uçlarla bağla. PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma; dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir. 3 telli hazır servo kablosu kullanırsan V+ damarını iki ucundan kes, makaronla yalıt. Neden: PCA9685'te kanal başlıklarının V+ pinleri V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer, dönüştürücüler zarar görebilir (kart içi ortak V+ sırası kablajda teyit). Hangi kanalın hangi girişe gittiği kablolar.md'de (P01, P02).\nKarede bağlantı kablolarının uç kartları numaralı (etkileşimli sayfada adıyla, basılı sayfada adları karenin altında); yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda. BNO055'in yön oku karede çizili değil: kartın üstündeki X okunu robotun önüne (yüz tarafı) çevir (kontrol).",
 "baglanti_md": "16 × M3×8 + 8 × M2,5×8 (alt), 16 × M3×6 + 8 × M2,5×5 (üst)",
 "alet": "alyan 2,5 / 2",
 "erisim": "düz",
@@ -9581,7 +9711,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1085"
+"p1131"
 ],
 "ad": "Arayüz kartı (E2/E3)"
 },
@@ -9592,22 +9722,22 @@
 "r": "satin",
 "adet": 16,
 "ids": [
-"p1086",
-"p1089",
-"p1092",
-"p1095",
-"p1099",
-"p1102",
-"p1105",
-"p1108",
-"p1112",
-"p1115",
-"p1118",
-"p1121",
+"p1132",
+"p1135",
+"p1138",
+"p1141",
+"p1145",
+"p1148",
 "p1151",
 "p1154",
-"p1157",
-"p1160"
+"p1158",
+"p1161",
+"p1164",
+"p1167",
+"p1197",
+"p1200",
+"p1203",
+"p1206"
 ],
 "ad": "Burç M3x8 naylon burç"
 },
@@ -9618,7 +9748,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1098"
+"p1144"
 ],
 "ad": "Servo dağıtım kartı A (sağ kol)"
 },
@@ -9629,7 +9759,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1111"
+"p1157"
 ],
 "ad": "Servo dağıtım kartı B (sol kol)"
 },
@@ -9640,7 +9770,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1124"
+"p1170"
 ],
 "ad": "PCA9685 servo sürücü"
 },
@@ -9651,14 +9781,14 @@
 "r": "satin",
 "adet": 8,
 "ids": [
-"p1125",
-"p1128",
-"p1131",
-"p1134",
-"p1138",
-"p1141",
-"p1144",
-"p1147"
+"p1171",
+"p1174",
+"p1177",
+"p1180",
+"p1184",
+"p1187",
+"p1190",
+"p1193"
 ],
 "ad": "Burç M2,5x8 pirinç burç"
 },
@@ -9669,7 +9799,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1137"
+"p1183"
 ],
 "ad": "BNO055 IMU"
 },
@@ -9680,7 +9810,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1150"
+"p1196"
 ],
 "ad": "ESP32 taşıyıcı kart (pertinaks)"
 },
@@ -9691,7 +9821,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1163"
+"p1209"
 ],
 "ad": "ESP32 DevKit 30 pin"
 }
@@ -9702,22 +9832,22 @@
 "adet": 16,
 "m6": 0,
 "ids": [
-"p1087",
-"p1090",
-"p1093",
-"p1096",
-"p1100",
-"p1103",
-"p1106",
-"p1109",
-"p1113",
-"p1116",
-"p1119",
-"p1122",
+"p1133",
+"p1136",
+"p1139",
+"p1142",
+"p1146",
+"p1149",
 "p1152",
 "p1155",
-"p1158",
-"p1161"
+"p1159",
+"p1162",
+"p1165",
+"p1168",
+"p1198",
+"p1201",
+"p1204",
+"p1207"
 ],
 "onceden": false
 },
@@ -9726,22 +9856,22 @@
 "adet": 16,
 "m6": 0,
 "ids": [
-"p1088",
-"p1091",
-"p1094",
-"p1097",
-"p1101",
-"p1104",
-"p1107",
-"p1110",
-"p1114",
-"p1117",
-"p1120",
-"p1123",
+"p1134",
+"p1137",
+"p1140",
+"p1143",
+"p1147",
+"p1150",
 "p1153",
 "p1156",
-"p1159",
-"p1162"
+"p1160",
+"p1163",
+"p1166",
+"p1169",
+"p1199",
+"p1202",
+"p1205",
+"p1208"
 ],
 "onceden": false
 },
@@ -9750,14 +9880,14 @@
 "adet": 8,
 "m6": 0,
 "ids": [
-"p1126",
-"p1129",
-"p1132",
-"p1135",
-"p1139",
-"p1142",
-"p1145",
-"p1148"
+"p1172",
+"p1175",
+"p1178",
+"p1181",
+"p1185",
+"p1188",
+"p1191",
+"p1194"
 ],
 "onceden": false
 },
@@ -9766,14 +9896,14 @@
 "adet": 8,
 "m6": 0,
 "ids": [
-"p1127",
-"p1130",
-"p1133",
-"p1136",
-"p1140",
-"p1143",
-"p1146",
-"p1149"
+"p1173",
+"p1176",
+"p1179",
+"p1182",
+"p1186",
+"p1189",
+"p1192",
+"p1195"
 ],
 "onceden": false
 }
@@ -9785,6 +9915,7 @@
 "PC817 modülünün çıkış VCC ucu ESP32'nin 3V3 pininde (X01), 5 V'ta değil: multimetrenin süreklilik kademesiyle çıkış VCC ile ESP32 3V3 pini arası öter, çıkış VCC ile çevre 5 V arası ötmez",
 "PCA9685 V+ boş: multimetrenin süreklilik kademesiyle PCA9685'in kanal başlığının V+ pini ile dağıtım kartı A'nın ve B'nin V+ barası arasında süreklilik yok (ötmemeli; ölçü ucu V+ klemensine değil kanal başlığının V+ pinine: kartta klemens ile V+ rayı arasında ters kutup koruması olabilir). Öterse bir V+ teli takılı ya da kartın sinyal girişindeki V+ pini bağlı: o teli ya da bağı sök, ölçüm ötmeyene kadar devam etme",
 "BNO055 yönü: kartın X oku robotun önüne (+z)",
+"ESP32 DevKit'in micro USB portu önden bakınca sağda (taşıyıcının sağ kenarı), WROOM modülü solda",
 "Kartlar takılmadan tezgâhta (bu adımdan önce): arayüz kartındaki PC817 3,3 V'ta ölçüldü: girişe akım sınırlı tezgâh kaynağıyla 12 V ver ve kes, çıkış LOW < 0,4 V, HIGH > 2,5 V (`planlama/adim3/elektrik.md` E3 notu; K1 kontrolü). Sıra kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
@@ -9807,7 +9938,7 @@
 "uc": [
 {
 "n": 1,
-"id": "p1163",
+"id": "p1209",
 "ad": "ESP32",
 "kablo": [
 "I01"
@@ -9821,7 +9952,7 @@
 },
 {
 "n": 2,
-"id": "p1124",
+"id": "p1170",
 "ad": "PCA9685",
 "kablo": [
 "I01",
@@ -9838,7 +9969,7 @@
 },
 {
 "n": 3,
-"id": "p1137",
+"id": "p1183",
 "ad": "BNO055",
 "kablo": [
 "I02"
@@ -9852,7 +9983,7 @@
 },
 {
 "n": 4,
-"id": "p1098",
+"id": "p1144",
 "ad": "Dağıtım kartı A",
 "kablo": [
 "P01"
@@ -9866,7 +9997,7 @@
 },
 {
 "n": 5,
-"id": "p1111",
+"id": "p1157",
 "ad": "Dağıtım kartı B",
 "kablo": [
 "P02"
@@ -9924,7 +10055,7 @@
 ],
 "kablo": [],
 "not_": [
-"Bilinen açık konu (K53, karar bekliyor): modelde elektronik katı inerken ön şarj kartının iki ön naylon burcuna takılıyor; burç katın ön kenarından 0,425 mm taşıyor (`planlama/d158/F10b-olcum.json`). Çözüm seçilmedi (K53 karar bekliyor; seçenekleri F10b'de ölçüldü, `planlama/d158/F10b-gunluk.md`)"
+"Elektronik katının arka kenarında (güç paneline bakan kenar), robota önden bakınca solda 1,5 mm derin çentik var (K53 a): kat inerken güç panelindeki ön şarj kartının iki ön burcuna takılmaz. İniş boyunca ortak hacim 0, en küçük boşluk 0,5 mm (`planlama/d158/F10s-K53-olcum.json`; ölçüm düz yukarıdan inişle, eğik iniş ölçülmedi)"
 ],
 "kamera": null,
 "m6": [],
@@ -9958,9 +10089,9 @@
 "r": "satin",
 "adet": 3,
 "ids": [
-"p1164",
-"p1168",
-"p1174"
+"p1210",
+"p1214",
+"p1220"
 ],
 "ad": "Sonar HC-SR04"
 },
@@ -9971,8 +10102,8 @@
 "r": "baski",
 "adet": 2,
 "ids": [
-"p1165",
-"p1175"
+"p1211",
+"p1221"
 ],
 "ad": "Sonar tutucu (sağ + sol)"
 },
@@ -9983,7 +10114,7 @@
 "r": "baski",
 "adet": 1,
 "ids": [
-"p1169"
+"p1215"
 ],
 "ad": "Sonar tutucu orta"
 }
@@ -9994,10 +10125,10 @@
 "adet": 4,
 "m6": 0,
 "ids": [
-"p1166",
-"p1170",
-"p1172",
-"p1176"
+"p1212",
+"p1216",
+"p1218",
+"p1222"
 ],
 "onceden": false
 },
@@ -10006,10 +10137,10 @@
 "adet": 4,
 "m6": 0,
 "ids": [
-"p1167",
-"p1171",
-"p1173",
-"p1177"
+"p1213",
+"p1217",
+"p1219",
+"p1223"
 ],
 "onceden": false
 }
@@ -10072,7 +10203,7 @@
 "kablo": [
 "Burada: 12 V ana hat, şarj kolu, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada devre sınıfının renginde (lejant; `planlama/adim3/kablolar.md` renk kuralı); tıklayınca kablo kimliği, iki uç, kesit, sigorta ve acil stopta enerjili olup olmadığı",
 "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
-"Dokuz hattın (G07, G16, G22, G19, B02, N01, N02, Q01, Q02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Kat ve alt plaka geçişleri modeldeki yerlerdir (ön kat kesiği, arka kablo deliği); kart üstündeki klemens yeri ve kartların arasındaki çizgi tahmin. Anahtarlı baranın yeri yaklaşık (modelde yok, röle yanından çizildi). Kabloyu çizgiye değil, kartlara ve klemenslere bakarak döşe",
+"Dokuz hattın (G07, G16, G22, G19, B02, N01, N02, Q01, Q02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Kat ve alt plaka geçişleri modeldeki yerlerdir (ön kat kesiği, arka kablo deliği); kart üstündeki klemens yeri ve kartların arasındaki çizgi tahmin. G16 ve G22'nin şeması anahtarlı baradaki kendi saplamasından başlar (tutucu modelde, B5a); hat sigortaları ve pabuçlar modelde yok. Kabloyu çizgiye değil, kartlara ve klemenslere bakarak döşe",
 "Bağlantı tablosu P03 (yalnız sinyal teli, alt adım 17.11, 22 AWG): PCA9685 kanal 4 sinyali (yazılım adı `kafa_pan`) → Dağıtım kartı C (kafa) pan sinyal girişi; PCA9685 kanal 9 sinyali (yazılım adı `kafa_tilt`) → Dağıtım kartı C (kafa) tilt sinyal girişi. Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
 "Kablo listesi (uçlar, kesit, sigorta, sonlandırma): `planlama/adim3/kablolar.md` (tek kaynak `kablolar.json`); boy için tablodaki tahmin kuralı"
 ],
@@ -10089,25 +10220,47 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Toprak (G05, 12 AWG): akü − → yıldız barasının ortadaki (3 numaralı) saplaması. G05'in akü ucu XT60'ın robot tarafındaki − ucudur (lehim): akünün kutbuna doğrudan bağlama, akü kutupları bantlı kalır (akü ile XT60'ın akü tarafı arası G01, alt adım 17.2). İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç, büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok. Yıldız barası (toprak) 5 M5 saplama: saplamalar 4 adet siyah 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır. Yerleşim: saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G05 (akü) / G06, 4 G17 / G18, 5 G20 / G22 dönüşleri. Anahtarlı bara (+) 4 M5 saplama: saplamalar 3 adet kırmızı 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır; bütün saplamalar köprüyle birbirine bağlı. Anahtarlı bara yerleşimi (kalın pabuç altta): saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G09 / G11 (baraya gelen iki hat: röle K1 ve ön şarj kartı), 4 G22; saplama başına en çok 4 pabuç, köprü uçları dahil (`planlama/adim3/kablolar.json` yerleşim kaydı). Karede görünmez: iki bara ve tutucuları modelde yok (tutucu CAD paketinde gelecek, K64 a); baralar güç panelinde (arka kat, B5a). Karedeki soluk sarı çizgi B5a'da bağlanan SV3'ün şemasıdır, bu alt adımın kablosu değil.",
+"is_": "Toprak (G05, 12 AWG): akü − → yıldız barasının ortadaki (3 numaralı) saplaması. G05'in akü ucu XT60'ın robot tarafındaki − ucudur (lehim): akünün kutbuna doğrudan bağlama, akü kutupları bantlı kalır (akü ile XT60'ın akü tarafı arası G01, alt adım 17.2). İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç (yıldızın 1, 2, 3, 4 ve 5, anahtarlının 1, 2, 3 ve 4 numaralı saplamalarında birden çok pabuç: pabuçları yelpaze gibi açarak diz, üst üste aynı yöne bindirme; somunu taktıktan sonra dişin tam kavradığına bak), büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok. Yıldız barası (toprak) 5 M5 saplama: saplamalar 4 adet siyah 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır. Yerleşim: saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G05 (akü) / G06, 4 G17 / G18, 5 G20 / G22 dönüşleri. Anahtarlı bara (+) 4 M5 saplama: saplamalar 3 adet kırmızı 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır; bütün saplamalar köprüyle birbirine bağlı. Anahtarlı bara yerleşimi (kalın pabuç altta): saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G09 / G11 (baraya gelen iki hat: röle K1 ve ön şarj kartı), 4 G22; saplama başına en çok 4 pabuç, köprü uçları dahil (`planlama/adim3/kablolar.json` yerleşim kaydı). Saplama numaraları robota önden bakınca soldan sağa (B5a). Somunu yaylı pul düzleşene kadar sık (≈ 2–2,5 N·m, tahmin, ölçülmedi; tutucuyu ezecek kadar değil). Tutucu PETG, sıkma altında zamanla gevşer: somunları F1'de ilk enerjiden önce (\"İlk enerji, aşama 1\" kontrolünden önceki madde) ve ilk haftanın sonunda yeniden sık; ikisinde de ana anahtar kapalı, akü XT60'tan ayrık, saat / yüzük çıkarılmış olmalı, lokma anahtarı bir baradan öbürüne değmesin. Kabuk ve etek takılıyken güç paneline üstten erişim ölçülmedi, doğrulanmadı. Bara kablolarını panelin üstünde, pabuç yüksekliğinde yatay götür: ESP32 USB (U06, alt adım 17.11) yıldız barasının sağ yarısının önünden direğe çıkar, oradaki kabloları (G05: akü yarığından yıldızın 3 numaralı saplamasına; G17 ve G18: 4 numaralı saplamaya) panelden ≈ 20 mm'den yükseğe kaldırma. Karede iki bara tutucusu saplamaları ve somunlarıyla görünür (B5a, K64 a); pabuçlar ve köprüler modelde yok. Karede vurgulu çizgi Kablo yolu 2'dir (G05): yıldız barasının 3 numaralı saplamasında biter. Karedeki soluk sarı çizgi B5a'da bağlanan SV3'ün şemasıdır, bu alt adımın kablosu değil.",
+"kamera": [
+0.35,
+1.0,
+0.7
+],
+"saydam": [
+"p0005"
+],
+"odak": [
+"p1085",
+"p1110",
+"p1227"
+],
 "demet": [
 "taban (K1)"
 ],
 "ref": [
-"p1181"
+"p1227"
 ],
 "ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1085",
+"ad": "Yıldız barası",
+"kablo": [
+"G05"
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
+}
+],
 "uc_yok": [
 {
 "ad": "XT60 (robot tarafı)",
 "neden": "konnektör modelde yok",
-"kablo": [
-"G05"
-]
-},
-{
-"ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
 "kablo": [
 "G05"
 ]
@@ -10125,7 +10278,7 @@
 "etek (F1)"
 ],
 "ref": [
-"p1180"
+"p1226"
 ],
 "ev": [],
 "uc": [
@@ -10226,7 +10379,7 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "F1 20 A → röle K1 kontağı (30 → 87 (87a boş); soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baranın 3 numaralı saplamasına; 12 AWG); F1 → ön şarj kartı → anahtarlı bara (G10, G11; 12 AWG). Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) COM ile NC arası öter, COM ile NO arası ötmez (pim yeri kablajda teyit). Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci (5,6 Ω) çıkış ucunda, G11 direncin öbür bacağından anahtarlı baranın 3 numaralı saplamasına; K2'nin uçları COM → NO (NC boş) (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema). Karede Kablo yolu 3'ün baradan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç alt adım 17.5'te bağlanır. Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda.",
+"is_": "F1 20 A → röle K1 kontağı (30 → 87 (87a boş); soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baranın 3 numaralı saplamasına; 12 AWG); F1 → ön şarj kartı → anahtarlı bara (G10, G11; 12 AWG). Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) COM ile NC arası öter, COM ile NO arası ötmez (pim yeri kablajda teyit). Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci (5,6 Ω) çıkış ucunda, G11 direncin öbür bacağından anahtarlı baranın 3 numaralı saplamasına; K2'nin uçları COM → NO (NC boş) (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema). Karede Kablo yolu 3 (G08–G12) anahtarlı baranın 3 numaralı saplamasına gelir; yolun 1 numaralı saplamadan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç alt adım 17.5'te bağlanır. Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda.",
 "kamera": [
 -0.85,
 0.9,
@@ -10236,7 +10389,7 @@
 "taban (K1)"
 ],
 "ref": [
-"p1182"
+"p1228"
 ],
 "ev": [],
 "uc": [
@@ -10272,6 +10425,22 @@
 },
 {
 "n": 3,
+"id": "p1110",
+"ad": "Anahtarlı bara",
+"kablo": [
+"G09",
+"G11",
+"G12"
+],
+"ip": [
+0.0,
+184.5,
+-115.0
+],
+"karede": true
+},
+{
+"n": 4,
 "id": "p1058",
 "ad": "Ön şarj kartı",
 "kablo": [
@@ -10284,28 +10453,26 @@
 -1.0
 ],
 "karede": true
+},
+{
+"n": 5,
+"id": "p1085",
+"ad": "Yıldız barası",
+"kablo": [
+"G12"
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
 }
 ],
 "uc_yok": [
 {
-"ad": "Anahtarlı bara",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
-"kablo": [
-"G09",
-"G11",
-"G12"
-]
-},
-{
 "ad": "BTS7960 sol",
 "neden": "bu bakışta başka parçaların arkasında",
-"kablo": [
-"G12"
-]
-},
-{
-"ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
 "kablo": [
 "G12"
 ]
@@ -10331,7 +10498,7 @@
 "taban alt kat"
 ],
 "ref": [
-"p1183"
+"p1229"
 ],
 "sema": [
 12
@@ -10340,6 +10507,21 @@
 "uc": [
 {
 "n": 1,
+"id": "p1110",
+"ad": "Anahtarlı bara",
+"kablo": [
+"G13",
+"G16"
+],
+"ip": [
+0.0,
+184.5,
+-115.0
+],
+"karede": true
+},
+{
+"n": 2,
 "id": "p0993",
 "ad": "BTS7960 sağ",
 "kablo": [
@@ -10353,7 +10535,22 @@
 "karede": true
 },
 {
-"n": 2,
+"n": 3,
+"id": "p1085",
+"ad": "Yıldız barası",
+"kablo": [
+"G13",
+"G16"
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
+},
+{
+"n": 4,
 "id": "p1045",
 "ad": "XL4016 C",
 "kablo": [
@@ -10366,24 +10563,6 @@
 ],
 "karede": true
 }
-],
-"uc_yok": [
-{
-"ad": "Anahtarlı bara",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
-"kablo": [
-"G13",
-"G16"
-]
-},
-{
-"ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
-"kablo": [
-"G13",
-"G16"
-]
-}
 ]
 },
 {
@@ -10391,7 +10570,15 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "PC817 #2 algı teli (G22, 22 AWG): anahtarlı bara ucunda (kaynak ucu) 2 A mini hat sigortası; G22'nin yuvasının bara kuyruğu anahtarlı baranın 4 numaralı saplamasına. G22'nin kutbu + → IN2 +, IN2 − → GND: + damarını (hat sigortasından gelen) arayüz kartındaki PC817 modülünün IN2 + klemensine, − damarını modülün IN2 − klemensinden yıldız barasına bağla; − damarının yıldız ucu 5 cm 18 AWG siyah ara parçaya lehimli, ara parça kırmızı pabuçla yıldız barasının 5 numaralı saplamasına. Bağlamadan önce modülün üstündeki IN2 + / IN2 − yazısını oku: ters bağlanan G22'de giriş LED'i yanmaz, bara gerilimliyken PC817 #2 (GPIO5) LOW'a düşmez ve ESP32 devreye almada hata verir; modülün girişinde ters gerilim koruması olup olmadığı belgede yok (kablajda teyit), ters bağlıyken enerji verme. Karede yer: PC817 modülü arayüz kartının üstünde, arayüz kartı elektronik katında önden bakınca solda; anahtarlı bara karede görünmez (modelde yok, güç panelinde).",
+"is_": "PC817 #2 algı teli (G22, 22 AWG): anahtarlı bara ucunda (kaynak ucu) 2 A mini hat sigortası; G22'nin yuvasının bara kuyruğu anahtarlı baranın 4 numaralı saplamasına. G22'nin kutbu + → IN2 +, IN2 − → GND: + damarını (hat sigortasından gelen) arayüz kartındaki PC817 modülünün IN2 + klemensine, − damarını modülün IN2 − klemensinden yıldız barasına bağla; − damarının yıldız ucu 5 cm 18 AWG siyah ara parçaya lehimli, ara parça kırmızı pabuçla yıldız barasının 5 numaralı saplamasına. Bağlamadan önce modülün üstündeki IN2 + / IN2 − yazısını oku: ters bağlanan G22'de giriş LED'i yanmaz, bara gerilimliyken PC817 #2 (GPIO5) LOW'a düşmez ve ESP32 devreye almada hata verir; modülün girişinde ters gerilim koruması olup olmadığı belgede yok (kablajda teyit), ters bağlıyken enerji verme. Karede yer: PC817 modülü arayüz kartının üstünde, arayüz kartı elektronik katında önden bakınca solda; anahtarlı bara güç panelinde, tutucusuyla karede görünür (B5a); G22'nin şeması onun 4 numaralı saplamasından başlar.",
+"kamera": [
+0.35,
+1.0,
+0.7
+],
+"saydam": [
+"p0005"
+],
 "demet": [
 "taban (K1)"
 ],
@@ -10399,24 +10586,40 @@
 13
 ],
 "ev": [],
-"uc_yok": [
+"uc": [
 {
+"n": 1,
+"id": "p1110",
 "ad": "Anahtarlı bara",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
 "kablo": [
 "G22"
-]
+],
+"ip": [
+0.0,
+184.5,
+-115.0
+],
+"karede": true
 },
+{
+"n": 2,
+"id": "p1085",
+"ad": "Yıldız barası",
+"kablo": [
+"G22"
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
+}
+],
+"uc_yok": [
 {
 "ad": "PC817 modülü",
 "neden": "bu kadrajın dışında",
-"kablo": [
-"G22"
-]
-},
-{
-"ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
 "kablo": [
 "G22"
 ]
@@ -10428,17 +10631,7 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG): kutudan, B5a'da güç paneline takılan göğüs ekranı regülatörünün girişine (K52 a); G20'nin iki ucu da panelde, göğüs regülatörünün direğe çıkan çıkışı K2'de. G17, G18, G20 ve A01'in kutu ucunu kendi yuvasının çıkışına bağla (G17 F3, G18 F4, A01 F5, G20 F6); G17, G18 ve G20'nin − ucunu yıldız barasına: G17 ve G18 4 numaralı, G20 5 numaralı saplamaya (G18'in öbür ucu B3'te XL4016 çevreye bağlandı). G20'nin regülatör ucunu regülatörün giriş klemensine bağla (F6 çıkışı → IN+, IN− → GND; kart üstü IN+ / IN− yazısına göre). Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre); çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır. A01'in çizgisi alt adım 17.8'in, G17'ninki alt adım 32.3'ün, göğüs ekranı hattının şeması alt adım 32.7'nin karesinde.",
-"demet": [
-"taban (K1)",
-"taban alt kat",
-"boyun",
-"etek (F1)"
-],
-"ref": [
-"p1188"
-],
-"ev": [],
+"is_": "Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG): kutudan, B5a'da güç paneline takılan göğüs ekranı regülatörünün girişine (K52 a); G20'nin iki ucu da panelde, göğüs regülatörünün direğe çıkan çıkışı K2'de. G17, G18, G20 ve A01'in kutu ucunu kendi yuvasının çıkışına bağla (G17 F3, G18 F4, A01 F5, G20 F6); G17, G18 ve G20'nin − ucunu yıldız barasına: G17 ve G18 4 numaralı, G20 5 numaralı saplamaya (G18'in öbür ucu B3'te XL4016 çevreye bağlandı). G20'nin regülatör ucunu regülatörün giriş klemensine bağla (F6 çıkışı → IN+, IN− → GND; kart üstü IN+ / IN− yazısına göre). Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre; yıldız barasının 4 numaralı saplamasından geçer, − damarı orada ayrılır); çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır. A01'in çizgisi alt adım 17.8'in, G17'ninki alt adım 32.3'ün, göğüs ekranı hattının şeması alt adım 32.7'nin karesinde.",
 "odak": [
 "p1019",
 "p1020",
@@ -10454,8 +10647,18 @@
 "p1030",
 "p1031",
 "p1071",
-"p1188"
+"p1234"
 ],
+"demet": [
+"taban (K1)",
+"taban alt kat",
+"boyun",
+"etek (F1)"
+],
+"ref": [
+"p1234"
+],
+"ev": [],
 "uc": [
 {
 "n": 1,
@@ -10484,15 +10687,20 @@
 75.0
 ],
 "karede": true
-}
-],
-"uc_yok": [
+},
 {
+"n": 3,
+"id": "p1085",
 "ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
 "kablo": [
 "G18"
-]
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
 }
 ]
 },
@@ -10507,7 +10715,7 @@
 "etek (F1)"
 ],
 "ref": [
-"p1189"
+"p1235"
 ],
 "ev": [],
 "uc": [
@@ -10527,7 +10735,7 @@
 },
 {
 "n": 2,
-"id": "p1085",
+"id": "p1131",
 "ad": "Arayüz kartı / PC817 modülü",
 "kablo": [
 "A03",
@@ -10601,7 +10809,7 @@
 "uc": [
 {
 "n": 1,
-"id": "p1085",
+"id": "p1131",
 "ad": "Arayüz kartı",
 "kablo": [
 "G19"
@@ -10629,7 +10837,7 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır. Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 taşıyıcısına. ESP32'nin direğe çıkan kablosu ESP32 USB'dir (U06, alt adım 32.4). Karede yer: ESP32 taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde.",
+"is_": "Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır. Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 taşıyıcısına. ESP32'nin direğe çıkan kablosu ESP32 USB'dir (U06, alt adım 32.4). Karede yer: ESP32 taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde. Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru).",
 "kamera": [
 -0.6,
 0.9,
@@ -10666,17 +10874,17 @@
 "p1003",
 "p1004",
 "p1005",
-"p1164",
-"p1168",
-"p1174"
+"p1210",
+"p1214",
+"p1220"
 ],
 "demet": [
 "taban elektronik katı",
 "taban sonar"
 ],
 "ref": [
-"p1190",
-"p1191"
+"p1236",
+"p1237"
 ],
 "sema": [
 17,
@@ -10689,7 +10897,7 @@
 "uc": [
 {
 "n": 1,
-"id": "p1163",
+"id": "p1209",
 "ad": "ESP32",
 "kablo": [
 "N01",
@@ -10720,7 +10928,7 @@
 },
 {
 "n": 3,
-"id": "p1085",
+"id": "p1131",
 "ad": "Arayüz kartı",
 "kablo": [
 "B01",
@@ -10752,7 +10960,7 @@
 },
 {
 "n": 5,
-"id": "p1174",
+"id": "p1220",
 "ad": "HC-SR04 sağ",
 "kablo": [
 "Q01"
@@ -10766,7 +10974,7 @@
 },
 {
 "n": 6,
-"id": "p1124",
+"id": "p1170",
 "ad": "PCA9685",
 "kablo": [
 "Q01",
@@ -10782,7 +10990,7 @@
 },
 {
 "n": 7,
-"id": "p1168",
+"id": "p1214",
 "ad": "HC-SR04 orta",
 "kablo": [
 "Q02"
@@ -10796,7 +11004,7 @@
 },
 {
 "n": 8,
-"id": "p1164",
+"id": "p1210",
 "ad": "HC-SR04 sol",
 "kablo": [
 "Q03"
@@ -10831,7 +11039,7 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür (yukarısı K2'de, direk arka yüzü). Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır. Yukarısı K2'de. Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde. Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).",
+"is_": "Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür (yukarısı K2'de, direk arka yüzü). Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır. Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde. Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).",
 "kamera": [
 0.3,
 1.0,
@@ -10851,32 +11059,32 @@
 "p1055",
 "p1056",
 "p1057",
-"p1124",
-"p1125",
-"p1126",
-"p1127",
-"p1128",
-"p1129",
-"p1130",
-"p1131",
-"p1132",
-"p1133",
-"p1134",
-"p1135",
-"p1136",
-"p1150",
-"p1151",
-"p1152",
-"p1153",
-"p1154",
-"p1155",
-"p1156",
-"p1157",
-"p1158",
-"p1159",
-"p1160",
-"p1161",
-"p1162"
+"p1170",
+"p1171",
+"p1172",
+"p1173",
+"p1174",
+"p1175",
+"p1176",
+"p1177",
+"p1178",
+"p1179",
+"p1180",
+"p1181",
+"p1182",
+"p1196",
+"p1197",
+"p1198",
+"p1199",
+"p1200",
+"p1201",
+"p1202",
+"p1203",
+"p1204",
+"p1205",
+"p1206",
+"p1207",
+"p1208"
 ],
 "demet": [
 "taban elektronik katı",
@@ -10891,7 +11099,7 @@
 "uc": [
 {
 "n": 1,
-"id": "p1124",
+"id": "p1170",
 "ad": "PCA9685",
 "kablo": [
 "P03"
@@ -12021,7 +12229,7 @@
 "no": "29",
 "faz": "Kafa",
 "baslik": "Tezgâh: kafa içi (Pi 5, 5 V çeviriciler)",
-"is_": "Kafa iskeletinin (tabla + yanaklar) üstüne, tezgâhta:\n1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki bugün modelde ve BOM'da yok, sonraki CAD paketinde eklenecek (K51 a). TVS'ler tek yönlü; gövdedeki renkli bant katot ucudur (Vishay P6KE veri sayfası; `planlama/adim3/kablolar.json` tvs). Her P6KE6V8A'yı çeviricinin çıkış uçlarına lehimle: D24V50F5'te katot (bantlı uç) +5 V'a, anot GND'ye, SY8205'te katot (bantlı uç) +5 V'a, anot GND'ye. Takmadan önce gövde baskısını oku: sonu yalnız A (ör. P6KE18A) tek yönlüdür, renkli bandı katottur; sonu CA (ör. P6KE18CA) çift yönlüdür, bandı yoktur (Vishay P6KE veri sayfası). CA baskılı ya da bantsız TVS'i takma (kablajda teyit).\nKafa giriş kartı (P6KE18A üstünde küçük pertinaks parçası): P6KE18A'yı kartın + ve − uçları arasına lehimle, katot (bantlı uç) +12 V ucuna, anot GND'ye; baskısını ve bandını madde 2'deki gibi oku (kablajda teyit). Üç adet 2 pin 5,08 mm vidalı klemens; + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (K01 sonlandırması) lehimli (delikli plaket pedi F3 5 A akım yolu değil). Girişe K2'de kafa 12 V çifti (G17) gelir. Kartın çıkış klemenslerinden D24V50F5'in girişine (K01) ve SY8205'in girişine (K02) birer çift bağla, 18 AWG. D24V50F5 → Pi USB-C (K03, 18 AWG). PAM8403'ün 5 V'u da D24V50F5'ten (K05, E4; karar K10 a, masa denemesi KT1, geçmezse SY8205). İnce telli uç klemense kalaylanmadan, bükülerek girer (yüksük varsa yüksük).\n3. 625ZZ rulmanını sol yanağın yuvasına pres et (tek parça; modelde iç ve dış bilezik ayrı çizili). Tilt hornu bu adımda yok: E2'de servoya takıldı, kafa E3'te ona iner (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).\nKafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te (USB ses kartı kablajdan çıktı: yedek, takılmaz; E4).",
+"is_": "Kafa iskeletinin (tabla + yanaklar) üstüne, tezgâhta:\n1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). D24V50F5'i pin kenarı TVS'ye bakacak şekilde tak; pin sırası ürün sayfasında yok, ürün gelince kart üstündeki yazıyla doğrula. Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki ve D24V50F5 → Pi hattındaki, ikisi de modelde ve BOM'da var (K51 a). TVS'ler tek yönlü; gövdedeki renkli bant katot ucudur (Vishay P6KE veri sayfası; `planlama/adim3/kablolar.json` tvs). Her P6KE6V8A'yı çeviricinin çıkış uçlarına lehimle: D24V50F5'te katot (bantlı uç) +5 V'a, anot GND'ye, SY8205'te katot (bantlı uç) +5 V'a, anot GND'ye. Takmadan önce gövde baskısını oku: sonu yalnız A (ör. P6KE18A) tek yönlüdür, renkli bandı katottur; sonu CA (ör. P6KE18CA) çift yönlüdür, bandı yoktur (Vishay P6KE veri sayfası). CA baskılı ya da bantsız TVS'i takma (kablajda teyit).\nKafa giriş kartı (P6KE18A üstünde küçük pertinaks parçası): P6KE18A'yı kartın + ve − uçları arasına lehimle, katot (bantlı uç) +12 V ucuna, anot GND'ye; baskısını ve bandını madde 2'deki gibi oku (kablajda teyit). Üç adet 2 pin 5,08 mm vidalı klemens; + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (K01 sonlandırması) lehimli (delikli plaket pedi F3 5 A akım yolu değil). Girişe K2'de kafa 12 V çifti (G17) gelir. Kartın çıkış klemenslerinden D24V50F5'in girişine (K01) ve SY8205'in girişine (K02) birer çift bağla, 18 AWG. D24V50F5 → Pi USB-C (K03, 18 AWG). PAM8403'ün 5 V'u da D24V50F5'ten (K05, E4; karar K10 a, masa denemesi KT1, geçmezse SY8205). İnce telli uç klemense kalaylanmadan, bükülerek girer (yüksük varsa yüksük).\n3. 625ZZ rulmanını sol yanağın yuvasına pres et (tek parça; modelde iç ve dış bilezik ayrı çizili). Tilt hornu bu adımda yok: E2'de servoya takıldı, kafa E3'te ona iner (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).\nKafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te (USB ses kartı kablajdan çıktı: yedek, takılmaz; E4).",
 "baglanti_md": "Pi: 4 × M2,5×8 pirinç burç + 4 × M2,5×5 (üst) + 4 × M2,5×8 DIN 912 (alt); D24V50F5, SY8205, TVS: 1 mm çift taraflı köpük bant + kablo bağı; 625ZZ pres geçme. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
 "alet": "alyan 2, yan keski",
 "erisim": "düz",
@@ -12080,11 +12288,12 @@
 "tur": "Satin",
 "malzeme": "Köpük",
 "r": "satin",
-"adet": 3,
+"adet": 4,
 "ids": [
 "p0816",
 "p0818",
-"p0820"
+"p0820",
+"p0822"
 ],
 "ad": "Köpük bant"
 },
@@ -12120,6 +12329,17 @@
 "p0821"
 ],
 "ad": "TVS P6KE6V8A kafa ekranı"
+},
+{
+"kod": "P6KE6V8A TVS (Pi 5 V hattı, D24V50F5 çıkışı, K51 a)",
+"tur": "Satin",
+"malzeme": "-",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p0823"
+],
+"ad": "TVS P6KE6V8A Pi hattı"
 },
 {
 "kod": "625ZZ rulman 5x16x5",
@@ -12173,13 +12393,13 @@
 ],
 "not_": [
 "İki 5 V hattı birbirine köprülenmez: D24V50F5 Pi'yi, SY8205 kafa ekranını besler. Touch USB uyarısı E4'te (`planlama/adim3/elektrik.md`)",
-"SY8205 ve QLED hattı P6KE6V8A'sının tabladaki yeri modelde var; Pi hattı P6KE6V8A'sı modelde yok, yeri doğrulanmadı. TVS yönü kayıttan (`planlama/adim3/kablolar.json` tvs): Vishay P6KE serisi veri sayfası (belge 88369) tek yönlü tipte renkli bandın katot olduğunu, çift yönlü tipte (CA soneki) işaret olmadığını yazıyor. Satın alınan parçaların üreticisi bilinmiyor: teslimde gövde baskısı (sonu yalnız A ya da CA) ve bant okunur (kablajda teyit)",
+"SY8205'in ve iki P6KE6V8A'nın tabladaki yeri modelde var (Pi hattınınki D24V50F5'in önünde, K51 a); çeviricilerin çıkış uçlarının kart üstündeki yeri modelde yok (kart zarf olarak çizili): lehim yeri kart yazısıyla teyit. TVS yönü kayıttan (`planlama/adim3/kablolar.json` tvs): Vishay P6KE serisi veri sayfası (belge 88369) tek yönlü tipte renkli bandın katot olduğunu, çift yönlü tipte (CA soneki) işaret olmadığını yazıyor. Satın alınan parçaların üreticisi bilinmiyor: teslimde gövde baskısı (sonu yalnız A ya da CA) ve bant okunur (kablajda teyit)",
 "QLED akımı 0,9 A varsayım, ölçülmedi: ilk açılışta ölçülür (teslimde bakılacaklar, `planlama/d158/kablo-tablosu-gunluk.md` §16.7)",
 "Kafa giriş kartının klemenslerine ve D24V50F5 / SY8205 klemenslerine giren uçlar teslimde takılıp çekilerek denenir (kesit aralığı belgede yok; `planlama/adim3/kablolar.md` K02, G17 teyit)"
 ],
 "kamera": null,
 "m6": [],
-"sure_dk": 24,
+"sure_dk": 26,
 "sure_tahmini": true,
 "kablolama": false,
 "ev": [
@@ -12354,7 +12574,7 @@
 "no": "31",
 "faz": "Kafa",
 "baslik": "Kafa kabukları + yüz ekranı, kamera, ses",
-"is_": "Kafa robotta, tilt hornunda (E3). Sıra: sağ arka kabuk → sol arka kabuk → tabla cıvataları → yüz kabuğu → kablolar → dikişler. Yüz kabuğu önce takılırsa tabla cıvatalarına alet sığar ama el kafanın dışından ulaşamaz (sıra denetimi, `rehber_sira.py`). Kaynakta sıra yok, montaj mantığından ve ölçümden: doğrulanmadı.\n1. Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara 3 × M2×8 PT ile vidala (kabuk kafadayken tavan vidalarına el ulaşmaz). Masada, sol arka kabuk: PAM8403 yan duvara köpük bant + kablo bağıyla. USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan kalan görüntüdür, uygulanmaz. Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1). Kabukları kafanın arkasında tut, kabloları kafanın açık ön tarafından tak: ReSpeaker → Pi USB 1 (U01); ses yolu ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; bölücü PAM giriş pedlerinin dibinde, kablo üstünde, makaronla); PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunu bağlamadan önce 3,5 mm fişin kılıfı ile ReSpeaker USB GND arasında süreklilik ölç (≤ 1 Ω; KT2). Pi USB 2 boş kalır. Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).\n2. Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla.\n3. Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki Ø9 delikte. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. 4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.\n4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi (C01) → Pi; QLED HDMI (H01; 30 cm şerit, Pi micro HDMI 0), Power (K04; SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (U04; Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest).\n5. Dikişler: boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
+"is_": "Kafa robotta, tilt hornunda (E3). Sıra: sağ arka kabuk → sol arka kabuk → tabla cıvataları → yüz kabuğu → kablolar → dikişler. Yüz kabuğu önce takılırsa tabla cıvatalarına alet sığar ama el kafanın dışından ulaşamaz (sıra denetimi, `rehber_sira.py`). Kaynakta sıra yok, montaj mantığından ve ölçümden: doğrulanmadı.\n1. Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara 3 × M2×8 PT ile vidala (kabuk kafadayken tavan vidalarına el ulaşmaz). Masada, sol arka kabuk: PAM8403 yan duvara köpük bant + kablo bağıyla. USB ses kartı takılmaz, çizimde de yok: kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1). KT2 geçmezse kartla birlikte siparişten çıkarılan ~30 cm USB-A uzatma ve L USB-A dirsek de gerekir (`planlama/adim3/kablolama-on-kararlar.md` § 5, § 17; alımları Ahmet'e sorulacak). Kabukları kafanın arkasında tut, kabloları kafanın açık ön tarafından tak: ReSpeaker → Pi USB 1 (U01); ses yolu ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; bölücü PAM giriş pedlerinin dibinde, kablo üstünde, makaronla); PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunu bağlamadan önce 3,5 mm fişin kılıfı ile ReSpeaker USB GND arasında süreklilik ölç (≤ 1 Ω; KT2). Pi USB 2 boş kalır. Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır, bu sırayla takmak kolaydır (sol önce takılırsa sağ yalnız sağdan, +x yönünde girer; giriş yolu ölçümü).\n2. Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla.\n3. Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki Ø9 delikte. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. 4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.\n4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi (C01) → Pi; QLED HDMI (H01; 30 cm şerit, Pi micro HDMI 0), Power (K04; SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (U04; Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest).\n5. Dikişler: boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
 "baglanti_md": "1,58 m: tırnak 4 × M3×6 ISO 7380 → ısıl gömme + 4 köpük bant (1 mm); kamera 4 × M2×8 PT; ReSpeaker 3 × M2×8 PT (vida tipi varsayım); PAM8403 köpük bant + kablo bağı; tabla → arka kabuk rafı 4 × M3×10 DIN 912 → ısıl gömme; kabuk dikişi 9 cıvata → ısıl gömme: 7 × M3×6 ISO 7380 + 2 × M3×5 ISO 7380 (havşalı tepe dikişi). M6'daki M3×8 + vizör eski, BOM'da vizör yok",
 "alet": "alyan 2 / 2,5, PH0 / PH1 (M2 PT vidalar), yan keski",
 "erisim": "Tabla cıvataları: L alyanla önden, yüz tarafı açıkken (alet yolu 63,5 mm boş; 4/4 ulaşılır, el payı 12, 15 ve 20 mm'de). Eski sırada (yüz kabuğu önce) 20 mm el payında 4/4 kapalı; 15 mm ve altında eski sıra da açık görünüyor, fark 20 mm el varsayımına dayanıyor. ReSpeaker, kamera ve tırnak vidaları masada, kabuk açıkken düz; dikiş cıvataları dışarıdan düz (sıra denetimi). Giriş yolu: sağ arka kabuk arkadan, sol arka kabuk arkadan ya da soldan, yüz grubu önden serbest (temas eden yüzler çarpışma sayılmadı). Servis arka kabuktan (125 cm notu; 1,58 m'de doğrulanmadı)",
@@ -12399,23 +12619,11 @@
 "tur": "Satin",
 "malzeme": "Köpük",
 "r": "satin",
-"adet": 2,
-"ids": [
-"p0822",
-"p0824"
-],
-"ad": "Köpük bant"
-},
-{
-"kod": "USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye; ölçü varsayım, fotoğraftan)",
-"tur": "Satin",
-"malzeme": "-",
-"r": "satin",
 "adet": 1,
 "ids": [
-"p0823"
+"p0824"
 ],
-"ad": "USB ses kartı (yedek, takılmaz)"
+"ad": "Köpük bant (PAM8403 amfi)"
 },
 {
 "kod": "PAM8403 2 x 3 W amfi kartı (ölçü tahmin)",
@@ -12634,14 +12842,14 @@
 "not_": [
 "İki 5 V hattı birbirine köprülenmez. QLED'in Touch micro USB'si Pi'ye veri için gider; Touch VBUS ekranın içinde Power girişine bağlıysa Pi'nin 5 V'u ile SY8205 çıkışı Touch kablosu üzerinden birleşir. Bu iç bağ doğrulanmadı: Touch'ı Pi'ye takmadan multimetreyle Power ile Touch VBUS arasına bak; bağlıysa takma, çözüm o ölçümle seçilir (`planlama/adim3/elektrik.md`)",
 "Montaj sırası kaynakta yok (montaj mantığından), doğrulanmadı. Boyun uçları K2'de geldiği için arka kabuk dikişleri K2'den sonra sıkılır",
-"Ses yolu (14.11, `planlama/adim3/kablolama-on-kararlar.md` §5): ReSpeaker'ın kendi 3,5 mm çıkışı → bölücü → PAM8403; USB ses kartı kablajdan çıktı, siparişte kalır, takılmaz (yedek): masa denemesi KT2 geçmezse Pi USB 2'ye takılır ve 04.11 düzeni geri gelir. Modelde kart hâlâ çizili. Alt direnç KT2 ölçümüyle seçilir (başlangıç 2,2 kΩ)",
+"Ses yolu (14.11, `planlama/adim3/kablolama-on-kararlar.md` §5): ReSpeaker'ın kendi 3,5 mm çıkışı → bölücü → PAM8403; USB ses kartı kablajdan çıktı, siparişte kalır, takılmaz (yedek): masa denemesi KT2 geçmezse Pi USB 2'ye takılır ve 04.11 düzeni geri gelir. Kart P10.7b2j'de modelden çıkarıldı, çizimde yok; KT2 geçmezse yeri yeniden çizilir. Alt direnç KT2 ölçümüyle seçilir (başlangıç 2,2 kΩ)",
 "PAM8403'ün 5 V'u D24V50F5'ten (K10 a; KT1 masa denemesi, geçmezse SY8205). PAM8403 ölçüsü tahmini; ReSpeaker vida tipi ve kütlesi varsayım",
 "ReSpeaker çalma akışı en çok 16 kHz: Efe konuşma sesi için kabul etti, 1 kanallı firmware (pano cevabı, 14.11)",
 "Kafa ekranının kütlesi (600 g) ve akımı (0,9 A) varsayım, ölçülmedi"
 ],
 "kamera": null,
 "m6": [],
-"sure_dk": 49,
+"sure_dk": 48,
 "sure_tahmini": true,
 "kablolama": false,
 "sira": [
@@ -12652,17 +12860,16 @@
 "p:2",
 "p:3",
 "p:4",
-"p:5",
 "b:2",
 "b:3",
+"p:5",
 "p:6",
-"p:7",
 "b:4",
 "b:5",
+"p:7",
 "p:8",
 "p:9",
 "p:10",
-"p:11",
 "b:6",
 "b:7",
 "b:8"
@@ -12696,7 +12903,7 @@
 "tezgah": "",
 "bag": "arka_sag",
 "satir": [],
-"is_": "Kabuğu kafanın arkasında tut, ReSpeaker kablosunu kafanın açık ön tarafından Pi USB 1'e tak. Sonra sağ kabuğu arkadan (−z) yerine koy: dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).",
+"is_": "Kabuğu kafanın arkasında tut, ReSpeaker kablosunu kafanın açık ön tarafından Pi USB 1'e tak. Sonra sağ kabuğu arkadan (−z) yerine koy: dikey dikişte sağ kabuğun bindirmesi solun altında kalır, bu yüzden sağı soldan önce takmak kolaydır (sol önce takılırsa sağ yalnız sağdan, +x yönünde girer; giriş yolu ölçümü).",
 "kamera": [
 -0.3,
 -0.3,
@@ -12715,17 +12922,16 @@
 ]
 },
 {
-"ad": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
+"ad": "Masada: sol arka kabuk + PAM8403",
 "tezgah": "arka_sol",
 "bag": "",
 "satir": [
 "p:2",
 "p:3",
 "p:4",
-"p:5",
 "b:2"
 ],
-"is_": "Masada, sol arka kabuk: PAM8403'ü yan duvarın iç yüzüne köpük bant + kablo bağıyla tut. USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan kalan görüntüdür, uygulanmaz. Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1).",
+"is_": "Masada, sol arka kabuk: PAM8403'ü yan duvarın iç yüzüne köpük bant + kablo bağıyla tut. USB ses kartı takılmaz, çizimde de yok: kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1).",
 "kamera": [
 -0.85,
 0.62,
@@ -12733,13 +12939,10 @@
 ],
 "saydam": [
 "p0753",
-"p0822",
-"p0823",
 "p0824",
 "p0825"
 ],
 "gizli_ok": {
-"Köpük bant (yedek USB ses": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
 "Köpük bant (PAM": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
 },
 "ev": [
@@ -12751,7 +12954,7 @@
 "tezgah": "",
 "bag": "arka_sol",
 "satir": [],
-"is_": "Kabloları kafanın açık ön tarafından tak: ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; önce kılıf ↔ ReSpeaker USB GND sürekliliği, KT2), PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunun çizimi gösterim şemasıdır: bölücünün yeri ve varlığı KT2'ye bağlı, ReSpeaker jakının yeri tahmin. Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü). Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım).",
+"is_": "Kabloları kafanın açık ön tarafından tak: ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; önce kılıf ↔ ReSpeaker USB GND sürekliliği, KT2), PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunun çizimi gösterim şemasıdır: bölücünün yeri ve varlığı KT2'ye bağlı, ReSpeaker jakının yeri tahmin. Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü).",
 "kamera": [
 0.55,
 0.5,
@@ -12857,8 +13060,8 @@
 "tezgah": "yuz",
 "bag": "",
 "satir": [
+"p:5",
 "p:6",
-"p:7",
 "b:4",
 "b:5"
 ],
@@ -12894,7 +13097,7 @@
 "tezgah": "yuz",
 "bag": "",
 "satir": [
-"p:8"
+"p:7"
 ],
 "is_": "10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne arkadan yasla, cep duvarı yerini gösterir.",
 "kamera": [
@@ -12912,9 +13115,9 @@
 "tezgah": "yuz",
 "bag": "",
 "satir": [
+"p:8",
 "p:9",
 "p:10",
-"p:11",
 "b:6"
 ],
 "is_": "4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.",
@@ -13125,14 +13328,14 @@
 "kol sol"
 ],
 "ref": [
-"p1184",
-"p1186"
+"p1230",
+"p1232"
 ],
 "ev": [],
 "uc": [
 {
 "n": 1,
-"id": "p1098",
+"id": "p1144",
 "ad": "Dağıtım kartı A",
 "kablo": [
 "S01",
@@ -13163,7 +13366,7 @@
 },
 {
 "n": 3,
-"id": "p1111",
+"id": "p1157",
 "ad": "Dağıtım kartı B",
 "kablo": [
 "S05",
@@ -13271,7 +13474,7 @@
 "taban (K1)"
 ],
 "ref": [
-"p1185"
+"p1231"
 ],
 "ev": [],
 "uc": [
@@ -13318,7 +13521,7 @@
 "boyun"
 ],
 "ref": [
-"p1187"
+"p1233"
 ],
 "ev": [],
 "uc": [
@@ -13335,19 +13538,26 @@
 -203.0
 ],
 "karede": true
+},
+{
+"n": 2,
+"id": "p1085",
+"ad": "Yıldız barası",
+"kablo": [
+"G17"
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
 }
 ],
 "uc_yok": [
 {
 "ad": "Kafa giriş klemensi",
 "neden": "klemens modelde yok",
-"kablo": [
-"G17"
-]
-},
-{
-"ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
 "kablo": [
 "G17"
 ]
@@ -13374,7 +13584,7 @@
 "uc": [
 {
 "n": 1,
-"id": "p1163",
+"id": "p1209",
 "ad": "ESP32",
 "kablo": [
 "U06"
@@ -13527,6 +13737,22 @@
 4
 ],
 "ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1085",
+"ad": "Yıldız barası",
+"kablo": [
+"G20"
+],
+"ip": [
+0.0,
+184.5,
+-55.0
+],
+"karede": true
+}
+],
 "uc_yok": [
 {
 "ad": "Sigorta kutusu",
@@ -13541,13 +13767,6 @@
 "kablo": [
 "G20",
 "G21"
-]
-},
-{
-"ad": "Yıldız barası",
-"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
-"kablo": [
-"G20"
 ]
 },
 {
@@ -13660,7 +13879,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1178"
+"p1224"
 ],
 "ad": "Acil stop mantarı + bilezik"
 },
@@ -13671,7 +13890,7 @@
 "r": "satin",
 "adet": 1,
 "ids": [
-"p1179"
+"p1225"
 ],
 "ad": "Acil stop kontak gövdesi (1NC)"
 },
@@ -13923,7 +14142,9 @@
 ],
 "kontrol": [
 "Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak",
-"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A, standart), F4 (5 A, XL4016 çevre 5 V: ESP32; çevre çıkışındaki 2 A mini hat sigortası da) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), F6 (3 A, göğüs ekranı), XL4016 hat sigortaları (mini; A 7,5 A, B 7,5 A, C 5 A), PC817 #2 algı telinin (G22) 2 A mini sigortası ve şarj kolunun 7,5 A mini sigortası takılı değil (`planlama/adim3/elektrik.md` sigorta listesi; kutudakiler standart bıçak, hat yuvalarındakiler mini): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Şarj kolu ana sigortanın yük tarafında, ana anahtardan önce: sigortası takılı olsaydı ana anahtar kapalıyken de gerilimli olurdu. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: röleleri süren pinler GPIO4 (K1) ve GPIO19 (K2), açılışta LOW ve taban 2,2 kΩ ile GND'ye çekili (E9); bilinmeyen bir program bu pinleri sürebilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik; akü en çok 14,6 V), kırmızı ucu V soketine tak: 10 A soketinde kalırsa multimetre bu noktayı GND'ye bağlar ve F5 2 A atar (`planlama/d158/testler/00-genel.md` multimetre kuralı). Kırmızı ucu arayüz kartındaki PC817 #1 giriş klemensinin + ucuna (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki yıldız barasının (GND, M5 saplama) akü dönüşü saplamasına (3 numaralı) bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı. Ölçü noktaları karede görünmez: PC817 #1 klemensi ve akü ölçüm bölücüsü arayüz kartının üstünde (elektronik katı, robota önden bakınca solda; kart üstü klemensler modelde çizili değil), yıldız barası güç panelinde (arka kat; bara modelde yok)",
+"İlk enerjiden önce, akü XT60'tan ayrık ve ana anahtar kapalıyken: iki baranın dokuz M5 somununu yeniden sık (K1 \"Toprak ve iki bara\"; tutucu PETG, gevşer); saat / yüzük çıkar, lokma anahtarı iki baraya birden değmesin. İlk haftanın sonunda aynı koşullarla bir kez daha. Kabuk ve etek takılıyken panele üstten erişim ölçülmedi, doğrulanmadı",
+"İlk enerjiden önce ESP32 DevKit'in yönüne bak: micro USB portu robota önden bakınca sağda, WROOM modülü solda (B6a). Ters takılıysa enerji verme: kart 180° dönünce taşıyıcının 5 V hattı bir GPIO pinine gelir, F4 takılınca kart zarar görür. Kabuk ve etek takılıyken ESP32'nin üstten görülebildiği ölçülmedi, doğrulanmadı; asıl yön denetimi B6a'da",
+"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A, standart), F4 (5 A, XL4016 çevre 5 V: ESP32; çevre çıkışındaki 2 A mini hat sigortası da) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), F6 (3 A, göğüs ekranı), XL4016 hat sigortaları (mini; A 7,5 A, B 7,5 A, C 5 A), PC817 #2 algı telinin (G22) 2 A mini sigortası ve şarj kolunun 7,5 A mini sigortası takılı değil (`planlama/adim3/elektrik.md` sigorta listesi; kutudakiler standart bıçak, hat yuvalarındakiler mini): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Şarj kolu ana sigortanın yük tarafında, ana anahtardan önce: sigortası takılı olsaydı ana anahtar kapalıyken de gerilimli olurdu. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: röleleri süren pinler GPIO4 (K1) ve GPIO19 (K2), açılışta LOW ve taban 2,2 kΩ ile GND'ye çekili (E9); bilinmeyen bir program bu pinleri sürebilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik; akü en çok 14,6 V), kırmızı ucu V soketine tak: 10 A soketinde kalırsa multimetre bu noktayı GND'ye bağlar ve F5 2 A atar (`planlama/d158/testler/00-genel.md` multimetre kuralı). Kırmızı ucu arayüz kartındaki PC817 #1 giriş klemensinin + ucuna (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki yıldız barasının (GND, M5 saplama) akü dönüşü saplamasına (3 numaralı) bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı. Ölçü noktaları karede görünmez: PC817 #1 klemensi ve akü ölçüm bölücüsü arayüz kartının üstünde (elektronik katı, robota önden bakınca solda; kart üstü klemensler modelde çizili değil), yıldız barası güç panelinde (arka kat; tutucusuyla karede, B5a)",
 "Akü ölçüm teli (G07), aşama 1'de mantar ölçümünden sonra: ana anahtar kapalı, akü XT60'tan ayrıkken multimetreyi DC V kademesinde bırak (kırmızı uç V soketinde). Önce akünün kendi gerilimini oku: akü XT60'tan ayrıkken kırmızı ucu akünün XT60'ındaki (akü tarafı) + kontağına, siyah ucu − kontağına değdir (bir uç iki kontağa birden değmesin, iki uç birbirine değmesin), okunanı not al: bu akü gerilimidir. Akü gerilimi 12,8–14,4 V dışındaysa burada dur: bölücü ölçümüne geçme, ana anahtarı açma, aşama 2'ye (F5) geçme; akü 12,8–14,4 V aralığına gelince bu maddeyi baştan yinele (akünün şarjı bu adım için kaynakta yok, doğrulanmadı)",
 "Akü gerilimi 12,8–14,4 V içindeyse: kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart ucu), siyah ucu yıldız barasının akü dönüşü (G05) saplamasına bağla. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: okunan gerilim akü geriliminin bölücü oranı (0,1525) katıdır: akü 12,8–14,4 V iken bölücünün orta noktasında 1,95–2,20 V okunur (`planlama/adim3/elektrik.md` E2). Bölücü okumasını not al: not aldığın akü gerilimiyle birlikte ESP32'nin bir kez yapılan multimetre kalibrasyonunda kullanılır (E2); beklenen bölücü okuması = akü gerilimi × bölücü oranı (0,1525); bu açıklamadır, karar ölçütü değildir (dirençlerin toleransı kaynakta yok, kablajda teyit). Karar yalnız banttan: okuma 1,95–2,20 V içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök",
 "Bölücü okuması 1,95–2,20 V aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Akü gerilimi 12,8–14,4 V içinde olduğu için bölücü bozuk: hiç gerilim okunmadıysa G07'nin pabucu, direnci ya da kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış. Akü ayrıkken bölücüyü kontrol et: G07'nin direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, bölücünün alt direnci. Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücüdeki kusuru düzeltmeden ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme. Kusuru düzeltince ölçümü baştan, akünün kendi gerilimini okuduğun maddeden yinele. Listedeki yerlerde kusur bulunmazsa da devam etme: akü gerilimini ve bölücü okumasını kayda yaz (tolerans kaynakta yok)"
@@ -16590,11 +16811,11 @@
 ],
 "sema_yalniz": true,
 "ev": [],
-"iz": [
-46
-],
 "sema": [
 45
+],
+"iz": [
+46
 ]
 },
 {
@@ -16644,11 +16865,11 @@
 ],
 "sema_yalniz": true,
 "ev": [],
-"iz": [
-45
-],
 "sema": [
 46
+],
+"iz": [
+45
 ]
 },
 {
@@ -37696,8 +37917,8 @@
 "h": "p0752",
 "gr": "#dba838",
 "ip": [
--8.0,
-1538.9,
+-5.0,
+1554.9,
 -60.8
 ]
 },
@@ -37721,8 +37942,8 @@
 "d": 25.0,
 "gr": "#80858f",
 "ip": [
--8.0,
-1538.9,
+-5.0,
+1554.9,
 -66.6
 ]
 },
@@ -38245,7 +38466,7 @@
 "ip": [
 85.0,
 1384.0,
-58.2
+58.1
 ]
 },
 {
@@ -39002,42 +39223,52 @@
 },
 {
 "id": "p0822",
-"ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
+"ad": "Köpük bant (TVS Pi hattı)",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
 "kod": "Çift taraflı köpük bant 1 mm (VHB)",
 "tur": "Satin",
 "malzeme": "Köpük",
 "r": "satin",
-"a": 31,
-"b": 31,
-"t": null,
+"a": 29,
+"b": 30,
+"t": "kafa",
 "u": [
-1.0,
 0.0,
+1.0,
 0.0
 ],
 "d": 40.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
 "gr": "#212124"
 },
 {
 "id": "p0823",
-"ad": "USB ses kartı (yedek, takılmaz)",
+"ad": "TVS P6KE6V8A Pi hattı",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
-"kod": "USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye; ölçü varsayım, fotoğraftan)",
+"kod": "P6KE6V8A TVS (Pi 5 V hattı, D24V50F5 çıkışı, K51 a)",
 "tur": "Satin",
 "malzeme": "-",
 "r": "satin",
-"a": 31,
-"b": 31,
-"t": null,
+"a": 29,
+"b": 30,
+"t": "kafa",
 "u": [
-1.0,
 0.0,
+1.0,
 0.0
 ],
 "d": 40.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
 "gr": "#1a7333"
 },
 {
@@ -45624,6 +45855,1380 @@
 },
 {
 "id": "p1085",
+"ad": "Bara tutucusu yıldız barası (GND) (5 saplama)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "Bara tutucusu yıldız barası (GND), PETG baskı (K64 a)",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 69.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#f58c21"
+},
+{
+"id": "p1086",
+"ad": "Bara cıvatası M5x25 DIN 933 (yıldız 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-50.0,
+208.3,
+-55.0
+]
+},
+{
+"id": "p1087",
+"ad": "Pul M5 (yıldız 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-50.0,
+190.0,
+-55.0
+]
+},
+{
+"id": "p1088",
+"ad": "Yaylı pul M5 (yıldız 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-50.0,
+191.1,
+-55.0
+]
+},
+{
+"id": "p1089",
+"ad": "Somun M5 (yıldız 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-50.0,
+193.7,
+-55.0
+]
+},
+{
+"id": "p1090",
+"ad": "Bara cıvatası M5x25 DIN 933 (yıldız 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-25.0,
+208.3,
+-55.0
+]
+},
+{
+"id": "p1091",
+"ad": "Pul M5 (yıldız 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-25.0,
+190.0,
+-55.0
+]
+},
+{
+"id": "p1092",
+"ad": "Yaylı pul M5 (yıldız 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-25.0,
+191.1,
+-55.0
+]
+},
+{
+"id": "p1093",
+"ad": "Somun M5 (yıldız 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-25.0,
+193.7,
+-55.0
+]
+},
+{
+"id": "p1094",
+"ad": "Bara cıvatası M5x25 DIN 933 (yıldız 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+0.0,
+208.3,
+-55.0
+]
+},
+{
+"id": "p1095",
+"ad": "Pul M5 (yıldız 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+0.0,
+190.0,
+-55.0
+]
+},
+{
+"id": "p1096",
+"ad": "Yaylı pul M5 (yıldız 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+0.0,
+191.1,
+-55.0
+]
+},
+{
+"id": "p1097",
+"ad": "Somun M5 (yıldız 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+0.0,
+193.7,
+-55.0
+]
+},
+{
+"id": "p1098",
+"ad": "Bara cıvatası M5x25 DIN 933 (yıldız 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+25.0,
+208.3,
+-55.0
+]
+},
+{
+"id": "p1099",
+"ad": "Pul M5 (yıldız 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+25.0,
+190.0,
+-55.0
+]
+},
+{
+"id": "p1100",
+"ad": "Yaylı pul M5 (yıldız 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+25.0,
+191.1,
+-55.0
+]
+},
+{
+"id": "p1101",
+"ad": "Somun M5 (yıldız 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+25.0,
+193.7,
+-55.0
+]
+},
+{
+"id": "p1102",
+"ad": "Bara cıvatası M5x25 DIN 933 (yıldız 5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+50.0,
+208.3,
+-55.0
+]
+},
+{
+"id": "p1103",
+"ad": "Pul M5 (yıldız 5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+50.0,
+190.0,
+-55.0
+]
+},
+{
+"id": "p1104",
+"ad": "Yaylı pul M5 (yıldız 5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+50.0,
+191.1,
+-55.0
+]
+},
+{
+"id": "p1105",
+"ad": "Somun M5 (yıldız 5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+50.0,
+193.7,
+-55.0
+]
+},
+{
+"id": "p1106",
+"ad": "Isıl gömme somun M3 (bara tutucusu yıldız x -60.0)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3 ısıl gömme somun",
+"tur": "Baglanti",
+"malzeme": "Pirinç",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 69.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"h": "p1085",
+"gr": "#dba838",
+"ip": [
+-60.0,
+182.3,
+-55.0
+]
+},
+{
+"id": "p1107",
+"ad": "Cıvata M3x10 ISO 7380 (bara tutucusu yıldız x -60.0)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3x10 ISO 7380",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+-0.0,
+-1.0,
+-0.0
+],
+"d": 29.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-60.0,
+172.9,
+-55.0
+]
+},
+{
+"id": "p1108",
+"ad": "Isıl gömme somun M3 (bara tutucusu yıldız x +60.0)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3 ısıl gömme somun",
+"tur": "Baglanti",
+"malzeme": "Pirinç",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 69.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"h": "p1085",
+"gr": "#dba838",
+"ip": [
+60.0,
+182.3,
+-55.0
+]
+},
+{
+"id": "p1109",
+"ad": "Cıvata M3x10 ISO 7380 (bara tutucusu yıldız x +60.0)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3x10 ISO 7380",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+-0.0,
+-1.0,
+-0.0
+],
+"d": 29.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+60.0,
+172.9,
+-55.0
+]
+},
+{
+"id": "p1110",
+"ad": "Bara tutucusu anahtarlı bara (+) (4 saplama)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "Bara tutucusu anahtarlı bara (+), PETG baskı (K64 a)",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 56.8,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#f58c21"
+},
+{
+"id": "p1111",
+"ad": "Bara cıvatası M5x25 DIN 933 (anahtarlı 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-37.5,
+208.3,
+-115.0
+]
+},
+{
+"id": "p1112",
+"ad": "Pul M5 (anahtarlı 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-37.5,
+190.0,
+-115.0
+]
+},
+{
+"id": "p1113",
+"ad": "Yaylı pul M5 (anahtarlı 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-37.5,
+191.1,
+-115.0
+]
+},
+{
+"id": "p1114",
+"ad": "Somun M5 (anahtarlı 1)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-37.5,
+193.7,
+-115.0
+]
+},
+{
+"id": "p1115",
+"ad": "Bara cıvatası M5x25 DIN 933 (anahtarlı 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-12.5,
+208.3,
+-115.0
+]
+},
+{
+"id": "p1116",
+"ad": "Pul M5 (anahtarlı 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-12.5,
+190.0,
+-115.0
+]
+},
+{
+"id": "p1117",
+"ad": "Yaylı pul M5 (anahtarlı 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-12.5,
+191.1,
+-115.0
+]
+},
+{
+"id": "p1118",
+"ad": "Somun M5 (anahtarlı 2)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-12.5,
+193.7,
+-115.0
+]
+},
+{
+"id": "p1119",
+"ad": "Bara cıvatası M5x25 DIN 933 (anahtarlı 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+12.5,
+208.3,
+-115.0
+]
+},
+{
+"id": "p1120",
+"ad": "Pul M5 (anahtarlı 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+12.5,
+190.0,
+-115.0
+]
+},
+{
+"id": "p1121",
+"ad": "Yaylı pul M5 (anahtarlı 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+12.5,
+191.1,
+-115.0
+]
+},
+{
+"id": "p1122",
+"ad": "Somun M5 (anahtarlı 3)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+12.5,
+193.7,
+-115.0
+]
+},
+{
+"id": "p1123",
+"ad": "Bara cıvatası M5x25 DIN 933 (anahtarlı 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+37.5,
+208.3,
+-115.0
+]
+},
+{
+"id": "p1124",
+"ad": "Pul M5 (anahtarlı 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 125 pul",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+37.5,
+190.0,
+-115.0
+]
+},
+{
+"id": "p1125",
+"ad": "Yaylı pul M5 (anahtarlı 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 127 yaylı pul (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+37.5,
+191.1,
+-115.0
+]
+},
+{
+"id": "p1126",
+"ad": "Somun M5 (anahtarlı 4)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M5 DIN 934 somun (takım)",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 25.0,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+37.5,
+193.7,
+-115.0
+]
+},
+{
+"id": "p1127",
+"ad": "Isıl gömme somun M3 (bara tutucusu anahtarlı x -47.5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3 ısıl gömme somun",
+"tur": "Baglanti",
+"malzeme": "Pirinç",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 56.8,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"h": "p1110",
+"gr": "#dba838",
+"ip": [
+-47.5,
+182.3,
+-115.0
+]
+},
+{
+"id": "p1128",
+"ad": "Cıvata M3x10 ISO 7380 (bara tutucusu anahtarlı x -47.5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3x10 ISO 7380",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+-0.0,
+-1.0,
+-0.0
+],
+"d": 29.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-47.5,
+172.9,
+-115.0
+]
+},
+{
+"id": "p1129",
+"ad": "Isıl gömme somun M3 (bara tutucusu anahtarlı x +47.5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3 ısıl gömme somun",
+"tur": "Baglanti",
+"malzeme": "Pirinç",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+0.0,
+1.0,
+0.0
+],
+"d": 56.8,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"h": "p1110",
+"gr": "#dba838",
+"ip": [
+47.5,
+182.3,
+-115.0
+]
+},
+{
+"id": "p1130",
+"ad": "Cıvata M3x10 ISO 7380 (bara tutucusu anahtarlı x +47.5)",
+"modul": "taban",
+"grup": "Guc_aku_surucu_panel",
+"kod": "M3x10 ISO 7380",
+"tur": "Baglanti",
+"malzeme": "Çelik",
+"r": "baglanti",
+"a": 12,
+"b": 13,
+"t": "guc",
+"u": [
+-0.0,
+-1.0,
+-0.0
+],
+"d": 29.1,
+"ub": [
+0.0,
+1.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+47.5,
+172.9,
+-115.0
+]
+},
+{
+"id": "p1131",
 "ad": "Arayüz kartı (E2/E3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45648,7 +47253,7 @@
 "gr": "#1a7333"
 },
 {
-"id": "p1086",
+"id": "p1132",
 "ad": "Burç M3x8 naylon burç (Arayüz kartı (E2/E3) 0)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45673,7 +47278,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1087",
+"id": "p1133",
 "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 0 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45703,7 +47308,7 @@
 ]
 },
 {
-"id": "p1088",
+"id": "p1134",
 "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 0 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45733,7 +47338,7 @@
 ]
 },
 {
-"id": "p1089",
+"id": "p1135",
 "ad": "Burç M3x8 naylon burç (Arayüz kartı (E2/E3) 1)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45758,7 +47363,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1090",
+"id": "p1136",
 "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 1 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45788,7 +47393,7 @@
 ]
 },
 {
-"id": "p1091",
+"id": "p1137",
 "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 1 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45818,7 +47423,7 @@
 ]
 },
 {
-"id": "p1092",
+"id": "p1138",
 "ad": "Burç M3x8 naylon burç (Arayüz kartı (E2/E3) 2)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45843,7 +47448,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1093",
+"id": "p1139",
 "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 2 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45873,7 +47478,7 @@
 ]
 },
 {
-"id": "p1094",
+"id": "p1140",
 "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 2 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45903,7 +47508,7 @@
 ]
 },
 {
-"id": "p1095",
+"id": "p1141",
 "ad": "Burç M3x8 naylon burç (Arayüz kartı (E2/E3) 3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45928,7 +47533,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1096",
+"id": "p1142",
 "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 3 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45958,7 +47563,7 @@
 ]
 },
 {
-"id": "p1097",
+"id": "p1143",
 "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 3 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -45988,7 +47593,7 @@
 ]
 },
 {
-"id": "p1098",
+"id": "p1144",
 "ad": "Servo dağıtım kartı A (sağ kol)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46013,7 +47618,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1099",
+"id": "p1145",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı A (sağ kol) 0)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46038,7 +47643,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1100",
+"id": "p1146",
 "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 0 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46068,7 +47673,7 @@
 ]
 },
 {
-"id": "p1101",
+"id": "p1147",
 "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 0 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46098,7 +47703,7 @@
 ]
 },
 {
-"id": "p1102",
+"id": "p1148",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı A (sağ kol) 1)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46123,7 +47728,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1103",
+"id": "p1149",
 "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 1 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46153,7 +47758,7 @@
 ]
 },
 {
-"id": "p1104",
+"id": "p1150",
 "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 1 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46183,7 +47788,7 @@
 ]
 },
 {
-"id": "p1105",
+"id": "p1151",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı A (sağ kol) 2)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46208,7 +47813,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1106",
+"id": "p1152",
 "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 2 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46238,7 +47843,7 @@
 ]
 },
 {
-"id": "p1107",
+"id": "p1153",
 "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 2 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46268,7 +47873,7 @@
 ]
 },
 {
-"id": "p1108",
+"id": "p1154",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı A (sağ kol) 3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46293,7 +47898,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1109",
+"id": "p1155",
 "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 3 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46323,7 +47928,7 @@
 ]
 },
 {
-"id": "p1110",
+"id": "p1156",
 "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 3 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46353,7 +47958,7 @@
 ]
 },
 {
-"id": "p1111",
+"id": "p1157",
 "ad": "Servo dağıtım kartı B (sol kol)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46378,7 +47983,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1112",
+"id": "p1158",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı B (sol kol) 0)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46403,7 +48008,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1113",
+"id": "p1159",
 "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 0 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46433,7 +48038,7 @@
 ]
 },
 {
-"id": "p1114",
+"id": "p1160",
 "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 0 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46463,7 +48068,7 @@
 ]
 },
 {
-"id": "p1115",
+"id": "p1161",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı B (sol kol) 1)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46488,7 +48093,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1116",
+"id": "p1162",
 "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 1 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46518,7 +48123,7 @@
 ]
 },
 {
-"id": "p1117",
+"id": "p1163",
 "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 1 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46548,7 +48153,7 @@
 ]
 },
 {
-"id": "p1118",
+"id": "p1164",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı B (sol kol) 2)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46573,7 +48178,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1119",
+"id": "p1165",
 "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 2 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46603,7 +48208,7 @@
 ]
 },
 {
-"id": "p1120",
+"id": "p1166",
 "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 2 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46633,7 +48238,7 @@
 ]
 },
 {
-"id": "p1121",
+"id": "p1167",
 "ad": "Burç M3x8 naylon burç (Servo dağıtım kartı B (sol kol) 3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46658,7 +48263,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1122",
+"id": "p1168",
 "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 3 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46688,7 +48293,7 @@
 ]
 },
 {
-"id": "p1123",
+"id": "p1169",
 "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 3 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46718,7 +48323,7 @@
 ]
 },
 {
-"id": "p1124",
+"id": "p1170",
 "ad": "PCA9685 servo sürücü",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46743,7 +48348,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1125",
+"id": "p1171",
 "ad": "Burç M2,5x8 pirinç burç (PCA9685 servo sürücü 0)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46768,7 +48373,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1126",
+"id": "p1172",
 "ad": "Vida M2,5x5 (PCA9685 servo sürücü 0 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46798,7 +48403,7 @@
 ]
 },
 {
-"id": "p1127",
+"id": "p1173",
 "ad": "Vida M2,5x8 (PCA9685 servo sürücü 0 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46828,7 +48433,7 @@
 ]
 },
 {
-"id": "p1128",
+"id": "p1174",
 "ad": "Burç M2,5x8 pirinç burç (PCA9685 servo sürücü 1)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46853,7 +48458,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1129",
+"id": "p1175",
 "ad": "Vida M2,5x5 (PCA9685 servo sürücü 1 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46883,7 +48488,7 @@
 ]
 },
 {
-"id": "p1130",
+"id": "p1176",
 "ad": "Vida M2,5x8 (PCA9685 servo sürücü 1 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46913,7 +48518,7 @@
 ]
 },
 {
-"id": "p1131",
+"id": "p1177",
 "ad": "Burç M2,5x8 pirinç burç (PCA9685 servo sürücü 2)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46938,7 +48543,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1132",
+"id": "p1178",
 "ad": "Vida M2,5x5 (PCA9685 servo sürücü 2 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46968,7 +48573,7 @@
 ]
 },
 {
-"id": "p1133",
+"id": "p1179",
 "ad": "Vida M2,5x8 (PCA9685 servo sürücü 2 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -46998,7 +48603,7 @@
 ]
 },
 {
-"id": "p1134",
+"id": "p1180",
 "ad": "Burç M2,5x8 pirinç burç (PCA9685 servo sürücü 3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47023,7 +48628,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1135",
+"id": "p1181",
 "ad": "Vida M2,5x5 (PCA9685 servo sürücü 3 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47053,7 +48658,7 @@
 ]
 },
 {
-"id": "p1136",
+"id": "p1182",
 "ad": "Vida M2,5x8 (PCA9685 servo sürücü 3 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47083,7 +48688,7 @@
 ]
 },
 {
-"id": "p1137",
+"id": "p1183",
 "ad": "BNO055 IMU",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47108,7 +48713,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1138",
+"id": "p1184",
 "ad": "Burç M2,5x8 pirinç burç (BNO055 IMU 0)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47133,7 +48738,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1139",
+"id": "p1185",
 "ad": "Vida M2,5x5 (BNO055 IMU 0 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47163,7 +48768,7 @@
 ]
 },
 {
-"id": "p1140",
+"id": "p1186",
 "ad": "Vida M2,5x8 (BNO055 IMU 0 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47193,7 +48798,7 @@
 ]
 },
 {
-"id": "p1141",
+"id": "p1187",
 "ad": "Burç M2,5x8 pirinç burç (BNO055 IMU 1)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47218,7 +48823,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1142",
+"id": "p1188",
 "ad": "Vida M2,5x5 (BNO055 IMU 1 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47248,7 +48853,7 @@
 ]
 },
 {
-"id": "p1143",
+"id": "p1189",
 "ad": "Vida M2,5x8 (BNO055 IMU 1 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47278,7 +48883,7 @@
 ]
 },
 {
-"id": "p1144",
+"id": "p1190",
 "ad": "Burç M2,5x8 pirinç burç (BNO055 IMU 2)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47303,7 +48908,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1145",
+"id": "p1191",
 "ad": "Vida M2,5x5 (BNO055 IMU 2 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47333,7 +48938,7 @@
 ]
 },
 {
-"id": "p1146",
+"id": "p1192",
 "ad": "Vida M2,5x8 (BNO055 IMU 2 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47363,7 +48968,7 @@
 ]
 },
 {
-"id": "p1147",
+"id": "p1193",
 "ad": "Burç M2,5x8 pirinç burç (BNO055 IMU 3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47388,7 +48993,7 @@
 "gr": "#dba838"
 },
 {
-"id": "p1148",
+"id": "p1194",
 "ad": "Vida M2,5x5 (BNO055 IMU 3 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47418,7 +49023,7 @@
 ]
 },
 {
-"id": "p1149",
+"id": "p1195",
 "ad": "Vida M2,5x8 (BNO055 IMU 3 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47448,7 +49053,7 @@
 ]
 },
 {
-"id": "p1150",
+"id": "p1196",
 "ad": "ESP32 taşıyıcı kart (pertinaks)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47473,7 +49078,7 @@
 "gr": "#1a7333"
 },
 {
-"id": "p1151",
+"id": "p1197",
 "ad": "Burç M3x8 naylon burç (ESP32 taşıyıcı kart (pertinaks) 0)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47498,7 +49103,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1152",
+"id": "p1198",
 "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 0 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47528,7 +49133,7 @@
 ]
 },
 {
-"id": "p1153",
+"id": "p1199",
 "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 0 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47558,7 +49163,7 @@
 ]
 },
 {
-"id": "p1154",
+"id": "p1200",
 "ad": "Burç M3x8 naylon burç (ESP32 taşıyıcı kart (pertinaks) 1)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47583,7 +49188,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1155",
+"id": "p1201",
 "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 1 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47613,7 +49218,7 @@
 ]
 },
 {
-"id": "p1156",
+"id": "p1202",
 "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 1 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47643,7 +49248,7 @@
 ]
 },
 {
-"id": "p1157",
+"id": "p1203",
 "ad": "Burç M3x8 naylon burç (ESP32 taşıyıcı kart (pertinaks) 2)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47668,7 +49273,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1158",
+"id": "p1204",
 "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 2 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47698,7 +49303,7 @@
 ]
 },
 {
-"id": "p1159",
+"id": "p1205",
 "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 2 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47728,7 +49333,7 @@
 ]
 },
 {
-"id": "p1160",
+"id": "p1206",
 "ad": "Burç M3x8 naylon burç (ESP32 taşıyıcı kart (pertinaks) 3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47753,7 +49358,7 @@
 "gr": "#f2f2e6"
 },
 {
-"id": "p1161",
+"id": "p1207",
 "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 3 üst)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47783,7 +49388,7 @@
 ]
 },
 {
-"id": "p1162",
+"id": "p1208",
 "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 3 alt)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47813,7 +49418,7 @@
 ]
 },
 {
-"id": "p1163",
+"id": "p1209",
 "ad": "ESP32 DevKit 30 pin",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
@@ -47838,7 +49443,7 @@
 "gr": "#b31f1f"
 },
 {
-"id": "p1164",
+"id": "p1210",
 "ad": "Sonar HC-SR04 (sol)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47858,7 +49463,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1165",
+"id": "p1211",
 "ad": "Sonar tutucu sol",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47878,7 +49483,7 @@
 "gr": "#f58c21"
 },
 {
-"id": "p1166",
+"id": "p1212",
 "ad": "Cıvata M6x14 ISO 7380 (sonar sol x -48)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47903,7 +49508,7 @@
 ]
 },
 {
-"id": "p1167",
+"id": "p1213",
 "ad": "Çekiç somun M6 (sonar sol x -48)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47928,7 +49533,7 @@
 ]
 },
 {
-"id": "p1168",
+"id": "p1214",
 "ad": "Sonar HC-SR04 (orta)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47948,7 +49553,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1169",
+"id": "p1215",
 "ad": "Sonar tutucu orta",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47968,7 +49573,7 @@
 "gr": "#f58c21"
 },
 {
-"id": "p1170",
+"id": "p1216",
 "ad": "Cıvata M6x14 ISO 7380 (sonar orta x -31)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -47993,7 +49598,7 @@
 ]
 },
 {
-"id": "p1171",
+"id": "p1217",
 "ad": "Çekiç somun M6 (sonar orta x -31)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48018,7 +49623,7 @@
 ]
 },
 {
-"id": "p1172",
+"id": "p1218",
 "ad": "Cıvata M6x14 ISO 7380 (sonar orta x +31)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48043,7 +49648,7 @@
 ]
 },
 {
-"id": "p1173",
+"id": "p1219",
 "ad": "Çekiç somun M6 (sonar orta x +31)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48068,7 +49673,7 @@
 ]
 },
 {
-"id": "p1174",
+"id": "p1220",
 "ad": "Sonar HC-SR04 (sağ)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48088,7 +49693,7 @@
 "gr": "#1a4da6"
 },
 {
-"id": "p1175",
+"id": "p1221",
 "ad": "Sonar tutucu sağ",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48108,7 +49713,7 @@
 "gr": "#f58c21"
 },
 {
-"id": "p1176",
+"id": "p1222",
 "ad": "Cıvata M6x14 ISO 7380 (sonar sağ x +48)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48133,7 +49738,7 @@
 ]
 },
 {
-"id": "p1177",
+"id": "p1223",
 "ad": "Çekiç somun M6 (sonar sağ x +48)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48158,7 +49763,7 @@
 ]
 },
 {
-"id": "p1178",
+"id": "p1224",
 "ad": "Acil stop mantarı + bilezik",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48178,7 +49783,7 @@
 "gr": "#d91a1a"
 },
 {
-"id": "p1179",
+"id": "p1225",
 "ad": "Acil stop kontak gövdesi (1NC)",
 "modul": "taban",
 "grup": "Sonar_acil_stop",
@@ -48198,7 +49803,7 @@
 "gr": "#38383d"
 },
 {
-"id": "p1180",
+"id": "p1226",
 "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48236,7 +49841,7 @@
 "gr": "#f20d0d"
 },
 {
-"id": "p1181",
+"id": "p1227",
 "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48248,11 +49853,11 @@
 "b": 17,
 "t": null,
 "u": [
-0.357,
+0.663,
 0.0,
--0.934
+-0.749
 ],
-"d": 64.0,
+"d": 49.4,
 "kablo": [
 "G05"
 ],
@@ -48269,7 +49874,7 @@
 "gr": "#0d0d0d"
 },
 {
-"id": "p1182",
+"id": "p1228",
 "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48283,9 +49888,9 @@
 "u": [
 -1.0,
 0.0,
--0.017
+-0.024
 ],
-"d": 222.6,
+"d": 230.1,
 "kablo": [
 "G12",
 "G09",
@@ -48315,7 +49920,7 @@
 "gr": "#ff8000"
 },
 {
-"id": "p1183",
+"id": "p1229",
 "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48327,11 +49932,11 @@
 "b": 17,
 "t": null,
 "u": [
-0.986,
+0.991,
 0.0,
-0.168
+0.132
 ],
-"d": 220.0,
+"d": 220.2,
 "kablo": [
 "M03",
 "M04",
@@ -48351,7 +49956,7 @@
 "gr": "#ff8000"
 },
 {
-"id": "p1184",
+"id": "p1230",
 "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48363,11 +49968,11 @@
 "b": 32,
 "t": null,
 "u": [
--0.158,
+0.447,
 0.0,
-0.987
+0.894
 ],
-"d": 607.0,
+"d": 598.8,
 "kablo": [
 "SV1",
 "G14",
@@ -48397,7 +50002,7 @@
 "gr": "#f2d90d"
 },
 {
-"id": "p1185",
+"id": "p1231",
 "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48431,7 +50036,7 @@
 "gr": "#f2d90d"
 },
 {
-"id": "p1186",
+"id": "p1232",
 "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48443,11 +50048,11 @@
 "b": 32,
 "t": null,
 "u": [
--0.842,
+-0.724,
 0.0,
-0.54
+0.69
 ],
-"d": 602.2,
+"d": 598.3,
 "kablo": [
 "SV2",
 "G15",
@@ -48477,7 +50082,7 @@
 "gr": "#f2d90d"
 },
 {
-"id": "p1187",
+"id": "p1233",
 "ad": "Kablo yolu 8: Kafa 12 V (G17, 18 AWG çift): F3 5 A → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48489,11 +50094,11 @@
 "b": 32,
 "t": null,
 "u": [
--0.337,
+-0.014,
 0.0,
--0.941
+-1.0
 ],
-"d": 587.2,
+"d": 581.8,
 "kablo": [
 "G17"
 ],
@@ -48509,7 +50114,7 @@
 "gr": "#f20d0d"
 },
 {
-"id": "p1188",
+"id": "p1234",
 "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48521,11 +50126,11 @@
 "b": 17,
 "t": null,
 "u": [
-0.442,
+0.4,
 0.0,
--0.897
+-0.916
 ],
-"d": 154.0,
+"d": 153.9,
 "kablo": [
 "G18"
 ],
@@ -48541,7 +50146,7 @@
 "gr": "#1a73ff"
 },
 {
-"id": "p1189",
+"id": "p1235",
 "ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
@@ -48583,8 +50188,8 @@
 "gr": "#0dbf33"
 },
 {
-"id": "p1190",
-"ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de",
+"id": "p1236",
+"ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -48617,8 +50222,8 @@
 "gr": "#9933cc"
 },
 {
-"id": "p1191",
-"ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+"id": "p1237",
+"ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -48660,11 +50265,11 @@
 "kafa": "tasarim/freecad/kafa/kafa_gorsel.py",
 "taban": "tasarim/freecad/taban/taban_gorsel.py"
 },
-"parca": 1192,
-"veri_cad_eslesen": 1192,
+"parca": 1238,
+"veri_cad_eslesen": 1238,
 "denetim": {
-"gui_kayitli": 1031,
-"ayni": 1031,
+"gui_kayitli": 1077,
+"ayni": 1077,
 "farkli": [],
 "gui_yok": 161,
 "gui_yok_modul": [
@@ -48889,7 +50494,7 @@
 "modul": "taban",
 "ad": "celik",
 "renk": "#80858f",
-"adet": 227
+"adet": 267
 },
 {
 "modul": "taban",
@@ -48985,13 +50590,13 @@
 "modul": "taban",
 "ad": "petg",
 "renk": "#f58c21",
-"adet": 4
+"adet": 6
 },
 {
 "modul": "taban",
 "ad": "pirinc",
 "renk": "#dba838",
-"adet": 22
+"adet": 26
 },
 {
 "modul": "taban",
@@ -49004,10 +50609,10 @@
 "ev_kaynak": {
 "yontem": "ev = konumda yerinde duran (önceki) parçalardan, yeni bağlantı elemanlarının halka noktalarının en az 3'ünü içeren (cıvata: eksen çevresinde r + 0,8 / r + 2,5 mm, 6 yükseklik × 8 açı; somun: dış yüzün 0,8 mm dışı, 3 × 8); bulunmazsa yeni ana parçaların yüzeyinden 0,6 mm (yoksa 1,5, sonra 3 mm) dışarıdaki noktaların en az 6'ünü içeren önceki parça (temas); masada ilk alt adımda önceki parça yoksa birimin yerinde duran tabanı (d = 0, yeni). Mesh: robot.glb, içerde testi eğik ışın paritesi",
 "baglanti_turu": {
-"pul": 66,
-"civata": 514,
-"somun": 137,
-"gomme": 164,
+"pul": 84,
+"civata": 527,
+"somun": 146,
+"gomme": 168,
 "diger": 12
 },
 "konum": 140,
@@ -49211,13 +50816,13 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 42.5,
-"sure_baglanti_s": 15.0
+"sure_s": 34.2,
+"sure_baglanti_s": 12.2
 },
 "uc_kaynak": {
 "konum": 24,
-"etiket": 48,
-"yok": 46,
+"etiket": 58,
+"yok": 36,
 "ortulu_kullanilmayan": [],
 "en_cok": 10,
 "kural": "rehber_gorunum.uc_isle (P10.7b2f)"

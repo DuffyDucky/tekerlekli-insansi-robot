@@ -30,6 +30,8 @@
 #   {ohm.aku_olcum}       akü ölçüm bölücüsünün üst direnci: koruyucular.R-aku-olcum.ad "… 100 kΩ …"  → "100 kΩ"
 #   {bsaplama.<kablo>}    anahtarlı bara saplaması: bara-pabuc.kopruler["Anahtarlı bara · +"].yerlesim → "3"
 #   {bsaplama.besleme}    anahtarlı baranın besleme saplaması (besleme_saplamasi)            → "3"
+#   {coklu_pabuc.yildiz|bara}  birden çok pabuç taşıyan saplamalar (yerleşimdeki kablolar + zincir köprü uçları, uç saplamada 1,
+#                         arada 2) → "1, 2, 3, 4 ve 5" (P10.7b2k düzeltme turu 3: yelpaze talimatı)
 #   {saplama.besleme}     yıldız barasının besleme (akü dönüşü) saplaması                    → "3"
 #   {kontak.K1|K2}        röle kontağının uçları: anahtarlar.K<n>-kontak.uclar               → "30 → 87" / "COM → NO (NC boş)"
 #   {yer.<koruyucu>}      hat sigortası / direncin kablo üstündeki yeri: koruyucular[<k>].yer (ilk ':' öncesi) → "anahtarlı bara ucunda (kaynak ucu)"
@@ -282,6 +284,19 @@ class Degerler:
             if not sp.get("olcu"):
                 raise KeyError("anahtarlar.%s.saplama.olcu yok" % anahtar)
             return sp["olcu"]
+        if tur == "coklu_pabuc":                                         # P10.7b2k düzeltme turu 3 (F10u-kontrol tur 2)
+            k = self.BP["kopruler"][KOPRU_BARA[anahtar]]
+            y = k.get("yerlesim") or {}
+            no = sorted(int(n) for n in y)
+            if not no:
+                raise KeyError("bara-pabuc.kopruler[%s].yerlesim boş" % KOPRU_BARA[anahtar])
+            if k.get("adet") != len(no) - 1:                             # zincir varsayımı: saplama sayısı − 1 köprü
+                raise KeyError("bara-pabuc.kopruler[%s].adet zincir değil" % KOPRU_BARA[anahtar])
+            say = {n: len(y[str(n)]) + (1 if n in (no[0], no[-1]) else 2) for n in no}
+            c = [str(n) for n in no if say[n] >= 2]
+            if not c:
+                raise KeyError("birden çok pabuçlu saplama yok")
+            return c[0] if len(c) == 1 else ", ".join(c[:-1]) + " ve " + c[-1]
         if tur == "saplama":
             if anahtar == "sayi":
                 return str(self.BP["dugumler"]["Yıldız barası · GND"])
@@ -378,6 +393,8 @@ class Degerler:
     _OZEL[("v", "aku_aralik")] = ["akü"]
     _OZEL[("v", "aku_en_cok")] = ["akü"]                              # P10.7b2d-A düzeltme turu 1 (R9)
     _OZEL[("vida", "ana-anahtar")] = ["ana anahtar", "anahtar"]
+    _OZEL[("coklu_pabuc", "yildiz")] = ["yıldız"]                    # P10.7b2k düzeltme turu 3
+    _OZEL[("coklu_pabuc", "bara")] = ["anahtarlı"]
     del _t
 
     def teyit_kaydi(self, tur, anahtar):

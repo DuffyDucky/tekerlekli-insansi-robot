@@ -11,6 +11,12 @@ def _yak(ls, ad):
     return [q[1] for q in ls if q[0].startswith(ad)][0]
 
 
+def _yak_tr(ls, ad, n):
+    """P10.7b2k düzeltme turu 3 (F10x § 1): parça en yakın listesinde yoksa IndexError yerine listenin en uzağından büyük olduğunu yaz."""
+    v = [q[1] for q in ls if q[0].startswith(ad)]
+    return tr(v[0], n) if v else "> %s (en yakın %d parçada yok)" % (tr(max(q[1] for q in ls), n), len(ls))
+
+
 _ev_tamam = "Yeni çakışma yok" if (len(KAFA["statik"]) == 0 and not KABUK["cakisma"] and not KABUK["iskelet_cakisma"] and CRP["toplam"]["eklem_araliginda"] == 0 and KK[0] == 0 and not CRP["ev_pozu_cakisma"] and not KON["ekran_cakisma"]) else "Çakışma var, tabloya bakın"
 
 OZET_MD = ("B + R1 modele işlendi, zincir omuz bölümü hariç koştu. %s: kafa içi 0, kabuk içi 0, kabuk × iskelet 0, ev pozu %d, eklem aralığındaki tarama %d (omuz bölümü eski kayıttan). "
@@ -44,19 +50,23 @@ _kon = OLC["hop_Hoparlor kabi on halka"]
 OLCUM = [
     "**Dizi:** PCB üstü y %s (hedef 92,62), bas çerçevesi kutusu x %s...%s, z %s...%s; kabuk ve kendi vidaları dışında en yakın parça yüz kabuğu, %s mm; arka kabuk tek katı, geçerli. Eşiksiz dizi × kabuk kesişimi %s mm³: 0,5 mm³ eşiğinin altında, temas büyüklüğünde; konumu ayrıca ölçülmedi." % (
         tr(OLC["dizi"]["bb_bas"][3] - 5.4, 2), tr(OLC["dizi"]["bb_bas"][0], 2), tr(OLC["dizi"]["bb_bas"][1], 2), tr(OLC["dizi"]["bb_bas"][4], 2), tr(OLC["dizi"]["bb_bas"][5], 2), tr(_yak(OLC["dizi"]["en_yakin"], "Yuz kabugu"), 2), tr(OLC["dizi"]["kabuk_kesisim_mm3"], 4)),
-    "**Ses kartı:** y %s...%s, z %s...%s; kabuğa %s mm, PAM'e %s mm. **PAM8403:** y %s...%s, z %s...%s; kabuğa %s mm." % (
-        tr(OLC["USB ses karti"]["bb_bas"][2], 1), tr(OLC["USB ses karti"]["bb_bas"][3], 1), tr(OLC["USB ses karti"]["bb_bas"][4], 1), tr(OLC["USB ses karti"]["bb_bas"][5], 1), tr(_yak(OLC["USB ses karti"]["en_yakin"], "Arka kafa"), 2), tr(_yak(OLC["USB ses karti"]["en_yakin"], "PAM"), 2),
+    # P10.7b2k: USB ses kartı P10.7b2j'de modelden çıktı (yedek, takılmaz); uygulama_olc artık ölçmez, eski ölçüm varsa yazılır
+    ("**Ses kartı:** y %s...%s, z %s...%s; kabuğa %s mm, PAM'e %s mm. " % (
+        tr(OLC["USB ses karti"]["bb_bas"][2], 1), tr(OLC["USB ses karti"]["bb_bas"][3], 1), tr(OLC["USB ses karti"]["bb_bas"][4], 1), tr(OLC["USB ses karti"]["bb_bas"][5], 1), tr(_yak(OLC["USB ses karti"]["en_yakin"], "Arka kafa"), 2), tr(_yak(OLC["USB ses karti"]["en_yakin"], "PAM"), 2))
+     if "USB ses karti" in OLC else "**Ses kartı:** modelde yok (P10.7b2j; yedek, takılmaz, KT2 geçmezse Pi USB 2'ye). ") +
+    "**PAM8403:** y %s...%s, z %s...%s; kabuğa %s mm." % (
         tr(OLC["PAM8403 amfi"]["bb_bas"][2], 1), tr(OLC["PAM8403 amfi"]["bb_bas"][3], 1), tr(OLC["PAM8403 amfi"]["bb_bas"][4], 1), tr(OLC["PAM8403 amfi"]["bb_bas"][5], 1), tr(_yak(OLC["PAM8403 amfi"]["en_yakin"], "Arka kafa"), 2)),
     "**MAX98357A:** modelde %d parça, `kafa-bom.csv`'de yok." % len(OLC["model_adlar"]["max98357a"]),
     "**Hub:** x %s...%s, y %s...%s, z %s...%s (global). Kapak dayamasına %s mm, göğüs bandına %s mm, kapak somununa %s mm. 40 mm fiş payı: gövde braketine %s mm, direğe %s mm, çakışma %d. 2 port boş." % (
         tr(_h["bb_g"][0], 1), tr(_h["bb_g"][1], 1), tr(_h["bb_g"][2], 1), tr(_h["bb_g"][3], 1), tr(_h["bb_g"][4], 2), tr(_h["bb_g"][5], 2), tr(_yak(_h["en_yakin"], "Ust arka"), 2), tr(_yak(_h["en_yakin"], "Gogus bandi"), 2), tr(_yak(_h["en_yakin"], "Isil gomme"), 2),
         tr(_yak(_h["fis_payi_en_yakin"], "Govde braketi"), 2), tr(_yak(_h["fis_payi_en_yakin"], "Govde diregi"), 2), len(_h["fis_payi_cakisma"])),
     "**Hoparlör:** duvar merkezi (%s; %s; %s), eksen yatayın %s° altında, kama yok. Duvara %s mm; ön halka duvara %s mm, göğüs bandına %s mm." % (
-        tr(OLC["hoparlor_duvar"]["C"][0], 1), tr(OLC["hoparlor_duvar"]["C"][1], 1), tr(OLC["hoparlor_duvar"]["C"][2], 2), tr(OLC["hoparlor_duvar"]["yatay_alti_derece"], 1), tr(_yak(_hop["en_yakin"], "Govde orta"), 3), tr(_yak(_kon["en_yakin"], "Govde orta"), 3), tr(_yak(_kon["en_yakin"], "Gogus bandi"), 3)),
+        tr(OLC["hoparlor_duvar"]["C"][0], 1), tr(OLC["hoparlor_duvar"]["C"][1], 1), tr(OLC["hoparlor_duvar"]["C"][2], 2), tr(OLC["hoparlor_duvar"]["yatay_alti_derece"], 1), tr(_yak(_hop["en_yakin"], "Govde orta"), 3), tr(_yak(_kon["en_yakin"], "Govde orta"), 3), _yak_tr(_kon["en_yakin"], "Gogus bandi", 3)),
     "**USB koridoru:** tablaya %s mm, Pi'ye %s mm. Hub kablosu boyundan iniyor, göğüs dokunmatiği ve ESP32 kablosu kafaya girmiyor." % (tr(_yak(OLC["koridor_en_yakin"], "Kafa iskeleti"), 2), tr(_yak(OLC["koridor_en_yakin"], "Raspberry"), 2)),
     "**Dizi USB'sinin güç kablolarına uzaklığı:** SY8205 %s, D24V50F5 %s, TVS %s, PAM 5 V %s, hoparlör kablosu %s mm." % tuple(tr(OLC["dizi_usb_guc_mm"][k], 2) for k in ("SY8205", "D24V50F5", "TVS", "PAM 5 V", "Hoparlor kablosu")),
-    "**Kablo tüpü × parça (`lale158-kontrol.json`):** Hub uzatması Pi %s, mil %s; dizi USB Pi %s; ses kartı uzatması Pi %s; 3,5 mm PAM %s mm³. Port ucu ve mil temasları şema kaynaklı, HDMI ve 12 V satırları önceki koşuyla aynı. SY8205 listede yok." % (
-        tr(dict(K_YENI["Hub uzatmasi"])["Raspberry Pi 5 4GB + Active Cooler"], 1), tr(dict(K_YENI["Hub uzatmasi"])["Boyun mili"], 1), tr(dict(K_YENI["Dizi USB"])["Raspberry Pi 5 4GB + Active Cooler"], 1), tr(dict(K_YENI["Ses karti uzatmasi"])["Raspberry Pi 5 4GB + Active Cooler"], 1), tr(dict(K_YENI["3,5 mm -> PAM"])["PAM8403 amfi"], 1)),
+    # P10.7b2k: ses kartı uzatması ve 3,5 mm → PAM yolları kablo_yolu_ekran.py'den kalktı (kart yedek, takılmaz)
+    "**Kablo tüpü × parça (`lale158-kontrol.json`):** Hub uzatması Pi %s, mil %s; dizi USB Pi %s mm³. Port ucu ve mil temasları şema kaynaklı, HDMI ve 12 V satırları önceki koşuyla aynı. SY8205 listede yok. Ses kartı uzatması ve 3,5 mm → PAM yolu P10.7b2k'da kalktı (kart yedek, takılmaz)." % (
+        tr(dict(K_YENI["Hub uzatmasi"])["Raspberry Pi 5 4GB + Active Cooler"], 1), tr(dict(K_YENI["Hub uzatmasi"])["Boyun mili"], 1), tr(dict(K_YENI["Dizi USB"])["Raspberry Pi 5 4GB + Active Cooler"], 1)),
     "**Devrilme, ızgara, rampa 5° (a_sınır, pay 1,5):** yüksüz %s; elde 100 g %s (önceki 1,482); elde 500 g %s (önceki 1,331). Elde yük bu işin dışında, eşik altı değerler önceki modelde de vardı. Düz zeminde 1,8 m/s² fren payı yüksüz %s (önceki 1,751). Ev pozu kütle %s g, AM y %s (önceki 25.836,9; 524,01)." % (tr(IZG, 3), tr(rampa_en(Y100), 3), tr(rampa_en(Y500), 3), tr(Y0["fren_pay"]["duz_min"], 3), tr(IV["ev"]["kutle_g"], 1), tr(IV["ev"]["am"][1], 2)),
     "**AI HAT+ yeri:** CAD'de yok, eklenmedi. Dizi ile zarf arası %s mm (seçimde 24,97). Zarf, yeni parçalardan hiçbirine girmiyor; yalnız mevcut arka üst cıvata boss'una giriyor (üstteki uyarı)." % tr(AH["dizi_mm"], 2),
 ]
@@ -100,11 +110,12 @@ ELEKTRIK = [
     "Hub USB'den besleniyor, yeni yol ~1,1 m. Göğüs dokunmatiği ve ESP32 tek hub kablosuna bağlı; hub girişindeki gerilim ölçülmedi.",
 ]
 
-LISTE_DISI = "USB-A uzatma ~30 cm (Pi → ses kartı), USB-A uzatma ~1 m (Pi → hub), L USB-A dirsek, kısa micro USB (dizi), hoparlör kablosu ~1,1 m, L 3,5 mm fişli kısa kablo."
+# P10.7b2k: ses kartı uzatması (~30 cm USB-A) ve L 3,5 mm kablo çıktı (kart yedek, takılmaz)
+LISTE_DISI = "USB-A uzatma ~1 m (Pi → hub), L USB-A dirsek, kısa micro USB (dizi), hoparlör kablosu ~1,1 m."
 
 VARSAYIM = [
     "ReSpeaker kütlesi 30 g, mikrofon deliği Ø3, M2 × 8 PT vida; LED dışarıdan görünmeyebilir, ışık borusu yok. Dizi geometrisi üretici STEP'i.",
-    "Ses kartı 48 × 24 × 11, USB-A fişi, L dirsek, uzatma dişi ucu, L 3,5 mm fiş zarfları ve kütleleri. Ürün seçilmedi.",
+    "Ses kartı zarfları (48 × 24 × 11, fişler, dirsek) P10.7b2j'de modelden çıktı: kart yedek, takılmaz.",
     "PAM8403 modeli 24 × 18 × 5 (sayfa 21 × 18 × 3,4), 3 g; **5 V besleme noktası varsayım**.",
     "Hoparlör kütlesi 27 g başka üründen. **Kap varsayım:** ürün elde görülmedi, arka tüp açık çizimde, hoparlörü arkadan tutan yüzey ve kelepçe modelde yok.",
     "Hub 72 × 25 × 19, 25 g, port yönü varsayım. Bağlantı köpük bant + 2 yan dayama; ayrı tutucu yok. Kablolara kapak söküm payı 150 mm tahmin. Fiş payı 40 mm tahmin.",

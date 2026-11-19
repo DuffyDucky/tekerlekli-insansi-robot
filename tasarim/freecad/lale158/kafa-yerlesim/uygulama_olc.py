@@ -189,8 +189,8 @@ _ob = tek("Govde orta bandi sag")
 S["orta_bant"] = dict(gecerli=_ob["sh"].isValid(), kati=len(_ob["sh"].Solids))
 _ar = tek("Arka kafa kabugu sag")
 S["arka_sag"] = dict(gecerli=_ar["sh"].isValid(), kati=len(_ar["sh"].Solids))
-# ------------------------------------------------------------------- 8) ses karti, PAM
-for ad_ in ("USB ses karti", "PAM8403 amfi"):
+# ------------------------------------------------------------------- 8) PAM (P10.7b2k: USB ses karti P10.7b2j'de modelden cikti, yedek; olculmez)
+for ad_ in ("PAM8403 amfi",):
     h_ = tek(ad_)
     S[ad_] = dict(bb_bas=[round(x, 2) for x in (h_["bb"].XMin, h_["bb"].XMax, h_["bb"].YMin - Y0 - YT, h_["bb"].YMax - Y0 - YT, h_["bb"].ZMin - ZT, h_["bb"].ZMax - ZT)], en_yakin=en_yakin(h_["sh"], k=4, atla=("Kopuk bant",)), cakisma=cakisma(h_["sh"], atla=("Kopuk bant",)))
 # ------------------------------------------------------------------- 9) boyun, kablo listesi (saf hesap)
@@ -199,7 +199,7 @@ S["boyun"] = dict(alan_mm2=oz["boyun_demet_alan_mm2"], gecis=[dict(ad=g["ad"], d
 S["kablo_listesi"] = oz["kablo"]
 S["kafa_ici_kablo_listesi"] = oz["kafa_ici_qled"]
 S["kafa_ici_kablo_kutle"] = [list(q[:3]) for q in KY.kafa_ici_kablo_kutle()]
-S["pi_portlari"] = {"1": "ReSpeaker", "2": "USB ses karti (uzatma + L dirsek)", "3": "Hub (hub 130 mm + uzatma)", "4": "Kafa ekrani dokunmatik"}
+S["pi_portlari"] = {"1": "ReSpeaker", "2": "bos (USB ses karti yedek, takilmaz; KT2 gecmezse buraya)", "3": "Hub (hub 130 mm + uzatma)", "4": "Kafa ekrani dokunmatik"}
 S["hub_portlari"] = {"1": "Gogus dokunmatik", "2": "ESP32", "3": "bos", "4": "bos"}
 S["sure_s"] = round(time.time() - t0, 1)
 json.dump(S, open(os.path.join(HERE, "uygulama-olcum.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)

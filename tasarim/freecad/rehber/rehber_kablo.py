@@ -169,13 +169,17 @@ _AKU_ARTI, _AKU_EKSI = (-65.5, 133.0, -29.0), (65.5, 133.0, -29.0)
 MODELSIZ_KONUM = {
     ("XT60 (akü tarafı)", "+"): (_AKU_ARTI, r"^Aku LiFePO4",
                                  "XT60'ın modeli yok, akü kablosunun ucunda akü kutusunun üstünde durur; + kutup: yol 1 baş noktası ('aku + -> XT60')"),
-    ("XT60 (akü tarafı)", "−"): (_AKU_EKSI, r"^Aku LiFePO4", "− kutup: yol 2 baş noktası ('aku - -> WAGO yildiz noktasi')"),
+    ("XT60 (akü tarafı)", "−"): (_AKU_EKSI, r"^Aku LiFePO4", "− kutup: yol 2 baş noktası ('aku - -> yildiz barasi 3. saplama')"),
     ("XT60 (robot tarafı)", "+"): (_AKU_ARTI, r"^Aku LiFePO4", "akü tarafıyla aynı yerde (geçme çift); + kutup yol 1 başı"),
     ("XT60 (robot tarafı)", "−"): (_AKU_EKSI, r"^Aku LiFePO4", "akü tarafıyla aynı yerde (geçme çift); − kutup yol 2 başı"),
-    ("Yıldız barası", "*"): ((-20.0, 186.0, -90.0), None,
-                             "güç panelindeki yıldız noktası: yol 2 son noktası ('aku - -> WAGO yildiz noktasi (guc paneli)'); yanında modelli parça yok"),
-    ("Anahtarlı bara", "*"): (None, r"^Role 12 V",
-                              "modeli yok; CAD yolları bara yerine röleden çıkar ('role -> WAGO'): yerine Röle K1 kutusu. Röle K1 ↔ bara ayırt edilmez"),
+    # P10.7b2k düzeltme turu 1 (F10u-kontrol 1): bara tutucuları P10.7b2j'de modelde; CAD yolları (taban_parcalar YOL 1, 2, 3, 5, 7,
+    # 8, 9) CAD dalında tutuculara taşınıyor (ayrı tasarım ajanı; hedef listesi F10u-gunluk "CAD tasarım ajanına"). Eski vekiller
+    # (yıldız: WAGO noktası (−20; 186; −90), anahtarlı: Röle K1 kutusu) kalktı: yan tutucunun kutusuyla sınanır, hangi saplamada
+    # bittiği bara_yol_denetle'de (kablolar.json yerleşimi). Yollar taşınana dek bu ikisi HATA verir (beklenen).
+    ("Yıldız barası", "*"): (None, r"^Bara tutucusu yildiz barasi",
+                             "bara tutucusu modelde (P10.7b2j, arayuz TABAN['bara_tutucu']); saplaması bara_yol_denetle'de"),
+    ("Anahtarlı bara", "*"): (None, r"^Bara tutucusu anahtarli bara",
+                              "bara tutucusu modelde (P10.7b2j); saplaması bara_yol_denetle'de"),
     ("Acil stop düğümü", "*"): (None, None,
                                 "güç panelinde küçük pertinaks kart; CAD'de ne modeli ne yol noktası var (yerleşim P10.7b2): sınanmaz, elle bakıldı"),
     # P10.7b2b (R8)
@@ -221,17 +225,19 @@ GEO_ISTISNA = {
 # silindir: korunan bölümün tamamı düzlemin bu yanında kalır). yon yoksa (0, 1, 0): kesim düzlemi y = sabit (yol 12, b2f'deki gibi).
 # Yol 12: noktalar[0..2] B01'in gerçek yolu (BTS7960 sol → ESP32 taşıyıcısının merkezi (80; 75), kablo_yolu_taban.py ESP konumu);
 # noktalar[3..] 05.11 öncesi "ESP32 → kafa USB" hattı (direk boyunca y 1325'e çıkar), ESP32 USB artık "ESP32 USB" şemasında çizilir.
-# P10.7b2i (F10r-gunluk § 1): Yol 9: noktalar[0..3] G18'in yolu (sigorta kutusu F4 (0; 215,5; −203) → XL4016 çevre (49,2; 125; 75),
-# XL4016 çevrenin kutusunun içinde); noktalar[4..6] eski tasarımın çevre 5 V → ESP32 hattı (bugün G19 arayüz kartına gider, kendi
-# şeması K1'de). İki bölümün y aralıkları çakışıyor (korunan 125…215,5, atılan 150…200): y düzlemi ayıramaz. Düzlem normali (0, 1, 1)
-# / √2 (y + z izdüşümü): korunan en büyük 200 / √2 = 141,42 (noktalar[3]), atılan en küçük 275 / √2 = 194,45 (noktalar[6], ESP32 ucu);
-# kesim 143,92, ESP32 ucuyla arada 50 mm (kalıntı yok; z ≤ 77,5 kesimi ESP32 ucunda kısa bir parça bırakıyordu, F10q § 3).
+# P10.7b2i (F10r-gunluk § 1), P10.7b2k düzeltme turu 2-3 (CAD turu 2, F10v: yol 9 16 nokta, yıldız 4'ten geçer): Yol 9:
+# noktalar[0..12] G18'in yolu (sigorta kutusu F4 (0; 215,5; −203) → yıldız 4 (25; 194; −65) noktalar[5] → XL4016 çevre (49,2; 125; 75)
+# noktalar[12], XL4016 çevrenin kutusunun içinde); noktalar[13..15] eski tasarımın çevre 5 V → ESP32 hattı (bugün G19 arayüz kartına
+# gider, kendi şeması K1'de). İki bölümün y aralıkları çakışıyor (korunan 125…219, atılan 150…200): y düzlemi ayıramaz. Düzlem normali
+# (0, 1, 1) / √2 (y + z izdüşümü): korunan en büyük 200 / √2 = 141,42 (noktalar[12]), atılan en küçük 275 / √2 = 194,45 (noktalar[15],
+# ESP32 ucu); kesim 143,92, ESP32 ucuyla arada 50 mm (kalıntı yok; z ≤ 77,5 kesimi ESP32 ucunda kısa bir parça bırakıyordu, F10q § 3).
 CAD_TUP_R = 2.5
 CAD_KIRP = {
-    9: dict(son=3, yon=(0.0, 1.0, 1.0),
-            gerekce="yolun noktalar[4..] bölümü eski tasarımın XL4016 çevre → ESP32 hattı (çevre 5 V doğrudan ESP32'ye); G18'in XL4016 ucu "
-                    "taban-analiz.json kablo_yolu[8].noktalar[3] (XL4016 çevrenin kutusunda); y aralıkları çakıştığı için kesim y + z "
-                    "yönünde; rehber yalnız noktalar[0..3]'ü çizer"),
+    # düzeltme turu 2 (F10u-kontrol T1, F10v § 5): CAD turu 2'de yol 9 yıldız 4'ten başlıyor (16 nokta), G18'in XL4016 ucu noktalar[12]
+    9: dict(son=12, yon=(0.0, 1.0, 1.0),
+            gerekce="yolun noktalar[13..] bölümü eski tasarımın XL4016 çevre → ESP32 hattı (çevre 5 V doğrudan ESP32'ye); G18'in XL4016 ucu "
+                    "taban-analiz.json kablo_yolu[8].noktalar[12] (XL4016 çevrenin kutusunda); y aralıkları çakıştığı için kesim y + z "
+                    "yönünde; rehber yalnız noktalar[0..12]'yi çizer"),
     12: dict(son=2, gerekce="yolun noktalar[3..] bölümü 05.11 öncesi ESP32 → kafa USB hattı (direk boyunca kafaya çıkar); B01'in ESP32 ucu "
                             "taban-analiz.json kablo_yolu[11].noktalar[2] = ESP32 taşıyıcısının merkezi; rehber yalnız noktalar[0..2]'yi çizer"),
 }
@@ -283,6 +289,8 @@ UC_ETIKET = {
     "SY8205": (r"^SY8205 kafa", None), "D24V50F5": (r"^5 V cevirici Pololu", None), "PAM8403": (r"^PAM8403", None),
     "ReSpeaker": (r"^ReSpeaker", None), "Hoparlör": (r"^Hoparlor 40 x 20", None), "USB hub": (r"^USB Hub 4", None),
     "Göğüs ekranı": (r"^Gogus ekrani 11,6", None),
+    # P10.7b2k (K64 a, P10.7b2j): baralar tutucularıyla modelde; etiket tutucunun kutusunda (bara modelde ayrı parça değil)
+    "Anahtarlı bara": (r"^Bara tutucusu anahtarli bara", None), "Yıldız barası": (r"^Bara tutucusu yildiz barasi", None),
     "kafa pan servosu": (r"^Pan servosu MG996R", None), "kafa tilt servosu": (r"^Tilt servosu MG996R", None),
     "sağ S1 (omuz öne-arka) servosu": (r"^S1 servo DS3235", "omuz_sag"), "sağ S2 (omuz yana) servosu": (r"^S2 servo DS3235", "omuz_sag"),
     "sol S1 (omuz öne-arka) servosu": (r"^S1 servo DS3235", "omuz_sol"), "sol S2 (omuz yana) servosu": (r"^S2 servo DS3235", "omuz_sol"),
@@ -290,8 +298,7 @@ UC_ETIKET = {
     "sol dirsek servosu": (r"^Dirsek servosu MG996R", "dirsek_sol"), "sol bilek servosu": (r"^Bilek servosu MG996R", "dirsek_sol"),
 }
 UC_MODELSIZ = {
-    "Acil stop düğümü (mantar NC çıkışı)": "düğüm kartı modelde yok", "Anahtarlı bara": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
-    "Yıldız barası": "bara modelde yok (bara tutucusu CAD paketinde, K64)", "XT60 (akü tarafı)": "konnektör modelde yok",
+    "Acil stop düğümü (mantar NC çıkışı)": "düğüm kartı modelde yok", "XT60 (akü tarafı)": "konnektör modelde yok",
     "XT60 (robot tarafı)": "konnektör modelde yok", "XT60E-F şarj girişi": "konnektör modelde yok (K50)",
     "Dağıtım kartı C (kafa)": "kafa dağıtım kartı modelde yok", "Kafa giriş klemensi": "klemens modelde yok",
     "Göğüs regülatörü": "regülatör modelde yok (K52 a: güç panelinde)", "Ses bölücüsü": "bölücü modelde yok",
@@ -888,8 +895,10 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
     A = analiz if analiz is not None else json.load(open(GEO_ANALIZ, encoding="utf-8"))
     esleme = CAD_ESLEME if esleme is None else esleme
     istisna = GEO_ISTISNA if istisna is None else istisna
-    modelli = [p for p in A["parcalar"] if p.get("tur") not in ("Baski", "Lazer", "Baglanti") and not p["ad"].startswith(("Burc", "Kablo yolu"))]
+    modelli = [p for p in A["parcalar"] if (p.get("tur") not in ("Baski", "Lazer", "Baglanti") or p["ad"].startswith("Bara tutucusu "))
+               and not p["ad"].startswith(("Burc", "Kablo yolu"))]           # düzeltme turu 1: bara tutucuları (Baski) uç parçası
     hata, bilgi = [], []
+    kullanilan_ist = set()
 
     def cad(desen):
         return [p for p in modelli if re.search(desen, p["ad"])]
@@ -964,9 +973,13 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
                     neden = "uç noktasında parça yok; eşlenen kabloların nominal noktası da elle bakılan ucu da yok"
             if neden:
                 if n in istisna:
+                    kullanilan_ist.add(n)
                     bilgi.append("yol %d %s ucu: %s (istisna: %s)" % (n, ad_, neden, istisna[n][:60]))
                 else:
                     hata.append("yol %d %s ucu %s: %s" % (n, ad_, [round(x, 1) for x in uc], neden))
+    # P10.7b2k (F10r-kontrol D4): SEMA_GEO_ISTISNA gibi, kullanılmayan GEO_ISTISNA da hata (yol düzeldiyse istisna sessizce kalmaz)
+    for n in sorted(set(istisna) - kullanilan_ist):
+        hata.append("GEO_ISTISNA %s: kullanılmıyor (yol düzeldiyse ya da kırpıldıysa istisnayı kaldır)" % (n,))
     return hata, bilgi
 
 
@@ -1006,6 +1019,13 @@ SEMA_KONUM = {
                             "masa denemesine (KT2) bağlı"),
     # P10.7b2c düzeltme turu 1 (F10k-kontrol kaçan bozma 1): SV3'ün kart ucu artık serbest değil. CAD yolu 6'nın kart yanı
     # MODELSIZ_KONUM'da "elle" kalır (o yol kartı çizmiyor); şema sınaması bu noktayı kullanır.
+    # P10.7b2k (F10u-gunluk § A4; K64 a, P10.7b2j): şemalarda baralar modelli tutucularıyla sınanır. Düzeltme turu 1-2: CAD yolları da
+    # (F10v: yollar saplamalara taşındı, CAD uçları (x; 194; z ± 10), şema uçları (x; 191,9; z + 5)); saplama bara_yol_denetle'de.
+    ("Anahtarlı bara", "*"): (None, r"^Bara tutucusu anahtarli bara",
+                              "bara tutucusu modelde (P10.7b2j, arayuz TABAN['bara_tutucu']); şema ucu saplamasının pabuç yüksekliğinde "
+                              "(kablo_yolu_taban.bara_saplama): yerine tutucunun kutusu"),
+    ("Yıldız barası", "*"): (None, r"^Bara tutucusu yildiz barasi",
+                             "bara tutucusu modelde (P10.7b2j): yerine tutucunun kutusu"),
     ("Dağıtım kartı C", "*"): ((100.0, 192.0, -60.0), None,
                                "kart modelde yok (R23); kayıtta güç panelinde, XL4016 C'nin yanında (kablolar.json karar P7b2a-6, SV3 "
                                "boy_tahmin 'XL4016 C klemensinin yanında'): nominal nokta XL4016 C'nin −z yanında, kutusundan 36,5 mm "
@@ -1013,9 +1033,8 @@ SEMA_KONUM = {
 }
 # Eşlemesiz şema (P10.7b2c B, brief madde 5): her şema kaynağının her yolu SEMA'da olmalı; bilinçli dışarıda bırakılan yol burada
 # gerekçesiyle. SEMA'da olan ya da kaynakta artık olmayan muaf HATA (liste sessizce eskimez).
+# P10.7b2k: iki eski ses yolu ("Ses karti uzatmasi", "3,5 mm -> PAM") kablo_yolu_ekran.py'den kalktı (kart modelden çıktı): muaf boş
 SEMA_ESLEMESIZ_MUAF = {
-    ("yollar", "Ses karti uzatmasi"): "14.11 ses yolu kararı: USB ses kartı yedek, takılmaz; tabloda karşılığı yok (rehber_metin SEMA notu)",
-    ("yollar", "3,5 mm -> PAM"): "14.11 ses yolu kararı: ses kartı → PAM yolu kalktı; ReSpeaker → PAM (AU1, AU2) kafa_ici kaynağında",
 }
 # Göğüs ekranı ucu port girintisinde olmalı (kablo_yolu_ekran.uc_bolgesi: göğüs yerel çerçevesinde kutu, lale158_kontrol ile aynı tanım);
 # TABAN_DISI_BOLGE'nin "sol kol" kutusu (x ≤ −60, y ≥ 880) göğsün sol yarısını da kapsadığı için ekran portu ayrı bölgedir.
@@ -1131,10 +1150,167 @@ def sema_parcalari(analiz=None, kafa=None):
     ko = K.get("yerlesim", {}).get("konum") or [0.0, 0.0, 0.0]
 
     def m(p):
+        # P10.7b2k: bara tutucuları basılır (Baski) ama şemada bara ucunun parçasıdır (SEMA_KONUM vekili)
+        if p.get("bb") and p["ad"].startswith("Bara tutucusu "):
+            return True
         return p.get("bb") and p.get("tur") not in ("Baski", "Lazer", "Baglanti") and not p["ad"].startswith(("Burc", "Kablo yolu"))
     out = [dict(ad=p["ad"], bb=list(p["bb"])) for p in A_["parcalar"] if m(p)]
     out += [dict(ad=p["ad"], bb=[p["bb"][i] + ko[i // 2] for i in range(6)]) for p in K["parcalar"] if m(p)]
     return out
+
+
+_BOZMA_GERI = []                                                       # P10.7b2k: bozma denemesinin modül sabiti geri almaları
+# P10.7b2k düzeltme turu 1 (F10u-kontrol 1): CAD kablo yolu × bara tutucusu / saplama takımı girişimi. Yolun merkez çizgisi 1 mm
+# adımla örneklenir; her örnek tüp yarıçapı (CAD_TUP_R) kadar büyütülmüş tutucu ya da saplama takımı (civata, pul, yaylı pul, somun)
+# kutusunun içindeyse HATA. İzin: yolun eşlenen kablolarının bara ucu olan saplamanın ekseni çevresinde (yatay ≤ BARA_IZIN_R, y ≥ BARA_IZIN_Y) yol
+# saplamaya ve tutucuya değebilir (orada biter ya da oradan geçer). Ayrıca her bara ucu kendi saplamasının izin bölgesine ulaşmalı.
+# Hedef saplamalar kablolar.json bara-pabuc yerleşiminden (rehber metnindeki {saplama.X} / {bsaplama.X} ile aynı kayıt).
+BARA_IZIN_R = 12.0
+BARA_IZIN_Y = 189.5                                                    # tutucu üst yüzü (gövde y 179,5…189,5)
+BARA_ADIM = 1.0
+_BARA_TAKIM = re.compile(r"^(?:Bara civatasi|Pul M5|Yayli pul M5|Somun M5) .*\((yildiz|anahtarli) (\d)\)$")
+_BARA_AD = {"yildiz": "yıldız barasının", "anahtarli": "anahtarlı baranın"}
+_BARA_UC = (("Yıldız barası", "yildiz", "Yıldız barası · GND"), ("Anahtarlı bara", "anahtarli", "Anahtarlı bara · +"))
+
+
+def bara_yol_hedefleri(TB=None, tablo=None):
+    """[(yol, kablo, kutup, bara, saplama no)]: CAD_ESLEME'deki her kablonun kablolar.json bara-pabuc yerleşimindeki her damarı
+    (ör. G17/− yıldız 4: + damarı sigorta kutusundan gelir, − damarı aynı kılıfta yıldız saplamasından ayrılır). Rehber metnindeki
+    {saplama.X} / {bsaplama.X} numaraları da bu kayıttan (rehber_deger). TB kullanılmaz (imza geri uyum)."""
+    T = tablo if tablo is not None else json.load(open(TABLO_YOL, encoding="utf-8"))
+    kop = T["klemens_turleri"]["bara-pabuc"]["kopruler"]
+    out = []
+    for n in sorted(CAD_ESLEME):
+        for k in CAD_ESLEME[n]:
+            for onek, bara, kk in _BARA_UC:
+                for no, il in sorted(kop[kk]["yerlesim"].items(), key=lambda x: int(x[0])):
+                    for x in il:
+                        if x.split("/")[0] == k:
+                            out.append((n, k, x.split("/")[1] if "/" in x else "", bara, int(no)))
+    return out
+
+
+def _kutu_icinde(q, bb, pay):
+    return all(bb[2 * i] - pay <= q[i] <= bb[2 * i + 1] + pay for i in range(3))
+
+
+def bara_yol_denetle(TB=None, analiz=None, hedef=None):
+    """Doner hata listesi. Tutucu analizde yoksa (P10.7b2j birleşmemiş) tek HATA."""
+    A = analiz if analiz is not None else json.load(open(GEO_ANALIZ, encoding="utf-8"))
+    tut = [p for p in A["parcalar"] if p["ad"].startswith("Bara tutucusu ")]
+    if not tut:
+        return ["bara yolu: taban-analiz.json'da bara tutucusu yok (P10.7b2j CAD dalı birleşmemiş; girişim sınanamadı)"]
+    takim = {}
+    for p in A["parcalar"]:
+        m = _BARA_TAKIM.match(p["ad"])
+        if m:
+            takim.setdefault((m.group(1), int(m.group(2))), []).append(p)
+    eksen = {k: ((v[0]["bb"][0] + v[0]["bb"][1]) / 2, (v[0]["bb"][4] + v[0]["bb"][5]) / 2) for k, v in takim.items()}
+    kutular = [(p["ad"], p["bb"], None) for p in tut] + [(p["ad"], p["bb"], k) for k, v in takim.items() for p in v]
+    hedef = bara_yol_hedefleri(TB) if hedef is None else hedef
+    izin = {}
+    hata = []
+    for n, k, y, bara, no in hedef:
+        if no is None or (bara, no) not in eksen:
+            hata.append("bara yolu: yol %d %s %s ucu (%s): kablolar.json yerleşiminde saplaması yok ya da modelde yok (%s)" % (n, k, y, bara, no))
+            continue
+        izin.setdefault(n, set()).add((bara, no))
+    for n in sorted(CAD_ESLEME):
+        pts = cad_noktalar(n, A)
+        iz = izin.get(n, set())
+        ulasti = set()
+        ilk = {}
+        for i in range(len(pts) - 1):
+            a, b = pts[i], pts[i + 1]
+            L = math.dist(a, b)
+            m = max(1, int(L / BARA_ADIM))
+            for j in range(m + 1):
+                q = tuple(a[c] + (b[c] - a[c]) * j / m for c in range(3))
+                yakin = [s_ for s_ in iz if math.hypot(q[0] - eksen[s_][0], q[2] - eksen[s_][1]) <= BARA_IZIN_R]
+                # düzeltme turu 2 (F10u-kontrol T2): izin yalnız tutucu üstünde (pabuç yığını); gövdeye / panelin altından giriş HATA
+                if yakin and q[1] >= BARA_IZIN_Y:
+                    ulasti.update(yakin)
+                    continue
+                for ad, bb, tk in kutular:
+                    ad_ = ("%s %d. saplamasının civata / pul / somun takımı" % (_BARA_AD[tk[0]], tk[1])) if tk else ad
+                    if _kutu_icinde(q, bb, CAD_TUP_R) and ad_ not in ilk:
+                        ilk[ad_] = (i, [round(c, 1) for c in q], tk)
+        for ad, (i, q, tk) in sorted(ilk.items()):
+            hata.append("bara yolu: yol %d noktalar[%d→%d] %s içinden geçiyor (%s; örnek %s)" % (
+                n, i, i + 1, ad, "yabancı saplama" if tk else "tutucu gövdesi", q))
+        for s_ in sorted(iz - ulasti):
+            hata.append("bara yolu: yol %d %s %d. saplamasına ulaşmıyor (eksen ±%g mm)" % (n, _BARA_AD[s_[0]], s_[1], BARA_IZIN_R))
+    return hata
+BARA_SEMA = {"G16": "anahtarli", "G22": "anahtarli"}                   # P10.7b2k: bara saplamasından başlayan taban şemaları
+_BARA_KOPRU = {"anahtarli": "Anahtarlı bara · +", "yildiz": "Yıldız barası · GND"}
+
+
+def bara_tutarlilik(KYT, arayuz_taban=None, tablo=None):
+    """P10.7b2k (F10u-gunluk § A4): kablo_yolu_taban.BARA (şema ölçüleri) ↔ arayuz TABAN["bara_tutucu"] (model) ve G16 / G22 şemasının
+    başı ↔ kablolar.json bara yerleşimindeki saplama numarası. Model birleşmeden (P10.7b2j) önce arayuz'da tutucu yok: HATA."""
+    hata = []
+    if arayuz_taban is None:
+        if FC_DIZIN not in sys.path:
+            sys.path.insert(0, FC_DIZIN)
+        import arayuz as _AR
+        arayuz_taban = _AR.TABAN
+    bt = arayuz_taban.get("bara_tutucu")
+    if not bt:
+        return ["bara: arayuz TABAN['bara_tutucu'] yok (P10.7b2j CAD dalı birleşmemiş; kablo_yolu_taban.BARA modelle sınanamıyor)"]
+    if abs(bt.get("h", -1) - KYT.BARA_H) > 0.05:
+        hata.append("bara: tutucu yüksekliği arayuz %r ≠ kablo_yolu_taban.BARA_H %r" % (bt.get("h"), KYT.BARA_H))
+    for k, b in KYT.BARA.items():
+        m = bt.get("baralar", {}).get(k)
+        if not m:
+            hata.append("bara %s: arayuz TABAN['bara_tutucu']['baralar']'da yok" % k)
+            continue
+        if abs(m["z"] - b["z"]) > 0.05 or len(m["saplama_x"]) != len(b["saplama_x"]) or any(
+                abs(x - y) > 0.05 for x, y in zip(m["saplama_x"], b["saplama_x"])):
+            hata.append("bara %s: kablo_yolu_taban.BARA (z %r, saplama_x %r) ≠ arayuz (z %r, saplama_x %r)" % (
+                k, b["z"], b["saplama_x"], m["z"], m["saplama_x"]))
+        if list(m["saplama_x"]) != sorted(m["saplama_x"]):
+            hata.append("bara %s: arayuz saplama_x artan değil (numara yönü rehber B5a: önden bakınca soldan sağa = x artan)" % k)
+    T = tablo if tablo is not None else json.load(open(TABLO_YOL, encoding="utf-8"))
+    kopruler = T["klemens_turleri"]["bara-pabuc"]["kopruler"]
+    yollar_ = KYT.yollar()
+    for kab, bara in sorted(BARA_SEMA.items()):
+        yer = kopruler[_BARA_KOPRU[bara]]["yerlesim"]
+        no = [int(n) for n, ilt in yer.items() if any(i.split("/")[0] == kab for i in ilt)]
+        if len(no) != 1:
+            hata.append("bara şeması %s: kablolar.json %s yerleşiminde %d saplamada" % (kab, _BARA_KOPRU[bara], len(no)))
+            continue
+        bas = yollar_.get(kab, [None])[0]
+        if bas is None or math.dist(bas, KYT.bara_saplama(bara, no[0])) > 0.05:
+            hata.append("bara şeması %s: başı %r, kablolar.json'daki %d. saplama %r değil" % (
+                kab, bas, no[0], [round(c, 1) for c in KYT.bara_saplama(bara, no[0])]))
+    return hata
+
+
+U06_PORT_PAY = 2.5
+
+
+def u06_port_denetle(analiz=None):
+    """P10.7b2k (F10r-kontrol D5): U06 ("ESP32 USB") şemasının taban ucu ESP32 DevKit'in micro USB portuna kilitli. kablo_yolu_ekran
+    ESP_PORT ESP32 DevKit kutusunun +x yüzünde (taban-analiz.json), y ve z kutunun içinde; şemanın son noktası port ağzının
+    U06_PORT_PAY mm önünde (+x). Kart taşınırsa ve şema kalırsa HATA. Sınır (F10u-kontrol 7): DevKit CAD'de 180° dönerse kutu aynı
+    kalır, sınama geçer; yön yalnız taban_lib.esp_local'da (FreeCAD ister), açık iş karar kuyruğunda."""
+    for p in (FC_DIZIN, os.path.join(FC_DIZIN, "lale158")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    import kablo_yolu_ekran as KYE
+    A_ = analiz if analiz is not None else json.load(open(GEO_ANALIZ, encoding="utf-8"))
+    dk = [p for p in A_["parcalar"] if p["ad"].startswith("ESP32 DevKit")]
+    if len(dk) != 1:
+        return ["U06: taban-analiz.json'da %d ESP32 DevKit parçası (1 beklenir)" % len(dk)]
+    bb, ep = dk[0]["bb"], KYE.ESP_PORT
+    hata = []
+    if abs(ep[0] - bb[1]) > 0.5 or not (bb[2] <= ep[1] <= bb[3]) or not (bb[4] <= ep[2] <= bb[5]):
+        hata.append("U06: kablo_yolu_ekran.ESP_PORT %r ESP32 DevKit kutusunun +x yüzünde değil (kutu %r)" % (ep, bb))
+    son = (KYE.yollar().get("ESP32 USB") or [None])[-1]
+    hedef = (ep[0] + U06_PORT_PAY, ep[1], ep[2])
+    if son is None or math.dist(son, hedef) > 0.05:
+        hata.append("U06: 'ESP32 USB' şemasının son noktası %r, port ağzının %.1f mm önü %r değil" % (son, U06_PORT_PAY, hedef))
+    return hata
 
 
 def sema_geometri_denetle(TB=None, RM=None, analiz=None, kafa=None, istisna=None, nokta_f=None, kaynak_yol=None):
@@ -1161,6 +1337,9 @@ def sema_geometri_denetle(TB=None, RM=None, analiz=None, kafa=None, istisna=None
     dk = SEMA_KONUM.get(("Dağıtım kartı C", "*"), (None,))[0]                  # düzeltme turu 1: SV3'ün kart ucu
     if dk is None or math.dist(dk, KYT.DAGITIM_C) > 0.05:
         hata.append("SEMA_KONUM Dağıtım kartı C %s ≠ kablo_yolu_taban.DAGITIM_C %s" % (dk, [round(c, 1) for c in KYT.DAGITIM_C]))
+
+    hata += bara_tutarlilik(KYT)                                                # P10.7b2k (A4)
+    hata += u06_port_denetle(analiz)                                            # P10.7b2k (F10r-kontrol D5)
 
     def cad(desen):
         return [p for p in modelli if re.search(desen, p["ad"])]
@@ -1291,7 +1470,8 @@ def kritik_tablolar(esleme=None):
     for n in sorted(CAD_KIRP):                                         # P10.7b2f
         _yon, _d = cad_kirp_kesim(n)                                   # P10.7b2i: y yönünde b2f'deki yazım ("kesim y 192.5") korunur
         g.append(_RK.girdi("CAD_KIRP %d" % n, ("son %d kesim y %r · %s" % (CAD_KIRP[n]["son"], _d, CAD_KIRP[n]["gerekce"])) if _yon == (0.0, 1.0, 0.0)
-                           else ("son %d kesim yön %r ≤ %r · %s" % (CAD_KIRP[n]["son"], CAD_KIRP[n]["yon"], round(_d, 3), CAD_KIRP[n]["gerekce"])),
+                           # P10.7b2k (F10r-kontrol D7): yön birim vektör olarak (cad_kirp_metin): (0, 1, 1) ile (0, 2, 2) aynı kesim, aynı kayıt
+                           else ("son %d kesim %s · %s" % (CAD_KIRP[n]["son"], cad_kirp_metin(n), CAD_KIRP[n]["gerekce"])),
                            "rehberde kırpılan CAD yolu"))
     for k in sorted(UC_ETIKET):                                        # P10.7b2f: uç etiketi metni ve yeri bu eşlemeden
         g.append(_RK.girdi("UC_ETIKET", "%s = %r %r" % (k, UC_ETIKET[k][0], UC_ETIKET[k][1]), "uç etiketi → CAD parçası"))
@@ -1529,6 +1709,11 @@ SEMA_NOT_SOZ = ("gösterim şemasıdır", "çarpışma taramasından geçmedi", 
 SEMA_YAKLASIK = ("yeri yaklaşık", "yeri ve varlığı kesin değil")
 
 
+# P10.7b2k: tabloda (PARCA_CAD) modelsiz sayılan ama şemada modelli vekiliyle (SEMA_KONUM, bara tutucusu) sınanan uçlar: şemanın yeri
+# yaklaşık değil, "yeri yaklaşık" istenmez. Vekil modelde yoksa sema_geometri_denetle zaten HATA verir.
+SEMA_MODELLI_VEKIL = {"Anahtarlı bara", "Yıldız barası"}
+
+
 def sema_not_denetle(TB=None, RM=None):
     TB = TB or Tablo()
     if RM is None:
@@ -1549,7 +1734,8 @@ def sema_not_denetle(TB=None, RM=None):
             if eksik:
                 hata.append("şema %s (%s): adımın gösterim şeması notu %s kablosunu anmıyor (şema yanlış adımda ya da not eksik)" % (
                     ad_k, kod, "/".join(eksik)))
-        modelsiz = [p[0] for k in ids if k in TB.K for p in uc_parcalari(TB, k) if sema_sinifi(p[0]) in (NOMINAL, MODELSIZ)]
+        modelsiz = [p[0] for k in ids if k in TB.K for p in uc_parcalari(TB, k) if sema_sinifi(p[0]) in (NOMINAL, MODELSIZ)
+                    and not _onek(p[0], SEMA_MODELLI_VEKIL)]
         if modelsiz and not any(x in ad for x in SEMA_YAKLASIK):
             hata.append("şema %s: modelsiz uç (%s) var, görünen adında \"%s\" yok" % (ad_k, modelsiz[0], SEMA_YAKLASIK[0]))
     return hata
@@ -1789,7 +1975,7 @@ def bozma_denemesi(V=None, kutular=None):
         eski_kb, eski_em, eski_pc = copy.deepcopy(KARISIK_BILINEN), copy.deepcopy(GEO_EKSIK_MUAF), copy.deepcopy(PARCA_CAD)
         eski_sp, eski_si = copy.deepcopy(SEMA_PARCA), copy.deepcopy(SEMA_GEO_ISTISNA)
         eski_sk, eski_sm, eski_bt = copy.deepcopy(SEMA_KONUM), copy.deepcopy(SEMA_ESLEMESIZ_MUAF), copy.deepcopy(BAGLANTI_TABLOSU)
-        eski_kr = copy.deepcopy(CAD_KIRP)
+        eski_kr, eski_gi = copy.deepcopy(CAD_KIRP), copy.deepcopy(GEO_ISTISNA)
         eski_ue, eski_um = copy.deepcopy(UC_ETIKET), copy.deepcopy(UC_MODELSIZ)
         try:
             V2 = copy.deepcopy(V) if V is not None else None
@@ -1797,6 +1983,7 @@ def bozma_denemesi(V=None, kutular=None):
             f(RM, TB, V2)
             h = kaynak_denetle(TB, RM)
             h += geometri_denetle(TB, ANZ, CAD_ESLEME, GEO_ISTISNA)[0]
+            h += bara_yol_denetle(TB, ANZ)                                     # P10.7b2k düzeltme turu 1
             h += cad_kirp_denetle(ANZ)                                         # P10.7b2i
             h += sema_geometri_denetle(TB, RM, ANZ, KAF)[0]                  # P10.7b2c
             h += baglanti_tablosu_denetle(TB, RM)                            # P10.7b2c B
@@ -1812,6 +1999,9 @@ def bozma_denemesi(V=None, kutular=None):
             APP_JS_ELLE.clear()
             SEMA_KONUM.clear(); SEMA_KONUM.update(eski_sk)
             CAD_KIRP.clear(); CAD_KIRP.update(eski_kr)
+            GEO_ISTISNA.clear(); GEO_ISTISNA.update(eski_gi)                 # P10.7b2k
+            while _BOZMA_GERI:                                               # P10.7b2k: modül sabitini bozan denemelerin geri alması
+                _BOZMA_GERI.pop()()
             UC_ETIKET.clear(); UC_ETIKET.update(eski_ue)
             UC_MODELSIZ.clear(); UC_MODELSIZ.update(eski_um)
             SEMA_ESLEMESIZ_MUAF.clear(); SEMA_ESLEMESIZ_MUAF.update(eski_sm)
@@ -1950,7 +2140,8 @@ def bozma_denemesi(V=None, kutular=None):
 
     def b65(RM, TB, V): del RM.SEMA[_si(RM, "Hoparlor")]                               # eşlemesiz şema (yollar kaynağı)
 
-    def b66(RM, TB, V): SEMA_ESLEMESIZ_MUAF.pop(("yollar", "Ses karti uzatmasi"))      # eşlemesiz şema muafı silindi
+    # P10.7b2k: muaf boş (iki eski ses yolu kaynaktan da kalktı); deneme kaynakta olmayan yolun muafı oldu
+    def b66(RM, TB, V): SEMA_ESLEMESIZ_MUAF[("yollar", "Ses karti uzatmasi")] = "eski"  # kaynakta olmayan yolun muafı eklendi
 
     def b67(RM, TB, V):                                                               # şema boyu eskidi (K03 ara noktası taşındı)
         p = [list(q) for q in sema_noktalari("kafa_ici", "K03")]; p[1][2] += 40.0; SEMA_NOKTA_ELLE[("kafa_ici", "K03")] = p
@@ -2055,7 +2246,7 @@ def bozma_denemesi(V=None, kutular=None):
               ("tablo: I02 kaydı değişti, rehber eski", b59), ("tablo: P03 satırı elle yazıldı", b60),
               ("tablo: P03 yanlış adımda", b61), ("kafa içi: K02 şemasına K03", b62),
               ("kafa içi: giriş kartı nominali taşındı", b63), ("ses: bölücü SEMA_PARCA'dan çıktı", b64),
-              ("eşlemesiz: Hoparlor (yollar) SEMA'dan silindi", b65), ("eşlemesiz: ses kartı muafı silindi", b66),
+              ("eşlemesiz: Hoparlor (yollar) SEMA'dan silindi", b65), ("eşlemesiz: kaynakta olmayan yolun muafı", b66),
               ("şema boyu: K03 yolu değişti, kayıt eski", b67), ("şema boyu: AU1 kaydı silindi", b68),
               ("kafa içi: C01 sonu kameradan uzak", b69), ("ses: şema Pi'den başlıyor", b70),
               ("D1: kartta etiketsiz '~N mm'", b71), ("D1: '(kesim boyu değil)' silindi", b72), ("D1: iki etiket yer değiştirdi", b73),
@@ -2078,6 +2269,33 @@ def bozma_denemesi(V=None, kutular=None):
     # P10.7b2i: U06 şemasının eski istisnası geri eklendi (şema düzeldiği için "kullanılmıyor" yakalanmalı)
     def b98(RM, TB, V): SEMA_GEO_ISTISNA[("ESP32 USB", "son")] = "eski: taban ucu güç panelinin üstünde"
     deneme += [("şema: U06 eski istisnası geri eklendi", b98)]
+    # P10.7b2k (A4, D5): bara şeması ve U06 port kilidi
+    def _modul_boz(mod, ad, deger):
+        eski = getattr(mod, ad)
+        setattr(mod, ad, deger)
+        _BOZMA_GERI.append(lambda: setattr(mod, ad, eski))
+    def _kyt():
+        for p_ in (FC_DIZIN, os.path.join(FC_DIZIN, "lale158")):
+            if p_ not in sys.path:
+                sys.path.insert(0, p_)
+        import kablo_yolu_taban as KYT, kablo_yolu_ekran as KYE
+        return KYT, KYE
+    def b100(RM, TB, V): SEMA_KONUM.pop(("Anahtarlı bara", "*"))           # şema eski röle vekiline düştü (G16 / G22 başı röleden uzak)
+    def b101(RM, TB, V):                                                  # şema ölçüsü modelden ayrıldı (saplama 10 mm kaydı)
+        KYT, _ = _kyt()
+        _modul_boz(KYT, "BARA", dict(KYT.BARA, anahtarli=dict(KYT.BARA["anahtarli"], saplama_x=(-27.5, -2.5, 22.5, 47.5))))
+    def b102(RM, TB, V):                                                  # G22 yanlış saplamadan (3.) başlıyor
+        KYT, _ = _kyt()
+        eski = KYT.yollar
+        _modul_boz(KYT, "yollar", lambda: dict(eski(), G22=[KYT.bara_saplama("anahtarli", 3)] + eski()["G22"][1:]))
+    def b103(RM, TB, V):                                                  # U06 port ağzı ESP32 DevKit'in +x yüzünden 10 mm içeride
+        _, KYE = _kyt()
+        _modul_boz(KYE, "ESP_PORT", (97.0,) + tuple(KYE.ESP_PORT[1:]))
+    deneme += [("şema: anahtarlı bara tutucu vekili silindi", b100), ("şema: bara saplama ölçüsü modelden ayrı", b101),
+               ("şema: G22 yanlış saplamadan", b102), ("şema: U06 port ağzı DevKit yüzünde değil", b103)]
+    # P10.7b2k (F10r-kontrol D4): yol 9 kırpılmışken eski GEO_ISTISNA'sı geri eklendi ("kullanılmıyor" yakalanmalı)
+    def b99(RM, TB, V): GEO_ISTISNA[9] = "eski: yol 9'un ESP32 ucu eski tasarımda"
+    deneme += [("geometri: yol 9 eski istisnası geri eklendi (kırpılmışken)", b99)]
     # P10.7b2f: uç etiketleri (UC_ETIKET / UC_MODELSIZ)
     def b89(RM, TB, V): UC_ETIKET.pop("ESP32")                           # uç sınıflanmamış
     def b90(RM, TB, V): UC_ETIKET["HC-SR04 sol"] = (r"^Sonar HC-SR04", None)   # desen üç sonara uyar
@@ -2147,7 +2365,46 @@ def bozma_denemesi(V=None, kutular=None):
                    ("veri: kaynak tonu değişti, veri eski", v8), ("veri: gösterim şemasında 'kol' alanı (D1)", v9)]
     for ad, f in deneme:
         dene(ad, f)
+    sonuc += bara_yol_bozma(ANZ)                                      # P10.7b2k düzeltme turu 1 (F10u-kontrol 1)
     return sonuc
+
+
+def bara_yol_bozma(analiz):
+    """bara_yol_denetle'nin farklı (diferansiyel) bozması. Yollar taşınana dek temel denetim zaten HATA verdiği için dene()'nin "hata
+    var" ölçütü burada dişsizdir: yol 2 elle doğru çizilir (akü yarığından yıldız 3'e, y 195'te tutucu önünden) ve yalnız yol 2'nin
+    hataları sayılır. Önkoşul (doğru yol 2 temiz) tutmazsa her satır YAKALANMADI. Tutucu analizde yoksa (birleşme öncesi) atlanır."""
+    if not any(p["ad"].startswith("Bara tutucusu ") for p in analiz["parcalar"]):
+        print("bara yolu bozması: taban-analiz.json'da tutucu yok, atlandı (P10.7b2j birleşince koşar)")
+        return []
+    dogru = [[65.5, 133, -29], [62, 160, -29], [60, 195, -30], [0, 195, -30], [0, 191.9, -50]]
+
+    def say(noktalar, hedef=None, izin=None):
+        A = copy.deepcopy(analiz)
+        A["kablo_yolu"][1]["noktalar"] = noktalar
+        global BARA_IZIN_R
+        eski = BARA_IZIN_R
+        try:
+            if izin is not None:
+                BARA_IZIN_R = izin
+            return [h for h in bara_yol_denetle(None, A, hedef) if h.startswith("bara yolu: yol 2 ")]
+        finally:
+            BARA_IZIN_R = eski
+
+    temel = say(dogru)
+    hedef_k = [(n, k, y, b, (1 if k == "G05" else no)) for n, k, y, b, no in bara_yol_hedefleri()]
+    out = []
+    for ad, h in (("bara yolu: izin bölgesi sıfır (kendi saplaması da takım sayılır)", say(dogru, izin=0.0)),
+                  ("bara yolu: G05 yıldızın 1. saplamasında bekleniyor", say(dogru, hedef_k)),
+                  ("bara yolu: yol 2 yıldız 4'ün takımından geçip 3'te bitiyor", say(dogru[:3] + [[25, 191.9, -55], [0, 191.9, -50]])),
+                  ("bara yolu: yol 2 tutucu gövdesinden (y 185) geçiyor", say(dogru[:2] + [[0, 185, -30], [0, 191.9, -50]])),
+                  ("bara yolu: yol 2 saplamaya ulaşmadan bitiyor", say(dogru[:4])),
+                  # düzeltme turu 2 (F10u-kontrol T2): izin bölgesi aşağı açıktı
+                  ("bara yolu: dikey, kendi saplamasında gövdeye (y 182)", say(dogru + [[0, 182, -50]])),
+                  ("bara yolu: gövde içinde kendi saplama ekseni boyunca (y 185)", say(dogru + [[0, 185, -50], [0, 185, -60]])),
+                  ("bara yolu: panelin altından kendi saplamasına (y 176)", say(dogru[:2] + [[0, 176, -30], [0, 176, -55], [0, 191.9, -50]]))):
+        n = 0 if temel else len(h)
+        out.append((ad, n, (temel or h)[:2], "denetim" if n else ""))
+    return out
 
 
 def _modul_kopya(M):
@@ -2208,6 +2465,10 @@ if __name__ == "__main__":
     h = kb_hata + kaynak_denetle(TB, RM, kb)
     gh, gb = geometri_denetle(TB)
     h += gh
+    bh = bara_yol_denetle(TB)                                        # P10.7b2k düzeltme turu 1: CAD yolu × bara tutucusu / saplama
+    h += bh
+    print("bara yolu (CAD yolu × tutucu / saplama, izin ±%g mm): hedef %s; hata %d" % (
+        BARA_IZIN_R, ", ".join("yol %d %s%s %s %d" % (n, k, y, b, no or 0) for n, k, y, b, no in bara_yol_hedefleri(TB)), len(bh)))
     kd = cad_kirp_denetle()                                          # P10.7b2i: kesim korunan bölümü eskisinden ayırıyor mu
     h += kd
     print("kırpma kesimi: %s; hata %d" % (", ".join("yol %d %s" % (n, cad_kirp_metin(n)) for n in sorted(CAD_KIRP)), len(kd)))

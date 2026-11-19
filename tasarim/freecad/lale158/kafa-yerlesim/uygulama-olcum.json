@@ -7,10 +7,7 @@
    "USB Hub 4 lu (kapak ici)",
    "Kopuk bant (USB Hub kapak ici)"
   ],
-  "ses": [
-   "Kopuk bant (USB ses karti)",
-   "USB ses karti"
-  ],
+  "ses": [],
   "pam": [
    "Kopuk bant (PAM8403 amfi)",
    "PAM8403 amfi"
@@ -75,16 +72,8 @@
    "sy8205_mm": 58.17,
    "sy8205_kesisim_mm3": 0.0
   },
-  "Ses karti uzatmasi": {
-   "sy8205_mm": 24.84,
-   "sy8205_kesisim_mm3": 0.0
-  },
   "Dizi USB": {
    "sy8205_mm": 40.82,
-   "sy8205_kesisim_mm3": 0.0
-  },
-  "3,5 mm -> PAM": {
-   "sy8205_mm": 133.31,
    "sy8205_kesisim_mm3": 0.0
   },
   "PAM 5 V": {
@@ -202,39 +191,26 @@
   "en_yakin": [
    [
     "Arka kafa kabugu sag",
-    0.0
-   ],
-   [
-    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
-    0.0
-   ],
-   [
-    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
-    0.0
+    3.0
    ],
    [
     "Arka kafa kabugu sol",
     3.0
    ],
    [
+    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+    11.8
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+    12.276
+   ],
+   [
     "Vida M2,5x5 (Pi 0 ust)",
     13.5
    ]
   ],
-  "cakisma": [
-   [
-    "Arka kafa kabugu sag",
-    77.69
-   ],
-   [
-    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
-    7.97
-   ],
-   [
-    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
-    3.18
-   ]
-  ],
+  "cakisma": [],
   "dizi_mm": 24.97,
   "not_": "v4 satir 114 listede, CAD modelinde yok; zarf VARSAYIM. Zarf Pi'nin ustunde (yerlesim_lib.ai_hat_zarf)"
  },
@@ -434,40 +410,6 @@
   "gecerli": true,
   "kati": 1
  },
- "USB ses karti": {
-  "bb_bas": [
-   -131.5,
-   -120.5,
-   35.0,
-   59.0,
-   -58.0,
-   -10.0
-  ],
-  "en_yakin": [
-   [
-    "USB ses karti",
-    0.0
-   ],
-   [
-    "Arka kafa kabugu sol",
-    1.0
-   ],
-   [
-    "PAM8403 amfi",
-    4.0
-   ],
-   [
-    "Kafa iskeleti",
-    9.014
-   ]
-  ],
-  "cakisma": [
-   [
-    "USB ses karti",
-    12672.0
-   ]
-  ]
- },
  "PAM8403 amfi": {
   "bb_bas": [
    -131.5,
@@ -487,12 +429,12 @@
     1.0
    ],
    [
-    "USB ses karti",
-    4.0
-   ],
-   [
     "Yuz kabugu (on) sol",
     17.529
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+    18.003
    ]
   ],
   "cakisma": [
@@ -550,8 +492,8 @@
    "not_": "USB A -> micro B, HUB -> gogus ekrani TOUCH; kutudaki kablo 35 cm, yetmez; v4 satir 58, 2 m"
   },
   "ESP32 USB": {
-   "yol_mm": 971.0,
-   "onerilen_mm": 1360.0,
+   "yol_mm": 1129.0,
+   "onerilen_mm": 1560.0,
    "kapak_sokme_pay_mm": 150.0,
    "cap_mm": 4.0,
    "not_": "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"
@@ -563,26 +505,12 @@
    "cap_mm": 4.0,
    "not_": "PAM8403 -> hoparlor, boyundan iner; listede robot icin yok (2 x 0,75 kordon test duzeneginin sarfi)"
   },
-  "Ses karti uzatmasi": {
-   "yol_mm": 217.0,
-   "onerilen_mm": 270.0,
-   "kapak_sokme_pay_mm": 0.0,
-   "cap_mm": 4.0,
-   "not_": "Pi port 2 -> L dirsek -> ses karti; USB-A erkek -> disi, listede yok"
-  },
   "Dizi USB": {
    "yol_mm": 85.0,
    "onerilen_mm": 110.0,
    "kapak_sokme_pay_mm": 0.0,
    "cap_mm": 4.0,
    "not_": "Pi port 1 -> ReSpeaker micro B; kisa kablo listede yok"
-  },
-  "3,5 mm -> PAM": {
-   "yol_mm": 36.0,
-   "onerilen_mm": 40.0,
-   "kapak_sokme_pay_mm": 0.0,
-   "cap_mm": 3.5,
-   "not_": "ses karti L 3,5 mm fis -> PAM girisi; AUX kablosu kesilir, listede robot icin yok"
   },
   "PAM 5 V": {
    "yol_mm": 64.0,
@@ -628,19 +556,9 @@
    3.0
   ],
   [
-   "Ses karti uzatmasi",
-   217.0,
-   6.5
-  ],
-  [
    "Dizi USB",
    85.0,
    2.5
-  ],
-  [
-   "3,5 mm -> PAM",
-   36.0,
-   0.5
   ],
   [
    "PAM 5 V",
@@ -650,7 +568,7 @@
  ],
  "pi_portlari": {
   "1": "ReSpeaker",
-  "2": "USB ses karti (uzatma + L dirsek)",
+  "2": "bos (USB ses karti yedek, takilmaz; KT2 gecmezse buraya)",
   "3": "Hub (hub 130 mm + uzatma)",
   "4": "Kafa ekrani dokunmatik"
  },
@@ -660,5 +578,5 @@
   "3": "bos",
   "4": "bos"
  },
- "sure_s": 432.4
+ "sure_s": 436.5
 }

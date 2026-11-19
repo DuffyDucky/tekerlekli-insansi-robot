@@ -807,7 +807,8 @@ class Denetim:
         1) E3: kafa alt montajı (tezgâh "kafa") ↔ E3'ten önce robotta olanlar. 2) sira_grup'ta "tezgah" işaretli her grup (masada
         hazırlanan): grubun parçaları ↔ adım başında yerinde olanlar + adım içi önceki gruplar. Sınır: girilemeyen birim 0.
         Sınama: düzeltmeden önceki E3 sırası (horn kafada, 625ZZ iç bileziği + pim + pul E2'de) +y'de kapalı; aynı kafa yeni sırayla
-        +y'de açık; E4'te sol arka kabuk önce takılırsa sağ arka kabuk hiçbir eksenden girmez."""
+        +y'de açık; E4'te sol arka kabuk önce takılırsa sağ arka kabuk yalnız +x'ten girer (F10y: sıra öneri, geometri zorlamıyor);
+        PAM8403 masada +x açık, kafa kapalıyken +x kapalı (aracın "kapalı"yı yakaladığının kanıtı)."""
         import rehber_giris as RG
         t0 = time.time()
         kod = {a["kod"]: a["i"] for a in self.A}
@@ -816,7 +817,7 @@ class Denetim:
         G4 = self.G4 = RG.Giris(self.P, h=0.5)
         birim = []
 
-        def ozet(ad, adim, G, H, E, yonler=RG.YONLER6, bek=None):
+        def ozet(ad, adim, G, H, E, yonler=RG.YONLER6, bek=None, bek_yon=None):
             r = G.olc(H, E, yonler)
             rec = dict(ad=ad, adim=adim, kod=self.A[adim]["kod"], hareketli=len(H), engel=len(E), serbest_yon=r["serbest_yon"],
                        serbest=bool(r["serbest_yon"]), h_mm=G.h, esik_mm=G.esik, tek_isin=r["tek_isin"], sure_s=r["sure_s"],
@@ -825,6 +826,9 @@ class Denetim:
             if bek is not None:
                 rec["beklenen"] = bek
                 rec["gecti"] = (rec["serbest"] == (bek == "açık"))
+            if bek_yon is not None:                                    # F10y: serbest yön kümesi de tam tutmalı (değer sınanır)
+                rec["beklenen_yon"] = [list(y) for y in bek_yon]
+                rec["gecti"] = bool(rec.get("gecti", True) and sorted(map(list, r["serbest_yon"])) == sorted(rec["beklenen_yon"]))
             return rec
         kafa = [k for k in range(self.N) if self.t_[k] == "kafa" and not self.ref[k]]
         alt3 = [k for k in range(self.N) if self.b_[k] < e3 and not self.ref[k]]
@@ -872,7 +876,21 @@ class Denetim:
         sol = [k for k in range(self.N) if self.a_[k] == e4 and self.P[k]["ad"] in ("Arka kafa kabuğu sol",)]
         if sag and sol:
             alt4 = [int(k) for k in np.nonzero(self.taban(e4))[0]]
-            sn.append(ozet("E4 sağ arka kabuk, sol arka kabuk takılıyken (yanlış sıra): kapalı", e4, G4, sag, alt4 + sol, RG.YONLER6, "kapalı"))
+            # P10.7b2j kapanışı (F10y, Echo kararı, geri alınabilir): eski beklenti "kapalı" yalnız +x'te 29 mm'de Pi'ye 0,65 mm'lik
+            # (5 ışın) değmeye dayanıyordu; birleşik modelde (K2 a boss'u, ses kartı çıktı) +x serbest. Sıra geometriyle zorlanmıyor;
+            # beklenti geometrinin bugünkü hâli: yalnız +x açık. Yeniden kapanırsa ya da yön değişirse sınama kalır (değer izlenir).
+            sn.append(ozet("E4 sağ arka kabuk, sol arka kabuk takılıyken (ters sıra): yalnız +x açık", e4, G4, sag, alt4 + sol,
+                           RG.YONLER6, "açık", [(1, 0, 0)]))
+        # F10y (Echo kararı): "kapalı"yı yakalayabildiğinin yeni kanıtı, gerçek sıradan sağlam bir çift. PAM8403 masada sol kabuğa
+        # takılır (+x, kafanın içinden): yalnız sol kabuk varken +x açık; kafa kapalıyken (adım sonu) +x sağ arka kabukta kapalı
+        # (F10y ölçümü: 24 mm derinlik, 1.812 ışın; 1 mm altı değme değil).
+        pam = [k for k in range(self.N) if self.a_[k] == e4 and (self.P[k]["ad"].startswith("PAM8403")
+                                                                   or self.P[k]["ad"].startswith("Köpük bant (PAM"))]
+        if pam and sol and sag:
+            ps = set(pam)
+            son4 = [k for k in range(self.N) if self.a_[k] <= e4 and not self.ref[k] and k not in ps]
+            sn.append(ozet("E4 PAM8403 masada, yalnız sol arka kabuk: +x açık", e4, G4, pam, sol, [(1, 0, 0)], "açık"))
+            sn.append(ozet("E4 PAM8403, kafa kapandıktan sonra (sağ arka kabuk takılı): +x kapalı", e4, G4, pam, son4, [(1, 0, 0)], "kapalı"))
         girilemez = [b for b in birim if not b["serbest"] and not b.get("istisna")]
         ub_kapali = [b["ad"] for b in birim if b.get("ub") and not b.get("ub_serbest") and not b.get("istisna")]   # F10d: rehberin gösterdiği yön kapalı
         return dict(ub_kapali=ub_kapali,durum="koştu", yontem="rehber_giris.py: üç eksende ışın aralıkları (kapalı mesh, parite), hareketli küme eksen yönlerinde "
@@ -882,7 +900,7 @@ class Denetim:
                     birim=birim, girilemez=len(girilemez), sinir_girilemez=0, sinama=sn,
                     istisna=[dict(ad=b["ad"], gerekce=b["istisna"], serbest_yon=b["serbest_yon"], ub_yol=b.get("ub_yol"))
                              for b in birim if b.get("istisna")],
-                    gecti=bool(not girilemez and not ub_kapali and all(x["gecti"] for x in sn) and len(sn) == 3),
+                    gecti=bool(not girilemez and not ub_kapali and all(x["gecti"] for x in sn) and len(sn) == 5),
                     e3_kafa_serbest=bool(birim and birim[0]["serbest"]), sure_s=round(time.time() - t0, 1))
 
     # ------------------------------------------------ uçuş yolu (F10d): alt adımlı adımlarda her satırın patlatma yolu

@@ -1,12 +1,12 @@
 {
- "tarih": "2026-11-19 04:51",
+ "tarih": "2026-11-19 13:28",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
   "gecen": 50,
   "konsol_hatasi": 0,
-  "parca_rehber": 1192,
-  "parca_mesh": 1192,
+  "parca_rehber": 1238,
+  "parca_mesh": 1238,
   "atanmamis": [],
   "her_parca_tek_adimda": {
    "gecti": true,
@@ -14,14 +14,14 @@
    "hic_gorunmeyen": []
   },
   "sema": 65,
-  "veri_uretim": "2026-11-19 02:16",
+  "veri_uretim": "2026-11-19 12:51",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
-   "omuz_sag": "2026-11-09 14:27",
+   "omuz_sag": "2026-11-19 07:45",
    "kabuk": "2026-11-09 14:28",
    "dirsek_sag": "2026-11-09 14:28",
-   "kafa": "2026-11-09 08:54",
-   "taban": "2026-11-09 14:29"
+   "kafa": "2026-11-19 07:33",
+   "taban": "2026-11-19 07:39"
   }
  },
  "sonuc": [
@@ -36,8 +36,8 @@
    "gorunen_simdi": 0,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
-   "beklenen_hedef": 1192,
-   "gorunen_hedef": 1192,
+   "beklenen_hedef": 1238,
+   "gorunen_hedef": 1238,
    "eksik_mesh": [],
    "fark": [],
    "sema": 0,
@@ -45,7 +45,7 @@
    "kadraj": {
     "D": 3467,
     "alan": "sag-sutun",
-    "nokta": 10056
+    "nokta": 10424
    },
    "gecti": true
   },
@@ -320,8 +320,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-12.png",
    "veri_okundu": true,
-   "beklenen_simdi": 39,
-   "gorunen_simdi": 39,
+   "beklenen_simdi": 85,
+   "gorunen_simdi": 85,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -333,7 +333,7 @@
    "kadraj": {
     "D": 430,
     "alan": "alt-serit",
-    "nokta": 320
+    "nokta": 688
    },
    "gecti": true
   },
@@ -346,8 +346,8 @@
    "veri_okundu": true,
    "beklenen_simdi": 8,
    "gorunen_simdi": 8,
-   "beklenen_alt": 39,
-   "gorunen_alt": 39,
+   "beklenen_alt": 85,
+   "gorunen_alt": 85,
    "beklenen_hedef": 0,
    "gorunen_hedef": 0,
    "eksik_mesh": [],
@@ -357,7 +357,7 @@
    "kadraj": {
     "D": 430,
     "alan": "alt-serit",
-    "nokta": 376
+    "nokta": 744
    },
    "gecti": true
   },
@@ -379,7 +379,7 @@
    "sema": 0,
    "sema_fark": [],
    "kadraj": {
-    "D": 404,
+    "D": 407,
     "alan": "alt-serit",
     "nokta": 640
    },
@@ -403,7 +403,7 @@
    "sema": 0,
    "sema_fark": [],
    "kadraj": {
-    "D": 405,
+    "D": 408,
     "alan": "alt-serit",
     "nokta": 704
    },
@@ -451,7 +451,7 @@
    "sema": 9,
    "sema_fark": [],
    "kadraj": {
-    "D": 767,
+    "D": 770,
     "alan": "sag-sutun",
     "nokta": 136
    },
@@ -728,8 +728,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-29.png",
    "veri_okundu": true,
-   "beklenen_simdi": 22,
-   "gorunen_simdi": 22,
+   "beklenen_simdi": 24,
+   "gorunen_simdi": 24,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -741,7 +741,7 @@
    "kadraj": {
     "D": 368,
     "alan": "alt-serit",
-    "nokta": 200
+    "nokta": 216
    },
    "gecti": true
   },
@@ -754,8 +754,8 @@
    "veri_okundu": true,
    "beklenen_simdi": 7,
    "gorunen_simdi": 7,
-   "beklenen_alt": 22,
-   "gorunen_alt": 22,
+   "beklenen_alt": 24,
+   "gorunen_alt": 24,
    "beklenen_hedef": 0,
    "gorunen_hedef": 0,
    "eksik_mesh": [],
@@ -765,7 +765,7 @@
    "kadraj": {
     "D": 368,
     "alan": "alt-serit",
-    "nokta": 232
+    "nokta": 248
    },
    "gecti": true
   },
@@ -776,8 +776,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-31.png",
    "veri_okundu": true,
-   "beklenen_simdi": 60,
-   "gorunen_simdi": 60,
+   "beklenen_simdi": 58,
+   "gorunen_simdi": 58,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -789,7 +789,7 @@
    "kadraj": {
     "D": 670,
     "alan": "sag-sutun",
-    "nokta": 536
+    "nokta": 520
    },
    "gecti": true
   },
@@ -811,7 +811,7 @@
    "sema": 5,
    "sema_fark": [],
    "kadraj": {
-    "D": 3083,
+    "D": 3075,
     "alan": "sag-sutun",
     "nokta": 72
    },
@@ -1232,7 +1232,7 @@
   "konsol_hatasi": 0,
   "her_parca_tek_alt_adimda": {
    "gecti": true,
-   "parca": 499,
+   "parca": 497,
    "birden_cok_alt_adimda": {},
    "hic_gorunmeyen": []
   },
@@ -1258,9 +1258,9 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 222,
+     "D": 267,
      "alan": "sag-sutun",
-     "nokta": 8
+     "nokta": 24
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -1281,7 +1281,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 487,
+     "D": 475,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -1327,7 +1327,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 655,
+     "D": 674,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -1350,7 +1350,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 740,
+     "D": 733,
      "alan": "sag-sutun",
      "nokta": 16
     },
@@ -1373,8 +1373,8 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 204,
-     "alan": "alt-serit",
+     "D": 306,
+     "alan": "sag-sutun",
      "nokta": 8
     },
     "eksik_mesh": [],
@@ -1396,7 +1396,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 488,
+     "D": 509,
      "alan": "sag-sutun",
      "nokta": 120
     },
@@ -1465,7 +1465,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 591,
+     "D": 596,
      "alan": "sag-sutun",
      "nokta": 240
     },
@@ -1511,7 +1511,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 2760,
+     "D": 2767,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -1603,7 +1603,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 534,
+     "D": 535,
      "alan": "sag-sutun",
      "nokta": 104
     },
@@ -1619,8 +1619,8 @@
     "hata": null,
     "goruntu": "planlama/rehber/goruntu/adim-31-03.png",
     "veri_okundu": true,
-    "beklenen_simdi": 9,
-    "gorunen_simdi": 9,
+    "beklenen_simdi": 7,
+    "gorunen_simdi": 7,
     "beklenen_alt": 0,
     "gorunen_alt": 0,
     "fark": [],
@@ -1628,7 +1628,7 @@
     "kadraj": {
      "D": 538,
      "alan": "sag-sutun",
-     "nokta": 72
+     "nokta": 56
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -1644,14 +1644,14 @@
     "veri_okundu": true,
     "beklenen_simdi": 0,
     "gorunen_simdi": 0,
-    "beklenen_alt": 9,
-    "gorunen_alt": 9,
+    "beklenen_alt": 7,
+    "gorunen_alt": 7,
     "fark": [],
     "sema_fark": [],
     "kadraj": {
      "D": 514,
      "alan": "sag-sutun",
-     "nokta": 88
+     "nokta": 72
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -1810,7 +1810,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 2180,
+     "D": 2184,
      "alan": "sag-sutun",
      "nokta": 16
     },
@@ -1856,7 +1856,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 2086,
+     "D": 2082,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -1971,7 +1971,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 3256,
+     "D": 3263,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -3259,7 +3259,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 3627,
+     "D": 3628,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -3344,43 +3344,43 @@
    "bos": [],
    "cizim_esik": 0.01,
    "yeniden_cekim": {},
-   "en_dusuk_cizim_orani": 0.0804,
+   "en_dusuk_cizim_orani": 0.0796,
    "cizim_orani": {
-    "17.1": 0.8886,
-    "17.2": 0.679,
-    "17.3": 0.7605,
-    "17.4": 0.6576,
-    "17.5": 0.5906,
-    "17.6": 0.8043,
-    "17.7": 0.6857,
-    "17.8": 0.699,
+    "17.1": 0.9892,
+    "17.2": 0.6957,
+    "17.3": 0.7604,
+    "17.4": 0.6011,
+    "17.5": 0.5572,
+    "17.6": 0.9478,
+    "17.7": 0.6517,
+    "17.8": 0.6996,
     "17.9": 0.9592,
-    "17.10": 0.6256,
+    "17.10": 0.6248,
     "17.11": 0.8956,
-    "17.12": 0.0805,
+    "17.12": 0.0796,
     "21.1": 0.375,
     "21.2": 0.3975,
-    "31.1": 0.1482,
-    "31.2": 0.2815,
-    "31.3": 0.1508,
-    "31.4": 0.4719,
+    "31.1": 0.1483,
+    "31.2": 0.2814,
+    "31.3": 0.1456,
+    "31.4": 0.472,
     "31.5": 0.2433,
     "31.6": 0.222,
     "31.7": 0.7576,
     "31.8": 0.732,
     "31.9": 0.3163,
     "31.10": 0.4206,
-    "32.1": 0.1008,
+    "32.1": 0.0997,
     "32.2": 0.6131,
-    "32.3": 0.0878,
+    "32.3": 0.0886,
     "32.4": 0.0954,
     "32.5": 0.2427,
-    "32.6": 0.4621,
-    "32.7": 0.1002,
-    "32.8": 0.0804,
-    "33.1": 0.4313,
+    "32.6": 0.4623,
+    "32.7": 0.1001,
+    "32.8": 0.0814,
+    "33.1": 0.4314,
     "33.2": 0.4822,
-    "33.3": 0.3037,
+    "33.3": 0.3038,
     "33.4": 0.5197,
     "33.5": 0.3286,
     "33.6": 0.14,
@@ -3462,12 +3462,12 @@
    "9": 0.7785,
    "10": 0.6853,
    "11": 0.7751,
-   "12": 0.3867,
+   "12": 0.3856,
    "13": 0.6945,
-   "14": 0.3713,
-   "15": 0.7962,
+   "14": 0.3656,
+   "15": 0.792,
    "16": 0.6749,
-   "17": 0.523,
+   "17": 0.4798,
    "18": 0.0737,
    "19": 0.2436,
    "20": 0.2538,
@@ -3481,8 +3481,8 @@
    "28": 0.3195,
    "29": 0.2856,
    "30": 0.3704,
-   "31": 0.3422,
-   "32": 0.1078,
+   "31": 0.3423,
+   "32": 0.1085,
    "33": 0.2689,
    "34": 0.1966,
    "35": 0.4849,
@@ -3500,41 +3500,41 @@
    "47": 0.2132,
    "48": 0.4536,
    "49": 0.2213,
-   "17.1": 0.8886,
-   "17.2": 0.679,
-   "17.3": 0.7605,
-   "17.4": 0.6576,
-   "17.5": 0.5906,
-   "17.6": 0.8043,
-   "17.7": 0.6857,
-   "17.8": 0.699,
+   "17.1": 0.9892,
+   "17.2": 0.6957,
+   "17.3": 0.7604,
+   "17.4": 0.6011,
+   "17.5": 0.5572,
+   "17.6": 0.9478,
+   "17.7": 0.6517,
+   "17.8": 0.6996,
    "17.9": 0.9592,
-   "17.10": 0.6256,
+   "17.10": 0.6248,
    "17.11": 0.8956,
-   "17.12": 0.0805,
+   "17.12": 0.0796,
    "21.1": 0.375,
    "21.2": 0.3975,
-   "31.1": 0.1482,
-   "31.2": 0.2815,
-   "31.3": 0.1508,
-   "31.4": 0.4719,
+   "31.1": 0.1483,
+   "31.2": 0.2814,
+   "31.3": 0.1456,
+   "31.4": 0.472,
    "31.5": 0.2433,
    "31.6": 0.222,
    "31.7": 0.7576,
    "31.8": 0.732,
    "31.9": 0.3163,
    "31.10": 0.4206,
-   "32.1": 0.1008,
+   "32.1": 0.0997,
    "32.2": 0.6131,
-   "32.3": 0.0878,
+   "32.3": 0.0886,
    "32.4": 0.0954,
    "32.5": 0.2427,
-   "32.6": 0.4621,
-   "32.7": 0.1002,
-   "32.8": 0.0804,
-   "33.1": 0.4313,
+   "32.6": 0.4623,
+   "32.7": 0.1001,
+   "32.8": 0.0814,
+   "33.1": 0.4314,
    "33.2": 0.4822,
-   "33.3": 0.3037,
+   "33.3": 0.3038,
    "33.4": 0.5197,
    "33.5": 0.3286,
    "33.6": 0.14,
@@ -3680,13 +3680,13 @@
  },
  "yazdir": {
   "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf",
-  "pdf_sayfa": 86,
+  "pdf_sayfa": 87,
   "pdf_yeni": true,
-  "html_sayfa": 86,
+  "html_sayfa": 87,
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 18973,
+  "boyut_kb": 19317,
   "sayfa_esleme": {
    "0": [
     1
@@ -3748,134 +3748,135 @@
     23,
     24,
     25,
-    26
-   ],
-   "18": [
+    26,
     27
    ],
-   "19": [
+   "18": [
     28
    ],
-   "20": [
+   "19": [
     29
    ],
-   "21": [
+   "20": [
     30
    ],
-   "22": [
+   "21": [
     31
    ],
-   "23": [
+   "22": [
     32
    ],
-   "24": [
+   "23": [
     33
    ],
-   "25": [
+   "24": [
     34
    ],
-   "26": [
+   "25": [
     35
    ],
-   "27": [
+   "26": [
     36
    ],
-   "28": [
+   "27": [
     37
    ],
-   "29": [
-    38,
-    39
+   "28": [
+    38
    ],
-   "30": [
+   "29": [
+    39,
     40
    ],
+   "30": [
+    41
+   ],
    "31": [
-    41,
     42,
     43,
     44,
-    45
+    45,
+    46
    ],
    "32": [
-    46,
     47,
     48,
-    49
+    49,
+    50
    ],
    "33": [
-    50,
     51,
     52,
     53,
     54,
-    55
+    55,
+    56
    ],
    "34": [
-    56,
     57,
     58,
     59,
-    60
+    60,
+    61
    ],
    "35": [
-    61,
     62,
-    63
+    63,
+    64
    ],
    "36": [
-    64,
-    65
-   ],
-   "37": [
+    65,
     66
    ],
-   "38": [
+   "37": [
     67
    ],
-   "39": [
+   "38": [
     68
    ],
+   "39": [
+    69
+   ],
    "40": [
-    69,
-    70
+    70,
+    71
    ],
    "41": [
-    71,
     72,
-    73
+    73,
+    74
    ],
    "42": [
-    74,
-    75
-   ],
-   "43": [
+    75,
     76
    ],
-   "44": [
-    77,
-    78
+   "43": [
+    77
    ],
-   "45": [
+   "44": [
+    78,
     79
    ],
-   "46": [
+   "45": [
     80
    ],
-   "47": [
+   "46": [
     81
    ],
+   "47": [
+    82
+   ],
    "48": [
-    82,
-    83
+    83,
+    84
    ],
    "49": [
-    84,
     85,
-    86
+    86,
+    87
    ]
   },
-  "devam_sayfasi": 36,
+  "devam_sayfasi": 37,
   "en_kucuk_yazi_pt_dom": 8.1,
   "en_kucuk_yazi_pt_pdf": 8.1,
   "yazi_alt_sinir_pt": 8.0,
@@ -3883,9 +3884,9 @@
   "tamlik": {
    "olculdu": true,
    "adim": 50,
-   "is_karakter": 23074,
+   "is_karakter": 24237,
    "is_eksik_karakter": 0,
-   "madde": 441,
+   "madde": 446,
    "madde_eksik": 0,
    "madde_fazla": 0,
    "eksik": [],
@@ -3895,7 +3896,7 @@
     "12": [
      [
       13,
-      1143
+      1910
      ],
      [
       14,
@@ -3905,7 +3906,7 @@
     "14": [
      [
       16,
-      2146
+      2433
      ],
      [
       17,
@@ -3940,26 +3941,26 @@
      [
       26,
       0
+     ],
+     [
+      27,
+      0
      ]
     ],
     "29": [
      [
-      38,
-      1851
+      39,
+      1925
      ],
      [
-      39,
+      40,
       0
      ]
     ],
     "31": [
      [
-      41,
-      2028
-     ],
-     [
       42,
-      0
+      2063
      ],
      [
       43,
@@ -3972,16 +3973,16 @@
      [
       45,
       0
+     ],
+     [
+      46,
+      0
      ]
     ],
     "32": [
      [
-      46,
-      148
-     ],
-     [
       47,
-      0
+      148
      ],
      [
       48,
@@ -3990,16 +3991,16 @@
      [
       49,
       0
+     ],
+     [
+      50,
+      0
      ]
     ],
     "33": [
      [
-      50,
-      1640
-     ],
-     [
       51,
-      0
+      1640
      ],
      [
       52,
@@ -4016,16 +4017,16 @@
      [
       55,
       0
+     ],
+     [
+      56,
+      0
      ]
     ],
     "34": [
      [
-      56,
-      649
-     ],
-     [
       57,
-      0
+      649
      ],
      [
       58,
@@ -4038,97 +4039,101 @@
      [
       60,
       0
+     ],
+     [
+      61,
+      0
      ]
     ],
     "35": [
      [
-      61,
+      62,
       1663
      ],
      [
-      62,
+      63,
       0
      ],
      [
-      63,
+      64,
       0
      ]
     ],
     "36": [
      [
-      64,
+      65,
       647
      ],
      [
-      65,
+      66,
       0
      ]
     ],
     "40": [
      [
-      69,
+      70,
       813
      ],
      [
-      70,
+      71,
       0
      ]
     ],
     "41": [
      [
-      71,
+      72,
       654
      ],
      [
-      72,
+      73,
       0
      ],
      [
-      73,
+      74,
       0
      ]
     ],
     "42": [
      [
-      74,
+      75,
       416
      ],
      [
-      75,
+      76,
       0
      ]
     ],
     "44": [
      [
-      77,
+      78,
       313
      ],
      [
-      78,
+      79,
       0
      ]
     ],
     "48": [
      [
-      82,
+      83,
       235
      ],
      [
-      83,
+      84,
       0
      ]
     ],
     "49": [
      [
-      84,
+      85,
       3433
      ],
      [
-      85,
+      86,
       0
      ],
      [
-      86,
+      87,
       0
      ]
     ]
@@ -4266,11 +4271,6 @@
      "metinde": true
     },
     {
-     "bilesen": "USB ses kartı",
-     "adim": "E4",
-     "metinde": true
-    },
-    {
      "bilesen": "PAM8403",
      "adim": "E4",
      "metinde": true
@@ -4353,7 +4353,7 @@
     },
     {
      "ifade": "ESP32 → kafa USB",
-     "yer": "parça p1191 ad",
+     "yer": "parça p1237 ad",
      "cumle": "CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez;",
      "baglam": [
       "05.11 öncesi"
@@ -4368,7 +4368,7 @@
     },
     {
      "adim": "E3a",
-     "uyari": "iki P6KE6V8A (Pi hattındaki modelde yok)",
+     "uyari": "iki P6KE6V8A (ikisi de modelde, K51 a)",
      "var": true
     },
     {
@@ -4798,7 +4798,7 @@
     },
     {
      "adim": "E3a",
-     "uyari": "E3a Pi hattı TVS modele sonraki CAD paketinde (K51 a)",
+     "uyari": "E3a Pi hattı TVS modelde (K51 a)",
      "var": true
     },
     {
@@ -4813,7 +4813,132 @@
     },
     {
      "adim": "B5a",
-     "uyari": "B5a bara tutucusu CAD paketinde basılır (K64 a)",
+     "uyari": "B5a bara tutucuları tezgâhta, panel altı açıkken (K64 a)",
+     "var": true
+    },
+    {
+     "adim": "B5a",
+     "uyari": "B5a saplamalar alttan, altıgen cebe",
+     "var": true
+    },
+    {
+     "adim": "B5a",
+     "uyari": "B5a tutucu panele alttan M3×10",
+     "var": true
+    },
+    {
+     "adim": "B5a",
+     "uyari": "B5a saplama numara yönü",
+     "var": true
+    },
+    {
+     "adim": "B5a",
+     "uyari": "B5a saplama baş tipi varsayımı",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 bara somunları F1'de ilk enerjiden önce yeniden sıkılır (PETG)",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 yeniden sıkma koşulu",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 yeniden sıkma erişim çekincesi",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 enerji öncesi bara somunları yeniden sıkılır",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 enerji öncesi ESP32 yön bakışı",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 ESP32 ters takılırsa 5 V GPIO'ya",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 sıkmada lokma anahtarı iki baraya değmez",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 sıkmada lokma anahtarı iki baraya değmez",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 ESP32 yön bakışı erişim çekincesi",
+     "var": true
+    },
+    {
+     "adim": "E3a",
+     "uyari": "E3a D24V50F5 pin kenarı yönü (doğrulanmadı)",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 bara pabuçları yelpaze",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 bara somunu diş kavraması",
+     "var": true
+    },
+    {
+     "adim": "B3",
+     "uyari": "B3 yol 4 akü kayışına sıkıştırılmaz",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 17.10 Q03 / B01 kesikten (çizim kusuru)",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 17.7 yol 9 yıldız saplamasından",
+     "var": true
+    },
+    {
+     "adim": "B6a",
+     "uyari": "B6a ESP32 ters: 5 V GPIO'ya",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 U06 notunda G05",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 17.1 Kablo yolu 2 yıldız saplamasında",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 bara kabloları U06 şeridinin altında",
+     "var": true
+    },
+    {
+     "adim": "B6",
+     "uyari": "B6 K53 a çentik",
+     "var": true
+    },
+    {
+     "adim": "B6a",
+     "uyari": "B6a ESP32 DevKit yönü",
      "var": true
     },
     {
@@ -4858,12 +4983,17 @@
     },
     {
      "adim": "E4",
-     "uyari": "E4 USB ses kartı takılmaz, çizimdeki yeri uygulanmaz, köpük bant yapıştırılmaz",
+     "uyari": "E4 USB ses kartı takılmaz, çizimde yok",
      "var": true
     },
     {
      "adim": "E4",
      "uyari": "E4 ses yolu ReSpeaker → bölücü → PAM8403",
+     "var": true
+    },
+    {
+     "adim": "E4",
+     "uyari": "E4 KT2 geçmezse uzatma + dirsek",
      "var": true
     },
     {
@@ -5023,10 +5153,10 @@
   "elektrik": [],
   "elektrik_sayi": 0,
   "metin_sayisi": {
-   "veri": 5030,
+   "veri": 5185,
    "tarayici": 149
   },
-  "parca": 1192,
+  "parca": 1238,
   "sema": 65,
   "gecti": true
  },
@@ -5142,8 +5272,8 @@
      "ad": "E3 kafa alt montajı (E3a) → tilt hornu",
      "adim": 30,
      "kod": "E3",
-     "hareketli": 22,
-     "engel": 610,
+     "hareketli": 24,
+     "engel": 656,
      "serbest_yon": [
       [
        0,
@@ -5165,7 +5295,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 63.8,
+     "sure_s": 54.3,
      "yon": [
       {
        "yon": [
@@ -5261,8 +5391,13 @@
      "adim": 31,
      "kod": "E4",
      "hareketli": 12,
-     "engel": 639,
+     "engel": 687,
      "serbest_yon": [
+      [
+       1,
+       0,
+       0
+      ],
       [
        0,
        0,
@@ -5273,7 +5408,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 16.4,
+     "sure_s": 22.6,
      "yon": [
       {
        "yon": [
@@ -5312,7 +5447,7 @@
         0
        ],
        "serbest": false,
-       "yol_mm": 5.0,
+       "yol_mm": 21.0,
        "carpan": [
         {
          "hareketli": "Arka kafa kabuğu sağ [p0752]",
@@ -5329,16 +5464,9 @@
         0,
         0
        ],
-       "serbest": false,
-       "yol_mm": 29.0,
-       "carpan": [
-        {
-         "hareketli": "Arka kafa kabuğu sağ [p0752]",
-         "engel": "Raspberry Pi 5 4GB + Active Cooler [p0803]",
-         "derinlik_mm": 0.65,
-         "isin": 5
-        }
-       ],
+       "serbest": true,
+       "yol_mm": 129.0,
+       "carpan": [],
        "dinlenme": []
       },
       {
@@ -5406,8 +5534,8 @@
      "ad": "E4: Sol arka kabuk → kafa",
      "adim": 31,
      "kod": "E4",
-     "hareketli": 9,
-     "engel": 651,
+     "hareketli": 7,
+     "engel": 699,
      "serbest_yon": [
       [
        -1,
@@ -5424,7 +5552,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 30.6,
+     "sure_s": 26.2,
      "yon": [
       {
        "yon": [
@@ -5439,7 +5567,7 @@
          "hareketli": "Arka kafa kabuğu sol [p0753]",
          "engel": "Kafa iskeleti [p0754]",
          "derinlik_mm": 19.51,
-         "isin": 1328
+         "isin": 1304
         },
         {
          "hareketli": "Isıl gömme somun M3 (tabla rafı sol z-75) [p0762]",
@@ -5563,7 +5691,7 @@
      "adim": 31,
      "kod": "E4",
      "hareketli": 26,
-     "engel": 664,
+     "engel": 710,
      "serbest_yon": [
       [
        0,
@@ -5575,7 +5703,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.9,
+     "sure_s": 3.3,
      "yon": [
       {
        "yon": [
@@ -5739,7 +5867,7 @@
      "adim": 33,
      "kod": "F1",
      "hareketli": 12,
-     "engel": 734,
+     "engel": 780,
      "serbest_yon": [
       [
        1,
@@ -5751,7 +5879,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 83.0,
+     "sure_s": 69.4,
      "yon": [
       {
        "yon": [
@@ -5903,7 +6031,7 @@
      "adim": 33,
      "kod": "F1",
      "hareketli": 4,
-     "engel": 757,
+     "engel": 803,
      "serbest_yon": [
       [
        -1,
@@ -5915,7 +6043,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 88.3,
+     "sure_s": 74.3,
      "yon": [
       {
        "yon": [
@@ -6073,13 +6201,13 @@
      "adim": 34,
      "kod": "F2",
      "hareketli": 19,
-     "engel": 834,
+     "engel": 880,
      "serbest_yon": [],
      "serbest": false,
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 33.0,
+     "sure_s": 27.2,
      "yon": [
       {
        "yon": [
@@ -6263,13 +6391,13 @@
      "adim": 49,
      "kod": "F5",
      "hareketli": 3,
-     "engel": 1159,
+     "engel": 1205,
      "serbest_yon": [],
      "serbest": false,
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 7.9,
+     "sure_s": 6.4,
      "yon": [
       {
        "yon": [
@@ -6480,8 +6608,8 @@
      "ad": "E3 düzeltmeden önceki sıra (horn kafada; 625ZZ iç bileziği, pim, pul E2'de): +y kapalı",
      "adim": 30,
      "kod": "E3",
-     "hareketli": 23,
-     "engel": 612,
+     "hareketli": 25,
+     "engel": 658,
      "serbest_yon": [],
      "serbest": false,
      "h_mm": 0.25,
@@ -6521,8 +6649,8 @@
      "ad": "E3 yeni sıra (horn servoda vidasız; 625ZZ kafada; pim, pul, horn vidası sonra): +y açık",
      "adim": 30,
      "kod": "E3",
-     "hareketli": 22,
-     "engel": 610,
+     "hareketli": 24,
+     "engel": 656,
      "serbest_yon": [
       [
        0,
@@ -6534,7 +6662,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 5.5,
+     "sure_s": 4.6,
      "yon": [
       {
        "yon": [
@@ -6552,17 +6680,23 @@
      "gecti": true
     },
     {
-     "ad": "E4 sağ arka kabuk, sol arka kabuk takılıyken (yanlış sıra): kapalı",
+     "ad": "E4 sağ arka kabuk, sol arka kabuk takılıyken (ters sıra): yalnız +x açık",
      "adim": 31,
      "kod": "E4",
      "hareketli": 1,
-     "engel": 640,
-     "serbest_yon": [],
-     "serbest": false,
+     "engel": 688,
+     "serbest_yon": [
+      [
+       1,
+       0,
+       0
+      ]
+     ],
+     "serbest": true,
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 6.1,
+     "sure_s": 17.3,
      "yon": [
       {
        "yon": [
@@ -6595,7 +6729,7 @@
         0
        ],
        "serbest": false,
-       "yol_mm": 5.0,
+       "yol_mm": 21.0,
        "carpan": [
         {
          "hareketli": "Arka kafa kabuğu sağ [p0752]",
@@ -6612,16 +6746,9 @@
         0,
         0
        ],
-       "serbest": false,
-       "yol_mm": 29.0,
-       "carpan": [
-        {
-         "hareketli": "Arka kafa kabuğu sağ [p0752]",
-         "engel": "Raspberry Pi 5 4GB + Active Cooler [p0803]",
-         "derinlik_mm": 0.65,
-         "isin": 5
-        }
-       ],
+       "serbest": true,
+       "yol_mm": 129.0,
+       "carpan": [],
        "dinlenme": []
       },
       {
@@ -6679,6 +6806,82 @@
        "dinlenme": []
       }
      ],
+     "beklenen": "açık",
+     "gecti": true,
+     "beklenen_yon": [
+      [
+       1,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "ad": "E4 PAM8403 masada, yalnız sol arka kabuk: +x açık",
+     "adim": 31,
+     "kod": "E4",
+     "hareketli": 2,
+     "engel": 1,
+     "serbest_yon": [
+      [
+       1,
+       0,
+       0
+      ]
+     ],
+     "serbest": true,
+     "h_mm": 0.5,
+     "esik_mm": 0.2,
+     "tek_isin": 1795,
+     "sure_s": 1.2,
+     "yon": [
+      {
+       "yon": [
+        1,
+        0,
+        0
+       ],
+       "serbest": true,
+       "yol_mm": 133.5,
+       "carpan": [],
+       "dinlenme": []
+      }
+     ],
+     "beklenen": "açık",
+     "gecti": true
+    },
+    {
+     "ad": "E4 PAM8403, kafa kapandıktan sonra (sağ arka kabuk takılı): +x kapalı",
+     "adim": 31,
+     "kod": "E4",
+     "hareketli": 2,
+     "engel": 743,
+     "serbest_yon": [],
+     "serbest": false,
+     "h_mm": 0.5,
+     "esik_mm": 0.2,
+     "tek_isin": 1795,
+     "sure_s": 8.1,
+     "yon": [
+      {
+       "yon": [
+        1,
+        0,
+        0
+       ],
+       "serbest": false,
+       "yol_mm": 259.0,
+       "carpan": [
+        {
+         "hareketli": "PAM8403 amfi [p0825]",
+         "engel": "Arka kafa kabuğu sağ [p0752]",
+         "derinlik_mm": 24.0,
+         "isin": 1812
+        }
+       ],
+       "dinlenme": []
+      }
+     ],
      "beklenen": "kapalı",
      "gecti": true
     }
@@ -6723,14 +6926,14 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 338.7
+   "sure_s": 315.0
   },
   "ucus": {
    "durum": "koştu",
    "yontem": "Patlatılmış konumdan (taban + u·d) yerine giden düz yol, o satır takılmadan önce yerinde olanlarla çarpışıyor mu (rehber_giris.Giris, h 0,5 mm; ortak hacim > ESIK mm çarpışma, temas ve dinlenmede zaten ortak olan çift sayılmaz). Satır = rehber paneli / sıralı takma satırı; aynı satırdaki parçalar birlikte uçar (birbirine engel değil). Isıl gömme ev sahibiyle uçar. Masa birimi \"bag\" grubunda ub yönünden, app.js mesafesiyle (max(120, 0,8 × birim köşegeni)). Yön: eksen ya da birim köşegense tam sayı ızgarada, değilse uygulamanın yuvarlanmamış yönünde (yon_gercek; düzeltme turu 1, kontrol B-5). Cıvatanın eş dişi (es_dis) engel sayılmaz.",
    "h_mm": 0.5,
    "esik_mm": 0.2,
-   "satir": 340,
+   "satir": 338,
    "carpisan": 0,
    "carpisan_liste": [],
    "istisna": [
@@ -6739,7 +6942,7 @@
      "kod": "E4",
      "alt_adim": 6,
      "grup": "Masada: yüz kabuğu + kamera",
-     "satir": "p:7",
+     "satir": "p:6",
      "id": "p0798",
      "ad": "Kamera Raspberry Pi Camera Module 3",
      "hareketli": 1,
@@ -6821,7 +7024,7 @@
        "derinlik_mm": 19.77
       },
       {
-       "engel": "Sonar HC-SR04 (sağ) [p1174]",
+       "engel": "Sonar HC-SR04 (sağ) [p1220]",
        "derinlik_mm": 15.88
       },
       {
@@ -6858,22 +7061,22 @@
      "carpan": [
       {
        "hareketli": "Etek dolgu şeridi ön [p0226]",
-       "engel": "Sonar HC-SR04 (orta) [p1168]",
+       "engel": "Sonar HC-SR04 (orta) [p1214]",
        "derinlik_mm": 3.0,
        "isin": 470
       }
      ],
      "carpan_hepsi": [
       {
-       "engel": "Sonar HC-SR04 (orta) [p1168]",
+       "engel": "Sonar HC-SR04 (orta) [p1214]",
        "derinlik_mm": 15.95
       },
       {
-       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1166]",
+       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1212]",
        "derinlik_mm": 7.91
       },
       {
-       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1166]",
+       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1212]",
        "derinlik_mm": 2.6
       }
      ],
@@ -6921,7 +7124,7 @@
        "derinlik_mm": 19.77
       },
       {
-       "engel": "Sonar HC-SR04 (sol) [p1164]",
+       "engel": "Sonar HC-SR04 (sol) [p1210]",
        "derinlik_mm": 15.88
       },
       {
@@ -7837,7 +8040,7 @@
      "adim": 31,
      "kod": "E4",
      "alt_adim": 3,
-     "grup": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
+     "grup": "Masada: sol arka kabuk + PAM8403",
      "satir": "p:2",
      "id": "p0753",
      "ad": "Arka kafa kabuğu sol",
@@ -7861,31 +8064,7 @@
      "adim": 31,
      "kod": "E4",
      "alt_adim": 3,
-     "grup": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
-     "satir": "p:3",
-     "id": "p0822",
-     "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-     "hareketli": 1,
-     "u": [
-      1.0,
-      0.0,
-      0.0
-     ],
-     "yon": [
-      1,
-      0,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 40.0,
-     "temiz": true
-    },
-    {
-     "adim": 31,
-     "kod": "E4",
-     "alt_adim": 3,
-     "grup": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
+     "grup": "Masada: sol arka kabuk + PAM8403",
      "satir": "p:3",
      "id": "p0824",
      "ad": "Köpük bant (PAM8403 amfi)",
@@ -7909,32 +8088,8 @@
      "adim": 31,
      "kod": "E4",
      "alt_adim": 3,
-     "grup": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
+     "grup": "Masada: sol arka kabuk + PAM8403",
      "satir": "p:4",
-     "id": "p0823",
-     "ad": "USB ses kartı (yedek, takılmaz)",
-     "hareketli": 1,
-     "u": [
-      1.0,
-      0.0,
-      0.0
-     ],
-     "yon": [
-      1,
-      0,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 40.0,
-     "temiz": true
-    },
-    {
-     "adim": 31,
-     "kod": "E4",
-     "alt_adim": 3,
-     "grup": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
-     "satir": "p:5",
      "id": "p0825",
      "ad": "PAM8403 amfi",
      "hareketli": 1,
@@ -7961,7 +8116,7 @@
      "satir": "birim",
      "id": "p0753",
      "ad": "Arka kafa kabuğu sol",
-     "hareketli": 9,
+     "hareketli": 7,
      "u": [
       0.0,
       0.0,
@@ -8090,7 +8245,7 @@
      "kod": "E4",
      "alt_adim": 6,
      "grup": "Masada: yüz kabuğu + kamera",
-     "satir": "p:6",
+     "satir": "p:5",
      "id": "p0750",
      "ad": "Yüz kabuğu (ön) sağ",
      "hareketli": 5,
@@ -8114,7 +8269,7 @@
      "kod": "E4",
      "alt_adim": 6,
      "grup": "Masada: yüz kabuğu + kamera",
-     "satir": "p:6",
+     "satir": "p:5",
      "id": "p0751",
      "ad": "Yüz kabuğu (ön) sol",
      "hareketli": 3,
@@ -8138,7 +8293,7 @@
      "kod": "E4",
      "alt_adim": 6,
      "grup": "Masada: yüz kabuğu + kamera",
-     "satir": "p:7",
+     "satir": "p:6",
      "id": "p0798",
      "ad": "Kamera Raspberry Pi Camera Module 3",
      "hareketli": 1,
@@ -8279,7 +8434,7 @@
      "kod": "E4",
      "alt_adim": 7,
      "grup": "Masada: QLED → yüz kabuğu",
-     "satir": "p:8",
+     "satir": "p:7",
      "id": "p0781",
      "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
      "hareketli": 1,
@@ -8303,7 +8458,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:9",
+     "satir": "p:8",
      "id": "p0783",
      "ad": "Köpük bant (tırnak üst sağ)",
      "hareketli": 1,
@@ -8327,7 +8482,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:9",
+     "satir": "p:8",
      "id": "p0787",
      "ad": "Köpük bant (tırnak üst sol)",
      "hareketli": 1,
@@ -8351,7 +8506,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:9",
+     "satir": "p:8",
      "id": "p0791",
      "ad": "Köpük bant (tırnak alt sağ)",
      "hareketli": 1,
@@ -8375,7 +8530,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:9",
+     "satir": "p:8",
      "id": "p0795",
      "ad": "Köpük bant (tırnak alt sol)",
      "hareketli": 1,
@@ -8399,7 +8554,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:10",
+     "satir": "p:9",
      "id": "p0782",
      "ad": "Ekran tırnağı üst sağ",
      "hareketli": 1,
@@ -8423,7 +8578,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:10",
+     "satir": "p:9",
      "id": "p0786",
      "ad": "Ekran tırnağı üst sol",
      "hareketli": 1,
@@ -8447,7 +8602,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:11",
+     "satir": "p:10",
      "id": "p0790",
      "ad": "Ekran tırnağı alt sağ",
      "hareketli": 1,
@@ -8471,7 +8626,7 @@
      "kod": "E4",
      "alt_adim": 8,
      "grup": "Masada: ekran tırnakları",
-     "satir": "p:11",
+     "satir": "p:10",
      "id": "p0794",
      "ad": "Ekran tırnağı alt sol",
      "hareketli": 1,
@@ -9009,7 +9164,7 @@
        "derinlik_mm": 19.77
       },
       {
-       "engel": "Sonar HC-SR04 (sağ) [p1174]",
+       "engel": "Sonar HC-SR04 (sağ) [p1220]",
        "derinlik_mm": 15.88
       },
       {
@@ -9154,22 +9309,22 @@
      "carpan": [
       {
        "hareketli": "Etek dolgu şeridi ön [p0226]",
-       "engel": "Sonar HC-SR04 (orta) [p1168]",
+       "engel": "Sonar HC-SR04 (orta) [p1214]",
        "derinlik_mm": 3.0,
        "isin": 470
       }
      ],
      "carpan_hepsi": [
       {
-       "engel": "Sonar HC-SR04 (orta) [p1168]",
+       "engel": "Sonar HC-SR04 (orta) [p1214]",
        "derinlik_mm": 15.95
       },
       {
-       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1166]",
+       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1212]",
        "derinlik_mm": 7.91
       },
       {
-       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1166]",
+       "engel": "Cıvata M6x14 ISO 7380 (sonar sol x -48) [p1212]",
        "derinlik_mm": 2.6
       }
      ],
@@ -9271,7 +9426,7 @@
        "derinlik_mm": 19.77
       },
       {
-       "engel": "Sonar HC-SR04 (sol) [p1164]",
+       "engel": "Sonar HC-SR04 (sol) [p1210]",
        "derinlik_mm": 15.88
       },
       {
@@ -9473,7 +9628,7 @@
      "alt_adim": 6,
      "grup": "Masada: arka sağ bant + acil stop",
      "satir": "p:6",
-     "id": "p1178",
+     "id": "p1224",
      "ad": "Acil stop mantarı + bilezik",
      "hareketli": 1,
      "u": [
@@ -9497,7 +9652,7 @@
      "alt_adim": 6,
      "grup": "Masada: arka sağ bant + acil stop",
      "satir": "p:7",
-     "id": "p1179",
+     "id": "p1225",
      "ad": "Acil stop kontak gövdesi (1NC)",
      "hareketli": 1,
      "u": [
@@ -16648,12 +16803,12 @@
      ]
     }
    ],
-   "sure_s": 1032.9
+   "sure_s": 858.2
   },
   "isil_gomme": {
    "durum": "koştu",
    "yontem": "Her ısıl gömme somun için (bağımsız, mesh üstünde): somunun 0,8 mm dışındaki 24 halka noktasından en çoğunu kapalı mesh'inin içinde tutan ana parça (ışın paritesi, eğik yön). Hata: verideki ev sahibi (h) yok, geometrik ev sahibinden farklı, ya da somun ev sahibinin adımında / alt montajında değil. Sınır 0.",
-   "toplam": 164,
+   "toplam": 168,
    "hata": 0,
    "hata_liste": [],
    "sinir_hata": 0,
@@ -18135,18 +18290,54 @@
      "ev_geo": "p0975",
      "ev_geo_ad": "Akü ön takozu",
      "skor": 24
+    },
+    {
+     "id": "p1106",
+     "ad": "Isıl gömme somun M3 (bara tutucusu yıldız x -60.0)",
+     "adim": 12,
+     "ev_veri": "p1085",
+     "ev_geo": "p1085",
+     "ev_geo_ad": "Bara tutucusu yıldız barası (GND) (5 saplama)",
+     "skor": 24
+    },
+    {
+     "id": "p1108",
+     "ad": "Isıl gömme somun M3 (bara tutucusu yıldız x +60.0)",
+     "adim": 12,
+     "ev_veri": "p1085",
+     "ev_geo": "p1085",
+     "ev_geo_ad": "Bara tutucusu yıldız barası (GND) (5 saplama)",
+     "skor": 24
+    },
+    {
+     "id": "p1127",
+     "ad": "Isıl gömme somun M3 (bara tutucusu anahtarlı x -47.5)",
+     "adim": 12,
+     "ev_veri": "p1110",
+     "ev_geo": "p1110",
+     "ev_geo_ad": "Bara tutucusu anahtarlı bara (+) (4 saplama)",
+     "skor": 24
+    },
+    {
+     "id": "p1129",
+     "ad": "Isıl gömme somun M3 (bara tutucusu anahtarlı x +47.5)",
+     "adim": 12,
+     "ev_veri": "p1110",
+     "ev_geo": "p1110",
+     "ev_geo_ad": "Bara tutucusu anahtarlı bara (+) (4 saplama)",
+     "skor": 24
     }
    ]
   },
   "gecti": true,
-  "baglanti": 565,
+  "baglanti": 578,
   "sinif": {
    "ACIK_AGIZ": 21,
    "ACIK_AGIZ_DAR": 9,
    "CEP": 14,
-   "DUZ": 470,
+   "DUZ": 474,
    "L": 38,
-   "LOKMA": 11,
+   "LOKMA": 20,
    "POZA_BAGLI": 2
   },
   "ulasilamaz": 0,
@@ -18456,9 +18647,9 @@
    {
     "adim": 12,
     "kod": "B5a",
-    "adet": 22,
-    "DUZ": 19,
-    "LOKMA": 3
+    "adet": 35,
+    "DUZ": 23,
+    "LOKMA": 12
    },
    {
     "adim": 13,
@@ -21312,6 +21503,254 @@
     "cep_oran": 0.0
    },
    {
+    "id": "p1089",
+    "ad": "Somun M5 (yıldız 1)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 76.5,
+     "acik_agiz_yon": 4
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1093",
+    "ad": "Somun M5 (yıldız 2)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 48.0,
+     "acik_agiz_yon": 4
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1097",
+    "ad": "Somun M5 (yıldız 3)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 42.0,
+     "acik_agiz_yon": 5
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1101",
+    "ad": "Somun M5 (yıldız 4)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 48.0,
+     "acik_agiz_yon": 3
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1105",
+    "ad": "Somun M5 (yıldız 5)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 79.5,
+     "acik_agiz_yon": 3
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1107",
+    "ad": "Cıvata M3x10 ISO 7380 (bara tutucusu yıldız x -60.0)",
+    "kod": "M3x10 ISO 7380",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "DUZ",
+    "alet": "alyan 2.0",
+    "alet_sinif": "DUZ",
+    "serbest_mm": 100.0,
+    "engel": null,
+    "el": {
+     "duz_el_mm": 20.5
+    }
+   },
+   {
+    "id": "p1109",
+    "ad": "Cıvata M3x10 ISO 7380 (bara tutucusu yıldız x +60.0)",
+    "kod": "M3x10 ISO 7380",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "DUZ",
+    "alet": "alyan 2.0",
+    "alet_sinif": "DUZ",
+    "serbest_mm": 100.0,
+    "engel": null,
+    "el": {
+     "duz_el_mm": 20.5
+    }
+   },
+   {
+    "id": "p1114",
+    "ad": "Somun M5 (anahtarlı 1)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 123.0,
+     "acik_agiz_yon": 3
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1118",
+    "ad": "Somun M5 (anahtarlı 2)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 138.0,
+     "acik_agiz_yon": 1
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1122",
+    "ad": "Somun M5 (anahtarlı 3)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 144.0,
+     "acik_agiz_yon": 1
+    },
+    "cep_oran": 0.0
+   },
+   {
+    "id": "p1126",
+    "ad": "Somun M5 (anahtarlı 4)",
+    "kod": "M5 DIN 934 somun (takım)",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "LOKMA",
+    "alet": "lokma / açık ağız 8.0",
+    "alet_sinif": "LOKMA",
+    "serbest_mm": 60.0,
+    "engel": null,
+    "el": {
+     "lokma_el_mm": 33.0,
+     "acik_agiz_el_mm": 124.5,
+     "acik_agiz_yon": 2
+    },
+    "cep_oran": 1.0
+   },
+   {
+    "id": "p1128",
+    "ad": "Cıvata M3x10 ISO 7380 (bara tutucusu anahtarlı x -47.5)",
+    "kod": "M3x10 ISO 7380",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "DUZ",
+    "alet": "alyan 2.0",
+    "alet_sinif": "DUZ",
+    "serbest_mm": 100.0,
+    "engel": null,
+    "el": {
+     "duz_el_mm": 20.5
+    }
+   },
+   {
+    "id": "p1130",
+    "ad": "Cıvata M3x10 ISO 7380 (bara tutucusu anahtarlı x +47.5)",
+    "kod": "M3x10 ISO 7380",
+    "adim": 12,
+    "adim_kod": "B5a",
+    "grup": "adım",
+    "grup_tezgah": "",
+    "sinif": "DUZ",
+    "alet": "alyan 2.0",
+    "alet_sinif": "DUZ",
+    "serbest_mm": 100.0,
+    "engel": null,
+    "el": {
+     "duz_el_mm": 20.5
+    }
+   },
+   {
     "id": "p0893",
     "ad": "Cıvata M5x12 (kat sol z -230)",
     "kod": "M5x12 DIN 912",
@@ -21380,7 +21819,7 @@
     }
    },
    {
-    "id": "p1087",
+    "id": "p1133",
     "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 0 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21397,7 +21836,7 @@
     }
    },
    {
-    "id": "p1088",
+    "id": "p1134",
     "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 0 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21414,7 +21853,7 @@
     }
    },
    {
-    "id": "p1090",
+    "id": "p1136",
     "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 1 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21431,7 +21870,7 @@
     }
    },
    {
-    "id": "p1091",
+    "id": "p1137",
     "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 1 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21448,7 +21887,7 @@
     }
    },
    {
-    "id": "p1093",
+    "id": "p1139",
     "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 2 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21465,7 +21904,7 @@
     }
    },
    {
-    "id": "p1094",
+    "id": "p1140",
     "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 2 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21482,7 +21921,7 @@
     }
    },
    {
-    "id": "p1096",
+    "id": "p1142",
     "ad": "Vida M3x6 (Arayüz kartı (E2/E3) 3 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21499,7 +21938,7 @@
     }
    },
    {
-    "id": "p1097",
+    "id": "p1143",
     "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 3 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21516,7 +21955,7 @@
     }
    },
    {
-    "id": "p1100",
+    "id": "p1146",
     "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 0 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21533,7 +21972,7 @@
     }
    },
    {
-    "id": "p1101",
+    "id": "p1147",
     "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 0 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21550,7 +21989,7 @@
     }
    },
    {
-    "id": "p1103",
+    "id": "p1149",
     "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 1 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21567,7 +22006,7 @@
     }
    },
    {
-    "id": "p1104",
+    "id": "p1150",
     "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 1 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21584,7 +22023,7 @@
     }
    },
    {
-    "id": "p1106",
+    "id": "p1152",
     "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 2 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21601,7 +22040,7 @@
     }
    },
    {
-    "id": "p1107",
+    "id": "p1153",
     "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 2 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21618,7 +22057,7 @@
     }
    },
    {
-    "id": "p1109",
+    "id": "p1155",
     "ad": "Vida M3x6 (Servo dağıtım kartı A (sağ kol) 3 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21635,7 +22074,7 @@
     }
    },
    {
-    "id": "p1110",
+    "id": "p1156",
     "ad": "Vida M3x8 (Servo dağıtım kartı A (sağ kol) 3 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21652,7 +22091,7 @@
     }
    },
    {
-    "id": "p1113",
+    "id": "p1159",
     "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 0 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21669,7 +22108,7 @@
     }
    },
    {
-    "id": "p1114",
+    "id": "p1160",
     "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 0 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21686,7 +22125,7 @@
     }
    },
    {
-    "id": "p1116",
+    "id": "p1162",
     "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 1 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21703,7 +22142,7 @@
     }
    },
    {
-    "id": "p1117",
+    "id": "p1163",
     "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 1 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21720,7 +22159,7 @@
     }
    },
    {
-    "id": "p1119",
+    "id": "p1165",
     "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 2 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21737,7 +22176,7 @@
     }
    },
    {
-    "id": "p1120",
+    "id": "p1166",
     "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 2 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21754,7 +22193,7 @@
     }
    },
    {
-    "id": "p1122",
+    "id": "p1168",
     "ad": "Vida M3x6 (Servo dağıtım kartı B (sol kol) 3 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -21771,7 +22210,7 @@
     }
    },
    {
-    "id": "p1123",
+    "id": "p1169",
     "ad": "Vida M3x8 (Servo dağıtım kartı B (sol kol) 3 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -21788,7 +22227,7 @@
     }
    },
    {
-    "id": "p1126",
+    "id": "p1172",
     "ad": "Vida M2,5x5 (PCA9685 servo sürücü 0 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -21805,7 +22244,7 @@
     }
    },
    {
-    "id": "p1127",
+    "id": "p1173",
     "ad": "Vida M2,5x8 (PCA9685 servo sürücü 0 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -21822,7 +22261,7 @@
     }
    },
    {
-    "id": "p1129",
+    "id": "p1175",
     "ad": "Vida M2,5x5 (PCA9685 servo sürücü 1 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -21839,7 +22278,7 @@
     }
    },
    {
-    "id": "p1130",
+    "id": "p1176",
     "ad": "Vida M2,5x8 (PCA9685 servo sürücü 1 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -21856,7 +22295,7 @@
     }
    },
    {
-    "id": "p1132",
+    "id": "p1178",
     "ad": "Vida M2,5x5 (PCA9685 servo sürücü 2 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -21873,7 +22312,7 @@
     }
    },
    {
-    "id": "p1133",
+    "id": "p1179",
     "ad": "Vida M2,5x8 (PCA9685 servo sürücü 2 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -21890,7 +22329,7 @@
     }
    },
    {
-    "id": "p1135",
+    "id": "p1181",
     "ad": "Vida M2,5x5 (PCA9685 servo sürücü 3 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -21907,7 +22346,7 @@
     }
    },
    {
-    "id": "p1136",
+    "id": "p1182",
     "ad": "Vida M2,5x8 (PCA9685 servo sürücü 3 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -21924,7 +22363,7 @@
     }
    },
    {
-    "id": "p1139",
+    "id": "p1185",
     "ad": "Vida M2,5x5 (BNO055 IMU 0 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -21941,7 +22380,7 @@
     }
    },
    {
-    "id": "p1140",
+    "id": "p1186",
     "ad": "Vida M2,5x8 (BNO055 IMU 0 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -21958,7 +22397,7 @@
     }
    },
    {
-    "id": "p1142",
+    "id": "p1188",
     "ad": "Vida M2,5x5 (BNO055 IMU 1 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -21975,7 +22414,7 @@
     }
    },
    {
-    "id": "p1143",
+    "id": "p1189",
     "ad": "Vida M2,5x8 (BNO055 IMU 1 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -21992,7 +22431,7 @@
     }
    },
    {
-    "id": "p1145",
+    "id": "p1191",
     "ad": "Vida M2,5x5 (BNO055 IMU 2 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -22009,7 +22448,7 @@
     }
    },
    {
-    "id": "p1146",
+    "id": "p1192",
     "ad": "Vida M2,5x8 (BNO055 IMU 2 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -22026,7 +22465,7 @@
     }
    },
    {
-    "id": "p1148",
+    "id": "p1194",
     "ad": "Vida M2,5x5 (BNO055 IMU 3 üst)",
     "kod": "M2,5x5 DIN 912",
     "adim": 14,
@@ -22043,7 +22482,7 @@
     }
    },
    {
-    "id": "p1149",
+    "id": "p1195",
     "ad": "Vida M2,5x8 (BNO055 IMU 3 alt)",
     "kod": "M2,5x8 DIN 912",
     "adim": 14,
@@ -22060,7 +22499,7 @@
     }
    },
    {
-    "id": "p1152",
+    "id": "p1198",
     "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 0 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -22077,7 +22516,7 @@
     }
    },
    {
-    "id": "p1153",
+    "id": "p1199",
     "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 0 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -22094,7 +22533,7 @@
     }
    },
    {
-    "id": "p1155",
+    "id": "p1201",
     "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 1 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -22111,7 +22550,7 @@
     }
    },
    {
-    "id": "p1156",
+    "id": "p1202",
     "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 1 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -22128,7 +22567,7 @@
     }
    },
    {
-    "id": "p1158",
+    "id": "p1204",
     "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 2 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -22145,7 +22584,7 @@
     }
    },
    {
-    "id": "p1159",
+    "id": "p1205",
     "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 2 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -22162,7 +22601,7 @@
     }
    },
    {
-    "id": "p1161",
+    "id": "p1207",
     "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 3 üst)",
     "kod": "M3x6 DIN 912",
     "adim": 14,
@@ -22179,7 +22618,7 @@
     }
    },
    {
-    "id": "p1162",
+    "id": "p1208",
     "ad": "Vida M3x8 (ESP32 taşıyıcı kart (pertinaks) 3 alt)",
     "kod": "M3x8 DIN 912",
     "adim": 14,
@@ -22264,7 +22703,7 @@
     }
    },
    {
-    "id": "p1166",
+    "id": "p1212",
     "ad": "Cıvata M6x14 ISO 7380 (sonar sol x -48)",
     "kod": "M6x14 ISO 7380",
     "adim": 16,
@@ -22281,7 +22720,7 @@
     }
    },
    {
-    "id": "p1170",
+    "id": "p1216",
     "ad": "Cıvata M6x14 ISO 7380 (sonar orta x -31)",
     "kod": "M6x14 ISO 7380",
     "adim": 16,
@@ -22298,7 +22737,7 @@
     }
    },
    {
-    "id": "p1172",
+    "id": "p1218",
     "ad": "Cıvata M6x14 ISO 7380 (sonar orta x +31)",
     "kod": "M6x14 ISO 7380",
     "adim": 16,
@@ -22315,7 +22754,7 @@
     }
    },
    {
-    "id": "p1176",
+    "id": "p1222",
     "ad": "Cıvata M6x14 ISO 7380 (sonar sağ x +48)",
     "kod": "M6x14 ISO 7380",
     "adim": 16,
@@ -28505,16 +28944,16 @@
     }
    }
   ],
-  "sure_s": 102.0,
+  "sure_s": 70.0,
   "sure": {
-   "yukleme_s": 18.5,
-   "sira_s": 115.0,
-   "perdelenme_s": 178.5,
-   "giris_s": 338.7,
-   "ucus_s": 1032.9,
-   "toplam_s": 1683.6,
+   "yukleme_s": 11.7,
+   "sira_s": 78.8,
+   "perdelenme_s": 132.8,
+   "giris_s": 315.1,
+   "ucus_s": 858.2,
+   "toplam_s": 1396.6,
    "voksel_alani": 87,
-   "voksel_s": 108.8
+   "voksel_s": 74.7
   }
  },
  "perdelenme": {
@@ -28752,15 +29191,10 @@
     "adim": 10,
     "kod": "B4",
     "yeni": 24,
-    "gizli": 2,
+    "gizli": 1,
     "gizli_parca": 0,
-    "gizli_baglanti": 2,
+    "gizli_baglanti": 1,
     "gizli_liste": [
-     {
-      "id": "p0867",
-      "ad": "Saplama M5x16 DIN 913 (burç sol z -230)",
-      "tur": "Baglanti"
-     },
      {
       "id": "p0873",
       "ad": "Saplama M5x16 DIN 913 (burç sol z +40)",
@@ -28811,11 +29245,62 @@
    {
     "adim": 12,
     "kod": "B5a",
-    "yeni": 39,
-    "gizli": 0,
+    "yeni": 85,
+    "gizli": 10,
     "gizli_parca": 0,
-    "gizli_baglanti": 0,
-    "gizli_liste": []
+    "gizli_baglanti": 10,
+    "gizli_liste": [
+     {
+      "id": "p1092",
+      "ad": "Yaylı pul M5 (yıldız 2)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1096",
+      "ad": "Yaylı pul M5 (yıldız 3)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1104",
+      "ad": "Yaylı pul M5 (yıldız 5)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1106",
+      "ad": "Isıl gömme somun M3 (bara tutucusu yıldız x -60.0)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1108",
+      "ad": "Isıl gömme somun M3 (bara tutucusu yıldız x +60.0)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1112",
+      "ad": "Pul M5 (anahtarlı 1)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1117",
+      "ad": "Yaylı pul M5 (anahtarlı 2)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1125",
+      "ad": "Yaylı pul M5 (anahtarlı 4)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1127",
+      "ad": "Isıl gömme somun M3 (bara tutucusu anahtarlı x -47.5)",
+      "tur": "Baglanti"
+     },
+     {
+      "id": "p1129",
+      "ad": "Isıl gömme somun M3 (bara tutucusu anahtarlı x +47.5)",
+      "tur": "Baglanti"
+     }
+    ]
    },
    {
     "adim": 13,
@@ -28853,22 +29338,22 @@
     "gizli_baglanti": 4,
     "gizli_liste": [
      {
-      "id": "p1167",
+      "id": "p1213",
       "ad": "Çekiç somun M6 (sonar sol x -48)",
       "tur": "Baglanti"
      },
      {
-      "id": "p1171",
+      "id": "p1217",
       "ad": "Çekiç somun M6 (sonar orta x -31)",
       "tur": "Baglanti"
      },
      {
-      "id": "p1173",
+      "id": "p1219",
       "ad": "Çekiç somun M6 (sonar orta x +31)",
       "tur": "Baglanti"
      },
      {
-      "id": "p1177",
+      "id": "p1223",
       "ad": "Çekiç somun M6 (sonar sağ x +48)",
       "tur": "Baglanti"
      }
@@ -29308,9 +29793,9 @@
    {
     "adim": 29,
     "kod": "E3a",
-    "yeni": 22,
-    "gizli": 3,
-    "gizli_parca": 3,
+    "yeni": 24,
+    "gizli": 4,
+    "gizli_parca": 4,
     "gizli_baglanti": 0,
     "gizli_liste": [
      {
@@ -29326,6 +29811,11 @@
      {
       "id": "p0820",
       "ad": "Köpük bant (TVS)",
+      "tur": "Satin"
+     },
+     {
+      "id": "p0822",
+      "ad": "Köpük bant (TVS Pi hattı)",
       "tur": "Satin"
      }
     ]
@@ -29377,9 +29867,9 @@
    {
     "adim": 31,
     "kod": "E4",
-    "yeni": 60,
-    "gizli": 46,
-    "gizli_parca": 13,
+    "yeni": 58,
+    "gizli": 44,
+    "gizli_parca": 11,
     "gizli_baglanti": 33,
     "gizli_liste": [
      {
@@ -29451,16 +29941,6 @@
       "id": "p0779",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
       "tur": "Baglanti"
-     },
-     {
-      "id": "p0822",
-      "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-      "tur": "Satin"
-     },
-     {
-      "id": "p0823",
-      "ad": "USB ses kartı (yedek, takılmaz)",
-      "tur": "Satin"
      },
      {
       "id": "p0824",
@@ -29677,10 +30157,10 @@
       "gizli_istisnasiz": []
      },
      {
-      "grup": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
+      "grup": "Masada: sol arka kabuk + PAM8403",
       "tezgah": "arka_sol",
-      "yeni": 9,
-      "gizli": 4,
+      "yeni": 7,
+      "gizli": 3,
       "gizli_liste": [
        {
         "id": "p0777",
@@ -29691,11 +30171,6 @@
         "id": "p0779",
         "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
         "tur": "Baglanti"
-       },
-       {
-        "id": "p0822",
-        "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-        "tur": "Satin"
        },
        {
         "id": "p0824",
@@ -29714,11 +30189,6 @@
         "id": "p0779",
         "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
         "gerekce": "ısıl gömme somun: baskı parçasının boss'unun içinde, baskıdan sonra takılı (hazırlık); ev sahibi parçayla gelir, kendi başına görünmesi beklenmez"
-       },
-       {
-        "id": "p0822",
-        "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-        "gerekce": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
        },
        {
         "id": "p0824",
@@ -29876,7 +30346,7 @@
      }
     ],
     "alt_gizli_istisnasiz": 0,
-    "alt_istisna": 15
+    "alt_istisna": 14
    },
    {
     "adim": 32,
@@ -32561,10 +33031,10 @@
     "alt_istisna": 5
    }
   ],
-  "toplam_gizli": 264,
-  "sure_s": 178.5,
+  "toplam_gizli": 272,
+  "sure_s": 132.8,
   "alt_adim_gizli_istisnasiz": 0,
-  "alt_adim_istisna": 117,
+  "alt_adim_istisna": 116,
   "alt_sinir": 0,
   "gecti": true
  },
@@ -33892,22 +34362,22 @@
      ],
      "beklenen": "Kablo yolu 6",
      "tip": "yuzey",
-     "parca": "p1185",
+     "parca": "p1231",
      "uzaklik_mm": 2.27,
      "gecti": true,
      "en_yakin": [
       {
-       "id": "p1185",
+       "id": "p1231",
        "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
        "mm": 2.27
       },
       {
-       "id": "p1184",
+       "id": "p1230",
        "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
        "mm": 2.31
       },
       {
-       "id": "p1186",
+       "id": "p1232",
        "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
        "mm": 2.5
       }
@@ -35052,22 +35522,22 @@
      ],
      "beklenen": "Kablo yolu 6",
      "tip": "yuzey",
-     "parca": "p1185",
+     "parca": "p1231",
      "uzaklik_mm": 2.27,
      "gecti": true,
      "en_yakin": [
       {
-       "id": "p1185",
+       "id": "p1231",
        "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
        "mm": 2.27
       },
       {
-       "id": "p1184",
+       "id": "p1230",
        "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
        "mm": 2.31
       },
       {
-       "id": "p1186",
+       "id": "p1232",
        "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
        "mm": 2.5
       }
@@ -37105,7 +37575,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 50.6
+  "sure_s": 34.7
  },
  "kablo_esleme": {
   "hata": [],

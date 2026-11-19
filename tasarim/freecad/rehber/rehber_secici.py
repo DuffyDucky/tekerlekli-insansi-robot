@@ -95,11 +95,13 @@ def _kabuk_bag(kod):
     return f
 
 
-# Kafa: tabla (kafa iskeleti) üstündekiler E3a tezgâhında; yüz kabuğuna (QLED + tırnaklar, kamera) ve arka kabuğa (ReSpeaker, USB ses
-# kartı, PAM8403) bağlananlar kabukla birlikte E4'te (kafa10_lib.py BAG listesi). Kabuk dikişi ve tabla → arka kabuk rafı cıvataları E4.
+# Kafa: tabla (kafa iskeleti) üstündekiler E3a tezgâhında; yüz kabuğuna (QLED + tırnaklar, kamera) ve arka kabuğa (ReSpeaker,
+# PAM8403) bağlananlar kabukla birlikte E4'te (kafa10_lib.py BAG listesi). Kabuk dikişi ve tabla → arka kabuk rafı cıvataları E4.
+# P10.7b2k: "USB ses karti" ve "Kopuk bant (USB ses" desenleri kalktı (parçalar P10.7b2j yamasıyla modelden çıktı, F10t § 6 madde 7).
+# Yama uygulanmadan üretilirse kart E4'ün dışında bir adıma düşebilir; rehber_denetim.KALKAN_PARCA veride yakalar.
 _KAFA_KABUK = ("Yuz kabugu", "Arka kafa kabugu", "Vizor", "Kabuk civatasi", "Yuz ekrani", "Ekran tirnagi", "Tirnak civatasi",
-               "tirnak boss", "Kopuk bant (tirnak", "Kamera", "ReSpeaker", "Dizi vidasi", "USB ses karti", "PAM8403",
-               "Kopuk bant (USB ses", "Kopuk bant (PAM", "Tabla civatasi", "(tabla rafi", "(kafa on/arka", "(kafa sag/sol")
+               "tirnak boss", "Kopuk bant (tirnak", "Kamera", "ReSpeaker", "Dizi vidasi", "PAM8403",
+               "Kopuk bant (PAM", "Tabla civatasi", "(tabla rafi", "(kafa on/arka", "(kafa sag/sol")
 
 ADIMLAR = [
     # ------------------------------------------------ iskelet

@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "8bca2f5"          # P10.7b2i: taban 8bca2f5 (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "896c9a7"          # P10.7b2k: taban 896c9a7 (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -381,6 +381,97 @@ B2I_EKLENEN = [
     ('b2i U06 önerilen boy (K2 kablo)', "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."),
 ]
 BEKLENEN["8bca2f5"] = (B2I_SILINEN, B2I_EKLENEN)
+# P10.7b2k (F10u-gunluk.md): taban 896c9a7 (b2i). CAD'den bağımsız rehber uyumu: B5a bara tutucusu montajı (K64 a), K1 17.1 sıkma ve
+# numara yönü, G16 / G22 şeması baradan, B6 K53 a çentiği, E3a iki TVS modelde (K51 a), E4 USB ses kartı modelden çıktı, B6a ESP32 yönü,
+# K1'de "Yukarısı K2'de." tekrarı; düzeltme turu 1 (F10u-kontrol 1-4, 8: bara karede, sıkma F1'de, ESP32 yönü, E4 uzatma); turu 2 (T4 / T5, E3a D24V50F5, 17.7 yol 9); turu 3 (yelpaze, akü kayışı, 17.10 kesik). Liste uygulanan metinden (F10l-birlesim'in kendi çıktısı), etiketler elle (b2k_liste: anahtar sözcükle).
+B2K_SILINEN = [
+    ('b2k K1 G16 / G22 şeması baradan', 'Anahtarlı baranın yeri yaklaşık (modelde yok, röle yanından çizildi).'),
+    ('b2k K1 G16 / G22 şeması baradan', 'Bara durumu (G22, 22 AWG): anahtarlı bara (yeri yaklaşık: modelde yok, röle yanından çizildi) → hat sigortası → arayüz kartı, PC817 #2 girişi'),
+    ('b2k B5a K64 a tutucu', 'Bara tutucusu (yıldız barasının ve anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça; `planlama/adim3/kablolar.json` bara pabuç kaydı) henüz tasarlanmadı: modelde ve baskı listesinde yok, sonraki tam taramalı CAD paketinde tasarlanıp basılacak, satın alınmayacak (K64 a).'),
+    ('b2k B6 K53 a çentik', 'Bilinen açık konu (K53, karar bekliyor): modelde elektronik katı inerken ön şarj kartının iki ön naylon burcuna takılıyor; burç katın ön kenarından 0,425 mm taşıyor (`planlama/d158/F10b-olcum.json`).'),
+    ('b2k E3a K51 a modelde', "Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki bugün modelde ve BOM'da yok, sonraki CAD paketinde eklenecek (K51 a)."),
+    ('b2k B5a K64 a tutucu', 'K1\'in "Toprak ve iki bara" alt adımı iki barayı panelde varsayar'),
+    ('b2k dt1 K1 17.4 yol 3 saplamada (F10u-kontrol 2)', "Karede Kablo yolu 3'ün baradan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç §G bağlanır."),
+    ('b2k E4 ses kartı modelden çıktı', "Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım)."),
+    ('b2k K1 17.1 kare notu', 'Karede görünmez: iki bara ve tutucuları modelde yok (tutucu CAD paketinde gelecek, K64 a); baralar güç panelinde (arka kat, B5a).'),
+    ('b2k dt2 K1 17.7 yol 9 yıldız saplamasından (F10v)', "Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre); çevre çıkışı G19 §G arayüz kartına bağlanır."),
+    ('b2k dt1 K1 17.6 bara modelde (F10u-kontrol 2)', 'Karede yer: PC817 modülü arayüz kartının üstünde, arayüz kartı elektronik katında önden bakınca solda; anahtarlı bara karede görünmez (modelde yok, güç panelinde).'),
+    ('b2k E4 ses kartı modelden çıktı', "Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1)."),
+    ('b2k E4 ses kartı modelden çıktı', "Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1)."),
+    ('b2k E4 ses kartı modelden çıktı', 'Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)'),
+    ('b2k E4 ses kartı modelden çıktı', 'Modelde kart hâlâ çizili.'),
+    ('b2k B5a K64 a tutucu', 'O zamana dek rehber panelde yerini ve bağlantı elemanını yazmaz.'),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu (şema adı cümlesi)', "Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de"),
+    ('b2k E3a K51 a modelde', "SY8205 ve QLED hattı P6KE6V8A'sının tabladaki yeri modelde var; Pi hattı P6KE6V8A'sı modelde yok, yeri doğrulanmadı."),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu (şema adı cümlesi)', "Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de."),
+    ('b2k B6a ESP32 yönü (F10r-kontrol B1)', 'Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı), sonra kat üstündeki kartlar arası kabloları bağla.'),
+    ('b2k E4 ses kartı modelden çıktı', "USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan kalan görüntüdür, uygulanmaz."),
+    ('b2k E4 ses kartı modelden çıktı', "USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan kalan görüntüdür, uygulanmaz."),
+    ('b2k K1 G16 / G22 şeması baradan', 'XL4016 C girişi (G16, 16 AWG): anahtarlı bara (yeri yaklaşık: modelde yok, röle yanından çizildi) → hat sigortası → XL4016 C IN'),
+    ('b2k 17.11 tekrar (F10r-kontrol B1)', "Yukarısı K2'de."),
+    ('b2k B6 K53 a çentik', "Çözüm seçilmedi (K53 karar bekliyor; seçenekleri F10b'de ölçüldü, `planlama/d158/F10b-gunluk.md`)"),
+    ('b2k dt1 F1 bara tutucusuyla karede (F10u-kontrol 2)', 'Ölçü noktaları karede görünmez: PC817 #1 klemensi ve akü ölçüm bölücüsü arayüz kartının üstünde (elektronik katı, robota önden bakınca solda; kart üstü klemensler modelde çizili değil), yıldız barası güç panelinde (arka kat; bara modelde yok)'),
+    ('b2k B5a K64 a tutucu', 'İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç, büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok.'),
+    ('b2k dt4 E4 kabuk sırası öneri (F10y)', 'Sonra sağ kabuğu arkadan (−z) yerine koy: dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).'),
+    ('b2k dt4 E4 kabuk sırası öneri (F10y)', 'Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).'),
+]
+B2K_EKLENEN = [
+    ('b2k B5a K64 a tutucu', 'Altıgen cep baskıda dar çıkabilir: baş girmezse cep ısıyla oturtulur.'),
+    ('b2k K1 G16 / G22 şeması baradan', 'Bara durumu (G22, 22 AWG): anahtarlı baranın 4 numaralı saplaması → hat sigortası → arayüz kartı, PC817 #2 girişi'),
+    ('b2k K1 17.1 U06 şeridi', "Bara kablolarını panelin üstünde, pabuç yüksekliğinde yatay götür: ESP32 USB (U06, §G) yıldız barasının sağ yarısının önünden direğe çıkar, oradaki kabloları (G05: akü yarığından yıldızın 3 numaralı saplamasına; G17 ve G18: 4 numaralı saplamaya) panelden ≈ 20 mm'den yükseğe kaldırma."),
+    ('b2k B5a K64 a tutucu', 'Bara tutucuları (K64 a; baskı listesinde iki PETG parça: yıldız barasınınki 5, anahtarlı barasınınki 4 saplamalı), tezgâhta, panel burçlara inmeden, altı açıkken: önce her tutucunun alt yüzündeki iki deliğe M3 ısıl gömme somunu havyayla göm.'),
+    ('b2k B5a K64 a tutucu', "Bara tutucuları P10.7b2j'de modele girdi (K64 a, `planlama/d158/F10s-gunluk.md` § 4; basılır, satın alınmaz)."),
+    ('b2k dt2 E3a D24V50F5 pin kenarı (F10v § 3)', "D24V50F5'i pin kenarı TVS'ye bakacak şekilde tak; pin sırası ürün sayfasında yok, ürün gelince kart üstündeki yazıyla doğrula."),
+    ('b2k B5a K64 a tutucu', "Dokuz M5×25 altıgen başlı saplamayı alttan tutucunun altıgen ceplerine sok, üstten M5 somununu elle birkaç tur tak (saplama düşmesin; pabuçlar, pul ve yaylı pul K1'de)."),
+    ('b2k B6a ESP32 yönü (F10r-kontrol B1)', "ESP32 DevKit'i taşıyıcının başlıklarına micro USB portu robota önden bakınca sağda (WROOM modülü solda) olacak yönde tak: kart başlığa ters yönde de girer; ters takılırsa bütün pinler yer değiştirir: taşıyıcının 5 V hattı bir GPIO pinine gelir ve F1'deki ilk enerjide (F4 takılınca) kart zarar görür (F1'de enerjiden önce yön bakışı var)."),
+    ('b2k B6a ESP32 yönü (F10r-kontrol B1)', "ESP32 DevKit'in micro USB portu önden bakınca sağda (taşıyıcının sağ kenarı), WROOM modülü solda"),
+    ('b2k B6 K53 a çentik', 'Elektronik katının arka kenarında (güç paneline bakan kenar), robota önden bakınca solda 1,5 mm derin çentik var (K53 a): kat inerken güç panelindeki ön şarj kartının iki ön burcuna takılmaz.'),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu (şema adı cümlesi)', "Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de."),
+    ('b2k K1 G16 / G22 şeması baradan', "G16 ve G22'nin şeması anahtarlı baradaki kendi saplamasından başlar (tutucu modelde, B5a); hat sigortaları ve pabuçlar modelde yok."),
+    ('b2k E3a K51 a modelde', "Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki ve D24V50F5 → Pi hattındaki, ikisi de modelde ve BOM'da var (K51 a)."),
+    ('b2k dt1 E4 uzatma + dirsek (F10u-kontrol 8)', "KT2 geçmezse kartla birlikte siparişten çıkarılan ~30 cm USB-A uzatma ve L USB-A dirsek de gerekir (`planlama/adim3/kablolama-on-kararlar.md` § 5, § 17; alımları Ahmet'e sorulacak)."),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu', 'Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür'),
+    ('b2k dt2 F1 ESP32 yön erişim çekincesi (T5)', "Kabuk ve etek takılıyken ESP32'nin üstten görülebildiği ölçülmedi, doğrulanmadı; asıl yön denetimi B6a'da"),
+    ('b2k dt1 bara sıkma erişim çekincesi (F10u-kontrol 3)', 'Kabuk ve etek takılıyken güç paneline üstten erişim ölçülmedi, doğrulanmadı.'),
+    ('b2k dt1 bara sıkma erişim çekincesi (F10u-kontrol 3)', 'Kabuk ve etek takılıyken panele üstten erişim ölçülmedi, doğrulanmadı'),
+    ('b2k dt1 K1 17.4 yol 3 saplamada (F10u-kontrol 2)', "Karede Kablo yolu 3 (G08–G12) anahtarlı baranın 3 numaralı saplamasına gelir; yolun 1 numaralı saplamadan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç §G bağlanır."),
+    ('b2k K1 17.1 kare notu', 'Karede iki bara tutucusu saplamaları ve somunlarıyla görünür (B5a, K64 a); pabuçlar ve köprüler modelde yok.'),
+    ('b2k dt1 K1 17.1 yol 2 saplamada (F10u-kontrol 1)', "Karede vurgulu çizgi Kablo yolu 2'dir (G05): yıldız barasının 3 numaralı saplamasında biter."),
+    ('b2k dt2 K1 17.7 yol 9 yıldız saplamasından (F10v)', "Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre; yıldız barasının 4 numaralı saplamasından geçer, − damarı orada ayrılır); çevre çıkışı G19 §G arayüz kartına bağlanır."),
+    ('b2k dt1 K1 17.6 bara modelde (F10u-kontrol 2)', "Karede yer: PC817 modülü arayüz kartının üstünde, arayüz kartı elektronik katında önden bakınca solda; anahtarlı bara güç panelinde, tutucusuyla karede görünür (B5a); G22'nin şeması onun 4 numaralı saplamasından başlar."),
+    ('b2k E4 ses kartı modelden çıktı', "Kart P10.7b2j'de modelden çıkarıldı, çizimde yok; KT2 geçmezse yeri yeniden çizilir."),
+    ('b2k E4 ses kartı modelden çıktı', 'Masada: sol arka kabuk + PAM8403'),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu (şema adı cümlesi)', "Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de."),
+    ('b2k B5a K64 a tutucu', 'Panelin altından tutucu başına 2 × ISO 7380 M3×10 ile ısıl gömme somunlara sık.'),
+    ('b2k dt3 B3 yol 4 akü kayışı', 'Plaka altından geçen motor kablolarını (Kablo yolu 4) akü kayışıyla plaka arasına sıkıştırma, kayışa bağlama: kayış gerildiğinde kabloyu ezer'),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu', 'Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru).'),
+    ('b2k E3a K51 a modelde', "SY8205'in ve iki P6KE6V8A'nın tabladaki yeri modelde var (Pi hattınınki D24V50F5'in önünde, K51 a); çeviricilerin çıkış uçlarının kart üstündeki yeri modelde yok (kart zarf olarak çizili): lehim yeri kart yazısıyla teyit."),
+    ('b2k K1 17.1 numara yönü', 'Saplama numaraları robota önden bakınca soldan sağa (B5a).'),
+    ('b2k B5a K64 a tutucu', 'Saplamalar panele değmez, yalıtım tutucudadır; saplama sonradan yalnız tutucu (ve panel) sökülerek değişir.'),
+    ('b2k B5a K64 a tutucu', "Saplamalar robota önden bakınca soldan sağa 1'den numaralıdır (yıldız 1–5, anahtarlı 1–4; K1'deki saplama numaraları bu sırayla)."),
+    ('b2k B5a K64 a tutucu', 'Saplamanın altıgen başlı olması varsayım: bara saplaması takımının baş tipi kayıtta yok; silindir başlı gelirse altıgen cep dönmeyi tutmaz, tutucu yeniden tasarlanır (siparişte altıgen baş seçilmeli).'),
+    ('b2k dt3 K1 17.10 yol 11 / 12 kesik notu', 'Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür.'),
+    ('b2k K1 17.1 bara sıkma (güvenlik)', 'Somunu yaylı pul düzleşene kadar sık (≈ 2–2,5 N·m, tahmin, ölçülmedi; tutucuyu ezecek kadar değil).'),
+    ('b2k B6a ESP32 yönü (F10r-kontrol B1)', 'Sonra kat üstündeki kartlar arası kabloları bağla.'),
+    ('b2k B5a K64 a tutucu', 'Sonra tutucuyu panelin üstüne koy: yıldız barasınınki akü kablo yarıklarının hemen arkasına, anahtarlı barasınınki onun arkasına, röle hizasına (karede yerleri).'),
+    ('b2k dt1 F1 ESP32 yön (F10u-kontrol 4)', 'Ters takılıysa enerji verme: kart 180° dönünce taşıyıcının 5 V hattı bir GPIO pinine gelir, F4 takılınca kart zarar görür.'),
+    ('b2k B6a ESP32 yönü (F10r-kontrol B1)', 'Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı).'),
+    ("b2k dt1 K1 17.1 sıkma F1'e bağlı (F10u-kontrol 3)", 'Tutucu PETG, sıkma altında zamanla gevşer: somunları F1\'de ilk enerjiden önce ("İlk enerji, aşama 1" kontrolünden önceki madde) ve ilk haftanın sonunda yeniden sık; ikisinde de ana anahtar kapalı, akü XT60\'tan ayrık, saat / yüzük çıkarılmış olmalı, lokma anahtarı bir baradan öbürüne değmesin.'),
+    ('b2k B5a K64 a tutucu', 'Tutucu başına iki M3×10 ISO 7380 ve iki M3 ısıl gömme somun ile dokuz M5 düz pul satın alma listesinde ayrıca teyit edilir'),
+    ('b2k E4 ses kartı modelden çıktı', "USB ses kartı takılmaz, çizimde de yok: kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1)."),
+    ('b2k E4 ses kartı modelden çıktı', "USB ses kartı takılmaz, çizimde de yok: kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1)."),
+    ('b2k K1 G16 / G22 şeması baradan', 'XL4016 C girişi (G16, 16 AWG): anahtarlı baranın 2 numaralı saplaması → hat sigortası → XL4016 C IN'),
+    ('b2k dt1 F1 bara tutucusuyla karede (F10u-kontrol 2)', 'Ölçü noktaları karede görünmez: PC817 #1 klemensi ve akü ölçüm bölücüsü arayüz kartının üstünde (elektronik katı, robota önden bakınca solda; kart üstü klemensler modelde çizili değil), yıldız barası güç panelinde (arka kat; tutucusuyla karede, B5a)'),
+    ('b2k dt3 K1 pabuç yelpazesi', 'İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç (yıldızın 1, 2, 3, 4 ve 5, anahtarlının 1, 2, 3 ve 4 numaralı saplamalarında birden çok pabuç: pabuçları yelpaze gibi açarak diz, üst üste aynı yöne bindirme; somunu taktıktan sonra dişin tam kavradığına bak), büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok.'),
+    ('b2k B5a K64 a tutucu', "İki bara tutucusu panelde, panelin altından 2'şer M3×10 ile sıkı; dokuz saplama altıgen ceplerinde, elle döndürünce dönmüyor, üstte somunu elle takılı; yıldız barasınınki önde (akü kablo yarıklarının arkasında), anahtarlı barasınınki arkada (röle hizasında)"),
+    ('b2k dt1 F1 ESP32 yön (F10u-kontrol 4)', "İlk enerjiden önce ESP32 DevKit'in yönüne bak: micro USB portu robota önden bakınca sağda, WROOM modülü solda (B6a)."),
+    ('b2k dt1 F1 bara sıkma (F10u-kontrol 3)', 'İlk enerjiden önce, akü XT60\'tan ayrık ve ana anahtar kapalıyken: iki baranın dokuz M5 somununu yeniden sık (K1 "Toprak ve iki bara"; tutucu PETG, gevşer); saat / yüzük çıkar, lokma anahtarı iki baraya birden değmesin.'),
+    ('b2k dt1 F1 bara sıkma (F10u-kontrol 3)', 'İlk haftanın sonunda aynı koşullarla bir kez daha.'),
+    ('b2k B6 K53 a çentik', 'İniş boyunca ortak hacim 0, en küçük boşluk 0,5 mm (`planlama/d158/F10s-K53-olcum.json`; ölçüm düz yukarıdan inişle, eğik iniş ölçülmedi)'),
+    ('b2k dt4 E4 kabuk sırası öneri (F10y)', 'Sonra sağ kabuğu arkadan (−z) yerine koy: dikey dikişte sağ kabuğun bindirmesi solun altında kalır, bu yüzden sağı soldan önce takmak kolaydır (sol önce takılırsa sağ yalnız sağdan, +x yönünde girer; giriş yolu ölçümü).'),
+    ('b2k dt4 E4 kabuk sırası öneri (F10y)', 'Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır, bu sırayla takmak kolaydır (sol önce takılırsa sağ yalnız sağdan, +x yönünde girer; giriş yolu ölçümü).'),
+]
+BEKLENEN["896c9a7"] = (B2K_SILINEN, B2K_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

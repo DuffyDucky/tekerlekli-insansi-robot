@@ -60,6 +60,8 @@ KISALTMA = {
 # P10.7b2e kısım 2: "temada koyu" beyaz kablonun yeni lejant adından ("Analog ses (beyaz; açık temada koyu çizilir)"); sonraki satır
 # K1 kartlarının yer tarifleri ve B5a K64 a notunun 10 yeni kelimesi; ondan sonraki satır K1 sağ / sol kurulum testi, B6a ve F1 yer
 # tariflerinin 12 yeni kelimesi ve app.js küçük görünüm balonundaki "bakana" (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım).
+# P10.7b2k: son satır B5a bara tutucusu montajı ve notu, B6a ESP32 yönü, K1 17.1 bara sıkma / U06 notu ve E3a TVS cümlesinin 21 yeni
+# kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım). Düzeltme turu 1: son satır (K1 17.1 / 17.4 / 17.6, E4; turu 2: "bakacak", E3a; turu 3: "ezer" B3, "yelpaze" K1; F10y: "takmak" E4).
 ASCII_TAMAM = set("""
 hepsine elin ekli kolunun dayanana pulla lehimden lehimi
 artanla denenmedi ekler ekseninin ekten girdi gerilmeden hepsinden kabloyla kablonun kendisi kuruldu lopu modeldeki orada oturtma
@@ -158,7 +160,10 @@ ileride eklenebilir demoda eklenecek soket soketleri dilini kuponunda sentil kom
 engel dil braketinin kuponda dururken sentili tutan
 mantardaki durduktan saniye kumandaya telefona klavyeye dokunmaz sentilin tutarak sokar sokmaz elini kolun komut beklenmedik hemen
 giremiyorsa zorlama kaydet proje sahibine sor
+tutucunun ceplerine somununu tur tutucuyu somunlara sonradan modele silindir gelirse tutmaz girmezse oturtulur olacak porta
+baradaki ezecek enerjiden zamanla oradaki ikisi
 portuna
+ikisinde biter saplamadan tutucusuyla kartla sorulacak bakacak ezer yelpaze takmak
 """.split())
 # P10.7b2i (F10r-gunluk.md § 2): son satır K1 alt adım 11'deki U06 taban ucu talimatının 1 yeni kelimesi ("portuna"; gözden
 # geçirildi: Türkçe harfi olmayan doğru yazım, "port" + yönelme).
@@ -206,9 +211,12 @@ portuna
 # 3) Kafa / hoparlör / hub: (bileşen anahtarı parça adında, metinde aranacak kelimeler)
 BILESEN = [
     ("Yüz ekranı WaveShare", ("QLED",)), ("Ekran tırnağı", ("tırnak",)), ("Kamera Raspberry Pi Camera", ("kamera", "Camera Module")),
-    ("ReSpeaker", ("ReSpeaker",)), ("USB ses kartı", ("ses kartı",)), ("PAM8403", ("PAM8403",)), ("Pololu D24V50F5", ("D24V50F5",)),
+    ("ReSpeaker", ("ReSpeaker",)), ("PAM8403", ("PAM8403",)), ("Pololu D24V50F5", ("D24V50F5",)),
     ("SY8205", ("SY8205",)), ("TVS P6KE6V8A", ("P6KE6V8A",)), ("Hoparlör 40", ("Hoparlör", "hoparlör")), ("USB Hub", ("hub",)),
 ]
+# P10.7b2k: modelden çıkarılan parçalar (desen görünen parça adında; veride bulunursa zorunlu eksik sayılır). USB ses kartı ve köpük
+# bandı P10.7b2j yamasıyla (planlama/d158/F10s-ses-karti-cikar.patch) kafa10_lib.py'den çıktı; rehber E4 "çizimde de yok" der.
+KALKAN_PARCA = [(r"USB ses kart", "P10.7b2j: kart modelden çıktı; F10s-ses-karti-cikar.patch uygulanmadan üretilmiş")]
 # Eski ifadeler: cümlede bağlam kelimesi yoksa çelişki sayılır
 ESKI = [(r"\b7\s*(?:\"|inç|inch)", "7 inç ekran"), (r"(?<!11\.6inch HDMI )\bLCD\b", "LCD (göğüs ekranı ürün kodu \"11.6inch HDMI LCD\" hariç)"), (r"MAX98357A", "MAX98357A"), (r"\bNextion\b", "Nextion"),
         (r"ESP32 USB[^.;\n]*boyun", "ESP32 USB boyundan"), (r"kafa USB", "ESP32 → kafa USB"),
@@ -218,7 +226,7 @@ BAGLAM_PENCERE = 60
 # 4) Zorunlu uyarılar: (adım kodu, aranacak desen, ad). Desen adımın is_ + bağlantı + kontrol + kablo + not metninde aranır.
 ZORUNLU = [
     ("E3a", r"köprülenmez", "iki 5 V hattı köprülenmez"),
-    ("E3a", r"Her iki 5 V çıkışına bir P6KE6V8A", "iki P6KE6V8A (Pi hattındaki modelde yok)"),
+    ("E3a", r"Her iki 5 V çıkışına bir P6KE6V8A", "iki P6KE6V8A (ikisi de modelde, K51 a)"),
     # P10.7b2a: yön kayıttan ({yon.<tvs>}: kablolar.json tvs, Vishay veri sayfası "color band denotes cathode end"); "çizgili" → "bantlı"
     ("E3a", r"katot \(bantlı uç\) \+5 V", "TVS kutbu"),
     ("E3a", r"P6KE18A'yı kartın \+ ve − uçları arasına lehimle, katot \(bantlı uç\) \+12 V", "P6KE18A kutbu (kafa giriş kartı)"),
@@ -370,12 +378,48 @@ ZORUNLU = [
     ("F5", r"diş yüzünü zımparala \(yalnız enerjisizken\)", "F5 sentil: zımpara enerjisizken"),
     ("F5", r"ölçülemedi diye kaydet ve omuz bandını sökmeden önce proje sahibine sor", "F5 sentil: erişilemezse zorlama, sor"),
     ("F5", r"bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır", "F5 erişim kuralı sentil istisnasını gösteriyor"),
-    ("E3a", r"sonraki CAD paketinde eklenecek \(K51 a\)", "E3a Pi hattı TVS modele sonraki CAD paketinde (K51 a)"),
+    # P10.7b2k: K51 a P10.7b2j'de modelde (eski desen "sonraki CAD paketinde eklenecek (K51 a)")
+    ("E3a", r"D24V50F5 → Pi hattındaki, ikisi de modelde ve BOM'da var \(K51 a\)", "E3a Pi hattı TVS modelde (K51 a)"),
     ("F1", r"XT60E-F, dişi panel girişi; K50 b", "F1 şarj girişi dişi panel konnektör (K50 b)"),
     # P10.7b2e (K52 a, 16.11): eski "karar bekliyor (K52)" desenleri yerine kararın kendisi (regülatör B5a'da panelde, G20 panel içinde)
     ("B5a", r"Göğüs ekranı regülatörü \(LM2577 \+ LM2596; K52 a\)", "B5a göğüs ekranı regülatörü güç paneline (K52 a)"),
     # P10.7b2e kısım 2 (Echo kararı 16.11.2026): K64 kapandı (a): tutucu CAD paketinde tasarlanıp basılır
-    ("B5a", r"CAD paketinde tasarlanıp basılacak, satın alınmayacak \(K64 a\)", "B5a bara tutucusu CAD paketinde basılır (K64 a)"),
+    # P10.7b2k: tutucu P10.7b2j'de modelde; eski desen "CAD paketinde tasarlanıp basılacak, satın alınmayacak (K64 a)" yerine montaj
+    # sırası (saplama alttan, tutucu tezgâhta panel altı açıkken, M3 alttan) ve saplama baş tipi varsayımı
+    ("B5a", r"Bara tutucuları \(K64 a;.*tezgâhta, panel burçlara inmeden, altı açıkken", "B5a bara tutucuları tezgâhta, panel altı açıkken (K64 a)"),
+    ("B5a", r"M5×25 altıgen başlı saplamayı alttan tutucunun altıgen ceplerine sok", "B5a saplamalar alttan, altıgen cebe"),
+    ("B5a", r"Panelin altından tutucu başına 2 × ISO 7380 M3×10", "B5a tutucu panele alttan M3×10"),
+    ("B5a", r"Saplamalar robota önden bakınca soldan sağa 1'den numaralıdır", "B5a saplama numara yönü"),
+    ("B5a", r"Saplamanın altıgen başlı olması varsayım", "B5a saplama baş tipi varsayımı"),
+    # düzeltme turu 1 (F10u-kontrol 3): yeniden sıkma F1'deki ilk enerjiye bağlı, koşuluyla; F1'de enerjiden önceki madde
+    ("K1", r"somunları F1'de ilk enerjiden önce", "K1 bara somunları F1'de ilk enerjiden önce yeniden sıkılır (PETG)"),
+    ("K1", r"ana anahtar kapalı,\s+akü XT60'tan ayrık, saat / yüzük çıkarılmış olmalı", "K1 yeniden sıkma koşulu"),
+    ("K1", r"Kabuk ve etek takılıyken güç\s+paneline üstten erişim ölçülmedi", "K1 yeniden sıkma erişim çekincesi"),
+    ("F1", r"İlk enerjiden önce, akü XT60'tan ayrık ve ana anahtar kapalıyken: iki baranın dokuz M5 somununu yeniden sık",
+     "F1 enerji öncesi bara somunları yeniden sıkılır"),
+    # düzeltme turu 1 (F10u-kontrol 4): ESP32 ters takılı enerjinin sonucu ve F1'de enerji öncesi yön bakışı
+    ("F1", r"İlk enerjiden önce ESP32 DevKit'in yönüne bak", "F1 enerji öncesi ESP32 yön bakışı"),
+    ("F1", r"5 V hattı bir GPIO pinine gelir", "F1 ESP32 ters takılırsa 5 V GPIO'ya"),
+    # düzeltme turu 2 (F10u-kontrol T4, T5; F10v § 3)
+    ("F1", r"lokma anahtarı iki baraya birden değmesin", "F1 sıkmada lokma anahtarı iki baraya değmez"),
+    ("K1", r"lokma anahtarı bir baradan öbürüne değmesin", "K1 sıkmada lokma anahtarı iki baraya değmez"),
+    ("F1", r"ESP32'nin üstten görülebildiği ölçülmedi", "F1 ESP32 yön bakışı erişim çekincesi"),
+    ("E3a", r"D24V50F5'i pin kenarı TVS'ye bakacak", "E3a D24V50F5 pin kenarı yönü (doğrulanmadı)"),
+    # düzeltme turu 3 (F10u-kontrol tur 2): pabuç yelpazesi, akü kayışı, 17.10 kesik notu
+    ("K1", r"pabuçları yelpaze gibi açarak diz, üst üste aynı yöne bindirme", "K1 bara pabuçları yelpaze"),
+    ("K1", r"somunu taktıktan sonra dişin tam kavradığına bak", "K1 bara somunu diş kavraması"),
+    ("B3", r"akü kayışıyla plaka arasına sıkıştırma, kayışa bağlama", "B3 yol 4 akü kayışına sıkıştırılmaz"),
+    ("K1", r"ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında", "K1 17.10 Q03 / B01 kesikten (çizim kusuru)"),
+    ("K1", r"yıldız barasının {saplama.G18} numaralı saplamasından\s+geçer", "K1 17.7 yol 9 yıldız saplamasından"),
+    ("B6a", r"ters takılırsa bütün pinler yer değiştirir: taşıyıcının 5 V hattı bir GPIO pinine gelir", "B6a ESP32 ters: 5 V GPIO'ya"),
+    # düzeltme turu 1 (F10u-kontrol 6, 1): U06 şeridinin altındaki G05; karede Kablo yolu 2 yıldızın saplamasında biter
+    ("K1", r"G05: akü yarığından yıldızın {saplama.G05} numaralı", "K1 U06 notunda G05"),
+    ("K1", r"vurgulu çizgi Kablo yolu 2'dir \(G05\): yıldız barasının {saplama.G05} numaralı saplamasında biter",
+     "K1 17.1 Kablo yolu 2 yıldız saplamasında"),
+    ("K1", r"panelden ≈ 20 mm'den yükseğe kaldırma", "K1 bara kabloları U06 şeridinin altında"),
+    # P10.7b2k: K53 a (çentik) ve ESP32 DevKit yönü (F10r-kontrol B1)
+    ("B6", r"1,5 mm derin çentik var \(K53 a\)", "B6 K53 a çentik"),
+    ("B6a", r"micro USB portu robota önden bakınca sağda \(WROOM modülü solda\) olacak yönde tak", "B6a ESP32 DevKit yönü"),
     ("K1", r"regülatörünün girişine \(K52 a\); G20'nin iki ucu da panelde", "K1 G20 panel içinde, regülatör B5a'da (K52 a)"),
     ("K1", r"G20'nin regülatör ucunu regülatörün giriş klemensine bağla \({kutup.G20}", "K1 G20'nin regülatör ucu ve kutbu"),
     ("K2", r"Regülatör B5a'da güç paneline takıldı \(K52 a\)", "K2 göğüs regülatörü B5a'da panelde (K52 a)"),
@@ -385,10 +429,11 @@ ZORUNLU = [
     ("K2", r"F6 {a.F6} \({bicak.F6}\)", "K2 göğüs 12 V F6 (değer, tip)"),
     ("E4", r"USB ses\s+kartı kablajdan çıktı", "E4 USB ses kartı yedek, takılmaz"),
     # açık işler turu (F10h-kontrol-2 §3.3-12): çizim / animasyon kartı yerine götürür; metin bunun uygulanmadığını söyler
-    ("E4", r"USB ses\s+kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan "
-           r"kalan görüntüdür, uygulanmaz\. Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır",
-     "E4 USB ses kartı takılmaz, çizimdeki yeri uygulanmaz, köpük bant yapıştırılmaz"),
+    # P10.7b2k: kart P10.7b2j'de modelden çıktı; eski desen "çizimde ve animasyonda kart … uygulanmaz" yerine
+    ("E4", r"USB ses\s+kartı takılmaz, çizimde de yok: kart yedek parçalarla birlikte saklanır", "E4 USB ses kartı takılmaz, çizimde yok"),
     ("E4", r"10 kΩ / 2,2 kΩ bölücü → PAM8403 sol", "E4 ses yolu ReSpeaker → bölücü → PAM8403"),
+    # düzeltme turu 1 (F10u-kontrol 8): KT2 geçmezse kartla siparişten çıkan uzatma ve dirsek
+    ("E4", r"~30 cm USB-A uzatma ve L USB-A dirsek de gerekir", "E4 KT2 geçmezse uzatma + dirsek"),
 ]
 # P10.7b1 düzeltme turu 1 (F10h-kontrol §2-1, §2-2): ZORUNLU desenleri sabit sayı taşımaz, rehber_metin ile aynı yer tutucuları
 # ({a.F6}, {gpio.ROLE_K1}, {ms.onsarj} …) kullanır; denetim öncesi rehber_deger aynı kayıttan doldurur (tablo değişince bayatlamaz).
@@ -607,17 +652,12 @@ TERIM_ISTISNA = [
     "Seçenek: kollu WAGO 221-413 (ince telli alır) alınabilir, karar Ahmet'in;",
     "Kafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te (USB ses kartı "
     "kablajdan çıktı: yedek, takılmaz;",
-    "USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür;",
+    # P10.7b2k: kart modelden çıktı (P10.7b2j yaması); çizimdeki kartı, köpük bandını ve ad çevirilerini anlatan cümleler kalktı
+    "USB ses kartı takılmaz, çizimde de yok: kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye;",
     "USB ses kartı takılmadı (yedek), Pi USB 2 boş",
     "USB ses kartı kablajdan çıktı, siparişte kalır, takılmaz (yedek): masa denemesi KT2 geçmezse Pi USB 2'ye takılır ve 04.11 düzeni "
     "geri gelir.",
-    "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
     "eski şema ses kartından çiziliyordu, kaldırıldı).",
-    "Köpük bant (yedek USB ses kartı için;",
-    "USB ses kartı (yedek, takılmaz)",
-    "USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye;",
-    # P10.7b2f (F10m-kare-inceleme § 4.2): 31.4'ün karesindeki yedek kart
-    "Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım).",
 ]
 _TERIM_ISTISNA = {_RK.normal(x) for x in TERIM_ISTISNA}
 _TERIM = r"MOSFET|WAGO|[Ss]es kart"
@@ -657,6 +697,8 @@ YASAK = [
     ("köprü teli / jumper", r"\b(?:köprü|jumper|atlama)\s*(?:kablo|tel)\w*", r"$^"),
     ("köprüleme (birleştir)", _KOPRU_NESNE + r"\bbirleştir\w*", _OLUMSUZ_GENEL),
     ("köprüleme (birbirine bağla)", _KOPRU_NESNE + r"\bbirbirine\s+(?:bağla|değdir|lehimle|tuttur|kıskaçla)\w*", _OLUMSUZ_GENEL),
+    # P10.7b2k düzeltme turu 1 (F10u-kontrol 2): bara tutucuları modelde (P10.7b2j); "bara modelde yok / karede görünmez" bayat
+    ("bara modelde yok", r"\bbara\w*\b[^.;]{0,40}?\b(?:modelde\s+(?:yok|çizili\s+değil)|karede\s+görünmez)", r"$^"),
     ("röleyi elle kapatma", r"\bröle\w*(?:\s+\w+){0,2}?\s+elle\s+(?:kapat|çek|bastır|kapa)\w*", _OLUMSUZ_GENEL),
     # D-2: yalnız öznesi akü olan "akü (XT60) bağlı / takılı" ("Akü ön takozu … takılı", "Akü kayışları takılı" tutmaz)
     ("akü bağlıyken iş", r"\bakü(?:yü|nün|sü)?\s+(?:XT60\S*\s+)?(?:bağlı|takılı)\w*(?:\s+(?:iken|olabilir|kalabilir|kalsın|durumda\w*))?",
@@ -890,6 +932,12 @@ def tutarlilik(V, metinler):
     for x in cumle_denetle({k: adim_metin[kod[k]] for k in kod}, zh):
         zorunlu.append(dict(adim=x["yer"], uyari=x["uyari"] + " (" + x["neden"] + ")", var=False))
     zorunlu += [dict(adim="-", uyari=e, var=False) for e in zh]
+    # P10.7b2k: modelden çıkarılan parça veride görünmemeli (metin "çizimde yok" diyor; yama uygulanmadan üretim yakalanır)
+    for desen, neden in KALKAN_PARCA:
+        for p in V["parcalar"]:
+            if re.search(desen, p["ad"]):
+                zorunlu.append(dict(adim=V["adimlar"][p["a"]]["kod"] if isinstance(p.get("a"), int) else "-",
+                                    uyari="kalkan parça veride: %s (%s)" % (p["ad"], neden), var=False))
     return dict(anma=anma, anmayan=[x for x in anma if not x["metinde"]], celiski=celiski, affedilen=affedilen,
                 zorunlu=zorunlu, zorunlu_eksik=[x for x in zorunlu if not x["var"]])
 
@@ -1873,6 +1921,10 @@ ACIK_BOZMA = [
 ]
 # düzeltme turu 2: köprüleme fiili yakalanır, çoğul ad ("köprüler") yakalanmaz
 YASAK_BOZMA = [
+    # P10.7b2k düzeltme turu 1 (F10u-kontrol 2)
+    ("bara modelde yok (17.6 eski)", "anahtarlı bara karede görünmez (modelde yok, güç panelinde)", True),
+    ("bara modelde yok (F1 eski)", "yıldız barası güç panelinde (arka kat; bara modelde yok)", True),
+    ("pabuçlar modelde yok (yakalanmamalı)", "pabuçlar ve köprüler modelde yok", False),
     ("köprüle (emir)", "Mantarın iki ucunu kısa bir telle köprüle", True),
     ("köprülenir (edilgen)", "Ana anahtarın uçları bu adımda köprülenir", True),
     ("köprüleyin", "Sigorta yuvasını köprüleyin", True),
@@ -2123,6 +2175,36 @@ def _veri_benzetimi():
     return dict(adimlar=ad, parcalar=[])
 
 
+def kalkan_parca_bozma_denemesi():
+    """P10.7b2k düzeltme turu 1 (F10u-kontrol 8): KALKAN_PARCA'daki parça veride görünürse (yama uygulanmadan üretim) zorunlu eksik
+    artar; benzer adlı parça (ses kartı değil) artırmaz."""
+    import copy
+    V0 = _veri_benzetimi()
+
+    def say(V, liste=None):
+        global KALKAN_PARCA
+        eski = KALKAN_PARCA
+        try:
+            if liste is not None:
+                KALKAN_PARCA = liste
+            return [x for x in tutarlilik(V, [])["zorunlu_eksik"] if x["uyari"].startswith("kalkan parça")]
+        finally:
+            KALKAN_PARCA = eski
+
+    out = []
+    t0 = say(V0)
+    out.append(dict(ad="kalkan parça: bozulmamış benzetimde 0", yakalandi=not t0, hata=len(t0)))
+    V = copy.deepcopy(V0)
+    V["parcalar"].append(dict(ad="USB ses kartı (Pi port 2)", a=0))
+    n = len(say(V))
+    out.append(dict(ad="kalkan parça: USB ses kartı veride", yakalandi=n > 0, hata=n))
+    V = copy.deepcopy(V0)
+    V["parcalar"].append(dict(ad="ReSpeaker USB mikrofon dizisi", a=0))
+    n = len(say(V))
+    out.append(dict(ad="kalkan parça: benzer ad (ReSpeaker) yakalanmamalı", yakalandi=n == 0, hata=n))
+    return out
+
+
 def veri_is_ana_bozma_denemesi():
     """P10.7b2e (F10l-gunluk § 10.3, § 10.7): veri modu (tutarlilik) ZORUNLU_ALAN "is_ana"yı veride adımın is_ alanında arar. b2d'nin ilk
     üretimi bu alanı veride var olmayan "is_ana" anahtarında aradığı için düştü (zorunlu eksik 2); FreeCAD'siz sınamalar yalnız kaynak
@@ -2359,6 +2441,7 @@ def elektrik_bozma_denemesi():
         TALIMAT_ERTELE = eski_e
     out.append(dict(ad="açık iş: onay kaydı (TALIMAT_ERTELE gevşedi)", yakalandi=n > 0, hata=n))
     out += veri_is_ana_bozma_denemesi()                               # P10.7b2e: veri modu is_ana (F10l-gunluk § 10.3)
+    out += kalkan_parca_bozma_denemesi()                              # P10.7b2k düzeltme turu 1 (F10u-kontrol 8)
     out += demet_bozma_denemesi(ham)
     return dict(temel_hata=len(temel), deneme=out, yakalanan=sum(1 for x in out if x["yakalandi"]), toplam=len(out))
 

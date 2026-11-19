@@ -107,7 +107,7 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | Ses kartı uzatması | Pi 2 → L dirsek → ses kartı | 217 | 270 | - | ~30 cm USB-A uzatma + L dirsek: listede yok |
 | Dizi USB | Pi 1 → ReSpeaker micro B | 85 | 110 | - | Kısa micro USB: listede yok |
 | Göğüs dokunmatik USB | Hub → göğüs ekranı TOUCH | 395 | 640 | 150 | v4 satır 58, 2 m: yeter |
-| ESP32 USB | Hub → ESP32 (taban), VBUS'ta 1N5819 | 971 | 1.360 | 150 | v4, 2 m: yeter; → 19.11 P10.7b2i: 1.129 / 1.560 (taban ucu ESP32 portuna yeniden çizildi; `uygulama-olcum.json` yenilenince bu satır kaynaktan gelir), 2 m yine yeter |
+| ESP32 USB | Hub → ESP32 (taban), VBUS'ta 1N5819 | 1.129 | 1.560 | 150 | v4, 2 m: yeter (19.11: `uygulama-olcum.json` yenilendi, değer kaynaktan; not elle güncellendi, `uygulama_rapor.py` yeniden koşulmadı: F10u § 11) |
 | Hoparlör | PAM8403 → hoparlör (boyundan) | 823 | 1.030 | - | ~1,1 m: robot için listede yok |
 | 3,5 mm → PAM | Ses kartı L 3,5 mm → PAM girişi | 36 | 40 | - | L 3,5 mm fişli kısa kablo: listede yok |
 | PAM 5 V | D24V50F5 → PAM (VARSAYIM) | 64 | 80 | - | Sarf; besleme noktası doğrulanmadı |

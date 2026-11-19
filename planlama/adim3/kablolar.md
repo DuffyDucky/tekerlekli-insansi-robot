@@ -848,7 +848,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 16 AWG (1,31 mm²); hat yuvasının kuyruğu 16 AWG (MJ:122); yuva ile bara / XL arası da 16 AWG (O-1) · **renk:** + kırmızı, − / GND siyah; makaron turuncu
 - **Koruma:** Hat sigortası C 5 A mini (XL4016 C girişi) (`hat-C`, 5 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → hat-C
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 295 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 240 mm (şema `taban:G16`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 295 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 160 mm (şema `taban:G16`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1 · **sonlandırma:** yuva kuyruğuna lehim + makaron; XL vidalı klemens; bara / yıldız ucu halka pabuç (O-3 b)
 - **Uç türü (uc_turu):** a: bara-pabuc, modul-vidali · b: bara-pabuc, modul-vidali
 
@@ -889,7 +889,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron turuncu
 - **Koruma:** Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → hat-G22
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 500 mm; Manhattan 372 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 240 mm (şema `taban:G22`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 500 mm; Manhattan 372 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 258 mm (şema `taban:G22`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1, 49 F5 · **sonlandırma:** bara ucunda hat sigortası yuvası (16 AWG kuyruğu mavi M5 pabuçla saplamaya), 22 AWG tel kuyruğa lehim + makaron; modül ucu vidalı klemens; yıldız ucu: 22 AWG tel ≈ 5 cm 18 AWG siyah ara parçaya lehim + makaron, ara parça kırmızı M5 pabuçla (22 AWG kırmızı pabucun 0,5 mm² alt sınırının altında; ek tur)
 - **Uç türü (uc_turu):** a: bara-pabuc, modul-vidali · b: bara-pabuc, modul-vidali
 
