@@ -2106,9 +2106,15 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "f7d215a7c231c408",
+    "ozet": "98bef160b4cb64c9",
     "neden": "kural listesi",
-    "metin": "('F1', '(?:Oturmazsa zorlama \\\\(bant kırılabilir\\\\): tasarım kararını \\\\(K55 b\\\\) bekle\\\\. Bu geçme denenmedi; bu bant için kupon henüz yok\\\\.[\\\\s\\\\S]*){2}', 'F1 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)')"
+    "metin": "('F1', '(?:Oturmazsa zorlama \\\\(bant kırılabilir\\\\): tasarım kararını \\\\(K55 b\\\\) bekle\\\\. Bu geçme kuponla denenmedi[^.]*?; kupon sonucu gelince bu adım yeniden yazılabilir\\\\.[\\\\s\\\\S]*){2}', 'F1 oturmazsa zorlama + K55 b, kuponla denenmedi notu (K55; ön sağ + sol)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "83bb32915ccc5d93",
+    "neden": "kural listesi",
+    "metin": "('F1', 'etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır', 'F1 ön sol bant: kupon sağdan, sol ayna çıkarımı (K55)')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -6980,9 +6986,9 @@
    },
    {
     "yer": "kaynak F1 alt adım 3 is_",
-    "ozet": "9cd74c93831f2613",
+    "ozet": "1e37d945e219f632",
     "neden": "metin",
-    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
+    "metin": "Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir."
    },
    {
     "yer": "kaynak F1 alt adım 4 ad",
@@ -7034,9 +7040,9 @@
    },
    {
     "yer": "kaynak F1 alt adım 5 is_",
-    "ozet": "9cd74c93831f2613",
-    "neden": "metin",
-    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
+    "ozet": "4f0a99c27c3dfa68",
+    "neden": "zorunlu",
+    "metin": "Bu geçme kuponla denenmedi (etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır); kupon sonucu gelince bu adım yeniden yazılabilir."
    },
    {
     "yer": "kaynak F1 alt adım 6 ad",

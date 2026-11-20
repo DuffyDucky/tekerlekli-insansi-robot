@@ -122,7 +122,7 @@ ROW = [
     ("Çatal, S2 5 en yakın, mm", "12,306", "-", tr(min(catal_s2("sag", "5.0"), catal_s2("sol", "5.0")), 3), J_I + " catal"),
     ("Devrilme payı, ev pozu, rampa 5°", "1,62", "en az 1,5", tr(EV_R, 2), J_T + " robot.pozlar[ev].rampa5.pay_geri"),
     ("Devrilme payı, ızgara, yüksüz, rampa 5°", "1,523", "en az 1,5", tr(IZG, 3), J_V + " izgara_yuk_0g.a_sinir_pay15"),
-    ("Tarama, eklem aralığında çakışma (omuz bölümü eski)", "0", "0", tr(CRP["toplam"]["eklem_araliginda"], 0), "carpisma-sonuc.json toplam.eklem_araliginda"),
+    ("Tarama, eklem aralığında çakışma (%s)" % ("omuz dahil, tek koşu" if (CRP["bolumler"]["omuz"].get("durum") == "tamam" and CRP.get("tek_kosu")) else "omuz bölümü eski"), "0", "0", tr(CRP["toplam"]["eklem_araliginda"], 0), "carpisma-sonuc.json toplam.eklem_araliginda"),
     ("Kafa iç çakışma (0,799 mm³ dahil, eşik 0,5 mm³)", "1 (0,799 mm³, düzeltme öncesi)", "0", tr(len(KAFA["statik"]), 0), J_K + " statik"),
     ("Dizi × arka kabuk, eşiksiz kesişim, mm³", "0,799", "0", tr(OLC["dizi"]["kabuk_kesisim_mm3"], 4), J_O + " dizi.kabuk_kesisim_mm3"),
     ("Kabuk iç çakışma / kabuk × iskelet", "0 / 0", "0 / 0", "%d / %d" % (len(KABUK["cakisma"]), len(KABUK["iskelet_cakisma"])), J_B + " cakisma, iskelet_cakisma"),
@@ -138,7 +138,10 @@ K_BILGI = [
     # P10.7b2k: "Ses karti uzatmasi" ve "3,5 mm -> PAM" satırları kalktı (yollar kablo_yolu_ekran.py'den çıktı; kart yedek)
     ("PAM 5 V", "D24V50F5 → PAM (VARSAYIM)", "Sarf; besleme noktası doğrulanmadı"),
     ("HDMI", "Pi HDMI 1 → göğüs ekranı (boyundan)", "v4, 1,5 m: yeter"),
-    ("12 V", "Taban → göğüs ekranı (boyundan)", "Değişmedi"),
+    # P10.8c: 12 V boyundan geçmez (F4a § 2-3; HEAD notundaki elle düzeltme üreticiye alındı, sayı kablo_yolu_ekran.py yolundan)
+    ("12 V", "Taban → göğüs ekranı (tabandan, boyundan geçmez; `kablo_yolu_ekran.py` yolunun en üst noktası y %s < omuz S3 %s; "
+             "`lale158-kontrol.json` `kablo_ozet.kablo[\"12 V\"]`: \"taban guc panelinden\")" % (
+                 tr(max(q[1] for q in KY.yollar()["12 V"]), 0), tr(A.S3, 0)), "Değişmedi"),
 ]
 K_AD = {"Hub uzatmasi": "Hub uzatması", "USB dokunmatik": "Göğüs dokunmatik USB", "Hoparlor": "Hoparlör"}
 KI_BILGI = {"Touch USB (kutu kablosu)": "Pi 4 → kafa ekranı TOUCH", "HDMI (serit, 2 lehimsiz fis)": "Pi HDMI 0 → kafa ekranı", "Power USB (30 cm, A ucu kesik)": "SY8205 → kafa ekranı Power"}
@@ -198,7 +201,7 @@ MD = [
     "## Atlananlar", "", "\n".join("- " + q for q in ATLANAN), "",
     "## 5 V ve `elektrik.md`", "", "\n".join("- " + q for q in ELEKTRIK), "",
     "## Güncel kablo listesi", "", md_tablo(K_BAS, kablo_sat()), "", md_tablo(KI_BAS, kablo_ic_sat()), "", md_tablo(("Port", "Bağlı"), PORT), "",
-    "**Listede olmayan 6 kalem (BOM v4 değişmedi, karar Ahmet Yorulmaz'da):** " + LISTE_DISI, "",
+    "**Listede olmayan %d kalem (BOM v4 değişmedi, karar Ahmet Yorulmaz'da):** " % LISTE_DISI_N + LISTE_DISI, "",
     "## Kalan varsayımlar", "", "\n".join("- " + q for q in VARSAYIM), "",
     "## Karar gereken noktalar", "", "\n".join("- " + q for q in KARAR), "",
 ]
@@ -266,7 +269,7 @@ H = ['<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="vie
      "<h2>Son model</h2><div class=\"gor\">%s</div>" % "".join(gorsel(a, b) for a, b in GOR),
      "<h2>Bağlantılar</h2>" + tablo(("Port", "Bağlı"), PORT),
      "<h2>Kablolar</h2><p>Yollar şema, sipariş boyu yol × 1,25, kapağa bağlı kablolarda +150 mm (tahmin). Çaplar tahmini.</p>" + tablo(K_BAS, kablo_sat()) + '<div style="height:10px"></div>' + tablo(KI_BAS, kablo_ic_sat()),
-     "<p><b>Listede olmayan 6 kalem:</b> %s</p>" % inl(LISTE_DISI),
+     "<p><b>Listede olmayan %d kalem:</b> %s</p>" % (LISTE_DISI_N, inl(LISTE_DISI)),
      "<h2>Önceki, beklenen, ölçülen</h2><p>%s</p>" % inl(KAYNAK_NOT) + tablo(SON_BAS, [(a, b, c, d, "`%s`" % e) for a, b, c, d, e in ROW]),
      "<h2>Yeni parça ölçümleri</h2>" + ul(OLCUM), "<h2>Baskı</h2><p>%s</p>" % inl(BASKI_MD),
      "<h2>5 V ve elektrik planı</h2>" + ul(ELEKTRIK),

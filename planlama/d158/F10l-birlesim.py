@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "1d7fb71"          # P10.8b: taban 1d7fb71 (b2k'de 896c9a7) (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "d8ade70"          # P10.8c: taban d8ade70; P10.8b: taban 1d7fb71 (b2k'de 896c9a7) (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -536,6 +536,18 @@ P108B_EKLENEN = [
     ('P10.8b D6 {boy.<kimlik>}', "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI (H02) 950, hub uzatması (U03) 920, ESP32 USB (U06) 1.560, hoparlör (AU3) 1.030, göğüs 12 V (G21) 1.720 mm (`planlama/adim3/elektrik.md`)."),
 ]
 BEKLENEN["1d7fb71"] = (P108B_SILINEN, P108B_EKLENEN)
+# P10.8c düzeltme turu 1 (P108c-gunluk.md § 12): taban d8ade70. Etek ön kuponu var (kabuk/etek_kuponu.py), denenmedi: F1 ön sağ / sol
+# bandında "kupon henüz yok" → "kuponla denenmedi" (sol: ayna çıkarımı ibaresi). Çerçeve ve omuz notları aynı kaldı.
+P108C_SILINEN = [
+    ('P10.8c F1 etek ön kuponu', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+    ('P10.8c F1 etek ön kuponu', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+]
+P108C_EKLENEN = [
+    ('P10.8c F1 etek ön kuponu', 'Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir.'),
+    ('P10.8c F1 etek ön kuponu', 'Bu geçme kuponla denenmedi (etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır); kupon '
+                                 'sonucu gelince bu adım yeniden yazılabilir.'),
+]
+BEKLENEN["d8ade70"] = (P108C_SILINEN, P108C_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

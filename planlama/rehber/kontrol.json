@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-19 19:30",
+ "tarih": "2026-11-19 22:36",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 65,
-  "veri_uretim": "2026-11-19 18:51",
+  "veri_uretim": "2026-11-19 21:48",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-19 07:45",
@@ -3686,7 +3686,7 @@
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 19306,
+  "boyut_kb": 19307,
   "sayfa_esleme": {
    "0": [
     1
@@ -5023,7 +5023,12 @@
     },
     {
      "adim": "F1",
-     "uyari": "F1 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)",
+     "uyari": "F1 oturmazsa zorlama + K55 b, kuponla denenmedi notu (K55; ön sağ + sol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 ön sol bant: kupon sağdan, sol ayna çıkarımı (K55)",
      "var": true
     },
     {
@@ -5197,6 +5202,8 @@
   "zorunlu_eksik": 0,
   "elektrik": [],
   "elektrik_sayi": 0,
+  "standart": [],
+  "standart_sayi": 0,
   "metin_sayisi": {
    "veri": 5185,
    "tarayici": 149
@@ -5340,7 +5347,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 55.8,
+     "sure_s": 56.8,
      "yon": [
       {
        "yon": [
@@ -5453,7 +5460,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 23.6,
+     "sure_s": 23.8,
      "yon": [
       {
        "yon": [
@@ -5597,7 +5604,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 26.8,
+     "sure_s": 27.2,
      "yon": [
       {
        "yon": [
@@ -5924,7 +5931,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 71.4,
+     "sure_s": 73.6,
      "yon": [
       {
        "yon": [
@@ -6088,7 +6095,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 75.5,
+     "sure_s": 79.0,
      "yon": [
       {
        "yon": [
@@ -6252,7 +6259,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 27.8,
+     "sure_s": 28.8,
      "yon": [
       {
        "yon": [
@@ -6707,7 +6714,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.7,
+     "sure_s": 4.8,
      "yon": [
       {
        "yon": [
@@ -6741,7 +6748,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 17.6,
+     "sure_s": 18.8,
      "yon": [
       {
        "yon": [
@@ -6878,7 +6885,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 1.3,
+     "sure_s": 1.5,
      "yon": [
       {
        "yon": [
@@ -6906,7 +6913,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 8.3,
+     "sure_s": 9.8,
      "yon": [
       {
        "yon": [
@@ -6971,7 +6978,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 323.1
+   "sure_s": 334.5
   },
   "ucus": {
    "durum": "koştu",
@@ -12601,7 +12608,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0411",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7381",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -12628,7 +12635,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0413",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7382",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -12655,7 +12662,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0415",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7383",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -12682,7 +12689,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0417",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7384",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -12709,7 +12716,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0419",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7385",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -12736,7 +12743,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0421",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7386",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -12763,7 +12770,7 @@
      "grup": "Göğüs ekranı çerçevesi",
      "satir": "b:12",
      "id": "p0423",
-     "ad": "Çerçeve cıvatası M3x6 ISO 7387",
+     "ad": "Çerçeve cıvatası M3x6 ISO 7380",
      "hareketli": 1,
      "u": [
       0.0,
@@ -16848,7 +16855,7 @@
      ]
     }
    ],
-   "sure_s": 875.2
+   "sure_s": 1057.4
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -26287,7 +26294,7 @@
    },
    {
     "id": "p0411",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7381",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -26304,7 +26311,7 @@
    },
    {
     "id": "p0413",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7382",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -26321,7 +26328,7 @@
    },
    {
     "id": "p0415",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7383",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -26338,7 +26345,7 @@
    },
    {
     "id": "p0417",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7384",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -26355,7 +26362,7 @@
    },
    {
     "id": "p0419",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7385",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -26372,7 +26379,7 @@
    },
    {
     "id": "p0421",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7386",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -26389,7 +26396,7 @@
    },
    {
     "id": "p0423",
-    "ad": "Çerçeve cıvatası M3x6 ISO 7387",
+    "ad": "Çerçeve cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 35,
     "adim_kod": "F3",
@@ -28417,7 +28424,7 @@
    },
    {
     "id": "p0618",
-    "ad": "Yaka cıvatası M3x6 ISO 7381",
+    "ad": "Yaka cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 47,
     "adim_kod": "H0f",
@@ -28451,7 +28458,7 @@
    },
    {
     "id": "p0675",
-    "ad": "Yaka cıvatası M3x6 ISO 7381",
+    "ad": "Yaka cıvatası M3x6 ISO 7380",
     "kod": "M3x6 ISO 7380",
     "adim": 47,
     "adim_kod": "H0f",
@@ -28989,16 +28996,16 @@
     }
    }
   ],
-  "sure_s": 71.1,
+  "sure_s": 78.4,
   "sure": {
-   "yukleme_s": 11.8,
-   "sira_s": 80.1,
-   "perdelenme_s": 140.3,
-   "giris_s": 323.1,
-   "ucus_s": 875.2,
-   "toplam_s": 1430.6,
+   "yukleme_s": 13.7,
+   "sira_s": 88.0,
+   "perdelenme_s": 168.5,
+   "giris_s": 334.6,
+   "ucus_s": 1057.4,
+   "toplam_s": 1662.2,
    "voksel_alani": 87,
-   "voksel_s": 75.9
+   "voksel_s": 83.4
   }
  },
  "perdelenme": {
@@ -32811,7 +32818,7 @@
      },
      {
       "id": "p0675",
-      "ad": "Yaka cıvatası M3x6 ISO 7381",
+      "ad": "Yaka cıvatası M3x6 ISO 7380",
       "tur": "Baglanti"
      }
     ]
@@ -33077,7 +33084,7 @@
    }
   ],
   "toplam_gizli": 272,
-  "sure_s": 140.3,
+  "sure_s": 168.5,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 116,
   "alt_sinir": 0,
@@ -37620,7 +37627,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 35.3
+  "sure_s": 37.5
  },
  "kablo_esleme": {
   "hata": [],

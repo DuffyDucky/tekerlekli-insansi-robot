@@ -9,7 +9,12 @@ r"""F4c (P4.3 + P8.2) dogrulama. Yalniz okur; kaynak betikleri DEGISTIRMEZ (kopy
      toplami Y2b / BOM ile ayni, Y2b satirlarinin g / sa / destek / olcu / yon degerleri bu JSON'dan.
   5. tasarim/freecad/lale158/baski_listesi_guncelle.py (a) oldugu gibi, (b) YAMA ile (F6a 1i'den beri bos: Y1-Y7 kaynakta kalici, eski liste
      YAMA_F4C) gecici kopya uzerinde kosulur; (b)'nin ciktisi baski-listesi.md ile satir satir ayni olmali (sabit nokta), (a)'nin farki listelenir.
+  7. (P10.8c duzeltme turu 1, P108c-kontrol O4) kupon kutleleri: F4c-partiler.json Parti 0 kuponlari (m7 kaynakli C / D1 / D2 / E) ve
+     baski-listesi.md'deki kupon satirlari (Parti 0 tablosu; "toplama katilmaz" blogundaki STL yollu satirlar) kupon JSON kayitlariyla
+     (m7-kupon-sonuc.json, kafa/yanak-kuponu.json, kabuk/bant-kuponu.json, kabuk/etek-kuponu.json; tahmini–%100 g) ayni; m7 kaydi tam
+     kosudansa (yalniz_c yok) "D1 / D2 / E eski" uyarisi listede ve F4c-partiler'de olmamali.
 Kullanim:  py -3 planlama/d158/F4c-dogrula.py      (cikis 0 = hepsi gecti)
+           py -3 planlama/d158/F4c-dogrula.py --bozma-denemesi   (7. denetimin bozma ornekleri; depoya yazmaz)
 """
 import contextlib, csv, difflib, io, json, os, re, sys, tempfile, unicodedata
 if hasattr(sys.stdout, "reconfigure"):
@@ -96,7 +101,103 @@ def guncelle(md_metin, yama):
         return open(tmp, encoding="utf-8").read()
 
 
+KUPON_JSON = ("test/m7-kupon-sonuc.json", "kafa/yanak-kuponu.json", "kabuk/bant-kuponu.json", "kabuk/etek-kuponu.json")
+
+
+def kupon_kayit():
+    """stl yolu (depo kokune gore) -> (tahmini g, %100 g); kaynak kupon JSON'lari."""
+    k = {}
+    for js in KUPON_JSON:
+        d = json.load(open(os.path.join(FC, *js.split("/")), encoding="utf-8"))
+        if "kuponlar" in d:                                            # m7
+            for x in d["kuponlar"]:
+                k["tasarim/freecad/test/stl/%s.stl" % x["ad"]] = (x["kutle_tahmini_g"], x["kutle_100_g"])
+            k["_m7_yalniz_c"] = "yalniz_c" in d
+        for x in d.get("parcalar", []):
+            if x.get("stl"):
+                k[x["stl"]] = (x["kutle_tahmini_g"], x["kutle_100_g"])
+    return k
+
+
+def kupon_kutle_denetle(P, metin, K):
+    """7. denetim (saf islev, bozma denemesi de bunu kosar): sorun listesi."""
+    sorun = []
+    p0 = P["partiler"]["0"]
+    for x in p0["kuponlar"]:
+        if x["kutle_kaynak"] != "m7-kupon-sonuc.json":
+            continue
+        bek = K.get(x["stl"])
+        if bek is None:
+            sorun.append("%s: kupon JSON kaydi yok (%s)" % (x["kod"], x["stl"]))
+        elif [round(v, 1) for v in x["g"]] != [round(v, 1) for v in bek]:
+            sorun.append("F4c-partiler %s %s: g %s, kayit %s" % (x["kod"], x["malzeme"], x["g"], list(bek)))
+    # Parti 0 tablosu (baski-listesi "Tolerans kuponlari"): | kod | malzeme | ne | g | -- F4c-partiler ile ayni sirada
+    satir = [L for L in metin.splitlines() if re.match(r"\| (A|B|C|D1|D2 \(koşullu\)|E) \| PETG", L)]
+    if len(satir) != len(p0["kuponlar"]):
+        sorun.append("Parti 0 kupon satiri %d, F4c-partiler %d" % (len(satir), len(p0["kuponlar"])))
+    for L, x in zip(satir, p0["kuponlar"]):
+        hucre = [c.strip() for c in L.strip("|").split("|")]
+        bek = K.get(x["stl"]) if x["kutle_kaynak"] == "m7-kupon-sonuc.json" else tuple(x["g"])
+        if bek is not None and hucre[-1] != aralik(bek, 1):
+            sorun.append("baski-listesi Parti 0 %s %s: %s, kayit %s" % (x["kod"], x["malzeme"], hucre[-1], aralik(bek, 1)))
+    # STL yollu kupon satirlari (toplama katilmaz blogu): Filament (g) hucresi = kayit
+    for L in metin.splitlines():
+        m = re.match(r"\| [^|]+ \| `(tasarim/freecad/[^`]+\.stl)` \|", L)
+        if not m or m.group(1) not in K:
+            continue
+        hucre = [c.strip() for c in L.strip("|").split("|")]
+        if aralik(K[m.group(1)], 1) not in hucre:
+            sorun.append("baski-listesi %s: g hucresi %s, kayit %s" % (m.group(1).split("/")[-1], hucre[4] if len(hucre) > 4 else "-",
+                                                                      aralik(K[m.group(1)], 1)))
+    if not K.get("_m7_yalniz_c"):
+        if "D1 / D2 / E eski" in metin:
+            sorun.append("baski-listesi: m7 tam kosudan ama 'D1 / D2 / E eski' uyarisi duruyor")
+        if p0.get("m7_uyari"):
+            sorun.append("F4c-partiler: m7 tam kosudan ama m7_uyari dolu")
+    return sorun
+
+
+UYARI_ORNEK = chr(10) + "**Uyarı (D1 / D2 / E eski):** x" + chr(10)
+
+
+def bozma_denemesi():
+    """7. denetimin bozma ornekleri: temiz kopyada 0 sorun, her bozmada en az 1. Depoya yazmaz."""
+    import copy
+    P0 = json.load(open(PARTI, encoding="utf-8"))
+    M0 = open(MD, encoding="utf-8").read()
+    K0 = kupon_kayit()
+    sonuc = []
+
+    def dene(ad, P, M, K, bek):
+        n = len(kupon_kutle_denetle(P, M, K))
+        ok = (n > 0) if bek else (n == 0)
+        sonuc.append(ok)
+        print("  %-62s %s (%d sorun)" % (ad, "YAKALANDI" if (bek and ok) else ("TEMIZ" if ok else "KACTI"), n))
+
+    dene("temiz kopya (yakalanmamali)", P0, M0, K0, False)
+    P = copy.deepcopy(P0)
+    [x for x in P["partiler"]["0"]["kuponlar"] if x["kod"] == "D1"][0]["g"] = [40.9, 87.9]
+    dene("F4c-partiler D1 eski kutle (40,9-87,9)", P, M0, K0, True)
+    dene("baski-listesi D1 eski kutle", P0, M0.replace("| 41,8–90,3 |", "| 40,9–87,9 |", 1), K0, True)
+    K = dict(K0)
+    k = "tasarim/freecad/test/stl/kupon-d2-kelepce-bosaltmali.stl"
+    K[k] = (K[k][0] + 1.0, K[k][1])
+    dene("m7 JSON D2 kutlesi degisti, liste eski", P0, M0, K, True)
+    k = "tasarim/freecad/kabuk/stl/etek-kuponu-alt-flansli.stl"
+    K = dict(K0)
+    K[k] = (K[k][0] + 0.5, K[k][1])
+    dene("etek kuponu JSON kutlesi degisti, toplama katilmaz blogu eski", P0, M0, K, True)
+    dene("m7 tam kosu ama 'D1 / D2 / E eski' uyarisi", P0, M0 + UYARI_ORNEK, K0, True)
+    P = copy.deepcopy(P0)
+    P["partiler"]["0"]["m7_uyari"] = "eski"
+    dene("m7 tam kosu ama F4c-partiler m7_uyari dolu", P, M0, K0, True)
+    print("kupon kutlesi bozma denemesi: %d / %d" % (sum(sonuc), len(sonuc)))
+    return 0 if all(sonuc) else 1
+
+
 def main():
+    if "--bozma-denemesi" in sys.argv:
+        return bozma_denemesi()
     hata = []
 
     def kontrol(ok, ad, ayrinti=""):
@@ -221,6 +322,11 @@ def main():
     b = guncelle(metin, True)
     kontrol(b == metin, "5b baski_listesi_guncelle.py + YAMA: cikti = baski-listesi.md (sabit nokta)",
             "" if b == metin else "%d satir farkli" % sum(1 for x, y in zip(b.splitlines(), metin.splitlines()) if x != y))
+    # 7 kupon kutleleri (P10.8c duzeltme turu 1)
+    K = kupon_kayit()
+    sorun = kupon_kutle_denetle(P, metin, K)
+    kontrol(not sorun, "7 kupon kutleleri = kupon JSON kayitlari (F4c-partiler Parti 0, baski-listesi Parti 0 ve toplama katilmaz blogu); m7 uyarisi",
+            "%d kayit, sorun %s" % (len([k for k in K if not k.startswith("_")]), sorun or "-"))
     print("SONUC:", "GECTI" if not hata else "KALDI " + ", ".join(hata))
     return 1 if hata else 0
 

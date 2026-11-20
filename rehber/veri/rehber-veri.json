@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-19 18:51",
+"uretim": "2026-11-19 21:48",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -14275,7 +14275,7 @@
 "b:5",
 "b:6"
 ],
-"is_": "Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm). Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
+"is_": "Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm). Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir.",
 "saydam": [
 "p0223"
 ],
@@ -14316,7 +14316,7 @@
 "b:9",
 "b:10"
 ],
-"is_": "Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm). Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
+"is_": "Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm). Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme kuponla denenmedi (etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır); kupon sonucu gelince bu adım yeniden yazılabilir.",
 "kamera": [
 -0.85,
 0.62,
@@ -28602,7 +28602,7 @@
 },
 {
 "id": "p0411",
-"ad": "Çerçeve cıvatası M3x6 ISO 7381",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -28653,7 +28653,7 @@
 },
 {
 "id": "p0413",
-"ad": "Çerçeve cıvatası M3x6 ISO 7382",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -28704,7 +28704,7 @@
 },
 {
 "id": "p0415",
-"ad": "Çerçeve cıvatası M3x6 ISO 7383",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -28755,7 +28755,7 @@
 },
 {
 "id": "p0417",
-"ad": "Çerçeve cıvatası M3x6 ISO 7384",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -28806,7 +28806,7 @@
 },
 {
 "id": "p0419",
-"ad": "Çerçeve cıvatası M3x6 ISO 7385",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -28857,7 +28857,7 @@
 },
 {
 "id": "p0421",
-"ad": "Çerçeve cıvatası M3x6 ISO 7386",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -28908,7 +28908,7 @@
 },
 {
 "id": "p0423",
-"ad": "Çerçeve cıvatası M3x6 ISO 7387",
+"ad": "Çerçeve cıvatası M3x6 ISO 7380",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3x6 ISO 7380",
@@ -33897,7 +33897,7 @@
 },
 {
 "id": "p0618",
-"ad": "Yaka cıvatası M3x6 ISO 7381",
+"ad": "Yaka cıvatası M3x6 ISO 7380",
 "modul": "dirsek_sag",
 "grup": "El_bilekte_doner",
 "kod": "M3x6 ISO 7380",
@@ -35517,7 +35517,7 @@
 },
 {
 "id": "p0675",
-"ad": "Yaka cıvatası M3x6 ISO 7381",
+"ad": "Yaka cıvatası M3x6 ISO 7380",
 "modul": "dirsek_sol",
 "grup": "El_bilekte_doner",
 "kod": "M3x6 ISO 7380",
@@ -50850,8 +50850,8 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 35.4,
-"sure_baglanti_s": 12.8
+"sure_s": 61.8,
+"sure_baglanti_s": 23.4
 },
 "uc_kaynak": {
 "konum": 24,

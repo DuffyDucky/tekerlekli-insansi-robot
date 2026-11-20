@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-19 19:42",
+ "tarih": "2026-11-20 02:38",
  "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -7445,7 +7445,7 @@
      },
      {
       "id": "p0411",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7381",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 201,
       "kimlik": 194,
       "yalniz": 233,
@@ -7463,7 +7463,7 @@
      },
      {
       "id": "p0413",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7382",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 276,
       "kimlik": 259,
       "yalniz": 294,
@@ -7481,7 +7481,7 @@
      },
      {
       "id": "p0415",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7383",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 241,
       "kimlik": 227,
       "yalniz": 268,
@@ -7499,7 +7499,7 @@
      },
      {
       "id": "p0417",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7384",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 193,
       "kimlik": 182,
       "yalniz": 222,
@@ -7517,7 +7517,7 @@
      },
      {
       "id": "p0419",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7385",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 168,
       "kimlik": 159,
       "yalniz": 195,
@@ -7535,7 +7535,7 @@
      },
      {
       "id": "p0421",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7386",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 174,
       "kimlik": 157,
       "yalniz": 196,
@@ -7553,7 +7553,7 @@
      },
      {
       "id": "p0423",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7387",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 150,
       "kimlik": 138,
       "yalniz": 175,
@@ -11404,7 +11404,7 @@
      },
      {
       "id": "p0411",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7381",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 206,
       "kimlik": 194,
       "yalniz": 233,
@@ -11422,7 +11422,7 @@
      },
      {
       "id": "p0413",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7382",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 278,
       "kimlik": 259,
       "yalniz": 294,
@@ -11440,7 +11440,7 @@
      },
      {
       "id": "p0415",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7383",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 243,
       "kimlik": 227,
       "yalniz": 268,
@@ -11458,7 +11458,7 @@
      },
      {
       "id": "p0417",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7384",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 195,
       "kimlik": 182,
       "yalniz": 222,
@@ -11476,7 +11476,7 @@
      },
      {
       "id": "p0419",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7385",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 171,
       "kimlik": 159,
       "yalniz": 195,
@@ -11494,7 +11494,7 @@
      },
      {
       "id": "p0421",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7386",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 175,
       "kimlik": 157,
       "yalniz": 196,
@@ -11512,7 +11512,7 @@
      },
      {
       "id": "p0423",
-      "ad": "Çerçeve cıvatası M3x6 ISO 7387",
+      "ad": "Çerçeve cıvatası M3x6 ISO 7380",
       "fark": 155,
       "kimlik": 138,
       "yalniz": 175,
@@ -12130,7 +12130,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 963,
+ "sure_s": 1009,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

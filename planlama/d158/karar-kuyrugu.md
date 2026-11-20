@@ -1212,6 +1212,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Etek ön bandında engel yalnız perçin somunu (B-rep 1–8 mm, ≈ 9 mm³; F10d § 11.5 doğrulandı).
   - Etek ön, omuz ve çerçeve için kupon yok; rehber "oturmazsa zorlama, tasarım kararını (K55 b) bekle" diyor.
   - Rehber tarafı kapandı; kabuk kuponu ve K55 b açık. F3 çerçeve takma cümlesi bilerek değişmedi, yalnız notu (P108b § 13.4, § 14.1).
+- **Not (P10.8c, 19.11.2026; `planlama/d158/P108c-gunluk.md` § 4, § 12.4):** etek ön bandı kuponu `tasarim/freecad/kabuk/etek_kuponu.py`.
+  Üst parça ön bant dilimi; alt parça orta bant dili + braket dik ayağı + taşıyıcı (perçin somunlu ya da flanşlı). Rehberin iki parçalı
+  yolu kuponda ve tam modelde aynı ortak hacim eğrisi (perçin somunu dz 0,5–8,5 mm, en çok ≈ 10 mm³; yan bacak serbest). Deneme hareket
+  kısıtlı: önce yalnız x, sonra yalnız −z, üst parça döndürülmeden. 'Geçti' kanıt; 'geçmedi' belirsiz (K55 b ya da tam bant). Rehber F1
+  'kuponla denenmedi' diyor. Basılmadı.
 
 ---
 
@@ -1865,6 +1870,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     toplam 25.910,6 → 26.120,6 g, tilt payı 3,64 → 3,78, ızgara payı 1,517 → 1,519 (F10w montajı: beklenen yönde ama D3 dışı), (2) 12 V
     satırı "tabandan, boyundan geçmez" elle düzeltmesini kaybedip "(boyundan) … Değişmedi" yazıyor (üreticide eski metin), (3) "Listede
     olmayan 6 kalem" başlığı dört kalem sayıyor ve L USB-A dirseği hâlâ anıyor. Not kapanışta üreticisi düzeltilip yeniden üretilmeli.
+    → 19.11 P10.8c: **kapandı** (`P108c-gunluk.md` § 5, § 12.1). Üretici düzeltildi: 12 V satırı; liste dışı kalem (3; L USB-A dirsek
+    14.11 kararıyla çıktı); omuz anlatısı `carpisma-sonuc.json`'a bağlı (`tek_kosu`). `uygulama-notu.md` ve `rapor.html` birlikte yeniden
+    üretildi.
 
 **P10.7b2j / b2k kapanışından açık iş (19.11, `planlama/d158/F10y-gunluk.md`)**
   - ~~F9b GEÇMEZ (163 hata): tasarım demosu b2j öncesi sayılarla~~ → 19.11 kararla çözüldü: `tasarim/cad/demo_uret.py` ile yeniden
@@ -1890,7 +1898,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     −140 → −170; betikteki `Y_KAPAK` −148 sabit, "width of box too small"). D1 / D2 / E STL'leri 15.10 koşusundan (commit `6bb1eff`).
     Bölüm bugünkü dirseğe uyarlanmalı, D1'in FCStd doğrulaması yeniden koşulmalı, kupon D1 / D2 / E Parti 0'dan önce yeniden üretilmeli
     ya da bilerek eski hâliyle basılmalı. Uyarı baskı listesinde ve `F4c-partiler.md`'de (`F4c-partiler.py` `m7_eski_uyari`; tam koşu
-    `yalniz_c` alanını silince kendiliğinden kalkar). Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py` ("BİLİNEN ESKİ").
+    `yalniz_c` alanını silince kendiliğinden kalkar). Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py` (P10.8c'den beri istisna yok; her fark ESKİ).
+    → 19.11 P10.8c: **kapandı** (`P108c-gunluk.md` § 3, § 12.3). D1 / D2 güncel dirsekten yeniden üretildi; E'nin STL'si 15.10 baytında,
+    geometri güncel. Baskı listesi ve F4c yeni kütlelerle yenilendi, eski uyarı kalktı.
   - **K55 rehber metni (O1):** rehberde K55 a cümlesi "dilini orta bandın (göğüs bandının) arkasına sok" geometriye ters. Dil alttaki
     bandın iç yarısı; üstteki bandın alt kenarı dış yarıdır (dudak) ve dilin dışından geçer. Cümle F1 (adım 33 grup 2 / 4, etek ön), F3
     (adım 35 grup 0 / 1, göğüs), çerçeve (adım 35 grup 4) ve F4 (adım 36 grup 0 / 1, omuz) metinlerinde var (terslik göğüs | orta dikişinde ölçüldü, `bant-kuponu.json` yan hat; öbür bantlarda aynı kalıp, tek tek
@@ -1929,3 +1939,15 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - **Yeni bulgu, yanlış standart numarası:** üretilmiş rehberde "Çerçeve cıvatası M3x6 ISO 7381" … "ISO 7387" (7 ad) ve "Yaka cıvatası
     M3x6 ISO 7381" görünüyor; doğrusu ISO 7380. FreeCAD aynı etiketi ikinci kez alınca sondaki sayıyı artırmış, `kopya_eki_sil` yalnız
     "0NN" ekini tanıyor; `montaj-analiz.json`'da ad doğru. Düzeltme yeri CAD etiketi ya da `kopya_eki_sil` (P108b § 14.2).
+    → 19.11 P10.8c: **kapandı** (`P108c-gunluk.md` § 2, § 12.5; `kopya_eki_sil` → `artirma_eki_sil`, `--kaynak` standart / artırma
+    denetimi; CAD etiketi ve `robot-montaj.step` etiketi değişmedi).
+
+**P10.8c kapanışından açık iş (19.11, `planlama/d158/P108c-gunluk.md`, `P108c-kontrol.md`; karar değil, iş)**
+  - `kafa-yerlesim/uygulama-ivme.json` 09.11 koşusundan. Not kütleyi 26.120,6 g diyor; güncel montajla 26.235,1 g (fark 114,5 g).
+    Devrilme payları yeni montajla hesaplanmadı. `uygulama_ivme.py` (FreeCAD, `montaj/moduller`) yeniden koşulmalı, sonra
+    `uygulama_rapor.py` (`P108c-gunluk.md` § 12.1).
+  - `planlama/d158/F4c-rapor.html` hiçbir betikle üretilmiyor ve Parti 0 sayıları P10.8c'den önceki (D1 40,9–87,9 g, D2 41,4–86,2 g,
+    toplam 257,4–420,0 g). Tarihli eski görüntü diye bırakılsın ya da başına 'eski görüntü; güncel: baski-listesi.md /
+    F4c-partiler.md' satırı eklensin.
+  - `m7_kuponlari.py`'de satır içi sabitler kaldı. `dirsek_parcalar.py`'de de satır içi oldukları için okunamıyorlar; liste
+    `P108c-gunluk.md` § 12.5'te. Koruma: D1 ↔ FCStd hacim karşılaştırması.

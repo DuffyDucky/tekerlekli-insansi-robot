@@ -1,10 +1,10 @@
 # Kafa içi ses ve USB: B + R1 uygulaması
 
-Tarih: 05.11.2026. Seçim: Ahmet Yorulmaz, 05.11.2026. Sayılar son koşuların JSON dosyalarından okundu (`uygulama_rapor.py`).
+Tarih: 19.11.2026. Seçim: Ahmet Yorulmaz, 05.11.2026. Sayılar son koşuların JSON dosyalarından okundu (`uygulama_rapor.py`).
 
 ## Özet
 
-B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok: kafa içi 0, kabuk içi 0, kabuk × iskelet 0, ev pozu 0, eklem aralığındaki tarama 0 (omuz bölümü eski kayıttan). Boy 1.580,0 mm, 1.177 parça, 25.910,6 g (400 g kablo payı dahil). Kafa grubu 1.570,8 g, tilt payı ±15 3,64, pan payı 2,21, mikrofon-hoparlör en az 574,3 mm, boyun yuva kanalı %44,8, SY8205 × USB 0,00 mm³ ve açıklık 15,45 mm. Yüksüz ızgara devrilme payı 1,517, ev pozu 1,61; eşik 1,5.
+B + R1 modele işlendi; çarpışma taraması bütün bölümlerle (omuz dahil) tek koşuda yenilendi (koşu 20261119-075818). Yeni çakışma yok: kafa içi 0, kabuk içi 0, kabuk × iskelet 0, ev pozu 0, eklem aralığındaki tarama 0 (omuz bölümü dahil, koşu 20261119-075818). Boy 1.580,0 mm, 1.225 parça, 26.120,6 g (400 g kablo payı dahil; `uygulama-ivme.json`, 09.11.2026). Kafa grubu 1.542,7 g, tilt payı ±15 3,78, pan payı 2,26, mikrofon-hoparlör en az 574,3 mm, boyun yuva kanalı %44,8, SY8205 × USB 0,00 mm³ ve açıklık 15,45 mm. Yüksüz ızgara devrilme payı 1,519, ev pozu 1,61; eşik 1,5.
 
 - **AI HAT+ zarfı mevcut bir cıvata boss'una giriyor:** 77,69 mm³ `Arka kafa kabugu sag`, 7,97 mm³ somun, 3,18 mm³ cıvata (x -12,0...-4,0, z -84,39...-81,44). Boss bu işte değişmedi, seçim ölçümleri bu çifti taramamıştı. Zarf varsayım; AI HAT+ modele eklenmedi.
 
@@ -15,12 +15,12 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | Ölçüt | Önceki | Beklenen | Ölçülen | Kaynak |
 |---|---|---|---|---|
 | Toplam boy, mm | 1.580,0 | en çok 1.580,0 | 1.580,0 | `lale158/lale158-kontrol.json toplam_boy_mm` |
-| Parça sayısı (kablo gösterimi hariç) | 1.168 | - | 1.177 | `lale158/lale158-kontrol.json parca` |
-| Toplam kütle, g (400 g kablo payı dahil) | 25.836,9 | - | 25.910,6 | `kafa-yerlesim/uygulama-ivme.json ev.kutle_g` |
-| Kafa grubu kütlesi, g | 1.531,3 | 1.570,8 | 1.570,8 | `kafa/kafa-analiz.json tork.tilt.kutle_g` |
-| Tilt payı, ±15 | 3,89 | 3,64 | 3,64 | `kafa/kafa-analiz.json tork.tilt.pay_tilt15` |
-| Tilt statik, ±15, kg·cm | 0,083 | 0,152 | 0,152 | `kafa/kafa-analiz.json tork.tilt.statik_tilt15_kgcm` |
-| Pan payı | 2,20 | 2,21 | 2,21 | `kafa/kafa-analiz.json tork.pan.pay_iki_hane` |
+| Parça sayısı (kablo gösterimi hariç) | 1.168 | - | 1.225 | `lale158/lale158-kontrol.json parca` |
+| Toplam kütle, g (400 g kablo payı dahil) | 25.836,9 | - | 26.120,6 | `kafa-yerlesim/uygulama-ivme.json ev.kutle_g` |
+| Kafa grubu kütlesi, g | 1.531,3 | 1.570,8 | 1.542,7 | `kafa/kafa-analiz.json tork.tilt.kutle_g` |
+| Tilt payı, ±15 | 3,89 | 3,64 | 3,78 | `kafa/kafa-analiz.json tork.tilt.pay_tilt15` |
+| Tilt statik, ±15, kg·cm | 0,083 | 0,152 | 0,093 | `kafa/kafa-analiz.json tork.tilt.statik_tilt15_kgcm` |
+| Pan payı | 2,20 | 2,21 | 2,26 | `kafa/kafa-analiz.json tork.pan.pay_iki_hane` |
 | Mikrofon-hoparlör, tüm pozlarda en az, mm | yok (dizi modelde değildi) | 574,3 | 574,3 | `kafa-yerlesim/uygulama-olcum.json mic_hoparlor.poz_min_mm` |
 | Dizi-hoparlör, ev pozu, mm | yok | 595,7 | 595,7 | `kafa-yerlesim/uygulama-olcum.json mic_hoparlor.ev_min_mm` |
 | Boyun yuva kanalı doluluğu | %44,8 | %44,8 | %44,8 | `kafa-yerlesim/uygulama-olcum.json boyun.gecis` |
@@ -33,8 +33,8 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | Kol, S2 5 en yakın, mm | 1,358 | - | 1,358 | `kafa-yerlesim/uygulama-ikinci.json kol` |
 | Çatal, S2 5 en yakın, mm | 12,306 | - | 12,306 | `kafa-yerlesim/uygulama-ikinci.json catal` |
 | Devrilme payı, ev pozu, rampa 5° | 1,62 | en az 1,5 | 1,61 | `taban/taban-analiz.json robot.pozlar[ev].rampa5.pay_geri` |
-| Devrilme payı, ızgara, yüksüz, rampa 5° | 1,523 | en az 1,5 | 1,517 | `kafa-yerlesim/uygulama-ivme.json izgara_yuk_0g.a_sinir_pay15` |
-| Tarama, eklem aralığında çakışma (omuz bölümü eski) | 0 | 0 | 0 | `carpisma-sonuc.json toplam.eklem_araliginda` |
+| Devrilme payı, ızgara, yüksüz, rampa 5° | 1,523 | en az 1,5 | 1,519 | `kafa-yerlesim/uygulama-ivme.json izgara_yuk_0g.a_sinir_pay15` |
+| Tarama, eklem aralığında çakışma (omuz dahil, tek koşu) | 0 | 0 | 0 | `carpisma-sonuc.json toplam.eklem_araliginda` |
 | Kafa iç çakışma (0,799 mm³ dahil, eşik 0,5 mm³) | 1 (0,799 mm³, düzeltme öncesi) | 0 | 0 | `kafa/kafa-analiz.json statik` |
 | Dizi × arka kabuk, eşiksiz kesişim, mm³ | 0,799 | 0 | 0,0042 | `kafa-yerlesim/uygulama-olcum.json dizi.kabuk_kesisim_mm3` |
 | Kabuk iç çakışma / kabuk × iskelet | 0 / 0 | 0 / 0 | 0 / 0 | `kabuk/kabuk-analiz.json cakisma, iskelet_cakisma` |
@@ -53,14 +53,14 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 ## Yeni parça ölçümleri
 
 - **Dizi:** PCB üstü y 92,62 (hedef 92,62), bas çerçevesi kutusu x 4,63...75,59, z -65,82...5,92; kabuk ve kendi vidaları dışında en yakın parça yüz kabuğu, 7,78 mm; arka kabuk tek katı, geçerli. Eşiksiz dizi × kabuk kesişimi 0,0042 mm³: 0,5 mm³ eşiğinin altında, temas büyüklüğünde; konumu ayrıca ölçülmedi.
-- **Ses kartı:** y 35,0...59,0, z -58,0...-10,0; kabuğa 1,00 mm, PAM'e 4,00 mm. **PAM8403:** y 63,0...81,0, z -31,5...-7,5; kabuğa 1,00 mm.
+- **Ses kartı:** modelde yok (P10.7b2j; yedek, takılmaz, KT2 geçmezse Pi USB 2'ye). **PAM8403:** y 63,0...81,0, z -31,5...-7,5; kabuğa 1,00 mm.
 - **MAX98357A:** modelde 0 parça, `kafa-bom.csv`'de yok.
 - **Hub:** x 35,0...60,0, y 1.085,0...1.157,0, z -78,48...-59,48 (global). Kapak dayamasına 0,25 mm, göğüs bandına 3,17 mm, kapak somununa 7,00 mm. 40 mm fiş payı: gövde braketine 4,48 mm, direğe 15,03 mm, çakışma 0. 2 port boş.
-- **Hoparlör:** duvar merkezi (45,0; 982,5; 100,77), eksen yatayın 35,0° altında, kama yok. Duvara 0,497 mm; ön halka duvara 0,196 mm, göğüs bandına 5,521 mm.
+- **Hoparlör:** duvar merkezi (45,0; 982,5; 100,77), eksen yatayın 35,0° altında, kama yok. Duvara 0,497 mm; ön halka duvara 0,196 mm, göğüs bandına > 4,243 (en yakın 5 parçada yok) mm.
 - **USB koridoru:** tablaya 2,50 mm, Pi'ye 11,73 mm. Hub kablosu boyundan iniyor, göğüs dokunmatiği ve ESP32 kablosu kafaya girmiyor.
 - **Dizi USB'sinin güç kablolarına uzaklığı:** SY8205 40,82, D24V50F5 120,78, TVS 55,36, PAM 5 V 129,79, hoparlör kablosu 89,54 mm.
-- **Kablo tüpü × parça (`lale158-kontrol.json`):** Hub uzatması Pi 2,9, mil 1,2; dizi USB Pi 11,8; ses kartı uzatması Pi 2,5; 3,5 mm PAM 2,8 mm³. Port ucu ve mil temasları şema kaynaklı, HDMI ve 12 V satırları önceki koşuyla aynı. SY8205 listede yok.
-- **Devrilme, ızgara, rampa 5° (a_sınır, pay 1,5):** yüksüz 1,517; elde 100 g 1,477 (önceki 1,482); elde 500 g 1,327 (önceki 1,331). Elde yük bu işin dışında, eşik altı değerler önceki modelde de vardı. Düz zeminde 1,8 m/s² fren payı yüksüz 1,746 (önceki 1,751). Ev pozu kütle 25.910,6 g, AM y 525,62 (önceki 25.836,9; 524,01).
+- **Kablo tüpü × parça (`lale158-kontrol.json`):** Hub uzatması Pi 2,9, mil 1,2; dizi USB Pi 11,8 mm³. Port ucu ve mil temasları şema kaynaklı, HDMI ve 12 V satırları önceki koşuyla aynı. SY8205 listede yok. Ses kartı uzatması ve 3,5 mm → PAM yolu P10.7b2k'da kalktı (kart yedek, takılmaz).
+- **Devrilme, ızgara, rampa 5° (a_sınır, pay 1,5):** yüksüz 1,519; elde 100 g 1,479 (önceki 1,482); elde 500 g 1,329 (önceki 1,331). Elde yük bu işin dışında, eşik altı değerler önceki modelde de vardı. Düz zeminde 1,8 m/s² fren payı yüksüz 1,747 (önceki 1,751). Ev pozu kütle 26.120,6 g, AM y 522,84 (önceki 25.836,9; 524,01). Kütle ve devrilme sayıları `uygulama-ivme.json`'dan (dosyanın son commit'i 09.11.2026, `uygulama_ivme.py`); o koşudan sonra montaj değişti: güncel `montaj-analiz.json` 25.835,1 g + 400 g kablo payı = 26.235,1 g (fark 114,5 g). Devrilme payları yeni montajla yeniden hesaplanmadı.
 - **AI HAT+ yeri:** CAD'de yok, eklenmedi. Dizi ile zarf arası 24,97 mm (seçimde 24,97). Zarf, yeni parçalardan hiçbirine girmiyor; yalnız mevcut arka üst cıvata boss'una giriyor (üstteki uyarı).
 
 ## Baskı
@@ -78,7 +78,7 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | `kafa-yerlesim/uygulama_olc.py` | `kafa-yerlesim/uygulama-olcum.json` |
 | `kafa-yerlesim/uygulama_baski.py` | `kafa-yerlesim/uygulama-baski.json` |
 | `kafa-yerlesim/uygulama_tani.py` (betiğin scratchpad kopyasıyla koştu) | `kafa-yerlesim/uygulama-tani.json` |
-| `carpisma_kos.py statik kol_sag kol_sol kolkol kafa_sabit kafa_sag kafa_sol taban` (koşu 20261105-185759) | `carpisma-bolum/*.json` (omuz hariç), `carpisma-sonuc.json` |
+| `carpisma_kos.py` statik omuz kol_sag kol_sol kolkol kafa_sabit kafa_sag kafa_sol taban (koşu 20261119-075818) | `carpisma-bolum/*.json`, `carpisma-sonuc.json` |
 | `taban/taban_montaj.py` | `taban/taban-analiz.json`, `taban-bom.csv`, `taban-montaj.FCStd`, `.step` |
 | `lale158/ikinci_kontrol.py`, `IK_CIKTI` ile: model, tilt, kafa, catal, kol | `kafa-yerlesim/uygulama-ikinci.json` (`ikinci-kontrol.json` önceki kayıt olarak duruyor) |
 | `kafa-yerlesim/uygulama_ivme.py` (`planlama/y2/Y2b-ivme.py` kopyası, yalnız yol farklı) | `kafa-yerlesim/uygulama-ivme.json` |
@@ -87,7 +87,7 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 
 ## Atlananlar
 
-- **`carpisma_kos` omuz bölümü ve omuz regresyonu koşmadı** (karar Ahmet Yorulmaz'da, ~4,8 saat). `carpisma-sonuc.json` omuz sonucu koşu 20261103-215611'ten, yeni kabuktan önce; dosyada `tek_kosu` false. Kol × kabuk ince ızgarası `uygulama-ikinci.json` içinde yeni modelle koştu.
+- Kütle ve devrilme sayıları `uygulama-ivme.json`'dan (dosyanın son commit'i 09.11.2026, `uygulama_ivme.py`); o koşudan sonra montaj değişti: güncel `montaj-analiz.json` 25.835,1 g + 400 g kablo payı = 26.235,1 g (fark 114,5 g). Devrilme payları yeni montajla yeniden hesaplanmadı.
 - `kafa_gorsel`, `kabuk_gorsel`, `montaj_gorsel`, modül `*_rapor.py` betikleri ve `yerlesim_kontrol.py` koşmadı: `kabuk/gorsel/*.png` ve `montaj/yerlesim-kontrol.json` değişmedi, modül `rapor.html` dosyaları eski. `montaj_gorsel` koşmadığı için `robot-montaj.FCStd` içinde eklem görünüm nesneleri yok.
 - `lale158-regresyon.json`, `2209b-cad-sonuclar.json`, `lale158/rapor.html`, `ikinci-kontrol.json`, `ikinci/ivme-qled.json` yeniden üretilmedi: önceki değerleri taşıyor. Y2b-baskı listesi ve `planlama/baski-listesi.md` güncellenmedi (yazma sınırı).
 - Hava akışı, ısı ve akustik yeniden hesaplanmadı; kablo bükümü modellenmedi.
@@ -104,15 +104,13 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | Kablo | Nereden, nereye | Yol mm | Sipariş mm | Kapak payı mm | Listede |
 |---|---|---|---|---|---|
 | Hub uzatması | Pi 3 → hub (boyundan, koridor z ≈ -14) | 617 | 920 | 150 | Hub 130 mm + ~1 m USB-A uzatma: listede yok |
-| Ses kartı uzatması | Pi 2 → L dirsek → ses kartı | 217 | 270 | - | ~30 cm USB-A uzatma + L dirsek: listede yok |
 | Dizi USB | Pi 1 → ReSpeaker micro B | 85 | 110 | - | Kısa micro USB: listede yok |
 | Göğüs dokunmatik USB | Hub → göğüs ekranı TOUCH | 395 | 640 | 150 | v4 satır 58, 2 m: yeter |
-| ESP32 USB | Hub → ESP32 (taban), VBUS'ta 1N5819 | 1.129 | 1.560 | 150 | v4, 2 m: yeter (19.11: `uygulama-olcum.json` yenilendi, değer kaynaktan; not elle güncellendi, `uygulama_rapor.py` yeniden koşulmadı: F10u § 11) |
-| Hoparlör | PAM8403 → hoparlör (boyundan) | 823 | 1.030 | - | ~1,1 m: robot için listede yok |
-| 3,5 mm → PAM | Ses kartı L 3,5 mm → PAM girişi | 36 | 40 | - | L 3,5 mm fişli kısa kablo: listede yok |
+| ESP32 USB | Hub → ESP32 (taban), VBUS'ta 1N5819 | 1.129 | 1.560 | 150 | v4, 2 m: yeter |
+| Hoparlör | PAM8403 → hoparlör (boyundan) | 824 | 1.030 | - | ~1,1 m: robot için listede yok |
 | PAM 5 V | D24V50F5 → PAM (VARSAYIM) | 64 | 80 | - | Sarf; besleme noktası doğrulanmadı |
 | HDMI | Pi HDMI 1 → göğüs ekranı (boyundan) | 757 | 950 | - | v4, 1,5 m: yeter |
-| 12 V | Taban → göğüs ekranı (tabandan, boyundan geçmez; kaynak: `kablo_yolu_ekran.py:116` yolu, en üst nokta y 1.205 = S3 − 65 < omuz 1.270; `lale158-kontrol.json` `kablo_ozet.kablo["12 V"]`: "taban guc panelinden") | 1.376 | 1.720 | - | Değişmedi |
+| 12 V | Taban → göğüs ekranı (tabandan, boyundan geçmez; `kablo_yolu_ekran.py` yolunun en üst noktası y 1.205 < omuz S3 1.270; `lale158-kontrol.json` `kablo_ozet.kablo["12 V"]`: "taban guc panelinden") | 1.376 | 1.720 | - | Değişmedi |
 
 | Kafa içi kablo | Nereden, nereye | Yol mm | Boy mm | Kalan mm |
 |---|---|---|---|---|
@@ -123,7 +121,7 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | Port | Bağlı |
 |---|---|
 | Pi 1 | ReSpeaker Mic Array v2.0 |
-| Pi 2 | USB ses kartı (uzatma + L dirsek) |
+| Pi 2 | Boş (USB ses kartı yedek, takılmaz) |
 | Pi 3 | Hub (hub 130 mm + uzatma) |
 | Pi 4 | Kafa ekranı dokunmatik |
 | Hub 1 | Göğüs ekranı dokunmatik |
@@ -131,12 +129,12 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | Hub 3 | Boş |
 | Hub 4 | Boş |
 
-**Listede olmayan 6 kalem (BOM v4 değişmedi, karar Ahmet Yorulmaz'da):** USB-A uzatma ~30 cm (Pi → ses kartı), USB-A uzatma ~1 m (Pi → hub), L USB-A dirsek, kısa micro USB (dizi), hoparlör kablosu ~1,1 m, L 3,5 mm fişli kısa kablo.
+**Listede olmayan 3 kalem (BOM v4 değişmedi, karar Ahmet Yorulmaz'da):** USB-A uzatma ~1 m (Pi → hub), kısa micro USB (dizi), hoparlör kablosu ~1,1 m.
 
 ## Kalan varsayımlar
 
 - ReSpeaker kütlesi 30 g, mikrofon deliği Ø3, M2 × 8 PT vida; LED dışarıdan görünmeyebilir, ışık borusu yok. Dizi geometrisi üretici STEP'i.
-- Ses kartı 48 × 24 × 11, USB-A fişi, L dirsek, uzatma dişi ucu, L 3,5 mm fiş zarfları ve kütleleri. Ürün seçilmedi.
+- Ses kartı zarfları (48 × 24 × 11, fişler, dirsek) P10.7b2j'de modelden çıktı: kart yedek, takılmaz.
 - PAM8403 modeli 24 × 18 × 5 (sayfa 21 × 18 × 3,4), 3 g; **5 V besleme noktası varsayım**.
 - Hoparlör kütlesi 27 g başka üründen. **Kap varsayım:** ürün elde görülmedi, arka tüp açık çizimde, hoparlörü arkadan tutan yüzey ve kelepçe modelde yok.
 - Hub 72 × 25 × 19, 25 g, port yönü varsayım. Bağlantı köpük bant + 2 yan dayama; ayrı tutucu yok. Kablolara kapak söküm payı 150 mm tahmin. Fiş payı 40 mm tahmin.
@@ -145,9 +143,9 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 
 ## Karar gereken noktalar
 
-- **Omuz bölümü ve omuz regresyonu** (~4,8 saat) koşulsun mu? Yeni parçalar omuza yakın değil, ama sonuç dosyası bu haliyle karışık.
+- **`uygulama_ivme.py` yeniden koşulsun mu?** Not kütle ve devrilme paylarını 09.11.2026 tarihli `uygulama-ivme.json`'dan okuyor; güncel montajla toplam 26.235,1 g.
 - **AI HAT+ zarfı × arka üst cıvata boss'u:** HAT gelince gerçekse boss mu taşınır, HAT yönü mü değişir? Zarf ölçüsü doğrulanmadı.
-- **Listede olmayan 6 kablo kalemi** v4'e eklensin mi? Liste bu işte değişmedi.
+- **Listede olmayan 3 kablo kalemi** v4'e eklensin mi? Liste bu işte değişmedi.
 - **Altıncı USB cihazı:** kafadaysa B zayıflar (`secenekler.md`).
 - **PAM 5 V:** D24V50F5 onaylanırsa `elektrik.md` güncellenmeli; akım ölçülmeli.
 - **`elektrik.md` boyun ve hub satırları** ile baskı listesi yeni düzene göre güncellensin mi? Kapak hub takozlu, 2 yeni kap parçası var.

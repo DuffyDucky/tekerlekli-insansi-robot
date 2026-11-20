@@ -1,0 +1,805 @@
+{
+ "betik": "tasarim/freecad/kabuk/etek_kuponu.py",
+ "paket": "P10.8c (kupon dosyasi; basilmadi)",
+ "tarih": "2026-11-19",
+ "karar": "karar-kuyrugu.md K55 secenek a; rehber F1 (adim 33) On sag bant iki parcali yolu",
+ "kaynak": {
+  "fcstd": "tasarim/freecad/kabuk/kabuk-montaj.FCStd",
+  "md5": "54273a1bd6f57811241edad59b489cff",
+  "parcalar": {
+   "ust": "Etek on sag",
+   "alt": "Etek orta sag",
+   "braket": "Etek braketi sag z+105",
+   "somun": "Percin somun M3 (Etek braketi sag z+105)",
+   "civata": "Civata M3x14 ISO 7380 (Etek braketi sag z+105)"
+  },
+  "hacim_mm3": {
+   "ust": 309862.52,
+   "alt": 180396.02,
+   "braket": 10390.72,
+   "somun": 113.1,
+   "civata": 137.35
+  },
+  "uretici": "kabuk_montaj.py (etek: kabuk_parcalar.py, braket K2)",
+  "dikis_z": 87.5,
+  "dil_mm": 12.0,
+  "braket_z": 105.0,
+  "braket_x_ic": 252.0,
+  "m3_y": 121.0,
+  "percin": {
+   "d": 3,
+   "delik": 5.1,
+   "flans_d": 7.0,
+   "flans_t": 0.8,
+   "govde_d": 5.0,
+   "govde_L": 7.0,
+   "kutle_g": 0.8
+  },
+  "cep_pay": [
+   0.6,
+   0.1
+  ]
+ },
+ "kutu_mm": {
+  "ust": {
+   "x": [
+    240.0,
+    270.0
+   ],
+   "y": [
+    106.5,
+    136.0
+   ],
+   "z": [
+    77.5,
+    130.0
+   ]
+  },
+  "alt": {
+   "x": [
+    240.0,
+    270.0
+   ],
+   "y": [
+    106.5,
+    136.5
+   ],
+   "z": [
+    77.5,
+    130.0
+   ]
+  }
+ },
+ "tasiyici": {
+  "blok_x": [
+   244.0,
+   250.0
+  ],
+  "percin_bosluk_d": 10.0,
+  "plaka_y": [
+   136.5,
+   139.5
+  ],
+  "plaka_x": [
+   240.0,
+   260.0
+  ]
+ },
+ "kesilen_kutu_ici_mm3": 0.0,
+ "kaynak_olcu": {
+  "y110.5_dikis_alti": {
+   "ust": [],
+   "alt": [
+    [
+     257.0,
+     260.0
+    ]
+   ]
+  },
+  "y110.5_dil_orta": {
+   "ust": [
+    [
+     258.5,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ],
+    [
+     257.0,
+     258.25
+    ]
+   ]
+  },
+  "y110.5_boss_alt": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y110.5_cep": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y110.5_boss_ust": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y110.5_boss_ustu": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y121.0_dikis_alti": {
+   "ust": [],
+   "alt": [
+    [
+     257.0,
+     260.0
+    ]
+   ]
+  },
+  "y121.0_dil_orta": {
+   "ust": [
+    [
+     258.5,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ],
+    [
+     257.0,
+     258.25
+    ]
+   ]
+  },
+  "y121.0_boss_alt": {
+   "ust": [
+    [
+     252.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y121.0_cep": {
+   "ust": [
+    [
+     252.89,
+     259.7
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y121.0_boss_ust": {
+   "ust": [
+    [
+     252.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y121.0_boss_ustu": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y132.5_dikis_alti": {
+   "ust": [],
+   "alt": [
+    [
+     257.0,
+     260.0
+    ]
+   ]
+  },
+  "y132.5_dil_orta": {
+   "ust": [
+    [
+     258.5,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ],
+    [
+     257.0,
+     258.25
+    ]
+   ]
+  },
+  "y132.5_boss_alt": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y132.5_cep": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y132.5_boss_ust": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  },
+  "y132.5_boss_ustu": {
+   "ust": [
+    [
+     257.0,
+     260.0
+    ]
+   ],
+   "alt": [
+    [
+     250.0,
+     252.0
+    ]
+   ]
+  }
+ },
+ "karsilastirma": {
+  "tolerans_mm": 0.01,
+  "olcumler": {
+   "y110.5_dikis_alti": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y110.5_dil_orta": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y110.5_boss_alt": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y110.5_cep": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y110.5_boss_ust": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y110.5_boss_ustu": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y121.0_dikis_alti": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y121.0_dil_orta": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y121.0_boss_alt": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y121.0_cep": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y121.0_boss_ust": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y121.0_boss_ustu": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y132.5_dikis_alti": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y132.5_dil_orta": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y132.5_boss_alt": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y132.5_cep": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y132.5_boss_ust": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   },
+   "y132.5_boss_ustu": {
+    "ust_fark": 0.0,
+    "alt_fark": 0.0
+   }
+  },
+  "sonuc": true,
+  "dikis": {
+   "dudak_mm": 1.5,
+   "dil_mm": 1.25,
+   "bosluk_mm": 0.25,
+   "arayuz_bosluk_mm": 0.25
+  }
+ },
+ "yol": {
+  "tanim": "rehber F1 'On sag bant': yerinin 10 mm onunde yandan (+x) getir, sonra onden iceri (-z) it. Ust parca dinlenmeden (dx, 0, +10) -> (0, 0, +10) -> (0, 0, 0); ortak hacim > 0,001 mm3 sayilir (B-rep)",
+  "kupon": {
+   "yan_bacak_z10": {
+    "240": {},
+    "160": {},
+    "80": {},
+    "40": {},
+    "20": {},
+    "10": {},
+    "6": {},
+    "4": {},
+    "2": {},
+    "1": {},
+    "0": {}
+   },
+   "z_bacagi": {
+    "10.0": {},
+    "9.5": {},
+    "9.0": {},
+    "8.5": {
+     "percin somunu (CAD)": 0.772
+    },
+    "8.0": {
+     "percin somunu (CAD)": 2.161
+    },
+    "7.5": {
+     "percin somunu (CAD)": 3.925
+    },
+    "7.0": {
+     "percin somunu (CAD)": 5.641
+    },
+    "6.5": {
+     "percin somunu (CAD)": 6.253
+    },
+    "6.0": {
+     "percin somunu (CAD)": 6.241
+    },
+    "5.5": {
+     "percin somunu (CAD)": 5.9
+    },
+    "5.0": {
+     "percin somunu (CAD)": 5.637
+    },
+    "4.5": {
+     "percin somunu (CAD)": 5.911
+    },
+    "4.0": {
+     "percin somunu (CAD)": 6.704
+    },
+    "3.5": {
+     "percin somunu (CAD)": 8.151
+    },
+    "3.0": {
+     "percin somunu (CAD)": 9.363
+    },
+    "2.5": {
+     "percin somunu (CAD)": 9.984
+    },
+    "2.0": {
+     "percin somunu (CAD)": 8.917
+    },
+    "1.5": {
+     "percin somunu (CAD)": 6.125
+    },
+    "1.0": {
+     "percin somunu (CAD)": 3.337
+    },
+    "0.5": {
+     "percin somunu (CAD)": 0.71
+    },
+    "0.0": {}
+   }
+  },
+  "tam_model": {
+   "yan_bacak_z10": {
+    "240": {},
+    "160": {},
+    "80": {},
+    "40": {},
+    "20": {},
+    "10": {},
+    "6": {},
+    "4": {},
+    "2": {},
+    "1": {},
+    "0": {}
+   },
+   "z_bacagi": {
+    "10.0": {},
+    "9.5": {},
+    "9.0": {},
+    "8.5": {
+     "percin somunu (CAD)": 0.772
+    },
+    "8.0": {
+     "percin somunu (CAD)": 2.161
+    },
+    "7.5": {
+     "percin somunu (CAD)": 3.925
+    },
+    "7.0": {
+     "percin somunu (CAD)": 5.641
+    },
+    "6.5": {
+     "percin somunu (CAD)": 6.253
+    },
+    "6.0": {
+     "percin somunu (CAD)": 6.241
+    },
+    "5.5": {
+     "percin somunu (CAD)": 5.9
+    },
+    "5.0": {
+     "percin somunu (CAD)": 5.637
+    },
+    "4.5": {
+     "percin somunu (CAD)": 5.911
+    },
+    "4.0": {
+     "percin somunu (CAD)": 6.704
+    },
+    "3.5": {
+     "percin somunu (CAD)": 8.151
+    },
+    "3.0": {
+     "percin somunu (CAD)": 9.363
+    },
+    "2.5": {
+     "percin somunu (CAD)": 9.984
+    },
+    "2.0": {
+     "percin somunu (CAD)": 8.917
+    },
+    "1.5": {
+     "percin somunu (CAD)": 6.125
+    },
+    "1.0": {
+     "percin somunu (CAD)": 3.337
+    },
+    "0.5": {
+     "percin somunu (CAD)": 0.71
+    },
+    "0.0": {}
+   }
+  },
+  "somun_kupon": {
+   "dz_ilk": 0.5,
+   "dz_son": 8.5,
+   "en_cok_mm3": 9.984
+  },
+  "somun_tam": {
+   "dz_ilk": 0.5,
+   "dz_son": 8.5,
+   "en_cok_mm3": 9.984
+  },
+  "egri_ayni": true,
+  "kupon_baska_engel": [],
+  "tam_baska_engel": [],
+  "yan_bacak_serbest": true,
+  "dinlenme": {
+   "kupon": {},
+   "tam": {}
+  },
+  "alt_delikli_somunsuz_serbest": true,
+  "alt_flansli_ayni_egri": true,
+  "p108b_brep": "planlama/d158/P108b-olcum/brep-yol.json etek_on_sag: kalk (+z) somun 1-8 mm, 9,4 mm3; yan bacak serbest",
+  "not_": "kupon ve tam model ayni egri: kupon rehberin yolunu dener (P10.8a bant kuponunun yaptigi hata burada yok)"
+ },
+ "parcalar": [
+  {
+   "stl": "tasarim/freecad/kabuk/stl/etek-kuponu-ust.stl",
+   "stl_md5": "aa4dd69983a91ab1d5633f006dea3f8e",
+   "malzeme": "PETG (beyaz; bantlarin malzemesi)",
+   "yon": "ters: dilimin ust kesiti tablada (etek bantlari gibi ust plaka tarafi asagi)",
+   "olcu_mm": [
+    8.0,
+    42.5,
+    29.5
+   ],
+   "kati": 1,
+   "gecerli": true,
+   "hacim_cm3": 3.63,
+   "kutle_100_g": 4.6,
+   "kutle_tahmini_g": 3.6,
+   "sure_tahmini_dk": 6.0,
+   "tabla_temas_mm2": 110.0,
+   "baski": {
+    "cikinti_46ustu_mm2": 23.9,
+    "en_buyuk_z_mm2": [
+     [
+      16.7,
+      5.2
+     ],
+     [
+      16.6,
+      4.6
+     ],
+     [
+      16.5,
+      2.9
+     ],
+     [
+      16.3,
+      2.3
+     ],
+     [
+      16.4,
+      2.3
+     ],
+     [
+      18.8,
+      1.0
+     ]
+    ],
+    "not_": "46 derece ustu asagi bakan yuzler (tablanin ustunde)"
+   },
+   "stl_karsilastirma": {
+    "olcumler": {
+     "hacim_brep_mm3": 3625.09,
+     "hacim_stl_mm3": 3624.99,
+     "hacim_fark_yuzde": 0.003,
+     "bb_fark_mm": 0.0,
+     "kapali": true,
+     "manifold_disi": false,
+     "ucgen": 1924
+    },
+    "sonuc": true
+   },
+   "tahmin_not": "tahmini: 4 cevre + %25 dolgu, arayuz.PETG_HACIM_HIZI x 1,3 (test/m7_kuponlari.py ile ayni yontem)",
+   "ad": "ust parca (Etek on sag dilimi: dudak, z +105 boss'u, flans cebi)"
+  },
+  {
+   "stl": "tasarim/freecad/kabuk/stl/etek-kuponu-alt.stl",
+   "stl_md5": "45c61ce35e90409bae08e9d738f02f6e",
+   "malzeme": "PETG (beyaz; bantlarin malzemesi)",
+   "yon": "ters: ust plaka tablada",
+   "olcu_mm": [
+    20.0,
+    52.5,
+    33.0
+   ],
+   "kati": 1,
+   "gecerli": true,
+   "hacim_cm3": 11.43,
+   "kutle_100_g": 14.5,
+   "kutle_tahmini_g": 8.6,
+   "sure_tahmini_dk": 15.0,
+   "tabla_temas_mm2": 1050.0,
+   "baski": {
+    "cikinti_46ustu_mm2": 52.5,
+    "en_buyuk_z_mm2": [
+     [
+      23.5,
+      7.5
+     ],
+     [
+      23.4,
+      7.5
+     ],
+     [
+      23.3,
+      4.5
+     ],
+     [
+      22.5,
+      3.0
+     ],
+     [
+      22.6,
+      3.0
+     ],
+     [
+      23.2,
+      3.0
+     ]
+    ],
+    "not_": "46 derece ustu asagi bakan yuzler (tablanin ustunde)"
+   },
+   "stl_karsilastirma": {
+    "olcumler": {
+     "hacim_brep_mm3": 11427.9,
+     "hacim_stl_mm3": 11428.11,
+     "hacim_fark_yuzde": 0.002,
+     "bb_fark_mm": 0.0,
+     "kapali": true,
+     "manifold_disi": false,
+     "ucgen": 1068
+    },
+    "sonuc": true
+   },
+   "tahmin_not": "tahmini: 4 cevre + %25 dolgu, arayuz.PETG_HACIM_HIZI x 1,3 (test/m7_kuponlari.py ile ayni yontem)",
+   "ad": "alt parca delikli (Etek orta sag dilimi: dil; braket dik ayagi Ø5.1; tasiyici)"
+  },
+  {
+   "stl": "tasarim/freecad/kabuk/stl/etek-kuponu-alt-flansli.stl",
+   "stl_md5": "6cf9d06a0f27dea7359eb7b027d3d605",
+   "malzeme": "PETG (beyaz; bantlarin malzemesi)",
+   "yon": "ters: ust plaka tablada; percin somunu esi tek parca",
+   "olcu_mm": [
+    20.0,
+    52.5,
+    33.0
+   ],
+   "kati": 1,
+   "gecerli": true,
+   "hacim_cm3": 11.54,
+   "kutle_100_g": 14.7,
+   "kutle_tahmini_g": 8.8,
+   "sure_tahmini_dk": 15.0,
+   "tabla_temas_mm2": 1050.0,
+   "baski": {
+    "cikinti_46ustu_mm2": 100.3,
+    "en_buyuk_z_mm2": [
+     [
+      23.5,
+      7.5
+     ],
+     [
+      23.4,
+      7.5
+     ],
+     [
+      16.0,
+      7.0
+     ],
+     [
+      20.0,
+      5.8
+     ],
+     [
+      16.1,
+      5.2
+     ],
+     [
+      19.9,
+      4.7
+     ]
+    ],
+    "not_": "46 derece ustu asagi bakan yuzler (tablanin ustunde)"
+   },
+   "stl_karsilastirma": {
+    "olcumler": {
+     "hacim_brep_mm3": 11541.0,
+     "hacim_stl_mm3": 11541.17,
+     "hacim_fark_yuzde": 0.001,
+     "bb_fark_mm": 0.0,
+     "kapali": true,
+     "manifold_disi": false,
+     "ucgen": 2580
+    },
+    "sonuc": true
+   },
+   "tahmin_not": "tahmini: 4 cevre + %25 dolgu, arayuz.PETG_HACIM_HIZI x 1,3 (test/m7_kuponlari.py ile ayni yontem)",
+   "ad": "alt parca flansli (delikli + percin somunu CAD sekli tek parca)"
+  }
+ ],
+ "sinir": "Dilim kısa (y 106,5–136) ve gerçek banttan serttir; taşıyıcı gerçek braketten serttir. Elde serbest tutulan dilim flanşın üstünden döndürülerek geçirilebilir, gerçek bant (234 × 175 mm, z +88 dikişine bağlı) geçirilemez. Bu yüzden 'geçti' yalnız aşağıdaki kısıtlı hareketle gerçek bant için kanıt sayılır. 'Geçmedi' gerçek bant için kesin değildir (gerçek bant esneyebilir): belirsiz, K55 b. Kupon sağ banttan kesildi; sol bant için sonuç ayna çıkarımıdır.",
+ "deneme": {
+  "hazirlik": [
+   "Alt parça (ilk deneme flanşlı biçim) üst plakası alta gelecek şekilde mengeneye ya da masaya kıskaçla sabitlenir; dil ve braket ayağı serbest kalır.",
+   "Üst parçanın dış yüzü (dudak yüzü) düz bir takoza (cetvel ya da tahta blok) bant / yapıştırıcıyla tutturulur; üst parça yalnız takozdan itilir, elle eğilmez, döndürülmez. Takoz yüzü alt parçanın dış duvarına paralel tutulur."
+  ],
+  "hareket": [
+   "1. Üst parçayı yerinin 10 mm önünde (dikişten 10 mm uzakta) alt parçanın +x yanına koy; yalnız x ekseninde (−x yönünde) kaydırarak duvar hizasına getir. Model: bu bacak serbest.",
+   "2. Yalnız −z yönünde (dikişe doğru) 10 mm it; takoz duvara paralel kalır, üst parça dönmez. Model: dz 0,5–8,5 mm arasında perçin somunu flanşı ile en çok 10,0 mm³ ortak hacim."
+  ],
+  "gecti": "Elle itişle (alet ve çekiç yok) dudak dikişe oturur: dikiş aralığı ≤ 0,5 mm (sentil), boss deliği somunla eksenli (M3×14 elle girer); flanşta, boss'ta ve dudakta beyaz iz, çatlak ya da kalıcı eğilme yok. Üç kez sök-tak, aynı sonuç.",
+  "gecmedi": "Elle itişle oturmaz, ancak üst parça döndürülerek / eğilerek geçer, ya da beyazlama / çatlak çıkar. Sonuç belirsiz sayılır (gerçek bant esneyebilir): K55 b ya da tam bantla deneme.",
+  "kayit": "tasarim/freecad/test/README.md 'K55 etek ön bandı kuponu' bölümündeki tabloya: tarih, malzeme, biçim (flanşlı / delikli), hareket 1 ve 2 sonucu, takıldığı dz (mm), dikiş aralığı, iz / çatlak, not.",
+  "karar": "Geçti: K55 a etek ön için kalır; rehber F1 'kuponla denenmedi' notu 'kuponla denendi (tarih)' olarak yeniden yazılır. Geçmedi: belirsiz; K55 b (tasarım değişikliği) ya da gerçek bantla deneme, karar Ahmet'te.",
+  "baski": "PETG, bant yönünde (ters). Üst parçanın tablaya teması dar (3 × ≈ 36 mm, boy 29,5 mm): brim (≥ 5 mm) önerilir."
+ },
+ "malzeme_notu": "Kuponda perçin somunu PETG ayağa takılır, gerçek parçada ayak 2 mm alüminyumdur: sıkınca ayak ezilebilir ya da çatlayabilir, flanş yüksekliği gerçektekinden farklı olabilir. İlk deneme flanşlı biçimle (alet istemez); delikli biçim perçin somunu ve aleti gelince, flanşın ayak üstündeki yüksekliği kumpasla ölçülerek (tasarım 0.8 mm).",
+ "gerekenler": [
+  "M3 percin somunu, duz flansli (2 mm Al icin; flans Ø7.0 x 0.8) + percin aleti: alt parca delikli icin",
+  "M3x14 ISO 7380 (oturdu mu: boss -> somun)",
+  "kumpas (flansin ayak ustundeki yuksekligi; tasarim 0.8 mm)"
+ ],
+ "stl_sonuc": true,
+ "sure_s": 9.3
+}

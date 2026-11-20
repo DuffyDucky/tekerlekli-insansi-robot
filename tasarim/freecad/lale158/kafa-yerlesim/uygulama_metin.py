@@ -19,10 +19,35 @@ def _yak_tr(ls, ad, n):
 
 _ev_tamam = "Yeni çakışma yok" if (len(KAFA["statik"]) == 0 and not KABUK["cakisma"] and not KABUK["iskelet_cakisma"] and CRP["toplam"]["eklem_araliginda"] == 0 and KK[0] == 0 and not CRP["ev_pozu_cakisma"] and not KON["ekran_cakisma"]) else "Çakışma var, tabloya bakın"
 
-OZET_MD = ("B + R1 modele işlendi, zincir omuz bölümü hariç koştu. %s: kafa içi 0, kabuk içi 0, kabuk × iskelet 0, ev pozu %d, eklem aralığındaki tarama %d (omuz bölümü eski kayıttan). "
-           "Boy %s mm, %s parça, %s g (400 g kablo payı dahil). Kafa grubu %s g, tilt payı ±15 %s, pan payı %s, mikrofon-hoparlör en az %s mm, boyun yuva kanalı %%%s, SY8205 × USB %s mm³ ve açıklık %s mm. "
+# P10.8c düzeltme turu 1 (O1): omuz anlatısı sabit metin değil, carpisma-sonuc.json'dan (tek_kosu ve bölüm durumları).
+_om = CRP["bolumler"]["omuz"]
+_BOL = CRP["bolumler"]
+_tam = sorted(k for k, v in _BOL.items() if v.get("durum") == "tamam")
+OMUZ_TAMAM = _om.get("durum") == "tamam" and bool(CRP.get("tek_kosu")) and _om.get("kosu") == _BOL["taban"].get("kosu")
+_om_tarih = "%s.%s.%s" % (_om["kosu"][6:8], _om["kosu"][4:6], _om["kosu"][:4])
+if OMUZ_TAMAM:
+    OMUZ_OZET = "çarpışma taraması bütün bölümlerle (omuz dahil) tek koşuda yenilendi (koşu %s)" % _om["kosu"]
+    OMUZ_TARAMA = "omuz bölümü dahil, koşu %s" % _om["kosu"]
+else:
+    OMUZ_OZET = "çarpışma taraması omuz bölümü hariç koştu (omuz sonucu koşu %s, `tek_kosu` %s)" % (_om["kosu"], "true" if CRP.get("tek_kosu") else "false")
+    OMUZ_TARAMA = "omuz bölümü eski kayıttan"
+# P10.8c düzeltme turu 1 (D6): kütle / devrilme uygulama-ivme.json'dan; o dosyanın son commit tarihi ve güncel montaj kütlesi yazılır.
+import subprocess as _sp
+try:
+    _iv_tarih = _sp.run(["git", "log", "-1", "--format=%cs", "--", os.path.join(HERE, "uygulama-ivme.json")], cwd=HERE, capture_output=True,
+                        text=True, timeout=30).stdout.strip() or "tarih bilinmiyor"
+except Exception:
+    _iv_tarih = "tarih bilinmiyor"
+if _iv_tarih[:4].isdigit():
+    _iv_tarih = "%s.%s.%s" % (_iv_tarih[8:10], _iv_tarih[5:7], _iv_tarih[:4])
+_mon_toplam = MON["kutle_g"] + IV["kablo_payi"]["kutle_g"]
+IVME_KAYNAK = ("Kütle ve devrilme sayıları `uygulama-ivme.json`'dan (dosyanın son commit'i %s, `uygulama_ivme.py`); o koşudan sonra montaj değişti: güncel "
+               "`montaj-analiz.json` %s g + %s g kablo payı = %s g (fark %s g). Devrilme payları yeni montajla yeniden hesaplanmadı." % (
+                   _iv_tarih, tr(MON["kutle_g"], 1), tr(IV["kablo_payi"]["kutle_g"], 0), tr(_mon_toplam, 1), tr(_mon_toplam - IV["ev"]["kutle_g"], 1)))
+OZET_MD = ("B + R1 modele işlendi; %s. %s: kafa içi 0, kabuk içi 0, kabuk × iskelet 0, ev pozu %d, eklem aralığındaki tarama %d (%s). "
+           "Boy %s mm, %s parça, %s g (400 g kablo payı dahil; `uygulama-ivme.json`, %s). Kafa grubu %s g, tilt payı ±15 %s, pan payı %s, mikrofon-hoparlör en az %s mm, boyun yuva kanalı %%%s, SY8205 × USB %s mm³ ve açıklık %s mm. "
            "Yüksüz ızgara devrilme payı %s, ev pozu %s; eşik 1,5." % (
-               _ev_tamam, len(CRP["ev_pozu_cakisma"]), CRP["toplam"]["eklem_araliginda"], tr(BOY, 1), tr(KON["parca"], 0), tr(IV["ev"]["kutle_g"], 1), tr(TT["kutle_g"], 1), tr(TT["pay_tilt15"], 2), tr(TP["pay_iki_hane"], 2),
+               OMUZ_OZET, _ev_tamam, len(CRP["ev_pozu_cakisma"]), CRP["toplam"]["eklem_araliginda"], OMUZ_TARAMA, tr(BOY, 1), tr(KON["parca"], 0), tr(IV["ev"]["kutle_g"], 1), _iv_tarih, tr(TT["kutle_g"], 1), tr(TT["pay_tilt15"], 2), tr(TP["pay_iki_hane"], 2),
                tr(MH["poz_min_mm"], 1), tr(GEC_K["doluluk"] * 100, 1), tr(SY_V, 2), tr(HUB_SY, 2), tr(IZG, 3), tr(EV_R, 2)))
 
 KAYNAK_NOT = ("**Önceki** sütunu: `secenekler.md` (Bugün sütunu), `lale158/ikinci-kontrol.json`, `lale158/ikinci/ivme-qled.json`, 04.11 tarihli `lale158-kontrol.json` değerleri. 0,799 mm³ önceki ajanın 16:20 bildirimi; dosyası yok, düzeltme öncesi `kafa-analiz.json` üzerine yazıldı. "
@@ -67,7 +92,7 @@ OLCUM = [
     # P10.7b2k: ses kartı uzatması ve 3,5 mm → PAM yolları kablo_yolu_ekran.py'den kalktı (kart yedek, takılmaz)
     "**Kablo tüpü × parça (`lale158-kontrol.json`):** Hub uzatması Pi %s, mil %s; dizi USB Pi %s mm³. Port ucu ve mil temasları şema kaynaklı, HDMI ve 12 V satırları önceki koşuyla aynı. SY8205 listede yok. Ses kartı uzatması ve 3,5 mm → PAM yolu P10.7b2k'da kalktı (kart yedek, takılmaz)." % (
         tr(dict(K_YENI["Hub uzatmasi"])["Raspberry Pi 5 4GB + Active Cooler"], 1), tr(dict(K_YENI["Hub uzatmasi"])["Boyun mili"], 1), tr(dict(K_YENI["Dizi USB"])["Raspberry Pi 5 4GB + Active Cooler"], 1)),
-    "**Devrilme, ızgara, rampa 5° (a_sınır, pay 1,5):** yüksüz %s; elde 100 g %s (önceki 1,482); elde 500 g %s (önceki 1,331). Elde yük bu işin dışında, eşik altı değerler önceki modelde de vardı. Düz zeminde 1,8 m/s² fren payı yüksüz %s (önceki 1,751). Ev pozu kütle %s g, AM y %s (önceki 25.836,9; 524,01)." % (tr(IZG, 3), tr(rampa_en(Y100), 3), tr(rampa_en(Y500), 3), tr(Y0["fren_pay"]["duz_min"], 3), tr(IV["ev"]["kutle_g"], 1), tr(IV["ev"]["am"][1], 2)),
+    "**Devrilme, ızgara, rampa 5° (a_sınır, pay 1,5):** yüksüz %s; elde 100 g %s (önceki 1,482); elde 500 g %s (önceki 1,331). Elde yük bu işin dışında, eşik altı değerler önceki modelde de vardı. Düz zeminde 1,8 m/s² fren payı yüksüz %s (önceki 1,751). Ev pozu kütle %s g, AM y %s (önceki 25.836,9; 524,01)." % (tr(IZG, 3), tr(rampa_en(Y100), 3), tr(rampa_en(Y500), 3), tr(Y0["fren_pay"]["duz_min"], 3), tr(IV["ev"]["kutle_g"], 1), tr(IV["ev"]["am"][1], 2)) + " " + IVME_KAYNAK,
     "**AI HAT+ yeri:** CAD'de yok, eklenmedi. Dizi ile zarf arası %s mm (seçimde 24,97). Zarf, yeni parçalardan hiçbirine girmiyor; yalnız mevcut arka üst cıvata boss'una giriyor (üstteki uyarı)." % tr(AH["dizi_mm"], 2),
 ]
 
@@ -86,7 +111,8 @@ KOSU = [
     ("`kafa-yerlesim/uygulama_olc.py`", "`kafa-yerlesim/uygulama-olcum.json`"),
     ("`kafa-yerlesim/uygulama_baski.py`", "`kafa-yerlesim/uygulama-baski.json`"),
     ("`kafa-yerlesim/uygulama_tani.py` (betiğin scratchpad kopyasıyla koştu)", "`kafa-yerlesim/uygulama-tani.json`"),
-    ("`carpisma_kos.py statik kol_sag kol_sol kolkol kafa_sabit kafa_sag kafa_sol taban` (koşu %s)" % CRP["bolumler"]["taban"]["kosu"], "`carpisma-bolum/*.json` (omuz hariç), `carpisma-sonuc.json`"),
+    ("`carpisma_kos.py` %s (koşu %s)" % (" ".join(k for k in _BOL if _BOL[k].get("kosu") == _BOL["taban"]["kosu"] and _BOL[k].get("durum") == "tamam"), _BOL["taban"]["kosu"]),
+     "`carpisma-bolum/*.json`%s, `carpisma-sonuc.json`" % ("" if OMUZ_TAMAM else " (omuz hariç)")),
     ("`taban/taban_montaj.py`", "`taban/taban-analiz.json`, `taban-bom.csv`, `taban-montaj.FCStd`, `.step`"),
     ("`lale158/ikinci_kontrol.py`, `IK_CIKTI` ile: model, tilt, kafa, catal, kol", "`kafa-yerlesim/uygulama-ikinci.json` (`ikinci-kontrol.json` önceki kayıt olarak duruyor)"),
     ("`kafa-yerlesim/uygulama_ivme.py` (`planlama/y2/Y2b-ivme.py` kopyası, yalnız yol farklı)", "`kafa-yerlesim/uygulama-ivme.json`"),
@@ -94,9 +120,9 @@ KOSU = [
     ("`kafa-yerlesim/uygulama_rapor.py`", "`uygulama-notu.md`, `rapor.html`"),
 ]
 
-_om = CRP["bolumler"]["omuz"]
-ATLANAN = [
-    "**`carpisma_kos` omuz bölümü ve omuz regresyonu koşmadı** (karar Ahmet Yorulmaz'da, ~4,8 saat). `carpisma-sonuc.json` omuz sonucu koşu %s'ten, yeni kabuktan önce; dosyada `tek_kosu` %s. Kol × kabuk ince ızgarası `uygulama-ikinci.json` içinde yeni modelle koştu." % (_om["kosu"], "false" if not CRP["tek_kosu"] else "true"),
+ATLANAN = ([] if OMUZ_TAMAM else [
+    "**`carpisma_kos` omuz bölümü ve omuz regresyonu koşmadı** (karar Ahmet Yorulmaz'da, ~4,8 saat). `carpisma-sonuc.json` omuz sonucu koşu %s'ten, yeni kabuktan önce; dosyada `tek_kosu` %s. Kol × kabuk ince ızgarası `uygulama-ikinci.json` içinde yeni modelle koştu." % (_om["kosu"], "false" if not CRP["tek_kosu"] else "true")]) + [
+    IVME_KAYNAK,
     "`kafa_gorsel`, `kabuk_gorsel`, `montaj_gorsel`, modül `*_rapor.py` betikleri ve `yerlesim_kontrol.py` koşmadı: `kabuk/gorsel/*.png` ve `montaj/yerlesim-kontrol.json` değişmedi, modül `rapor.html` dosyaları eski. `montaj_gorsel` koşmadığı için `robot-montaj.FCStd` içinde eklem görünüm nesneleri yok.",
     "`lale158-regresyon.json`, `2209b-cad-sonuclar.json`, `lale158/rapor.html`, `ikinci-kontrol.json`, `ikinci/ivme-qled.json` yeniden üretilmedi: önceki değerleri taşıyor. Y2b-baskı listesi ve `planlama/baski-listesi.md` güncellenmedi (yazma sınırı).",
     "Hava akışı, ısı ve akustik yeniden hesaplanmadı; kablo bükümü modellenmedi.",
@@ -111,7 +137,10 @@ ELEKTRIK = [
 ]
 
 # P10.7b2k: ses kartı uzatması (~30 cm USB-A) ve L 3,5 mm kablo çıktı (kart yedek, takılmaz)
-LISTE_DISI = "USB-A uzatma ~1 m (Pi → hub), L USB-A dirsek, kısa micro USB (dizi), hoparlör kablosu ~1,1 m."
+# P10.8c: L USB-A dirsek de çıktı (yalnız Pi 2 → ses kartı yolundaydı); kalem sayısı listeden sayılır (başlık "6 kalem" sabitti)
+_LISTE_DISI = ["USB-A uzatma ~1 m (Pi → hub)", "kısa micro USB (dizi)", "hoparlör kablosu ~1,1 m"]
+LISTE_DISI = ", ".join(_LISTE_DISI) + "."
+LISTE_DISI_N = len(_LISTE_DISI)
 
 VARSAYIM = [
     "ReSpeaker kütlesi 30 g, mikrofon deliği Ø3, M2 × 8 PT vida; LED dışarıdan görünmeyebilir, ışık borusu yok. Dizi geometrisi üretici STEP'i.",
@@ -123,10 +152,11 @@ VARSAYIM = [
     "AI HAT+ 65 × 56,5, yığın 16 mm, 30 g: CAD'de yok. Altıncı USB cihazı bilinmiyor; hub'daki 2 port boş.",
 ]
 
-KARAR = [
-    "**Omuz bölümü ve omuz regresyonu** (~4,8 saat) koşulsun mu? Yeni parçalar omuza yakın değil, ama sonuç dosyası bu haliyle karışık.",
+KARAR = ([] if OMUZ_TAMAM else [
+    "**Omuz bölümü ve omuz regresyonu** (~4,8 saat) koşulsun mu? Yeni parçalar omuza yakın değil, ama sonuç dosyası bu haliyle karışık."]) + [
+    "**`uygulama_ivme.py` yeniden koşulsun mu?** Not kütle ve devrilme paylarını %s tarihli `uygulama-ivme.json`'dan okuyor; güncel montajla toplam %s g." % (_iv_tarih, tr(_mon_toplam, 1)),
     "**AI HAT+ zarfı × arka üst cıvata boss'u:** HAT gelince gerçekse boss mu taşınır, HAT yönü mü değişir? Zarf ölçüsü doğrulanmadı.",
-    "**Listede olmayan 6 kablo kalemi** v4'e eklensin mi? Liste bu işte değişmedi.",
+    "**Listede olmayan %d kablo kalemi** v4'e eklensin mi? Liste bu işte değişmedi." % LISTE_DISI_N,
     "**Altıncı USB cihazı:** kafadaysa B zayıflar (`secenekler.md`).",
     "**PAM 5 V:** D24V50F5 onaylanırsa `elektrik.md` güncellenmeli; akım ölçülmeli.",
     "**`elektrik.md` boyun ve hub satırları** ile baskı listesi yeni düzene göre güncellensin mi? Kapak hub takozlu, 2 yeni kap parçası var.",

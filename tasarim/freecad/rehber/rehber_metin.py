@@ -1233,7 +1233,8 @@ ADIM = {
                        "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer "
                        "(ölçüm). Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son "
                        "10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden "
-                       "geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
+                       "geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme kuponla denenmedi; "
+                       "kupon sonucu gelince bu adım yeniden yazılabilir.",
                    ucus_ok={"Etek ön sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (1, 0, 1) yönünde sonar 1–12 mm; "
                                            "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; +x'te sonar 1–73 mm; +y'de sonar 1–81 mm. "
                                            "Karar önerisi F10d-K1"}),
@@ -1250,7 +1251,8 @@ ADIM = {
                        "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer "
                        "(ölçüm). Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son "
                        "10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden "
-                       "geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
+                       "geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme kuponla denenmedi "
+                       "(etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır); kupon sonucu gelince bu adım yeniden yazılabilir.",
                    ucus_ok={"Etek ön sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (−1, 0, 1) yönünde sonar 1–11 mm; "
                                            "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; −x'te sonar 1–61 mm; +y'de sonar 1–81 mm. "
                                            "Karar önerisi F10d-K1"}),
@@ -2098,11 +2100,12 @@ def _kelime(w):
 def kopya_eki_sil(ad, kod=""):
     """D-6 (F7c): FreeCAD aynı etiketi ikinci kez verince sondaki sayıyı atıp 3 haneli ek koyar ("... M3x8" -> "... M3x001",
     "... M4" -> "... M001"). Görünen ad için ek atılır; ekle birlikte düşen ölçü parçanın kodundan geri yazılır (kod "M3x8 DIN 912" ->
-    "M3x8"). Kimlik, kod ve sayım değişmez; yalnız görünen ad (tıklama etiketi)."""
+    "M3x8"). Kimlik, kod ve sayım değişmez; yalnız görünen ad (tıklama etiketi). P10.8c: 0NN eki yoksa FreeCAD 1.1'in sondaki sayıyı
+    artırma biçimine bakılır (artirma_eki_sil)."""
     import re
     m = re.match(r"^(.*\D)0\d\d$", ad or "")
     if not m:
-        return ad
+        return artirma_eki_sil(ad, kod)
     a = m.group(1)
     k = re.match(r"(M\d+(?:,\d+)?)(?:x(\d+(?:,\d+)?))?\b", kod or "")
     if k and k.group(2) and a.endswith(k.group(1) + "x"):
@@ -2110,6 +2113,24 @@ def kopya_eki_sil(ad, kod=""):
     elif k and re.search(r"\bM$", a):
         a += k.group(1)[1:]
     return a
+
+
+def artirma_eki_sil(ad, kod=""):
+    """P10.8c (planlama/d158/P108c-gunluk.md § 2): FreeCAD 1.1 aynı etiketi ikinci kez verince 0NN eki koymaz, etiketin sonundaki
+    sayıyı artırır ("Cerceve civatasi M3x6 ISO 7380" -> "... ISO 7381" … "ISO 7387"; okur var olmayan bir standart numarası görür).
+    Ölçüt (kopya olduğunun kanıtı): parçanın Kod özelliği. CAD kaynağı etiketi ve kodu aynı add() çağrısında yazar
+    (kabuk_parcalar.py "Cerceve civatasi M3x6 ISO 7380" + kod="M3x6 ISO 7380"); FreeCAD kodu benzersizleştirmez. Etiketin sondaki
+    sayısı kodun sondaki sayısıyla değiştirilince etiket kodla bitiyorsa ve etiketteki sayı koddakinden büyükse etiket artırılmış
+    kopyadır: kodun sayısı geri yazılır. Sonu sayıyla biten gerçek adlar (kodu farklı biten, kodsuz, ya da sayısı kodla aynı olan:
+    "Saplama M3x73 DIN 976 (0)", "... M3x6", parça numaraları) değişmez. Aynı belgede taban etiketin bulunduğu (kardeş zinciri)
+    rehber_denetim.artirma_denetle ile ayrıca sınanır. Kimlik, kod ve sayım değişmez; yalnız görünen ad."""
+    import re
+    m = re.match(r"^(.*?)(\d+)$", ad or "")
+    k = re.search(r"(\d+)$", kod or "")
+    if not m or not k or int(m.group(2)) <= int(k.group(1)):
+        return ad
+    taban = m.group(1) + k.group(1)
+    return taban if taban.endswith(kod) else ad
 
 
 # P10.7b1 düzeltme turu 1 (kontrol Ü1): CAD parça adı / kodu eski elektrik bilgisi taşıyorsa rehberde görünen ad / kod çevirisi. CAD

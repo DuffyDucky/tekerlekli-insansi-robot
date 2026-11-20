@@ -95,12 +95,12 @@
      "stl": "tasarim/freecad/test/stl/kupon-d1-kelepce-kesiksiz.stl",
      "malzeme": "PETG-CF",
      "g": [
-      40.9,
-      87.9
+      41.8,
+      90.3
      ],
      "sa": [
-      1.163,
-      2.499
+      1.189,
+      2.568
      ],
      "denenen": "Dirsek kelepçesi (çatal dilimi), kesiksiz",
      "kutle_kaynak": "m7-kupon-sonuc.json",
@@ -111,12 +111,12 @@
      "stl": "tasarim/freecad/test/stl/kupon-d2-kelepce-bosaltmali.stl",
      "malzeme": "PETG-CF",
      "g": [
-      41.4,
-      86.2
+      42.3,
+      88.6
      ],
      "sa": [
-      1.177,
-      2.451
+      1.203,
+      2.519
      ],
      "denenen": "Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma)",
      "kutle_kaynak": "m7-kupon-sonuc.json",
@@ -142,27 +142,27 @@
    "toplam": {
     "adet": 8,
     "g": [
-     257.4,
-     420.0
+     259.2,
+     424.8
     ],
     "sa": [
-     7.32,
-     11.94
+     7.37,
+     12.08
     ],
     "cf_g": [
-     175.7,
-     301.1
+     177.5,
+     305.9
     ],
     "petg_g": [
      81.7,
      118.9
     ],
     "d2siz_sa": [
-     6.14,
-     9.49
+     6.17,
+     9.56
     ]
    },
-   "m7_uyari": "**Uyarı (D1 / D2 / E eski):** bu üç kupon 15.10 koşusundan (Y2a öncesi dirsek); o günden beri `DIRSEK[\"tup_uc_y\"]` -140 → -170 değişti. `m7_kuponlari.py`'nin D / E bölümü bugünkü dirsekle koşmuyor (açık iş, `karar-kuyrugu.md` \"Karar değil, iş\"). Basmadan önce yeniden üretilmeli ya da bilerek eski hâliyle basılmalı. Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py`.",
+   "m7_uyari": "",
    "omuz_disi_koku": "Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)"
   },
   "1": {

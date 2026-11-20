@@ -166,7 +166,10 @@ portuna
 ikisinde biter saplamadan tutucusuyla kartla sorulacak bakacak ezer yelpaze takmak
 dilinin somunun kuponla sonucu yerinin kenara yanal
 say kala dilimi ikisini kurtarmaz esneyip oturup oturmazsa sonucunu esnetilerek
+kuponu ayna
 """.split())
+# P10.8c düzeltme turu 1 (P108c-gunluk.md § 12): son satır F1 ön sol bandı kupon notunun 2 yeni kelimesi ("kuponu", "ayna"; gözden
+# geçirildi: Türkçe harfi olmayan doğru yazım).
 # P10.8b düzeltme turu 1 (P108b-kontrol O1, O2, D6): son satır F3 / F4 sıkı geçme cümlelerinin ve K1 alt adım 4 numara cümlesinin
 # 10 yeni kelimesi (gözden geçirildi: Türkçe harfi olmayan doğru yazımlar).
 # P10.8b (P108b-gunluk.md § 1): son satır K55 bant metninin (dil yönü ve yol ölçümden, kuponla denenmedi notu) 7 yeni kelimesi
@@ -452,10 +455,12 @@ ZORUNLU = [
            r"rulman kapağı[\s\S]*?kapağın üstünden esnetilerek geçmeli[\s\S]*?Oturmazsa zorlama \(bant kırılabilir\): tasarım "
            r"kararını \(K55 b\) bekle[\s\S]*){2}",
      "F4 omuz bantları: dil engel değil, engel rulman kapağı, yandan getir + indir (K55, ölçüm; sağ + sol)"),
-    # P10.8b düzeltme turu 1 (P108b-kontrol D1): etek ön bandı için kupon yok
-    # P10.8b düzeltme turu 2 (P108b-kontrol T3): kuponu olmayan dikişte "oturmazsa zorlama + tasarım kararı (K55 b)"
-    ("F1", r"(?:Oturmazsa zorlama \(bant kırılabilir\): tasarım kararını \(K55 b\) bekle\. Bu geçme denenmedi; bu bant için kupon "
-           r"henüz yok\.[\s\S]*){2}", "F1 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)"),
+    # P10.8b düzeltme turu 2 (P108b-kontrol T3): "oturmazsa zorlama + tasarım kararı (K55 b)"
+    # P10.8c düzeltme turu 1 (P108c-gunluk.md § 12): etek ön kuponu var (kabuk/etek_kuponu.py) ama denenmedi: "kupon henüz yok" yerine
+    # "kuponla denenmedi" notu; sol bant için ayna çıkarımı ibaresi
+    ("F1", r"(?:Oturmazsa zorlama \(bant kırılabilir\): tasarım kararını \(K55 b\) bekle\. Bu geçme kuponla denenmedi[^.]*?; kupon "
+           r"sonucu gelince bu adım yeniden yazılabilir\.[\s\S]*){2}", "F1 oturmazsa zorlama + K55 b, kuponla denenmedi notu (K55; ön sağ + sol)"),
+    ("F1", r"etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır", "F1 ön sol bant: kupon sağdan, sol ayna çıkarımı (K55)"),
     # P10.8b düzeltme turu 2 (P108b-kontrol T2): göğüs bantlarının kuponu var (iki not), çerçevenin yok
     ("F3", r"(?:Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir\.[\s\S]*){2}",
      "F3 kuponla denenmedi notu (K55; göğüs bantları)"),
@@ -822,6 +827,70 @@ KOPYA_EKI = r"\D0\d\d$"
 def kopya_eki(V):
     """Görünen parça adında FreeCAD kopya eki (D-6): sondaki 0NN."""
     return [dict(id=p["id"], ad=p["ad"]) for p in V["parcalar"] if re.search(KOPYA_EKI, p["ad"])]
+
+
+# P10.8c (planlama/d158/P108c-gunluk.md § 2): rehberde görünen bağlantı elemanı standart numaraları. FreeCAD 1.1 kopya etiketinin
+# sondaki sayısını artırınca "ISO 7380" "ISO 7381 … 7387" oldu (var olmayan standart); "DIN 912" artarsa "DIN 913" olur (gerçek ama
+# başka eleman: setskur). İki kural: (1) görünen metindeki her ISO / DIN numarası projenin bilinen kümesinde; (2) parçanın görünen
+# adındaki numaralar kendi kodunda da geçer (912 -> 913 gibi kümede kalan kaymayı da yakalar). Küme: satın alma listesi
+# (planlama/maliyet.json) ve CAD kodları (montaj-analiz.json) 19.11.2026; yeni standart bilinçli eklenir (kaynak sınaması küme dışı
+# CAD kodunu da HATA sayar).
+STANDART_BILINEN = frozenset({
+    "DIN 125",    # düz pul
+    "DIN 127",    # yaylı pul
+    "DIN 912",    # silindir başlı imbus cıvata
+    "DIN 913",    # düz uçlu setskur
+    "DIN 916",    # çukur uçlu setskur (maliyet.json)
+    "DIN 933",    # altıköşe başlı cıvata
+    "DIN 934",    # altıköşe somun
+    "DIN 976",    # saplama
+    "DIN 985",    # fiberli somun
+    "ISO 7380",   # mercimek başlı imbus cıvata
+})
+STANDART_DESEN = r"\b(ISO|DIN)[  ]?(\d{2,6})\b"
+
+
+def standartlar(s):
+    return ["%s %s" % m for m in re.findall(STANDART_DESEN, s or "")]
+
+
+def standart_denetle(metinler, parcalar=()):
+    """metinler: [(yer, metin)]; parcalar: [(yer, görünen ad, kod)]. Döner [dict(yer, kural, standart, metin)]."""
+    out = []
+    for yer, t in metinler:
+        for s in standartlar(t):
+            if s not in STANDART_BILINEN:
+                out.append(dict(yer=yer, kural="bilinmeyen standart", standart=s, metin=(t or "")[:90]))
+    for yer, ad, kod in parcalar:
+        ks = set(standartlar(kod))
+        for s in standartlar(ad):
+            if s not in ks:
+                out.append(dict(yer=yer, kural="ad ↔ kod standardı", standart=s, metin="%s / kod %s" % (ad, kod or "-")))
+    return out
+
+
+def artirma_denetle(cad, R=None):
+    """Kaynak: artirma_eki_sil'in geri çevirdiği CAD etiketleri. Her biri için taban etiket (kodun sayısıyla) aynı FCStd belgesinde
+    bulunmalı ve aradaki bütün sayılar da (FreeCAD'in 7380, 7381, … zinciri). Bulunmazsa ölçüt kopya olmayan bir adı değiştirmiş
+    olabilir: HATA (kardessiz). Döner dict(silinen=[...], kardessiz=[...])."""
+    R = R or RM
+    etiket = collections.defaultdict(set)
+    for c in cad:
+        etiket[c["dosya"]].add(c["etiket"])
+    sil, yok = [], []
+    for c in cad:
+        t = R.artirma_eki_sil(c["etiket"], c["kod"])
+        if t == c["etiket"]:
+            continue
+        m = re.match(r"^(.*?)(\d+)$", c["etiket"])
+        k0 = re.search(r"(\d+)$", t).group(1)
+        n0, n1 = int(k0), int(m.group(2))
+        zincir = all((m.group(1) + str(n).zfill(len(k0))) in etiket[c["dosya"]] for n in range(n0, n1))
+        x = dict(modul=c["modul"], nesne=c["nesne"], etiket=c["etiket"], gorunen=t)
+        sil.append(x)
+        if not zincir:
+            yok.append(x)
+    return dict(silinen=sil, kardessiz=yok)
 
 
 def gorunen_metinler(V):
@@ -1285,7 +1354,8 @@ def cad_ad_eskime(cad_kaynak, cad_analiz):
     metin sayısı. P10.8b düzeltme turu 1: analizde olup kaynakta olmayan HATA (kaynak_denetle geçmez; montaj betiği koşmadan CAD
     adı değişti demek); kaynakta olup analizde olmayan bilgi. Düzeltme turu 2 (P108b-kontrol T1): kaynak etiketleri üretim gibi
     kopya_eki_sil'den geçer; kalan bilgi farkı 10 (P108b-gunluk.md § 14): 2 "(gösterim)" etiketi ve FreeCAD'in "ISO 7380" sonundaki
-    sayıyı artırdığı 8 etiket ("ISO 7381" … "ISO 7387"; kopya_eki_sil 0NN ekini tanır, bunu tanımaz, üretim de aynı adı gösterir)."""
+    sayıyı artırdığı 8 etiket ("ISO 7381" … "ISO 7387"). P10.8c (P108c-gunluk.md § 2): kopya_eki_sil artırılmış sayıyı da koddan geri
+    yazar (rehber_metin.artirma_eki_sil); kalan bilgi farkı 2, yalnız "(gösterim)" etiketleri."""
     if cad_kaynak is None or cad_analiz is None:
         return None
     a, k = {t for _, t in cad_analiz}, {t for _, t in cad_kaynak}
@@ -2533,6 +2603,7 @@ def elektrik_bozma_denemesi():
     out += kalkan_parca_bozma_denemesi()                              # P10.7b2k düzeltme turu 1 (F10u-kontrol 8)
     out += demet_bozma_denemesi(ham)
     out += cad_kaynak_bozma_denemesi()                                # P10.8b (P108b-gunluk.md § 3)
+    out += standart_bozma_denemesi()                                  # P10.8c (P108c-gunluk.md § 2)
     out += boy_bozma_denemesi(ham)                                    # P10.8b (P108b-gunluk.md § 5)
     return dict(temel_hata=len(temel), deneme=out, yakalanan=sum(1 for x in out if x["yakalandi"]), toplam=len(out))
 
@@ -2593,6 +2664,67 @@ def cad_kaynak_bozma_denemesi():
     ad_deg = [dict(c, etiket=c["etiket"] + " yeniden") if RM.tr(c["etiket"]) == hedef or c["etiket"] == hedef else c for c in cad]
     n = len((cad_ad_eskime(cad_kaynak_metinleri(cad=ad_deg), analiz) or {}).get("analizde_eski") or []) - n0
     out.append(dict(ad="CAD kaynak: parça yeniden adlandı, analiz eski (HATA)", yakalandi=n > 0 and n0 == 0, hata=n))
+    return out
+
+
+# P10.8c: doğru adlar artirma_eki_sil'den değişmeden geçmeli (ad, kod). Sonu sayıyla biten gerçek ad biçimleri: ölçü, parça
+# numarası, sıra numarası, kodla aynı standart, kodsuz.
+STANDART_DOGRU_AD = [
+    ("Cerceve civatasi M3x6 ISO 7380", "M3x6 ISO 7380"),
+    ("Saplama M3x73 DIN 976 (0)", "M3 saplama DIN 976, 73 mm (kesilir)"),
+    ("Civata M3x6", "M3x6 DIN 912"),
+    ("Civata M5x18 DIN 912", "M5x18 DIN 912"),
+    ("Sonar 8", "HC-SR04"),
+    ("Kablo yolu 12", ""),
+    ("Burc M5x40", "M5 x 40 burc, disi-disi, AA 8"),
+    ("Motor NEMA 17", "NEMA 17"),
+    ("Setskur M4x6 DIN 913", "M4x6 DIN 913"),
+]
+
+
+def standart_bozma_denemesi():
+    """P10.8c (P108c-gunluk.md § 2): yanlış standart numarası. (1) Eski kural (artırma eki silinmez) güncel CAD'de yakalanır;
+    (2) rehber metnine var olmayan numara; (3) ad ↔ kod kayması kümede kalırken (DIN 912 -> 913); (4) veride parça adı ISO 7387;
+    (5) kardeşi olmayan artırılmış etiket; (6) 0NN kopya eki kuralı bozulmadı; (7) doğru adlar değişmez (her ad ayrı deneme)."""
+    import rehber_gorunum as _RGo
+    cad = _RGo.cad_parcalar()
+    out = []
+
+    def cad_st(cadp):
+        return standart_denetle([], [("CAD %s" % c["nesne"], RM.kopya_eki_sil(c["etiket"], c["kod"]), c["kod"]) for c in cadp])
+    n0 = len(cad_st(cad))
+    eski = RM.artirma_eki_sil
+    RM.artirma_eki_sil = lambda ad, kod="": ad
+    try:
+        n = len(cad_st(cad))
+        n_veri = len(standart_denetle([("parça", RM.tr(RM.kopya_eki_sil(c["etiket"], c["kod"])))
+                                       for c in cad if c["modul"] != "taban"]))
+    finally:
+        RM.artirma_eki_sil = eski
+    out.append(dict(ad="standart: eski kural (artırma eki kalır), güncel CAD ad ↔ kod", yakalandi=n > 0 and n0 == 0, hata=n))
+    out.append(dict(ad="standart: eski kural, görünen adda bilinmeyen numara", yakalandi=n_veri > 0, hata=n_veri))
+    n = len(standart_denetle([("bozma metin", "Çerçeve 8 × M3×6 ISO 7381 → ısıl gömme")]))
+    out.append(dict(ad="standart: rehber metninde ISO 7381", yakalandi=n > 0, hata=n))
+    n = len(standart_denetle([], [("bozma parça", "Civata M3x8 DIN 913", "M3x8 DIN 912")]))
+    out.append(dict(ad="standart: ad DIN 913, kod DIN 912 (kümede kayma)", yakalandi=n > 0, hata=n))
+    V = {"adimlar": [], "parcalar": [dict(id="p9999", ad="Çerçeve cıvatası M3x6 ISO 7387", kod="M3x6 ISO 7380", modul="kabuk")]}
+    n = len(standart_denetle(gorunen_metinler(V), [(p["id"], p["ad"], p["kod"]) for p in V["parcalar"]]))
+    out.append(dict(ad="standart: veride parça adı ISO 7387", yakalandi=n > 0, hata=n))
+    a0 = artirma_denetle(cad)
+    yeni = cad + [dict(cad[0], nesne="X999", etiket="Vida M3x6 ISO 7385", kod="M3x6 ISO 7380")]
+    n = len(artirma_denetle(yeni)["kardessiz"]) - len(a0["kardessiz"])
+    out.append(dict(ad="standart: tabanı belgede olmayan artırılmış etiket (kardeşsiz)", yakalandi=n > 0 and not a0["kardessiz"], hata=n))
+    # P10.8c düzeltme turu 1 (P108c-kontrol D1): ad ile kodun ölçüsü çelişiyor ("Civata M3x16", kod "M3x6"). Ölçüt adı koda çevirir;
+    # bu sessiz kalmamalı: zincir (M3x6 … M3x15) belgede yok, kardeşsiz HATA (--kaynak geçmez, üretim başlamaz)
+    yeni = cad + [dict(cad[0], nesne="X998", etiket="Civata M3x16", kod="M3x6")]
+    ks = [x for x in artirma_denetle(yeni)["kardessiz"] if x["nesne"] == "X998"]
+    out.append(dict(ad="standart: ad M3x16 ↔ kod M3x6 (ölçü çelişkisi) sessizce düzelmez, kardeşsiz HATA",
+                    yakalandi=len(ks) == 1 and not a0["kardessiz"], hata=len(ks)))
+    n = int(RM.kopya_eki_sil("Civata M3x001", "M3x8 DIN 912") != "Civata M3x8")
+    out.append(dict(ad="standart: 0NN kopya eki kuralı (M3x001 -> M3x8) bozulmadı", yakalandi=n == 0, hata=n))
+    for ad, kod in STANDART_DOGRU_AD:
+        g = RM.kopya_eki_sil(ad, kod)
+        out.append(dict(ad="standart: doğru ad değişmez: %s" % ad, yakalandi=g == ad, hata=int(g != ad)))
     return out
 
 
@@ -2774,6 +2906,8 @@ def denetle(V, ek_metinler=()):
     tu = tutarlilik(V, m)
     ya, ya_ist = yasak_tara(V)
     ke = kopya_eki(V)
+    # P10.8c: standart numarası bilinen kümede ve parçanın adında kodundakiyle aynı (P108c-gunluk.md § 2)
+    st = standart_denetle(m, [("parça %s" % p["id"], p["ad"], p["kod"]) for p in V["parcalar"]])
     el = elektrik_denetle(m)                                         # P10.7b1: elektrik iddiaları ↔ kablolar.json / pin haritası
     el += [dict(yer=x["yer"], kural="yer tutucu", ifade=x["ifade"], neden="çözülmüş metinde { } ⟦ ⟧ kaldı (bozuk yer tutucu)")
            for x in bozuk_yer_tutucu(m)]
@@ -2781,11 +2915,11 @@ def denetle(V, ek_metinler=()):
                 ascii_kalinti=asc, ascii_kalinti_sayi=len(asc), gruplama_yanlis=len(gr["yanlis"]) + len(gr["eksik"]), gruplama=gr,
                 tutarlilik_celiski=len(tu["celiski"]) + len(tu["anmayan"]), tutarlilik=tu,
                 zorunlu_eksik=len(tu["zorunlu_eksik"]),
-                elektrik=el[:60], elektrik_sayi=len(el),
+                elektrik=el[:60], elektrik_sayi=len(el), standart=st[:40], standart_sayi=len(st),
                 metin_sayisi=dict(veri=len(m), tarayici=len(ek_metinler)),
                 parca=len(V["parcalar"]), sema=len(V.get("semalar", [])),
                 gecti=not asc and not gr["yanlis"] and not gr["eksik"] and not tu["celiski"] and not tu["anmayan"]
-                and not tu["zorunlu_eksik"] and not ya and not ke and not el)
+                and not tu["zorunlu_eksik"] and not ya and not ke and not el and not st)
 
 
 # Düzeltme turu 1 (F10i-kontrol A6): kaydı "kablajda teyit" işaretli yer tutucu (TVS / kondansatör yönü, K1 / K2 kontak uçları, ana
@@ -3107,8 +3241,19 @@ def kaynak_denetle():
     m = kaynak_metinler()
     gor = arayuz_gorunen_metinler()                                # P10.7b2a: app.js / yazdir.html görünen dizgeleri, kol lejantı
     # P10.8b: CAD etiket / kodları güncel FCStd'den (veride parça adı olarak görünür); ASCII ve elektrik denetimine girer
-    cadk = cad_kaynak_metinleri()
+    try:
+        import rehber_gorunum as _RGo
+        cadp = _RGo.cad_parcalar()
+    except Exception as e:                                          # cad_kaynak_metinleri de None döner, denetim geçmez
+        print("UYARI: CAD kaynak parçaları okunamadı (%s: %s)" % (type(e).__name__, e))
+        cadp = None
+    cadk = None if cadp is None else cad_kaynak_metinleri(cad=cadp)
     asc = ascii_kalinti(m + tablo_metinleri() + gor + (cadk or []))   # S1: panelin tablodan gösterdiği metinler de
+    # P10.8c (P108c-gunluk.md § 2): standart numaraları (rehber metni, arayüz, CAD etiket / kod üretimin adıyla) + artırma eki zinciri
+    st = standart_denetle(m + gor + (cadk or []),
+                          [("CAD kaynak %s %s" % (c["modul"], c["nesne"]), RM.kopya_eki_sil(c["etiket"], c["kod"]), c["kod"])
+                           for c in (cadp or [])])
+    ar = None if cadp is None else artirma_denetle(cadp)
     # P10.7b1 düzeltme turu 1: elektrik iddiaları CAD parça adları / kodları ve arayüz sabit metinlerinde de (F10h-kontrol Ü1, §2-3)
     cad = cad_ad_metinleri()
     ara = arayuz_metinleri()
@@ -3146,12 +3291,13 @@ def kaynak_denetle():
     da = demet_alt_denetle(ham=ham)                                  # P10.7b2d-A: K1 / K2 demet alt adımları (D1–D4)
     return dict(ascii_kalinti=asc, elektrik=el, zorunlu_eksik=zor, zorunlu_veride=sorted(set(zor_disari)), metin=len(m),
                 cad_metin=None if cad is None else len(cad), arayuz_metin=len(ara), arayuz_gorunen=len(gor), yasak=ya, yasak_affedilen=ya_ist,
-                cad_kaynak_metin=None if cadk is None else len(cadk), cad_eskime=esk,
+                cad_kaynak_metin=None if cadk is None else len(cadk), cad_eskime=esk, standart=st, artirma=ar,
                 ciplak=cip, cozum_hata=coz, bozuk=boz, baglam=bag, kritik=kr, tamlik=tm, teyit=ty, demet_alt=da,
                 kritik_sayi={b: len(v) for b, v in kg.items()},
                 gecti=not asc and not el and not zor and not ya and not cip and not coz and cad is not None and cadk is not None
                 and not boz and not bag
                 and not kr and not tm["hata"] and not ty and not da["hata"]
+                and not st and ar is not None and not ar["kardessiz"]
                 # P10.8b düzeltme turu 1 (P108b-kontrol D5): montaj-analiz.json'da olup güncel FCStd'de olmayan ad = eskimiş analiz, HATA
                 # (kaynakta olup analizde olmayan bilgi kalır, nedeni cad_ad_eskime docstring'inde ve P108b-gunluk.md § 14)
                 and not (esk or {}).get("analizde_eski"))
@@ -3173,6 +3319,9 @@ def ozet_yaz(d):
         print("  YASAK", x)
     for x in d["kopya_eki"][:5]:
         print("  KOPYA EKI", x)
+    print("standart numarasi (bilinen kume / ad-kod; P10.8c): %d" % d.get("standart_sayi", 0))
+    for x in d.get("standart", [])[:20]:
+        print("  STANDART %s %s: %s (%s)" % (x["kural"], x["standart"], x["yer"], x["metin"]))
     print("elektrik iddiasi (kablolar.json / pin haritasi ile celisen): %d" % d.get("elektrik_sayi", 0))
     for x in d.get("elektrik", [])[:30]:
         print("  ELEKTRIK", x)
@@ -3214,6 +3363,17 @@ def _ana():
                                        "-" if esk is None else len(esk["analizde_eski"]), "-" if esk is None else len(esk["kaynakta_yeni"])))
         for t in ([] if esk is None else esk["analizde_eski"][:10]):
             print("  ANALIZDE ESKI %s" % t[:90])
+        for t in ([] if esk is None else esk["kaynakta_yeni"][:20]):
+            print("  KAYNAKTA YENI (bilgi) %s" % t[:90])
+        ar = d["artirma"]                                            # P10.8c
+        print("standart numarasi (bilinen kume / ad-kod) HATA %d; FreeCAD artirma eki silinen etiket %s, tabani ayni belgede olmayan "
+              "(HATA) %s" % (len(d["standart"]), "-" if ar is None else len(ar["silinen"]), "-" if ar is None else len(ar["kardessiz"])))
+        for x in ([] if ar is None else ar["silinen"]):
+            print("  ARTIRMA %s %s: %s -> %s" % (x["modul"], x["nesne"], x["etiket"], x["gorunen"]))
+        for x in ([] if ar is None else ar["kardessiz"]):
+            print("  ARTIRMA KARDESSIZ %s %s: %s" % (x["modul"], x["nesne"], x["etiket"]))
+        for x in d["standart"][:30]:
+            print("  STANDART %s %s: %s (%s)" % (x["kural"], x["standart"], x["yer"], x["metin"]))
         for x in d["kritik"][:40]:
             print("  KRITIK %s %s %s\n      eski: %s\n      yeni: %s" % (x["tur"], x["bolum"], x["yer"], x["eski"] or "-", x["yeni"] or "-"))
         tm = d["tamlik"]

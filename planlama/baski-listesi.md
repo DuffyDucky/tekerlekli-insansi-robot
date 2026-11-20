@@ -94,17 +94,17 @@ Parça sayısının 65 → 72 artışı yalnız küçük parçalardan (en büyü
 | Parti 3 | 0,76 kg | 0,00 kg |
 | Parti 4 | 2,26 kg | 0,00 kg |
 | **Parçalar** | **6,53 kg** | **1,19–1,25 kg** |
-| Parti 0 kuponları | 0,08–0,12 kg | 0,18–0,30 kg |
-| **Parça + kupon** | **6,61–6,65 kg** | **1,37–1,55 kg** |
+| Parti 0 kuponları | 0,08–0,12 kg | 0,18–0,31 kg |
+| **Parça + kupon** | **6,61–6,65 kg** | **1,37–1,56 kg** |
 
 Parti ayrıntısı, bağımlılıklar, montaj adımı ve takvim kontrolü: `planlama/d158/F4c-partiler.md`.
 
 **Filament:** parçalar **düz PETG 6,53 kg** + **PETG-CF 1,19–1,25 kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9; bütün satırlarda destek dahil,
-toplam 124 g, F6b). Kuponlar (Parti 0) PETG 0,08–0,12 kg, PETG-CF 0,18–0,30 kg.
+toplam 124 g, F6b). Kuponlar (Parti 0) PETG 0,08–0,12 kg, PETG-CF 0,18–0,31 kg.
 Plan: **9 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)** (`planlama/maliyet.json` `kalemler[107–109]`).
 - **PETG yetiyor:** parça + kupon 6,61–6,65 kg, 9 kg'de ≈ 2,4 kg pay (≈ %36).
-- **PETG-CF 1,5 kg sınırda, yetmiyor sayılmalı:** parça + kupon 1,37–1,55 kg; 1,5 kg'de pay 130 g (doluluk 0,8 ve kuponların tahmini kütlesiyle) ile −53 g
-  (doluluk 0,9 ve %100 kupon). D2 kuponu basılmazsa pay 33–172 g. En büyük CF parçası (kafa servo yuvası) 152 g: tek bir başarısız baskı alt
+- **PETG-CF 1,5 kg sınırda, yetmiyor sayılmalı:** parça + kupon 1,37–1,56 kg; 1,5 kg'de pay 128 g (doluluk 0,8 ve kuponların tahmini kütlesiyle) ile −58 g
+  (doluluk 0,9 ve %100 kupon). D2 kuponu basılmazsa pay 31–171 g. En büyük CF parçası (kafa servo yuvası) 152 g: tek bir başarısız baskı alt
   durumdaki payı bitiriyor. Karar taslağı `planlama/d158/F4c-gunluk.md` (KT-F4c-1: +1 makara, 0,5 kg, 1.114,03 TL; %15 payla 1.281,13 TL).
 
 ## Renk (Ahmet, 11 Ekim 2026: "Tamamen beyaz")
@@ -191,8 +191,8 @@ Kanıt `baski-analiz.json` `kapak_tani`, `planlama/d158/F6b-gunluk.md` §2.
 ### Tolerans kuponları (Parti 0)
 
 Kuponlar `tasarim/freecad/test/stl/` (A, B: `tolerans_kuponu.py`; C, D1, D2, E: `m7_kuponlari.py`, `test/README.md`). 8 baskı:
-B ve C hem PETG-CF hem beyaz PETG; D2 yalnız D1 geçmezse ya da karşılaştırma için. Toplam PETG 0,08–0,12 kg, PETG-CF 0,18–0,30 kg, ≈ 7,3–11,9 sa
-(tahmini kütleyle alt, %100 dolulukla üst değer; D2'siz ≈ 6,1–9,5 sa). Kupon tablosu, K31 seçeneğine göre etkisi ve omuz dişi kökü notu: `planlama/d158/F4c-partiler.md`.
+B ve C hem PETG-CF hem beyaz PETG; D2 yalnız D1 geçmezse ya da karşılaştırma için. Toplam PETG 0,08–0,12 kg, PETG-CF 0,18–0,31 kg, ≈ 7,4–12,1 sa
+(tahmini kütleyle alt, %100 dolulukla üst değer; D2'siz ≈ 6,2–9,6 sa). Kupon tablosu, K31 seçeneğine göre etkisi ve omuz dişi kökü notu: `planlama/d158/F4c-partiler.md`.
 
 | Kupon | Malzeme | Ne denenir | Filament (g) |
 |---|---|---|---|
@@ -201,11 +201,9 @@ B ve C hem PETG-CF hem beyaz PETG; D2 yalnız D1 geçmezse ya da karşılaştır
 | B | PETG | aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri) | 60,0–87,8 |
 | C | PETG-CF | Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,6…6,8, yatay + dikey | 7,4–13,2 |
 | C | PETG | aynı kupon beyaz PETG'de | 7,4–13,2 |
-| D1 | PETG-CF | Dirsek kelepçesi (çatal dilimi), kesiksiz | 40,9–87,9 |
-| D2 (koşullu) | PETG-CF | Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma) | 41,4–86,2 |
+| D1 | PETG-CF | Dirsek kelepçesi (çatal dilimi), kesiksiz | 41,8–90,3 |
+| D2 (koşullu) | PETG-CF | Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma) | 42,3–88,6 |
 | E | PETG | Üst kol tüpü halkası (tüp–pim / tüp–bilezik geçmesi) | 14,3–17,9 |
-
-**Uyarı (D1 / D2 / E eski):** bu üç kupon 15.10 koşusundan (Y2a öncesi dirsek); o günden beri `DIRSEK["tup_uc_y"]` -140 → -170 değişti. `m7_kuponlari.py`'nin D / E bölümü bugünkü dirsekle koşmuyor (açık iş, `karar-kuyrugu.md` "Karar değil, iş"). Basmadan önce yeniden üretilmeli ya da bilerek eski hâliyle basılmalı. Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py`.
 
 Rulman elle (ya da mengeneyle hafif) bastırınca oturmalı; ısıl gömme somun havyayla düz girmeli, vida sıkınca dönmemeli. Sonuç CAD'e uygulanır ve STL'ler
 yeniden çıkarılır.
@@ -225,15 +223,20 @@ kullanılmaz, insert takılmaz).
 Fiş geçmezse ne yapılacağı rehberde ve `kablolama-on-kararlar.md` §4'te (fişsiz geçirip yeniden sonlandırma; HDMI için şerit + uç
 adaptörleri). Parçayı gerçek parçalarla aynı profille bas; kesit 0,8 mm boşlukla dar (USB-A fişi 13 × 7 ↔ kanal 20 × 7,8).
 
-### Yanak ve bant kuponları (Parti 0 ile ilk gün, toplama katılmaz; P10.8 1. basamak, 19.11)
+### Yanak, bant ve etek ön kuponları (Parti 0 ile ilk gün, toplama katılmaz; P10.8 1. basamak, 19.11)
 
 K54 c (kafa inişinde sıfır boşluk) ve K55 a (kabuk bindirme dili esneterek) kararlarının kuponları. Gerçek CAD'den kesildi:
-`tasarim/freecad/kafa/yanak_kuponu.py` (`kafa-montaj.FCStd`) ve `tasarim/freecad/kabuk/bant_kuponu.py` (`kabuk-montaj.FCStd`). Ölçüler ve
-kaynakla karşılaştırma `kafa/yanak-kuponu.json` ve `kabuk/bant-kuponu.json` içinde. Deneme yöntemi, geçti / kaldı ölçütü ve sonucun
+`tasarim/freecad/kafa/yanak_kuponu.py` (`kafa-montaj.FCStd`), `tasarim/freecad/kabuk/bant_kuponu.py` ve `tasarim/freecad/kabuk/etek_kuponu.py`
+(`kabuk-montaj.FCStd`). Ölçüler ve kaynakla karşılaştırma `kafa/yanak-kuponu.json`, `kabuk/bant-kuponu.json` ve `kabuk/etek-kuponu.json` içinde. Deneme yöntemi, geçti / kaldı ölçütü ve sonucun
 yazılacağı yer `tasarim/freecad/test/README.md`'de. Kuponlar montaja girmez; insert ve vida istemez. Yanak kuponunun asıl yığınla
 denemesi eğme çatalı, MG996R ve horn gelince, kafa iskeletinden (Parti 3) önce yapılır. Yanak kuponunda sol taraf ölçümü için bir 625ZZ
 şart; rulmansız yalnız sağ taraf sınanır. Bant kuponu yalnız orta–göğüs dikişinin sağ yarısını iki yoldan dener: +y ve rehberin +x yolu.
-Sol yarı, x = 0 dikişi, etek ön, omuz ve çerçeve için sonuç bu kupondan çıkarımdır; etek önün "somun takılıyken" kuponu yok (açık iş).
+Sol yarı, x = 0 dikişi, omuz ve çerçeve için sonuç bu kupondan çıkarımdır. Etek ön kuponu (P10.8c) ön sağ bandın z +105 braketi ve perçin
+somunu bölgesini rehberin iki parçalı yoluyla dener (sol bant için ayna çıkarımı). **Deneme yöntemi (hareket kısıtlı):** alt parça mengenede;
+üst parça düz bir takoza tutturulur, döndürülmez; önce yalnız x ekseninde (+x yanından) duvar hizasına, sonra yalnız −z yönünde 10 mm itilir.
+**Geçti:** elle itişle oturur, dikiş ≤ 0,5 mm, flanşta / boss'ta iz ya da çatlak yok (üç tekrar). **Geçmedi:** belirsiz (dilim gerçek
+banttan sert), K55 b ya da tam bantla deneme. Sonuç `tasarim/freecad/test/README.md` "K55 etek ön bandı kuponu" tablosuna. Kuponda perçin
+somunu PETG ayağa takılır (gerçekte 2 mm Al): ilk deneme flanşlı biçimle, perçin aleti gerekmez. Üst parçaya brim (≥ 5 mm).
 
 | Parça | STL | Malzeme | Ölçü (mm, X × Y × Z) | Filament (g) | Süre (tahmini) | Tabla yönü | Destek | Ne denenir |
 |---|---|---|---|---|---|---|---|---|
@@ -241,8 +244,10 @@ Sol yarı, x = 0 dikişi, etek ön, omuz ve çerçeve için sonuç bu kupondan �
 | Yığın mastarı (K54) | `tasarim/freecad/kafa/stl/yanak-kuponu-mastar.stl` | PETG (beyaz) | 30 × 30 × 54,4 | 16,5–46,7 | ≈ 28 dk | dik: horn diski tablada | desteksiz | çatal dayaması … horn dış yüzü 54,4 (yanak kuponu bunun üstüne indirilir) |
 | Bant kuponu alt (K55) | `tasarim/freecad/kabuk/stl/bant-kuponu-alt.stl` | PETG (beyaz) | 161,8 × 214,2 × 23,4 | 24,5–24,8 | ≈ 42 dk | dik: alt kesit tablada, dil yukarı | desteksiz | orta bant sağ, dikiş 1005'in dilimi; dil 1,25 mm |
 | Bant kuponu üst (K55) | `tasarim/freecad/kabuk/stl/bant-kuponu-ust.stl` | PETG (beyaz) | 164 × 217,2 × 20 | 26,9–29,5 | ≈ 46 dk | dik: dudağın alt kenarı tablada | **destekli**: z 12'de iç yarı basamağı 6,6 cm² (göğüs bandıyla aynı yer) | göğüs bandı sağın dudağı dile esnetilerek giriyor mu (modelde önde 6,8 mm'ye varan girişim) |
+| Etek ön kuponu üst (K55) | `tasarim/freecad/kabuk/stl/etek-kuponu-ust.stl` | PETG (beyaz) | 8 × 42,5 × 29,5 | 3,6–4,6 | ≈ 6 dk | ters: dilimin üst kesiti tablada (bant gibi); **brim** | desteksiz sayıldı; 46° üstü aşağı bakan yüz ≈ 24 mm², dilimleyicide bak | ön sağ bandın dudağı ve z +105 boss'u; perçin somunu flanşının üstünden iki parçalı yolla (önce x, sonra −z) giriyor mu |
+| Etek ön kuponu alt, flanşlı (K55) | `tasarim/freecad/kabuk/stl/etek-kuponu-alt-flansli.stl` | PETG (beyaz) | 20 × 52,5 × 33 | 8,8–14,7 | ≈ 15 dk | ters: üst plaka tablada | desteksiz sayıldı; 46° üstü aşağı bakan yüz ≈ 100 mm², dilimleyicide bak | orta bant sağ dili + z +105 braketi dik ayağı + perçin somunu flanşının eşi (tek parça); ilk deneme bununla (delikli biçim `etek-kuponu-alt.stl`: gerçek perçin somunu + alet) |
 
-Toplam ≈ 88–142 g PETG, ≈ 2,5 sa (tahmini kütle / %100; `test/README.md` yöntemi). Kupon B ve C'nin M5 delikleri aynı gün K31'e göre
+Toplam ≈ 101–161 g PETG, ≈ 2,9 sa (tahmini kütle / %100; `test/README.md` yöntemi; etek ön kuponu dahil, delikli alt biçim hariç). Kupon B ve C'nin M5 delikleri aynı gün K31'e göre
 Ø6,6–6,8'e büyütüldü (`test/README.md`).
 
 ## STL durumu

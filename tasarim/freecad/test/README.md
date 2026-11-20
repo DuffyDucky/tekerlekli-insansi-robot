@@ -21,24 +21,21 @@ basılır (`M5_K31` nominalini 6,8 yapmak damlaları 6,7 / 6,8 / 6,9 yapar; deli
 Çalıştırma (README'deki başlatıcıyla, ~10 s):
 `FC_SCRIPT=$R/test/m7_kuponlari.py "$FC" $L`
 
-**Uyarı (19 Kasım):** `m7_kuponlari.py`'nin D / E bölümü Y2a'dan beri çalışmıyor. `arayuz.DIRSEK["tup_uc_y"]` −140'tan −170'e indi, betikteki
-`Y_KAPAK` (−148) sabit kaldı; koşu "width of box too small" hatasıyla durur (`freecadcmd` yine de çıkış 0 verir). Kupon C yalnız
-`M7_YALNIZ_C=1` ile yeniden üretilir. Bu kip C'nin STL'sini, `m7-kupon-sonuc.json`'daki C kaydını ve STEP'teki C gövdesini yazar. D1, D2
-ve E'nin STL'leri, kayıtları ve STEP gövdeleri 15 Ekim koşusundan kalır; D1'in FCStd doğrulaması da o güne aittir. JSON'da
-`arayuz_kosu` her arayüz anahtarının hangi koşudan yazıldığını, `arayuz_fark_bugun` bugünkü `arayuz.py` ile farkını tutar.
-**D1 / D2 / E basmadan önce yeniden üretilmeli** (D / E onarımı açık iş, `karar-kuyrugu.md` "Karar değil, iş") ya da bilerek eski hâliyle
-basılmalı; radyal geçme ölçüleri (`GECME`, `TUP_PIM_R`) değişmedi, değişen tüp ucu (`tup_uc_y`).
-`M7_YALNIZ_C=1 FC_SCRIPT=$R/test/m7_kuponlari.py "$FC" $L`
+**D / E onarıldı (19 Kasım, P10.8c; `planlama/d158/P108c-gunluk.md` § 3):** Y2a'dan (`tup_uc_y` −140 → −170, `catal_dis_kol`
+5 → 8) beri D / E bölümü 125 cm sabitleriyle ("width of box too small") koşmuyordu ve D1 / D2 / E STL'leri 15 Ekim'den kalmıştı. Bölüm
+artık ölçüleri `dirsek/dirsek_parcalar.py`'den okur (import; dosya yazılmaz), D1 hâlâ `dirsek-montaj.FCStd`'deki gerçek çatalın
+dilimiyle ve import edilen çatalla iki yönlü karşılaştırılır (fark 0 değilse çıktı yazılmaz). `M7_YALNIZ_C=1` kipi kalktı (tam kip
+koşuyor). Radyal geçme ölçüleri değişmedi; D1 / D2'de değişen tüp ucunun yeri ve 3 mm kalın dış kol / köprü (genişlik 70,9 → 73,9).
 
 ## M7 kuponları (`m7_kuponlari.py`)
 
 | Kupon | Ölçü (mm) | Malzeme | Kütle %100 / tahmini | Süre (tahmini) | Baskı |
 |---|---|---|---|---|---|
 | C ısıl gömme L + 1 | 61 × 17,2 × 14 | PETG **ve** PETG-CF (iki kez) | 13,2 / 7,4 g | 13 dk | 46° üstü çıkıntı yalnız yatay delik tepeleri (≤ Ø6,8) |
-| D1 kelepçe, kesiksiz | 71 × 72 × 33 | çatalın malzemesi (şu an PETG) | 87,9 / 40,9 g | 70 dk | ters (bilezik ağzı tablada); yatay tavan yalnız V oluğun 0,25 mm basamakları |
-| D2 kelepçe, kökte boşaltmalı | 71 × 72 × 33 | D1 ile aynı | 86,2 / 41,4 g | 71 dk | aynı; boşaltma dik yarık (köprü yok) |
+| D1 kelepçe, kesiksiz | 73,9 × 72 × 33 | çatalın malzemesi (şu an PETG) | 90,3 / 41,8 g | 71 dk | ters (bilezik ağzı tablada); yatay tavan yalnız V oluğun 0,25 mm basamakları |
+| D2 kelepçe, kökte boşaltmalı | 73,9 × 72 × 33 | D1 ile aynı | 88,6 / 42,3 g | 72 dk | aynı; boşaltma dik yarık (köprü yok) |
 | E tüp halkası | Ø56 × 36 | üst kol tüpünün malzemesi (PETG) | 17,9 / 14,3 g | 24 dk | dik, uç tablada; 5 mm brim |
-| **Toplam** (C bir kez) | | | **205 / 104 g** | **~3 sa** | C ikinci malzemede +7,5 g, +13 dk |
+| **Toplam** (C bir kez) | | | **210 / 106 g** | **~3 sa** | C ikinci malzemede +7,5 g, +13 dk |
 
 Tahmin: 4 çevre + %25 dolgu, 10 mm³/s ortalama debi (`arayuz.PETG_HACIM_HIZI`, tahmini) × 1,3 hareket payı. Dilimleyicinin
 verdiği değer esastır. Kuponları gerçek parçalarla aynı profille basın (katman, çevre sayısı, sıcaklık); yoksa sonuç aktarılmaz.
@@ -91,21 +88,22 @@ taşmıyor; tork altında dönme yok; yatay tepede çatlak yok.
 
 Neden: G ve K çekincesi (`planlama/adim1/G-takip.md`, `planlama/adim2/K-kontrol.md`). 4 mm yarık kapanınca bileziğin iç
 yarıçapı 0,637 mm düşer. Toplam radyal boşluk 0,5 mm (tüp–pim 0,25 + tüp–bilezik 0,25), yani ideal ön yük 0,137 mm. Ama
-bilezik kökte (y −140) alın kapağına bağlı olduğu için kapanma kökte sıfır, uçta en büyük. Doğrusal kabulle tüp pime
+bilezik kökte (y −170) alın kapağına bağlı olduğu için kapanma kökte sıfır, uçta en büyük. Doğrusal kabulle tüp pime
 yalnız uçtaki ~5,6 mm boyunca bastırılır.
 
-- **D1** gerçek çatalın y −148…−115 dilimidir: alın kapağı, köprü bandı, 45° destek, pim (içi boş, 45° tavan), 4 mm yarıklı
+- **D1** gerçek çatalın y −178…−145 dilimidir (tüp ucu −170; 125 cm'de −148…−115): alın kapağı, köprü bandı, 45° destek, pim (içi boş, 45° tavan), 4 mm yarıklı
   bilezik, kulaklar, 2 × M3 deliği, M1 kablo oluğu. Ölçüler `arayuz.DIRSEK`, `GECME`, `TUP_PIM_R`; arayüzde olmayanlar
   `dirsek_parcalar.py` 97–127. satırlarla aynıdır.
-  - **Doğrulama:** `dirsek-montaj.FCStd` içindeki "Dirsek catali" aynı dilimle kesildi. Hacim 69.176,9 mm³, iki yönlü fark
-    0,000 mm³ (`m7-kupon-sonuc.json` → `d1_fcstd_dogrulama`). Çatal değişirse betik bunu yakalar.
+  - **Doğrulama:** `dirsek-montaj.FCStd` içindeki "Dirsek catali" aynı dilimle kesildi. Hacim 71.079,65 mm³ (19 Kasım,
+    P10.8c), iki yönlü fark 0,000 mm³; import edilen `dirsek_parcalar` çatalıyla da 0 (`m7-kupon-sonuc.json` → `d1_fcstd_dogrulama`;
+    pim, bilezik, yarık ve kelepçe deliklerinin kuponla gerçek çatalda aynı yöntemle ölçümü `arayuz_olcum`). Çatal değişirse betik bunu yakalar.
 - **D2:** D1 + kökte boşaltma (K önerisi: bilezik kapaktan ~270° ayrılsın).
   - Desteksiz basılsın diye ayrılma yatay bir kesik değil. Kapak boyunca **dik halka yarığı**: r 28,1…29,3 (1,2 mm), θ −225…45°
     (θ tüp ekseni çevresinde −Z'den +X'e). Ölçülen bağlı sektör θ 45…120°.
   - Bağlı sektör bilerek **+X köprü bandına** (θ 59…121) konuldu. Gerçek çatalda dış kol ve horn yükü pime köprü üzerinden
     gider, bu yol kesilemez. Bu yüzden simetrik "ön 90° bağlı" seçenek gerçek parçaya uygulanamaz.
   - Tüp alın yuvasında V oluk yerine pimden dışa yükselen 45° koni tavan var (askıda kenar kalmasın diye). Bu yüzden tüp
-    0,25 mm daha derine (y −140,25) oturur. Kavrama testine etkisi yok.
+    0,25 mm daha derine (y −170,25) oturur. Kavrama testine etkisi yok.
 - **E:** tüp halkası, r 25,65…28 (`TUP_PIM_R + GECME['tup_pim']` … `DIRSEK['tup_ro']`), 36 mm boy. 25 mm bileziğe girer,
   dışarıda kalan 11 mm'nin ortasında Ø6 kol deliği var.
 - Geometri kontrolü: tüp, iki bilezikle de çakışmıyor (0 mm³). Yarık uçta ve kökte 4,0 mm (açık hâl).
@@ -122,7 +120,7 @@ yalnız uçtaki ~5,6 mm boyunca bastırılır.
 3. **Boya:** tüpün dış yüzüne ve iç yüzüne kalemle dört boyuna şerit çizin: yarık tarafı, karşısı ve iki yan. Tüp ağzıyla
    bilezik ağzının üstüne tek bir hiza çizgisi çizin.
 4. **Sıkma:** iki cıvatayı sırayla, kulaklar değene kadar ya da belirgin sertleşene kadar sıkın (M3 plastikte ≈ 0,6 N·m,
-   tahmini). Kalan yarığı sentille ölçün: uçta (y −121 cıvatası, ağız tarafı) ve kökte (y −132 cıvatası, kapak tarafı).
+   tahmini). Kalan yarığı sentille ölçün: uçta (y −151 cıvatası, ağız tarafı) ve kökte (y −162 cıvatası, kapak tarafı).
    Kulaklar değdiyse not edin.
 5. **Sarsma:** tüpü elle her yöne eğin. Tıkırtı ya da boşluk var mı?
 6. **Eksenel:** kupon kapak üstte sabitlenir, tüp aşağı sarkar. Ø6 delikten iple 3 kg asılır, 60 s beklenir. Hiza çizgisinin
@@ -252,8 +250,7 @@ gerçek bant da kalır.
   Bunlar için sonuç bu kupondan **çıkarımdır, deneme değildir**. Dil, boşluk ve duvar bütün bantlarda aynı (`KABUK_BINDIRME` 12,
   `KABUK_BINDIRME_BOSLUK` 0,25, `KABUK_T` 3), ama girişim ve engel bant başına farklı. Sol göğüs bandı +y yolunda sağ bantla da
   1–19 mm ortak hacimli (F10d § 11.5); bu kuponda yok.
-- Etek ön için rehberin sözünü verdiği "somun takılıyken" kuponu yok. Engel 2 mm alüminyum L braketteki M3 perçin somunu; aynı kalıpla
-  basılabilecek bir eş yok. Açık iş olarak kuyrukta (`karar-kuyrugu.md` "Karar değil, iş").
+- Etek ön bandının kendi kuponu ayrı: `../kabuk/etek_kuponu.py` (19 Kasım, P10.8c; aşağıda "K55 etek ön bandı kuponu").
 
 **Neden iki yol.** Rehber F3 (adım 35) "Göğüs bandı sağı +x'ten getir … dilini orta bandın arkasına sok" diyor. Geometride durum
 bunun tersi. Dil orta bandın iç yarısı; göğüs bandının alt kenarı dış yarıdır (dudak) ve dilin dışından geçer (yan hatta dil x 147,1–148,4,
@@ -279,7 +276,8 @@ rehberdeki yolun kendisini sınar.
 - **Deneme 1 geçmez** (dil ya da dudak kırılır, ön bölüm girmez ya da dikiş açık kalır): K55 b sonraki geometri paketinde uygulanır. Dilde
   pah ya da ön / arka yarıda ters bindirme olur. Değişecek yer bindirme dili (`kabuk_parcalar.py` dil bölgesi; `arayuz.KABUK_BINDIRME` 12,
   `KABUK_BINDIRME_BOSLUK` 0,25); kabuk çakışma taraması gerekir. Hangi bölümün takıldığını (ön / yan / arka) yazın.
-- Her iki durumda sol yarı, x = 0 dikişi, etek ön, omuz ve çerçeve için yazılan sonuç "sağ yarı kuponundan çıkarım" diye işaretlenir.
+- Her iki durumda sol yarı, x = 0 dikişi, omuz ve çerçeve için yazılan sonuç "sağ yarı kuponundan çıkarım" diye işaretlenir (etek ön
+  kendi kuponuyla denenir, aşağıda).
 
 | Tarih | Malzeme | Deneme 1 +y (elle / zor / girmedi) | Takılan bölüm | Dikiş aralığı ön / yan / arka | 3 tekrar sonrası dil | Deneme 2 +x (durduğu yer, kol) | Not |
 |---|---|---|---|---|---|---|---|
@@ -287,15 +285,54 @@ rehberdeki yolun kendisini sınar.
 
 Gerekenler: sentil, kumpas. İnsert ve vida gerekmez; dilimdeki ısıl gömme boss'ları ve delikleri kullanılmaz.
 
+## K55 etek ön bandı kuponu (`../kabuk/etek_kuponu.py`, 19 Kasım, P10.8c)
+
+Rehber F1 (adım 33) ön sağ / sol bandı "yerinin 10 mm önünde yandan getir, sonra önden içeri (−z) it" diye takar. Son 10 mm'de engel
+z +105 L braketinin M3 perçin somunu flanşı. Kupon gerçek parçaların dilimi (`kabuk-montaj.FCStd`, sağ):
+- **Üst parça** (`../kabuk/stl/etek-kuponu-ust.stl`, 8,0 × 42,5 × 29,5 mm, ≈ 3,6 g, 6 dk): "Etek on sag" dilimi; dudak, z +105 boss'u,
+  flanş cebi, Ø3,4 geçiş.
+- **Alt parça, flanşlı** (`etek-kuponu-alt-flansli.stl`, 20,0 × 52,5 × 33,0 mm, ≈ 8,8 g, 15 dk; **ilk deneme bununla**): "Etek orta sag" dilimi
+  (dil) + "Etek braketi sag z+105" dik ayağı + perçin somununun CAD şekli tek parça + taşıyıcı (ayak arkasında blok, üstte plaka).
+- **Alt parça, delikli** (`etek-kuponu-alt.stl`, ≈ 8,6 g): aynı, ayakta Ø5,1 delik; gerçek M3 perçin somunu takılır (perçin aleti gerekir).
+
+Modelde rehberin yolu kuponda ve tam bantla aynı ortak hacim eğrisini veriyor: yan bacak serbest, −z bacağında perçin somunu dz
+0,5–8,5 mm, en çok 10,0 mm³; yerinde 0 (`../kabuk/etek-kuponu.json` `yol`).
+
+**Sınır.** Dilim kısa (y 106,5–136) ve gerçek banttan serttir; taşıyıcı gerçek braketten serttir. Elde serbest tutulan dilim flanşın üstünden döndürülerek geçirilebilir, gerçek bant (234 × 175 mm, z +88 dikişine bağlı) geçirilemez. Bu yüzden 'geçti' yalnız aşağıdaki kısıtlı hareketle gerçek bant için kanıt sayılır. 'Geçmedi' gerçek bant için kesin değildir (gerçek bant esneyebilir): belirsiz, K55 b. Kupon sağ banttan kesildi; sol bant için sonuç ayna çıkarımıdır.
+
+**Malzeme.** Kuponda perçin somunu PETG ayağa takılır, gerçek parçada ayak 2 mm alüminyumdur: sıkınca ayak ezilebilir ya da çatlayabilir, flanş yüksekliği gerçektekinden farklı olabilir. İlk deneme flanşlı biçimle (alet istemez); delikli biçim perçin somunu ve aleti gelince, flanşın ayak üstündeki yüksekliği kumpasla ölçülerek (tasarım 0.8 mm).
+
+**Baskı.** PETG, bant yönünde (ters). Üst parçanın tablaya teması dar (3 × ≈ 36 mm, boy 29,5 mm): brim (≥ 5 mm) önerilir.
+
+**Test (hareketi kısıtlı):**
+- Alt parça (ilk deneme flanşlı biçim) üst plakası alta gelecek şekilde mengeneye ya da masaya kıskaçla sabitlenir; dil ve braket ayağı serbest kalır.
+- Üst parçanın dış yüzü (dudak yüzü) düz bir takoza (cetvel ya da tahta blok) bant / yapıştırıcıyla tutturulur; üst parça yalnız takozdan itilir, elle eğilmez, döndürülmez. Takoz yüzü alt parçanın dış duvarına paralel tutulur.
+1. Üst parçayı yerinin 10 mm önünde (dikişten 10 mm uzakta) alt parçanın +x yanına koy; yalnız x ekseninde (−x yönünde) kaydırarak duvar hizasına getir. Model: bu bacak serbest.
+2. Yalnız −z yönünde (dikişe doğru) 10 mm it; takoz duvara paralel kalır, üst parça dönmez. Model: dz 0,5–8,5 mm arasında perçin somunu flanşı ile en çok 10,0 mm³ ortak hacim.
+
+**Geçti:** Elle itişle (alet ve çekiç yok) dudak dikişe oturur: dikiş aralığı ≤ 0,5 mm (sentil), boss deliği somunla eksenli (M3×14 elle girer); flanşta, boss'ta ve dudakta beyaz iz, çatlak ya da kalıcı eğilme yok. Üç kez sök-tak, aynı sonuç.
+
+**Geçmedi:** Elle itişle oturmaz, ancak üst parça döndürülerek / eğilerek geçer, ya da beyazlama / çatlak çıkar. Sonuç belirsiz sayılır (gerçek bant esneyebilir): K55 b ya da tam bantla deneme.
+
+**Sonuca göre:** Geçti: K55 a etek ön için kalır; rehber F1 'kuponla denenmedi' notu 'kuponla denendi (tarih)' olarak yeniden yazılır. Geçmedi: belirsiz; K55 b (tasarım değişikliği) ya da gerçek bantla deneme, karar Ahmet'te.
+
+Sonuç bu tabloya yazılır:
+
+| Tarih | Malzeme | Biçim (flanşlı / delikli) | Hareket 1 (x) | Hareket 2 (−z): oturdu / takıldığı dz mm | Dikiş aralığı | İz / çatlak | Not |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+
+Gerekenler: mengene ya da kıskaç, düz takoz, sentil, kumpas; delikli biçim için M3 perçin somunu (düz flanşlı, 2 mm Al için) ve perçin
+aleti; M3×14 ISO 7380.
+
 ## Kupon tazeliği denetimi (`kupon_tazelik.py`, 19 Kasım)
 
 Kupon betikleri ölçüyü kaynak parçadan okur. Kaynak değişirse kupon, betik yeniden koşulana kadar eski kalır. Denetim FreeCAD istemez
 ve depoya yazmaz:
-- yanak ve bant kuponlarında JSON'daki kaynak FCStd md5'ini ve STL md5'ini bugünkü dosyalarla karşılaştırır;
-- M7'de `m7-kupon-sonuc.json` `arayuz` bloğunu bugünkü `arayuz.py` ile karşılaştırır. Fark, `arayuz_fark_bugun` kaydıyla
-  (anahtar, kayıtlı eski değer, o günkü değer) tam aynıysa "BİLİNEN ESKİ" diye yazılır; bugün `DIRSEK.tup_uc_y` −140 → −170. Bugünkü
-  değer o kayıttan farklıysa ya da kayıtta olmayan bir anahtar değiştiyse "YENİ ESKİME" olur.
+- yanak, bant ve etek ön bandı kuponlarında JSON'daki kaynak FCStd md5'ini ve STL md5'ini bugünkü dosyalarla karşılaştırır;
+- M7'de kaynak `dirsek-montaj.FCStd` md5'ini, kupon STL md5'lerini ve `arayuz` bloğunu bugünkü `arayuz.py` ile karşılaştırır.
+  19 Kasım P10.8c'den beri "BİLİNEN ESKİ" istisnası yok (D / E onarıldı): her fark ESKİ.
 
-`py -3 tasarim/freecad/test/kupon_tazelik.py` (depo kökünden). Çıkış 0: taze (bilinen eski olabilir); 1: en az bir eski ya da yeni eskime. `--kati` ile
-bilinen eski de 1 verir. Zincire bağlı değil; kupon basmadan önce ve kafa ya da kabuk değişen her paketin sonunda elle koşulur. Eski
-çıkarsa ilgili kupon betiğini yeniden koşun (`../kafa/yanak_kuponu.py`, `../kabuk/bant_kuponu.py`, `m7_kuponlari.py`).
+`py -3 tasarim/freecad/test/kupon_tazelik.py` (depo kökünden). Çıkış 0: taze; 1: en az bir eski ya da eksik dosya. `--kati` artık
+etkisiz (uyumluluk için kabul edilir). Zincire bağlı değil; kupon basmadan önce ve kafa ya da kabuk değişen her paketin sonunda elle koşulur. Eski
+çıkarsa ilgili kupon betiğini yeniden koşun (`../kafa/yanak_kuponu.py`, `../kabuk/bant_kuponu.py`, `../kabuk/etek_kuponu.py`, `m7_kuponlari.py`).

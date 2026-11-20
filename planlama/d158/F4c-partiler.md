@@ -9,7 +9,7 @@ QLED, uzatma bandı, hoparlör ve hub adımları henüz yok). Toplamların doğr
 
 | Parti | Ne zaman | Adet | PETG | PETG-CF | Toplam | Süre | Durum A takvimi (`proje-plani.md`) |
 |---|---|---|---|---|---|---|---|
-| Parti 0 | İlk gün (S'den önce) | 8 baskı (6 kupon) | 0,08–0,12 kg | 0,18–0,30 kg | 0,26–0,42 kg | ≈ 7,3–11,9 sa | S = 16.11 için 9–10.11 (proje-plani.md, Durum A) |
+| Parti 0 | İlk gün (S'den önce) | 8 baskı (6 kupon) | 0,08–0,12 kg | 0,18–0,31 kg | 0,26–0,42 kg | ≈ 7,4–12,1 sa | S = 16.11 için 9–10.11 (proje-plani.md, Durum A) |
 | Parti 1 | Hemen (Parti 0 sonucu CAD'e girip STL çıkınca) | 27 | 3,19 kg | 0,18 kg | 3,37 kg | ≈ 70,2–70,3 sa | ≈ S−0,5 → S+1,5; akü takozu (Parti 4) bu partinin arasında basılır |
 | Parti 2 | Servo ve horn gelip kumpasla ölçülünce | 25 | 0,32 kg | 1,02–1,07 kg | 1,33–1,39 kg | ≈ 27,9–29,0 sa | ≈ S+1,5 → S+2,3 |
 | Parti 3 | QLED gelip ölçülünce | 9 | 0,76 kg | 0,00 kg | 0,76 kg | ≈ 15,7 sa | ≈ S+2,3 → S+2,8 |
@@ -30,14 +30,12 @@ Sonrası: Sonuç CAD'e (arayuz.INSERT_DELIK, rulman yuvaları, GECME) → STL d�
 | B | `kupon-b-yuva-mil-somun.stl` | PETG | aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri) | 60,0–87,8 | 1,71–2,50 | aynı |
 | C | `kupon-c-isil-gomme-L1.stl` | PETG-CF | Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,6…6,8, yatay + dikey | 7,4–13,2 | 0,21–0,38 | m7-kupon-sonuc.json |
 | C | `kupon-c-isil-gomme-L1.stl` | PETG | aynı kupon beyaz PETG'de | 7,4–13,2 | 0,21–0,38 | m7-kupon-sonuc.json |
-| D1 | `kupon-d1-kelepce-kesiksiz.stl` | PETG-CF | Dirsek kelepçesi (çatal dilimi), kesiksiz | 40,9–87,9 | 1,16–2,50 | m7-kupon-sonuc.json |
-| D2 (koşullu) | `kupon-d2-kelepce-bosaltmali.stl` | PETG-CF | Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma) | 41,4–86,2 | 1,18–2,45 | m7-kupon-sonuc.json |
+| D1 | `kupon-d1-kelepce-kesiksiz.stl` | PETG-CF | Dirsek kelepçesi (çatal dilimi), kesiksiz | 41,8–90,3 | 1,19–2,57 | m7-kupon-sonuc.json |
+| D2 (koşullu) | `kupon-d2-kelepce-bosaltmali.stl` | PETG-CF | Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma) | 42,3–88,6 | 1,20–2,52 | m7-kupon-sonuc.json |
 | E | `kupon-e-tup-halkasi.stl` | PETG | Üst kol tüpü halkası (tüp–pim / tüp–bilezik geçmesi) | 14,3–17,9 | 0,41–0,51 | m7-kupon-sonuc.json |
-| **Toplam** | | | | **257,4–420,0** | **7,32–11,94** | PETG 81,7–118,9 g, PETG-CF 175,7–301,1 g |
+| **Toplam** | | | | **259,2–424,8** | **7,37–12,08** | PETG 81,7–118,9 g, PETG-CF 177,5–305,9 g |
 
-Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/s × 1,3; alt değer tahmini kütle, üst değer %100 dolu. Dilimleyicinin verdiği esastır. D2 basılmazsa (D1 geçerse) ≈ 6,1–9,5 sa. `proje-plani.md`'deki "≈ 3 sa" yalnız M7 kuponları (C bir kez, D1, D2, E); A, B ve iki malzemeli B/C eklenince ≈ 7,3 sa (tahmini kütleyle).
-
-**Uyarı (D1 / D2 / E eski):** bu üç kupon 15.10 koşusundan (Y2a öncesi dirsek); o günden beri `DIRSEK["tup_uc_y"]` -140 → -170 değişti. `m7_kuponlari.py`'nin D / E bölümü bugünkü dirsekle koşmuyor (açık iş, `karar-kuyrugu.md` "Karar değil, iş"). Basmadan önce yeniden üretilmeli ya da bilerek eski hâliyle basılmalı. Denetim: `py -3 tasarim/freecad/test/kupon_tazelik.py`.
+Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/s × 1,3; alt değer tahmini kütle, üst değer %100 dolu. Dilimleyicinin verdiği esastır. D2 basılmazsa (D1 geçerse) ≈ 6,2–9,6 sa. `proje-plani.md`'deki "≈ 3 sa" yalnız M7 kuponları (C bir kez, D1, D2, E); A, B ve iki malzemeli B/C eklenince ≈ 7,4 sa (tahmini kütleyle).
 
 **Isıl gömme (K31 açık; A/B/C seçeneğine göre kupon):**
 
