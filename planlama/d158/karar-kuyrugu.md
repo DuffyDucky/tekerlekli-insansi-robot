@@ -79,11 +79,12 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K64 | Bara tutucusu (yıldız barası + anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça): panelde yeri, bağlantı elemanı ve CAD'i yok | kapandı (16.11; orkestratör kararı (Echo); a: tam taramalı CAD paketinde tasarlanıp basılır, satın alma yok; o zamana dek rehber B5a talimat yazmaz; P10.7b2e kısım 2) | — | — |
 | K65 | Sağ / sol tanımı: CAD'de sağ (+X) robota önden bakanın sağı = robotun kendi solu; ESP32 yazılımı robotun kendi sağını kullanıyor | kapandı (16.11; orkestratör kararı (Echo): donanım adları korunur, rehber / kablo tablosu / pin haritasına tanım cümlesi, K1'e kurulum testi; yazılım düzeltmesi Efe'de, iş; P10.7b2e kısım 2, `planlama/d158/sag-sol-karari.md`) | — | — |
 | K66 | ESP32 VIN'e seri Schottky: çevre 5 V → 1N5819 → VIN (çevre hat sigortası atınca geri besleme; pano #7 mesaj #26 madde 3 / #28) | kapandı (16.11; orkestratör kararı (Echo): seri 1N5819, anot çevre 5 V, katot VIN; tezgâh denemesine bağlı kabul, VIN payı tutmazsa geri alınır; malzeme 1N5819 1 → 2, +1,22 TL; P10.7b2f kısım 2) | — | — |
+| K67 | M3x8 naylon kart burcu: CAD'de 52, sipariş listesinde 48 | **açık** (P10.8d; alım sorusu, Ahmet'te) | b: listede 56 (4 yedek korunur), +14,64 TL | Taban güç paneli kartları (B5a), sipariş listesi |
 
-**Açık: 26.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
+**Açık: 27.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
 K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
-K55 ölçüme ya da kupona bağlı kabul). Toplam 66 madde
-(16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
+K55 ölçüme ya da kupona bağlı kabul). Toplam 67 madde
+(21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
 17.11.2026, P10.9b: 22 madde kapandı, 5 maddenin teknik yarısı karara bağlandı; özet tablosunun satırları tek tek sayıldı).
 
 **P10.9b (17.11.2026, üretimsiz kayıt paketi):** Ahmet 17.11.2026 02:36'da orkestratöre "benim yerime karar verebileceğin şeyler varsa
@@ -158,6 +159,9 @@ sayfa. Orkestratörün altı kararı (karar: orkestratör, 15.11; `kablolar.json
 (P10.7b2a); günlük `planlama/d158/F10i-gunluk.md` § 2. Tur sayısı K62'ye not (Ahmet'in bilgisine).
 P10.7b2b (kayıt kapanışı, üç metin kusuru, denetim dişleri; 15.11.2026, kaynak düzeyinde) yeni madde açmadı; kontrol-3 ve kontrol-4'ün
 açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılanlar işaretli; günlük `planlama/d158/F10j-gunluk.md`.
+P10.8d (CAD açıkları, 20.–21.11.2026; `d2c6776`) → K67 (naylon kart burcu; `planlama/d158/P108d-gunluk.md` § 7, § 11; `P108d-kontrol.md`
+§ 5 madde 7); günlük § 11'in öbür metinleri K53, K64 ve sondaki bölüme not oldu (21.11 kayıt eşitlemesi, P10.8e'ye göre güncellenerek).
+P10.8e (rehber açıkları, 21.11.2026; `1db7a9c`) yeni madde açmadı; açık işleri sondaki bölümde (`P108e-gunluk.md` § 11, `P108e-kontrol.md` § 7–§ 8).
 
 ---
 
@@ -1132,6 +1136,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   kesilmedi; değişiklik lazer kesim dosyası çıkmadan uygulanmalı. Yalnız öneri; karar Ahmet'te.
 - **İlgili not (F10b'den bağımsız, ayrı iş):** burç 2 bugün de güç panelindeki akü kablo yarığının (x −80…−40, z −37…−23) üstünde: panele
   oturma %39 (7,484 / 19,129 mm²), alt vida başı %26 (6,28 / 23,758 mm²), delik yarığa açık (`on_sarj_oturma`). Seçenek a bunu çözmez.
+  P10.8d (20.11): burç 2 deliği z −23,5 → −18,5 taşındı; panel oturması 0,391 → 0,895, alt vida başı 0,264 → 0,618 (engelsiz delikle
+  aynı). K53'ün kendisi (ön burçlar, çentik) değişmedi.
 - **Bloke:** elektronik katının lazer kesim dosyası; rehber B6 adımı (F10c); çakışma taraması kaynağı (a / b / c'de).
 - **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): a + iii**: elektronik katında 1,5 mm çentik (x −136…−60,75, yana açık), bir sonraki
   tam taramalı CAD paketinde, lazer kesim dosyası çıkmadan önce; o zamana dek rehber B6 notu. Uygulaması açık: `arayuz.py`,
@@ -1139,7 +1145,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Uygulama (19.11.2026):** P10.7b2j'de modele girdi (`arayuz.TABAN["kat_on_centik"]` x −136…−60,75, kat kenarı z 25,75; iniş
   boyunca ortak hacim 0, en küçük boşluk 0,5 mm, `F10s-K53-olcum.json`; `F10s-gunluk.md` § 2, kontrol `F10t-gunluk.md` § 1.4). Rehber
   B6 notu P10.7b2k'da "çentik var (K53 a)" oldu (`F10u-gunluk.md` § A1). Birleşme, üretim ve lazer kesim dosyası açık; burç 2 oturma
-  sorunu ayrı iş olarak açık.
+  sorunu ayrı iş olarak açık. → 21.11: burç 2 kapandı (P10.8d `d2c6776`, yukarıdaki ilgili not).
 
 ---
 
@@ -1438,6 +1444,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     kat kesiğinin dışından deliyor (eski kusur; `F10v-gunluk.md` "önceden olan"). Rehber K1 17.10 ve iki şema adı "kablo ön kat
     kesiğinden geçer; çizimdeki yol kesiğin dışında görünür" diyor. Kapanış: `taban_parcalar.py` YOL 11 / 12 kesikten geçirilir
     (izlenen dosya: taramadan sonra, yeni CAD turu), not kalkar.
+    → P10.8d (20.11, `d2c6776`): CAD tarafı kapandı: yol 11 ve 12 katı ön kesikten geçiyor, yabancı parçaya ortak hacim 0. → P10.8e
+    (21.11, `1db7a9c`): rehber metni (`rehber_metin.py` K1 17.10 ve iki şema adı) ve `rehber_denetim.py` ZORUNLU kuralı yeni duruma
+    çevrildi (`P108e-gunluk.md` § 3). **Kapandı.** Bilgi: 17.10 karesinde kesikten geçiş kareden seçilmiyor (`P108e-kontrol.md` B3).
   - **Not (düzeltme turu 3):** `F10v-gunluk.md` yol tablosunda yol 4'ün yabancı saplamaya uzaklığı "> 15 mm" yazıyor; kontrol ölçtü:
     yıldız 3 civata / somununa 6,0 / 6,1 mm (eşiğin üstünde, sonuç değişmez). Düzeltmeyi kapanış ajanı commit'ten önce yapar
     (`F10u-gunluk.md` § 7.8). → 19.11 kapanış (F10y): yapıldı.
@@ -1487,6 +1496,22 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   yok; rehber yalnız yönü ve adımı (B6a, X01) söyler. Tezgâh denemesinin hangi test kâğıdına gireceği açık (aday: `kablolama-on-kararlar.md`
   KT5, hub girişi denemesiyle aynı kurulum). Algılama (sonar zaman aşımı) yazılımda, Efe'nin tarafı.
 - **Durum:** kapandı (16.11.2026; tezgâh denemesine bağlı kabul).
+
+## K67 · M3x8 naylon kart burcu: CAD'de 52, sipariş listesinde 48 (P10.8d)
+- **Soru:** P10.8d güç paneline iki kart ekledi (acil stop düğüm kartı, dağıtım kartı C), ikisi de dörder burçla. CAD'de M3x8 naylon burç
+  44 → 52 oldu (`tasarim/freecad/montaj/robot-bom.csv` "M3x8 naylon burc" 52, hepsi tabanda; P10.8c commit'inde 44). Sipariş listesinde
+  "Kart burcu seti" (8 mm M3 dişi-dişi plastik aralayıcı) 48 adet, tanesi 1,83 TL (`planlama/maliyet.json`). Liste 4 eksik. Listede kaç
+  adet olsun?
+- **Seçenekler:**
+  a) 52 (CAD kadar, yedeksiz): +4 adet, +7,32 TL (pay hariç).
+  b) 56 (P10.8d'den önceki fark korunur: liste CAD'den 4 fazlaydı, 44 / 48): +8 adet, +14,64 TL (pay hariç).
+  c) Liste 48 kalsın; eksik 4 burç kartlar yapılıp burç boyu ölçüldükten sonra ayrı alınır.
+- **Bilinmesi gereken:** iki yeni kartın ölçüsü ve burç / vida boyu TAHMİN, kart yapılınca ölçülecek (`P108e-kontrol.md` § 7 B1).
+  16.11 siparişinin verilip verilmediği kayıtta yok (K27–K37'nin ortak ön sorusu); verildiyse eksik burçlar ayrı alınır. Başka modülde
+  M3 naylon burç yok (`robot-bom.csv`'de tek satır).
+- **Önerilen varsayılan:** b. Yalnız öneri; karar Ahmet'te. `maliyet.json` değişmedi.
+- **Kaynak:** `planlama/d158/P108d-gunluk.md` § 3 (BOM farkı), § 7, § 11; `P108d-kontrol.md` § 5 madde 7.
+- **Durum:** açık (21.11.2026, kayıt eşitlemesinde açıldı).
 
 ---
 
@@ -1701,6 +1726,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     yeşili / servo sarısıyla ayrıldı); açık HDMI #193cff; kontrol-5'in ASCII kapsamı (`app.js`, `yazdir.html`, kol lejantı). Üretimde kare
     bakışı yapıldı (`F10i-gunluk.md` "Üretim ve zincir"). **Açık kalan:** E4 genel bakış lejantı (örtülme ölçümü ister), G3 (40.2) renk, AWG kademeleri, E4.3 USB ses kartı, G19 / G20 /
     G24 / G26 eşleme, `TABAN_DISI_BOLGE`, acil stop düğümü CAD modeli, gerilimler yer tutucuda değil, 21 muaf, yeni talimatların 3B şeması.
+    → P10.8d (20.11, `d2c6776`): acil stop düğüm kartı modelde: güç panelinde (−118; −90), 30 × 30 (zarf, kütle TAHMİN), röle K1 ile ön
+    şarj kartı arasında; CAD yol 10 röleden sonra karta uğrar. → P10.8e (21.11, `1db7a9c`): rehber `PARCA_CAD` / `UC_ETIKET` modele
+    bağlandı, hata yok (`P108e-gunluk.md` § 3). **Acil stop düğümü CAD modeli kapandı;** kartın gerçek ölçüsü kart yapılınca. Alım sorusu
+    (taban naylon burcu 44 → 52) K67'de.
 - **P10.7b2a orkestratör kararları (karar: orkestratör, 15.11; `kablolar.json` `kararlar` P7b2a-1…6; K numarası almadı):** K2 G10 → COM,
   NO → 5,6 Ω, NC boş; K1 30 → 87; hat sigortaları bara (kaynak) ucunda; anahtarlı bara yerleşimi en düşük en kötü köprü akımıyla (hepsi
   20 A, öneri korundu, pay 0,5 A); tek yönlü TVS katodu (bantlı uç) artı hatta, elektrolitik eksi şeridi GND'de; G07 direnç bacağı halka
@@ -1713,6 +1742,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     özelliğe atanan dizge (tek sözcük de) ve `rehber/index.html` sınamada; yeni yakalanan 7 doğru Türkçe sözcük ("Robotun neresi"nin "neresi"si dahil) gerekçesiyle izinli
     listede, yanlış alarm 0; bozma 10 (`F10j-gunluk.md` R6).
   - A12: dağıtım kartı C'nin güç panelindeki montaj yeri ve donanımı (burç / vida) yok; kart modelde de yok. CAD işi, sonraki paket.
+    → P10.8d (20.11, `d2c6776`): dağıtım kartı C modelde: güç panelinde XL4016 C'nin arkasında, x 94…130, z −92…−62 (36 × 30, zarf ve
+    kütle TAHMİN), 4 × M3x8 naylon burç, M3x6 üst / M3x8 alt DIN 912. SV3 şemasının ucu karta 3,0 mm. → P10.8e (21.11, `1db7a9c`): rehber
+    `PARCA_CAD` modele bağlandı, SV3 hatası 0; yol 6 karta ulaşmadığı için S09 / S10'un kart yanı `GEO_YAN_ELLE` ile "elle bakıldı"
+    (`P108e-gunluk.md` § 3). **A12 kapandı.** Açık: CAD yol 6'nın karta indirilmesi (CAD paketine devredildi, aşağıda P10.8e bölümü).
   - Kondansatörde yedek yok: sipariş 5, kullanım 5 (A ve B'de ikişer, C'de bir; `planlama/adim3/kablolar.json` `kondansatorler`).
     Ters takılan ya da lehimde ısınan bir kondansatörün yerine yenisi yok; sipariş listesine yedek eklemek proje sahibinin kararı.
 - **P10.7b2a ikinci bağımsız kontrolünden açık iş (15.11.2026; `planlama/d158/F10i-kontrol-2.md` §5, §6, §7; düzeltme turu 2'de
@@ -1782,6 +1815,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - "ESP32 USB" şemasının (U06) taban ucu (51,6; 190; −120) ESP32'ye 115 mm uzak (ESP32 9 Ekim'den beri (80; 75)'te, şema 5 Kasım'da
     çizildi): şema yeniden çizilmeli (`kablo_yolu_ekran.py`); bugün `SEMA_GEO_ISTISNA` gerekçesiyle geçiyor.
   - 11 yeni taban şeması (`lale158/kablo_yolu_taban.py`) çarpışma taramasından geçmedi; `lale158_kontrol` bu kaynağı da tarasın.
+    → P10.8d (20.11, `d2c6776`): 16 / 16 şema tarandı (`P108d-gunluk.md` § 4): 14 temiz; G07 (y 184'te bara tutucularının içinden) ve
+    G16 (gövde direğinin içinden) şema düzeltmesi istedi. → P10.8e (21.11, `1db7a9c`): G07 / G16 katı dışında (ara 4 + 1 → 0, en dar
+    4,0 / 5,5 mm; `P108e-gunluk.md` § 4). Tarama kapandı. Açık: tarama tek seferlik ölçüm betiğiyle yapıldı, `lale158_kontrol`'e
+    bağlanmadı.
   - Çizilen sayımı (62 / 12) gösterim şemasını taranmış CAD yolundan ayırmıyor (62'nin 11'i taranmamış şema).
   - Şema sınamasında fiş boyları (Pi micro HDMI, ReSpeaker micro USB) bilinmiyor: üç mevcut şema fiş istisnasıyla geçiyor (TAHMİN; kablo
     gelince ölçülecek). "Eşlemesiz şema" denetimi yalnız `taban` kaynağının bütün kimliklerini arıyor.
@@ -1799,6 +1836,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     F10r-gunluk § 2).
   - 5 yeni kafa içi / ses şeması (`lale158/kablo_yolu_kafa.py`) çarpışma taramasından geçmedi; kafa giriş kartının yeri, SY8205 /
     D24V50F5 / Pi USB-C / CSI / kamera konnektörü / ReSpeaker jakı / PAM giriş pedinin kart üstündeki yeri TAHMİN.
+    → P10.8d (20.11, `d2c6776`): bu 5 şema da tarandı (yukarıdaki 16 / 16; beşi temiz). Kafa giriş kartı ve konnektör yerleri hâlâ
+    TAHMİN: açık (parça bekler).
   - Ses bölücüsü masa denemesine (KT2) bağlı: KT2 sonucu gelince AU1 / AU2 şeması ve kaydı birlikte güncellenmeli (şema bölücüyü PAM'ın
     dibinde çiziyor).
   - Bağlantı tablolarında başlık pin sırası, dağıtım kartı C'deki pan / tilt giriş pininin numarası kayıtta yok (rehber "kayıtta yok"
@@ -1882,13 +1921,17 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     kontrol: E4 PAM8403 kafa kapandıktan sonra +x kapalı (sağ arka kabuğa 24 mm derinlik, 1.812 ışın), eşi masada +x açık.
   - **Açık (c):** CAD'de dikey dikiş bindirmesinin sırayı gerçekten zorlayıp zorlamadığını ölçmek (dikiş ölçümü). Rehber artık sırayı
     yalnız öneri olarak veriyor.
+    → P10.8d (20.11, `d2c6776`): ölçüldü (B-rep, yalnız iki kabuk): x −16…0 yarım bindirme (sol dış, sağ iç katman, 1,25 + 1,25 mm).
+    Sıra zorlanmıyor; sol önceyse sağ yalnız +x'ten girer (−z kapalı), sağ önceyse sol −x / −z'den. **Kapandı;** "önce sağ" kolaylık
+    önerisi olarak kalır.
   - `rehber_denetim --kaynak` yeni CAD ad / kodlarını görmedi (kaynakta ASCII 0, veride 10): kaynak modu CAD adlarını üretimden önceki
     veriden okuyor. Yeni modelden gelen kelimeler ancak FreeCAD üretiminden sonra yakalanıyor (bu kez `TR_EK`'e 9 kelime eklendi).
     → 19.11 P10.8b: **kapandı** (`cad_kaynak_metinleri`, FCStd'den üretimin adıyla; P108b § 4, § 14.2). Malzeme adları açık (aşağıda).
   - Kare okunurluğu: 17.1 ve 17.6 19.11'de düzeldi (odak + ön-üst kamera + Gövde direği saydam; F10y § 6). Açık: 17.4 ve 32.1'de
     saplama sırası bu ölçekte seçilemiyor; 17.10'da yol 11 / 12'nin kesikten geçişi ayırt edilemiyor (veri doğru, 2a hata 0).
     → 19.11 P10.8b: 17.4 (kamera, odak, saydam direk) ve 17.10 (önden-üstten kamera) kaynakta değişti, tam üretimde gözle bakıldı
-    (P108b § 5 ve Kapanış). **32.1 açık** (aşağıda).
+    (P108b § 5 ve Kapanış). **32.1 açık** (aşağıda). → 21.11: 32.1 P10.8e'de kapandı (aşağıda). 17.10: yol 11 / 12 artık CAD'de de
+    kesikten geçiyor (P10.8d), ama kare geçişi hâlâ göstermiyor (`P108e-kontrol.md` B3): açık, bilgi.
   - `kafa-yerlesim/rapor.html` HEAD hâlinde (ESP32 USB 971 / 1.360, ses kartı satırları); `uygulama-notu.md` yalnız ESP32 satırı elle
     güncel, ses kartı satırları (217 / 270, 3,5 mm → PAM, Pi 2) eski. Üretici düzeltilip ikisi birlikte yeniden üretilmeli (yukarıdaki
     açık iş).
@@ -1926,8 +1969,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     FCStd'den); 17.4 / 17.10 kamerası ve 17.11 U06 uç etiketi; D6 rehber tarafı (`{boy.<kimlik>}`). Tam üretim ve zincir: günlüğün
     "Kapanış" bölümü.
   - **32.1 karesi:** yol 5 / 7'nin anahtarlı 1'den çıkışı seçilemiyor; üç bakış denendi, değiştirilmedi (P108b § 5). Sahibine sorulacak.
+    → 21.11 P10.8e (`1db7a9c`): **kapandı.** Beş bakış denendi; seçilen tabana arkadan-üstten bakıyor: baranın saplamaları, yolun
+    baradan ve direğe çıkışı karede, omuz uçları kadraj dışı (`UC_ORTULU`; `P108e-gunluk.md` § 5, `P108e-kontrol.md` § 5). Soru gerekmedi.
   - **17.11'de U06 çizgisi:** karede yalnız uç etiketi ("ESP32"); çizginin kendisi `app.js`'e adım ötesi şema özelliği ister (U06'nın
     şeması 32.4'te; P108b § 5, karar 5).
+    → 21.11 P10.8e (`1db7a9c`): **kapandı.** Adım ötesi şema (`sema_on`): 17.11'de U06'nın taban bölümü çiziliyor (`P108e-gunluk.md` § 5).
   - **Ölçülmeyen yollar:** göğüs bandı sol 16 mm yanal yolu (metin yalnız 24 mm diyor; 24 B-rep ile serbest); F2 ve etek arka dikişleri
     (metinlerinde dil cümlesi yok) (P108b § 9, § 13.3).
   - **`--kaynak` CAD malzeme adlarını görmüyor:** `cad_kaynak_metinleri` yalnız etiket / kod; üretimde `malzeme` de görünür
@@ -1946,8 +1992,29 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - `kafa-yerlesim/uygulama-ivme.json` 09.11 koşusundan. Not kütleyi 26.120,6 g diyor; güncel montajla 26.235,1 g (fark 114,5 g).
     Devrilme payları yeni montajla hesaplanmadı. `uygulama_ivme.py` (FreeCAD, `montaj/moduller`) yeniden koşulmalı, sonra
     `uygulama_rapor.py` (`P108c-gunluk.md` § 12.1).
+    → 21.11: **kapandı.** `uygulama_ivme.py` P10.8d kontrolünde yeniden koşuldu (ızgara 1,519 → 1,523; `P108d-kontrol.md` § 3); not ve
+    rapor P10.8e'de yeniden üretildi (kütle 26.276,1 g, parça 1.251; `P108e-gunluk.md` § 6).
   - `planlama/d158/F4c-rapor.html` hiçbir betikle üretilmiyor ve Parti 0 sayıları P10.8c'den önceki (D1 40,9–87,9 g, D2 41,4–86,2 g,
     toplam 257,4–420,0 g). Tarihli eski görüntü diye bırakılsın ya da başına 'eski görüntü; güncel: baski-listesi.md /
     F4c-partiler.md' satırı eklensin.
   - `m7_kuponlari.py`'de satır içi sabitler kaldı. `dirsek_parcalar.py`'de de satır içi oldukları için okunamıyorlar; liste
     `P108c-gunluk.md` § 12.5'te. Koruma: D1 ↔ FCStd hacim karşılaştırması.
+
+**P10.8d / P10.8e kapanışından açık iş (21.11, `d2c6776` / `1db7a9c`; `planlama/d158/P108d-gunluk.md` § 7, `P108e-gunluk.md` § 11,
+`P108e-kontrol.md` § 7–§ 8; karar değil, iş)**
+  - **CAD paketine devir:** CAD kablo yolu 6 (`taban_parcalar.py` YOL[5]) yalnız boyun → kafa bölümünü çiziyor, güç panelindeki dağıtım
+    kartı C'ye inmiyor. Rehber S09 / S10'un kart yanını `GEO_YAN_ELLE` ile "elle bakıldı" taşıyor; yol çizilince kayıt HATA verir ve
+    kaldırılır.
+  - **Kartlar gelince:** acil stop düğüm kartı ve dağıtım kartı C'nin gerçek ölçüsü, zarfı, kütlesi ve burç / vida boyu (bugün TAHMİN;
+    üst vidanın boyu kart kalınlığına bağlı, `P108e-kontrol.md` B1). Burç adedi K67'de.
+  - **Rehber:** acil stop düğüm kartı B5a karesinde etiketsiz, yalnız metindeki yer tarifiyle seçiliyor; öneri B5a'ya `odak` / ad etiketi
+    (B2). B5a etkileşimli kipte kart C etiketi koyu temada siyah sigorta kutusunun üstünde düşük karşıtlıklı (B4, bilgi). 17.10'da yol
+    11 / 12'nin kesikten geçişi kareden seçilmiyor, dayanak P10.8d ölçümü (B3, bilgi).
+  - **Kablo tablosu:** `kablolar.json` S09 / S10 `boy_tahmin` hâlâ "dağıtım kartı C → XL4016 C vekil" ile hesaplı; kart artık modelde
+    (B5; kablolar paketinin işi).
+  - **Bilgi (P10.8d § 7, HEAD'de de aynı, Referans tüpler taramaya girmez):** yol 12'nin rehberde kırpılan eski bölümü ve yol 6 / 8
+    boyun plakası, pan servosu, servo yuvası, göğüs VESA taşıyıcısının içinden; yol 3 / 4 / 5 / 7 köşe bağlantısına ve omuz yuvasına
+    giriyor; yol 4 akü kayışına 0,89 mm. `taban-montaj.FCStd` 1,45 → 1,31 MB, nedeni incelenmedi. Rehber üretim logunda "G4.4 / G4.5
+    sema_yalniz değişti" satırı P10.8e'nin değil, incelenmedi (`P108e-gunluk.md` § 8).
+  - **`pre-push` kancası (F10y § 10'dan, kuyruğa ilk kez):** STEP koordinatı istisnası 21.11'de yapıldı (`P108d-gunluk.md` § 16).
+    Gömülü `data:image` base64 verisinde rastlantısal eşleşme için istisna açık.
