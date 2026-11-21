@@ -270,3 +270,46 @@ sayfaları ayrıca açılıp bakılmadı (üretim "esleme tutarli, tasan -" dedi
 - `F9c` sayfası yapısı gereği kendi commit'ini taşıyamaz (§ 2); her commit'ten sonra 3 hata. Denetimde "son commit sayfanın commit'i ise
   muaf" gibi bir kural yok; eklenmedi (görev: denetimi gevşetme).
 - K67'nin grubu taslak (A); orkestratör onayı gerekir.
+
+## 13. Kapanış (C)
+
+C ajanı, 21.11 (saat okundu: yazım 17:55). Komutlar depo kökünden, `PYTHONIOENCODING=utf-8`, `py -3 -B -X utf8`.
+
+**Adım 1, paket commit'i `f4870bf`** ("Lale P10.8f: ufak dört: …"; 146 dosya).
+- `git status --short` § 10'daki listeyle karşılaştırıldı: listede olmayan değişiklik yalnız 21 eski kir (14 M + 7 ??);
+  `FREECAD-KILIT.txt` `.git/info/exclude`'da (`!!`), sahnede değil.
+- Commit'ten hemen önce `F9c-dogrula.py --tarayicisiz`: GEÇER (hata 0).
+- Açık yollarla `git add`: § 10 listesi + `P108f-kontrol.md` + `P108f-kontrol-olcum/` (29 dosya); `P108f-olcum/` tamamı (77 dosya,
+  orkestratör kararı). Sahnede 146 = A'nın 116'sı + B'nin 30'u; sahnelenmeyen yalnız 21 eski kir.
+- Gizlilik taraması (`git diff --cached`, eklenen satırlar ≈ 10.600 satır / 1,3 MB; 59 ikili dosya ayrıca): e-posta, anahtar / belirteç
+  kalıpları (`sk-`, `ghp_`, `AKIA`, özel anahtar başlığı, JWT), parola / şifre / token / secret sözcükleri, IBAN (`TR` + rakam),
+  telefon (+90 / 05xx), 11 haneli sayı (TC kimlik), adres sözcükleri, resmî metin sözcükleri (sözleşme, dilekçe, başvuru, T.C.),
+  yerel kullanıcı yolu (Windows ve Git Bash biçiminde kullanıcı klasörü, kullanıcı adı, eşitleme ve uygulama verisi klasörü, geçici
+  klasör), URL, IP. Bulunan:
+  "telefon" 6 satır = parça kimliği `p0090` ve "z +90" (yanlış alarm); 11 hane 4 satır = koordinat ondalığı `431.72577582543`
+  (depoda yaygın, kancanın STEP istisnasıyla aynı tür); ad 8 satır = sayfada zaten 21 kez geçen tek ad (yeniden üretilen satırlar, soyad
+  yok, depoda yaygın). İkili dosyalar: PNG'lerde metin öbeği yok; PDF'te Creator / Producer tarayıcı ve Skia (önceki üretimlerle aynı),
+  rastlantısal bir `@` dizisi sıkıştırılmış veride. Yeni betikler (`P108f-onizleme.py`, `-etiket-olc.py`, `-etiket-bozma.py`,
+  `-zincir.sh`, B'nin `B-etiket-olc-bozma.py`) ve loglar (`tarayici.durum`, `git-status-bas.txt`, `F9c-uret-B.log`, `uretim2.log` başı)
+  gözle okundu: yerel yol yok (B'nin logunda geçici klasör maskeli). Gerçek ya da sınırda bulgu yok.
+- `git push origin lale-duzeltme`: kanca geçti, `641bc6c..f4870bf`. `git fetch` sonrası `rev-list --left-right --count` → `0 0`.
+- Commit'ten sonra `F9c-dogrula.py --tarayicisiz`: GEÇMEZ, **hata 3** (B'nin benzetimiyle aynı): `komit_sayisi: sayfa '116', hesap 117`;
+  `komit_eslesmeyen: sayfa '2', hesap 3`; `paket P10.8: konu öneki bu pakette olan f4870bf commit hücresinde yok`.
+
+**Adım 2, kayıt eşitlemesi** (bu bölümle aynı commit).
+- `planlama/dongu-158.md`: kilit tablosundaki P10.8f satırı silindi (kural "Paket bitince kilit satırı silinir"); P10.8 hücresinin
+  rehber listesinde 17.4, 17.10, B5a düğüm kartı ve F9c sayfası "kapandı: P10.8f `f4870bf`" (641bc6c biçimi, kalın); P10.8e kapanışındaki "Açık (bilgi)"
+  iki madde kapandı diye işaretli. § 5'e satır eklenmedi (görev: başka yere dokunma).
+- `planlama/d158/karar-kuyrugu.md`: P10.7b2j / b2k ve P10.8d / P10.8e bölümlerinde 17.4, 17.10, B5a kapandı; yeni bölüm "P10.8f
+  kapanışından açık iş" (kapananlar + 5 açık iş: 17.1 / 17.5 saplama numarası, basılı lejantta `sema_on` notu, PDF'te ≈ 2,4 pt yazı,
+  F9c'nin yapısal 3 hatası, `P108f-etiket-olc.py`'nin alt adımsız karede başka çekimi ölçmesi); giriş notuna P10.8f satırı; K67 açık,
+  gövdesinin Durum satırına "aciliyet grubu A, orkestratör onayı". K sayısı değişmedi: açık 27, toplam 67.
+- `planlama/d158/F9c-uret.py`: N2 düzeltmesi ("iki yeni kartın gerçek ölçüsü ve burç / vida boyu" "Devralınan (19.11)"tan çıktı,
+  "P10.8d'den (21.11), kartlar gelince" başlığında); K67 grubu yorum ve sayfa notlarında "orkestratör onayladı"; F10 tablosu rehber
+  açığına P10.8f'in dört rehber işi, depo açığına yapısal 3 hata; yeni kayıt notu (eşitleme sayfayı aynı commit'te üretti); kaynak
+  sabiti `P108FK` (`P108f-kontrol.md`); başlıkta "yenileme P10.8f ve kayıt eşitlemesi". `F9c-dogrula.py`'ye dokunulmadı.
+- Eşitlemeden önce (yalnız adım 1 commit'i): F9c 3 (yukarıda). Sayfa yeniden üretildi: `F9c-uret.py` çıkış 0, "toplam 67, açık 27",
+  P10.8 commit hücresi `… 641bc6c f4870bf`, 155.199 bayt; `--tarayicisiz` **GEÇER (hata 0)**; `--goruntu` **GEÇER (hata 0)**, 1400 ve
+  360 px konsol hatası 0, taşan öğe 0 (F9c görüntülerinden 9'u yeniden yazıldı, `1400-kararlar` bayt bayt aynı).
+- Bu commit'ten sonra beklenen: F9c 3 (yapısal; commit sayısı, eşleşmeyen commit, konu öneki). TAHMİN; ölçüm commit'ten sonra, bu
+  günlüğe yazılmadı (izlenen dosyada değişiklik bırakılmadı), orkestratöre raporda.

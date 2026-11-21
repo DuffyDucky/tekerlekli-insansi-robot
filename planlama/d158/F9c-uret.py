@@ -55,6 +55,8 @@ GUN = "planlama/d158/P109c-gunluk.md"
 P109A, P109B = "planlama/d158/P109a-gunluk.md", "planlama/d158/P109b-gunluk.md"
 # P10.8f (21.11): sayfa P10.8a–e ve kayıt eşitlemesinden sonra yenilendi; P10.8 satırı ve F10 tablosu bugünkü kayda göre
 P108F = "planlama/d158/P108f-gunluk.md"
+# P10.8f kayıt eşitlemesi (C, 21.11): bağımsız kontrol (K67 grubu gerekçesi § 2, açık işler § 10)
+P108FK = "planlama/d158/P108f-kontrol.md"
 EMOJI = "✅🟡⛔🔄⏳"
 
 
@@ -384,7 +386,7 @@ GRUP = {
     # P10.7b2f kısım 2 (F10n-gunluk.md § 8): K66 kuyruğa kapalı girdi; açık olsaydı KeyError vermesin diye (K64 / K65 ile aynı)
     "K66": ("A", "Elektrik güvenliği ve sipariş: ESP32 VIN'e seri 1N5819 (+1 adet); kapandı 16.11, tezgâh denemesine bağlı kabul."),
     # P10.8f (P108f-gunluk.md § 2): K67 21.11 kayıt eşitlemesinde açık girdi, GRUP'ta yoktu (KeyError 'K67', sayfa yeniden üretilemiyordu).
-    # Grup TASLAK (A: alım sorusu, GRUP_AD["A"] tanımı); orkestratör onaylar ya da değiştirir.
+    # Grup A (alım sorusu, GRUP_AD["A"] tanımı): P10.8f taslağı, orkestratör 21.11'de onayladı (P108f-kontrol.md § 2 gerekçesiyle).
     "K67": ("A", "Sipariş listesindeki kart burcu adedi (48; CAD 52): sipariş verilmediyse siparişten önce, verildiyse eksik burçlar ayrı alınır."),
 }
 
@@ -461,20 +463,23 @@ PAKET_SONUC = {
     # P10.8f (P108f-gunluk.md § 2): P10.8a–e ve kayıt eşitlemesinden sonra; parça beklemeyen işlerin kapananları çıktı, kalanlar adlarıyla
     # (plan P10.8 Durum hücresi ve kuyruğun "P10.8d / P10.8e kapanışından açık iş" bölümüyle aynı). "Kapalı alt paketler:" kalıbı
     # kullanılmadı: P10.8a planda kapalı yazılmıyor (kupon dosyaları hazır, basılmadı)
+    # P10.8f kayıt eşitlemesi (C, 21.11; P108f-kontrol.md § 10 N2): "iki yeni kartın gerçek ölçüsü ve burç / vida boyu" P10.8d'de
+    # (21.11) doğdu, "Devralınan (19.11)" listesinden kendi başlığına taşındı
     "P10.8": ("Açık: ayrıntılı satın alınan parça modelleri ve fotoğraf kartı parçalar gelince. Parça beklemeyen işler (19.–21.11): "
               "P10.8a kupon dosyaları (hazır, basılmadı), P10.8b–e rehber ve CAD açıkları (kablo yolu 10, 11 ve 12, burç 2, acil stop "
               "düğüm kartı ve dağıtım kartı C modelde, 16 şema tarandı, dikiş ölçümü, 17.11 ve 32.1 kareleri), P10.8f bu sayfanın "
-              "yenilemesi ve 17.4 / 17.10 / B5a kareleri. Devralınan (19.11), parça ya da ölçüm "
+              "yenilemesi ve 17.4 / 17.10 / B5a kareleri. P10.8d'den (21.11), kartlar gelince: iki yeni kartın gerçek ölçüsü ve "
+              "burç / vida boyu. Devralınan (19.11), parça ya da ölçüm "
               "bekleyen: kablo boylarının ölçümü, D24V50F5 pin kenarı, ESP32 DevKit portu ve yönü (180° ters kart denetimde yakalanmaz; "
               "ters takılırsa ilk enerjide 5 V bir GPIO pinine gelir), PC817 çıkış jumper'ı, göğüs regülatörü kartının ürünü ve ölçüsü, "
               "RV 5.5 pabuç kalınlığı, M5 bara saplaması başı, kabuk ve etek takılıyken bara somunlarına erişim, boyun tüneli fiş "
               "denemesi, masa denemeleri KT1–KT7 ve K66 tezgâh denemesi, KT2'den sonra AU1 / AU2 ses şeması, fiş boyları ve talimat ↔ "
-              "kayıt boyları, G07 bölücü dirençlerinin toleransı, iki yeni kartın gerçek ölçüsü ve burç / vida boyu; sonraki tam "
+              "kayıt boyları, G07 bölücü dirençlerinin toleransı; sonraki tam "
               "taramalı CAD paketinde: göğüs regülatörü kartının zarfı ve yeri, K31 insert boyu, CAD kablo yolu 6'nın dağıtım kartı C'ye "
               "inmesi, kafa giriş kartı ve konnektör yerleri (TAHMİN), geniş `TABAN_DISI_BOLGE`, tam çakışma taramasının parça "
               "modellerinden sonra yeniden koşusu. "
               "P10.7b'nin öbür açık işleri kuyruğun \"Karar değil, iş\" bölümünde izlenir. Önerilen sıra (Echo kararı, geri alınabilir) bu "
-              "sayfanın F10 tablosunda.", [DONGU, GUN, KUYRUK, P108F]),
+              "sayfanın F10 tablosunda.", [DONGU, GUN, KUYRUK, P108F, P108FK]),
     # P10.9c düzeltme turu 1 (D4): P10.9 metni plan durumundan seçilir (commit'te eskiyecek "commit bekliyor" ifadesi yok);
     # kapalı metin uret() içinde (P10_9_KAPALI)
     "P10.9": ("Açık: bu sayfanın F10 yenilemesi (P10.9c, 19.11; günlük `P109c-gunluk.md`); plan durumu kapanınca sayfa yeniden üretilir. "
@@ -518,8 +523,9 @@ TUTARSIZ_F10 = [
      "P10.9c düzeltme turu 2).", [GUN, KUYRUK, "planlama/d158/P109c-kontrol.md"]),
     ("F8a sipariş sayacı ve sipariş paketi toplamları 09.11 listesidir (P8.1 satırı, \"Sipariş paketi toplamı\", \"Bütçe farkı\"); güncel "
      "sipariş listesi `maliyet.json`. Sayfada etiketlenmedi, kaldırılmadı (P10.9a § 5.2 sorusu açık).", [P109A]),
+    # P10.8f kayıt eşitlemesi (C, 21.11): K67 grubu A orkestratörce onaylandı (P108f-kontrol.md § 2)
     ("Aciliyet gruplarının F10 taslağı (P10.9a § 3): açık F10 kararları K62 (C) ve K67 (A; 21.11'de açıldı, grup P10.8f taslağı, "
-     "orkestratör onaylar); K53, K54, K55, K60, K61 kapandı, grupları sayfaya girmiyor.", [P109A, KUYRUK, P108F]),
+     "orkestratör 21.11'de onayladı); K53, K54, K55, K60, K61 kapandı, grupları sayfaya girmiyor.", [P109A, KUYRUK, P108F, P108FK]),
     ("Pakete bağlanamayan 2 commit (`9145164`, `f658f15`, 13.11 gizlilik denetimi, konu öneki \"Lale:\") paket dışı bırakıldı.", [P109A]),
     ("Tasarım demosu P10.9c'de yeniden üretilmedi (demo P10.7b2j'de üretilmişti); P10.8e'de P10.8d montajıyla yeniden üretildi "
      "(F9b 0).", [GUN, F10Y, DONGU]),
@@ -527,9 +533,13 @@ TUTARSIZ_F10 = [
     ("Sayfa 21.11'de P10.8f'de yeniden üretildi. Sayfa 19.11 hâlinde kalmıştı; P10.8a–e commit'leri ve kayıt eşitlemesinden sonra "
      "`F9c-dogrula` 60 hata veriyordu (P10.8e commit'inde 25): hepsi sayfadaki 19.11 değeri ile bugünkü kaynak farkı (montaj sayıları, "
      "rehber PDF ve parça sayısı, tarama koşusu, commit sayısı ve P10.8 commit hücresi, K67). Üretici K67'yi tanımadığı için sayfa "
-     "yeniden üretilemiyordu (GRUP'ta yoktu); K67 TASLAK A grubuyla eklendi, P10.8 satırı ve F10 tablosu bugünkü kayda göre "
-     "yazıldı. Sayfa kendi commit'ini taşıyamaz: commit'ten sonra `F9c-dogrula` 3 hata verir (commit sayısı, eşleşmeyen commit, "
-     "konu öneki), bir sonraki yenilemede kapanır.", [P108F, DONGU, KUYRUK]),
+     "yeniden üretilemiyordu (GRUP'ta yoktu); K67 A grubuyla eklendi (taslak, orkestratör onayladı), P10.8 satırı ve F10 tablosu "
+     "bugünkü kayda göre yazıldı. Sayfa kendi commit'ini taşıyamaz: commit'ten sonra `F9c-dogrula` 3 hata verir (commit sayısı, "
+     "eşleşmeyen commit, konu öneki), bir sonraki yenilemede kapanır.", [P108F, DONGU, KUYRUK]),
+    # P10.8f kayıt eşitlemesi (C, 21.11): plan ve kuyruk P10.8f commit'ini gösterdi, sayfa aynı commit'te yeniden üretildi
+    ("P10.8f commit'inden sonraki kayıt eşitlemesinde (21.11) plan P10.8 hücresi ve kuyruk 17.4, 17.10, B5a ve bu sayfanın "
+     "kapanışını P10.8f commit'iyle işaretledi, kuyruğa P10.8f'in açık işleri girdi; sayfa bu kayıtlarla aynı commit'te yeniden "
+     "üretildi (sabahki eşitleme sayfayı yeniden üretmediği için 35 hata eklemişti).", [DONGU, KUYRUK, P108F, P108FK]),
 ]
 
 # P10.9c düzeltme turu 1 (O5): açık düşüklerin F9 sonu satırlarına F10 notu. Anahtar F9c-dusukler.json "kod" alanı; bu sözlükte
@@ -677,7 +687,8 @@ def uret():
     # P10.8f: yenileme tarihi (faz sonu sayfası P10.9c'nin; P10.8a–e sonrası yenilendi)
     w('<p class="sub">Uygulama ajanı (P10.9c) · %s · dal <code>lale-duzeltme</code> · üretici <code>planlama/d158/F9c-uret.py</code>, denetim '
       '<code>F9c-dogrula.py</code> · kaynaklar: <code>dongu-158.md</code>, <code>karar-kuyrugu.md</code>, paket raporları, '
-      'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026; yenileme P10.8f, 21.11.2026", GUN, F10Y, KUYRUK, P108F))
+      'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026; yenileme P10.8f ve kayıt eşitlemesi, 21.11.2026", GUN, F10Y,
+                                                            KUYRUK, P108F))
     w('</div>\n<button class="tema" type="button" id="tema">Tema: sistem</button>\n</header>')
     w('<nav class="ic"><a href="#f10">F10 sonu</a><a href="#ozet">Özet</a><a href="#yapilacak">Ahmet\'in yapacakları</a><a href="#kararlar">Açık kararlar</a>'
       '<a href="#korunan">Korunan değerler</a><a href="#sayilar">Sayılarla robot</a><a href="#takvim">Takvim</a>'
@@ -727,9 +738,12 @@ def uret():
          + K(" P10.8b–e: K55 bant metni ölçümden, ESP32 yön denetimi, `--kaynak` CAD adları, D6, iki yeni kart rehberde modelli uç, "
              "17.11'de U06'nın taban bölümü, 32.1 taban bakışı. P10.8f: 17.4 saplama numaraları karede, 17.10'da katın kesiği "
              "çizgiyle, B5a'da acil stop düğüm kartı adıyla.", DONGU, P108F),
+         # P10.8f kayıt eşitlemesi (C, 21.11): P10.8f'in rehber açıkları (kuyruk "P10.8f kapanışından açık iş")
          K("Kuyruğun \"Karar değil, iş\" bölümünde: ölçülmeyen yollar (göğüs bandı sol yanal yol, F2 ve etek arka dikişleri), "
            "`--kaynak` CAD malzeme adlarını görmüyor, `elektrik.md` önerilen boyları kayda bağlı değil; iki yeni kartın zarfı TAHMİN "
-           "(kartlar gelince).", KUYRUK, DONGU),
+           "(kartlar gelince). P10.8f'ten: 17.1 ve 17.5 karelerinde saplama numarası yok; basılı lejant 17.11'in şema notunu "
+           "yazmıyor; PDF'te kare yazıları ≈ 2,4 pt, kâğıtta çok küçük; parça etiketi ölçümü alt adımsız karede (B5a) teslim edilen "
+           "kareyi değil başka bir çekimi ölçüyor.", KUYRUK, DONGU, P108F, P108FK),
          "—"),
         ("CAD ve çakışma taraması",
          K("P10.7b2j (Echo kararları: K2 a, K51 a, K53 a 17.11'de Ahmet'in devriyle; K64 a 16.11): K2 a boss, K53 a çentik, K51 a TVS, "
@@ -795,9 +809,12 @@ def uret():
         ("Depo, yayın ve kayıt",
          K("P10.7b2j ve P10.7b2k push edildi. Push öncesi kanca iki yanlış alarm verdi (STEP koordinatlarının ondalık kesri, gömülü "
            "resim verisi); orkestratör eklenen satırları kancanın kalıplarıyla kendisi taradıktan sonra iki commit kanca atlanarak "
-           "gönderildi (Echo kararı); ardından günlük commit'i `89134d5` kancadan geçti. P10.8a–e commit'leri ve kayıt eşitlemesi push "
-           "edildi; P10.8d'den sonra kancaya STEP koordinatı istisnası eklendi (21.11).", F10Y, DONGU),
-         K("K48 dosyasının depo dışına taşınması, K49 `.gitignore` girdileri, pre-push kancasına gömülü görsel verisi istisnası.", KUYRUK, F10Y),
+           "gönderildi (Echo kararı); ardından günlük commit'i `89134d5` kancadan geçti. P10.8a–f commit'leri ve 21.11 sabahki kayıt "
+           "eşitlemesi push edildi; P10.8d'den sonra kancaya STEP koordinatı istisnası eklendi (21.11).", F10Y, DONGU),
+         # P10.8f kayıt eşitlemesi (C, 21.11): sayfanın yapısal 3 hatası kuyrukta iş olarak
+         K("K48 dosyasının depo dışına taşınması, K49 `.gitignore` girdileri, pre-push kancasına gömülü görsel verisi istisnası. Bu "
+           "sayfa kendi commit'ini taşıyamaz: her commit'ten sonra `F9c-dogrula` en az 3 hata verir (yapısal, muaf tutulmadı).",
+           KUYRUK, F10Y, P108F),
          K("K18–K26 depo içeriği, gizlilik ve hesap adı; `main`'e birleştirme (Pages) onayı; K62 tur sayısı kaydı; `uygulama-notu.md`'deki "
            "kişi adı geçen satırlar.", KUYRUK, DONGU, F10Y)),
     ]

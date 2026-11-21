@@ -162,6 +162,8 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
 P10.8d (CAD açıkları, 20.–21.11.2026; `d2c6776`) → K67 (naylon kart burcu; `planlama/d158/P108d-gunluk.md` § 7, § 11; `P108d-kontrol.md`
 § 5 madde 7); günlük § 11'in öbür metinleri K53, K64 ve sondaki bölüme not oldu (21.11 kayıt eşitlemesi, P10.8e'ye göre güncellenerek).
 P10.8e (rehber açıkları, 21.11.2026; `1db7a9c`) yeni madde açmadı; açık işleri sondaki bölümde (`P108e-gunluk.md` § 11, `P108e-kontrol.md` § 7–§ 8).
+P10.8f (ufak dört, 21.11.2026; `f4870bf`) yeni madde açmadı; K67 açık, sonuç sayfasındaki aciliyet grubu A (orkestratör onayı,
+`P108f-kontrol.md` § 2 gerekçesiyle); açık işleri sondaki bölümde (`P108f-gunluk.md` § 11–§ 12, `P108f-kontrol.md` § 10).
 
 ---
 
@@ -1511,7 +1513,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   M3 naylon burç yok (`robot-bom.csv`'de tek satır).
 - **Önerilen varsayılan:** b. Yalnız öneri; karar Ahmet'te. `maliyet.json` değişmedi.
 - **Kaynak:** `planlama/d158/P108d-gunluk.md` § 3 (BOM farkı), § 7, § 11; `P108d-kontrol.md` § 5 madde 7.
-- **Durum:** açık (21.11.2026, kayıt eşitlemesinde açıldı).
+- **Durum:** açık (21.11.2026, kayıt eşitlemesinde açıldı). Sonuç sayfasında aciliyet grubu A (sipariş öncesi; P10.8f taslağı,
+  orkestratör onayı 21.11, `P108f-kontrol.md` § 2).
 
 ---
 
@@ -1932,6 +1935,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     → 19.11 P10.8b: 17.4 (kamera, odak, saydam direk) ve 17.10 (önden-üstten kamera) kaynakta değişti, tam üretimde gözle bakıldı
     (P108b § 5 ve Kapanış). **32.1 açık** (aşağıda). → 21.11: 32.1 P10.8e'de kapandı (aşağıda). 17.10: yol 11 / 12 artık CAD'de de
     kesikten geçiyor (P10.8d), ama kare geçişi hâlâ göstermiyor (`P108e-kontrol.md` B3): açık, bilgi.
+    → 21.11 P10.8f (`f4870bf`): **17.4 ve 17.10 kapandı.** 17.4'te dokuz saplamada A1–A4 / Y1–Y5 yazısı (parça etiketi, iki kipte
+    9 / 9; lejantta anlamı), 17.10'da katın kenar çizgisiyle yarık ve içine giren hatlar karede (`P108f-gunluk.md` § 3–§ 4,
+    `P108f-kontrol.md` § 3).
   - `kafa-yerlesim/rapor.html` HEAD hâlinde (ESP32 USB 971 / 1.360, ses kartı satırları); `uygulama-notu.md` yalnız ESP32 satırı elle
     güncel, ses kartı satırları (217 / 270, 3,5 mm → PAM, Pi 2) eski. Üretici düzeltilip ikisi birlikte yeniden üretilmeli (yukarıdaki
     açık iş).
@@ -2010,6 +2016,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - **Rehber:** acil stop düğüm kartı B5a karesinde etiketsiz, yalnız metindeki yer tarifiyle seçiliyor; öneri B5a'ya `odak` / ad etiketi
     (B2). B5a etkileşimli kipte kart C etiketi koyu temada siyah sigorta kutusunun üstünde düşük karşıtlıklı (B4, bilgi). 17.10'da yol
     11 / 12'nin kesikten geçişi kareden seçilmiyor, dayanak P10.8d ölçümü (B3, bilgi).
+    → 21.11 P10.8f (`f4870bf`): **B2 ve B3 kapandı** (B5a'da "Acil stop düğüm kartı" yazısı kartın üstünde, iki kipte; 17.10 yukarıda,
+    P10.7b2j / b2k bölümü; `P108f-gunluk.md` § 3, § 5, `P108f-kontrol.md` § 3). B4 (koyu tema) açık, bilgi; koyu temada bakılmadı.
   - **Kablo tablosu:** `kablolar.json` S09 / S10 `boy_tahmin` hâlâ "dağıtım kartı C → XL4016 C vekil" ile hesaplı; kart artık modelde
     (B5; kablolar paketinin işi).
   - **Bilgi (P10.8d § 7, HEAD'de de aynı, Referans tüpler taramaya girmez):** yol 12'nin rehberde kırpılan eski bölümü ve yol 6 / 8
@@ -2018,3 +2026,20 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     sema_yalniz değişti" satırı P10.8e'nin değil, incelenmedi (`P108e-gunluk.md` § 8).
   - **`pre-push` kancası (F10y § 10'dan, kuyruğa ilk kez):** STEP koordinatı istisnası 21.11'de yapıldı (`P108d-gunluk.md` § 16).
     Gömülü `data:image` base64 verisinde rastlantısal eşleşme için istisna açık.
+
+**P10.8f kapanışından açık iş (21.11, `f4870bf`; `planlama/d158/P108f-gunluk.md` § 11–§ 12, `P108f-kontrol.md` § 10; karar değil, iş)**
+  - **Kapandı:** `sonuc-rapor.html` yeniden üretildi (`F9c-dogrula` 60 → 0; `F9c-uret.py` K67'yi tanımıyordu, denetim değişmedi);
+    17.10 katın kenar çizgisi; 17.4 saplama numaraları; B5a acil stop düğüm kartı yazısı (yukarıdaki iki bölümde işaretli).
+  - **Saplama numarası 17.1 ve 17.5'te yok:** iki panel de saplama numarası veriyor (numaralama kuralı B5a metninde), karede numara
+    yazısı yok. `rehber_metin.py` `PARCA_ETIKET`'e konum eklemek (17.4 kalıbı) ve rehber üretimi (`P108f-gunluk.md` § 12).
+  - **Basılı lejantta şema notu yok:** 17.11'deki adım ötesi şema (`sema_on`, P10.8e) notunu etkileşimli lejant yazıyor, basılı sayfa
+    lejantı (`rehber/yazdir.html`) yazmıyor (`P108f-gunluk.md` § 12).
+  - **PDF'te etiket yazısı çok küçük:** yazdırma karesi PDF'te 73–76 mm genişlikte; 14 px yazı ≈ 0,86 mm, yani ≈ 2,4 pt (uç numaraları
+    da aynı ölçekte). 300 dpi'de okunuyor, kâğıtta çok küçük; rehber aracı işi (`P108f-kontrol.md` § 10 N3).
+  - **F9c sayfası kendi commit'ini taşıyamaz (yapısal):** sayfayı içeren her commit'ten sonra `F9c-dogrula` en az 3 hata verir (commit
+    sayısı, eşleşmeyen commit, konu öneki bu pakette olan commit hücrede yok); bir sonraki yenilemede kapanır. Kayıt eşitlemesi
+    sayfayı aynı commit'te yeniden üretmezse daha fazla (`641bc6c`: +35). Denetimde muafiyet yok, bilerek eklenmedi
+    (`P108f-gunluk.md` § 2, § 12; `P108f-kontrol.md` § 8).
+  - **`P108f-etiket-olc.py` alt adımsız karelerde başka çekimi ölçüyor:** araç (F10d uç etiketi ölçümü gibi) DevTools çekimini
+    (`cekim=1`) ölçer; alt adımlı karede (17.4) bu çekim teslim edilen kareyle aynı, alt adımsız karede (B5a) teslim edilen kare üretimin
+    `--screenshot` çekimi, kadrajı farklı. B5a'nın teslim edilen iki karesi yalnız gözle doğrulandı (`P108f-kontrol.md` § 10 N4).
