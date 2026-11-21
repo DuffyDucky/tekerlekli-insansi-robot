@@ -236,8 +236,12 @@ ADIM = {
     "B5a": dict(
         baslik="Tezgâh: güç paneli",
         # M6 tablosu "ana anahtar" da diyor; 1,58 m modelinde gövde etek plakasının altında, F1'de (F7a-kontrol O-2).
-        is_="Tezgâh: güç paneline sigorta kutusu, röle ve ana sigorta yuvası. XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa "
-            "servolarının hattı C; XL4016 C'nin yanında) da burada. "
+        # P10.8e (P108e-gunluk.md § 3): iki pertinaks kart P10.8d'de modelde (taban_parcalar.py ESDI / DGCI), rehber_secici B5a'ya
+        # atar (güç paneli grubu, y > 170); burç ve vidaları ön şarj kartınınki gibi (M3×8 naylon burç, üstte M3×6, altta M3×8)
+        is_="Tezgâh: güç paneline sigorta kutusu, röle ve ana sigorta yuvası. XL4016 C, ön şarj kartı, acil stop düğüm kartı (röle "
+            "K1 ile ön şarj kartının arasında) ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin arka yanında) da burada; "
+            "iki pertinaks kart ön şarj kartı gibi dörder M3×8 naylon burçla (üstte M3×6, altta M3×8 vida). İki kartın ölçüsü ve zarfı "
+            "TAHMİN: kart yapılınca ölçülecek. "
             "Ana anahtar bu panele girmez: etek üst plakasının altına F1'de takılır.\n"
             # P10.7b2k (F10u-gunluk § A3; tasarım P10.7b2j, F10s-gunluk § 4, kontrol F10t § 1.2): iki bara tutucusu modelde. Sıra
             # F10t § 1.2'den: saplama yalnız alttan girer (delik başı geçirmez), M3 vidalar panelin altından; panel burçlara inince
@@ -273,7 +277,8 @@ ADIM = {
                  "GND). Akü ayrıkken multimetrenin direnç kademesinde kartın V+ ile GND arası sıfırda kalmıyor (kısa devre yok; "
                  "kondansatör dolarken değer yükselir)",
                  "Ön şarj direnci ({ohm.onsarj}) panelden ≥ 5 mm yüksekte, kablo demetine değmez (E9)",
-                 "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir",
+                 "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi), acil stop düğüm kartı ve dağıtım kartı C de (P10.8d "
+                 "yerleşimi); giriş, çıkış klemensleri erişilebilir",
                  "Sigortaları henüz takma",
                  "Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 C 6 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, "
                  "çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Bu sıra kaynakta yok, doğrulanmadı"],
@@ -281,7 +286,8 @@ ADIM = {
                "kalsın: düğümler saplama üstünde halka pabuçla, saplama başına en çok 4 pabuç (`planlama/adim3/kablolar.md` O-3 r, O-22). "
                "WAGO yok",
                "SV3'ün çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy "
-               "ölçümü değildir. Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık"],
+               "ölçümü değildir. Dağıtım kartı C modelde (zarfı ve ölçüsü TAHMİN, kart yapılınca ölçülecek): şema kartın ön (+z) kenarının "
+               "yanında biter"],
         # P10.7b2e (F10l-gunluk § 10.7 N3): bara tutucusunun ne olduğu kayıtta var (kablolar.json bara-pabuc, maliyet.json), panele
         # nerede ve nasıl takılacağı, CAD'i ve baskı satırı yok; talimat yazılmadı (K64)
         # P10.7b2e kısım 2 (Echo kararı 16.11.2026, K64 a): tutucu tam taramalı CAD paketinde tasarlanıp basılır, satın alma yok
@@ -543,7 +549,9 @@ ADIM = {
             "röle çekmez. Elde taşınan acil stop yok (K60 A): köprü kalıcıdır, ileride kumandalı acil stop sökmeden bu yere eklenebilir; demoda mantarın yanında bir kişi durur. "
             # P10.7b2e kısım 2 (F10l-kare-inceleme 17.8)
             "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı "
-            "elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır.\n"
+            # P10.8e (P108e-gunluk.md § 3): düğüm kartı P10.8d'de modelde (zarf TAHMİN)
+            "elektronik katında solda; acil stop düğüm kartı güç panelinde aynı yanda, röle K1 ile ön şarj kartının arasında (zarfı "
+            "TAHMİN); mantar F1'de sağ arka köşeye takılır.\n"
             # P10.7b2d-A düzeltme turu 1 (F10l-kontrol D1): G12–G15'in bara uçları madde 3b'de, G18'in uçları madde 4'te (tek yerde)
             "Alt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı; "
             "G12–G15'in bara uçları madde 3b'de, G18'in kutu ve yıldız uçları madde 4'te bağlandı. Burada "
@@ -565,9 +573,9 @@ ADIM = {
             "Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 taşıyıcısına. ESP32'nin direğe çıkan kablosu "
             "ESP32 USB'dir (U06, K2 madde 4). Karede yer: ESP32 "
             "taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde. "
-            # düzeltme turu 3 (F10u-kontrol tur 2): CAD yol 11 / 12 katı kesiğin dışından deliyor (eski kusur, karar kuyruğunda açık iş)
-            "Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında "
-            "görünür (çizim kusuru).\n"
+            # düzeltme turu 3 (F10u-kontrol tur 2): CAD yol 11 / 12 katı kesiğin dışından deliyordu. P10.8d (P108d-gunluk.md § 2): iki
+            # yol kesikten geçecek biçimde yeniden çizildi; P10.8e cümleyi güncelledi
+            "Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer.\n"
             # P10.7b2a (orkestratör kararı 6): kafa servolarının sinyal köprüsü (kablolar.json P03)
             # düzeltme turu 1 (F10i-kontrol Ü3): P03 yalnız sinyal, V+ teli takılmaz (elektrik.md:226; kablolar.json P03 not)
             "7. Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, "
@@ -580,10 +588,11 @@ ADIM = {
             # P10.7b2k (F10r-kontrol B1 sonu): ikinci "Yukarısı K2'de." tekrarı kalktı
             "direğin sağına götür (yukarısı K2'de, direk arka yüzü). Servo uzatmaları (A / B / kafa) K2'de dağıtım "
             "kartlarının çıkışına takılır. "
-            # P10.7b2e kısım 2 (F10l-kare-inceleme 17.11): karede vurgu yok, nedeni ve yer
-            "Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması K2 madde 4'ün "
-            "karesinde. Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde "
-            "(B5a, modelde yok).\n"
+            # P10.7b2e kısım 2 (F10l-kare-inceleme 17.11): karede vurgu yok, nedeni ve yer. P10.8e (P108e-gunluk.md § 5): U06'nın taban
+            # bölümü bu karede çizilir (DEMET_ALT sema_on); dağıtım kartı C modelde
+            "Karede vurgulu çizgi U06'nın taban bölümüdür (direk dibinden ESP32'ye; tamamı K2 madde 4'ün karesinde); P03'ün çizimi yok "
+            "(bağlantı tablosu aşağıda). Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C "
+            "güç panelinde, XL4016 C'nin arka yanında (B5a).\n"
             "8. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Bu adımda takılan köprüler: Ö4 "
             "yerindeki kısa tel köprü (madde 5), acil stop düğüm kartındaki (A02, A04) {kopru.A02} tel köprü (madde 5), yıldız barasının "
             "saplamaları arasındaki {kopru_adet.yildiz} adet {kopru.yildiz} köprü (madde 2), anahtarlı baranın saplamaları arasındaki "
@@ -675,7 +684,8 @@ ADIM = {
                # P10.7b2c ikinci yarı (ajan B): P03 bağlantı tablosu (rehber_kablo.BAGLANTI_TABLOSU)
                # P10.7b2c düzeltme turu 1 (F10k-kontrol D3): kartın yeri (kablolar.json karar P7b2a-6); kayıttaki ad değişmedi
                "Bağlantı tablosu P03 (yalnız sinyal teli, madde 7, {awg.P03}): {bag.P03}. Dağıtım kartı C (kafa): kart güç panelinde, "
-               "XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; "
+               "XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde, XL4016 C'nin arka "
+               "yanında (zarfı TAHMİN); "
                "kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
                "Kablo listesi (uçlar, kesit, sigorta, sonlandırma): `planlama/adim3/kablolar.md` (tek kaynak `kablolar.json`); boy için tablodaki tahmin kuralı"],
     ),
@@ -1035,7 +1045,9 @@ ADIM = {
             "bilek); çıkış numaraları `planlama/adim3/kablolar.md`'de. Yol: dağıtım A / B → etek → direk arka yüzü (z −26) → travers "
             "altı (y ≈ 1215) arkası → omuz. "
             # P10.7b2d-A düzeltme turu 1 (F10l-kontrol N3): Kablo yolu 5 / 7 bu alt adımda çizilir, bara → dağıtım kartı kısmı K1'de
-            "Karede Kablo yolu 5 ve 7'nin baradan dağıtım kartlarına giden kısmı K1'de bağlandı; burada yalnız uzatmaları tak.\n"
+            "Karede Kablo yolu 5 ve 7'nin baradan dağıtım kartlarına giden kısmı K1'de bağlandı; burada yalnız uzatmaları tak. Kare "
+            "tabana arkadan ve üstten bakar: yolun anahtarlı baradan çıkışı, iki dağıtım kartı ve direğe çıkış karede; omuz uçları "
+            "kadrajın dışında.\n"
             "2. Kafa servoları, hat C (XL4016 C → SV3 → dağıtım kartı C, güç panelinde; B5a): kafa pan uzatmasını (S09) dağıtım kartı "
             "C'nin pan çıkışına, kafa tilt uzatmasını (S10) tilt çıkışına tak → direk üstü R62 halkası; tilt kablosu boyundan kafaya.\n"
             "3. Kafa 12 V (G17, {awg.G17} çift, F3 {a.F3}): direk ön yüzü (z +26) → R62 → boyun → kafa giriş kartı (E3a; oradan D24V50F5 ve "
@@ -2065,6 +2077,8 @@ TR_EK = {
     # P10.7b2j kapanışı (F10y): bara tutucusu / saplama takımı ve kafa Pi hattı TVS'sinin CAD ad / kodlarındaki yeni kelimeler
     "anahtarli": "anahtarlı", "barasi": "barası", "basli": "başlı", "cikisi": "çıkışı", "hatti": "hattı", "saplamasi": "saplaması",
     "takim": "takım", "takimi": "takımı", "yayli": "yaylı",
+    # P10.8e (planlama/d158/P108e-gunluk.md § 2): P10.8d kartlarının (acil stop düğüm kartı, dağıtım kartı C) CAD kodlarındaki kelimeler
+    "dort": "dört", "giris": "giriş", "kopru": "köprü", "vidali": "vidalı",
 }
 # Kelime düzeyinde çevrilemeyenler (büyük harfli Türkçe, birleşik yazım, çap işareti, ok). Sıra önemli; tr() önce bunları uygular.
 TR_IFADE = [
@@ -2192,11 +2206,11 @@ KABLO_AD = {
     10: ("Acil stop", "Acil stop (A01–A06, {awg.A01}; PC817 teli {awg.A06}): F5 {a.F5} → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 "
                       "bobinleri → BC337-40 #1 / #2 (arayüz kartı, {gpio.ROLE_K1} / {gpio.ROLE_K2_ONSARJ}); PC817 #1 mantar sonrası gerilimi okur ({gpio.ACIL_STOP_DURUM})"),
     11: ("Sinyal: sonar", "Sinyal: sol sonar (Q03, {awg.Q03}) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). "
-                          "Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer; "
-                          "çizimdeki yol kesiğin dışında görünür"),
+                          "Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer "
+                          "(çizimdeki yol da, P10.8d)"),
     # 05.11 B kararı: ESP32 USB hub'dan, direk arka yüzünden (kablo_yolu_ekran.py "ESP32 USB"); bu şemanın geometrisi CAD'de eski yol
-    12: ("Sinyal: enkoder", "Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin "
-                            "dışında görünür. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada "
+    12: ("Sinyal: enkoder", "Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki "
+                            "yol da, P10.8d). Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada "
                             "değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB "
                             "artık hub'dan: \"ESP32 USB\" şeması"),
 }
@@ -2246,8 +2260,9 @@ SEMA = [
                          "sigortası → XL4016 C IN", ("G16",)),
     ("taban", "G22", "K1", "Bara durumu (G22, {awg.G22}): anahtarlı baranın {bsaplama.G22} numaralı saplaması → hat "
                          "sigortası → arayüz kartı, PC817 #2 girişi", ("G22",)),
-    ("taban", "SV3", "B5a", "Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (yeri yaklaşık: modelde yok, XL4016 C'nin "
-                          "yanında)", ("SV3",)),
+    # P10.8e: kart P10.8d'de modelde (nominal zarf TAHMİN); şema kartın ön kenarının yanında biter (rehber_kablo PARCA_CAD)
+    ("taban", "SV3", "B5a", "Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (XL4016 C'nin arka yanında, zarfı "
+                          "TAHMİN)", ("SV3",)),
     ("taban", "G19", "K1", "Çevre 5 V (G19, {awg.G19}): XL4016 çevre OUT (alt kat) → ön kat kesiği → arayüz kartı, çevre 5 V klemensi",
      ("G19",)),
     ("taban", "M02", "B3", "Arka sol motor (M02, motorun kendi kablosu): BTS7960 sol M+ / M− → arka kablo deliği → plaka altı → arka sol "
@@ -2339,13 +2354,22 @@ DEMET_ALT = {
         dict(ad="Direğe çıkan hatların taban kısmı", paragraf=(11,), demet=("taban elektronik katı", "boyun", "taban (K1)", "gövde (K2)"),
              # P10.8b (P108b-gunluk.md § 4): U06'nın şeması K2'nin (32.4); şema kendi adımından önce çizilmez (app.js semaDurum), bu
              # karede yoktu. etiket_kablo: çizgi değil, ESP32 ucunun etiketi (rehber_gorunum.uc_isle)
-             kablo_sec=("Bağlantı tablosu P03",), kamera=(0.3, 1.0, 0.4), etiket_kablo=("U06",),
-             odak=("ESP32 taşıyıcı kart", "PCA9685 servo sürücü", "XL4016 servo 6 V C")),
+             # P10.8e (P108e-gunluk.md § 5): sema_on = adım ötesi şema {desen: (y üst sınırı, lejant notu)}: sonraki adımın şemasının
+             # y ≤ sınır olan uç bölümü bu alt adımda vurgulu çizilir (rehber_veri.py sira_grup[].sema_on, app.js uygula). U06'nın
+             # taban bölümü (y ≤ 300: direk dibinden ESP32 portuna) 17.11'de; tamamı K2 madde 4'te (32.4). etiket_kablo kalktı: U06
+             # artık bu alt adımın çizilen kablosu (uç etiketi rehber_gorunum.uc_isle sema_on'dan). Dağıtım kartı C P10.8d'de modelde.
+             kablo_sec=("Bağlantı tablosu P03",), kamera=(0.3, 1.0, 0.4),
+             sema_on={"(U06)": (300.0, "yalnız taban bölümü (direk dibinden ESP32'ye); tamamı K2 madde 4'ün karesinde")},
+             odak=("ESP32 taşıyıcı kart", "PCA9685 servo sürücü", "XL4016 servo 6 V C", "Dağıtım kartı C")),
         dict(ad="Son kontrol: K1'de enerji verilmez", paragraf=(12,), demet=(), genel="son kontrol"),
     ],
     "K2": [
+        # P10.8e (P108e-gunluk.md § 5; P108b § 5'te açık kalan 32.1): eski "arka" bakışı bütün robotu gösteriyordu, yolun anahtarlı
+        # baradan çıkışı seçilmiyordu. Arka-üstten dik bakış + taban odağı (önizleme P108e-olcum/onizleme/k2_1_arka_dik-32-1.png): bara
+        # saplaması, iki dağıtım kartı (son karede etiket 1, 2) ve direğe çıkış karede; omuz uçları kadraj dışı (UC_ORTULU ("K2", 1))
         dict(ad="Kol servo uzatmaları", paragraf=(1,), demet=("kol sağ", "kol sol"), desen=("Kablo yolu 5:", "Kablo yolu 7:"),
-             kamera="arka"),
+             kamera=(0.0, 1.0, -0.7),
+             odak=("Servo dağıtım kartı A", "Servo dağıtım kartı B", "XL4016 servo 6 V A", "XL4016 servo 6 V B", "Bara tutucusu anahtarlı")),
         dict(ad="Kafa servoları, hat C", paragraf=(2,), demet=("gövde (K2)", "boyun", "taban (K1)"), desen=("Kablo yolu 6:",),
              kamera="arka", saydam=("Servo yuvası", "Boyun plakası", "Rulman yuvası", "Pan servosu", "Omuz traversi")),
         dict(ad="Kafa 12 V", paragraf=(3,), demet=("boyun",), desen=("Kablo yolu 8:",)),
@@ -2382,7 +2406,8 @@ UC_ORTULU = {
     ("K1", 8): {"Röle K1": _ARKADA},
     ("K1", 9): {"XL4016 çevre": "alt katta, " + _ARKADA},
     ("K1", 10): {"JGB37 arka sol": "arka motor tabanın altında, " + _ARKADA, "JGB37 arka sağ": "arka motor tabanın altında, " + _ARKADA},
-    ("K2", 2): {"kafa tilt servosu": _DISARIDA},
+    ("K2", 1): {"sağ S1 (omuz öne-arka) servosu": _DISARIDA, "sol S1 (omuz öne-arka) servosu": _DISARIDA},   # P10.8e: taban odağı
+    ("K2", 2): {"kafa tilt servosu": _DISARIDA, "Dağıtım kartı C (kafa)": _DISARIDA},   # P10.8e: kart modelde, güç panelinde (F10d U1 / U4)
     ("K2", 7): {"Sigorta kutusu": _DISARIDA},
 }
 ALT_TAM_HAM = {}          # alt adımlara bölünen tam metin (çapası silinmiş, göndermesi çevrilmiş): ana metin + alt adımlar = bu

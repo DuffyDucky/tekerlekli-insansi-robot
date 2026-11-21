@@ -921,6 +921,8 @@ for i, kod in enumerate(KODLAR):
                     raise SystemExit("%s.%d: odak deseni bu adima kadar takilan hicbir parcaya uymuyor: %s" % (kod, n + 1, bos))
             if g.get("sema"):
                 e["_sema"] = tuple(g["sema"])
+            if g.get("sema_on"):                                    # P10.8e: adım ötesi şema {desen: (y üst sınırı, not)}; aşağıda çözülür
+                e["_sema_on"] = dict(g["sema_on"])
             if g.get("sema_ortulu"):                                # P10.7b2d-A d1: karede görünmeyen şema {desen: neden} (lejant)
                 e["sema_ortulu"] = dict(g["sema_ortulu"])
             if g.get("gizli_ok"):
@@ -1004,6 +1006,24 @@ for a in ADIMLAR:
             raise SystemExit("%s.%d: sema_ortulu deseni grubun semasina uymuyor: %s" % (a["kod"], n + 1, bos))
         if not g["sema"]:
             g.pop("sema")
+        # P10.8e (planlama/d158/P108e-gunluk.md § 5): adım ötesi şema. Desen tam bir şemanın görünen adında olmalı, şema sonraki bir
+        # adımın olmalı (kendi adımında zaten çizilir), y ≤ sınır olan noktalar şemanın bir ucunda bitişik ve en az iki nokta olmalı
+        # (aradan kesilen parça yok); veride i (şema), pts (çizilen bölüm), not_ (lejant). Uymayan desen üretimi durdurur.
+        so = g.pop("_sema_on", None)
+        if so:
+            g["sema_on"] = []
+            for desen, (ymax, not_) in sorted(so.items()):
+                ks = [k for k, s_ in enumerate(SEMALAR) if desen in s_["ad"]]
+                if len(ks) != 1:
+                    raise SystemExit("%s.%d: sema_on deseni %r %d semaya uyuyor (1 beklenir)" % (a["kod"], n + 1, desen, len(ks)))
+                s_ = SEMALAR[ks[0]]
+                if s_["a"] <= a["i"]:
+                    raise SystemExit("%s.%d: sema_on %r semasi bu adimda ya da once (adim %d): gerek yok" % (a["kod"], n + 1, desen, s_["a"]))
+                ic = [j for j, q in enumerate(s_["pts"]) if q[1] <= ymax]
+                if len(ic) < 2 or ic != list(range(ic[0], ic[-1] + 1)) or (ic[0] != 0 and ic[-1] != len(s_["pts"]) - 1):
+                    raise SystemExit("%s.%d: sema_on %r: y <= %s noktalari semanin bir ucunda bitisik degil (%s)" % (
+                        a["kod"], n + 1, desen, ymax, ic))
+                g["sema_on"].append(dict(i=ks[0], pts=[s_["pts"][j] for j in ic], not_=not_, y_ust=ymax))
 
 VERI = dict(
     surum=1, uretim=time.strftime("%Y-%m-%d %H:%M"), betik="tasarim/freecad/rehber/rehber_veri.py",

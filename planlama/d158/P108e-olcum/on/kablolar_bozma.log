@@ -1,0 +1,207 @@
+kablolar.json: 74 kablo (kesin 20, kablajda teyit edilecek 54, karara bağlı 0)
+  kesit istisnası: 25 kablo; kesit-koruma kararı bekleyen: 0 (-)
+    istisna servo-uzatmasi: 10 kablo (S01, S02, S03, S04, S05, S06, S07, S08, S09, S10); gerekçe / şart / kontrol / karar dolu: evet
+    istisna ana-hat-12awg: 5 kablo (G01, G02, G03, G04, G05); gerekçe / şart / kontrol / karar dolu: evet
+    istisna motor-fabrika-kablosu: 4 kablo (M01, M02, M03, M04); gerekçe / şart / kontrol / karar dolu: evet
+    istisna kafa-5v-donusturucu-arkasi: 3 kablo (K03, K04, K05); gerekçe / şart / kontrol / karar dolu: evet
+    istisna servo-ana-hat-16awg: 3 kablo (SV1, SV2, SV3); gerekçe / şart / kontrol / karar dolu: evet
+  boy: 17 ölçüm / CAD, 57 tahmin (P10.7b'de ölçülecek)
+  GEÇER  alanlar
+  GEÇER  iki_uc
+  GEÇER  yer_tutucu
+  GEÇER  ag
+  GEÇER  koruyucu
+  GEÇER  ayni_nokta
+  GEÇER  esp32_pin
+  GEÇER  pca_kanal
+  GEÇER  kesit
+  GEÇER  donus
+  GEÇER  tahmin
+  GEÇER  klemens
+  GEÇER  malzeme
+  GEÇER  donanim
+  GEÇER  acil_stop
+  GEÇER  kaynak
+  GEÇER  sayi_metin
+  GEÇER  denetim_62
+  GEÇER  gorunum
+  GEÇER  yon_yer
+  GEÇER  sema_boy
+bilerek bozma (bozulmuş kopya; dosyalara yazılmaz):
+  YAKALADI  iki_uc      b_iki_uc: G02: uc_b boş
+  YAKALADI  ayni_nokta  b_ayni_nokta: 'BTS7960 sol · IN1' iki ayrı işte: B01/IN1 (ileri PWM), B02/IN1 (ileri PWM)
+  YAKALADI  esp32_pin   b_esp32_pin: X01/röle K1 sürüşü: GPIO12 dışarıya bağlanmaz (boş / LED / kart üstü)
+  YAKALADI  esp32_pin   b_esp32_pin_2: N02/A: SAG_ENK_A haritada GPIO16, tabloda GPIO15
+  YAKALADI  pca_kanal   b_pca_kanal: K1 tabloda 'sag_dirsek', pin haritasında 'sag_omuz_yan'
+  YAKALADI  pca_kanal   b_pca_kanal_2: main kanallar.yaml sol_bilek = K9, pin haritası K9 = kafa_tilt
+  YAKALADI  kesit       b_kesit: G17/+: 18 AWG ortam düzeltmeli en çok 5.25 A, koruyan F3 10 A
+  YAKALADI  kesit       b_kesit_2: G03/+: 12 AWG ortam düzeltmeli en çok 20.5 A, koruyan ana-sigorta 30 A
+  YAKALADI  kesit       b_kesit_3: istisna 'servo-uzatmasi': gerekce boş / yer tutucu / çok kısa ('')
+  YAKALADI  kesit       b_kesit_4: G18: istisna 'servo-uzatmasi' kapsamında değil (sessiz muafiyet)
+  YAKALADI  kesit       b_kesit_5: kesit_kurali 16 AWG: en çok 15 A, kaynakların küçüğü 10 A (temkinli olan alınır)
+  YAKALADI  kesit       b_kesit_6: istisna 'ana-hat-12awg': sart boş / yer tutucu / çok kısa ('')
+  YAKALADI  kesit       b_kesit_7: G08: istisna 'ana-hat-12awg' kapsamında değil (sessiz muafiyet)
+  YAKALADI  kesit       b_kesit_8: G06/+: 16 AWG ortam düzeltmeli en çok 8.2 A, koruyan hat-sarj 10 A
+  YAKALADI  kesit       b_kesit_9: G18/+: 18 AWG ortam düzeltmeli en çok 5.25 A, koruyan F4 5.5 A
+  YAKALADI  kesit       b_kesit_10: X01/PC817 çıkış beslemesi: 22 AWG ortam düzeltmeli en çok 2.46 A, koruyan hat-cevre 3 A
+  YAKALADI  kesit       b_kesit_11: G19: koruma 'hat-cevre', devrenin yapısından 'XL4016-cevre' (koruyucular tablosu). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  kesit       b_kesit_12: istisna 'servo-ana-hat-16awg': SV1 beklenen akım (sürekli 4.87 / tepe 9.0 A) düzeltilmiş sınırın (8.2 A) üstünde: istisna yapılamaz
+  YAKALADI  kesit       b_kesit_13: istisna 'servo-ana-hat-16awg': SV3 düzeltilmiş sınırı kayıtta 8.2 A, kesit / bölgeden 7.5 A
+  YAKALADI  kesit       b_kesit_14: SV2/V+: 16 AWG ortam düzeltmeli en çok 8.2 A, koruyan XL4016-B 10 A
+  YAKALADI  kesit       b_kesit_15: koruyucu hat-cevre: yük bütçesi toplam_tipik_a 0.344 A, kalemlerin toplamı 2.004 A
+  YAKALADI  kesit       b_kesit_16: koruyucu hat-cevre: yük bütçesinin tepesi 2.112 A sigortanın 2 A'ine ulaşıyor (atar)
+  YAKALADI  tahmin      b_tahmin: G03: boy_tahmin 300 mm, uçlardan yeniden hesap 450 mm
+  YAKALADI  tahmin      b_tahmin_2: G04: hem boy (ölçüm / CAD) hem boy_tahmin var; tahmin ölçümün yerine geçmez
+  YAKALADI  tahmin      b_tahmin_3: G08: boy_tahmin etiketi 'tahmin, P10.7b'de ölçülecek' değil
+  YAKALADI  tahmin      b_tahmin_4: G09: boy yok ve boy_tahmin yok
+  YAKALADI  tahmin      b_tahmin_5: G03: boy_tahmin 450 mm, uçlardan yeniden hesap 600 mm
+  YAKALADI  klemens     b_klemens: G05/−: b ucu wago-2273 yalnız tek telli iletken alır, kablo silikon-12 ince telli
+  YAKALADI  klemens     b_klemens_2: A04: kart üstü köprü 18 AWG, karta giren en kalın güç kablosu 12 AWG
+  YAKALADI  klemens     b_klemens_3: Yıldız barası · GND: 11 iletken, 3 saplama en çok 8 pabuç alır (saplama başına 4, köprü uçları dahil)
+  YAKALADI  klemens     b_klemens_4: bara-pabuc: saplama başına 5 pabuç; sınır 4 (ABYC E-11)
+  YAKALADI  klemens     b_klemens_5: G12: uç türü belgesiz (bts-guc) parça ['BTS7960 sol']; teyit listesinde o parçayı anan 'klemens:' maddesi yok (durum 'kablajda teyit edilecek', kesin olamaz)
+  YAKALADI  klemens     b_klemens_6: Yıldız barası · GND: 5 saplama zincir köprüyle 4 köprü ister, kopruler kaydında 3 (malzeme sayımı eksik kalır)
+  YAKALADI  malzeme     b_malzeme: silikon-18 kırmızı: ihtiyaç 8.25 m × 1.3 = 10.7 m, maliyet.json kalem 59 (Silikon kablo 18 AWG) 7 × 1 m (eksik)
+  YAKALADI  malzeme     b_malzeme_2: G21: malzeme 'silikon-14' malzeme_turleri'nde yok
+  YAKALADI  malzeme     b_malzeme_3: silikon-12 siyah: ihtiyaç 3.20 m × 1.3 = 4.2 m, maliyet.json kalem 58 (Silikon kablo 12 AWG) 3 × 1 m (eksik)
+  YAKALADI  acil_stop   b_acil_stop: G21: acil_stopta_enerjili False, besleme zincirine göre enerjili (aku-bms → ana-sigorta → ana-anahtar → F6 → gogus-regulatoru)
+  YAKALADI  acil_stop   b_acil_stop_2: dal F6: devrenin yapısına göre enerjili; §12'nin Enerjili listesinde 'F6 göğüs ekranı dalı' öğesi yok (tam eşleşme)
+  YAKALADI  acil_stop   b_acil_stop_3: dal anahtarli-bara: devrenin yapısına göre enerjili; §12'nin Enerjili listesinde 'röle K1 / K2 kontağından sonraki anahtarlı bara' öğesi yok (tam eşleşme)
+  YAKALADI  acil_stop   b_acil_stop_4: G17: besleme_zinciri kayıtta ['aku-bms', 'ana-sigorta', 'ana-anahtar', 'F4'], devreden ['aku-bms', 'ana-sigorta', 'ana-anahtar', 'F3']. tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_acil_stop_5: dal anahtarli-bara: devrenin yapısına göre enerjisiz; §12'nin Enerjisiz listesinde 'röle K1 / K2 kontağından sonraki anahtarlı bara' öğesi yok (tam eşleşme)
+  YAKALADI  kaynak      b_kaynak: H02: kaynak yok
+  YAKALADI  kaynak      b_kaynak_2: G17: satır dışı: planlama/adim3/elektrik.md:9999 (dosya 592 satır)
+  YAKALADI  kaynak      b_kaynak_3: eleman F3: ilgisiz satır: planlama/adim3/elektrik.md:1 (kablonun ayırt edici terimlerinden hiçbiri yok: f3, f3 5 a …)
+  YAKALADI  alanlar     b_alanlar: U04: durum 'kablajda teyit edilecek', eksik / teyit listesine göre 'karara bağlı' olmalı
+  YAKALADI  alanlar     b_alanlar_2: G16: devre türü 'sinyal (zayıf)' izinli listede (devre_turleri) yok
+  YAKALADI  denetim_62  b_denetim_62: dökümün şu satırları eşlenmedi: #22
+  YAKALADI  gorunum     b_gorunum: kablolar.md tabloyla güncel değil: py -3 planlama/adim3/kablolar_uret.py
+  YAKALADI  gorunum     b_gorunum_2: elektrik.md'deki dal başına kesit bloğu tabloyla güncel değil: py -3 planlama/adim3/kablolar_uret.py
+  YAKALADI  ag          b_ag: eleman kopru: 5V-pi ile 5V-cevre ağlarını birleştiriyor (5 V Pi / çevre ayrı kalmalı)
+  YAKALADI  ag          b_ag_2: G17/+: telin iki ucu farklı ağlarda (f3-cikis ↔ 5v-pi)
+  YAKALADI  ag          b_ag_3: düğüm 'XL4016 A · OUT+': adı güç ucu ama ağı yazılı değil
+  YAKALADI  ag          b_ag_4: G14/+: arada hat-B (anahtarli-bara → ['xl-b-giris']) ama uçlar anahtarli-bara → xl-a-giris
+  YAKALADI  donus       b_donus: G03: ortak dönüş G22 (22 AWG) + damarından (12 AWG) ince
+  YAKALADI  donus       b_donus_2: yıldız noktasına varmayan dönüş düğümleri: Arayüz kartı · BC337-40 #1 C, Röle K1 · 85
+  YAKALADI  donus       b_donus_3: M01: motor çıkışı tek damarlı (M+ / M− çifti yok)
+  YAKALADI  yer_tutucu  b_yer_tutucu: P01 (kesin): sonlandirma yer tutucu içeriyor 'öneri': 3 pinli köprü (öneri) (eksik bilgi eksik / teyit alanına)
+  YAKALADI  koruyucu    b_koruyucu: koruyucu F4: tabloda 5 A, elektrik.md sigorta listesinde 10 A
+  YAKALADI  koruyucu    b_koruyucu_2: koruyucu hat-C: tabloda 7.5 A, elektrik.md sigorta listesinde 5 A
+  YAKALADI  koruyucu    b_koruyucu_3: koruyucu ana-sigorta: tabloda 40 A, elektrik.md sigorta listesinde 30 A
+  YAKALADI  koruyucu    b_koruyucu_4: koruyucu D24V50F5: akım sınırı belgelerde sayı olarak yok ama tabloda 5 A (kaynağı olmayan sayı)
+  YAKALADI  koruyucu    b_koruyucu_5: koruyucu ana-sigorta: maliyet.json kalem 53 (40 Amper Oto Sigorta - Bıçak Sigorta) amper [40.0], tabloda 30 A
+  YAKALADI  koruyucu    b_koruyucu_6: koruyucu F5: biçim 'mini', sigorta listesinde 'standart'
+  YAKALADI  kesit       b_kesit_17: istisna 'kafa-5v-donusturucu-arkasi': kapsam ['G18', 'K03', 'K04', 'K05'] (4), kayıtlı karar O-21: ['K03', 'K04', 'K05'] (3)
+  YAKALADI  kesit       b_kesit_18: istisna 'ana-hat-12awg': kapsam ['G01', 'G02', 'G03', 'G04', 'G05', 'G08'] (6), kayıtlı karar O-15: ['G01', 'G02', 'G03', 'G04', 'G05'] (5)
+  YAKALADI  kesit       b_kesit_19: kesit_kurali 16 AWG: dayanak {'cfr': 20, 'nfpa79': 15}, kaynaklar (CFR Table 5 / NFPA 79 Table 12.5.1) {'cfr': 20, 'nfpa79': 10}
+  YAKALADI  kesit       b_kesit_20: kesit_kurali.ortam.katsayilar [{'en_cok_c': 30, 'k': 1.0}, {'en_cok_c': 45, 'k': 0.95}, {'en_cok_c': 50, 'k': 0.75}], kaynak (NEC 310.15(B)(1), 75 °C) [(30, 1.0), (45, 0.82), (50, 0.75)]
+  YAKALADI  kesit       b_kesit_21: köprü Yıldız barası · GND: besleme saplaması 1'de besleme iletkeni yok (yerleşim; akü dönüşü)
+  YAKALADI  kesit       b_kesit_22: istisna 'servo-uzatmasi': koruyucu → en ince kesit {'XL4016-A': 24, 'XL4016-B': 24, 'XL4016-C': 24}, kayıtlı kararda {'XL4016-A': 22, 'XL4016-B': 22, 'XL4016-C': 22}
+  YAKALADI  acil_stop   b_acil_stop_6: eleman XL4016-cevre: tabloda girişi 'f3-cikis', elektrik.md blok şemasında 'F4 5 A' (F4) arkasında (beklenen giriş ['f4-cikis']). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_acil_stop_7: dal F6: devrenin yapısına göre enerjisiz; §12'nin Enerjisiz listesinde 'anahtarlı bara' öğesi yok (tam eşleşme)
+  YAKALADI  acil_stop   b_acil_stop_8: dal F4: devrenin yapısına göre enerjili; §12'nin Enerjili listesinde 'akü' öğesi yok (tam eşleşme)
+  YAKALADI  ag          b_ag_5: kart içi bağ D24V50F5 · VOUT (P6KE6V8A) ↔ Arayüz kartı · çevre 5 V: 5 V Pi ve 5 V çevre ağlarını birleştiriyor (5v-pi ↔ 5v-cevre)
+  YAKALADI  yer_tutucu  b_yer_tutucu_2: G17 (kablajda teyit edilecek): uc_b yer tutucu içeriyor '?': ? (eksik bilgi eksik / teyit alanına)
+  YAKALADI  yer_tutucu  b_yer_tutucu_3: I01 (kesin): sonlandirma yer tutucu içeriyor 'sonra bakılacak': sonra bakılacak (eksik bilgi eksik / teyit alanına)
+  YAKALADI  klemens     b_klemens_7: G10: sonlandırma metni '5,08' diyor, uç türlerinde klemens-508 yok (12 AWG kablo)
+  YAKALADI  klemens     b_klemens_8: klemens türü klemens-508: sınır 4.0 mm², kaynak tablosunda (UC_TURU_SINIRI) None
+  YAKALADI  klemens     b_klemens_9: G08/+: Sigorta kutusu · F1 çıkışı ucunun türü 'lehim', Sigorta kutusu güç ucu sigorta-kutusu
+  YAKALADI  donanim     b_donanim: maliyet.json kalem 85 (Hat sigortası yuvası): 3 adet, tabloda 6 mini sigorta (hat-A, hat-B, hat-C, hat-G22, hat-cevre, hat-sarj)
+  YAKALADI  donanim     b_donanim_2: maliyet.json kalem 156 (Bara saplaması): 2 takım, tabloda 9 saplama (n ≤ adet ≤ n + 1)
+  YAKALADI  donanim     b_donanim_3: K1-bobin: geri_tepme_diyodu (parca 1N4007, yer, yon, kablo) yok / eksik
+  YAKALADI  donanim     b_donanim_4: maliyet.json kalem 76 (1N4007): 2 adet, röle bobini 2 + 1 yedek = 3
+  YAKALADI  donanim     b_donanim_5: Halka pabuç 12 AWG (kalem 154): tablodan 23 uç × 1.3 = 29.9, listede 1 × 10 = 10 (en çok 40)
+  YAKALADI  kaynak      b_kaynak_4: G18: ilgisiz satır: planlama/adim3/elektrik.md:5 (kablonun ayırt edici terimlerinden hiçbiri yok: f4, g18, xl4016, xl4016 çevre, yıldız barası, yıldız noktası, çevre …)
+  YAKALADI  sayi_metin  b_sayi_metin: G06: ad 'Şarj kolu: akü + → 10 A hat sigortası → XT60E-F şarj girişi ' 10 A diyor; kablonun kendi koruyucuları [7.5] (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_2: K03: kesit_not '20 AWG (EL:279): D24V50F5 5 A ≤ 20 AWG'nin 5 A'i, sınırda' 20 AWG diyor; kaydın kesiti [18], uç kuyruğu []
+  YAKALADI  alanlar     b_alanlar_3: G05: tanımsız alan ['klemensler'] (denetim okumaz; eski alan adı mı?)
+  YAKALADI  acil_stop   b_blok: eleman hat-A: tabloda girişi 'f1-cikis', elektrik.md blok şemasında 'röle K1 kontağı ∥ K2 ön şarj kolu' (K1-kontak, K2-kontak) arkasında (beklenen giriş ['anahtarli-bara']). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_blok_2: eleman BTS7960-sol: tabloda girişi 'f1-cikis', elektrik.md blok şemasında 'röle K1 kontağı ∥ K2 ön şarj kolu' (K1-kontak, K2-kontak) arkasında (beklenen giriş ['anahtarli-bara']). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_blok_3: eleman hat-G22: tabloda girişi 'f1-cikis', elektrik.md blok şemasında 'röle K1 kontağı ∥ K2 ön şarj kolu' (K1-kontak, K2-kontak) arkasında (beklenen giriş ['anahtarli-bara']). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_blok_4: eleman hat-A: tabloda 7.5 A, blok şemasında '10 A'. tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_blok_5: eleman hat-G22: blok şemasında '^\d+(?:,\d+)? A mini' (ardında '^PC817 #2') kalıbına uyan 0 öğe (bir olmalı). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  sayi_metin  b_sayi_metin_3: G22: ad 'Anahtarlı bara → 7,5 A hat sigortası → PC817 #2 girişi (bara' 7,5 A diyor; kablonun kendi koruyucuları [2] (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_4: G19: not 'Koruyan XL4016 çevre 8 A sınırı; 16 AWG yeter.' XL4016 çevre 8 A diyor, koruyucular.XL4016-cevre 10 A
+  YAKALADI  sayi_metin  b_sayi_metin_5: G06: + ara '10 A mini hat sigortası yuvası (16 AWG kuyruklu)' 10 A diyor; kablonun kendi koruyucuları [7.5] (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_6: G22: − not 'dönüş F4 10 A ile aynı saplamada' F4 10 A diyor, koruyucular.F4 5 A
+  YAKALADI  klemens     b_klemens_10: G17/+: b ucu wago-2273 yalnız tek telli iletken alır, kablo silikon-18 ince telli
+  YAKALADI  klemens     b_klemens_11: G22/−: 22 AWG (0.33 mm²) b ucu bara-pabuc alt sınırının (0.5 mm²) altında
+  YAKALADI  klemens     b_klemens_12: A06/+: 22 AWG (0.33 mm²) a ucu klemens-508: alt sınırı belgesiz klemens ince teli almaz (lehim + makaron ya da kuyruk)
+  YAKALADI  klemens     b_klemens_13: uç türü wago-2273: iletken 'tek telli / ince telli', en ince 0.5 mm²; sabit tabloda (UC_TURU_ILETKEN) ('tek telli', 0.5)
+  YAKALADI  kesit       b_kesit_23: köprü Yıldız barası · GND 2–3: 12 AWG etekte en çok 20.5 A, en kötü akım 23 A (saplama 1, 2 dönüşleri)
+  YAKALADI  kesit       b_kesit_24: köprü Yıldız barası · GND: besleme saplaması 3'de besleme iletkeni yok (yerleşim; akü dönüşü)
+  YAKALADI  alanlar     b_alanlar_4: K01: kesit 12 AWG ↔ 2.0 mm²; AWG tablosunda 3.31 mm²
+  YAKALADI  koruyucu    b_koruyucu_7: Sigorta listesi 'F4' satırının Değer hücresinde 2 akım değeri: '5 A standart, sonra 10 A' (bir olmalı; tarihçe parantez içinde)
+  YAKALADI  donanim     b_donanim_6: K1-bobin: 1N4007 yon metni 'katot (bantlı uç) 85'e (bobin −), anot 86'ya (bobin +)': katot bobin + ucunda, anot − ucunda olmalı (katot_dugumu / anot_dugumu ile aynı)
+  YAKALADI  donanim     b_donanim_7: K2-bobin: 1N4007 katot düğümü 'Ön şarj kartı · K2 bobini −' (ağ k2-bobin-alt), anot 'Ön şarj kartı · K2 bobini +' (ağ mantar-sonrasi); ters paralel söndürme için katot bobinin + ucunda (mantar-sonrasi), anot − ucunda (k2-bobin-alt)
+  YAKALADI  donanim     b_donanim_8: maliyet.json kalem 69 (BC337-40): 1 adet, röle bobini 2 + 1 yedek = 3
+  YAKALADI  donanim     b_donanim_9: maliyet.json kalem 61 (2200 µF): 4 adet, tabloda kartlarda 5 (n ≤ adet ≤ n + 1)
+  YAKALADI  donanim     b_donanim_10: maliyet.json kalem 80 (5,08 mm klemens): 2 adet, tabloda 12 klemens × 1.3 = 15.6 (en çok 18)
+  YAKALADI  donanim     b_donanim_11: maliyet.json kalem 62 (WAGO 2273): 10 adet V3'te, tabloda wago-2273 ucu yok
+  YAKALADI  donanim     b_donanim_12: maliyet.json kalem 79 (delikli pertinaks): 5 adet, tabloda 7 plaket (n ≤ adet ≤ n + 1)
+  YAKALADI  sayi_metin  b_sayi_metin_7: G14: + ara '20 A mini hat sigortası yuvası (16 AWG kuyruklu)' 20 A diyor; kablonun kendi koruyucuları [7.5] (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_8: G17: ad '30 A → kafa 12 V çifti (taban → direk → boyun → kafa girişi)' 30 A diyor; kablonun kendi koruyucuları [5] (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_9: G19: +5 V ara '5 A mini hat sigortası yuvası (16 AWG kuyruklu)' 5 A diyor; kablonun kendi koruyucuları [2] (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_10: G06: not 'Sigorta 10 A, şarj kolu.' 10 A diyor; kablonun kendi koruyucuları [7.5, 30], kesit sınırları [8.2, 10] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_11: G06: kesit_not '10 A hat sigortası' 10 A diyor; kablonun kendi koruyucuları [7.5, 30], kesit sınırları [8.2, 10] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_12: G22: not 'hat sigortası 3 A' 3 A diyor; kablonun kendi koruyucuları [2, 20, 30], kesit sınırları [2.46, 3] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_13: G18: ad 'F3 5 A → XL4016 çevre girişi' F3 diyor; kablonun zincirinde ['F4'], uç düğümlerinde ['F4']
+  YAKALADI  sayi_metin  b_sayi_metin_14: G18: sonlandirma 'F3 yuvasına, XL4016 çevre girişi vidalı klemens' F3 diyor; kablonun zincirinde ['F4'], uç düğümlerinde ['F4']
+  YAKALADI  acil_stop   b_blok_6: blok şeması 'röle K1 bobini ∥ K2 bobini': 2 bobin tek öğede, ardında tek sürücü gibi okunuyor; tabloda her bobinin kendi sürücüsü var (BC337-40 #1, BC337-40 #2): öğeye "(her bobin kendi BC337-40'ıyla, E9)" yazılmalı. tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  acil_stop   b_blok_7: blok şeması 'röle K1 bobini ∥ K2 bobini (her bobin kendi BC337-' her bobinin kendi BC337-40'ı var diyor, tabloda 2 bobine 1 sürücü (BC337-40 #1). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  klemens     b_klemens_14: G22: uç türü belgesiz (modul-vidali) parça ['PC817 modülü']; teyit listesinde o parçayı anan 'klemens:' maddesi yok (durum 'kablajda teyit edilecek', kesin olamaz)
+  YAKALADI  klemens     b_klemens_15: SV1: uç türü belgesiz (modul-vidali) parça ['XL4016 A']; teyit listesinde o parçayı anan 'klemens:' maddesi yok (durum 'kablajda teyit edilecek', kesin olamaz)
+  YAKALADI  klemens     b_klemens_16: malzeme türü silikon-18: iletken 'tek telli', sabit tabloda (MALZEME_ILETKEN) 'ince telli'
+  YAKALADI  klemens     b_klemens_17: G17: sonlandırma 'kart üstünde lehimle köprülü' kart üstü köprüyü telle yazmıyor ('≥ N AWG tel köprü'; delikli plaket pedi akım yolu değil)
+  YAKALADI  klemens     b_klemens_18: K01: kart üstü köprü 22 AWG, karta giren en kalın güç kablosu 18 AWG
+  YAKALADI  klemens     b_klemens_19: K01: ucu klemens-508 (kesit aralığı belgesiz, klemens_turleri.klemens-508) ama durum 'kesin'; kural: belgesiz klemens-508 uçlu her kablo 'kablajda teyit edilecek'
+  YAKALADI  sayi_metin  b_sayi_metin_15: K04: not 'Kafa ekranı (Waveshare 10,1" QLED) akımı: üretici sayfasında' 0,9 A diyor; kablonun kendi koruyucuları [5, 30], kesit sınırları [0.9, 5] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_16: G22: not 'yük varsayımı yok; hat sigortası 3 A' 3 A diyor; kablonun kendi koruyucuları [2, 20, 30], kesit sınırları [2.46, 3] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_17: G22: not 'Hat sigortası 3 A (yük çok az).' 3 A diyor; kablonun kendi koruyucuları [2, 20, 30], kesit sınırları [2.46, 3] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_18: G17: not 'Kafa yükü için 10 A sigorta.' 10 A diyor; kablonun kendi koruyucuları [5, 30], kesit sınırları [5.25, 7] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_19: G06: not 'Şarj kolu 10 A (yük varsayımı).' yük akımı 10 A kablonun zincirindeki en küçük koruyucuyu (7.5 A) aşıyor
+  YAKALADI  sayi_metin  b_sayi_metin_20: G17: not 'Sigorta 10 A, çeker.' 10 A diyor; kablonun kendi koruyucuları [5, 30], kesit sınırları [5.25, 7] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_21: G17: not 'Yük: sigorta 10 A.' 10 A diyor; kablonun kendi koruyucuları [5, 30], kesit sınırları [5.25, 7] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  sayi_metin  b_sayi_metin_22: G17: kesit_not 'Sigorta 7,5 A, tüketim 2 A.' 7,5 A diyor; kablonun kendi koruyucuları [5, 30], kesit sınırları [5.25, 7] yalnız 'AWG' / 'sınır' yanında (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)
+  YAKALADI  yon_yer     b_yon_yer: tvs P6KE18A: yon 'katot (bantlı uç) GND'ye, anot +12 V ucuna': tek yönlü TVS'te katot (bantlı uç) artı hatta, anot GND'de olmalı
+  YAKALADI  yon_yer     b_yon_yer_2: tvs P6KE6V8A-pi: artı düğümü D24V50F5 · GND (ağ GND) bir + güç ağında değil
+  YAKALADI  yon_yer     b_yon_yer_3: kondansatorler.yon yok (şema 4: elektrolitiğin kutbu)
+  YAKALADI  yon_yer     b_yon_yer_4: hat-A: yerin başı 'XL4016 A IN+ ucunun dibinde' G14/+'in ara_uc ucundaki parçayı (Anahtarlı bara) '… ucunda' diye anmıyor (koruyucu kaynak ucunda)
+  YAKALADI  yon_yer     b_yon_yer_5: K2-kontak: uclar (giris, cikis, teyit, kaynak) yok / eksik (şema 4)
+  YAKALADI  yon_yer     b_yon_yer_6: K2-kontak.uclar COM → NC (boş NC); karar: G10 → COM, NO → ön şarj direnci, NC boş
+  YAKALADI  yon_yer     b_yon_yer_7: Anahtarlı bara · + saplama 1: sıra ['G14/+', 'G12/+', 'G15/+'] (AWG [16, 12, 16]); kalın pabuç altta (liste alttan üste)
+  YAKALADI  yon_yer     b_yon_yer_8: tvs P6KE18A: kaynak veri sayfasını (adres) göstermiyor
+  YAKALADI  yon_yer     b_yon_yer_9: R-aku-olcum: yer alanı yok (G07/+ ucunda; şema 4)
+  YAKALADI  kesit       b_kesit_25: köprü Anahtarlı bara · +: besleme saplaması 3'de besleme iletkeni yok (yerleşim; baraya gelen hat)
+  YAKALADI  klemens     b_klemens_20: G07/+: 22 AWG (0.33 mm²) a ucu pabuc alt sınırının (0.5 mm²) altında
+  YAKALADI  yon_yer     b_yon_yer_10: GÜVENLİK K1-kontak.uclar 30 → 87a (boş 87a): bara 30 → 87 (dinlenmede açık) üzerinden beslenir, 87a boş; 87a / NC kullanılırsa acil stopta bara enerjili kalır
+  YAKALADI  yon_yer     b_yon_yer_11: GÜVENLİK K1-kontak.uclar 30 → 87a (boş 87): bara 30 → 87 (dinlenmede açık) üzerinden beslenir, 87a boş; 87a / NC kullanılırsa acil stopta bara enerjili kalır
+  YAKALADI  yon_yer     b_yon_yer_12: GÜVENLİK K1 kontak uçları damarlarla uyuşmuyor: G08 → ['Röle K1 · 30'], G09 ← ['Röle K1 · 87a'], uclar 30 → 87
+  YAKALADI  yon_yer     b_yon_yer_13: hat-B: yerin başı 'XL4016 B IN+ ucunun dibinde (yük ucu)' G15/+'in ara_uc ucundaki parçayı (Anahtarlı bara) '… ucunda' diye anmıyor (koruyucu kaynak ucunda)
+  YAKALADI  yon_yer     b_yon_yer_14: R-aku-olcum: yerin başı 'arayüz kartında, bölücünün orta noktasının yanında' G07/+'in ara_uc ucundaki parçayı (Ana anahtar) '… ucunda' diye anmıyor (koruyucu kaynak ucunda)
+  YAKALADI  yon_yer     b_yon_yer_15: kondansatorler.kaynak 'kalem 61'in satıcı sayfası üretici ve veri sayfası': adet ve yerin kaynağı elektrik.md satırı olmalı (kutup ayrı: kutup_kaynak)
+  YAKALADI  yon_yer     b_yon_yer_16: tvs P6KE18A: teyit gövde baskısını (…A tek yönlü, …CA çift yönlü) ve 'kablajda teyit'i söylemiyor
+  YAKALADI  yon_yer     b_yon_yer_17: ana-anahtar.saplama: ölçü ve 'kablajda teyit' kaydı yok (M5 varsayım, belgesi yok)
+  YAKALADI  koruyucu    b_koruyucu_8: koruyucu R-aku-olcum: bölücü 100 kΩ / 33 kΩ (oran 0.2481): akü 14.6 V'ta 3.62 V, ESP32 ADC doğrusal sınırı 2,45 V'u aşıyor (GÜVENLİK)
+  YAKALADI  koruyucu    b_koruyucu_9: koruyucu R-aku-olcum: elektrik.md '10 V → 1.83 V', bölücü oranıyla 1.53 V
+  YAKALADI  koruyucu    b_koruyucu_10: koruyucu R-aku-olcum: elektrik.md 'Akü gerilimi' satırında bölücü 'N kΩ / M kΩ', 'doğrusal bölge ≤ N V' ya da 'N V → M V' yok
+  YAKALADI  sema_boy    b_sema_boy: AU1: sema_boy etiketi 'ölçüm', 'gösterim şeması yolu; ölçüm değil' olmalı
+  YAKALADI  sema_boy    b_sema_boy_2: K03: sema_boy.mm geçersiz ('47')
+  YAKALADI  sema_boy    b_sema_boy_3: AU1: sema_boy.ortak 'AU9' kayıtta yok ya da kendisi
+  YAKALADI  sema_boy    b_sema_boy_4: U06: boy şema kaynağından yazılmış (tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar); şema yolu boy değil
+  YAKALADI  sema_boy    b_sema_boy_5: G07: sema_boy.kaynak dosyası yok (tasarim/freecad/lale158/yok.py#yollar)
+  YAKALADI  kaynak      b_boy_tazelik: U06: boy kaynağıyla tutmuyor (yol_mm 971 ≠ kaynak 1129.0; tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB)
+  YAKALADI  kaynak      b_boy_tazelik_2: S03: boy kaynağıyla tutmuyor (gereken_mm 1800 ≠ kaynak 1856.0; tasarim/freecad/dirsek/dirsek-analiz.json#kablo.s1_boy.uzatma.0.uzatma_mm)
+bağımsız kontrolün kaçan on bozması (P107a-kontrol.md §1 D1):
+  YAKALADI  B3   ag, esp32_pin, gorunum: X01/röle K1 sürüşü: uç 'ESP32 · GPIO 12' düğümler listesinde yok
+  YAKALADI  B4   kesit, donus, gorunum: G18: + damarı var, aynı kabloda − damarı yok ve ortak_donus yazılı değil
+  YAKALADI  B5   yer_tutucu, ag, gorunum: S03/V+: uç '?' düğümler listesinde yok
+  YAKALADI  B6   kesit, klemens, gorunum: G16/+: 22 AWG ortam düzeltmeli en çok 2.46 A, koruyan hat-C 5 A
+  YAKALADI  B8   acil_stop, gorunum: G12: dal 'F4', besleme zincirinden 'anahtarli-bara'
+  YAKALADI  B9   kesit, gorunum: G17: koruma 'F4', devrenin yapısından 'F3' (koruyucular tablosu). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  B10  ag, kesit, acil_stop, gorunum: X01/5 V: 5 V Pi ve 5 V çevre ağları bu telde birleşiyor (5v-pi ↔ 5v-cevre)
+  YAKALADI  B11  kaynak, gorunum: G08: ilgisiz satır: planlama/adim3/elektrik.md:1 (kablonun ayırt edici terimlerinden hiçbiri yok: f1, g08, k1, kontağı, röle, röle k1 …)
+  YAKALADI  B14  kesit, klemens, gorunum: SV1: koruma 'hat-G22', devrenin yapısından 'XL4016-A' (koruyucular tablosu). tablo ↔ elektrik.md blok şeması uyuşmuyor; şema doğruysa tabloyu, tablo doğruysa önce şemayı ve karar kaydını düzelt (denetimin 'devreden' dediği, tablonun kendi koruyucular / anahtarlar / düğümler alanlarıdır)
+  YAKALADI  B15  malzeme, gorunum: servo-uzatma hepsi: maliyet.json kalem 19 (Servo uzatma kablosu) 230 × 1 m = 230 m, üst eşik 24 m (ihtiyaç 22.8 m, paket yuvarlaması + 1 birim; fazla)
+  toplam bozma: 174
+SONUÇ: GEÇER

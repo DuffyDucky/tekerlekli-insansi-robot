@@ -62,12 +62,15 @@ KISALTMA = {
 # tariflerinin 12 yeni kelimesi ve app.js küçük görünüm balonundaki "bakana" (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım).
 # P10.7b2k: son satır B5a bara tutucusu montajı ve notu, B6a ESP32 yönü, K1 17.1 bara sıkma / U06 notu ve E3a TVS cümlesinin 21 yeni
 # kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım). Düzeltme turu 1: son satır (K1 17.1 / 17.4 / 17.6, E4; turu 2: "bakacak", E3a; turu 3: "ezer" B3, "yelpaze" K1; F10y: "takmak" E4).
+# P10.8e (planlama/d158/P108e-gunluk.md § 2): "nominal" (P10.8d kart CAD adları), "kesikten" (K1 17.10), "dibinden" (K1 17.11);
+# gözden geçirildi, Türkçe harfi olmayan doğru yazım.
 ASCII_TAMAM = set("""
 hepsine elin ekli kolunun dayanana pulla lehimden lehimi
 artanla denenmedi ekler ekseninin ekten girdi gerilmeden hepsinden kabloyla kablonun kendisi kuruldu lopu modeldeki orada oturtma
 penceresinden pimler servosunun sokmadan somunla sonraki tabana tambura tamburda tamburdan tarama tutkalla voksel yatar yolun dereceye
 beri bekler demette eklendi indirme itme kablosuna kasetin kesintisiz lopuyla pencerede penceresinde penceresine servonun soluk
 tamburdaki uzatmalara yay yaylar
+nominal kesikten dibinden
 eksik ilkesi koruyucunun saplamaya zincir
 turuncu mor koruma enkoderle okunur kapatma birden besleyen klemensi liste analog beyaz gri
 temada koyu
@@ -417,7 +420,8 @@ ZORUNLU = [
     ("K1", r"pabuçları yelpaze gibi açarak diz, üst üste aynı yöne bindirme", "K1 bara pabuçları yelpaze"),
     ("K1", r"somunu taktıktan sonra dişin tam kavradığına bak", "K1 bara somunu diş kavraması"),
     ("B3", r"akü kayışıyla plaka arasına sıkıştırma, kayışa bağlama", "B3 yol 4 akü kayışına sıkıştırılmaz"),
-    ("K1", r"ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında", "K1 17.10 Q03 / B01 kesikten (çizim kusuru)"),
+    # P10.8e: CAD yol 11 / 12 P10.8d'de kesikten geçiyor (P108d-gunluk.md § 2); eski "kesiğin dışında" cümlesi kalktı
+    ("K1", r"ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer", "K1 17.10 Q03 / B01 ve çizimleri kesikten"),
     ("K1", r"yıldız barasının {saplama.G18} numaralı saplamasından\s+geçer", "K1 17.7 yol 9 yıldız saplamasından"),
     ("B6a", r"ters takılırsa bütün pinler yer değiştirir: taşıyıcının 5 V hattı bir GPIO pinine gelir", "B6a ESP32 ters: 5 V GPIO'ya"),
     # düzeltme turu 1 (F10u-kontrol 6, 1): U06 şeridinin altındaki G05; karede Kablo yolu 2 yıldızın saplamasında biter

@@ -1,0 +1,17 @@
+kadraj: once (749627b~1)
+kadraj: sonra
+  ortanca 0.1732 -> 0.3987, tasan adim 0 -> 0, <0.05: []
+mini 1400
+secim
+  adim 12 tezgah: parca 16/16 panel 16/16 bos 0 adim 0 -> GECTI
+  adim 17 kablolama: parca 1/1 panel 1/1 bos 0 adim 0 -> GECTI
+  adim 31 robot: parca 7/7 panel 7/7 bos 0 adim 0 -> GECTI
+  adim 33 robot: parca 9/9 panel 9/9 bos 0 adim 0 -> GECTI
+  adim 44 tezgah: parca 8/8 panel 8/8 bos 0 adim 0 -> GECTI
+  adim 34 robot: parca 11/11 panel 11/11 bos 0 adim 0 -> GECTI
+  ek: {'esc': True, 'onceki_parca': True, 'sema': True, 'patlat_tak': True, 'kisayol': True, 'tak_kadraj': True}
+agsiz
+  dis istek 0, konsol 0, gecti True
+mini 360
+yazdirma kareleri: cizili 50/50 (en dusuk oran 0.0606), pdf goruntu 141, bos sayfa []; tak kadraj [(33, 1402, 1917, 1402, 1917), (31, 651, 858, 651, 858), (12, 481, 594, 481, 594)]
+secim 6/6, agsiz dis 0 konsol 0, kadraj ortanca 0.1732 -> 0.3987 tasan 0, mini 50/50 masaustu 50/50 360 (tasma 0), cdn 0, veri degisti (bilgi) -> GECTI

@@ -1,0 +1,33 @@
+zincir basladi 21.11 09:47:01: 0a t1 t2 2a 2b 2c 3 4 5 6 6g 7 8 9 10
+09:47:01 basladi 0a-carpisma
+09:47:01 bitti 0a-carpisma cikis 0 sure 0s
+09:47:01 basladi t1-kupon
+09:47:02 bitti t1-kupon cikis 0 sure 1s
+09:47:02 basladi t2-kupon-bozma
+09:47:02 bitti t2-kupon-bozma cikis 0 sure 0s
+09:47:02 basladi 2a-kablo
+09:47:03 bitti 2a-kablo cikis 0 sure 1s
+09:47:03 basladi 2b-kablo-bozma
+09:48:18 bitti 2b-kablo-bozma cikis 0 sure 75s
+09:48:18 basladi 2c-kaynak
+09:48:19 bitti 2c-kaynak cikis 0 sure 1s
+09:48:19 basladi 3-denetim
+09:48:20 bitti 3-denetim cikis 0 sure 1s
+09:48:20 basladi 4-F10f
+09:58:07 bitti 4-F10f cikis 0 sure 587s
+09:58:07 basladi 5-F10e
+10:15:02 bitti 5-F10e cikis 0 sure 1015s
+10:15:02 basladi 6-F10d
+10:32:03 bitti 6-F10d cikis 0 sure 1021s
+10:32:03 basladi 6g-F10d-gizli
+10:33:40 bitti 6g-F10d-gizli cikis 0 sure 97s
+10:33:40 basladi 7-F10a
+10:41:27 bitti 7-F10a cikis 0 sure 467s
+10:41:27 basladi 8-F9b
+10:41:32 bitti 8-F9b cikis 0 sure 5s
+10:41:32 basladi 9-carpisma
+10:41:33 bitti 9-carpisma cikis 0 sure 1s
+10:41:33 basladi 10-regresyon
+10:41:33 bitti 10-regresyon cikis 0 sure 0s
+zincir bitti 21.11 10:41:33
+zincir betigi cikis 0

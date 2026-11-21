@@ -1112,7 +1112,7 @@
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
    "sema_boy": {
-    "mm": 281,
+    "mm": 267,
     "sema": "taban:G07",
     "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
     "etiket": "gösterim şeması yolu; ölçüm değil"
@@ -2411,7 +2411,7 @@
     "vekil": "bara → sigorta kutusu vekil"
    },
    "sema_boy": {
-    "mm": 160,
+    "mm": 165,
     "sema": "taban:G16",
     "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
     "etiket": "gösterim şeması yolu; ölçüm değil"

@@ -1,0 +1,20 @@
+renk: veri <-> CAD
+  CAD 1264 veri 1264 esit 1264; GuiDocument 676 / 676 -> True
+ev dogrulugu (nokta-ucgen)
+  cift 228, olculen 210, dogru 210, masa tabani 18 -> True
+sahne taramasi (141 konum x 2 tema)
+  renk: yeni gorulen 1264 / 1264, esit 1264, yanlis 0 -> True
+  karsitlik light: zemin #eceae4, esik alti 729 (kenarsiz 0), saydam kenarsiz 0, onceki griye yakin 540 (kenarsiz 0), en kucuk 1.02
+  karsitlik dark: zemin #1b1c20, esik alti 179 (kenarsiz 0), saydam kenarsiz 0, onceki griye yakin 65 (kenarsiz 0), en kucuk 1.02
+  ton: {"ev": {"renk": "#ff3fa4", "en_yakin": "#b31f1f", "de76": 57.7, "zemin_karsitlik": {"light": 2.69, "dark": 5.27}}, "secim_light": {"renk": "#e014ff", "en_yakin": "#1a4da6", "de76": 78.9, "zemin_karsitlik": {"light": 3.06, "dark": 4.63}}, "secim_dark": {"renk": "#00ffee", "en_yakin": "#f2f2e6", "de76": 52.3, "zemin_karsitlik": {"light": 1.06, "dark": 13.41}}, "secim_kopya_light": {"renk": "#f3b8ff", "en_yakin": "#c7ccd4", "de76": 40.0, "zemin_karsitlik": {"light": 1.33, "dark": 10.63}}, "secim_kopya_dark": {"renk": "#9ffff6", "en_yakin": "#f2f2e6", "de76": 30.2, "zemin_karsitlik": {"light": 1.04, "dark": 14.68}}, "kucuk_gorunum": {"renk": "#ffb000", "en_yakin": "#f58c21", "de76": 21.9, "zemin_karsitlik": {"light": 1.52, "dark": 9.29}}}
+  ev: veride 102, sahnede 102, kabuk alt adim (yeni parcali) 41 / 41, yeni parcasiz ['36.4', '36.5', '49.2'] -> True
+  isaret: beklenen 1344, isaret 1344; kabuk 277 / 277 (kume 265); kotu 0 -> True
+renk demo
+  ornek 43, gercek = demo 0, sinif = demo 1
+gorunurluk (gizle-fark)
+  light: kabuk alt adim 44, yeni 333, gorunmeyen 0, gomme 0, istisna 0, birim 0 -> True
+  dark: kabuk alt adim 44, yeni 333, gorunmeyen 0, gomme 0, istisna 0, birim 0 -> True
+  soluk {'31.3 light': (173, 142), '34.7 light': (239, 314), '31.3 dark': (158, 142), '34.7 dark': (233, 314)} -> True
+arayuz
+   {"renk_kip": true, "isaret_tus": true, "satir_secim": true, "adres": true, "kare_baslik": true, "gecti": true}
+F10e dogrulama: GECTI (1017 s); renk_demo KALDI (karar); kare 0

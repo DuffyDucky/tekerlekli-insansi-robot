@@ -41,9 +41,15 @@ except Exception:
 if _iv_tarih[:4].isdigit():
     _iv_tarih = "%s.%s.%s" % (_iv_tarih[8:10], _iv_tarih[5:7], _iv_tarih[:4])
 _mon_toplam = MON["kutle_g"] + IV["kablo_payi"]["kutle_g"]
-IVME_KAYNAK = ("Kütle ve devrilme sayıları `uygulama-ivme.json`'dan (dosyanın son commit'i %s, `uygulama_ivme.py`); o koşudan sonra montaj değişti: güncel "
-               "`montaj-analiz.json` %s g + %s g kablo payı = %s g (fark %s g). Devrilme payları yeni montajla yeniden hesaplanmadı." % (
-                   _iv_tarih, tr(MON["kutle_g"], 1), tr(IV["kablo_payi"]["kutle_g"], 0), tr(_mon_toplam, 1), tr(_mon_toplam - IV["ev"]["kutle_g"], 1)))
+# P10.8e (planlama/d158/P108e-gunluk.md § 6): fark 1 g'ın altındaysa koşu güncel montajla aynı kütleyi veriyor; "montaj değişti" ve
+# "yeniden koşulsun mu" yalnız fark varken yazılır (P10.8d'de uygulama_ivme.py yeniden koşuldu, fark 0,0 g)
+_IV_GUNCEL = abs(_mon_toplam - IV["ev"]["kutle_g"]) < 1.0
+IVME_KAYNAK = (("Kütle ve devrilme sayıları `uygulama-ivme.json`'dan (dosyanın son commit'i %s, `uygulama_ivme.py`); koşu güncel montajla aynı "
+                "kütleyi veriyor: `montaj-analiz.json` %s g + %s g kablo payı = %s g (fark %s g). Devrilme payları bu montajla hesaplandı.")
+               if _IV_GUNCEL else
+               ("Kütle ve devrilme sayıları `uygulama-ivme.json`'dan (dosyanın son commit'i %s, `uygulama_ivme.py`); o koşudan sonra montaj değişti: güncel "
+                "`montaj-analiz.json` %s g + %s g kablo payı = %s g (fark %s g). Devrilme payları yeni montajla yeniden hesaplanmadı.")) % (
+                   _iv_tarih, tr(MON["kutle_g"], 1), tr(IV["kablo_payi"]["kutle_g"], 0), tr(_mon_toplam, 1), tr(_mon_toplam - IV["ev"]["kutle_g"], 1))
 OZET_MD = ("B + R1 modele işlendi; %s. %s: kafa içi 0, kabuk içi 0, kabuk × iskelet 0, ev pozu %d, eklem aralığındaki tarama %d (%s). "
            "Boy %s mm, %s parça, %s g (400 g kablo payı dahil; `uygulama-ivme.json`, %s). Kafa grubu %s g, tilt payı ±15 %s, pan payı %s, mikrofon-hoparlör en az %s mm, boyun yuva kanalı %%%s, SY8205 × USB %s mm³ ve açıklık %s mm. "
            "Yüksüz ızgara devrilme payı %s, ev pozu %s; eşik 1,5." % (
@@ -153,8 +159,8 @@ VARSAYIM = [
 ]
 
 KARAR = ([] if OMUZ_TAMAM else [
-    "**Omuz bölümü ve omuz regresyonu** (~4,8 saat) koşulsun mu? Yeni parçalar omuza yakın değil, ama sonuç dosyası bu haliyle karışık."]) + [
-    "**`uygulama_ivme.py` yeniden koşulsun mu?** Not kütle ve devrilme paylarını %s tarihli `uygulama-ivme.json`'dan okuyor; güncel montajla toplam %s g." % (_iv_tarih, tr(_mon_toplam, 1)),
+    "**Omuz bölümü ve omuz regresyonu** (~4,8 saat) koşulsun mu? Yeni parçalar omuza yakın değil, ama sonuç dosyası bu haliyle karışık."]) + ([] if _IV_GUNCEL else [
+    "**`uygulama_ivme.py` yeniden koşulsun mu?** Not kütle ve devrilme paylarını %s tarihli `uygulama-ivme.json`'dan okuyor; güncel montajla toplam %s g." % (_iv_tarih, tr(_mon_toplam, 1))]) + [
     "**AI HAT+ zarfı × arka üst cıvata boss'u:** HAT gelince gerçekse boss mu taşınır, HAT yönü mü değişir? Zarf ölçüsü doğrulanmadı.",
     "**Listede olmayan %d kablo kalemi** v4'e eklensin mi? Liste bu işte değişmedi." % LISTE_DISI_N,
     "**Altıncı USB cihazı:** kafadaysa B zayıflar (`secenekler.md`).",

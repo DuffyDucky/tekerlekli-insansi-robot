@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "d8ade70"          # P10.8c: taban d8ade70; P10.8b: taban 1d7fb71 (b2k'de 896c9a7) (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "269e51b"          # P10.8e: taban 269e51b; P10.8c: taban d8ade70; P10.8b: taban 1d7fb71 (b2k'de 896c9a7) (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -548,6 +548,37 @@ P108C_EKLENEN = [
                                  'sonucu gelince bu adım yeniden yazılabilir.'),
 ]
 BEKLENEN["d8ade70"] = (P108C_SILINEN, P108C_EKLENEN)
+# P10.8e (planlama/d158/P108e-gunluk.md § 3, § 5): taban 269e51b. Kartlar modelde (B5a, K1 17.8 / 17.11, K1 P03 tablosu, SV3 şeması),
+# CAD yol 11 / 12 kesikten (K1 17.10, KABLO_AD 11 / 12), 17.11 U06 taban bölümü (sema_on), 32.1 taban bakışı.
+P108E_SILINEN = [
+    ('P10.8e 17.11 U06 taban bölümü', "Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması §G'ün karesinde."),
+    ('P10.8e kartlar modelde (P10.8d)', 'Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla'),
+    ('P10.8e kartlar modelde (P10.8d)', 'Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık'),
+    ('P10.8e yol 11 / 12 kesikten (P10.8d)', 'Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür'),
+    ('P10.8e kartlar modelde (P10.8d)', "Kafa servo hattı C (SV3, 16 AWG): XL4016 C OUT → dağıtım kartı C (yeri yaklaşık: modelde yok, XL4016 C'nin yanında)"),
+    ('P10.8e kartlar modelde (P10.8d)', 'Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).'),
+    ('P10.8e kartlar modelde (P10.8d)', "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır."),
+    ('P10.8e yol 11 / 12 kesikten (P10.8d)', 'Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru).'),
+    ('P10.8e yol 11 / 12 kesikten (P10.8d)', 'Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür.'),
+    ('P10.8e kartlar modelde (P10.8d)', 'XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir'),
+    ('P10.8e kartlar modelde (P10.8d)', "XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada."),
+]
+P108E_EKLENEN = [
+    ('P10.8e kartlar modelde (P10.8d)', 'Dağıtım kartı C modelde (zarfı ve ölçüsü TAHMİN, kart yapılınca ölçülecek): şema kartın ön (+z) kenarının yanında biter'),
+    ('P10.8e kartlar modelde (P10.8d)', "Dağıtım kartı C modelde, XL4016 C'nin arka yanında (zarfı TAHMİN); kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla"),
+    ('P10.8e yol 11 / 12 kesikten (P10.8d)', 'Kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)'),
+    ('P10.8e kartlar modelde (P10.8d)', "Kafa servo hattı C (SV3, 16 AWG): XL4016 C OUT → dağıtım kartı C (XL4016 C'nin arka yanında, zarfı TAHMİN)"),
+    ('P10.8e 32.1 taban bakışı', 'Kare tabana arkadan ve üstten bakar: yolun anahtarlı baradan çıkışı, iki dağıtım kartı ve direğe çıkış karede; omuz uçları kadrajın dışında.'),
+    ('P10.8e 17.11 U06 taban bölümü', "Karede vurgulu çizgi U06'nın taban bölümüdür (direk dibinden ESP32'ye; tamamı §G'ün karesinde); P03'ün çizimi yok (bağlantı tablosu aşağıda)."),
+    ('P10.8e kartlar modelde (P10.8d)', "Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde, XL4016 C'nin arka yanında (B5a)."),
+    ('P10.8e kartlar modelde (P10.8d)', "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı güç panelinde aynı yanda, röle K1 ile ön şarj kartının arasında (zarfı TAHMİN); mantar F1'de sağ arka köşeye takılır."),
+    ('P10.8e yol 11 / 12 kesikten (P10.8d)', 'Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer.'),
+    ('P10.8e yol 11 / 12 kesikten (P10.8d)', 'Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d).'),
+    ('P10.8e kartlar modelde (P10.8d)', 'XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi), acil stop düğüm kartı ve dağıtım kartı C de (P10.8d yerleşimi); giriş, çıkış klemensleri erişilebilir'),
+    ('P10.8e kartlar modelde (P10.8d)', "XL4016 C, ön şarj kartı, acil stop düğüm kartı (röle K1 ile ön şarj kartının arasında) ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin arka yanında) da burada; iki pertinaks kart ön şarj kartı gibi dörder M3×8 naylon burçla (üstte M3×6, altta M3×8 vida)."),
+    ('P10.8e kartlar modelde (P10.8d)', 'İki kartın ölçüsü ve zarfı TAHMİN: kart yapılınca ölçülecek.'),
+]
+BEKLENEN["269e51b"] = (P108E_SILINEN, P108E_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

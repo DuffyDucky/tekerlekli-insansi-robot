@@ -1,0 +1,77 @@
+  KRITIK eklendi kablo GEO_YAN_ELLE 6 S09 a
+      eski: -
+      yeni: yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi (P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır
+  KRITIK eklendi kablo GEO_YAN_ELLE 6 S10 a
+      eski: -
+      yeni: yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi (P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır
+  KRITIK silindi kablo MODELSIZ_KONUM
+      eski: Acil stop düğümü * = None None
+      yeni: -
+  KRITIK silindi kablo MODELSIZ_KONUM
+      eski: Dağıtım kartı C * = None None
+      yeni: -
+  KRITIK değişti kablo PARCA_CAD
+      eski: Acil stop düğümü = modelsiz
+      yeni: Acil stop düğümü = ^Acil stop dugum karti
+  KRITIK değişti kablo PARCA_CAD
+      eski: Dağıtım kartı C = modelsiz
+      yeni: Dağıtım kartı C = ^Dagitim karti C
+  KRITIK silindi kablo SEMA_KONUM
+      eski: Dağıtım kartı C * = (100.0, 192.0, -60.0) None
+      yeni: -
+  KRITIK eklendi kablo UC_ETIKET
+      eski: -
+      yeni: Acil stop düğümü (mantar NC çıkışı) = '^Acil stop dugum karti' None
+  KRITIK eklendi kablo UC_ETIKET
+      eski: -
+      yeni: Dağıtım kartı C (kafa) = '^Dagitim karti C' None
+  KRITIK silindi kablo UC_MODELSIZ
+      eski: Acil stop düğümü (mantar NC çıkışı) = düğüm kartı modelde yok
+      yeni: -
+  KRITIK silindi kablo UC_MODELSIZ
+      eski: Dağıtım kartı C (kafa) = kafa dağıtım kartı modelde yok
+      yeni: -
+  KRITIK değişti liste LISTE ZORUNLU
+      eski: ('K1', 'ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında', 'K1 17.10 Q03 / B01 kesikten (çizim kusuru)')
+      yeni: ('K1', 'ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer', 'K1 17.10 Q03 / B01 ve çizimleri kesikten')
+  KRITIK değişti metin kaynak B5a is_
+      eski: XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada.
+      yeni: XL4016 C, ön şarj kartı, acil stop düğüm kartı (röle K1 ile ön şarj kartının arasında) ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin arka yanında) da burada; iki pertinaks kart ön şarj kartı gibi dörder M3×8 naylon burçla (üstte M3×6, altta M3×8 vida).
+  KRITIK eklendi metin kaynak B5a is_
+      eski: -
+      yeni: İki kartın ölçüsü ve zarfı TAHMİN: kart yapılınca ölçülecek.
+  KRITIK değişti metin kaynak B5a kablo
+      eski: Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık
+      yeni: Dağıtım kartı C modelde (zarfı ve ölçüsü TAHMİN, kart yapılınca ölçülecek): şema kartın ön (+z) kenarının yanında biter
+  KRITIK değişti metin kaynak B5a kontrol
+      eski: XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir
+      yeni: XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi), acil stop düğüm kartı ve dağıtım kartı C de (P10.8d yerleşimi); giriş, çıkış klemensleri erişilebilir
+  KRITIK değişti metin kaynak K1 alt adım 10 is_
+      eski: Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru).
+      yeni: Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer.
+  KRITIK değişti metin kaynak K1 alt adım 11 is_
+      eski: Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde.
+      yeni: Karede vurgulu çizgi U06'nın taban bölümüdür (direk dibinden ESP32'ye; tamamı alt adım 32.4'ün karesinde); P03'ün çizimi yok (bağlantı tablosu aşağıda).
+  KRITIK değişti metin kaynak K1 alt adım 11 is_
+      eski: Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).
+      yeni: Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde, XL4016 C'nin arka yanında (B5a).
+  KRITIK değişti metin kaynak K1 alt adım 8 is_
+      eski: Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır.
+      yeni: Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı güç panelinde aynı yanda, röle K1 ile ön şarj kartının arasında (zarfı TAHMİN); mantar F1'de sağ arka köşeye takılır.
+  KRITIK değişti metin kaynak K1 kablo
+      eski: Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla
+      yeni: Dağıtım kartı C modelde, XL4016 C'nin arka yanında (zarfı TAHMİN); kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla
+  KRITIK eklendi metin kaynak K2 alt adım 1 is_
+      eski: -
+      yeni: Kare tabana arkadan ve üstten bakar: yolun anahtarlı baradan çıkışı, iki dağıtım kartı ve direğe çıkış karede; omuz uçları kadrajın dışında.
+  KRITIK değişti metin kaynak KABLO_AD 11
+      eski: Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür
+      yeni: Kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)
+  KRITIK değişti metin kaynak KABLO_AD 12
+      eski: Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür.
+      yeni: Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d).
+  KRITIK değişti metin kaynak SEMA SV3
+      eski: Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (yeri yaklaşık: modelde yok, XL4016 C'nin yanında)
+      yeni: Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (XL4016 C'nin arka yanında, zarfı TAHMİN)
+onay kaydı yenilendi: rehber_kritik_onay.json (kablo 219, liste 258, metin 1201); 25 fark yazıldı
+UYARI: bu değişiklik bağımsız kontrolden geçmeli (kayıt metnin doğru olduğunu kanıtlamaz, yalnız sessiz değişikliği önler)

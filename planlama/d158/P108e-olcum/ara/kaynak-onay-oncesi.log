@@ -1,0 +1,113 @@
+kaynak denetimi: metin 636 (+ CAD ad/kod 973, arayuz 540, ASCII'ye giren arayuz gorunen dizge 149), ascii kalinti 2, elektrik iddiasi 0, zorunlu uyari eksik 0 (yalniz veride bakilan adim: -), yasak 0 (istisna 10), ciplak kritik sayi 0, cozulemeyen yer tutucu 0, bozuk yer tutucu 0, anahtar-baglam 0, onayli kritik girdi farki 25 (kayitta: kablo 219, liste 258, metin 1201)
+CAD kaynak (FCStd) etiket/kod 975; montaj-analiz.json eskime: analizde olup kaynakta olmayan (HATA) 0, kaynakta olup analizde olmayan (bilgi) 2
+  KAYNAKTA YENI (bilgi) (gösterim)
+  KAYNAKTA YENI (bilgi) Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)
+standart numarasi (bilinen kume / ad-kod) HATA 0; FreeCAD artirma eki silinen etiket 9, tabani ayni belgede olmayan (HATA) 0
+  ARTIRMA kabuk K206: Cerceve civatasi M3x6 ISO 7381 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K208: Cerceve civatasi M3x6 ISO 7382 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K210: Cerceve civatasi M3x6 ISO 7383 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K212: Cerceve civatasi M3x6 ISO 7384 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K214: Cerceve civatasi M3x6 ISO 7385 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K216: Cerceve civatasi M3x6 ISO 7386 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K218: Cerceve civatasi M3x6 ISO 7387 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA dirsek_sag D056: Yaka civatasi M3x6 ISO 7381 -> Yaka civatasi M3x6 ISO 7380
+  ARTIRMA dirsek_sol D056: Yaka civatasi M3x6 ISO 7381 -> Yaka civatasi M3x6 ISO 7380
+  KRITIK eklendi kablo GEO_YAN_ELLE 6 S09 a
+      eski: -
+      yeni: yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi (P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır
+  KRITIK eklendi kablo GEO_YAN_ELLE 6 S10 a
+      eski: -
+      yeni: yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi (P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır
+  KRITIK silindi kablo MODELSIZ_KONUM
+      eski: Acil stop düğümü * = None None
+      yeni: -
+  KRITIK silindi kablo MODELSIZ_KONUM
+      eski: Dağıtım kartı C * = None None
+      yeni: -
+  KRITIK değişti kablo PARCA_CAD
+      eski: Acil stop düğümü = modelsiz
+      yeni: Acil stop düğümü = ^Acil stop dugum karti
+  KRITIK değişti kablo PARCA_CAD
+      eski: Dağıtım kartı C = modelsiz
+      yeni: Dağıtım kartı C = ^Dagitim karti C
+  KRITIK silindi kablo SEMA_KONUM
+      eski: Dağıtım kartı C * = (100.0, 192.0, -60.0) None
+      yeni: -
+  KRITIK eklendi kablo UC_ETIKET
+      eski: -
+      yeni: Acil stop düğümü (mantar NC çıkışı) = '^Acil stop dugum karti' None
+  KRITIK eklendi kablo UC_ETIKET
+      eski: -
+      yeni: Dağıtım kartı C (kafa) = '^Dagitim karti C' None
+  KRITIK silindi kablo UC_MODELSIZ
+      eski: Acil stop düğümü (mantar NC çıkışı) = düğüm kartı modelde yok
+      yeni: -
+  KRITIK silindi kablo UC_MODELSIZ
+      eski: Dağıtım kartı C (kafa) = kafa dağıtım kartı modelde yok
+      yeni: -
+  KRITIK değişti liste LISTE ZORUNLU
+      eski: ('K1', 'ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında', 'K1 17.10 Q03 / B01 kesikten (çizim kusuru)')
+      yeni: ('K1', 'ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer', 'K1 17.10 Q03 / B01 ve çizimleri kesikten')
+  KRITIK değişti metin kaynak B5a is_
+      eski: XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada.
+      yeni: XL4016 C, ön şarj kartı, acil stop düğüm kartı (röle K1 ile ön şarj kartının arasında) ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin arka yanında) da burada; iki pertinaks kart ön şarj kartı gibi dörder M3×8 naylon burçla (üstte M3×6, altta M3×8 vida).
+  KRITIK eklendi metin kaynak B5a is_
+      eski: -
+      yeni: İki kartın ölçüsü ve zarfı TAHMİN: kart yapılınca ölçülecek.
+  KRITIK değişti metin kaynak B5a kablo
+      eski: Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık
+      yeni: Dağıtım kartı C modelde (zarfı ve ölçüsü TAHMİN, kart yapılınca ölçülecek): şema kartın ön (+z) kenarının yanında biter
+  KRITIK değişti metin kaynak B5a kontrol
+      eski: XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir
+      yeni: XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi), acil stop düğüm kartı ve dağıtım kartı C de (P10.8d yerleşimi); giriş, çıkış klemensleri erişilebilir
+  KRITIK değişti metin kaynak K1 alt adım 10 is_
+      eski: Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru).
+      yeni: Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer.
+  KRITIK değişti metin kaynak K1 alt adım 11 is_
+      eski: Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde.
+      yeni: Karede vurgulu çizgi U06'nın taban bölümüdür (direk dibinden ESP32'ye; tamamı alt adım 32.4'ün karesinde); P03'ün çizimi yok (bağlantı tablosu aşağıda).
+  KRITIK değişti metin kaynak K1 alt adım 11 is_
+      eski: Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).
+      yeni: Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde, XL4016 C'nin arka yanında (B5a).
+  KRITIK değişti metin kaynak K1 alt adım 8 is_
+      eski: Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır.
+      yeni: Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı güç panelinde aynı yanda, röle K1 ile ön şarj kartının arasında (zarfı TAHMİN); mantar F1'de sağ arka köşeye takılır.
+  KRITIK değişti metin kaynak K1 kablo
+      eski: Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla
+      yeni: Dağıtım kartı C modelde, XL4016 C'nin arka yanında (zarfı TAHMİN); kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla
+  KRITIK eklendi metin kaynak K2 alt adım 1 is_
+      eski: -
+      yeni: Kare tabana arkadan ve üstten bakar: yolun anahtarlı baradan çıkışı, iki dağıtım kartı ve direğe çıkış karede; omuz uçları kadrajın dışında.
+  KRITIK değişti metin kaynak KABLO_AD 11
+      eski: Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür
+      yeni: Kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)
+  KRITIK değişti metin kaynak KABLO_AD 12
+      eski: Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür.
+      yeni: Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d).
+  KRITIK değişti metin kaynak SEMA SV3
+      eski: Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (yeri yaklaşık: modelde yok, XL4016 C'nin yanında)
+      yeni: Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (XL4016 C'nin arka yanında, zarfı TAHMİN)
+tamlik (kayit -> rehber): taranan 172 oge (GPIO rolü 24, acil stop zinciri 9, anahtar 5, kablo 74, kontak ucu 2, koruyucu 22, koruyucu yeri 7, kutuplu parça 4, köprü 2, saplama düğümü 23), eksik 0, muaf 19; kablo talimat maddesinde 74 / 74, rehberde anilan 74 (talimatta olmayan: -)
+  TAMLIK MUAF GPIO rolü AKU_ADC: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü BTS_EN: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü DURUM_LED: kart üstü LED, dışarı bağlanmaz (pin haritası)
+  TAMLIK MUAF GPIO rolü SAG_ENK_A: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_ENK_B: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_GERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_ILERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_IS: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_ENK_A: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_ENK_B: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_GERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_ILERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_IS: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SONAR_ORTA_ECHO: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SONAR_SAG_ECHO: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SONAR_SOL_ECHO: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü UART0_RX: veri yolu (CP2102 üzerinden USB): ESP32 kartının sabit ucu; rehber pin numarası yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü UART0_TX: veri yolu (CP2102 üzerinden USB): ESP32 kartının sabit ucu; rehber pin numarası yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF anahtar esp32-3v3: ESP32 kartının kendi regülatörü: montajda takılan ya da bağlanan ayrı parça değil
+demet alt adimlari (D1-D8): hata 0; K1 12 alt adim, 39 kablo, 17 sema / kablo yolu, K2 8 alt adim, 18 kablo, 9 sema / kablo yolu
+kablajda teyit ibaresi eksik madde: 0
+  ASCII kesikten           kaynak K1 alt adım 10 is_
+  ASCII dibinden           kaynak K1 alt adım 11 is_

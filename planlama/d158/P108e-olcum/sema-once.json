@@ -1,0 +1,2508 @@
+{
+ "etiket": "once",
+ "gercek_parca": 1251,
+ "sema": [
+  {
+   "kaynak": "taban",
+   "ad": "G07",
+   "r_cizim": 2.5,
+   "nokta": 4,
+   "noktalar": [
+    [
+     -95.4118,
+     214.0,
+     -178.0
+    ],
+    [
+     -56.0,
+     184.0,
+     -165.0
+    ],
+    [
+     -56.0,
+     184.0,
+     45.0
+    ],
+    [
+     -70.0,
+     196.0,
+     51.0
+    ]
+   ],
+   "en_dar": {
+    "d": 0.0,
+    "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     -56.0,
+     184.0,
+     -66.0
+    ],
+    "uca_mm": 118.4
+   },
+   "en_dar_ara": {
+    "d": 0.0,
+    "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     -56.0,
+     184.0,
+     -66.0
+    ],
+    "uca_mm": 118.4
+   },
+   "eksen_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -66.0
+     ],
+     "uca_mm": 118.4
+    }
+   ],
+   "cizim_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -66.0
+     ],
+     "uca_mm": 118.4
+    },
+    {
+     "d": 0.5,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -123.0
+     ],
+     "uca_mm": 74.0
+    },
+    {
+     "d": 2.0,
+     "parca": "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -95.4,
+      214.0,
+      -178.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.0,
+     "parca": "Isil gomme somun M3 (bara tutucusu yildiz x -60.0)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -55.0
+     ],
+     "uca_mm": 107.6
+    },
+    {
+     "d": 2.119,
+     "parca": "Bara civatasi M5x25 DIN 933 (yildiz 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -57.3
+     ],
+     "uca_mm": 109.9
+    }
+   ],
+   "cizim_icinde_ara": [
+    {
+     "d": 0.0,
+     "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -66.0
+     ],
+     "uca_mm": 118.4
+    },
+    {
+     "d": 0.5,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -123.0
+     ],
+     "uca_mm": 74.0
+    },
+    {
+     "d": 2.0,
+     "parca": "Isil gomme somun M3 (bara tutucusu yildiz x -60.0)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -55.0
+     ],
+     "uca_mm": 107.6
+    },
+    {
+     "d": 2.119,
+     "parca": "Bara civatasi M5x25 DIN 933 (yildiz 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -57.3
+     ],
+     "uca_mm": 109.9
+    }
+   ],
+   "yakin": [
+    {
+     "d": 0.0,
+     "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -66.0
+     ],
+     "uca_mm": 118.4
+    },
+    {
+     "d": 0.5,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -123.0
+     ],
+     "uca_mm": 74.0
+    },
+    {
+     "d": 2.0,
+     "parca": "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -95.4,
+      214.0,
+      -178.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.0,
+     "parca": "Isil gomme somun M3 (bara tutucusu yildiz x -60.0)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -55.0
+     ],
+     "uca_mm": 107.6
+    },
+    {
+     "d": 2.119,
+     "parca": "Bara civatasi M5x25 DIN 933 (yildiz 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -57.3
+     ],
+     "uca_mm": 109.9
+    },
+    {
+     "d": 2.5,
+     "parca": "Civata M3x10 ISO 7380 (bara tutucusu yildiz x -60.0)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -55.0
+     ],
+     "uca_mm": 107.6
+    },
+    {
+     "d": 4.5,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      45.0
+     ],
+     "uca_mm": 19.4
+    },
+    {
+     "d": 4.5,
+     "parca": "Guc paneli (arka kat)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -165.0
+     ],
+     "uca_mm": 51.2
+    },
+    {
+     "d": 5.59,
+     "parca": "Pul M5 (yildiz 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -55.0
+     ],
+     "uca_mm": 107.6
+    },
+    {
+     "d": 6.25,
+     "parca": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 2)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -56.0,
+      184.0,
+      -20.1
+     ],
+     "uca_mm": 73.4
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "G16",
+   "r_cizim": 3.6,
+   "nokta": 5,
+   "noktalar": [
+    [
+     -12.5,
+     191.9,
+     -110.0
+    ],
+    [
+     -12.5,
+     195.0,
+     -95.0
+    ],
+    [
+     -12.5,
+     195.0,
+     -30.0
+    ],
+    [
+     55.0,
+     195.0,
+     -5.0
+    ],
+    [
+     61.0,
+     196.0,
+     0.0
+    ]
+   ],
+   "en_dar": {
+    "d": 0.0,
+    "parca": "Govde diregi",
+    "modul": "iskelet",
+    "yer": "ara",
+    "nokta": [
+     20.0,
+     195.0,
+     -18.0
+    ],
+    "uca_mm": 44.8
+   },
+   "en_dar_ara": {
+    "d": 0.0,
+    "parca": "Govde diregi",
+    "modul": "iskelet",
+    "yer": "ara",
+    "nokta": [
+     20.0,
+     195.0,
+     -18.0
+    ],
+    "uca_mm": 44.8
+   },
+   "eksen_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Govde diregi",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      20.0,
+      195.0,
+      -18.0
+     ],
+     "uca_mm": 44.8
+    }
+   ],
+   "cizim_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Govde diregi",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      20.0,
+      195.0,
+      -18.0
+     ],
+     "uca_mm": 44.8
+    },
+    {
+     "d": 0.381,
+     "parca": "Somun M5 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 0.447,
+     "parca": "Yayli pul M5 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 1.4,
+     "parca": "Pul M5 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.4,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.5,
+     "parca": "Bara civatasi M5x25 DIN 933 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    }
+   ],
+   "cizim_icinde_ara": [
+    {
+     "d": 0.0,
+     "parca": "Govde diregi",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      20.0,
+      195.0,
+      -18.0
+     ],
+     "uca_mm": 44.8
+    }
+   ],
+   "yakin": [
+    {
+     "d": 0.0,
+     "parca": "Govde diregi",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      20.0,
+      195.0,
+      -18.0
+     ],
+     "uca_mm": 44.8
+    },
+    {
+     "d": 0.381,
+     "parca": "Somun M5 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 0.447,
+     "parca": "Yayli pul M5 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 1.4,
+     "parca": "Pul M5 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.4,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.5,
+     "parca": "Bara civatasi M5x25 DIN 933 (anahtarli 2)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -12.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 5.5,
+     "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -12.5,
+      195.0,
+      -66.0
+     ],
+     "uca_mm": 44.1
+    },
+    {
+     "d": 7.976,
+     "parca": "XL4016 servo 6 V C (kafa pan + tilt)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      61.0,
+      196.0,
+      0.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 8.5,
+     "parca": "Somun M5 (yildiz 2)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -12.5,
+      195.0,
+      -57.3
+     ],
+     "uca_mm": 52.8
+    },
+    {
+     "d": 8.5,
+     "parca": "Somun M5 (yildiz 3)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -12.5,
+      195.0,
+      -57.3
+     ],
+     "uca_mm": 52.8
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "G22",
+   "r_cizim": 2.5,
+   "nokta": 6,
+   "noktalar": [
+    [
+     37.5,
+     191.9,
+     -110.0
+    ],
+    [
+     37.5,
+     195.0,
+     -80.0
+    ],
+    [
+     -37.5,
+     195.0,
+     -80.0
+    ],
+    [
+     -37.5,
+     195.0,
+     40.0
+    ],
+    [
+     -45.0,
+     195.0,
+     60.0
+    ],
+    [
+     -51.5,
+     196.0,
+     70.0
+    ]
+   ],
+   "en_dar": {
+    "d": 0.381,
+    "parca": "Somun M5 (anahtarli 4)",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     37.5,
+     191.9,
+     -110.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": {
+    "d": 5.5,
+    "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     -37.5,
+     195.0,
+     -66.0
+    ],
+    "uca_mm": 87.0
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [
+    {
+     "d": 0.381,
+     "parca": "Somun M5 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 0.447,
+     "parca": "Yayli pul M5 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 1.4,
+     "parca": "Pul M5 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.4,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    }
+   ],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 0.381,
+     "parca": "Somun M5 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 0.447,
+     "parca": "Yayli pul M5 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 1.4,
+     "parca": "Pul M5 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.4,
+     "parca": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 2.5,
+     "parca": "Bara civatasi M5x25 DIN 933 (anahtarli 4)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      37.5,
+      191.9,
+      -110.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 5.5,
+     "parca": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -37.5,
+      195.0,
+      -66.0
+     ],
+     "uca_mm": 87.0
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "SV3",
+   "r_cizim": 3.6,
+   "nokta": 3,
+   "noktalar": [
+    [
+     100.0,
+     196.0,
+     -27.5
+    ],
+    [
+     100.0,
+     184.0,
+     -40.0
+    ],
+    [
+     100.0,
+     192.0,
+     -60.0
+    ]
+   ],
+   "en_dar": {
+    "d": 2.951,
+    "parca": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 ust)",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     100.0,
+     192.0,
+     -60.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": {
+    "d": 4.5,
+    "parca": "Guc paneli (arka kat)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     100.0,
+     184.0,
+     -40.0
+    ],
+    "uca_mm": 17.3
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [
+    {
+     "d": 2.951,
+     "parca": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 ust)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      100.0,
+      192.0,
+      -60.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 3.0,
+     "parca": "Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      100.0,
+      192.0,
+      -60.0
+     ],
+     "uca_mm": 0.0
+    }
+   ],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 2.951,
+     "parca": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 ust)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      100.0,
+      192.0,
+      -60.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 3.0,
+     "parca": "Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      100.0,
+      192.0,
+      -60.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.5,
+     "parca": "Guc paneli (arka kat)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      100.0,
+      184.0,
+      -40.0
+     ],
+     "uca_mm": 17.3
+    },
+    {
+     "d": 5.352,
+     "parca": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      100.0,
+      192.0,
+      -60.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 7.748,
+     "parca": "XL4016 servo 6 V C (kafa pan + tilt)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      100.0,
+      194.7,
+      -28.9
+     ],
+     "uca_mm": 1.9
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "G19",
+   "r_cizim": 3.6,
+   "nokta": 5,
+   "noktalar": [
+    [
+     49.2353,
+     128.0,
+     100.0
+    ],
+    [
+     40.0,
+     155.0,
+     130.0
+    ],
+    [
+     40.0,
+     155.0,
+     162.5
+    ],
+    [
+     40.0,
+     184.0,
+     162.5
+    ],
+    [
+     -51.5,
+     196.0,
+     92.0
+    ]
+   ],
+   "en_dar": {
+    "d": 6.534,
+    "parca": "Elektronik kati (on)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     25.2,
+     185.9,
+     151.1
+    ],
+    "uca_mm": 80.9
+   },
+   "en_dar_ara": {
+    "d": 6.534,
+    "parca": "Elektronik kati (on)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     25.2,
+     185.9,
+     151.1
+    ],
+    "uca_mm": 80.9
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 6.534,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      25.2,
+      185.9,
+      151.1
+     ],
+     "uca_mm": 80.9
+    },
+    {
+     "d": 7.976,
+     "parca": "Arayuz karti (E2/E3)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -51.5,
+      196.0,
+      92.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 8.062,
+     "parca": "XL4016 cevre 5 V",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      49.2,
+      128.0,
+      100.0
+     ],
+     "uca_mm": 0.0
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "M02",
+   "r_cizim": 2.5,
+   "nokta": 7,
+   "noktalar": [
+    [
+     -80.0,
+     120.0,
+     140.0
+    ],
+    [
+     -88.0,
+     120.0,
+     105.0
+    ],
+    [
+     -88.0,
+     115.0,
+     45.0
+    ],
+    [
+     -80.0,
+     112.0,
+     40.0
+    ],
+    [
+     -80.0,
+     88.0,
+     36.0
+    ],
+    [
+     -80.0,
+     87.0,
+     -150.0
+    ],
+    [
+     -138.0,
+     85.0,
+     -185.0
+    ]
+   ],
+   "en_dar": {
+    "d": 0.0,
+    "parca": "Motor JGB37-520 (arka sol)",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     -130.0,
+     85.3,
+     -180.2
+    ],
+    "uca_mm": 9.4
+   },
+   "en_dar_ara": {
+    "d": 2.556,
+    "parca": "Aku kayisi 25 mm (z -80)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     -80.0,
+     87.4,
+     -67.5
+    ],
+    "uca_mm": 131.1
+   },
+   "eksen_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -130.0,
+      85.3,
+      -180.2
+     ],
+     "uca_mm": 9.4
+    }
+   ],
+   "cizim_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -130.0,
+      85.3,
+      -180.2
+     ],
+     "uca_mm": 9.4
+    }
+   ],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -130.0,
+      85.3,
+      -180.2
+     ],
+     "uca_mm": 9.4
+    },
+    {
+     "d": 2.556,
+     "parca": "Aku kayisi 25 mm (z -80)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -80.0,
+      87.4,
+      -67.5
+     ],
+     "uca_mm": 131.1
+    },
+    {
+     "d": 2.879,
+     "parca": "Aku kayisi 25 mm (z -140)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -80.0,
+      87.1,
+      -127.5
+     ],
+     "uca_mm": 81.7
+    },
+    {
+     "d": 3.543,
+     "parca": "Alt plaka",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -80.0,
+      88.0,
+      28.0
+     ],
+     "uca_mm": 116.5
+    },
+    {
+     "d": 5.099,
+     "parca": "Motor braketi L 37 mm (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -138.0,
+      85.0,
+      -185.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 6.594,
+     "parca": "Sase ara rayi orta",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      -80.0,
+      87.9,
+      18.5
+     ],
+     "uca_mm": 125.6
+    },
+    {
+     "d": 6.898,
+     "parca": "Aku LiFePO4 12,8 V (yatik)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -80.0,
+      87.6,
+      -38.0
+     ],
+     "uca_mm": 158.1
+    },
+    {
+     "d": 7.0,
+     "parca": "Sase uzun rayi sol",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      -88.0,
+      120.0,
+      105.0
+     ],
+     "uca_mm": 35.9
+    },
+    {
+     "d": 7.0,
+     "parca": "Ic kose baglanti kanal 10 (Sase sol orta on yuz)",
+     "modul": "iskelet",
+     "yer": "ara",
+     "nokta": [
+      -88.0,
+      115.0,
+      45.0
+     ],
+     "uca_mm": 95.5
+    },
+    {
+     "d": 7.252,
+     "parca": "Aku on takozu",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -80.0,
+      87.7,
+      -20.5
+     ],
+     "uca_mm": 163.7
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "B02",
+   "r_cizim": 2.5,
+   "nokta": 5,
+   "noktalar": [
+    [
+     52.0,
+     148.0,
+     165.0
+    ],
+    [
+     52.0,
+     184.0,
+     162.5
+    ],
+    [
+     40.0,
+     184.0,
+     120.0
+    ],
+    [
+     40.0,
+     184.0,
+     100.0
+    ],
+    [
+     41.0,
+     196.0,
+     90.0
+    ]
+   ],
+   "en_dar": {
+    "d": 2.5,
+    "parca": "BTS7960 motor surucu sag",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     52.0,
+     148.0,
+     165.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": {
+    "d": 4.443,
+    "parca": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     40.3,
+     187.9,
+     96.8
+    ],
+    "uca_mm": 10.6
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 2.5,
+     "parca": "BTS7960 motor surucu sag",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      52.0,
+      148.0,
+      165.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.443,
+     "parca": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      40.3,
+      187.9,
+      96.8
+     ],
+     "uca_mm": 10.6
+    },
+    {
+     "d": 4.5,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      40.0,
+      184.0,
+      120.0
+     ],
+     "uca_mm": 32.3
+    },
+    {
+     "d": 4.516,
+     "parca": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      40.4,
+      188.7,
+      96.1
+     ],
+     "uca_mm": 9.5
+    },
+    {
+     "d": 4.559,
+     "parca": "ESP32 tasiyici kart (pertinaks)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      40.5,
+      189.5,
+      95.4
+     ],
+     "uca_mm": 8.5
+    },
+    {
+     "d": 6.556,
+     "parca": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 1 alt)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      40.0,
+      184.4,
+      99.6
+     ],
+     "uca_mm": 15.1
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "N01",
+   "r_cizim": 2.5,
+   "nokta": 10,
+   "noktalar": [
+    [
+     -110.0,
+     80.0,
+     -183.0
+    ],
+    [
+     -85.0,
+     87.0,
+     -150.0
+    ],
+    [
+     -85.0,
+     87.0,
+     36.0
+    ],
+    [
+     -85.0,
+     112.0,
+     40.0
+    ],
+    [
+     -85.0,
+     155.0,
+     40.0
+    ],
+    [
+     -50.0,
+     155.0,
+     162.5
+    ],
+    [
+     -50.0,
+     184.0,
+     162.5
+    ],
+    [
+     35.0,
+     184.0,
+     140.0
+    ],
+    [
+     38.0,
+     184.0,
+     100.0
+    ],
+    [
+     41.0,
+     196.0,
+     66.0
+    ]
+   ],
+   "en_dar": {
+    "d": 0.0,
+    "parca": "Motor JGB37-520 (arka sol)",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     -107.0,
+     80.8,
+     -179.0
+    ],
+    "uca_mm": 5.0
+   },
+   "en_dar_ara": {
+    "d": 2.856,
+    "parca": "Alt plaka",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     -85.0,
+     94.6,
+     37.2
+    ],
+    "uca_mm": 164.3
+   },
+   "eksen_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -107.0,
+      80.8,
+      -179.0
+     ],
+     "uca_mm": 5.0
+    }
+   ],
+   "cizim_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -107.0,
+      80.8,
+      -179.0
+     ],
+     "uca_mm": 5.0
+    }
+   ],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sol)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -107.0,
+      80.8,
+      -179.0
+     ],
+     "uca_mm": 5.0
+    },
+    {
+     "d": 2.856,
+     "parca": "Alt plaka",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -85.0,
+      94.6,
+      37.2
+     ],
+     "uca_mm": 164.3
+    },
+    {
+     "d": 3.0,
+     "parca": "Aku kayisi 25 mm (z -140)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -85.0,
+      87.0,
+      -150.0
+     ],
+     "uca_mm": 42.0
+    },
+    {
+     "d": 3.0,
+     "parca": "Aku kayisi 25 mm (z -80)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -85.0,
+      87.0,
+      -92.5
+     ],
+     "uca_mm": 94.2
+    },
+    {
+     "d": 4.5,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      35.0,
+      184.0,
+      140.0
+     ],
+     "uca_mm": 75.2
+    },
+    {
+     "d": 5.554,
+     "parca": "ESP32 tasiyici kart (pertinaks)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      39.6,
+      190.4,
+      81.7
+     ],
+     "uca_mm": 16.7
+    },
+    {
+     "d": 6.365,
+     "parca": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      38.4,
+      185.6,
+      95.4
+     ],
+     "uca_mm": 31.2
+    },
+    {
+     "d": 7.437,
+     "parca": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      38.4,
+      185.8,
+      95.0
+     ],
+     "uca_mm": 30.9
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "N02",
+   "r_cizim": 2.5,
+   "nokta": 10,
+   "noktalar": [
+    [
+     110.0,
+     80.0,
+     -183.0
+    ],
+    [
+     85.0,
+     87.0,
+     -150.0
+    ],
+    [
+     85.0,
+     87.0,
+     36.0
+    ],
+    [
+     85.0,
+     112.0,
+     40.0
+    ],
+    [
+     85.0,
+     155.0,
+     40.0
+    ],
+    [
+     25.0,
+     155.0,
+     162.5
+    ],
+    [
+     25.0,
+     184.0,
+     162.5
+    ],
+    [
+     38.0,
+     184.0,
+     110.0
+    ],
+    [
+     38.0,
+     184.0,
+     90.0
+    ],
+    [
+     41.0,
+     196.0,
+     78.0
+    ]
+   ],
+   "en_dar": {
+    "d": 0.0,
+    "parca": "Motor JGB37-520 (arka sag)",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     107.0,
+     80.8,
+     -179.0
+    ],
+    "uca_mm": 5.0
+   },
+   "en_dar_ara": {
+    "d": 2.856,
+    "parca": "Alt plaka",
+    "modul": "taban",
+    "yer": "ara",
+    "nokta": [
+     85.0,
+     94.6,
+     37.2
+    ],
+    "uca_mm": 117.8
+   },
+   "eksen_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sag)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      107.0,
+      80.8,
+      -179.0
+     ],
+     "uca_mm": 5.0
+    }
+   ],
+   "cizim_icinde": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sag)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      107.0,
+      80.8,
+      -179.0
+     ],
+     "uca_mm": 5.0
+    }
+   ],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 0.0,
+     "parca": "Motor JGB37-520 (arka sag)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      107.0,
+      80.8,
+      -179.0
+     ],
+     "uca_mm": 5.0
+    },
+    {
+     "d": 2.856,
+     "parca": "Alt plaka",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      85.0,
+      94.6,
+      37.2
+     ],
+     "uca_mm": 117.8
+    },
+    {
+     "d": 3.0,
+     "parca": "Aku kayisi 25 mm (z -140)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      85.0,
+      87.0,
+      -150.0
+     ],
+     "uca_mm": 42.0
+    },
+    {
+     "d": 3.0,
+     "parca": "Aku kayisi 25 mm (z -80)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      85.0,
+      87.0,
+      -92.5
+     ],
+     "uca_mm": 94.2
+    },
+    {
+     "d": 4.5,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      38.0,
+      184.0,
+      110.0
+     ],
+     "uca_mm": 34.3
+    },
+    {
+     "d": 5.554,
+     "parca": "ESP32 tasiyici kart (pertinaks)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      39.6,
+      190.4,
+      83.6
+     ],
+     "uca_mm": 8.0
+    },
+    {
+     "d": 6.75,
+     "parca": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      38.0,
+      184.0,
+      95.9
+     ],
+     "uca_mm": 21.8
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "Q01",
+   "r_cizim": 2.5,
+   "nokta": 8,
+   "noktalar": [
+    [
+     79.4118,
+     127.0,
+     255.0
+    ],
+    [
+     79.4118,
+     140.0,
+     255.0
+    ],
+    [
+     79.4118,
+     140.0,
+     235.0
+    ],
+    [
+     10.0,
+     155.0,
+     200.0
+    ],
+    [
+     10.0,
+     155.0,
+     162.5
+    ],
+    [
+     10.0,
+     184.0,
+     162.5
+    ],
+    [
+     -60.0,
+     184.0,
+     115.0
+    ],
+    [
+     -100.0,
+     196.0,
+     109.0
+    ]
+   ],
+   "en_dar": {
+    "d": 3.0,
+    "parca": "Sonar tutucu sag",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     79.4,
+     127.0,
+     255.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": {
+    "d": 4.454,
+    "parca": "Etek on sag",
+    "modul": "kabuk",
+    "yer": "ara",
+    "nokta": [
+     79.4,
+     140.0,
+     255.0
+    ],
+    "uca_mm": 13.0
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 3.0,
+     "parca": "Sonar tutucu sag",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      79.4,
+      127.0,
+      255.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.454,
+     "parca": "Etek on sag",
+     "modul": "kabuk",
+     "yer": "ara",
+     "nokta": [
+      79.4,
+      140.0,
+      255.0
+     ],
+     "uca_mm": 13.0
+    },
+    {
+     "d": 4.5,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -60.0,
+      184.0,
+      115.0
+     ],
+     "uca_mm": 42.2
+    },
+    {
+     "d": 5.0,
+     "parca": "Sase ara rayi on",
+     "modul": "iskelet",
+     "yer": "uc",
+     "nokta": [
+      79.4,
+      127.0,
+      255.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 6.663,
+     "parca": "Arayuz karti (E2/E3)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -86.9,
+      192.1,
+      111.0
+     ],
+     "uca_mm": 13.8
+    },
+    {
+     "d": 7.0,
+     "parca": "Sonar HC-SR04 (sag)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      79.4,
+      127.0,
+      255.0
+     ],
+     "uca_mm": 0.0
+    }
+   ]
+  },
+  {
+   "kaynak": "taban",
+   "ad": "Q02",
+   "r_cizim": 2.5,
+   "nokta": 8,
+   "noktalar": [
+    [
+     0.0,
+     127.0,
+     255.0
+    ],
+    [
+     0.0,
+     140.0,
+     255.0
+    ],
+    [
+     0.0,
+     140.0,
+     235.0
+    ],
+    [
+     -10.0,
+     155.0,
+     200.0
+    ],
+    [
+     -10.0,
+     155.0,
+     162.5
+    ],
+    [
+     -10.0,
+     184.0,
+     162.5
+    ],
+    [
+     -50.0,
+     184.0,
+     118.0
+    ],
+    [
+     -75.0,
+     196.0,
+     109.0
+    ]
+   ],
+   "en_dar": {
+    "d": 3.0,
+    "parca": "Sonar tutucu orta",
+    "modul": "taban",
+    "yer": "uc",
+    "nokta": [
+     0.0,
+     127.0,
+     255.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": {
+    "d": 4.454,
+    "parca": "Etek dolgu seridi on",
+    "modul": "kabuk",
+    "yer": "ara",
+    "nokta": [
+     0.0,
+     140.0,
+     255.0
+    ],
+    "uca_mm": 13.0
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 3.0,
+     "parca": "Sonar tutucu orta",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      0.0,
+      127.0,
+      255.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.454,
+     "parca": "Etek dolgu seridi on",
+     "modul": "kabuk",
+     "yer": "ara",
+     "nokta": [
+      0.0,
+      140.0,
+      255.0
+     ],
+     "uca_mm": 13.0
+    },
+    {
+     "d": 4.5,
+     "parca": "Elektronik kati (on)",
+     "modul": "taban",
+     "yer": "ara",
+     "nokta": [
+      -50.0,
+      184.0,
+      118.0
+     ],
+     "uca_mm": 29.2
+    },
+    {
+     "d": 5.0,
+     "parca": "Sase ara rayi on",
+     "modul": "iskelet",
+     "yer": "uc",
+     "nokta": [
+      0.0,
+      127.0,
+      255.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 7.0,
+     "parca": "Sonar HC-SR04 (orta)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      0.0,
+      127.0,
+      255.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 7.34,
+     "parca": "Arayuz karti (E2/E3)",
+     "modul": "taban",
+     "yer": "uc",
+     "nokta": [
+      -69.8,
+      193.5,
+      110.9
+     ],
+     "uca_mm": 6.1
+    }
+   ]
+  },
+  {
+   "kaynak": "kafa_ici",
+   "ad": "K01",
+   "r_cizim": 3.1,
+   "nokta": 3,
+   "noktalar": [
+    [
+     -58.0,
+     1514.0,
+     30.0
+    ],
+    [
+     -64.0,
+     1514.0,
+     36.0
+    ],
+    [
+     -69.0,
+     1516.0,
+     36.0
+    ]
+   ],
+   "en_dar": {
+    "d": 3.122,
+    "parca": "Kafa iskeleti",
+    "modul": "kafa",
+    "yer": "uc",
+    "nokta": [
+     -58.0,
+     1514.0,
+     30.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": null,
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 3.122,
+     "parca": "Kafa iskeleti",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -58.0,
+      1514.0,
+      30.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 3.6,
+     "parca": "5 V cevirici Pololu D24V50F5",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -69.0,
+      1516.0,
+      36.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.626,
+     "parca": "Kopuk bant (5)",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -69.0,
+      1516.0,
+      36.0
+     ],
+     "uca_mm": 0.0
+    }
+   ]
+  },
+  {
+   "kaynak": "kafa_ici",
+   "ad": "K02",
+   "r_cizim": 3.1,
+   "nokta": 4,
+   "noktalar": [
+    [
+     -58.0,
+     1514.0,
+     30.0
+    ],
+    [
+     -30.0,
+     1514.0,
+     36.0
+    ],
+    [
+     0.0,
+     1514.0,
+     39.0
+    ],
+    [
+     12.0,
+     1515.0,
+     39.0
+    ]
+   ],
+   "en_dar": {
+    "d": 2.25,
+    "parca": "SY8205 kafa ekrani 5 V",
+    "modul": "kafa",
+    "yer": "uc",
+    "nokta": [
+     12.0,
+     1515.0,
+     39.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": null,
+   "eksen_icinde": [],
+   "cizim_icinde": [
+    {
+     "d": 2.25,
+     "parca": "SY8205 kafa ekrani 5 V",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      12.0,
+      1515.0,
+      39.0
+     ],
+     "uca_mm": 0.0
+    }
+   ],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 2.25,
+     "parca": "SY8205 kafa ekrani 5 V",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      12.0,
+      1515.0,
+      39.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 3.122,
+     "parca": "Kafa iskeleti",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -58.0,
+      1514.0,
+      30.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 3.848,
+     "parca": "Kopuk bant (SY8205)",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      12.0,
+      1515.0,
+      39.0
+     ],
+     "uca_mm": 0.0
+    }
+   ]
+  },
+  {
+   "kaynak": "kafa_ici",
+   "ad": "K03",
+   "r_cizim": 3.1,
+   "nokta": 4,
+   "noktalar": [
+    [
+     -69.0,
+     1516.0,
+     24.0
+    ],
+    [
+     -50.0,
+     1516.0,
+     10.0
+    ],
+    [
+     -31.3,
+     1518.0,
+     6.0
+    ],
+    [
+     -31.3,
+     1521.0,
+     3.0
+    ]
+   ],
+   "en_dar": {
+    "d": 3.6,
+    "parca": "5 V cevirici Pololu D24V50F5",
+    "modul": "kafa",
+    "yer": "uc",
+    "nokta": [
+     -69.0,
+     1516.0,
+     24.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": {
+    "d": 5.122,
+    "parca": "Kafa iskeleti",
+    "modul": "kafa",
+    "yer": "ara",
+    "nokta": [
+     -50.0,
+     1516.0,
+     10.0
+    ],
+    "uca_mm": 20.6
+   },
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 3.6,
+     "parca": "5 V cevirici Pololu D24V50F5",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -69.0,
+      1516.0,
+      24.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.193,
+     "parca": "Raspberry Pi 5 4GB + Active Cooler",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -31.3,
+      1521.0,
+      3.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 4.626,
+     "parca": "Kopuk bant (5)",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -69.0,
+      1516.0,
+      24.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 5.122,
+     "parca": "Kafa iskeleti",
+     "modul": "kafa",
+     "yer": "ara",
+     "nokta": [
+      -50.0,
+      1516.0,
+      10.0
+     ],
+     "uca_mm": 20.6
+    }
+   ]
+  },
+  {
+   "kaynak": "kafa_ici",
+   "ad": "C01",
+   "r_cizim": 2.5,
+   "nokta": 4,
+   "noktalar": [
+    [
+     9.5,
+     1526.0,
+     1.0
+    ],
+    [
+     9.5,
+     1530.0,
+     30.0
+    ],
+    [
+     5.0,
+     1546.0,
+     50.0
+    ],
+    [
+     0.0,
+     1549.0,
+     64.0
+    ]
+   ],
+   "en_dar": {
+    "d": 2.752,
+    "parca": "Kamera Raspberry Pi Camera Module 3",
+    "modul": "kafa",
+    "yer": "uc",
+    "nokta": [
+     0.2,
+     1548.9,
+     63.6
+    ],
+    "uca_mm": 0.5
+   },
+   "en_dar_ara": null,
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 2.752,
+     "parca": "Kamera Raspberry Pi Camera Module 3",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      0.2,
+      1548.9,
+      63.6
+     ],
+     "uca_mm": 0.5
+    },
+    {
+     "d": 4.298,
+     "parca": "Raspberry Pi 5 4GB + Active Cooler",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      9.5,
+      1526.0,
+      1.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 5.5,
+     "parca": "Yuz kabugu (on) sag",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      0.0,
+      1549.0,
+      64.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 6.75,
+     "parca": "Yuz kabugu (on) sol",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      0.0,
+      1549.0,
+      64.0
+     ],
+     "uca_mm": 0.0
+    }
+   ]
+  },
+  {
+   "kaynak": "kafa_ici",
+   "ad": "AU1",
+   "r_cizim": 2.5,
+   "nokta": 4,
+   "noktalar": [
+    [
+     82.0,
+     1570.0,
+     -9.0
+    ],
+    [
+     82.0,
+     1556.0,
+     -9.0
+    ],
+    [
+     -100.0,
+     1554.0,
+     -2.0
+    ],
+    [
+     -121.0,
+     1552.0,
+     8.0
+    ]
+   ],
+   "en_dar": {
+    "d": 5.5,
+    "parca": "PAM8403 amfi",
+    "modul": "kafa",
+    "yer": "uc",
+    "nokta": [
+     -121.0,
+     1552.0,
+     8.0
+    ],
+    "uca_mm": 0.0
+   },
+   "en_dar_ara": null,
+   "eksen_icinde": [],
+   "cizim_icinde": [],
+   "cizim_icinde_ara": [],
+   "yakin": [
+    {
+     "d": 5.5,
+     "parca": "PAM8403 amfi",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      -121.0,
+      1552.0,
+      8.0
+     ],
+     "uca_mm": 0.0
+    },
+    {
+     "d": 6.848,
+     "parca": "ReSpeaker Mic Array v2.0",
+     "modul": "kafa",
+     "yer": "uc",
+     "nokta": [
+      82.0,
+      1570.0,
+      -9.0
+     ],
+     "uca_mm": 0.0
+    }
+   ]
+  }
+ ],
+ "sure_s": 3.9
+}

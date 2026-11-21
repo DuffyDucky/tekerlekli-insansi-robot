@@ -1,0 +1,733 @@
+gezinme
+  konum 141 (ana 50 + alt 91), ileri True geri True dogrudan 34 -> GECTI
+panel = takma
+  141/141 konum esit; kotu []
+gorunurluk
+  21     D1c  yeni  4 gorunmeyen 4 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0088 S1 horn 25T alüminyum disk                       px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0089 S1 horn merkez vidası M3                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0161 S1 horn 25T alüminyum disk                       px     0 yalniz  4030 oran 0.000
+      GORUNMEZ p0162 S1 horn merkez vidası M3                         px     0 yalniz   332 oran 0.000
+  21.1   D1c  yeni  2 gorunmeyen 0 istisna 0 GECTI
+  21.2   D1c  yeni  2 gorunmeyen 0 istisna 0 GECTI
+  25     E2a  yeni  2 gorunmeyen 0 istisna 0 GECTI
+  43     H0b  yeni  2 gorunmeyen 1 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0572 Dirsek horn 25T alüminyum disk                   px     0 yalniz     0 oran 0.000
+  43.1   H0b  yeni  1 gorunmeyen 0 istisna 0 GECTI
+  43.2   H0b  yeni  1 gorunmeyen 0 istisna 0 GECTI
+  45     H0d  yeni  4 gorunmeyen 2 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0607 Bilek horn 25T alüminyum disk                    px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0608 Bilek horn merkez vidası M3                      px     0 yalniz     0 oran 0.000
+  45.1   H0d  yeni  2 gorunmeyen 0 istisna 0 GECTI
+  45.2   H0d  yeni  2 gorunmeyen 0 istisna 0 GECTI
+  46     H0e  yeni 14 gorunmeyen 12 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0609 Bilek flanşı                                     px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0610 Flanş-horn cıvatası M3x8                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0611 Flanş-horn cıvatası M3x8                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0612 Flanş-horn cıvatası M3x8                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0613 Flanş-horn cıvatası M3x8                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0615 Isıl gömme somun M3 (flanşta)                    px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0617 Isıl gömme somun M3 (flanşta)                    px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0667 Flanş-horn cıvatası M3x8                         px    19 yalniz   258 oran 0.074
+      GORUNMEZ p0668 Flanş-horn cıvatası M3x8                         px    18 yalniz   247 oran 0.073
+      GORUNMEZ p0669 Flanş-horn cıvatası M3x8                         px    15 yalniz   244 oran 0.061
+      GORUNMEZ p0670 Flanş-horn cıvatası M3x8                         px    18 yalniz   251 oran 0.072
+      GORUNMEZ p0672 Isıl gömme somun M3 (flanşta)                    px     0 yalniz   133 oran 0.000
+  46.1   H0e  yeni  7 gorunmeyen 0 istisna 0 GECTI
+  46.2   H0e  yeni  7 gorunmeyen 0 istisna 0 GECTI
+  17     K1   yeni  8 gorunmeyen 3 istisna 0 KALDI (bilgi)
+      GORUNMEZ p1253 Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıld px    10 yalniz  1221 oran 0.008
+      GORUNMEZ p1254 Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 m px   989 yalniz  6437 oran 0.154
+      GORUNMEZ p1255 Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anaht px   103 yalniz  9203 oran 0.011
+  17.1   K1   yeni  1 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.2   K1   yeni  1 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.3   K1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.4   K1   yeni  1 gorunmeyen 0 istisna 0 KALDI (bilgi)
+  17.5   K1   yeni  1 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.6   K1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.7   K1   yeni  1 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.8   K1   yeni  1 gorunmeyen 0 istisna 0 KALDI (bilgi)
+  17.9   K1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.10  K1   yeni  2 gorunmeyen 0 istisna 0 KALDI (bilgi)
+  17.11  K1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  17.12  K1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  31     E4   yeni 58 gorunmeyen 51 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0753 Arka kafa kabuğu sol                             px  7156 yalniz 125216 oran 0.057
+      GORUNMEZ p0755 Tabla cıvatası M3x10 (sağ z-15)                  px     0 yalniz   255 oran 0.000
+      GORUNMEZ p0756 Isıl gömme somun M3 (tabla rafı sağ z-15)        px     0 yalniz   127 oran 0.000
+      GORUNMEZ p0757 Tabla cıvatası M3x10 (sağ z-75)                  px     0 yalniz   223 oran 0.000
+      GORUNMEZ p0758 Isıl gömme somun M3 (tabla rafı sağ z-75)        px     0 yalniz   116 oran 0.000
+      GORUNMEZ p0759 Tabla cıvatası M3x10 (sol z-15)                  px     0 yalniz   177 oran 0.000
+      GORUNMEZ p0760 Isıl gömme somun M3 (tabla rafı sol z-15)        px     0 yalniz    94 oran 0.000
+      GORUNMEZ p0761 Tabla cıvatası M3x10 (sol z-75)                  px     0 yalniz   158 oran 0.000
+      GORUNMEZ p0762 Isıl gömme somun M3 (tabla rafı sol z-75)        px     0 yalniz    77 oran 0.000
+      GORUNMEZ p0763 Isıl gömme somun M3 (kafa sağ/sol ön üst)        px     0 yalniz   132 oran 0.000
+      GORUNMEZ p0764 Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/s px    25 yalniz   147 oran 0.170
+      GORUNMEZ p0765 Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçev px     0 yalniz   105 oran 0.000
+      GORUNMEZ p0767 Isıl gömme somun M3 (kafa sağ/sol arka üst)      px     0 yalniz   107 oran 0.000
+      GORUNMEZ p0768 Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/s px    19 yalniz   119 oran 0.160
+      GORUNMEZ p0769 Isıl gömme somun M3 (kafa sağ/sol arka duvar üst px     0 yalniz    89 oran 0.000
+      GORUNMEZ p0770 Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka  px     0 yalniz   124 oran 0.000
+      GORUNMEZ p0771 Isıl gömme somun M3 (kafa sağ/sol arka duvar alt px     0 yalniz    79 oran 0.000
+      GORUNMEZ p0772 Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka  px     0 yalniz   105 oran 0.000
+      GORUNMEZ p0773 Isıl gömme somun M3 (kafa ön/arka sağ y-60)      px     0 yalniz   130 oran 0.000
+      GORUNMEZ p0775 Isıl gömme somun M3 (kafa ön/arka sağ y+70)      px     0 yalniz   159 oran 0.000
+      GORUNMEZ p0777 Isıl gömme somun M3 (kafa ön/arka sol y-60)      px     0 yalniz    83 oran 0.000
+      GORUNMEZ p0778 Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y px     0 yalniz   114 oran 0.000
+      GORUNMEZ p0779 Isıl gömme somun M3 (kafa ön/arka sol y+70)      px     0 yalniz    99 oran 0.000
+      GORUNMEZ p0780 Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y px     0 yalniz   134 oran 0.000
+      GORUNMEZ p0782 Ekran tırnağı üst sağ                            px     0 yalniz  2091 oran 0.000
+      GORUNMEZ p0783 Köpük bant (tırnak üst sağ)                      px     0 yalniz   488 oran 0.000
+      GORUNMEZ p0784 Tırnak cıvatası M3x6 ISO 7380 (üst sağ)          px     0 yalniz   199 oran 0.000
+      GORUNMEZ p0785 Isıl gömme somun M3 (tırnak boss üst sağ)        px     0 yalniz   143 oran 0.000
+      GORUNMEZ p0786 Ekran tırnağı üst sol                            px     0 yalniz  1379 oran 0.000
+      GORUNMEZ p0787 Köpük bant (tırnak üst sol)                      px     0 yalniz   314 oran 0.000
+      GORUNMEZ p0788 Tırnak cıvatası M3x6 ISO 7380 (üst sol)          px     0 yalniz   159 oran 0.000
+      GORUNMEZ p0789 Isıl gömme somun M3 (tırnak boss üst sol)        px     0 yalniz   115 oran 0.000
+      GORUNMEZ p0790 Ekran tırnağı alt sağ                            px     0 yalniz  1463 oran 0.000
+      GORUNMEZ p0791 Köpük bant (tırnak alt sağ)                      px     0 yalniz   387 oran 0.000
+      GORUNMEZ p0792 Tırnak cıvatası M3x6 ISO 7380 (alt sağ)          px     0 yalniz   164 oran 0.000
+      GORUNMEZ p0793 Isıl gömme somun M3 (tırnak boss alt sağ)        px     0 yalniz   121 oran 0.000
+      GORUNMEZ p0794 Ekran tırnağı alt sol                            px     0 yalniz  1025 oran 0.000
+      GORUNMEZ p0795 Köpük bant (tırnak alt sol)                      px     0 yalniz   260 oran 0.000
+      GORUNMEZ p0796 Tırnak cıvatası M3x6 ISO 7380 (alt sol)          px     0 yalniz   131 oran 0.000
+      GORUNMEZ p0797 Isıl gömme somun M3 (tırnak boss alt sol)        px     0 yalniz    94 oran 0.000
+      GORUNMEZ p0798 Kamera Raspberry Pi Camera Module 3              px   233 yalniz  2348 oran 0.099
+      GORUNMEZ p0799 Kamera vidası M2x8 PT (0)                        px     0 yalniz   117 oran 0.000
+      GORUNMEZ p0800 Kamera vidası M2x8 PT (1)                        px     0 yalniz   116 oran 0.000
+      GORUNMEZ p0801 Kamera vidası M2x8 PT (2)                        px     0 yalniz   117 oran 0.000
+      GORUNMEZ p0802 Kamera vidası M2x8 PT (3)                        px     0 yalniz   122 oran 0.000
+      GORUNMEZ p0824 Köpük bant (PAM8403 amfi)                        px     0 yalniz  1240 oran 0.000
+      GORUNMEZ p0825 PAM8403 amfi                                     px     0 yalniz  1485 oran 0.000
+      GORUNMEZ p0826 ReSpeaker Mic Array v2.0                         px     0 yalniz  3996 oran 0.000
+      GORUNMEZ p0827 Dizi vidası M2x8 PT (0)                          px     0 yalniz   115 oran 0.000
+      GORUNMEZ p0828 Dizi vidası M2x8 PT (1)                          px     0 yalniz   109 oran 0.000
+      GORUNMEZ p0829 Dizi vidası M2x8 PT (2)                          px     0 yalniz   106 oran 0.000
+  31.1   E4   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  31.2   E4   yeni  0 gorunmeyen 0 istisna 0 | birim Arka kafa kabuğu sağ 138318/209723 px ok, ic 7 GECTI
+  31.3   E4   yeni  7 gorunmeyen 0 istisna 0 GECTI
+  31.4   E4   yeni  0 gorunmeyen 0 istisna 0 | birim Arka kafa kabuğu sol 131516/216857 px ok, ic 5 GECTI
+  31.5   E4   yeni  4 gorunmeyen 0 istisna 0 GECTI
+  31.6   E4   yeni 13 gorunmeyen 0 istisna 0 GECTI
+  31.7   E4   yeni  1 gorunmeyen 0 istisna 0 GECTI
+  31.8   E4   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  31.9   E4   yeni  0 gorunmeyen 0 istisna 0 | birim Yüz kabuğu (ön) sağ 78901/79159 px ok, ic 5 GECTI
+  31.10  E4   yeni  9 gorunmeyen 0 istisna 0 GECTI
+  32     K2   yeni  4 gorunmeyen 3 istisna 0 KALDI (bilgi)
+      GORUNMEZ p1256 Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 A px   224 yalniz  1221 oran 0.183
+      GORUNMEZ p1257 Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; px     0 yalniz   138 oran 0.000
+      GORUNMEZ p1258 Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 A px   213 yalniz  1299 oran 0.164
+  32.1   K2   yeni  2 gorunmeyen 0 istisna 0 KALDI (bilgi)
+  32.2   K2   yeni  1 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  32.3   K2   yeni  1 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  32.4   K2   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  32.5   K2   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  32.6   K2   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  32.7   K2   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  32.8   K2   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  33     F1   yeni 70 gorunmeyen 62 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0220 Etek arka sol                                    px  4048 yalniz 32270 oran 0.125
+      GORUNMEZ p0222 Etek orta sol                                    px  3698 yalniz 20372 oran 0.182
+      GORUNMEZ p0363 Isıl gömme somun M3 (etek x-38 ön)               px     0 yalniz    26 oran 0.000
+      GORUNMEZ p0364 Bindirme cıvatası M3x6 (etek x-38 ön)            px    23 yalniz    35 oran 0.657
+      GORUNMEZ p0365 Isıl gömme somun M3 (etek x-38 ön)               px     0 yalniz    29 oran 0.000
+      GORUNMEZ p0366 Bindirme cıvatası M3x6 (etek x-38 ön)            px    26 yalniz    38 oran 0.684
+      GORUNMEZ p0367 Isıl gömme somun M3 (etek x+38 ön)               px     0 yalniz    27 oran 0.000
+      GORUNMEZ p0368 Bindirme cıvatası M3x6 (etek x+38 ön)            px    26 yalniz    37 oran 0.703
+      GORUNMEZ p0369 Isıl gömme somun M3 (etek x+38 ön)               px     0 yalniz    29 oran 0.000
+      GORUNMEZ p0370 Bindirme cıvatası M3x6 (etek x+38 ön)            px    28 yalniz    38 oran 0.737
+      GORUNMEZ p0371 Isıl gömme somun M3 (etek x-38 arka)             px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0372 Bindirme cıvatası M3x6 (etek x-38 arka)          px     0 yalniz    21 oran 0.000
+      GORUNMEZ p0373 Isıl gömme somun M3 (etek x-38 arka)             px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0374 Bindirme cıvatası M3x6 (etek x-38 arka)          px     0 yalniz    21 oran 0.000
+      GORUNMEZ p0375 Isıl gömme somun M3 (etek x-38 arka)             px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0376 Bindirme cıvatası M3x6 (etek x-38 arka)          px     0 yalniz    21 oran 0.000
+      GORUNMEZ p0377 Isıl gömme somun M3 (etek x+38 arka)             px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0378 Bindirme cıvatası M3x6 (etek x+38 arka)          px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0379 Isıl gömme somun M3 (etek x+38 arka)             px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0380 Bindirme cıvatası M3x6 (etek x+38 arka)          px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0381 Isıl gömme somun M3 (etek x+38 arka)             px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0382 Bindirme cıvatası M3x6 (etek x+38 arka)          px     0 yalniz    23 oran 0.000
+      GORUNMEZ p0383 Isıl gömme somun M3 (etek z+88 sağ)              px     0 yalniz    27 oran 0.000
+      GORUNMEZ p0384 Bindirme cıvatası M3x6 (etek z+88 sağ)           px    22 yalniz    35 oran 0.629
+      GORUNMEZ p0385 Isıl gömme somun M3 (etek z+88 sağ)              px     0 yalniz    28 oran 0.000
+      GORUNMEZ p0386 Bindirme cıvatası M3x6 (etek z+88 sağ)           px    21 yalniz    37 oran 0.568
+      GORUNMEZ p0387 Isıl gömme somun M3 (etek z+88 sağ)              px     0 yalniz    29 oran 0.000
+      GORUNMEZ p0388 Bindirme cıvatası M3x6 (etek z+88 sağ)           px    26 yalniz    38 oran 0.684
+      GORUNMEZ p0389 Isıl gömme somun M3 (etek z-88 sağ)              px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0390 Bindirme cıvatası M3x6 (etek z-88 sağ)           px    17 yalniz    31 oran 0.548
+      GORUNMEZ p0391 Isıl gömme somun M3 (etek z-88 sağ)              px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0392 Bindirme cıvatası M3x6 (etek z-88 sağ)           px    16 yalniz    29 oran 0.552
+      GORUNMEZ p0393 Isıl gömme somun M3 (etek z-88 sağ)              px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0394 Bindirme cıvatası M3x6 (etek z-88 sağ)           px    19 yalniz    30 oran 0.633
+      GORUNMEZ p0395 Isıl gömme somun M3 (etek z+88 sol)              px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0396 Bindirme cıvatası M3x6 (etek z+88 sol)           px     0 yalniz    27 oran 0.000
+      GORUNMEZ p0397 Isıl gömme somun M3 (etek z+88 sol)              px     0 yalniz    18 oran 0.000
+      GORUNMEZ p0398 Bindirme cıvatası M3x6 (etek z+88 sol)           px     0 yalniz    24 oran 0.000
+      GORUNMEZ p0399 Isıl gömme somun M3 (etek z+88 sol)              px     0 yalniz    20 oran 0.000
+      GORUNMEZ p0400 Bindirme cıvatası M3x6 (etek z+88 sol)           px     0 yalniz    28 oran 0.000
+      GORUNMEZ p0401 Isıl gömme somun M3 (etek z-88 sol)              px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0402 Bindirme cıvatası M3x6 (etek z-88 sol)           px     0 yalniz    20 oran 0.000
+      GORUNMEZ p0403 Isıl gömme somun M3 (etek z-88 sol)              px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0404 Bindirme cıvatası M3x6 (etek z-88 sol)           px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0405 Isıl gömme somun M3 (etek z-88 sol)              px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0406 Bindirme cıvatası M3x6 (etek z-88 sol)           px     0 yalniz    24 oran 0.000
+      GORUNMEZ p0446 Isıl gömme somun M3 (Etek servis kapağı H1 (sigo px     4 yalniz    20 oran 0.200
+      GORUNMEZ p0448 Isıl gömme somun M3 (Etek servis kapağı H1 (sigo px     3 yalniz    15 oran 0.200
+      GORUNMEZ p0450 Isıl gömme somun M3 (Etek servis kapağı H1 (sigo px     2 yalniz    22 oran 0.091
+      GORUNMEZ p0452 Isıl gömme somun M3 (Etek servis kapağı H1 (sigo px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0454 Isıl gömme somun M3 (Etek servis kapağı H2 (ana  px     4 yalniz    24 oran 0.167
+      GORUNMEZ p0456 Isıl gömme somun M3 (Etek servis kapağı H2 (ana  px     4 yalniz    24 oran 0.167
+      GORUNMEZ p0458 Isıl gömme somun M3 (Etek servis kapağı H2 (ana  px     3 yalniz    21 oran 0.143
+      GORUNMEZ p0460 Isıl gömme somun M3 (Etek servis kapağı H2 (ana  px     3 yalniz    23 oran 0.130
+      GORUNMEZ p0530 Cıvata M3x14 ISO 7380 (Etek braketi sağ z-105)   px    15 yalniz    46 oran 0.326
+      GORUNMEZ p0536 Cıvata M3x14 ISO 7380 (Etek braketi sol z-105)   px     0 yalniz    32 oran 0.000
+      GORUNMEZ p0542 Cıvata M3x14 ISO 7380 (Etek braketi sağ z+0)     px    18 yalniz    55 oran 0.327
+      GORUNMEZ p0548 Cıvata M3x14 ISO 7380 (Etek braketi sol z+0)     px     0 yalniz    35 oran 0.000
+      GORUNMEZ p0554 Cıvata M3x14 ISO 7380 (Etek braketi sağ z+105)   px    23 yalniz    63 oran 0.365
+      GORUNMEZ p0560 Cıvata M3x14 ISO 7380 (Etek braketi sol z+105)   px     0 yalniz    38 oran 0.000
+      GORUNMEZ p1109 Ana anahtar ASW-A01 gövdesi (tahmini zarf)       px    58 yalniz  2048 oran 0.028
+      GORUNMEZ p1251 Acil stop kontak gövdesi (1NC)                   px    27 yalniz  1748 oran 0.015
+  33.1   F1   yeni  8 gorunmeyen 0 istisna 0 GECTI
+  33.2   F1   yeni  8 gorunmeyen 0 istisna 0 GECTI
+  33.3   F1   yeni  7 gorunmeyen 0 istisna 0 GECTI
+  33.4   F1   yeni  5 gorunmeyen 0 istisna 0 GECTI
+  33.5   F1   yeni  7 gorunmeyen 0 istisna 0 GECTI
+  33.6   F1   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  33.7   F1   yeni  4 gorunmeyen 0 istisna 0 | birim Etek arka sağ 130291/133309 px ok, ic 10 GECTI
+  33.8   F1   yeni  7 gorunmeyen 0 istisna 0 GECTI
+  33.9   F1   yeni  5 gorunmeyen 0 istisna 0 GECTI
+  33.10  F1   yeni  7 gorunmeyen 0 istisna 0 | birim Etek arka sol 137906/140641 px ok, ic 3 GECTI
+  34     F2   yeni 100 gorunmeyen 89 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0236 Hoparlör kabı ön halka                           px     0 yalniz   617 oran 0.000
+      GORUNMEZ p0237 Hoparlör kabı arka (flanşlı)                     px    36 yalniz  1197 oran 0.030
+      GORUNMEZ p0238 Hoparlör kelepçesi                               px     0 yalniz   642 oran 0.000
+      GORUNMEZ p0239 Isıl gömme somun M3 (gövde y476 ön)              px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0240 Bindirme cıvatası M3x6 (gövde y476 ön)           px    17 yalniz    23 oran 0.739
+      GORUNMEZ p0241 Isıl gömme somun M3 (gövde y476 ön)              px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0242 Bindirme cıvatası M3x6 (gövde y476 ön)           px    13 yalniz    20 oran 0.650
+      GORUNMEZ p0243 Isıl gömme somun M3 (gövde y476 arka)            px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0244 Bindirme cıvatası M3x6 (gövde y476 arka)         px     0 yalniz    20 oran 0.000
+      GORUNMEZ p0245 Isıl gömme somun M3 (gövde y476 arka)            px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0246 Bindirme cıvatası M3x6 (gövde y476 arka)         px     0 yalniz    18 oran 0.000
+      GORUNMEZ p0247 Isıl gömme somun M3 (gövde y476 yan)             px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0248 Bindirme cıvatası M3x6 (gövde y476 yan)          px    12 yalniz    21 oran 0.571
+      GORUNMEZ p0249 Isıl gömme somun M3 (gövde y476 yan)             px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0250 Bindirme cıvatası M3x6 (gövde y476 yan)          px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0251 Isıl gömme somun M3 (gövde y634 ön)              px     0 yalniz    18 oran 0.000
+      GORUNMEZ p0252 Bindirme cıvatası M3x6 (gövde y634 ön)           px    18 yalniz    25 oran 0.720
+      GORUNMEZ p0253 Isıl gömme somun M3 (gövde y634 ön)              px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0254 Bindirme cıvatası M3x6 (gövde y634 ön)           px    17 yalniz    23 oran 0.739
+      GORUNMEZ p0255 Isıl gömme somun M3 (gövde y634 arka)            px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0256 Bindirme cıvatası M3x6 (gövde y634 arka)         px     0 yalniz    21 oran 0.000
+      GORUNMEZ p0257 Isıl gömme somun M3 (gövde y634 arka)            px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0258 Bindirme cıvatası M3x6 (gövde y634 arka)         px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0259 Isıl gömme somun M3 (gövde y634 yan)             px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0260 Bindirme cıvatası M3x6 (gövde y634 yan)          px    15 yalniz    24 oran 0.625
+      GORUNMEZ p0261 Isıl gömme somun M3 (gövde y634 yan)             px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0262 Bindirme cıvatası M3x6 (gövde y634 yan)          px     0 yalniz    21 oran 0.000
+      GORUNMEZ p0263 Isıl gömme somun M3 (gövde y792 ön)              px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0264 Bindirme cıvatası M3x6 (gövde y792 ön)           px    21 yalniz    27 oran 0.778
+      GORUNMEZ p0265 Isıl gömme somun M3 (gövde y792 ön)              px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0266 Bindirme cıvatası M3x6 (gövde y792 ön)           px    19 yalniz    24 oran 0.792
+      GORUNMEZ p0267 Isıl gömme somun M3 (gövde y792 arka)            px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0268 Bindirme cıvatası M3x6 (gövde y792 arka)         px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0269 Isıl gömme somun M3 (gövde y792 arka)            px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0270 Bindirme cıvatası M3x6 (gövde y792 arka)         px     0 yalniz    20 oran 0.000
+      GORUNMEZ p0271 Isıl gömme somun M3 (gövde y792 yan)             px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0272 Bindirme cıvatası M3x6 (gövde y792 yan)          px    15 yalniz    24 oran 0.625
+      GORUNMEZ p0273 Isıl gömme somun M3 (gövde y792 yan)             px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0274 Bindirme cıvatası M3x6 (gövde y792 yan)          px     0 yalniz    23 oran 0.000
+      GORUNMEZ p0275 Isıl gömme somun M3 (gövde y1005 ön)             px     6 yalniz    24 oran 0.250
+      GORUNMEZ p0277 Isıl gömme somun M3 (gövde y1005 ön)             px     5 yalniz    23 oran 0.217
+      GORUNMEZ p0279 Isıl gömme somun M3 (gövde y1005 arka)           px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0281 Isıl gömme somun M3 (gövde y1005 arka)           px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0283 Isıl gömme somun M3 (gövde y1005 yan)            px     6 yalniz    22 oran 0.273
+      GORUNMEZ p0285 Isıl gömme somun M3 (gövde y1005 yan)            px     0 yalniz    18 oran 0.000
+      GORUNMEZ p0299 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0300 Bindirme cıvatası M3x6 (gövde x0 ön)             px    15 yalniz    21 oran 0.714
+      GORUNMEZ p0301 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0302 Bindirme cıvatası M3x6 (gövde x0 ön)             px    14 yalniz    22 oran 0.636
+      GORUNMEZ p0303 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0304 Bindirme cıvatası M3x6 (gövde x0 ön)             px    14 yalniz    21 oran 0.667
+      GORUNMEZ p0305 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0306 Bindirme cıvatası M3x6 (gövde x0 ön)             px    18 yalniz    25 oran 0.720
+      GORUNMEZ p0307 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0308 Bindirme cıvatası M3x6 (gövde x0 ön)             px    16 yalniz    22 oran 0.727
+      GORUNMEZ p0309 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0310 Bindirme cıvatası M3x6 (gövde x0 ön)             px    18 yalniz    24 oran 0.750
+      GORUNMEZ p0311 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0312 Bindirme cıvatası M3x6 (gövde x0 ön)             px    21 yalniz    28 oran 0.750
+      GORUNMEZ p0313 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz    20 oran 0.000
+      GORUNMEZ p0314 Bindirme cıvatası M3x6 (gövde x0 ön)             px    20 yalniz    28 oran 0.714
+      GORUNMEZ p0321 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    13 oran 0.000
+      GORUNMEZ p0322 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz    18 oran 0.000
+      GORUNMEZ p0323 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0324 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz    19 oran 0.000
+      GORUNMEZ p0325 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0326 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0327 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    14 oran 0.000
+      GORUNMEZ p0328 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0329 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0330 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz    20 oran 0.000
+      GORUNMEZ p0331 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0332 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0335 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    15 oran 0.000
+      GORUNMEZ p0337 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0339 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0341 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    18 oran 0.000
+      GORUNMEZ p0343 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    17 oran 0.000
+      GORUNMEZ p0345 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0347 Isıl gömme somun M3 (arka kapak)                 px     0 yalniz    16 oran 0.000
+      GORUNMEZ p0438 Hoparlör 40 x 20                                 px     0 yalniz  1155 oran 0.000
+      GORUNMEZ p0439 Isıl gömme somun M3 (hoparlör boss)              px     0 yalniz    23 oran 0.000
+      GORUNMEZ p0440 Hoparlör kelepçe cıvatası M3x20                  px     0 yalniz    69 oran 0.000
+      GORUNMEZ p0441 Isıl gömme somun M3 (hoparlör boss)              px     0 yalniz    22 oran 0.000
+      GORUNMEZ p0442 Hoparlör kelepçe cıvatası M3x20                  px     0 yalniz    67 oran 0.000
+      GORUNMEZ p0443 Köpük ped (hoparlör kelepçesi)                   px     0 yalniz   105 oran 0.000
+      GORUNMEZ p0482 Cıvata M5x18 ISO 7380 (Gövde braketi sol y400)   px     0 yalniz    69 oran 0.000
+      GORUNMEZ p0496 Cıvata M5x18 ISO 7380 (Gövde braketi sol y530)   px     0 yalniz    72 oran 0.000
+      GORUNMEZ p0510 Cıvata M5x18 ISO 7380 (Gövde braketi sol y688)   px     0 yalniz    76 oran 0.000
+  34.1   F2   yeni  9 gorunmeyen 0 istisna 0 GECTI
+  34.2   F2   yeni  9 gorunmeyen 0 istisna 0 GECTI
+  34.3   F2   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  34.4   F2   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  34.5   F2   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  34.6   F2   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  34.7   F2   yeni 19 gorunmeyen 0 istisna 0 GECTI
+  34.8   F2   yeni  3 gorunmeyen 0 istisna 0 | birim Gövde orta bandı sağ 102869/142495 px ok, ic 2 GECTI
+  34.9   F2   yeni 12 gorunmeyen 0 istisna 0 GECTI
+  35     F3   yeni 61 gorunmeyen 41 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0214 Göğüs bandı sol                                  px 17845 yalniz 129175 oran 0.138
+      GORUNMEZ p0231 Göğüs ekranı VESA taşıyıcı                       px     0 yalniz 35477 oran 0.000
+      GORUNMEZ p0280 Bindirme cıvatası M3x6 (gövde y1005 arka)        px     0 yalniz    98 oran 0.000
+      GORUNMEZ p0282 Bindirme cıvatası M3x6 (gövde y1005 arka)        px     0 yalniz    79 oran 0.000
+      GORUNMEZ p0286 Bindirme cıvatası M3x6 (gövde y1005 yan)         px     0 yalniz    91 oran 0.000
+      GORUNMEZ p0287 Isıl gömme somun M3 (gövde y1198 arka)           px     0 yalniz    87 oran 0.000
+      GORUNMEZ p0289 Isıl gömme somun M3 (gövde y1198 arka)           px     0 yalniz    87 oran 0.000
+      GORUNMEZ p0291 Isıl gömme somun M3 (gövde y1198 arka)           px     0 yalniz    71 oran 0.000
+      GORUNMEZ p0293 Isıl gömme somun M3 (gövde y1198 arka)           px     0 yalniz    68 oran 0.000
+      GORUNMEZ p0315 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz   106 oran 0.000
+      GORUNMEZ p0317 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz   118 oran 0.000
+      GORUNMEZ p0349 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    62 oran 0.000
+      GORUNMEZ p0351 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    66 oran 0.000
+      GORUNMEZ p0353 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    70 oran 0.000
+      GORUNMEZ p0355 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    75 oran 0.000
+      GORUNMEZ p0357 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    78 oran 0.000
+      GORUNMEZ p0359 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    65 oran 0.000
+      GORUNMEZ p0361 Isıl gömme somun M3 (üst arka kapak)             px     0 yalniz    70 oran 0.000
+      GORUNMEZ p0408 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz   124 oran 0.000
+      GORUNMEZ p0410 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz   115 oran 0.000
+      GORUNMEZ p0412 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz   134 oran 0.000
+      GORUNMEZ p0414 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz   126 oran 0.000
+      GORUNMEZ p0416 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz   112 oran 0.000
+      GORUNMEZ p0418 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz    99 oran 0.000
+      GORUNMEZ p0420 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz   102 oran 0.000
+      GORUNMEZ p0422 Isıl gömme somun M3 (göğüs çerçevesi)            px     0 yalniz    91 oran 0.000
+      GORUNMEZ p0424 VESA pulu M4                                     px     0 yalniz   202 oran 0.000
+      GORUNMEZ p0425 VESA cıvatası M4x12                              px     0 yalniz   324 oran 0.000
+      GORUNMEZ p0426 VESA pulu M4                                     px     0 yalniz   189 oran 0.000
+      GORUNMEZ p0427 VESA cıvatası M4x12                              px     0 yalniz   311 oran 0.000
+      GORUNMEZ p0428 VESA pulu M4                                     px     0 yalniz   169 oran 0.000
+      GORUNMEZ p0429 VESA cıvatası M4x12                              px     0 yalniz   299 oran 0.000
+      GORUNMEZ p0430 VESA pulu M4                                     px     0 yalniz   163 oran 0.000
+      GORUNMEZ p0431 VESA cıvatası M4x12                              px     0 yalniz   288 oran 0.000
+      GORUNMEZ p0432 Taşıyıcı pulu M6                                 px     0 yalniz   277 oran 0.000
+      GORUNMEZ p0433 Taşıyıcı cıvatası M6x18                          px     0 yalniz   584 oran 0.000
+      GORUNMEZ p0434 Çekiç somun M6 (direk ön kanalı)                 px     0 yalniz   599 oran 0.000
+      GORUNMEZ p0435 Taşıyıcı pulu M6                                 px     0 yalniz   307 oran 0.000
+      GORUNMEZ p0436 Taşıyıcı cıvatası M6x18                          px     0 yalniz   616 oran 0.000
+      GORUNMEZ p0437 Çekiç somun M6 (direk ön kanalı)                 px     0 yalniz   633 oran 0.000
+      GORUNMEZ p0524 Cıvata M5x18 ISO 7380 (Gövde braketi sol y1095)  px     0 yalniz   359 oran 0.000
+  35.1   F3   yeni 14 gorunmeyen 0 istisna 0 GECTI
+  35.2   F3   yeni 13 gorunmeyen 0 istisna 0 GECTI
+  35.3   F3   yeni  7 gorunmeyen 0 istisna 0 GECTI
+  35.4   F3   yeni  9 gorunmeyen 0 istisna 0 GECTI
+  35.5   F3   yeni 18 gorunmeyen 0 istisna 0 GECTI
+  36     F4   yeni 16 gorunmeyen 11 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0288 Bindirme cıvatası M3x6 (gövde y1198 arka)        px     0 yalniz   153 oran 0.000
+      GORUNMEZ p0290 Bindirme cıvatası M3x6 (gövde y1198 arka)        px     0 yalniz    69 oran 0.000
+      GORUNMEZ p0292 Bindirme cıvatası M3x6 (gövde y1198 arka)        px     0 yalniz   117 oran 0.000
+      GORUNMEZ p0294 Bindirme cıvatası M3x6 (gövde y1198 arka)        px     0 yalniz   111 oran 0.000
+      GORUNMEZ p0319 Isıl gömme somun M3 (gövde x0 ön)                px     0 yalniz   161 oran 0.000
+      GORUNMEZ p0333 Isıl gömme somun M3 (gövde x0 arka)              px     0 yalniz    99 oran 0.000
+      GORUNMEZ p0334 Bindirme cıvatası M3x6 (gövde x0 arka)           px     0 yalniz   140 oran 0.000
+      GORUNMEZ p0462 Isıl gömme somun M3 (S1 kaseti sağ ψ 200)        px    18 yalniz   187 oran 0.096
+      GORUNMEZ p0464 Isıl gömme somun M3 (S1 kaseti sağ ψ 226)        px    35 yalniz   209 oran 0.167
+      GORUNMEZ p0466 Isıl gömme somun M3 (S1 kaseti sol ψ 200)        px     0 yalniz   106 oran 0.000
+      GORUNMEZ p0468 Isıl gömme somun M3 (S1 kaseti sol ψ 226)        px     0 yalniz   111 oran 0.000
+  36.1   F4   yeni  8 gorunmeyen 0 istisna 0 GECTI
+  36.2   F4   yeni  5 gorunmeyen 0 istisna 0 GECTI
+  36.3   F4   yeni  3 gorunmeyen 0 istisna 0 GECTI
+  36.4   F4   yeni  0 gorunmeyen 0 istisna 0 GECTI
+  36.5   F4   yeni  0 gorunmeyen 0 istisna 0 GECTI
+  40     G3   yeni 32 gorunmeyen 24 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0116 625ZZ rulman (iç bilezik)                        px     0 yalniz   327 oran 0.000
+      GORUNMEZ p0117 Mafsal pulu M5                                   px     0 yalniz   311 oran 0.000
+      GORUNMEZ p0118 Mafsal cıvatası M5x12                            px     0 yalniz   490 oran 0.000
+      GORUNMEZ p0119 S2 horn 25T alüminyum disk                       px    45 yalniz  2860 oran 0.016
+      GORUNMEZ p0122 625ZZ rulman (dış bilezik)                       px     0 yalniz   726 oran 0.000
+      GORUNMEZ p0128 Isıl gömme somun M3 (çatalda)                    px     0 yalniz   137 oran 0.000
+      GORUNMEZ p0130 Isıl gömme somun M3 (çatalda)                    px     0 yalniz   119 oran 0.000
+      GORUNMEZ p0131 Tüp cıvatası M3x8                                px     0 yalniz   193 oran 0.000
+      GORUNMEZ p0189 625ZZ rulman (iç bilezik)                        px     0 yalniz   204 oran 0.000
+      GORUNMEZ p0190 Mafsal pulu M5                                   px     0 yalniz   148 oran 0.000
+      GORUNMEZ p0191 Mafsal cıvatası M5x12                            px     0 yalniz   335 oran 0.000
+      GORUNMEZ p0192 S2 horn 25T alüminyum disk                       px     0 yalniz  1253 oran 0.000
+      GORUNMEZ p0193 S2 horn merkez vidası M3                         px     0 yalniz   132 oran 0.000
+      GORUNMEZ p0194 Kol çatalı                                       px     0 yalniz 13007 oran 0.000
+      GORUNMEZ p0195 625ZZ rulman (dış bilezik)                       px     0 yalniz   483 oran 0.000
+      GORUNMEZ p0196 Çatal-horn cıvatası M3x8                         px     0 yalniz   161 oran 0.000
+      GORUNMEZ p0197 Çatal-horn cıvatası M3x8                         px     0 yalniz   158 oran 0.000
+      GORUNMEZ p0198 Çatal-horn cıvatası M3x8                         px     0 yalniz   159 oran 0.000
+      GORUNMEZ p0199 Çatal-horn cıvatası M3x8                         px     0 yalniz   163 oran 0.000
+      GORUNMEZ p0200 Üst kol tüpü                                     px     0 yalniz 22651 oran 0.000
+      GORUNMEZ p0201 Isıl gömme somun M3 (çatalda)                    px     0 yalniz    84 oran 0.000
+      GORUNMEZ p0202 Tüp cıvatası M3x8                                px     0 yalniz   147 oran 0.000
+      GORUNMEZ p0203 Isıl gömme somun M3 (çatalda)                    px     0 yalniz    76 oran 0.000
+      GORUNMEZ p0204 Tüp cıvatası M3x8                                px     0 yalniz   130 oran 0.000
+  40.1   G3   yeni 32 gorunmeyen 24 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0116 625ZZ rulman (iç bilezik)                        px     0 yalniz   333 oran 0.000
+      GORUNMEZ p0117 Mafsal pulu M5                                   px     0 yalniz   313 oran 0.000
+      GORUNMEZ p0118 Mafsal cıvatası M5x12                            px     0 yalniz   490 oran 0.000
+      GORUNMEZ p0119 S2 horn 25T alüminyum disk                       px    47 yalniz  2857 oran 0.016
+      GORUNMEZ p0122 625ZZ rulman (dış bilezik)                       px     0 yalniz   724 oran 0.000
+      GORUNMEZ p0128 Isıl gömme somun M3 (çatalda)                    px     0 yalniz   138 oran 0.000
+      GORUNMEZ p0130 Isıl gömme somun M3 (çatalda)                    px     0 yalniz   118 oran 0.000
+      GORUNMEZ p0131 Tüp cıvatası M3x8                                px     0 yalniz   192 oran 0.000
+      GORUNMEZ p0189 625ZZ rulman (iç bilezik)                        px     0 yalniz   202 oran 0.000
+      GORUNMEZ p0190 Mafsal pulu M5                                   px     0 yalniz   148 oran 0.000
+      GORUNMEZ p0191 Mafsal cıvatası M5x12                            px     0 yalniz   339 oran 0.000
+      GORUNMEZ p0192 S2 horn 25T alüminyum disk                       px     0 yalniz  1249 oran 0.000
+      GORUNMEZ p0193 S2 horn merkez vidası M3                         px     0 yalniz   130 oran 0.000
+      GORUNMEZ p0194 Kol çatalı                                       px     0 yalniz 13028 oran 0.000
+      GORUNMEZ p0195 625ZZ rulman (dış bilezik)                       px     0 yalniz   489 oran 0.000
+      GORUNMEZ p0196 Çatal-horn cıvatası M3x8                         px     0 yalniz   160 oran 0.000
+      GORUNMEZ p0197 Çatal-horn cıvatası M3x8                         px     0 yalniz   161 oran 0.000
+      GORUNMEZ p0198 Çatal-horn cıvatası M3x8                         px     0 yalniz   161 oran 0.000
+      GORUNMEZ p0199 Çatal-horn cıvatası M3x8                         px     0 yalniz   161 oran 0.000
+      GORUNMEZ p0200 Üst kol tüpü                                     px     0 yalniz 22643 oran 0.000
+      GORUNMEZ p0201 Isıl gömme somun M3 (çatalda)                    px     0 yalniz    84 oran 0.000
+      GORUNMEZ p0202 Tüp cıvatası M3x8                                px     0 yalniz   147 oran 0.000
+      GORUNMEZ p0203 Isıl gömme somun M3 (çatalda)                    px     0 yalniz    78 oran 0.000
+      GORUNMEZ p0204 Tüp cıvatası M3x8                                px     0 yalniz   130 oran 0.000
+  40.2   G3   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  40.3   G3   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  41     G4   yeni  8 gorunmeyen 5 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0235 S1 kaset kapağı sol                              px   362 yalniz 17666 oran 0.020
+      GORUNMEZ p0463 Kaset cıvatası M3x8 (sağ ψ 200)                  px    59 yalniz   317 oran 0.186
+      GORUNMEZ p0465 Kaset cıvatası M3x8 (sağ ψ 226)                  px    68 yalniz   347 oran 0.196
+      GORUNMEZ p0467 Kaset cıvatası M3x8 (sol ψ 200)                  px     0 yalniz   172 oran 0.000
+      GORUNMEZ p0469 Kaset cıvatası M3x8 (sol ψ 226)                  px     0 yalniz   183 oran 0.000
+  41.1   G4   yeni  2 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  41.2   G4   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  41.3   G4   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  41.4   G4   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  41.5   G4   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  41.6   G4   yeni  6 gorunmeyen 5 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0235 S1 kaset kapağı sol                              px   394 yalniz 18773 oran 0.021
+      GORUNMEZ p0463 Kaset cıvatası M3x8 (sağ ψ 200)                  px    59 yalniz   344 oran 0.172
+      GORUNMEZ p0465 Kaset cıvatası M3x8 (sağ ψ 226)                  px    71 yalniz   380 oran 0.187
+      GORUNMEZ p0467 Kaset cıvatası M3x8 (sol ψ 200)                  px     0 yalniz   184 oran 0.000
+      GORUNMEZ p0469 Kaset cıvatası M3x8 (sol ψ 226)                  px     0 yalniz   194 oran 0.000
+  42     H0a  yeni 44 gorunmeyen 41 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0586 Isıl gömme somun M5 (ön kolda)                   px     0 yalniz   377 oran 0.000
+      GORUNMEZ p0587 Dirsek servosu MG996R                            px     0 yalniz  3088 oran 0.000
+      GORUNMEZ p0588 Dirsek servosu çıkış mili                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0589 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0590 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0591 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0592 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0593 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0594 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0595 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0596 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0597 Bilek servosu MG996R                             px     0 yalniz  5196 oran 0.000
+      GORUNMEZ p0598 Bilek servosu çıkış mili                         px     6 yalniz   570 oran 0.011
+      GORUNMEZ p0599 Bilek servosu kulak cıvatası M4x16               px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0600 Bilek servosu kontra somunu M4                   px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0601 Bilek servosu kulak cıvatası M4x16               px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0602 Bilek servosu kontra somunu M4                   px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0603 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   579 oran 0.000
+      GORUNMEZ p0604 Bilek servosu kontra somunu M4                   px     0 yalniz   324 oran 0.000
+      GORUNMEZ p0605 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   593 oran 0.000
+      GORUNMEZ p0606 Bilek servosu kontra somunu M4                   px     0 yalniz   337 oran 0.000
+      GORUNMEZ p0644 Dirsek servosu MG996R                            px   440 yalniz  6678 oran 0.066
+      GORUNMEZ p0645 Dirsek servosu çıkış mili                        px     0 yalniz   438 oran 0.000
+      GORUNMEZ p0646 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   301 oran 0.000
+      GORUNMEZ p0647 Dirsek servosu kontra somunu M4                  px     0 yalniz   205 oran 0.000
+      GORUNMEZ p0648 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   298 oran 0.000
+      GORUNMEZ p0649 Dirsek servosu kontra somunu M4                  px     0 yalniz   201 oran 0.000
+      GORUNMEZ p0650 Dirsek servosu kulak cıvatası M4x16              px    18 yalniz   319 oran 0.056
+      GORUNMEZ p0651 Dirsek servosu kontra somunu M4                  px    23 yalniz   226 oran 0.102
+      GORUNMEZ p0652 Dirsek servosu kulak cıvatası M4x16              px     7 yalniz   312 oran 0.022
+      GORUNMEZ p0653 Dirsek servosu kontra somunu M4                  px    35 yalniz   219 oran 0.160
+      GORUNMEZ p0654 Bilek servosu MG996R                             px     0 yalniz  5656 oran 0.000
+      GORUNMEZ p0655 Bilek servosu çıkış mili                         px     2 yalniz   270 oran 0.007
+      GORUNMEZ p0656 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   308 oran 0.000
+      GORUNMEZ p0657 Bilek servosu kontra somunu M4                   px     0 yalniz   154 oran 0.000
+      GORUNMEZ p0658 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   318 oran 0.000
+      GORUNMEZ p0659 Bilek servosu kontra somunu M4                   px     0 yalniz   155 oran 0.000
+      GORUNMEZ p0660 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   331 oran 0.000
+      GORUNMEZ p0661 Bilek servosu kontra somunu M4                   px     0 yalniz   162 oran 0.000
+      GORUNMEZ p0662 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   339 oran 0.000
+      GORUNMEZ p0663 Bilek servosu kontra somunu M4                   px     0 yalniz   171 oran 0.000
+  42.1   H0a  yeni 44 gorunmeyen 41 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0586 Isıl gömme somun M5 (ön kolda)                   px     0 yalniz   377 oran 0.000
+      GORUNMEZ p0587 Dirsek servosu MG996R                            px     0 yalniz  3088 oran 0.000
+      GORUNMEZ p0588 Dirsek servosu çıkış mili                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0589 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0590 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0591 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0592 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0593 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0594 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0595 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0596 Dirsek servosu kontra somunu M4                  px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0597 Bilek servosu MG996R                             px     0 yalniz  5196 oran 0.000
+      GORUNMEZ p0598 Bilek servosu çıkış mili                         px     6 yalniz   570 oran 0.011
+      GORUNMEZ p0599 Bilek servosu kulak cıvatası M4x16               px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0600 Bilek servosu kontra somunu M4                   px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0601 Bilek servosu kulak cıvatası M4x16               px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0602 Bilek servosu kontra somunu M4                   px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0603 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   579 oran 0.000
+      GORUNMEZ p0604 Bilek servosu kontra somunu M4                   px     0 yalniz   324 oran 0.000
+      GORUNMEZ p0605 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   593 oran 0.000
+      GORUNMEZ p0606 Bilek servosu kontra somunu M4                   px     0 yalniz   337 oran 0.000
+      GORUNMEZ p0644 Dirsek servosu MG996R                            px   440 yalniz  6678 oran 0.066
+      GORUNMEZ p0645 Dirsek servosu çıkış mili                        px     0 yalniz   438 oran 0.000
+      GORUNMEZ p0646 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   301 oran 0.000
+      GORUNMEZ p0647 Dirsek servosu kontra somunu M4                  px     0 yalniz   205 oran 0.000
+      GORUNMEZ p0648 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   298 oran 0.000
+      GORUNMEZ p0649 Dirsek servosu kontra somunu M4                  px     0 yalniz   201 oran 0.000
+      GORUNMEZ p0650 Dirsek servosu kulak cıvatası M4x16              px    18 yalniz   319 oran 0.056
+      GORUNMEZ p0651 Dirsek servosu kontra somunu M4                  px    23 yalniz   226 oran 0.102
+      GORUNMEZ p0652 Dirsek servosu kulak cıvatası M4x16              px     7 yalniz   312 oran 0.022
+      GORUNMEZ p0653 Dirsek servosu kontra somunu M4                  px    35 yalniz   219 oran 0.160
+      GORUNMEZ p0654 Bilek servosu MG996R                             px     0 yalniz  5656 oran 0.000
+      GORUNMEZ p0655 Bilek servosu çıkış mili                         px     2 yalniz   270 oran 0.007
+      GORUNMEZ p0656 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   308 oran 0.000
+      GORUNMEZ p0657 Bilek servosu kontra somunu M4                   px     0 yalniz   154 oran 0.000
+      GORUNMEZ p0658 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   318 oran 0.000
+      GORUNMEZ p0659 Bilek servosu kontra somunu M4                   px     0 yalniz   155 oran 0.000
+      GORUNMEZ p0660 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   331 oran 0.000
+      GORUNMEZ p0661 Bilek servosu kontra somunu M4                   px     0 yalniz   162 oran 0.000
+      GORUNMEZ p0662 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   339 oran 0.000
+      GORUNMEZ p0663 Bilek servosu kontra somunu M4                   px     0 yalniz   171 oran 0.000
+  42.2   H0a  yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  42.3   H0a  yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  44     H0c  yeni 28 gorunmeyen 25 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0571 625ZZ rulman (dış bilezik)                       px     0 yalniz   953 oran 0.000
+      GORUNMEZ p0573 Dirsek horn merkez vidası M3                     px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0574 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0575 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0576 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0577 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0578 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0579 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0580 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0581 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0583 625ZZ rulman (iç bilezik)                        px     0 yalniz   372 oran 0.000
+      GORUNMEZ p0584 Pim pulu M5                                      px     0 yalniz   223 oran 0.000
+      GORUNMEZ p0585 Pim cıvatası M5x12                               px     0 yalniz   739 oran 0.000
+      GORUNMEZ p0628 625ZZ rulman (dış bilezik)                       px    14 yalniz   554 oran 0.025
+      GORUNMEZ p0630 Dirsek horn merkez vidası M3                     px     0 yalniz   124 oran 0.000
+      GORUNMEZ p0631 Çatal-horn cıvatası M3x12                        px     0 yalniz   164 oran 0.000
+      GORUNMEZ p0632 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   102 oran 0.000
+      GORUNMEZ p0633 Çatal-horn cıvatası M3x12                        px     0 yalniz   172 oran 0.000
+      GORUNMEZ p0634 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   105 oran 0.000
+      GORUNMEZ p0635 Çatal-horn cıvatası M3x12                        px     0 yalniz   168 oran 0.000
+      GORUNMEZ p0636 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   103 oran 0.000
+      GORUNMEZ p0637 Çatal-horn cıvatası M3x12                        px     0 yalniz   161 oran 0.000
+      GORUNMEZ p0638 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   101 oran 0.000
+      GORUNMEZ p0640 625ZZ rulman (iç bilezik)                        px     0 yalniz   244 oran 0.000
+      GORUNMEZ p0641 Pim pulu M5                                      px     6 yalniz   192 oran 0.031
+  44.1   H0c  yeni 28 gorunmeyen 25 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0571 625ZZ rulman (dış bilezik)                       px     0 yalniz   947 oran 0.000
+      GORUNMEZ p0573 Dirsek horn merkez vidası M3                     px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0574 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0575 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0576 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0577 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0578 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0579 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0580 Çatal-horn cıvatası M3x12                        px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0581 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0583 625ZZ rulman (iç bilezik)                        px     0 yalniz   373 oran 0.000
+      GORUNMEZ p0584 Pim pulu M5                                      px     0 yalniz   218 oran 0.000
+      GORUNMEZ p0585 Pim cıvatası M5x12                               px     0 yalniz   735 oran 0.000
+      GORUNMEZ p0628 625ZZ rulman (dış bilezik)                       px    12 yalniz   561 oran 0.021
+      GORUNMEZ p0630 Dirsek horn merkez vidası M3                     px     0 yalniz   123 oran 0.000
+      GORUNMEZ p0631 Çatal-horn cıvatası M3x12                        px     0 yalniz   166 oran 0.000
+      GORUNMEZ p0632 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   100 oran 0.000
+      GORUNMEZ p0633 Çatal-horn cıvatası M3x12                        px     0 yalniz   170 oran 0.000
+      GORUNMEZ p0634 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   103 oran 0.000
+      GORUNMEZ p0635 Çatal-horn cıvatası M3x12                        px     0 yalniz   170 oran 0.000
+      GORUNMEZ p0636 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz    99 oran 0.000
+      GORUNMEZ p0637 Çatal-horn cıvatası M3x12                        px     0 yalniz   168 oran 0.000
+      GORUNMEZ p0638 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz   103 oran 0.000
+      GORUNMEZ p0640 625ZZ rulman (iç bilezik)                        px     0 yalniz   246 oran 0.000
+      GORUNMEZ p0641 Pim pulu M5                                      px     6 yalniz   189 oran 0.032
+  44.2   H0c  yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  44.3   H0c  yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  48     H1   yeni 114 gorunmeyen 98 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0563 Bilezik pulu M3 (baş)                            px     0 yalniz    62 oran 0.000
+      GORUNMEZ p0564 Bilezik cıvatası M3x20                           px     0 yalniz   266 oran 0.000
+      GORUNMEZ p0565 Bilezik pulu M3 (somun)                          px     0 yalniz    60 oran 0.000
+      GORUNMEZ p0566 Bilezik kontra somunu M3                         px     0 yalniz   113 oran 0.000
+      GORUNMEZ p0567 Bilezik pulu M3 (baş)                            px     0 yalniz    62 oran 0.000
+      GORUNMEZ p0568 Bilezik cıvatası M3x20                           px     0 yalniz   263 oran 0.000
+      GORUNMEZ p0569 Bilezik pulu M3 (somun)                          px     0 yalniz    59 oran 0.000
+      GORUNMEZ p0570 Bilezik kontra somunu M3                         px     0 yalniz   110 oran 0.000
+      GORUNMEZ p0571 625ZZ rulman (dış bilezik)                       px     0 yalniz   516 oran 0.000
+      GORUNMEZ p0572 Dirsek horn 25T alüminyum disk                   px    65 yalniz   992 oran 0.066
+      GORUNMEZ p0573 Dirsek horn merkez vidası M3                     px     0 yalniz   136 oran 0.000
+      GORUNMEZ p0583 625ZZ rulman (iç bilezik)                        px     0 yalniz   202 oran 0.000
+      GORUNMEZ p0584 Pim pulu M5                                      px     0 yalniz   132 oran 0.000
+      GORUNMEZ p0585 Pim cıvatası M5x12                               px     0 yalniz   375 oran 0.000
+      GORUNMEZ p0586 Isıl gömme somun M5 (ön kolda)                   px     0 yalniz   182 oran 0.000
+      GORUNMEZ p0588 Dirsek servosu çıkış mili                        px     6 yalniz   330 oran 0.018
+      GORUNMEZ p0589 Dirsek servosu kulak cıvatası M4x16              px    44 yalniz   331 oran 0.133
+      GORUNMEZ p0590 Dirsek servosu kontra somunu M4                  px     0 yalniz   172 oran 0.000
+      GORUNMEZ p0591 Dirsek servosu kulak cıvatası M4x16              px    47 yalniz   327 oran 0.144
+      GORUNMEZ p0592 Dirsek servosu kontra somunu M4                  px     0 yalniz   172 oran 0.000
+      GORUNMEZ p0594 Dirsek servosu kontra somunu M4                  px     0 yalniz   185 oran 0.000
+      GORUNMEZ p0596 Dirsek servosu kontra somunu M4                  px     0 yalniz   185 oran 0.000
+      GORUNMEZ p0597 Bilek servosu MG996R                             px     0 yalniz  6078 oran 0.000
+      GORUNMEZ p0598 Bilek servosu çıkış mili                         px     0 yalniz   296 oran 0.000
+      GORUNMEZ p0599 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   313 oran 0.000
+      GORUNMEZ p0600 Bilek servosu kontra somunu M4                   px     0 yalniz   179 oran 0.000
+      GORUNMEZ p0601 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   324 oran 0.000
+      GORUNMEZ p0602 Bilek servosu kontra somunu M4                   px     0 yalniz   186 oran 0.000
+      GORUNMEZ p0603 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   288 oran 0.000
+      GORUNMEZ p0604 Bilek servosu kontra somunu M4                   px     0 yalniz   168 oran 0.000
+      GORUNMEZ p0605 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   295 oran 0.000
+      GORUNMEZ p0606 Bilek servosu kontra somunu M4                   px     0 yalniz   170 oran 0.000
+      GORUNMEZ p0608 Bilek horn merkez vidası M3                      px     0 yalniz   116 oran 0.000
+      GORUNMEZ p0609 Bilek flanşı                                     px   120 yalniz  1515 oran 0.079
+      GORUNMEZ p0610 Flanş-horn cıvatası M3x8                         px     0 yalniz   136 oran 0.000
+      GORUNMEZ p0611 Flanş-horn cıvatası M3x8                         px     0 yalniz   132 oran 0.000
+      GORUNMEZ p0612 Flanş-horn cıvatası M3x8                         px     0 yalniz   136 oran 0.000
+      GORUNMEZ p0613 Flanş-horn cıvatası M3x8                         px     0 yalniz   140 oran 0.000
+      GORUNMEZ p0615 Isıl gömme somun M3 (flanşta)                    px     0 yalniz    80 oran 0.000
+      GORUNMEZ p0617 Isıl gömme somun M3 (flanşta)                    px     0 yalniz    79 oran 0.000
+      GORUNMEZ p0618 Yaka cıvatası M3x6 ISO 7380                      px    10 yalniz    99 oran 0.101
+      GORUNMEZ p0619 Dirsek çatalı                                    px     0 yalniz 10712 oran 0.000
+      GORUNMEZ p0620 Bilezik pulu M3 (baş)                            px     0 yalniz    53 oran 0.000
+      GORUNMEZ p0621 Bilezik cıvatası M3x20                           px     0 yalniz   145 oran 0.000
+      GORUNMEZ p0622 Bilezik pulu M3 (somun)                          px     0 yalniz    53 oran 0.000
+      GORUNMEZ p0623 Bilezik kontra somunu M3                         px     0 yalniz    79 oran 0.000
+      GORUNMEZ p0624 Bilezik pulu M3 (baş)                            px     0 yalniz    51 oran 0.000
+      GORUNMEZ p0625 Bilezik cıvatası M3x20                           px     0 yalniz   141 oran 0.000
+      GORUNMEZ p0626 Bilezik pulu M3 (somun)                          px     0 yalniz    53 oran 0.000
+      GORUNMEZ p0627 Bilezik kontra somunu M3                         px     0 yalniz    74 oran 0.000
+      GORUNMEZ p0628 625ZZ rulman (dış bilezik)                       px     0 yalniz   337 oran 0.000
+      GORUNMEZ p0629 Dirsek horn 25T alüminyum disk                   px     0 yalniz   871 oran 0.000
+      GORUNMEZ p0630 Dirsek horn merkez vidası M3                     px     0 yalniz    74 oran 0.000
+      GORUNMEZ p0631 Çatal-horn cıvatası M3x12                        px     0 yalniz   102 oran 0.000
+      GORUNMEZ p0632 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz    60 oran 0.000
+      GORUNMEZ p0633 Çatal-horn cıvatası M3x12                        px     0 yalniz   105 oran 0.000
+      GORUNMEZ p0634 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz    63 oran 0.000
+      GORUNMEZ p0635 Çatal-horn cıvatası M3x12                        px     0 yalniz   102 oran 0.000
+      GORUNMEZ p0636 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz    62 oran 0.000
+      GORUNMEZ p0637 Çatal-horn cıvatası M3x12                        px     0 yalniz   101 oran 0.000
+      GORUNMEZ p0638 Çatal-horn pulu M3 (2x DIN 125-A)                px     0 yalniz    58 oran 0.000
+      GORUNMEZ p0639 Ön kol gövdesi                                   px     0 yalniz 15006 oran 0.000
+      GORUNMEZ p0640 625ZZ rulman (iç bilezik)                        px     0 yalniz   148 oran 0.000
+      GORUNMEZ p0641 Pim pulu M5                                      px     0 yalniz   116 oran 0.000
+      GORUNMEZ p0642 Pim cıvatası M5x12                               px     0 yalniz   229 oran 0.000
+      GORUNMEZ p0643 Isıl gömme somun M5 (ön kolda)                   px     0 yalniz   122 oran 0.000
+      GORUNMEZ p0644 Dirsek servosu MG996R                            px     0 yalniz  3862 oran 0.000
+      GORUNMEZ p0645 Dirsek servosu çıkış mili                        px     0 yalniz   247 oran 0.000
+      GORUNMEZ p0646 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   175 oran 0.000
+      GORUNMEZ p0647 Dirsek servosu kontra somunu M4                  px     0 yalniz   114 oran 0.000
+      GORUNMEZ p0648 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   173 oran 0.000
+      GORUNMEZ p0649 Dirsek servosu kontra somunu M4                  px     0 yalniz   115 oran 0.000
+      GORUNMEZ p0650 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   188 oran 0.000
+      GORUNMEZ p0651 Dirsek servosu kontra somunu M4                  px     0 yalniz   125 oran 0.000
+      GORUNMEZ p0652 Dirsek servosu kulak cıvatası M4x16              px     0 yalniz   183 oran 0.000
+      GORUNMEZ p0653 Dirsek servosu kontra somunu M4                  px     0 yalniz   123 oran 0.000
+      GORUNMEZ p0654 Bilek servosu MG996R                             px     0 yalniz  3407 oran 0.000
+      GORUNMEZ p0655 Bilek servosu çıkış mili                         px     0 yalniz   172 oran 0.000
+      GORUNMEZ p0656 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   186 oran 0.000
+      GORUNMEZ p0657 Bilek servosu kontra somunu M4                   px     0 yalniz    97 oran 0.000
+      GORUNMEZ p0658 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   189 oran 0.000
+      GORUNMEZ p0659 Bilek servosu kontra somunu M4                   px     0 yalniz    99 oran 0.000
+      GORUNMEZ p0660 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   197 oran 0.000
+      GORUNMEZ p0661 Bilek servosu kontra somunu M4                   px     0 yalniz   102 oran 0.000
+      GORUNMEZ p0662 Bilek servosu kulak cıvatası M4x16               px     0 yalniz   199 oran 0.000
+      GORUNMEZ p0663 Bilek servosu kontra somunu M4                   px     0 yalniz   104 oran 0.000
+      GORUNMEZ p0664 Bilek horn 25T alüminyum disk                    px     0 yalniz   510 oran 0.000
+      GORUNMEZ p0665 Bilek horn merkez vidası M3                      px     0 yalniz    71 oran 0.000
+      GORUNMEZ p0666 Bilek flanşı                                     px     0 yalniz   858 oran 0.000
+      GORUNMEZ p0667 Flanş-horn cıvatası M3x8                         px     0 yalniz    89 oran 0.000
+      GORUNMEZ p0668 Flanş-horn cıvatası M3x8                         px     0 yalniz    88 oran 0.000
+      GORUNMEZ p0669 Flanş-horn cıvatası M3x8                         px     0 yalniz    87 oran 0.000
+      GORUNMEZ p0670 Flanş-horn cıvatası M3x8                         px     0 yalniz    88 oran 0.000
+      GORUNMEZ p0671 El                                               px   172 yalniz  7820 oran 0.022
+      GORUNMEZ p0672 Isıl gömme somun M3 (flanşta)                    px     0 yalniz    51 oran 0.000
+      GORUNMEZ p0673 Yaka cıvatası M3x6 ISO 7380                      px     0 yalniz    67 oran 0.000
+      GORUNMEZ p0674 Isıl gömme somun M3 (flanşta)                    px     0 yalniz    50 oran 0.000
+      GORUNMEZ p0675 Yaka cıvatası M3x6 ISO 7380                      px     0 yalniz    66 oran 0.000
+  48.1   H1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  48.2   H1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  48.3   H1   yeni  0 gorunmeyen 0 istisna 0 GECTI (bilgi)
+  48.4   H1   yeni 16 gorunmeyen 16 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0563 Bilezik pulu M3 (baş)                            px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0564 Bilezik cıvatası M3x20                           px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0565 Bilezik pulu M3 (somun)                          px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0566 Bilezik kontra somunu M3                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0567 Bilezik pulu M3 (baş)                            px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0568 Bilezik cıvatası M3x20                           px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0569 Bilezik pulu M3 (somun)                          px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0570 Bilezik kontra somunu M3                         px     0 yalniz     0 oran 0.000
+      GORUNMEZ p0620 Bilezik pulu M3 (baş)                            px     0 yalniz    87 oran 0.000
+      GORUNMEZ p0621 Bilezik cıvatası M3x20                           px     0 yalniz   234 oran 0.000
+      GORUNMEZ p0622 Bilezik pulu M3 (somun)                          px     0 yalniz    92 oran 0.000
+      GORUNMEZ p0623 Bilezik kontra somunu M3                         px     0 yalniz   132 oran 0.000
+      GORUNMEZ p0624 Bilezik pulu M3 (baş)                            px     0 yalniz    89 oran 0.000
+      GORUNMEZ p0625 Bilezik cıvatası M3x20                           px     0 yalniz   232 oran 0.000
+      GORUNMEZ p0626 Bilezik pulu M3 (somun)                          px     0 yalniz    91 oran 0.000
+      GORUNMEZ p0627 Bilezik kontra somunu M3                         px     0 yalniz   130 oran 0.000
+  49     F5   yeni 28 gorunmeyen 24 istisna 0 KALDI (bilgi)
+      GORUNMEZ p0336 Bindirme cıvatası M3x6 (arka kapak)              px    14 yalniz    17 oran 0.824
+      GORUNMEZ p0338 Bindirme cıvatası M3x6 (arka kapak)              px    14 yalniz    17 oran 0.824
+      GORUNMEZ p0340 Bindirme cıvatası M3x6 (arka kapak)              px    13 yalniz    17 oran 0.765
+      GORUNMEZ p0342 Bindirme cıvatası M3x6 (arka kapak)              px    14 yalniz    18 oran 0.778
+      GORUNMEZ p0344 Bindirme cıvatası M3x6 (arka kapak)              px    15 yalniz    18 oran 0.833
+      GORUNMEZ p0346 Bindirme cıvatası M3x6 (arka kapak)              px    15 yalniz    17 oran 0.882
+      GORUNMEZ p0348 Bindirme cıvatası M3x6 (arka kapak)              px    13 yalniz    15 oran 0.867
+      GORUNMEZ p0350 Bindirme cıvatası M3x6 (üst arka kapak)          px    15 yalniz    18 oran 0.833
+      GORUNMEZ p0352 Bindirme cıvatası M3x6 (üst arka kapak)          px    14 yalniz    18 oran 0.778
+      GORUNMEZ p0354 Bindirme cıvatası M3x6 (üst arka kapak)          px    17 yalniz    20 oran 0.850
+      GORUNMEZ p0356 Bindirme cıvatası M3x6 (üst arka kapak)          px    17 yalniz    19 oran 0.895
+      GORUNMEZ p0358 Bindirme cıvatası M3x6 (üst arka kapak)          px    16 yalniz    20 oran 0.800
+      GORUNMEZ p0360 Bindirme cıvatası M3x6 (üst arka kapak)          px    14 yalniz    18 oran 0.778
+      GORUNMEZ p0362 Bindirme cıvatası M3x6 (üst arka kapak)          px    18 yalniz    21 oran 0.857
+      GORUNMEZ p0444 USB Hub 4'lü (kapak içi)                         px     0 yalniz  1415 oran 0.000
+      GORUNMEZ p0445 Köpük bant (USB Hub kapak içi)                   px     0 yalniz   910 oran 0.000
+      GORUNMEZ p0447 Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigo px    11 yalniz    17 oran 0.647
+      GORUNMEZ p0449 Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigo px    10 yalniz    16 oran 0.625
+      GORUNMEZ p0451 Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigo px    10 yalniz    17 oran 0.588
+      GORUNMEZ p0453 Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigo px    11 yalniz    17 oran 0.647
+      GORUNMEZ p0455 Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana  px     4 yalniz    15 oran 0.267
+      GORUNMEZ p0457 Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana  px    11 yalniz    16 oran 0.688
+      GORUNMEZ p0459 Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana  px    11 yalniz    16 oran 0.688
+      GORUNMEZ p0461 Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana  px    11 yalniz    16 oran 0.688
+  49.1   F5   yeni  3 gorunmeyen 0 istisna 0 GECTI
+  49.2   F5   yeni  0 gorunmeyen 0 istisna 0 GECTI
+  49.3   F5   yeni  8 gorunmeyen 0 istisna 0 GECTI
+  49.4   F5   yeni  7 gorunmeyen 0 istisna 0 | birim Üst arka servis kapağı 225520/229944 px ok, ic 2 GECTI
+  49.5   F5   yeni 10 gorunmeyen 0 istisna 0 GECTI
+  kabuk alt adim 44, yeni parca 333, gorunmeyen 0, istisna 0, birim ici (masada gosterilen) 34; masa yabanci sema 0; esik {'piksel': 30, 'oran': 0.2}
+  sema tek alt adimda vurgulu: 60 sema, birden cok 0, hic 0, karede piksel 0 (bilgi) 0 -> GECTI
+  lejantta gecen sema karede cizilmiyor (sema_ortulu disi, px < 30): 0
+uc etiketi
+  uc etiketi: 23 konum, 60 etiket, karede gorunmez uc 34; hata 4 -> KALDI
+      U1 12 etk: 2 Dağıtım kartı C (kafa) çizilmedi (yer bulunamadı (çakışma))
+      U1 32.2 sahne: 1 Dağıtım kartı C (kafa) çizilmedi (güvenli alanın dışında)
+      U1 32.2 etk: 1 Dağıtım kartı C (kafa) çizilmedi (güvenli alanın dışında)
+      U4 32.2: 1 Dağıtım kartı C (kafa) (p1084) karede görünmüyor (0 px < 30; görünmüyorsa UC_ORTULU'ya nedeniyle)
+telefon
+  360 px tasma en cok 0 -> GECTI
+F10d dogrulama: KALDI (1026 s), kare 0

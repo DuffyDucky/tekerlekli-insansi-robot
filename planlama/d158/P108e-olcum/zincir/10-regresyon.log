@@ -1,0 +1,13 @@
+Lale 158 regresyon, 2026-11-21T10:41:33+03:00; taban 2026-11-09T14:30:50+03:00
+değer                             taban        şimdi       eşik  durum        kaynak (dosya : anahtar)
+boy_mm                             1580         1580  1580±0,05  aynı         tasarim/freecad/lale158/lale158-kontrol.json : toplam_boy_mm
+cakisma_kafa_ici                      0            0          0  aynı         tasarim/freecad/kafa/kafa-analiz.json : statik
+cakisma_kabuk_ici                     0            0          0  aynı         tasarim/freecad/kabuk/kabuk-analiz.json : cakisma
+cakisma_kabuk_x_iskelet               0            0          0  aynı         tasarim/freecad/kabuk/kabuk-analiz.json : iskelet_cakisma
+cakisma_ev_pozu                       0            0          0  aynı         tasarim/freecad/carpisma-sonuc.json : ev_pozu_cakisma
+rampa_yuksuz                      1,519        1,523        1,5  iyileşti     tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json : izgara_yuk_0g.a_sinir_pay15.rampa5_* (en küçük)
+tilt_payi                          3,64         3,78          3  iyileşti     tasarim/freecad/kafa/kafa-analiz.json : tork.tilt.pay_tilt15
+pan_payi                           2,21         2,26          2  iyileşti     tasarim/freecad/kafa/kafa-analiz.json : tork.pan.pay_iki_hane
+mik_hoparlor_mm                   574,3        574,3        400  aynı         tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json : mic_hoparlor.poz_min_mm
+sy8205_x_usb_mm3                      0            0          0  aynı         tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json : kablo_sy8205.*.sy8205_kesisim_mm3 + kafa_ici_qled_kablo.*.sy8205_kesisim_mm3
+Sonuç: GEÇER (hepsi okundu, kötüleşen yok)

@@ -828,7 +828,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Akü ölçüm bölücüsünün üst direnci 100 kΩ (kaynak ucunda) (`R-aku-olcum`, 0,00015 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → R-aku-olcum · **ortak dönüş:** G19
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 353 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 281 mm (şema `taban:G07`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 353 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 267 mm (şema `taban:G07`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1, 33 F1 · **sonlandırma:** kaynak ucunda 100 kΩ telin başına lehim + makaron (O-5 a; değer EL:234), direncin öbür bacağı kırmızı M5 halka pabucun kovanına (PVC kılıfı çıkarılmış; bacak kovana sıkılır, sonra lehim) + makaron (soğuyunca kovanın üstüne), pabuç ana anahtarın çıkış saplamasına (G04 ile aynı saplama, G04 altta; direnç ile saplama arasında tel yok, karar: orkestratör, 15.11 (P10.7b2a)); arayüz kartı ucu bölücü orta noktasının pedine lehim + makaron (22 AWG: 5,08 mm klemensin alt sınırı belgesiz)
 - **Uç türü (uc_turu):** a: pabuc · b: lehim
 
@@ -848,7 +848,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 16 AWG (1,31 mm²); hat yuvasının kuyruğu 16 AWG (MJ:122); yuva ile bara / XL arası da 16 AWG (O-1) · **renk:** + kırmızı, − / GND siyah; makaron turuncu
 - **Koruma:** Hat sigortası C 5 A mini (XL4016 C girişi) (`hat-C`, 5 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → hat-C
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 295 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 160 mm (şema `taban:G16`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 295 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 165 mm (şema `taban:G16`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1 · **sonlandırma:** yuva kuyruğuna lehim + makaron; XL vidalı klemens; bara / yıldız ucu halka pabuç (O-3 b)
 - **Uç türü (uc_turu):** a: bara-pabuc, modul-vidali · b: bara-pabuc, modul-vidali
 

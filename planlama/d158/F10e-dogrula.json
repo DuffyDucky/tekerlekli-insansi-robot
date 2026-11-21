@@ -1,19 +1,19 @@
 {
- "tarih": "2026-11-20 02:38",
+ "tarih": "2026-11-21 09:58",
  "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
-  "cad": 1238,
-  "veri": 1238,
-  "sira_eslesen": 1238,
-  "esit": 1238,
-  "gui_kayitli": 1077,
-  "gui_esit": 1077,
+  "cad": 1264,
+  "veri": 1264,
+  "sira_eslesen": 1264,
+  "esit": 1264,
+  "gui_kayitli": 676,
+  "gui_esit": 676,
   "farkli_renk": 27,
   "renkler": [
    {
     "renk": "#80858f",
-    "adet": 763
+    "adet": 779
    },
    {
     "renk": "#dba838",
@@ -25,7 +25,7 @@
    },
    {
     "renk": "#f2f2e6",
-    "adet": 44
+    "adet": 52
    },
    {
     "renk": "#e6e8ed",
@@ -49,11 +49,11 @@
    },
    {
     "renk": "#1a7333",
-    "adet": 11
+    "adet": 12
    },
    {
     "renk": "#1a4da6",
-    "adet": 11
+    "adet": 12
    },
    {
     "renk": "#999999",
@@ -2191,9 +2191,9 @@
  "konsol_hatasi": [],
  "renk_sahne": {
   "yontem": "her konumda (açık tema, ?renk=gercek) sahnede yeni çizilen parçanın malzeme rengi (sRGB) = veri (kablo: temanın tonu rt[tema], yoksa renk; öbürleri: gr)",
-  "parca": 1238,
-  "yeni_gorulen": 1238,
-  "esit": 1238,
+  "parca": 1264,
+  "yeni_gorulen": 1264,
+  "esit": 1264,
   "yanlis": [],
   "yanlis_sayi": 0,
   "gecti": true
@@ -2204,8 +2204,8 @@
   "tema": {
    "light": {
     "zemin": "#eceae4",
-    "yeni_parca_konum": 2341,
-    "esik_alti": 713,
+    "yeni_parca_konum": 2393,
+    "esik_alti": 729,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
     "saydam_kenarsiz": 0,
@@ -2234,15 +2234,15 @@
    },
    "dark": {
     "zemin": "#1b1c20",
-    "yeni_parca_konum": 2341,
-    "esik_alti": 175,
+    "yeni_parca_konum": 2393,
+    "esik_alti": 179,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
     "saydam_kenarsiz": 0,
     "saydam_kenarsiz_ornek": [],
     "onceki_gri": "#5d6168",
     "onceki_esik": 1.5,
-    "onceki_yakin": 61,
+    "onceki_yakin": 65,
     "onceki_yakin_kenarsiz": 0,
     "renk_sayisi": 26,
     "esik_alti_renk": [
@@ -2383,8 +2383,8 @@
  "isaret": {
   "yontem": "işaret listesi = konumda yeni (durum simdi) bağlantı elemanı sayısı (Python durum kuralı); küme adetleri toplamı = liste (her işaret tuvalde); SVG halka sayısı = küme sayısı",
   "konum": 141,
-  "toplam_beklenen": 1328,
-  "toplam_isaret": 1328,
+  "toplam_beklenen": 1344,
+  "toplam_isaret": 1344,
   "kabuk_beklenen": 277,
   "kabuk_isaret": 277,
   "kabuk_kume": 265,
@@ -2500,11 +2500,11 @@
    },
    {
     "adres": "12",
-    "beklenen": 69,
-    "liste": 69,
-    "kumede": 69,
-    "kume": 40,
-    "dom": 40,
+    "beklenen": 85,
+    "liste": 85,
+    "kumede": 85,
+    "kume": 53,
+    "dom": 53,
     "gecti": true
    },
    {
@@ -3664,7 +3664,7 @@
  },
  "renk_demo": {
   "yontem": "demo rengi = Robot-Tasarim-Demosu.html TUR tablosu × veri r (renkOf kuralı; sayfa render edilmedi: three r128 ağdan); rehber rengi sahneden (RehberTest.renkler), parçanın yeni olduğu konumda",
-  "ornek": 42,
+  "ornek": 43,
   "demo_tur": {
    "baski": "#e8913a",
    "cf": "#3d5a80",
@@ -3677,7 +3677,7 @@
    "ref": "#95a5a6"
   },
   "gercek_esit": 0,
-  "sinif_esit": 0,
+  "sinif_esit": 1,
   "sinif_tablo": {
    "profil": {
     "demo": "#8d99a6",
@@ -3695,9 +3695,13 @@
     "demo": "#e8913a",
     "rehber_sinif": "#f0932b"
    },
+   "ref": {
+    "demo": "#95a5a6",
+    "rehber_sinif": "#95a5a6"
+   },
    "kablo": {
     "demo": "#d64545",
-    "rehber_sinif": "#8a6d00"
+    "rehber_sinif": "#c0392b"
    }
   },
   "ornekler": [
@@ -4027,7 +4031,7 @@
    },
    {
     "id": "p1080",
-    "ad": "Cıvata M4x16 (röle)",
+    "ad": "Vida M3x8 (Acil stop düğüm kartı (pertinaks, nominal zarf tahmin) 2 alt)",
     "r": "baglanti",
     "demo": "#c9a227",
     "gercek": "#80858f",
@@ -4036,16 +4040,16 @@
    },
    {
     "id": "p1110",
-    "ad": "Bara tutucusu anahtarlı bara (+) (4 saplama)",
-    "r": "baski",
-    "demo": "#e8913a",
-    "gercek": "#f58c21",
-    "sinif": "#f0932b",
-    "veri_gr": "#f58c21"
+    "ad": "Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)",
+    "r": "ref",
+    "demo": "#95a5a6",
+    "gercek": "#d91a1a",
+    "sinif": "#95a5a6",
+    "veri_gr": "#d91a1a"
    },
    {
     "id": "p1140",
-    "ad": "Vida M3x8 (Arayüz kartı (E2/E3) 2 alt)",
+    "ad": "Somun M5 (anahtarlı 1)",
     "r": "baglanti",
     "demo": "#c9a227",
     "gercek": "#80858f",
@@ -4054,7 +4058,7 @@
    },
    {
     "id": "p1170",
-    "ad": "PCA9685 servo sürücü",
+    "ad": "Servo dağıtım kartı A (sağ kol)",
     "r": "satin",
     "demo": "#2f6fb3",
     "gercek": "#1a4da6",
@@ -4063,21 +4067,30 @@
    },
    {
     "id": "p1200",
-    "ad": "Burç M3x8 naylon burç (ESP32 taşıyıcı kart (pertinaks) 1)",
+    "ad": "Burç M2,5x8 pirinç burç (PCA9685 servo sürücü 1)",
     "r": "satin",
     "demo": "#2f6fb3",
-    "gercek": "#f2f2e6",
+    "gercek": "#dba838",
     "sinif": "#2f86d4",
-    "veri_gr": "#f2f2e6"
+    "veri_gr": "#dba838"
    },
    {
     "id": "p1230",
-    "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
+    "ad": "Vida M3x6 (ESP32 taşıyıcı kart (pertinaks) 2 üst)",
+    "r": "baglanti",
+    "demo": "#c9a227",
+    "gercek": "#80858f",
+    "sinif": "#d4ac0d",
+    "veri_gr": "#80858f"
+   },
+   {
+    "id": "p1260",
+    "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
     "r": "kablo",
     "demo": "#d64545",
-    "gercek": "#8a6d00",
-    "sinif": "#8a6d00",
-    "veri_gr": "#f2d90d"
+    "gercek": "#c0392b",
+    "sinif": "#c0392b",
+    "veri_gr": "#1a73ff"
    }
   ],
   "gecti": false,
@@ -5086,10 +5099,10 @@
      {
       "id": "p0222",
       "ad": "Etek orta sol",
-      "fark": 91821,
+      "fark": 91759,
       "kimlik": 96019,
       "yalniz": 96189,
-      "oran": 0.955,
+      "oran": 0.954,
       "gorunur": true
      },
      {
@@ -5171,10 +5184,10 @@
      {
       "id": "p0223",
       "ad": "Etek ön sağ",
-      "fark": 117423,
+      "fark": 117844,
       "kimlik": 137063,
       "yalniz": 137635,
-      "oran": 0.853,
+      "oran": 0.856,
       "gorunur": true
      },
      {
@@ -5247,10 +5260,10 @@
      {
       "id": "p0226",
       "ad": "Etek dolgu şeridi ön",
-      "fark": 52738,
+      "fark": 52675,
       "kimlik": 72583,
       "yalniz": 75642,
-      "oran": 0.697,
+      "oran": 0.696,
       "gorunur": true
      },
      {
@@ -5305,7 +5318,7 @@
      {
       "id": "p0224",
       "ad": "Etek ön sol",
-      "fark": 135344,
+      "fark": 135350,
       "kimlik": 138615,
       "yalniz": 139205,
       "oran": 0.972,
@@ -5469,7 +5482,7 @@
       "gorunur": true
      },
      {
-      "id": "p1224",
+      "id": "p1250",
       "ad": "Acil stop mantarı + bilezik",
       "fark": 4643,
       "kimlik": 4526,
@@ -5478,7 +5491,7 @@
       "gorunur": true
      },
      {
-      "id": "p1225",
+      "id": "p1251",
       "ad": "Acil stop kontak gövdesi (1NC)",
       "fark": 5328,
       "kimlik": 5427,
@@ -5499,7 +5512,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Etek arka sağ",
-     "fark": 124627,
+     "fark": 124638,
      "yalniz": 133309,
      "gorunur": true,
      "parca": 12,
@@ -5595,7 +5608,7 @@
        "gomme": true
       },
       {
-       "id": "p1225",
+       "id": "p1251",
        "ad": "Acil stop kontak gövdesi (1NC)",
        "fark": 0,
        "masada": "33.6",
@@ -5659,10 +5672,10 @@
      {
       "id": "p0225",
       "ad": "Etek dolgu şeridi arka",
-      "fark": 78713,
+      "fark": 78680,
       "kimlik": 78140,
       "yalniz": 80021,
-      "oran": 0.984,
+      "oran": 0.983,
       "gorunur": true
      },
      {
@@ -5760,7 +5773,7 @@
       "gorunur": true
      },
      {
-      "id": "p1083",
+      "id": "p1109",
       "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
       "fark": 7356,
       "kimlik": 7467,
@@ -5769,7 +5782,7 @@
       "gorunur": true
      },
      {
-      "id": "p1084",
+      "id": "p1110",
       "ad": "Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)",
       "fark": 3012,
       "kimlik": 2929,
@@ -5790,7 +5803,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Etek arka sol",
-     "fark": 122445,
+     "fark": 123533,
      "yalniz": 140641,
      "gorunur": true,
      "parca": 5,
@@ -5816,7 +5829,7 @@
        "gomme": true
       },
       {
-       "id": "p1083",
+       "id": "p1109",
        "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
        "fark": 0,
        "masada": "33.9",
@@ -5907,10 +5920,10 @@
      {
       "id": "p0205",
       "ad": "Gövde alt bandı sağ",
-      "fark": 189686,
+      "fark": 189954,
       "kimlik": 235494,
       "yalniz": 236064,
-      "oran": 0.804,
+      "oran": 0.805,
       "gorunur": true
      },
      {
@@ -6001,10 +6014,10 @@
      {
       "id": "p0206",
       "ad": "Gövde alt bandı sol",
-      "fark": 289983,
+      "fark": 290145,
       "kimlik": 313193,
       "yalniz": 313829,
-      "oran": 0.924,
+      "oran": 0.925,
       "gorunur": true
      },
      {
@@ -7231,7 +7244,7 @@
      {
       "id": "p0231",
       "ad": "Göğüs ekranı VESA taşıyıcı",
-      "fark": 130124,
+      "fark": 130125,
       "kimlik": 133339,
       "yalniz": 135958,
       "oran": 0.957,
@@ -9055,7 +9068,7 @@
      {
       "id": "p0222",
       "ad": "Etek orta sol",
-      "fark": 96388,
+      "fark": 96379,
       "kimlik": 96019,
       "yalniz": 96189,
       "oran": 1.002,
@@ -9140,7 +9153,7 @@
      {
       "id": "p0223",
       "ad": "Etek ön sağ",
-      "fark": 137773,
+      "fark": 137765,
       "kimlik": 137063,
       "yalniz": 137635,
       "oran": 1.001,
@@ -9216,7 +9229,7 @@
      {
       "id": "p0226",
       "ad": "Etek dolgu şeridi ön",
-      "fark": 73113,
+      "fark": 73116,
       "kimlik": 72583,
       "yalniz": 75642,
       "oran": 0.967,
@@ -9438,7 +9451,7 @@
       "gorunur": true
      },
      {
-      "id": "p1224",
+      "id": "p1250",
       "ad": "Acil stop mantarı + bilezik",
       "fark": 4753,
       "kimlik": 4526,
@@ -9447,7 +9460,7 @@
       "gorunur": true
      },
      {
-      "id": "p1225",
+      "id": "p1251",
       "ad": "Acil stop kontak gövdesi (1NC)",
       "fark": 2416,
       "kimlik": 5427,
@@ -9468,7 +9481,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Etek arka sağ",
-     "fark": 130667,
+     "fark": 130666,
      "yalniz": 133309,
      "gorunur": true,
      "parca": 12,
@@ -9564,7 +9577,7 @@
        "gomme": true
       },
       {
-       "id": "p1225",
+       "id": "p1251",
        "ad": "Acil stop kontak gövdesi (1NC)",
        "fark": 0,
        "masada": "33.6",
@@ -9729,7 +9742,7 @@
       "gorunur": true
      },
      {
-      "id": "p1083",
+      "id": "p1109",
       "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
       "fark": 7282,
       "kimlik": 7467,
@@ -9738,7 +9751,7 @@
       "gorunur": true
      },
      {
-      "id": "p1084",
+      "id": "p1110",
       "ad": "Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)",
       "fark": 3086,
       "kimlik": 2929,
@@ -9785,7 +9798,7 @@
        "gomme": true
       },
       {
-       "id": "p1083",
+       "id": "p1109",
        "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
        "fark": 0,
        "masada": "33.9",
@@ -9876,7 +9889,7 @@
      {
       "id": "p0205",
       "ad": "Gövde alt bandı sağ",
-      "fark": 235205,
+      "fark": 235140,
       "kimlik": 235494,
       "yalniz": 236064,
       "oran": 0.996,
@@ -12130,7 +12143,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 1009,
+ "sure_s": 1014,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

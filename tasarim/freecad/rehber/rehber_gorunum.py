@@ -634,6 +634,9 @@ def uc_isle(V, kutular, cad=None):
                     if k not in TB.K or k not in _metin_kimlikleri(g.get("is_") or "", TB.K):
                         raise SystemExit("uc_isle: %s.%d etiket_kablo %s tabloda ya da alt adımın metninde yok" % (a["kod"], j, k))
                 ciz |= set(ek)
+                # P10.8e (P108e-gunluk.md § 5): adım ötesi şemanın (sira_grup[].sema_on, rehber_veri.py) çizilen bölümünün kabloları
+                for x in g.get("sema_on") or []:
+                    ciz |= set(S[x["i"]].get("kablo") or [])
                 konum(a, j, g, g.get("is_") or "", ciz, dict(RM.UC_ORTULU.get((a["kod"], j)) or {}))
         else:
             ciz = set()

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-20 03:12",
+ "tarih": "2026-11-21 10:33",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -7,7 +7,7 @@
   "kare": "1400 x 900 pencere, sahne alanı (panel hariç)",
   "once_ortanca": 0.1732,
   "sonra_ortanca": 0.3987,
-  "once_ortalama": 0.1642,
+  "once_ortalama": 0.1643,
   "sonra_ortalama": 0.3766,
   "once_tasan_adim": 0,
   "sonra_tasan_adim": 0,
@@ -32,7 +32,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 1303,
+    "yeni_parca": 1329,
     "hazir": true,
     "hata": null
    },
@@ -171,24 +171,24 @@
    {
     "adim": 12,
     "kod": "B5a",
-    "once": 0.232,
-    "sonra": 0.4667,
+    "once": 0.2318,
+    "sonra": 0.4661,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 86,
+    "yeni_parca": 112,
     "hazir": true,
     "hata": null
    },
    {
     "adim": 13,
     "kod": "B5",
-    "once": 0.2256,
-    "sonra": 0.4667,
+    "once": 0.2257,
+    "sonra": 0.4661,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 93,
+    "yeni_parca": 119,
     "hazir": true,
     "hata": null
    },
@@ -231,8 +231,8 @@
    {
     "adim": 17,
     "kod": "K1",
-    "once": 0.1489,
-    "sonra": 0.3834,
+    "once": 0.151,
+    "sonra": 0.3883,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
@@ -291,7 +291,7 @@
    {
     "adim": 22,
     "kod": "D1",
-    "once": 0.1461,
+    "once": 0.1463,
     "sonra": 0.4452,
     "once_tasan": 0,
     "sonra_tasan": 0,
@@ -634,17 +634,17 @@
     "kod": "B5a",
     "tur": "tezgah",
     "parca": {
-     "id": "p1086",
-     "ad": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
-     "satir": "b:5",
-     "satir_ids": 9,
-     "beklenen": 9,
+     "id": "p1049",
+     "ad": "Burç M3x8 naylon burç",
+     "satir": "p:2",
+     "satir_ids": 16,
+     "beklenen": 16,
      "gizli_kopya": 0,
-     "vurgulu": 9,
+     "vurgulu": 16,
      "ana": [
-      "p1086"
+      "p1049"
      ],
-     "kopya_sayi": 8,
+     "kopya_sayi": 15,
      "once_vurgulu": 0,
      "ana_tiklanan": true,
      "kopya_kume_esit": true,
@@ -654,11 +654,11 @@
      "gecti": true
     },
     "panel": {
-     "secici": "#panel [data-satir='b:5']",
-     "ad": "M5x25 altıgen başlı cıvata (DIN 933, bara saplaması takımı)",
-     "satir_ids": 9,
-     "beklenen": 9,
-     "vurgulu": 9,
+     "secici": "#panel [data-satir='p:2']",
+     "ad": "Burç M3x8 naylon burç",
+     "satir_ids": 16,
+     "beklenen": 16,
+     "vurgulu": 16,
      "satir_isaretli": true,
      "fazla": [],
      "eksik": [],
@@ -670,7 +670,7 @@
      "gecti": true
     },
     "adim_degisti": {
-     "once": 9,
+     "once": 16,
      "sonra": 0,
      "yeni_adim": 13,
      "yeni_konum": [
@@ -691,7 +691,7 @@
     "kod": "K1",
     "tur": "kablolama",
     "parca": {
-     "id": "p1226",
+     "id": "p1252",
      "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
      "satir": null,
      "satir_ids": 1,
@@ -699,7 +699,7 @@
      "gizli_kopya": 0,
      "vurgulu": 1,
      "ana": [
-      "p1226"
+      "p1252"
      ],
      "kopya_sayi": 0,
      "once_vurgulu": 0,
@@ -711,7 +711,7 @@
      "gecti": true
     },
     "panel": {
-     "secici": "#kablo [data-kid='p1226']",
+     "secici": "#kablo [data-kid='p1252']",
      "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
      "satir_ids": 1,
      "beklenen": 1,
@@ -1060,14 +1060,14 @@
      },
      {
       "adim": 12,
-      "satir": 21,
+      "satir": 23,
       "D_acilis": 481,
       "D_patlak": 594,
       "D_hepsi_takili": 481,
       "D_geri_al": 594,
       "sira_son": {
-       "n": 21,
-       "toplam": 21
+       "n": 23,
+       "toplam": 23
       },
       "gecti": true
      }
@@ -1083,19 +1083,19 @@
    {
     "url": "?adim=31",
     "hazir": true,
-    "model_mesh": 1238,
+    "model_mesh": 1264,
     "hata": null
    },
    {
     "url": "?adim=0&tema=dark",
     "hazir": true,
-    "model_mesh": 1238,
+    "model_mesh": 1264,
     "hata": null
    },
    {
     "url": "?adim=17&cekim=1",
     "hazir": true,
-    "model_mesh": 1238,
+    "model_mesh": 1264,
     "hata": null
    }
   ],
@@ -1182,14 +1182,14 @@
     "adim": 9,
     "var": true,
     "oran": 0.7785,
-    "boyut_kb": 158.4,
+    "boyut_kb": 158.3,
     "cizili": true
    },
    {
     "adim": 10,
     "var": true,
     "oran": 0.6853,
-    "boyut_kb": 170.7,
+    "boyut_kb": 170.8,
     "cizili": true
    },
    {
@@ -1202,15 +1202,15 @@
    {
     "adim": 12,
     "var": true,
-    "oran": 0.3856,
-    "boyut_kb": 154.2,
+    "oran": 0.3891,
+    "boyut_kb": 174.5,
     "cizili": true
    },
    {
     "adim": 13,
     "var": true,
-    "oran": 0.6945,
-    "boyut_kb": 157.1,
+    "oran": 0.6941,
+    "boyut_kb": 160.2,
     "cizili": true
    },
    {
@@ -1223,8 +1223,8 @@
    {
     "adim": 15,
     "var": true,
-    "oran": 0.792,
-    "boyut_kb": 178.4,
+    "oran": 0.7938,
+    "boyut_kb": 180.4,
     "cizili": true
    },
    {
@@ -1237,8 +1237,8 @@
    {
     "adim": 17,
     "var": true,
-    "oran": 0.4798,
-    "boyut_kb": 206.3,
+    "oran": 0.4813,
+    "boyut_kb": 209.3,
     "cizili": true
    },
    {
@@ -1266,7 +1266,7 @@
     "adim": 21,
     "var": true,
     "oran": 0.3652,
-    "boyut_kb": 46.7,
+    "boyut_kb": 46.8,
     "cizili": true
    },
    {
@@ -1329,7 +1329,7 @@
     "adim": 30,
     "var": true,
     "oran": 0.3704,
-    "boyut_kb": 103.8,
+    "boyut_kb": 103.9,
     "cizili": true
    },
    {
@@ -1343,14 +1343,14 @@
     "adim": 32,
     "var": true,
     "oran": 0.1085,
-    "boyut_kb": 106.4,
+    "boyut_kb": 106.9,
     "cizili": true
    },
    {
     "adim": 33,
     "var": true,
     "oran": 0.2689,
-    "boyut_kb": 162.9,
+    "boyut_kb": 163.0,
     "cizili": true
    },
    {
@@ -1455,7 +1455,7 @@
     "adim": 48,
     "var": true,
     "oran": 0.4536,
-    "boyut_kb": 94.4,
+    "boyut_kb": 94.5,
     "cizili": true
    },
    {
@@ -1471,7 +1471,7 @@
   "en_dusuk": 0.0606,
   "pdf": {
    "olculdu": true,
-   "sayfa": 89,
+   "sayfa": 90,
    "goruntu": 141,
    "bos_sayfa": [],
    "en_dusuk": 0.0606
@@ -1754,7 +1754,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4969,
-     "vurgu": 341,
+     "vurgu": 342,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -1864,7 +1864,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4969,
-     "vurgu": 216,
+     "vurgu": 215,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2972,7 +2972,7 @@
      "w": 84,
      "h": 112,
      "dolu": 1201,
-     "vurgu": 75,
+     "vurgu": 76,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3697,6 +3697,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 436,
+ "sure_s": 467,
  "gecti": true
 }

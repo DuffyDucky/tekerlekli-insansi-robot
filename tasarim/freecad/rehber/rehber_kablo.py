@@ -156,9 +156,12 @@ PARCA_CAD = {                                                           # tablo 
     "HC-SR04 sağ": r"^Sonar HC-SR04 \(sag\)", "HC-SR04 orta": r"^Sonar HC-SR04 \(orta\)", "HC-SR04 sol": r"^Sonar HC-SR04 \(sol\)",
     "Acil stop mantarı": r"^Acil stop kontak govdesi",
     "XT60 (akü tarafı)": NOMINAL, "XT60 (robot tarafı)": NOMINAL, "Anahtarlı bara": NOMINAL,
-    "Yıldız barası": NOMINAL, "Acil stop düğümü": MODELSIZ,
-    # P10.7b2b (R8): dağıtım kartı C taban dışı (kafa) değil, güç panelinde (kablolar.json karar P7b2a-6); kart modelde yok (R23)
-    "Dağıtım kartı C": MODELSIZ, "Kafa giriş klemensi": TABAN_DISI, "USB hub": TABAN_DISI,
+    "Yıldız barası": NOMINAL,
+    # P10.7b2b (R8): dağıtım kartı C taban dışı (kafa) değil, güç panelinde (kablolar.json karar P7b2a-6).
+    # P10.8e (planlama/d158/P108e-gunluk.md § 3): acil stop düğüm kartı ve dağıtım kartı C P10.8d'de modelde (taban_parcalar.py ESDI /
+    # DGCI; nominal zarf TAHMİN): ikisi de modelli uç. CAD yolu 6'nın kart C yanı kartın yanına inmiyor: GEO_YAN_ELLE.
+    "Acil stop düğümü": r"^Acil stop dugum karti", "Dağıtım kartı C": r"^Dagitim karti C",
+    "Kafa giriş klemensi": TABAN_DISI, "USB hub": TABAN_DISI,
 }
 # Modelsiz uç parçası → nominal konum / yerine geçen parça (P10.7b1 açık işler turu, F10h-kontrol-2 madde 11). Anahtar (parça, kutup);
 # kutup ucun "nokta" alanıdır ("+" ya da "−"), "+ / −" gibi iki damarlı uçta kablonun ilk damarı; "*" her kutup. Değer (nokta, vekil,
@@ -180,12 +183,7 @@ MODELSIZ_KONUM = {
                              "bara tutucusu modelde (P10.7b2j, arayuz TABAN['bara_tutucu']); saplaması bara_yol_denetle'de"),
     ("Anahtarlı bara", "*"): (None, r"^Bara tutucusu anahtarli bara",
                               "bara tutucusu modelde (P10.7b2j); saplaması bara_yol_denetle'de"),
-    ("Acil stop düğümü", "*"): (None, None,
-                                "güç panelinde küçük pertinaks kart; CAD'de ne modeli ne yol noktası var (yerleşim P10.7b2): sınanmaz, elle bakıldı"),
-    # P10.7b2b (R8)
-    ("Dağıtım kartı C", "*"): (None, None,
-                               "güç panelinde, XL4016 C'nin yanında (kablolar.json P7b2a-6); kart modelde yok (R23) ve yol 6 yalnız boyun → "
-                               "kafa bölümünü çiziyor: kart yanı sınanmaz, elle bakıldı"),
+    # P10.8e: "Acil stop düğümü" ve "Dağıtım kartı C" kalktı (iki kart modelde; PARCA_CAD deseni)
     ("XT60E-F", "*"): (None, None,
                        "panel şarj girişi: konnektör K50 b (dişi; alımı açık), etek deliği açık iş; modeli ve yol noktası yok: sınanmaz"),
 }
@@ -219,6 +217,13 @@ GEO_ISTISNA = {
     # P10.7b2f: 12 kalktı; yolun eski üst bölümü rehberde kırpılır (CAD_KIRP), kırpılmış yolun iki ucu da B01'in uçlarında
     # P10.7b2i: 9 kalktı; yolun XL4016 çevre → ESP32 bölümü (eski tasarım) rehberde kırpılır (CAD_KIRP), kırpılmış yolun iki ucu G18'in uçlarında
 }
+# P10.8e (P108e-gunluk.md § 3): modelli uç parçasına CAD yolunun ulaşmadığı, bilerek elle bakılan yan. Anahtar (yol, kimlik, yan), değer
+# gerekçe. Yan geometriyle sınanmaz, "elle bakıldı" bilgisi yazılır (P10.8d öncesi modelsiz kartın davranışı); yan yola ulaşıyorsa ya da
+# kayıt kullanılmıyorsa HATA (kayıt sessizce eskimez). GEO_ISTISNA'dan farkı: uç değil, tek bir kablonun tek yanı.
+_YOL6_KART_C = ("yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de "
+                "güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi "
+                "(P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır")
+GEO_YAN_ELLE = {(6, "S09", "a"): _YOL6_KART_C, (6, "S10", "a"): _YOL6_KART_C}
 # P10.7b2f: rehberde kırpılan CAD yolları. Model (taban_parcalar.py YOL) değişmez; rehber_veri.py parçanın gövdesini kesim düzleminin
 # (yon · p ≤ kesim) yanında bırakır, sınamalar (geometri_denetle, demet_yol_adimlari, veri GLB sınaması) aynı kırpılmış noktalarla yürür.
 # Kesim = korunan noktaların yon üstündeki en büyük izdüşümü + tüp yarıçapı (taban_parcalar.tup r = 2.5; tüp her noktada küre, aralarda
@@ -291,6 +296,8 @@ UC_ETIKET = {
     "Göğüs ekranı": (r"^Gogus ekrani 11,6", None),
     # P10.7b2k (K64 a, P10.7b2j): baralar tutucularıyla modelde; etiket tutucunun kutusunda (bara modelde ayrı parça değil)
     "Anahtarlı bara": (r"^Bara tutucusu anahtarli bara", None), "Yıldız barası": (r"^Bara tutucusu yildiz barasi", None),
+    # P10.8e (P108e-gunluk.md § 3): P10.8d kartları modelde (nominal zarf TAHMİN); etiket kartın kutusunda
+    "Acil stop düğümü (mantar NC çıkışı)": (r"^Acil stop dugum karti", None), "Dağıtım kartı C (kafa)": (r"^Dagitim karti C", None),
     "kafa pan servosu": (r"^Pan servosu MG996R", None), "kafa tilt servosu": (r"^Tilt servosu MG996R", None),
     "sağ S1 (omuz öne-arka) servosu": (r"^S1 servo DS3235", "omuz_sag"), "sağ S2 (omuz yana) servosu": (r"^S2 servo DS3235", "omuz_sag"),
     "sol S1 (omuz öne-arka) servosu": (r"^S1 servo DS3235", "omuz_sol"), "sol S2 (omuz yana) servosu": (r"^S2 servo DS3235", "omuz_sol"),
@@ -298,9 +305,9 @@ UC_ETIKET = {
     "sol dirsek servosu": (r"^Dirsek servosu MG996R", "dirsek_sol"), "sol bilek servosu": (r"^Bilek servosu MG996R", "dirsek_sol"),
 }
 UC_MODELSIZ = {
-    "Acil stop düğümü (mantar NC çıkışı)": "düğüm kartı modelde yok", "XT60 (akü tarafı)": "konnektör modelde yok",
+    "XT60 (akü tarafı)": "konnektör modelde yok",
     "XT60 (robot tarafı)": "konnektör modelde yok", "XT60E-F şarj girişi": "konnektör modelde yok (K50)",
-    "Dağıtım kartı C (kafa)": "kafa dağıtım kartı modelde yok", "Kafa giriş klemensi": "klemens modelde yok",
+    "Kafa giriş klemensi": "klemens modelde yok",
     "Göğüs regülatörü": "regülatör modelde yok (K52 a: güç panelinde)", "Ses bölücüsü": "bölücü modelde yok",
 }
 
@@ -889,12 +896,14 @@ def _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad, sinif_f=None, bolge_
     return r
 
 
-def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
+def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None, yan_elle=None):
     """CAD yolu noktaları ↔ eşlenen kabloların uç parçaları (kural yukarıda). Doner (hata, bilgi)."""
     TB = TB or Tablo()
     A = analiz if analiz is not None else json.load(open(GEO_ANALIZ, encoding="utf-8"))
     esleme = CAD_ESLEME if esleme is None else esleme
     istisna = GEO_ISTISNA if istisna is None else istisna
+    yan_elle = GEO_YAN_ELLE if yan_elle is None else yan_elle
+    kullanilan_ye = set()
     modelli = [p for p in A["parcalar"] if (p.get("tur") not in ("Baski", "Lazer", "Baglanti") or p["ad"].startswith("Bara tutucusu "))
                and not p["ad"].startswith(("Burc", "Kablo yolu"))]           # düzeltme turu 1: bara tutucuları (Baski) uç parçası
     hata, bilgi = [], []
@@ -927,6 +936,14 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
             kendi = []                                                # P10.7b2b (a): dalın kendi noktalarıyla sağlanan yan
             for y, parcalar in zip("ab", uc_parcalari(TB, k)):
                 r = _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad)
+                if (n, k, y) in yan_elle:                             # P10.8e: bilerek elle bakılan yan (GEO_YAN_ELLE)
+                    kullanilan_ye.add((n, k, y))
+                    if any(x is True for x in r["sonuc"]):
+                        hata.append("GEO_YAN_ELLE %s: yan yola ulaşıyor, kaydı kaldır" % ((n, k, y),))
+                    else:
+                        r = dict(r, sonuc=[ELLE], elle=True, uc=set(), nominal=[],
+                                 bilgi=r["bilgi"] + ["%s %s: '%s' yola ulaşmıyor, elle bakıldı (GEO_YAN_ELLE: %s)" % (
+                                     k, y, ", ".join(parcalar), yan_elle[(n, k, y)][:70])])
                 hata += ["yol %d %s" % (n, x) for x in r["hata"]]
                 bilgi += ["yol %d %s" % (n, x) for x in r["bilgi"]]
                 yan_sinif["disi"] |= r["disi"]
@@ -980,6 +997,8 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
     # P10.7b2k (F10r-kontrol D4): SEMA_GEO_ISTISNA gibi, kullanılmayan GEO_ISTISNA da hata (yol düzeldiyse istisna sessizce kalmaz)
     for n in sorted(set(istisna) - kullanilan_ist):
         hata.append("GEO_ISTISNA %s: kullanılmıyor (yol düzeldiyse ya da kırpıldıysa istisnayı kaldır)" % (n,))
+    for x in sorted(set(yan_elle) - kullanilan_ye):                     # P10.8e
+        hata.append("GEO_YAN_ELLE %s: kullanılmıyor (kablo o yolda eşli değil ya da kaydı eski)" % (x,))
     return hata, bilgi
 
 
@@ -1010,6 +1029,7 @@ SEMA_PARCA = {                                                          # şema 
 }
 # Şemada nominal konumu / vekili olan modelsiz uçlar (P10.7b2c B; MODELSIZ_KONUM biçiminde: (parça, kutup) → (nokta, vekil, gerekçe)).
 # Kafa giriş kartının noktası lale158/kablo_yolu_kafa.GIRIS_KARTI'nın globali (şema sınaması ikisinin aynı olduğunu da sınar).
+DAGITIM_C_ESIK = 5.0                                                    # P10.8e: DAGITIM_C ↔ kart kutusu (bugün 3,0 mm)
 SEMA_KONUM = {
     ("Kafa giriş klemensi", "*"): ((-58.0, 1514.0, 30.0), None,
                                    "kafa giriş kartı (P6KE18A + 3 klemens) modelde yok, E3a yerini yazmaz: yeri yaklaşık, boyun geçişinin "
@@ -1026,10 +1046,7 @@ SEMA_KONUM = {
                               "(kablo_yolu_taban.bara_saplama): yerine tutucunun kutusu"),
     ("Yıldız barası", "*"): (None, r"^Bara tutucusu yildiz barasi",
                              "bara tutucusu modelde (P10.7b2j): yerine tutucunun kutusu"),
-    ("Dağıtım kartı C", "*"): ((100.0, 192.0, -60.0), None,
-                               "kart modelde yok (R23); kayıtta güç panelinde, XL4016 C'nin yanında (kablolar.json karar P7b2a-6, SV3 "
-                               "boy_tahmin 'XL4016 C klemensinin yanında'): nominal nokta XL4016 C'nin −z yanında, kutusundan 36,5 mm "
-                               "(kablo_yolu_taban.DAGITIM_C); yeri yaklaşık"),
+    # P10.8e (P108e-gunluk.md § 3): "Dağıtım kartı C" kalktı; kart modelde (PARCA_CAD deseni), SV3'ün kart ucu kartın kutusuyla sınanır
 }
 # Eşlemesiz şema (P10.7b2c B, brief madde 5): her şema kaynağının her yolu SEMA'da olmalı; bilinçli dışarıda bırakılan yol burada
 # gerekçesiyle. SEMA'da olan ya da kaynakta artık olmayan muaf HATA (liste sessizce eskimez).
@@ -1392,9 +1409,15 @@ def sema_geometri_denetle(TB=None, RM=None, analiz=None, kafa=None, istisna=None
     if gk is None or math.dist(gk, KYK.giris_karti_global()) > 0.05:
         hata.append("SEMA_KONUM Kafa giriş klemensi %s ≠ kablo_yolu_kafa.GIRIS_KARTI %s" % (
             gk, [round(c, 1) for c in KYK.giris_karti_global()]))
-    dk = SEMA_KONUM.get(("Dağıtım kartı C", "*"), (None,))[0]                  # düzeltme turu 1: SV3'ün kart ucu
-    if dk is None or math.dist(dk, KYT.DAGITIM_C) > 0.05:
-        hata.append("SEMA_KONUM Dağıtım kartı C %s ≠ kablo_yolu_taban.DAGITIM_C %s" % (dk, [round(c, 1) for c in KYT.DAGITIM_C]))
+    # düzeltme turu 1: SV3'ün kart ucu. P10.8e: kart modelde; kablo_yolu_taban.DAGITIM_C kartın kutusuna ≤ DAGITIM_C_ESIK mm olmalı
+    # (kart taşınırsa şema noktası eskimesin; SV3 son ucu ayrıca GEO_ESIK kuralıyla sınanır)
+    dc = PARCA_CAD.get("Dağıtım kartı C")
+    kc = [p for p in modelli if re.search(dc, p["ad"])] if isinstance(dc, str) and dc not in (MODELSIZ, NOMINAL, TABAN_DISI) else []
+    if len(kc) != 1:
+        hata.append("Dağıtım kartı C: modelde %d parçaya uyuyor (1 beklenir; PARCA_CAD %r)" % (len(kc), PARCA_CAD.get("Dağıtım kartı C")))
+    elif _kutu_mesafe(KYT.DAGITIM_C, kc[0]["bb"]) > DAGITIM_C_ESIK:
+        hata.append("kablo_yolu_taban.DAGITIM_C %s kartın kutusuna %.1f mm (≤ %g beklenir; %s)" % (
+            [round(c, 1) for c in KYT.DAGITIM_C], _kutu_mesafe(KYT.DAGITIM_C, kc[0]["bb"]), DAGITIM_C_ESIK, kc[0]["ad"][:40]))
 
     hata += bara_tutarlilik(KYT)                                                # P10.7b2k (A4)
     hata += u06_port_denetle(analiz, RM)                                        # P10.7b2k (F10r-kontrol D5); P10.8b yön
@@ -1525,6 +1548,8 @@ def kritik_tablolar(esleme=None):
     g.append(_RK.girdi("GEO_EKSIK_MUAF", repr(sorted((n, sorted(v.items())) for n, v in GEO_EKSIK_MUAF.items())), "eksik eşleme muafları"))
     for n in sorted(GEO_ISTISNA):
         g.append(_RK.girdi("GEO_ISTISNA %d" % n, GEO_ISTISNA[n], "geometri istisnası"))
+    for x in sorted(GEO_YAN_ELLE):                                     # P10.8e
+        g.append(_RK.girdi("GEO_YAN_ELLE %d %s %s" % x, GEO_YAN_ELLE[x], "elle bakılan yan"))
     for n in sorted(CAD_KIRP):                                         # P10.7b2f
         _yon, _d = cad_kirp_kesim(n)                                   # P10.7b2i: y yönünde b2f'deki yazım ("kesim y 192.5") korunur
         g.append(_RK.girdi("CAD_KIRP %d" % n, ("son %d kesim y %r · %s" % (CAD_KIRP[n]["son"], _d, CAD_KIRP[n]["gerekce"])) if _yon == (0.0, 1.0, 0.0)
@@ -2034,6 +2059,7 @@ def bozma_denemesi(V=None, kutular=None):
         eski_sp, eski_si = copy.deepcopy(SEMA_PARCA), copy.deepcopy(SEMA_GEO_ISTISNA)
         eski_sk, eski_sm, eski_bt = copy.deepcopy(SEMA_KONUM), copy.deepcopy(SEMA_ESLEMESIZ_MUAF), copy.deepcopy(BAGLANTI_TABLOSU)
         eski_kr, eski_gi = copy.deepcopy(CAD_KIRP), copy.deepcopy(GEO_ISTISNA)
+        eski_ye = copy.deepcopy(GEO_YAN_ELLE)                                # P10.8e
         eski_ue, eski_um = copy.deepcopy(UC_ETIKET), copy.deepcopy(UC_MODELSIZ)
         try:
             V2 = copy.deepcopy(V) if V is not None else None
@@ -2058,6 +2084,7 @@ def bozma_denemesi(V=None, kutular=None):
             SEMA_KONUM.clear(); SEMA_KONUM.update(eski_sk)
             CAD_KIRP.clear(); CAD_KIRP.update(eski_kr)
             GEO_ISTISNA.clear(); GEO_ISTISNA.update(eski_gi)                 # P10.7b2k
+            GEO_YAN_ELLE.clear(); GEO_YAN_ELLE.update(eski_ye)               # P10.8e
             while _BOZMA_GERI:                                               # P10.7b2k: modül sabitini bozan denemelerin geri alması
                 _BOZMA_GERI.pop()()
             UC_ETIKET.clear(); UC_ETIKET.update(eski_ue)
@@ -2243,8 +2270,9 @@ def bozma_denemesi(V=None, kutular=None):
     def b76(RM, TB, V):                                                               # kaçan 1: SV3 kart ucu 30 mm öteye (boşlukta)
         p = _kt("SV3"); p[-1][2] -= 30.0; SEMA_NOKTA_ELLE[("taban", "SV3")] = p
 
-    def b77(RM, TB, V):                                                               # kaçan 1: nominal nokta kaynaktan ayrıldı
-        n, v_, g_ = SEMA_KONUM[("Dağıtım kartı C", "*")]; SEMA_KONUM[("Dağıtım kartı C", "*")] = ((n[0], n[1], n[2] - 30.0), v_, g_)
+    def b77(RM, TB, V):                                                               # kaçan 1; P10.8e: DAGITIM_C karttan ayrıldı
+        KYT, _ = _kyt()
+        _modul_boz(KYT, "DAGITIM_C", (KYT.DAGITIM_C[0], KYT.DAGITIM_C[1], KYT.DAGITIM_C[2] - 30.0))
 
     def _not_sil(RM, kod, soz):
         for A_ in (RM.ADIM, RM.ADIM_HAM):
@@ -2253,7 +2281,11 @@ def bozma_denemesi(V=None, kutular=None):
     def b78(RM, TB, V): _not_sil(RM, "B5a", "SV3'ün çizimi gösterim şemasıdır")       # kaçan 4: B5a notu silindi
 
     def b79(RM, TB, V):                                                               # kaçan 4: adından "yeri yaklaşık" silindi
-        i = _si(RM, "SV3"); RM.SEMA[i] = RM.SEMA[i][:3] + (RM.SEMA[i][3].replace("yeri yaklaşık: ", ""),) + RM.SEMA[i][4:]
+        # P10.8e: SV3'ün kart ucu modelli (adında "yeri yaklaşık" yok); deneme modelsiz uçlu K01'e (kafa giriş kartı) taşındı
+        i = _si(RM, "K01")
+        if "yeri yaklaşık: " not in RM.SEMA[i][3]:
+            raise RuntimeError("b79: K01 adında 'yeri yaklaşık: ' yok")
+        RM.SEMA[i] = RM.SEMA[i][:3] + (RM.SEMA[i][3].replace("yeri yaklaşık: ", ""),) + RM.SEMA[i][4:]
 
     def b80(RM, TB, V):                                                               # kaçan 5: G19 B3'e taşındı
         i = _si(RM, "G19"); RM.SEMA[i] = RM.SEMA[i][:2] + ("B3",) + RM.SEMA[i][3:]
@@ -2310,7 +2342,7 @@ def bozma_denemesi(V=None, kutular=None):
               ("D1: kartta etiketsiz '~N mm'", b71), ("D1: '(kesim boyu değil)' silindi", b72), ("D1: iki etiket yer değiştirdi", b73),
               ("D1: boy kartın başka yerinde etiketsiz", b74), ("SV3 kart ucu panelin öbür köşesinde", b75),
               ("SV3 kart ucu 30 mm öteye", b76), ("dağıtım kartı C nominali kaynaktan ayrıldı", b77), ("B5a SV3 gösterim notu silindi", b78),
-              ("SV3 adından 'yeri yaklaşık' silindi", b79), ("G19 şeması B3'e taşındı", b80), ("E3a notunda K02 anılmıyor", b81),
+              ("K01 adından 'yeri yaklaşık' silindi", b79), ("G19 şeması B3'e taşındı", b80), ("E3a notunda K02 anılmıyor", b81),
               ("D3: K1 P03 kartın yeri silindi", b82), ("D3: kb satırında yer eki yok", b83), ("D3: şema adında ad eksiz", b84),
               ("ek: kol bölümünde etiketsiz '~N mm'", b85), ("ek: kol bölümünde '(kesim boyu değil)' silindi", b86)]
     # P10.7b2f: Kablo yolu 12'nin kırpılması (CAD_KIRP)
@@ -2377,6 +2409,13 @@ def bozma_denemesi(V=None, kutular=None):
     # P10.7b2k (F10r-kontrol D4): yol 9 kırpılmışken eski GEO_ISTISNA'sı geri eklendi ("kullanılmıyor" yakalanmalı)
     def b99(RM, TB, V): GEO_ISTISNA[9] = "eski: yol 9'un ESP32 ucu eski tasarımda"
     deneme += [("geometri: yol 9 eski istisnası geri eklendi (kırpılmışken)", b99)]
+    # P10.8e (P108e-gunluk.md § 3): kartlar modelde; yol 6'nın kart C yanı GEO_YAN_ELLE'de
+    def b107(RM, TB, V): GEO_YAN_ELLE.pop((6, "S09", "a"))                 # elle kaydı silindi: yan yola ulaşmıyor
+    def b108(RM, TB, V): GEO_YAN_ELLE[(6, "S11", "a")] = "eski kayıt"      # yolda eşli olmayan kablo: kullanılmıyor
+    def b109(RM, TB, V): GEO_YAN_ELLE[(10, "A04", "a")] = "elle"           # yola ulaşan yan (acil stop düğüm kartı) elle sayıldı
+    def b110(RM, TB, V): PARCA_CAD["Acil stop düğümü"] = r"^On sarj karti"  # düğüm kartı yerine ön şarj kartı
+    deneme += [("geometri: yol 6 kart C elle kaydı silindi", b107), ("geometri: kullanılmayan GEO_YAN_ELLE", b108),
+               ("geometri: ulaşan yan GEO_YAN_ELLE'de", b109), ("geometri: düğüm kartı yerine ön şarj kartı", b110)]
     # P10.7b2f: uç etiketleri (UC_ETIKET / UC_MODELSIZ)
     def b89(RM, TB, V): UC_ETIKET.pop("ESP32")                           # uç sınıflanmamış
     def b90(RM, TB, V): UC_ETIKET["HC-SR04 sol"] = (r"^Sonar HC-SR04", None)   # desen üç sonara uyar

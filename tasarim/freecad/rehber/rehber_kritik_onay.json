@@ -93,6 +93,18 @@
     "metin": "[(1, [('G10', \"ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; G10 (F1 → ön şarj kartı) yol 3'te çizili\")]), (8, [('G10', \"ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; G10 (F1 → ön şarj kartı) yol 3'te çizili\")])]"
    },
    {
+    "yer": "GEO_YAN_ELLE 6 S09 a",
+    "ozet": "e7758908b517963c",
+    "neden": "elle bakılan yan",
+    "metin": "yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi (P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır"
+   },
+   {
+    "yer": "GEO_YAN_ELLE 6 S10 a",
+    "ozet": "e7758908b517963c",
+    "neden": "elle bakılan yan",
+    "metin": "yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (taban ucu (0; 1215; −26)); dağıtım kartı C P10.8d'de güç panelinde modelde (x 94…130, z −92…−62), yol kartın yanına inmiyor: CAD yolunun uzatılması CAD paketinin işi (P108e-gunluk.md § 3); kartın yanı SV3 şemasıyla sınanır"
+   },
+   {
     "yer": "CAD_KIRP 9",
     "ozet": "50c8b2671fe7ac6b",
     "neden": "rehberde kırpılan CAD yolu",
@@ -103,6 +115,12 @@
     "ozet": "efdf0ed22aa812a7",
     "neden": "rehberde kırpılan CAD yolu",
     "metin": "son 2 kesim y 192.5 · yolun noktalar[3..] bölümü 05.11 öncesi ESP32 → kafa USB hattı (direk boyunca kafaya çıkar); B01'in ESP32 ucu taban-analiz.json kablo_yolu[11].noktalar[2] = ESP32 taşıyıcısının merkezi; rehber yalnız noktalar[0..2]'yi çizer"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "6640c237ca4b7661",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Acil stop düğümü (mantar NC çıkışı) = '^Acil stop dugum karti' None"
    },
    {
     "yer": "UC_ETIKET",
@@ -175,6 +193,12 @@
     "ozet": "69295939179eeeee",
     "neden": "uç etiketi → CAD parçası",
     "metin": "Dağıtım kartı B = '^Servo dagitim karti B' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "eebf2450c93ef1ce",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Dağıtım kartı C (kafa) = '^Dagitim karti C' None"
    },
    {
     "yer": "UC_ETIKET",
@@ -400,18 +424,6 @@
    },
    {
     "yer": "UC_MODELSIZ",
-    "ozet": "222d6b67dd800d7d",
-    "neden": "uç etiketi: modelde parçası yok",
-    "metin": "Acil stop düğümü (mantar NC çıkışı) = düğüm kartı modelde yok"
-   },
-   {
-    "yer": "UC_MODELSIZ",
-    "ozet": "4d3d35d0b4e2c3d9",
-    "neden": "uç etiketi: modelde parçası yok",
-    "metin": "Dağıtım kartı C (kafa) = kafa dağıtım kartı modelde yok"
-   },
-   {
-    "yer": "UC_MODELSIZ",
     "ozet": "9b82fd4f09d9ca2d",
     "neden": "uç etiketi: modelde parçası yok",
     "metin": "Göğüs regülatörü = regülatör modelde yok (K52 a: güç panelinde)"
@@ -448,9 +460,9 @@
    },
    {
     "yer": "PARCA_CAD",
-    "ozet": "349e0a327bc16a9f",
+    "ozet": "2207206ca5484c33",
     "neden": "uç parçası → CAD",
-    "metin": "Acil stop düğümü = modelsiz"
+    "metin": "Acil stop düğümü = ^Acil stop dugum karti"
    },
    {
     "yer": "PARCA_CAD",
@@ -514,9 +526,9 @@
    },
    {
     "yer": "PARCA_CAD",
-    "ozet": "402558797743aa0d",
+    "ozet": "b807ab323117f7b2",
     "neden": "uç parçası → CAD",
-    "metin": "Dağıtım kartı C = modelsiz"
+    "metin": "Dağıtım kartı C = ^Dagitim karti C"
    },
    {
     "yer": "PARCA_CAD",
@@ -664,21 +676,9 @@
    },
    {
     "yer": "MODELSIZ_KONUM",
-    "ozet": "d1a879c458ae729e",
-    "neden": "modelsiz uç → nominal konum / vekil",
-    "metin": "Acil stop düğümü * = None None"
-   },
-   {
-    "yer": "MODELSIZ_KONUM",
     "ozet": "703303b4af95b2e4",
     "neden": "modelsiz uç → nominal konum / vekil",
     "metin": "Anahtarlı bara * = None '^Bara tutucusu anahtarli bara'"
-   },
-   {
-    "yer": "MODELSIZ_KONUM",
-    "ozet": "b7668e8bbacb773f",
-    "neden": "modelsiz uç → nominal konum / vekil",
-    "metin": "Dağıtım kartı C * = None None"
    },
    {
     "yer": "MODELSIZ_KONUM",
@@ -1243,12 +1243,6 @@
     "ozet": "703303b4af95b2e4",
     "neden": "şema modelsiz ucu → nominal konum / vekil",
     "metin": "Anahtarlı bara * = None '^Bara tutucusu anahtarli bara'"
-   },
-   {
-    "yer": "SEMA_KONUM",
-    "ozet": "ad3895c2c7b44927",
-    "neden": "şema modelsiz ucu → nominal konum / vekil",
-    "metin": "Dağıtım kartı C * = (100.0, 192.0, -60.0) None"
    },
    {
     "yer": "SEMA_KONUM",
@@ -1974,9 +1968,9 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "9d632549aeec9985",
+    "ozet": "23cd9ba16e93d953",
     "neden": "kural listesi",
-    "metin": "('K1', 'ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında', 'K1 17.10 Q03 / B01 kesikten (çizim kusuru)')"
+    "metin": "('K1', 'ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer', 'K1 17.10 Q03 / B01 ve çizimleri kesikten')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -3362,9 +3356,15 @@
    },
    {
     "yer": "kaynak B5a is_",
-    "ozet": "9b290c346a3e2cb2",
+    "ozet": "0829a43c6e02aefc",
     "neden": "anahtar sözcük",
-    "metin": "XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada."
+    "metin": "XL4016 C, ön şarj kartı, acil stop düğüm kartı (röle K1 ile ön şarj kartının arasında) ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin arka yanında) da burada; iki pertinaks kart ön şarj kartı gibi dörder M3×8 naylon burçla (üstte M3×6, altta M3×8 vida)."
+   },
+   {
+    "yer": "kaynak B5a is_",
+    "ozet": "8695b9cbb0b6f029",
+    "neden": "anahtar sözcük",
+    "metin": "İki kartın ölçüsü ve zarfı TAHMİN: kart yapılınca ölçülecek."
    },
    {
     "yer": "kaynak B5a is_",
@@ -3500,9 +3500,9 @@
    },
    {
     "yer": "kaynak B5a kontrol",
-    "ozet": "7c48a4589c8c2cb2",
+    "ozet": "815229e00c6e7563",
     "neden": "anahtar sözcük",
-    "metin": "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir"
+    "metin": "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi), acil stop düğüm kartı ve dağıtım kartı C de (P10.8d yerleşimi); giriş, çıkış klemensleri erişilebilir"
    },
    {
     "yer": "kaynak B5a kontrol",
@@ -3548,9 +3548,9 @@
    },
    {
     "yer": "kaynak B5a kablo",
-    "ozet": "069172f779e256fa",
-    "neden": "metin",
-    "metin": "Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık"
+    "ozet": "3382be9b9541839e",
+    "neden": "anahtar sözcük",
+    "metin": "Dağıtım kartı C modelde (zarfı ve ölçüsü TAHMİN, kart yapılınca ölçülecek): şema kartın ön (+z) kenarının yanında biter"
    },
    {
     "yer": "kaynak B5a not_",
@@ -4154,9 +4154,9 @@
    },
    {
     "yer": "kaynak K1 kablo",
-    "ozet": "9178af06b3d13ff3",
-    "neden": "metin",
-    "metin": "Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla"
+    "ozet": "8fa3e15bddbb4146",
+    "neden": "anahtar sözcük",
+    "metin": "Dağıtım kartı C modelde, XL4016 C'nin arka yanında (zarfı TAHMİN); kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla"
    },
    {
     "yer": "kaynak K1 kablo",
@@ -4574,9 +4574,9 @@
    },
    {
     "yer": "kaynak K1 alt adım 8 is_",
-    "ozet": "99ff6a568c3dda5f",
+    "ozet": "7765d2db67b55fe4",
     "neden": "anahtar sözcük",
-    "metin": "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır."
+    "metin": "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı güç panelinde aynı yanda, röle K1 ile ön şarj kartının arasında (zarfı TAHMİN); mantar F1'de sağ arka köşeye takılır."
    },
    {
     "yer": "kaynak K1 alt adım 9 ad",
@@ -4670,9 +4670,9 @@
    },
    {
     "yer": "kaynak K1 alt adım 10 is_",
-    "ozet": "c8edb14b2639b7e6",
+    "ozet": "b8ae2254b0cd092c",
     "neden": "zorunlu",
-    "metin": "Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru)."
+    "metin": "Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 de kesikten geçer."
    },
    {
     "yer": "kaynak K1 alt adım 11 ad",
@@ -4712,15 +4712,15 @@
    },
    {
     "yer": "kaynak K1 alt adım 11 is_",
-    "ozet": "382d7d5299d69eba",
+    "ozet": "952da9d7d2e43316",
     "neden": "metin",
-    "metin": "Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde."
+    "metin": "Karede vurgulu çizgi U06'nın taban bölümüdür (direk dibinden ESP32'ye; tamamı alt adım 32.4'ün karesinde); P03'ün çizimi yok (bağlantı tablosu aşağıda)."
    },
    {
     "yer": "kaynak K1 alt adım 11 is_",
-    "ozet": "b29a545cd9a2d286",
+    "ozet": "0abc9e317950300a",
     "neden": "anahtar sözcük",
-    "metin": "Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok)."
+    "metin": "Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde, XL4016 C'nin arka yanında (B5a)."
    },
    {
     "yer": "kaynak K1 alt adım 12 ad",
@@ -6341,6 +6341,12 @@
     "ozet": "53d6259a0563aa62",
     "neden": "anahtar sözcük",
     "metin": "Karede Kablo yolu 5 ve 7'nin baradan dağıtım kartlarına giden kısmı K1'de bağlandı; burada yalnız uzatmaları tak."
+   },
+   {
+    "yer": "kaynak K2 alt adım 1 is_",
+    "ozet": "e1a334d18d0aec68",
+    "neden": "anahtar sözcük",
+    "metin": "Kare tabana arkadan ve üstten bakar: yolun anahtarlı baradan çıkışı, iki dağıtım kartı ve direğe çıkış karede; omuz uçları kadrajın dışında."
    },
    {
     "yer": "kaynak K2 alt adım 2 ad",
@@ -9872,15 +9878,15 @@
    },
    {
     "yer": "kaynak KABLO_AD 11",
-    "ozet": "197c2e5fee115632",
+    "ozet": "edeaa0e5fdea5cfc",
     "neden": "metin",
-    "metin": "Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür"
+    "metin": "Kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)"
    },
    {
     "yer": "kaynak KABLO_AD 12",
-    "ozet": "bac5ec5bf7adcb0d",
+    "ozet": "ce3c6e75a416be92",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür."
+    "metin": "Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)."
    },
    {
     "yer": "kaynak KABLO_AD 12",
@@ -9986,9 +9992,9 @@
    },
    {
     "yer": "kaynak SEMA SV3",
-    "ozet": "31449c41965e1c0d",
+    "ozet": "c109756f90e25a09",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (yeri yaklaşık: modelde yok, XL4016 C'nin yanında)"
+    "metin": "Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (XL4016 C'nin arka yanında, zarfı TAHMİN)"
    },
    {
     "yer": "kaynak SEMA G19",

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-20 02:55",
+ "tarih": "2026-11-21 10:15",
  "adim": 50,
  "alt_adimli": [
   17,
@@ -600,8 +600,8 @@
    {
     "adres": "12",
     "kod": "B5a",
-    "panel": 20,
-    "takma": 20,
+    "panel": 22,
+    "takma": 22,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -2681,41 +2681,31 @@
     "yeni": 8,
     "gorunmeyen": [
      {
-      "id": "p1227",
+      "id": "p1253",
       "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
-      "px": 171,
-      "yalniz": 1226,
-      "oran": 0.139,
+      "px": 10,
+      "yalniz": 1221,
+      "oran": 0.008,
       "karede": true,
       "gorunur": false,
       "saydam": false
      },
      {
-      "id": "p1228",
+      "id": "p1254",
       "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
-      "px": 985,
-      "yalniz": 6472,
-      "oran": 0.152,
+      "px": 989,
+      "yalniz": 6437,
+      "oran": 0.154,
       "karede": true,
       "gorunur": false,
       "saydam": false
      },
      {
-      "id": "p1229",
+      "id": "p1255",
       "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 143,
-      "yalniz": 9246,
-      "oran": 0.015,
-      "karede": true,
-      "gorunur": false,
-      "saydam": false
-     },
-     {
-      "id": "p1237",
-      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
-      "px": 0,
-      "yalniz": 2510,
-      "oran": 0.0,
+      "px": 103,
+      "yalniz": 9203,
+      "oran": 0.011,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2725,122 +2715,122 @@
     "birim": null,
     "sema": {
      "sema11": [
-      690,
-      1771
+      900,
+      1723
      ],
      "sema12": [
-      560,
-      1552
+      546,
+      1501
      ],
      "sema13": [
-      1115,
-      2022
+      1089,
+      2002
      ],
      "sema15": [
-      1136,
-      2876
+      1051,
+      2866
      ],
      "sema17": [
-      603,
-      1375
+      593,
+      1365
      ],
      "sema18": [
-      1464,
-      4867
+      1140,
+      4853
      ],
      "sema19": [
-      552,
-      5639
+      455,
+      5613
      ],
      "sema20": [
-      2051,
-      3255
+      1893,
+      3240
      ],
      "sema21": [
-      1583,
-      2497
+      1504,
+      2485
      ]
     },
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1226",
+      "id": "p1252",
       "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
-      "px": 2579,
-      "yalniz": 5891,
-      "oran": 0.438,
+      "px": 2426,
+      "yalniz": 5906,
+      "oran": 0.411,
       "karede": true,
       "gorunur": true,
       "saydam": false
      },
      {
-      "id": "p1227",
+      "id": "p1253",
       "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
-      "px": 171,
-      "yalniz": 1226,
-      "oran": 0.139,
+      "px": 10,
+      "yalniz": 1221,
+      "oran": 0.008,
       "karede": true,
       "gorunur": false,
       "saydam": false
      },
      {
-      "id": "p1228",
+      "id": "p1254",
       "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
-      "px": 985,
-      "yalniz": 6472,
-      "oran": 0.152,
+      "px": 989,
+      "yalniz": 6437,
+      "oran": 0.154,
       "karede": true,
       "gorunur": false,
       "saydam": false
      },
      {
-      "id": "p1229",
+      "id": "p1255",
       "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 143,
-      "yalniz": 9246,
-      "oran": 0.015,
+      "px": 103,
+      "yalniz": 9203,
+      "oran": 0.011,
       "karede": true,
       "gorunur": false,
       "saydam": false
      },
      {
-      "id": "p1234",
+      "id": "p1260",
       "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
-      "px": 811,
-      "yalniz": 2649,
-      "oran": 0.306,
+      "px": 802,
+      "yalniz": 2650,
+      "oran": 0.303,
       "karede": true,
       "gorunur": true,
       "saydam": false
      },
      {
-      "id": "p1235",
+      "id": "p1261",
       "ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
-      "px": 3691,
-      "yalniz": 4526,
-      "oran": 0.816,
+      "px": 3653,
+      "yalniz": 4550,
+      "oran": 0.803,
       "karede": true,
       "gorunur": true,
       "saydam": false
      },
      {
-      "id": "p1236",
-      "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür",
-      "px": 2130,
-      "yalniz": 4828,
-      "oran": 0.441,
+      "id": "p1262",
+      "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)",
+      "px": 3323,
+      "yalniz": 5025,
+      "oran": 0.661,
       "karede": true,
       "gorunur": true,
       "saydam": false
      },
      {
-      "id": "p1237",
-      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
-      "px": 0,
-      "yalniz": 2510,
-      "oran": 0.0,
+      "id": "p1263",
+      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d). Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+      "px": 1548,
+      "yalniz": 2706,
+      "oran": 0.572,
       "karede": true,
-      "gorunur": false,
+      "gorunur": true,
       "saydam": false
      }
     ],
@@ -2860,7 +2850,7 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1227",
+      "id": "p1253",
       "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
       "px": 10726,
       "yalniz": 13521,
@@ -2886,11 +2876,11 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1226",
+      "id": "p1252",
       "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
-      "px": 13640,
-      "yalniz": 23742,
-      "oran": 0.575,
+      "px": 13400,
+      "yalniz": 24323,
+      "oran": 0.551,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -2910,8 +2900,8 @@
     "birim": null,
     "sema": {
      "sema11": [
-      15804,
-      20366
+      20140,
+      21344
      ]
     },
     "yabanci_sema": [],
@@ -2932,11 +2922,11 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1228",
+      "id": "p1254",
       "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
-      "px": 18905,
+      "px": 18854,
       "yalniz": 26721,
-      "oran": 0.707,
+      "oran": 0.706,
       "karede": false,
       "gorunur": true,
       "saydam": false
@@ -2956,16 +2946,16 @@
     "birim": null,
     "sema": {
      "sema12": [
-      1302,
-      2554
+      1603,
+      2669
      ]
     },
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1229",
+      "id": "p1255",
       "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 3062,
+      "px": 3061,
       "yalniz": 12683,
       "oran": 0.241,
       "karede": true,
@@ -3009,7 +2999,7 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1234",
+      "id": "p1260",
       "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
       "px": 2685,
       "yalniz": 8532,
@@ -3035,11 +3025,11 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1235",
+      "id": "p1261",
       "ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
-      "px": 8531,
-      "yalniz": 11328,
-      "oran": 0.753,
+      "px": 8432,
+      "yalniz": 11278,
+      "oran": 0.748,
       "karede": false,
       "gorunur": true,
       "saydam": false
@@ -3079,44 +3069,44 @@
     "birim": null,
     "sema": {
      "sema17": [
-      2608,
+      2554,
       3043
      ],
      "sema18": [
-      5521,
+      4662,
       10143
      ],
      "sema19": [
-      3656,
+      3403,
       8216
      ],
      "sema20": [
-      7942,
+      7439,
       8939
      ],
      "sema21": [
-      5948,
+      5745,
       6367
      ]
     },
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1236",
-      "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer; çizimdeki yol kesiğin dışında görünür",
-      "px": 9276,
-      "yalniz": 12449,
-      "oran": 0.745,
+      "id": "p1262",
+      "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de. Kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d)",
+      "px": 11706,
+      "yalniz": 13455,
+      "oran": 0.87,
       "karede": false,
       "gorunur": true,
       "saydam": false
      },
      {
-      "id": "p1237",
-      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer, çizimdeki yol kesiğin dışında görünür. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
-      "px": 3385,
-      "yalniz": 6229,
-      "oran": 0.543,
+      "id": "p1263",
+      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32; kablo ön kat kesiğinden geçer (çizimdeki yol da, P10.8d). Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+      "px": 4736,
+      "yalniz": 6378,
+      "oran": 0.743,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -5262,7 +5252,7 @@
     "yeni": 4,
     "gorunmeyen": [
      {
-      "id": "p1230",
+      "id": "p1256",
       "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
       "px": 224,
       "yalniz": 1221,
@@ -5272,7 +5262,7 @@
       "saydam": false
      },
      {
-      "id": "p1231",
+      "id": "p1257",
       "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
       "px": 0,
       "yalniz": 138,
@@ -5282,7 +5272,7 @@
       "saydam": false
      },
      {
-      "id": "p1232",
+      "id": "p1258",
       "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
       "px": 213,
       "yalniz": 1299,
@@ -5319,7 +5309,7 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1230",
+      "id": "p1256",
       "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
       "px": 224,
       "yalniz": 1221,
@@ -5329,7 +5319,7 @@
       "saydam": false
      },
      {
-      "id": "p1231",
+      "id": "p1257",
       "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
       "px": 0,
       "yalniz": 138,
@@ -5339,7 +5329,7 @@
       "saydam": false
      },
      {
-      "id": "p1232",
+      "id": "p1258",
       "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
       "px": 213,
       "yalniz": 1299,
@@ -5349,7 +5339,7 @@
       "saydam": false
      },
      {
-      "id": "p1233",
+      "id": "p1259",
       "ad": "Kablo yolu 8: Kafa 12 V (G17, 18 AWG çift): F3 5 A → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)",
       "px": 1029,
       "yalniz": 1142,
@@ -5375,28 +5365,28 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1230",
+      "id": "p1256",
       "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
-      "px": 2121,
-      "yalniz": 2468,
-      "oran": 0.859,
-      "karede": true,
+      "px": 6283,
+      "yalniz": 15300,
+      "oran": 0.411,
+      "karede": false,
       "gorunur": true,
       "saydam": false
      },
      {
-      "id": "p1232",
+      "id": "p1258",
       "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
-      "px": 1794,
-      "yalniz": 2316,
-      "oran": 0.775,
-      "karede": true,
+      "px": 12803,
+      "yalniz": 16292,
+      "oran": 0.786,
+      "karede": false,
       "gorunur": true,
       "saydam": false
      }
     ],
     "saydam": [],
-    "gecti": true
+    "gecti": false
    },
    {
     "adres": "32.2",
@@ -5411,7 +5401,7 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1231",
+      "id": "p1257",
       "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
       "px": 19238,
       "yalniz": 19357,
@@ -5437,7 +5427,7 @@
     "yabanci_sema": [],
     "parca": [
      {
-      "id": "p1233",
+      "id": "p1259",
       "ad": "Kablo yolu 8: Kafa 12 V (G17, 18 AWG çift): F3 5 A → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)",
       "px": 2217,
       "yalniz": 2434,
@@ -5559,9 +5549,9 @@
      {
       "id": "p0220",
       "ad": "Etek arka sol",
-      "px": 4063,
+      "px": 4048,
       "yalniz": 32270,
-      "oran": 0.126,
+      "oran": 0.125,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -6157,7 +6147,7 @@
       "saydam": false
      },
      {
-      "id": "p1083",
+      "id": "p1109",
       "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
       "px": 58,
       "yalniz": 2048,
@@ -6167,7 +6157,7 @@
       "saydam": false
      },
      {
-      "id": "p1225",
+      "id": "p1251",
       "ad": "Acil stop kontak gövdesi (1NC)",
       "px": 27,
       "yalniz": 1748,
@@ -6195,9 +6185,9 @@
      {
       "id": "p0220",
       "ad": "Etek arka sol",
-      "px": 4063,
+      "px": 4048,
       "yalniz": 32270,
-      "oran": 0.126,
+      "oran": 0.125,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -6843,7 +6833,7 @@
       "saydam": false
      },
      {
-      "id": "p1083",
+      "id": "p1109",
       "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
       "px": 58,
       "yalniz": 2048,
@@ -6853,7 +6843,7 @@
       "saydam": false
      },
      {
-      "id": "p1084",
+      "id": "p1110",
       "ad": "Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)",
       "px": 373,
       "yalniz": 746,
@@ -6863,7 +6853,7 @@
       "saydam": false
      },
      {
-      "id": "p1224",
+      "id": "p1250",
       "ad": "Acil stop mantarı + bilezik",
       "px": 1328,
       "yalniz": 1329,
@@ -6873,7 +6863,7 @@
       "saydam": false
      },
      {
-      "id": "p1225",
+      "id": "p1251",
       "ad": "Acil stop kontak gövdesi (1NC)",
       "px": 27,
       "yalniz": 1748,
@@ -7437,7 +7427,7 @@
       "saydam": false
      },
      {
-      "id": "p1224",
+      "id": "p1250",
       "ad": "Acil stop mantarı + bilezik",
       "px": 4526,
       "yalniz": 4526,
@@ -7447,7 +7437,7 @@
       "saydam": false
      },
      {
-      "id": "p1225",
+      "id": "p1251",
       "ad": "Acil stop kontak gövdesi (1NC)",
       "px": 5427,
       "yalniz": 5823,
@@ -7559,7 +7549,7 @@
        "masada_gorunur": true
       },
       {
-       "id": "p1225",
+       "id": "p1251",
        "ad": "Acil stop kontak gövdesi (1NC)",
        "px": 0,
        "masada": "33.6",
@@ -7745,7 +7735,7 @@
       "saydam": false
      },
      {
-      "id": "p1083",
+      "id": "p1109",
       "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
       "px": 7467,
       "yalniz": 7937,
@@ -7755,7 +7745,7 @@
       "saydam": false
      },
      {
-      "id": "p1084",
+      "id": "p1110",
       "ad": "Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)",
       "px": 2929,
       "yalniz": 2929,
@@ -7804,7 +7794,7 @@
        "masada_gorunur": true
       },
       {
-       "id": "p1083",
+       "id": "p1109",
        "ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)",
        "px": 0,
        "masada": "33.9",
@@ -21632,7 +21622,7 @@
      "vurgulu": [
       {
        "adres": "17.3",
-       "px": 15804
+       "px": 20140
       }
      ],
      "gecti": true
@@ -21644,7 +21634,7 @@
      "vurgulu": [
       {
        "adres": "17.5",
-       "px": 1302
+       "px": 1603
       }
      ],
      "gecti": true
@@ -21680,7 +21670,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 2608
+       "px": 2554
       }
      ],
      "gecti": true
@@ -21692,7 +21682,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 5521
+       "px": 4662
       }
      ],
      "gecti": true
@@ -21704,7 +21694,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 3656
+       "px": 3403
       }
      ],
      "gecti": true
@@ -21716,7 +21706,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 7942
+       "px": 7439
       }
      ],
      "gecti": true
@@ -21728,7 +21718,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 5948
+       "px": 5745
       }
      ],
      "gecti": true
@@ -22225,8 +22215,8 @@
  },
  "uc_etiket": {
   "konum": 23,
-  "etiket": 58,
-  "yok": 36,
+  "etiket": 59,
+  "yok": 35,
   "hata": [],
   "olcum": {
    "9": {
@@ -22330,6 +22320,11 @@
        "n": 1,
        "ad": "XL4016 C",
        "id": "p1045"
+      },
+      {
+       "n": 2,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084"
       }
      ],
      "ciz": [
@@ -22337,15 +22332,38 @@
        "n": 1,
        "ad": "XL4016 C",
        "id": "p1045",
-       "ax": 739.5831156993902,
-       "ay": 298.17975415815886,
-       "x": 739.5831156993902,
-       "y": 298.17975415815886,
+       "ax": 739.8769749018653,
+       "ay": 298.0779973439088,
+       "x": 739.8769749018653,
+       "y": 298.0779973439088,
        "kutu": {
-        "x0": 726.5831156993902,
-        "y0": 285.17975415815886,
-        "x1": 752.5831156993902,
-        "y1": 311.17975415815886
+        "x0": 726.8769749018653,
+        "y0": 285.0779973439088,
+        "x1": 752.8769749018653,
+        "y1": 311.0779973439088
+       },
+       "uzak": 0,
+       "yan": 0,
+       "alan": {
+        "x0": 18.000000000000014,
+        "x1": 1000,
+        "y0": 49.05,
+        "y1": 667.1999999999999
+       }
+      },
+      {
+       "n": 2,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084",
+       "ax": 909.5088219479038,
+       "ay": 253.85159463419657,
+       "x": 909.5088219479038,
+       "y": 253.85159463419657,
+       "kutu": {
+        "x0": 896.5088219479038,
+        "y0": 240.85159463419657,
+        "x1": 922.5088219479038,
+        "y1": 266.85159463419654
        },
        "uzak": 0,
        "yan": 0,
@@ -22362,7 +22380,7 @@
       "w": 1200,
       "h": 720
      },
-     "dom": 1
+     "dom": 2
     },
     "etk": {
      "acik": true,
@@ -22373,6 +22391,11 @@
        "n": 1,
        "ad": "XL4016 C",
        "id": "p1045"
+      },
+      {
+       "n": 2,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084"
       }
      ],
      "ciz": [
@@ -22380,18 +22403,41 @@
        "n": 1,
        "ad": "XL4016 C",
        "id": "p1045",
-       "ax": 611.453668750091,
-       "ay": 349.7629361119397,
-       "x": 628.4242314985681,
-       "y": 332.79237336346256,
+       "ax": 611.649507849579,
+       "ay": 349.6816688217844,
+       "x": 635.649507849579,
+       "y": 349.6816688217844,
        "kutu": {
-        "x0": 618.4242314985681,
-        "y0": 322.79237336346256,
-        "x1": 701.4242314985681,
-        "y1": 342.79237336346256
+        "x0": 625.649507849579,
+        "y0": 339.6816688217844,
+        "x1": 708.649507849579,
+        "y1": 359.6816688217844
        },
        "uzak": 24,
        "yan": 1,
+       "alan": {
+        "x0": 15.000000000000014,
+        "x1": 800.9999999999999,
+        "y0": 55.44000000000003,
+        "y1": 742.0600000000001
+       }
+      },
+      {
+       "n": 2,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084",
+       "ax": 770.3208876737273,
+       "ay": 307.12231129457757,
+       "x": 770.3208876737273,
+       "y": 167.12231129457757,
+       "kutu": {
+        "x0": 630.3208876737273,
+        "y0": 157.12231129457757,
+        "x1": 780.3208876737273,
+        "y1": 177.12231129457757
+       },
+       "uzak": 140,
+       "yan": -1,
        "alan": {
         "x0": 15.000000000000014,
         "x1": 800.9999999999999,
@@ -22405,10 +22451,11 @@
       "w": 1000,
       "h": 796
      },
-     "dom": 1
+     "dom": 2
     },
     "fark": {
-     "p1045": 25486
+     "p1045": 25394,
+     "p1084": 6237
     }
    },
    "14": {
@@ -22420,34 +22467,34 @@
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       },
       {
        "n": 2,
        "ad": "PCA9685",
-       "id": "p1170"
+       "id": "p1196"
       },
       {
        "n": 3,
        "ad": "BNO055",
-       "id": "p1183"
+       "id": "p1209"
       },
       {
        "n": 4,
        "ad": "Dağıtım kartı A",
-       "id": "p1144"
+       "id": "p1170"
       },
       {
        "n": 5,
        "ad": "Dağıtım kartı B",
-       "id": "p1157"
+       "id": "p1183"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209",
+       "id": "p1235",
        "ax": 963.7649078126022,
        "ay": 133.45713780328927,
        "x": 963.7649078126022,
@@ -22470,7 +22517,7 @@
       {
        "n": 2,
        "ad": "PCA9685",
-       "id": "p1170",
+       "id": "p1196",
        "ax": 912.7478284756622,
        "ay": 176.1529388771386,
        "x": 912.7478284756622,
@@ -22493,7 +22540,7 @@
       {
        "n": 3,
        "ad": "BNO055",
-       "id": "p1183",
+       "id": "p1209",
        "ax": 748.8528989682643,
        "ay": 124.43901659226867,
        "x": 770.9146305412846,
@@ -22516,7 +22563,7 @@
       {
        "n": 4,
        "ad": "Dağıtım kartı A",
-       "id": "p1144",
+       "id": "p1170",
        "ax": 737.9311205374161,
        "ay": 240.430835469712,
        "x": 737.9311205374161,
@@ -22539,7 +22586,7 @@
       {
        "n": 5,
        "ad": "Dağıtım kartı B",
-       "id": "p1157",
+       "id": "p1183",
        "ax": 293.5601619682985,
        "ay": 161.07223770881433,
        "x": 315.62189354131874,
@@ -22575,34 +22622,34 @@
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       },
       {
        "n": 2,
        "ad": "PCA9685",
-       "id": "p1170"
+       "id": "p1196"
       },
       {
        "n": 3,
        "ad": "BNO055",
-       "id": "p1183"
+       "id": "p1209"
       },
       {
        "n": 4,
        "ad": "Dağıtım kartı A",
-       "id": "p1144"
+       "id": "p1170"
       },
       {
        "n": 5,
        "ad": "Dağıtım kartı B",
-       "id": "p1157"
+       "id": "p1183"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209",
+       "id": "p1235",
        "ax": 798.9793668208422,
        "ay": 206.92329751656342,
        "x": 782.008804072365,
@@ -22625,7 +22672,7 @@
       {
        "n": 2,
        "ad": "PCA9685",
-       "id": "p1170",
+       "id": "p1196",
        "ax": 747.9987999670261,
        "ay": 247.126867598177,
        "x": 773.4546440897418,
@@ -22648,7 +22695,7 @@
       {
        "n": 3,
        "ad": "BNO055",
-       "id": "p1183",
+       "id": "p1209",
        "ax": 623.6925227332991,
        "ay": 192.58559629950255,
        "x": 640.6630854817763,
@@ -22671,7 +22718,7 @@
       {
        "n": 4,
        "ad": "Dağıtım kartı A",
-       "id": "p1144",
+       "id": "p1170",
        "ax": 598.4635719857258,
        "ay": 304.5999394055112,
        "x": 598.4635719857258,
@@ -22694,7 +22741,7 @@
       {
        "n": 5,
        "ad": "Dağıtım kartı B",
-       "id": "p1157",
+       "id": "p1183",
        "ax": 239.868289560281,
        "ay": 232.30739787837314,
        "x": 263.868289560281,
@@ -22723,11 +22770,11 @@
      "dom": 5
     },
     "fark": {
-     "p1144": 17770,
-     "p1157": 11128,
-     "p1170": 9192,
-     "p1183": 928,
-     "p1209": 3859
+     "p1170": 17770,
+     "p1183": 11128,
+     "p1196": 9192,
+     "p1209": 928,
+     "p1235": 3859
     }
    },
    "17.1": {
@@ -22739,14 +22786,14 @@
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 472.99766806665895,
        "ay": 315.3892212660079,
        "x": 472.99766806665895,
@@ -22782,14 +22829,14 @@
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 369.220298647727,
        "ay": 351.16842652058506,
        "x": 369.220298647727,
@@ -22818,7 +22865,7 @@
      "dom": 1
     },
     "fark": {
-     "p1085": 15451
+     "p1111": 15451
     }
    },
    "17.2": {
@@ -22830,28 +22877,28 @@
       {
        "n": 1,
        "ad": "Ana sigorta yuvası",
-       "id": "p1082"
+       "id": "p1108"
       },
       {
        "n": 2,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Ana sigorta yuvası",
-       "id": "p1082",
-       "ax": 814.4756584862815,
-       "ay": 308.36817049483955,
-       "x": 814.4756584862815,
-       "y": 308.36817049483955,
+       "id": "p1108",
+       "ax": 811.077253494108,
+       "ay": 307.499012688374,
+       "x": 811.077253494108,
+       "y": 307.499012688374,
        "kutu": {
-        "x0": 801.4756584862815,
-        "y0": 295.36817049483955,
-        "x1": 827.4756584862815,
-        "y1": 321.36817049483955
+        "x0": 798.077253494108,
+        "y0": 294.499012688374,
+        "x1": 824.077253494108,
+        "y1": 320.499012688374
        },
        "uzak": 0,
        "yan": 0,
@@ -22865,16 +22912,16 @@
       {
        "n": 2,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
-       "ax": 628.94547950228,
-       "ay": 183.65523516649793,
-       "x": 628.94547950228,
-       "y": 183.65523516649793,
+       "id": "p1097",
+       "ax": 626.8390611442239,
+       "ay": 183.3022949895884,
+       "x": 626.8390611442239,
+       "y": 183.3022949895884,
        "kutu": {
-        "x0": 615.94547950228,
-        "y0": 170.65523516649793,
-        "x1": 641.94547950228,
-        "y1": 196.65523516649793
+        "x0": 613.8390611442239,
+        "y0": 170.3022949895884,
+        "x1": 639.8390611442239,
+        "y1": 196.3022949895884
        },
        "uzak": 0,
        "yan": 0,
@@ -22901,28 +22948,28 @@
       {
        "n": 1,
        "ad": "Ana sigorta yuvası",
-       "id": "p1082"
+       "id": "p1108"
       },
       {
        "n": 2,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Ana sigorta yuvası",
-       "id": "p1082",
-       "ax": 679.0264214569249,
-       "ay": 368.189527028074,
-       "x": 679.0264214569249,
-       "y": 368.189527028074,
+       "id": "p1108",
+       "ax": 679.5316369364716,
+       "ay": 365.8126288261781,
+       "x": 679.5316369364716,
+       "y": 365.8126288261781,
        "kutu": {
-        "x0": 556.0264214569249,
-        "y0": 358.189527028074,
-        "x1": 689.0264214569249,
-        "y1": 378.189527028074
+        "x0": 556.5316369364716,
+        "y0": 355.8126288261781,
+        "x1": 689.5316369364716,
+        "y1": 375.8126288261781
        },
        "uzak": 0,
        "yan": -1,
@@ -22936,16 +22983,16 @@
       {
        "n": 2,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
-       "ax": 513.8926544864635,
-       "ay": 242.85301150403845,
-       "x": 513.8926544864635,
-       "y": 242.85301150403845,
+       "id": "p1097",
+       "ax": 513.5112880671334,
+       "ay": 240.40262713401586,
+       "x": 513.5112880671334,
+       "y": 240.40262713401586,
        "kutu": {
-        "x0": 503.89265448646347,
-        "y0": 232.85301150403845,
-        "x1": 616.8926544864635,
-        "y1": 252.85301150403845
+        "x0": 503.51128806713336,
+        "y0": 230.40262713401586,
+        "x1": 616.5112880671334,
+        "y1": 250.40262713401586
        },
        "uzak": 0,
        "yan": 1,
@@ -22965,8 +23012,8 @@
      "dom": 2
     },
     "fark": {
-     "p1071": 25547,
-     "p1082": 11014
+     "p1097": 25728,
+     "p1108": 8244
     }
    },
    "17.4": {
@@ -22978,12 +23025,12 @@
       {
        "n": 1,
        "ad": "Röle K1",
-       "id": "p1078"
+       "id": "p1104"
       },
       {
        "n": 2,
        "ad": "Anahtarlı bara",
-       "id": "p1110"
+       "id": "p1136"
       },
       {
        "n": 3,
@@ -22993,14 +23040,14 @@
       {
        "n": 4,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Röle K1",
-       "id": "p1078",
+       "id": "p1104",
        "ax": 297.696077851329,
        "ay": 159.6389972063099,
        "x": 297.696077851329,
@@ -23023,7 +23070,7 @@
       {
        "n": 2,
        "ad": "Anahtarlı bara",
-       "id": "p1110",
+       "id": "p1136",
        "ax": 646.0808561939314,
        "ay": 134.044659345214,
        "x": 646.0808561939314,
@@ -23069,7 +23116,7 @@
       {
        "n": 4,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 737.0016838833403,
        "ay": 249.33075096153095,
        "x": 737.0016838833403,
@@ -23105,12 +23152,12 @@
       {
        "n": 1,
        "ad": "Röle K1",
-       "id": "p1078"
+       "id": "p1104"
       },
       {
        "n": 2,
        "ad": "Anahtarlı bara",
-       "id": "p1110"
+       "id": "p1136"
       },
       {
        "n": 3,
@@ -23120,14 +23167,14 @@
       {
        "n": 4,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Röle K1",
-       "id": "p1078",
+       "id": "p1104",
        "ax": 173.97101912798811,
        "ay": 178.09998259099163,
        "x": 173.97101912798811,
@@ -23150,7 +23197,7 @@
       {
        "n": 2,
        "ad": "Anahtarlı bara",
-       "id": "p1110",
+       "id": "p1136",
        "ax": 559.6110341013249,
        "ay": 149.5758106460912,
        "x": 559.6110341013249,
@@ -23174,14 +23221,14 @@
        "n": 3,
        "ad": "Ön şarj kartı",
        "id": "p1058",
-       "ax": 421.45575197563994,
+       "ax": 421.45575197564,
        "ay": 545.1706992949473,
-       "x": 421.45575197563994,
+       "x": 421.45575197564,
        "y": 545.1706992949473,
        "kutu": {
-        "x0": 411.45575197563994,
+        "x0": 411.45575197564,
         "y0": 535.1706992949473,
-        "x1": 511.45575197563994,
+        "x1": 511.45575197564,
         "y1": 555.1706992949473
        },
        "uzak": 0,
@@ -23196,7 +23243,7 @@
       {
        "n": 4,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 661.2832647278549,
        "ay": 277.5932081367796,
        "x": 661.2832647278549,
@@ -23225,10 +23272,10 @@
      "dom": 4
     },
     "fark": {
-     "p1058": 11513,
-     "p1078": 14619,
-     "p1085": 9346,
-     "p1110": 6707
+     "p1058": 11824,
+     "p1104": 12934,
+     "p1111": 8218,
+     "p1136": 6701
     }
    },
    "17.5": {
@@ -23240,7 +23287,7 @@
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110"
+       "id": "p1136"
       },
       {
        "n": 2,
@@ -23250,7 +23297,7 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       },
       {
        "n": 4,
@@ -23262,7 +23309,7 @@
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110",
+       "id": "p1136",
        "ax": 633.0441201591486,
        "ay": 142.48911473322903,
        "x": 633.0441201591486,
@@ -23308,7 +23355,7 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 565.2504085847283,
        "ay": 178.67562783394678,
        "x": 565.2504085847283,
@@ -23367,7 +23414,7 @@
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110"
+       "id": "p1136"
       },
       {
        "n": 2,
@@ -23377,7 +23424,7 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       },
       {
        "n": 4,
@@ -23389,7 +23436,7 @@
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110",
+       "id": "p1136",
        "ax": 540.2014113095375,
        "ay": 159.30305393832248,
        "x": 540.2014113095375,
@@ -23435,7 +23482,7 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 464.8116477887827,
        "ay": 199.66803615498506,
        "x": 464.8116477887827,
@@ -23488,9 +23535,9 @@
     },
     "fark": {
      "p0993": 3064,
-     "p1045": 5025,
-     "p1085": 1403,
-     "p1110": 2502
+     "p1045": 5024,
+     "p1111": 1371,
+     "p1136": 2320
     }
    },
    "17.6": {
@@ -23502,19 +23549,19 @@
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110"
+       "id": "p1136"
       },
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110",
+       "id": "p1136",
        "ax": 710.0551742649126,
        "ay": 123.16401064435595,
        "x": 710.0551742649126,
@@ -23537,7 +23584,7 @@
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 628.7160724926271,
        "ay": 244.94516910892312,
        "x": 628.7160724926271,
@@ -23573,19 +23620,19 @@
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110"
+       "id": "p1136"
       },
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Anahtarlı bara",
-       "id": "p1110",
+       "id": "p1136",
        "ax": 629.4080876693835,
        "ay": 137.59923298735276,
        "x": 629.4080876693835,
@@ -23608,7 +23655,7 @@
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 540.0101857309055,
        "ay": 272.7467566041901,
        "x": 540.0101857309055,
@@ -23637,8 +23684,8 @@
      "dom": 2
     },
     "fark": {
-     "p1085": 7759,
-     "p1110": 8666
+     "p1111": 6002,
+     "p1136": 7727
     }
    },
    "17.7": {
@@ -23650,7 +23697,7 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       },
       {
        "n": 2,
@@ -23660,14 +23707,14 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
+       "id": "p1097",
        "ax": 659.3261042124085,
        "ay": 155.35208332870445,
        "x": 659.3261042124085,
@@ -23713,7 +23760,7 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 486.04848732771455,
        "ay": 241.47697536810088,
        "x": 486.04848732771455,
@@ -23749,7 +23796,7 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       },
       {
        "n": 2,
@@ -23759,14 +23806,14 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
+       "id": "p1097",
        "ax": 573.0247778687456,
        "ay": 173.12406161639768,
        "x": 573.0247778687456,
@@ -23812,7 +23859,7 @@
       {
        "n": 3,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 382.6048226677451,
        "ay": 268.8475926249056,
        "x": 382.6048226677451,
@@ -23842,8 +23889,8 @@
     },
     "fark": {
      "p1019": 1440,
-     "p1071": 17551,
-     "p1085": 1233
+     "p1097": 17551,
+     "p1111": 1014
     }
    },
    "17.8": {
@@ -23855,15 +23902,20 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       },
       {
        "n": 2,
-       "ad": "Arayüz kartı / PC817 modülü",
-       "id": "p1131"
+       "ad": "Acil stop düğümü (mantar NC çıkışı)",
+       "id": "p1071"
       },
       {
        "n": 3,
+       "ad": "Arayüz kartı / PC817 modülü",
+       "id": "p1157"
+      },
+      {
+       "n": 4,
        "ad": "Ön şarj kartı",
        "id": "p1058"
       }
@@ -23872,16 +23924,16 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
-       "ax": 784.3956657347936,
-       "ay": 198.77117691965327,
-       "x": 784.3956657347936,
-       "y": 198.77117691965327,
+       "id": "p1097",
+       "ax": 781.7087800269176,
+       "ay": 195.60762878674888,
+       "x": 781.7087800269176,
+       "y": 195.60762878674888,
        "kutu": {
-        "x0": 771.3956657347936,
-        "y0": 185.77117691965327,
-        "x1": 797.3956657347936,
-        "y1": 211.77117691965327
+        "x0": 768.7087800269176,
+        "y0": 182.60762878674888,
+        "x1": 794.7087800269176,
+        "y1": 208.60762878674888
        },
        "uzak": 0,
        "yan": 0,
@@ -23894,17 +23946,17 @@
       },
       {
        "n": 2,
-       "ad": "Arayüz kartı / PC817 modülü",
-       "id": "p1131",
-       "ax": 35.599477738399976,
-       "ay": 368.1192136100777,
-       "x": 35.599477738399976,
-       "y": 368.1192136100777,
+       "ad": "Acil stop düğümü (mantar NC çıkışı)",
+       "id": "p1071",
+       "ax": 395.1300790354204,
+       "ay": 220.90435644963975,
+       "x": 395.1300790354204,
+       "y": 220.90435644963975,
        "kutu": {
-        "x0": 22.599477738399976,
-        "y0": 355.1192136100777,
-        "x1": 48.599477738399976,
-        "y1": 381.1192136100777
+        "x0": 382.1300790354204,
+        "y0": 207.90435644963975,
+        "x1": 408.1300790354204,
+        "y1": 233.90435644963975
        },
        "uzak": 0,
        "yan": 0,
@@ -23917,17 +23969,40 @@
       },
       {
        "n": 3,
+       "ad": "Arayüz kartı / PC817 modülü",
+       "id": "p1157",
+       "ax": 41.52462269437498,
+       "ay": 361.01299830112106,
+       "x": 41.52462269437498,
+       "y": 361.01299830112106,
+       "kutu": {
+        "x0": 28.524622694374983,
+        "y0": 348.01299830112106,
+        "x1": 54.52462269437498,
+        "y1": 374.01299830112106
+       },
+       "uzak": 0,
+       "yan": 0,
+       "alan": {
+        "x0": 18.000000000000014,
+        "x1": 1000,
+        "y0": 49.05,
+        "y1": 667.1999999999999
+       }
+      },
+      {
+       "n": 4,
        "ad": "Ön şarj kartı",
        "id": "p1058",
-       "ax": 253.18502078775552,
-       "ay": 295.1070053447558,
-       "x": 253.18502078775552,
-       "y": 295.1070053447558,
+       "ax": 255.67395555366363,
+       "ay": 290.0393065119145,
+       "x": 255.67395555366363,
+       "y": 290.0393065119145,
        "kutu": {
-        "x0": 240.18502078775552,
-        "y0": 282.1070053447558,
-        "x1": 266.18502078775555,
-        "y1": 308.1070053447558
+        "x0": 242.67395555366363,
+        "y0": 277.0393065119145,
+        "x1": 268.67395555366363,
+        "y1": 303.0393065119145
        },
        "uzak": 0,
        "yan": 0,
@@ -23944,7 +24019,7 @@
       "w": 1200,
       "h": 720
      },
-     "dom": 3
+     "dom": 4
     },
     "etk": {
      "acik": true,
@@ -23954,15 +24029,20 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       },
       {
        "n": 2,
-       "ad": "Arayüz kartı / PC817 modülü",
-       "id": "p1131"
+       "ad": "Acil stop düğümü (mantar NC çıkışı)",
+       "id": "p1071"
       },
       {
        "n": 3,
+       "ad": "Arayüz kartı / PC817 modülü",
+       "id": "p1157"
+      },
+      {
+       "n": 4,
        "ad": "Ön şarj kartı",
        "id": "p1058"
       }
@@ -23971,16 +24051,16 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
-       "ax": 658.2357316105036,
-       "ay": 248.206265260438,
-       "x": 658.2357316105036,
-       "y": 248.206265260438,
+       "id": "p1097",
+       "ax": 656.3719649037326,
+       "ay": 245.12626631811582,
+       "x": 656.3719649037326,
+       "y": 245.12626631811582,
        "kutu": {
-        "x0": 648.2357316105036,
-        "y0": 238.206265260438,
-        "x1": 761.2357316105036,
-        "y1": 258.206265260438
+        "x0": 646.3719649037326,
+        "y0": 235.12626631811582,
+        "x1": 759.3719649037326,
+        "y1": 255.12626631811582
        },
        "uzak": 0,
        "yan": 1,
@@ -23993,17 +24073,17 @@
       },
       {
        "n": 2,
-       "ad": "Arayüz kartı / PC817 modülü",
-       "id": "p1131",
-       "ax": 25.88187580139334,
-       "ay": 398.4341825056806,
-       "x": 25.88187580139334,
-       "y": 398.4341825056806,
+       "ad": "Acil stop düğümü (mantar NC çıkışı)",
+       "id": "p1071",
+       "ax": 308.69844084428587,
+       "ay": 268.94649204862714,
+       "x": 308.69844084428587,
+       "y": 268.94649204862714,
        "kutu": {
-        "x0": 15.881875801393338,
-        "y0": 388.4341825056806,
-        "x1": 203.88187580139333,
-        "y1": 408.4341825056806
+        "x0": 298.69844084428587,
+        "y0": 258.94649204862714,
+        "x1": 528.6984408442859,
+        "y1": 278.94649204862714
        },
        "uzak": 0,
        "yan": 1,
@@ -24016,17 +24096,40 @@
       },
       {
        "n": 3,
+       "ad": "Arayüz kartı / PC817 modülü",
+       "id": "p1157",
+       "ax": 29.543703209921112,
+       "ay": 392.6539314614292,
+       "x": 29.543703209921112,
+       "y": 392.6539314614292,
+       "kutu": {
+        "x0": 19.543703209921112,
+        "y0": 382.6539314614292,
+        "x1": 207.54370320992112,
+        "y1": 402.6539314614292
+       },
+       "uzak": 0,
+       "yan": 1,
+       "alan": {
+        "x0": 15.000000000000014,
+        "x1": 800.9999999999999,
+        "y0": 55.44000000000003,
+        "y1": 742.0600000000001
+       }
+      },
+      {
+       "n": 4,
        "ad": "Ön şarj kartı",
        "id": "p1058",
-       "ax": 192.42461704732955,
-       "ay": 336.87505916135115,
-       "x": 192.42461704732955,
-       "y": 336.87505916135115,
+       "ax": 194.16650010713138,
+       "ay": 332.40109274024053,
+       "x": 194.16650010713138,
+       "y": 332.40109274024053,
        "kutu": {
-        "x0": 182.42461704732955,
-        "y0": 326.87505916135115,
-        "x1": 282.42461704732955,
-        "y1": 346.87505916135115
+        "x0": 184.16650010713138,
+        "y0": 322.40109274024053,
+        "x1": 284.16650010713136,
+        "y1": 342.40109274024053
        },
        "uzak": 0,
        "yan": 1,
@@ -24043,12 +24146,13 @@
       "w": 1000,
       "h": 796
      },
-     "dom": 3
+     "dom": 4
     },
     "fark": {
-     "p1058": 3984,
-     "p1071": 18449,
-     "p1131": 6261
+     "p1058": 4512,
+     "p1071": 666,
+     "p1097": 18154,
+     "p1157": 6318
     }
    },
    "17.9": {
@@ -24060,14 +24164,14 @@
       {
        "n": 1,
        "ad": "Arayüz kartı",
-       "id": "p1131"
+       "id": "p1157"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Arayüz kartı",
-       "id": "p1131",
+       "id": "p1157",
        "ax": 346.0098772603283,
        "ay": 49.595785455106444,
        "x": 368.0716088333486,
@@ -24103,14 +24207,14 @@
       {
        "n": 1,
        "ad": "Arayüz kartı",
-       "id": "p1131"
+       "id": "p1157"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Arayüz kartı",
-       "id": "p1131",
+       "id": "p1157",
        "ax": 232.3586252357564,
        "ay": 73.6247916342498,
        "x": 232.3586252357564,
@@ -24139,7 +24243,7 @@
      "dom": 1
     },
     "fark": {
-     "p1131": 14487
+     "p1157": 14478
     }
    },
    "17.10": {
@@ -24151,7 +24255,7 @@
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       },
       {
        "n": 2,
@@ -24161,7 +24265,7 @@
       {
        "n": 3,
        "ad": "Arayüz kartı",
-       "id": "p1131"
+       "id": "p1157"
       },
       {
        "n": 4,
@@ -24171,29 +24275,29 @@
       {
        "n": 5,
        "ad": "HC-SR04 sağ",
-       "id": "p1220"
+       "id": "p1246"
       },
       {
        "n": 6,
        "ad": "PCA9685",
-       "id": "p1170"
+       "id": "p1196"
       },
       {
        "n": 7,
        "ad": "HC-SR04 orta",
-       "id": "p1214"
+       "id": "p1240"
       },
       {
        "n": 8,
        "ad": "HC-SR04 sol",
-       "id": "p1210"
+       "id": "p1236"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209",
+       "id": "p1235",
        "ax": 722.5620155348033,
        "ay": 126.74079215368106,
        "x": 722.5620155348033,
@@ -24239,7 +24343,7 @@
       {
        "n": 3,
        "ad": "Arayüz kartı",
-       "id": "p1131",
+       "id": "p1157",
        "ax": 290.1732687841175,
        "ay": 139.02809067270334,
        "x": 290.1732687841175,
@@ -24285,7 +24389,7 @@
       {
        "n": 5,
        "ad": "HC-SR04 sağ",
-       "id": "p1220",
+       "id": "p1246",
        "ax": 718.1151590486804,
        "ay": 645.4829208503662,
        "x": 718.1151590486804,
@@ -24308,7 +24412,7 @@
       {
        "n": 6,
        "ad": "PCA9685",
-       "id": "p1170",
+       "id": "p1196",
        "ax": 734.0925467825964,
        "ay": 240.52528932749775,
        "x": 734.0925467825964,
@@ -24331,7 +24435,7 @@
       {
        "n": 7,
        "ad": "HC-SR04 orta",
-       "id": "p1214",
+       "id": "p1240",
        "ax": 520.4439788867978,
        "ay": 645.4829208503662,
        "x": 520.4439788867978,
@@ -24354,7 +24458,7 @@
       {
        "n": 8,
        "ad": "HC-SR04 sol",
-       "id": "p1210",
+       "id": "p1236",
        "ax": 322.77279872491533,
        "ay": 645.4829208503662,
        "x": 322.77279872491533,
@@ -24390,7 +24494,7 @@
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       },
       {
        "n": 2,
@@ -24400,7 +24504,7 @@
       {
        "n": 3,
        "ad": "Arayüz kartı",
-       "id": "p1131"
+       "id": "p1157"
       },
       {
        "n": 4,
@@ -24410,29 +24514,29 @@
       {
        "n": 5,
        "ad": "HC-SR04 sağ",
-       "id": "p1220"
+       "id": "p1246"
       },
       {
        "n": 6,
        "ad": "PCA9685",
-       "id": "p1170"
+       "id": "p1196"
       },
       {
        "n": 7,
        "ad": "HC-SR04 orta",
-       "id": "p1214"
+       "id": "p1240"
       },
       {
        "n": 8,
        "ad": "HC-SR04 sol",
-       "id": "p1210"
+       "id": "p1236"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209",
+       "id": "p1235",
        "ax": 621.625920734974,
        "ay": 165.85336677615118,
        "x": 621.625920734974,
@@ -24478,7 +24582,7 @@
       {
        "n": 3,
        "ad": "Arayüz kartı",
-       "id": "p1131",
+       "id": "p1157",
        "ax": 183.91523335885464,
        "ay": 178.3411291408163,
        "x": 183.91523335885464,
@@ -24524,7 +24628,7 @@
       {
        "n": 5,
        "ad": "HC-SR04 sağ",
-       "id": "p1220",
+       "id": "p1246",
        "ax": 617.2958031262671,
        "ay": 691.3303126558119,
        "x": 617.2958031262671,
@@ -24547,7 +24651,7 @@
       {
        "n": 6,
        "ad": "PCA9685",
-       "id": "p1170",
+       "id": "p1196",
        "ax": 632.7473420852275,
        "ay": 281.6112911279875,
        "x": 632.7473420852275,
@@ -24570,7 +24674,7 @@
       {
        "n": 7,
        "ad": "HC-SR04 orta",
-       "id": "p1214",
+       "id": "p1240",
        "ax": 416.9329435433758,
        "ay": 691.3303126558119,
        "x": 416.9329435433758,
@@ -24593,7 +24697,7 @@
       {
        "n": 8,
        "ad": "HC-SR04 sol",
-       "id": "p1210",
+       "id": "p1236",
        "ax": 216.57008396048448,
        "ay": 691.3303126558119,
        "x": 216.57008396048448,
@@ -24622,14 +24726,14 @@
      "dom": 8
     },
     "fark": {
-     "p0980": 1366,
+     "p0980": 1319,
      "p0993": 708,
-     "p1131": 9046,
-     "p1170": 5336,
-     "p1209": 3297,
-     "p1210": 2843,
-     "p1214": 2765,
-     "p1220": 2780
+     "p1157": 9194,
+     "p1196": 5336,
+     "p1235": 3564,
+     "p1236": 2834,
+     "p1240": 2765,
+     "p1246": 2780
     }
    },
    "17.11": {
@@ -24641,28 +24745,33 @@
       {
        "n": 1,
        "ad": "PCA9685",
-       "id": "p1170"
+       "id": "p1196"
       },
       {
        "n": 2,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084"
+      },
+      {
+       "n": 3,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "PCA9685",
-       "id": "p1170",
-       "ax": 318.4224430005039,
-       "ay": 534.617979467104,
-       "x": 318.4224430005039,
-       "y": 534.617979467104,
+       "id": "p1196",
+       "ax": 287.0023960882373,
+       "ay": 543.6864568481224,
+       "x": 287.0023960882373,
+       "y": 543.6864568481224,
        "kutu": {
-        "x0": 305.4224430005039,
-        "y0": 521.617979467104,
-        "x1": 331.4224430005039,
-        "y1": 547.617979467104
+        "x0": 274.0023960882373,
+        "y0": 530.6864568481224,
+        "x1": 300.0023960882373,
+        "y1": 556.6864568481224
        },
        "uzak": 0,
        "yan": 0,
@@ -24670,22 +24779,22 @@
         "x0": 18.000000000000014,
         "x1": 1000,
         "y0": 49.05,
-        "y1": 667.1999999999999
+        "y1": 664.95
        }
       },
       {
        "n": 2,
-       "ad": "ESP32",
-       "id": "p1209",
-       "ax": 441.4285601557619,
-       "ay": 376.5703795887505,
-       "x": 441.4285601557619,
-       "y": 376.5703795887505,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084",
+       "ax": 784.352829880032,
+       "ay": 116.86444919598306,
+       "x": 784.352829880032,
+       "y": 116.86444919598306,
        "kutu": {
-        "x0": 428.4285601557619,
-        "y0": 363.5703795887505,
-        "x1": 454.4285601557619,
-        "y1": 389.5703795887505
+        "x0": 771.352829880032,
+        "y0": 103.86444919598306,
+        "x1": 797.352829880032,
+        "y1": 129.86444919598307
        },
        "uzak": 0,
        "yan": 0,
@@ -24693,7 +24802,30 @@
         "x0": 18.000000000000014,
         "x1": 1000,
         "y0": 49.05,
-        "y1": 667.1999999999999
+        "y1": 664.95
+       }
+      },
+      {
+       "n": 3,
+       "ad": "ESP32",
+       "id": "p1235",
+       "ax": 401.1453633281201,
+       "ay": 398.5475369206377,
+       "x": 401.1453633281201,
+       "y": 398.5475369206377,
+       "kutu": {
+        "x0": 388.1453633281201,
+        "y0": 385.5475369206377,
+        "x1": 414.1453633281201,
+        "y1": 411.5475369206377
+       },
+       "uzak": 0,
+       "yan": 0,
+       "alan": {
+        "x0": 18.000000000000014,
+        "x1": 1000,
+        "y0": 49.05,
+        "y1": 664.95
        }
       }
      ],
@@ -24702,7 +24834,7 @@
       "w": 1200,
       "h": 720
      },
-     "dom": 2
+     "dom": 3
     },
     "etk": {
      "acik": true,
@@ -24712,28 +24844,33 @@
       {
        "n": 1,
        "ad": "PCA9685",
-       "id": "p1170"
+       "id": "p1196"
       },
       {
        "n": 2,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084"
+      },
+      {
+       "n": 3,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "PCA9685",
-       "id": "p1170",
-       "ax": 196.82825239453788,
-       "ay": 594.8122332263031,
-       "x": 196.82825239453788,
-       "y": 594.8122332263031,
+       "id": "p1196",
+       "ax": 169.01948978253728,
+       "ay": 582.7788195303252,
+       "x": 169.01948978253728,
+       "y": 582.7788195303252,
        "kutu": {
-        "x0": 186.82825239453788,
-        "y0": 584.8122332263031,
-        "x1": 269.8282523945379,
-        "y1": 604.8122332263031
+        "x0": 159.01948978253728,
+        "y0": 572.7788195303252,
+        "x1": 242.01948978253728,
+        "y1": 592.7788195303252
        },
        "uzak": 0,
        "yan": 1,
@@ -24741,22 +24878,45 @@
         "x0": 15.000000000000014,
         "x1": 800.9999999999999,
         "y0": 55.44000000000003,
-        "y1": 742.0600000000001
+        "y1": 711.81
        }
       },
       {
        "n": 2,
-       "ad": "ESP32",
-       "id": "p1209",
-       "ax": 332.8973204436375,
-       "ay": 419.2237652604414,
-       "x": 332.8973204436375,
-       "y": 419.2237652604414,
+       "ad": "Dağıtım kartı C (kafa)",
+       "id": "p1084",
+       "ax": 701.3223868425191,
+       "ay": 126.872844798035,
+       "x": 701.3223868425191,
+       "y": 126.872844798035,
        "kutu": {
-        "x0": 322.8973204436375,
-        "y0": 409.2237652604414,
-        "x1": 389.8973204436375,
-        "y1": 429.2237652604414
+        "x0": 561.3223868425191,
+        "y0": 116.872844798035,
+        "x1": 711.3223868425191,
+        "y1": 136.872844798035
+       },
+       "uzak": 0,
+       "yan": -1,
+       "alan": {
+        "x0": 15.000000000000014,
+        "x1": 800.9999999999999,
+        "y0": 55.44000000000003,
+        "y1": 711.81
+       }
+      },
+      {
+       "n": 3,
+       "ad": "ESP32",
+       "id": "p1235",
+       "ax": 290.553868633984,
+       "ay": 428.20144442658074,
+       "x": 290.553868633984,
+       "y": 428.20144442658074,
+       "kutu": {
+        "x0": 280.553868633984,
+        "y0": 418.20144442658074,
+        "x1": 347.553868633984,
+        "y1": 438.20144442658074
        },
        "uzak": 0,
        "yan": 1,
@@ -24764,7 +24924,7 @@
         "x0": 15.000000000000014,
         "x1": 800.9999999999999,
         "y0": 55.44000000000003,
-        "y1": 742.0600000000001
+        "y1": 711.81
        }
       }
      ],
@@ -24773,11 +24933,12 @@
       "w": 1000,
       "h": 796
      },
-     "dom": 2
+     "dom": 3
     },
     "fark": {
-     "p1170": 4743,
-     "p1209": 7402
+     "p1084": 4822,
+     "p1196": 3758,
+     "p1235": 6830
     }
    },
    "29": {
@@ -25461,38 +25622,28 @@
       {
        "n": 1,
        "ad": "Dağıtım kartı A",
-       "id": "p1144"
+       "id": "p1170"
       },
       {
        "n": 2,
-       "ad": "sağ S1 (omuz öne-arka) servosu",
-       "id": "p0060"
-      },
-      {
-       "n": 3,
        "ad": "Dağıtım kartı B",
-       "id": "p1157"
-      },
-      {
-       "n": 4,
-       "ad": "sol S1 (omuz öne-arka) servosu",
-       "id": "p0133"
+       "id": "p1183"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Dağıtım kartı A",
-       "id": "p1144",
-       "ax": 439.4588937933224,
-       "ay": 562.0411764857454,
-       "x": 439.4588937933224,
-       "y": 562.0411764857454,
+       "id": "p1170",
+       "ax": 383.48374844186543,
+       "ay": 91.8073555396704,
+       "x": 383.48374844186543,
+       "y": 91.8073555396704,
        "kutu": {
-        "x0": 426.4588937933224,
-        "y0": 549.0411764857454,
-        "x1": 452.4588937933224,
-        "y1": 575.0411764857454
+        "x0": 370.48374844186543,
+        "y0": 78.8073555396704,
+        "x1": 396.48374844186543,
+        "y1": 104.8073555396704
        },
        "uzak": 0,
        "yan": 0,
@@ -25505,63 +25656,17 @@
       },
       {
        "n": 2,
-       "ad": "sağ S1 (omuz öne-arka) servosu",
-       "id": "p0060",
-       "ax": 432.93201487972607,
-       "ay": 80.8813709719794,
-       "x": 432.93201487972607,
-       "y": 80.8813709719794,
-       "kutu": {
-        "x0": 419.93201487972607,
-        "y0": 67.8813709719794,
-        "x1": 445.93201487972607,
-        "y1": 93.8813709719794
-       },
-       "uzak": 0,
-       "yan": 0,
-       "alan": {
-        "x0": 18.000000000000014,
-        "x1": 1000,
-        "y0": 49.05,
-        "y1": 667.1999999999999
-       }
-      },
-      {
-       "n": 3,
        "ad": "Dağıtım kartı B",
-       "id": "p1157",
-       "ax": 496.8351605322079,
-       "ay": 542.5703860649829,
-       "x": 496.8351605322079,
-       "y": 542.5703860649829,
+       "id": "p1183",
+       "ax": 636.4277975406219,
+       "ay": 91.8073555396704,
+       "x": 636.4277975406219,
+       "y": 91.8073555396704,
        "kutu": {
-        "x0": 483.8351605322079,
-        "y0": 529.5703860649829,
-        "x1": 509.8351605322079,
-        "y1": 555.5703860649829
-       },
-       "uzak": 0,
-       "yan": 0,
-       "alan": {
-        "x0": 18.000000000000014,
-        "x1": 1000,
-        "y0": 49.05,
-        "y1": 667.1999999999999
-       }
-      },
-      {
-       "n": 4,
-       "ad": "sol S1 (omuz öne-arka) servosu",
-       "id": "p0133",
-       "ax": 558.4819329284984,
-       "ay": 68.89670813679328,
-       "x": 558.4819329284984,
-       "y": 68.89670813679328,
-       "kutu": {
-        "x0": 545.4819329284984,
-        "y0": 55.89670813679328,
-        "x1": 571.4819329284984,
-        "y1": 81.89670813679328
+        "x0": 623.4277975406219,
+        "y0": 78.8073555396704,
+        "x1": 649.4277975406219,
+        "y1": 104.8073555396704
        },
        "uzak": 0,
        "yan": 0,
@@ -25578,7 +25683,7 @@
       "w": 1200,
       "h": 720
      },
-     "dom": 4
+     "dom": 2
     },
     "etk": {
      "acik": true,
@@ -25588,38 +25693,28 @@
       {
        "n": 1,
        "ad": "Dağıtım kartı A",
-       "id": "p1144"
+       "id": "p1170"
       },
       {
        "n": 2,
-       "ad": "sağ S1 (omuz öne-arka) servosu",
-       "id": "p0060"
-      },
-      {
-       "n": 3,
        "ad": "Dağıtım kartı B",
-       "id": "p1157"
-      },
-      {
-       "n": 4,
-       "ad": "sol S1 (omuz öne-arka) servosu",
-       "id": "p0133"
+       "id": "p1183"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Dağıtım kartı A",
-       "id": "p1144",
-       "ax": 328.8435067326837,
-       "ay": 624.9482447763086,
-       "x": 328.8435067326837,
-       "y": 624.9482447763086,
+       "id": "p1170",
+       "ax": 268.61448423048586,
+       "ay": 102.84721554414594,
+       "x": 268.61448423048586,
+       "y": 102.84721554414594,
        "kutu": {
-        "x0": 318.8435067326837,
-        "y0": 614.9482447763086,
-        "x1": 434.8435067326837,
-        "y1": 634.9482447763086
+        "x0": 258.61448423048586,
+        "y0": 92.84721554414594,
+        "x1": 374.61448423048586,
+        "y1": 112.84721554414594
        },
        "uzak": 0,
        "yan": 1,
@@ -25632,65 +25727,19 @@
       },
       {
        "n": 2,
-       "ad": "sağ S1 (omuz öne-arka) servosu",
-       "id": "p0060",
-       "ax": 323.5431315562638,
-       "ay": 90.96794703876178,
-       "x": 323.5431315562638,
-       "y": 90.96794703876178,
-       "kutu": {
-        "x0": 313.5431315562638,
-        "y0": 80.96794703876178,
-        "x1": 519.5431315562638,
-        "y1": 100.96794703876178
-       },
-       "uzak": 0,
-       "yan": 1,
-       "alan": {
-        "x0": 15.000000000000014,
-        "x1": 800.9999999999999,
-        "y0": 55.44000000000003,
-        "y1": 742.0600000000001
-       }
-      },
-      {
-       "n": 3,
        "ad": "Dağıtım kartı B",
-       "id": "p1157",
-       "ax": 392.3690078403142,
-       "ay": 603.2235687456262,
-       "x": 392.3690078403142,
-       "y": 603.2235687456262,
+       "id": "p1183",
+       "ax": 549.0053942700738,
+       "ay": 102.84721554414581,
+       "x": 549.0053942700738,
+       "y": 102.84721554414581,
        "kutu": {
-        "x0": 382.3690078403142,
-        "y0": 593.2235687456262,
-        "x1": 498.3690078403142,
-        "y1": 613.2235687456262
+        "x0": 539.0053942700738,
+        "y0": 92.84721554414581,
+        "x1": 655.0053942700738,
+        "y1": 112.84721554414581
        },
        "uzak": 0,
-       "yan": 1,
-       "alan": {
-        "x0": 15.000000000000014,
-        "x1": 800.9999999999999,
-        "y0": 55.44000000000003,
-        "y1": 742.0600000000001
-       }
-      },
-      {
-       "n": 4,
-       "ad": "sol S1 (omuz öne-arka) servosu",
-       "id": "p0133",
-       "ax": 462.5871302679639,
-       "ay": 77.54635976098248,
-       "x": 462.5871302679639,
-       "y": 113.54635976098248,
-       "kutu": {
-        "x0": 452.5871302679639,
-        "y0": 103.54635976098248,
-        "x1": 654.5871302679639,
-        "y1": 123.54635976098248
-       },
-       "uzak": 36,
        "yan": 1,
        "alan": {
         "x0": 15.000000000000014,
@@ -25705,13 +25754,11 @@
       "w": 1000,
       "h": 796
      },
-     "dom": 4
+     "dom": 2
     },
     "fark": {
-     "p0060": 71,
-     "p0133": 32,
-     "p1144": 262,
-     "p1157": 162
+     "p1170": 1525,
+     "p1183": 2130
     }
    },
    "32.2": {
@@ -25814,19 +25861,19 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       },
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
+       "id": "p1097",
        "ax": 577.843881059239,
        "ay": 598.341820791018,
        "x": 577.843881059239,
@@ -25849,7 +25896,7 @@
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 535.8534991944684,
        "ay": 638.03238512777,
        "x": 535.8534991944684,
@@ -25885,19 +25932,19 @@
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071"
+       "id": "p1097"
       },
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Sigorta kutusu",
-       "id": "p1071",
+       "id": "p1097",
        "ax": 483.0049406435872,
        "ay": 665.3183696208897,
        "x": 483.0049406435872,
@@ -25920,7 +25967,7 @@
       {
        "n": 2,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 436.69427910770656,
        "ay": 709.6052413909515,
        "x": 436.69427910770656,
@@ -25949,8 +25996,8 @@
      "dom": 2
     },
     "fark": {
-     "p1071": 1275,
-     "p1085": 146
+     "p1097": 1275,
+     "p1111": 125
     }
    },
    "32.4": {
@@ -25962,14 +26009,14 @@
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209",
+       "id": "p1235",
        "ax": 500.7305615472721,
        "ay": 619.6357154081908,
        "x": 500.7305615472721,
@@ -26005,14 +26052,14 @@
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209"
+       "id": "p1235"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "ESP32",
-       "id": "p1209",
+       "id": "p1235",
        "ax": 397.6838819843844,
        "ay": 689.0286681954447,
        "x": 397.6838819843844,
@@ -26041,7 +26088,7 @@
      "dom": 1
     },
     "fark": {
-     "p1209": 322
+     "p1235": 334
     }
    },
    "32.5": {
@@ -26235,14 +26282,14 @@
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 510.21764141339014,
        "ay": 640.0050370094973,
        "x": 510.21764141339014,
@@ -26278,14 +26325,14 @@
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085"
+       "id": "p1111"
       }
      ],
      "ciz": [
       {
        "n": 1,
        "ad": "Yıldız barası",
-       "id": "p1085",
+       "id": "p1111",
        "ax": 408.61749948495066,
        "ay": 711.6440065643311,
        "x": 408.61749948495066,
@@ -26314,7 +26361,7 @@
      "dom": 1
     },
     "fark": {
-     "p1085": 508
+     "p1111": 500
     }
    }
   },
@@ -26878,6 +26925,6 @@
  },
  "kontrol_hatasi": null,
  "goruntu": [],
- "sure_s": 971,
+ "sure_s": 1021,
  "gecti": true
 }

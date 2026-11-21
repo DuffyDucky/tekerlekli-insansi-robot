@@ -210,16 +210,23 @@
     ADIM.forEach((a) => { if (a.tezgah && a.baglanir != null) TZ_BAG[a.tezgah] = a.baglanir; });
     const SEMA_YALNIZ = {};                          // F10f: şema -> [adım, grup] (sema_yalniz grubundaki şemalar)
     ADIM.forEach((a) => (a.sira_grup || []).forEach((g, n) => { if (g.sema_yalniz) (g.sema || []).forEach((i) => { SEMA_YALNIZ[i] = [a.i, n]; }); }));
+    // P10.8e: tüp geometrisi tek yerde (şemalar ve adım ötesi şema bölümleri, ON_OBJ)
+    function tupGeo(pts, r) {
+      const yol = new THREE.CurvePath();
+      for (let k = 1; k < pts.length; k++) {
+        const a = new THREE.Vector3(...pts[k - 1]), b = new THREE.Vector3(...pts[k]);
+        if (a.distanceTo(b) > 1e-6) yol.add(new THREE.LineCurve3(a, b));
+      }
+      // F10f: şema kendi tüp yarıçapını taşıyabilir (kol kablo yolunda ek yeri işareti 5 mm); yoksa 2,5 mm
+      return new THREE.TubeGeometry(yol, Math.max(24, Math.min(2400, pts.length * 12)), r || 2.5, 6, false);
+    }
+    // P10.8e (planlama/d158/P108e-gunluk.md § 5): adım ötesi şema bölümleri (veri sira_grup[].sema_on); veri nesnesi -> mesh, ilk
+    // gösterimde kurulur. userData.d "on": görünürlük / lejant sınamalarındaki "simdi" şemalarından ayrı (SEMA_OBJ kendi adımına dek gizli)
+    const ON_OBJ = new Map();
     function semaKur() {
       SEMA.forEach((s, i) => {
         if (!s.pts || s.pts.length < 2) return;
-        const yol = new THREE.CurvePath();
-        for (let k = 1; k < s.pts.length; k++) {
-          const a = new THREE.Vector3(...s.pts[k - 1]), b = new THREE.Vector3(...s.pts[k]);
-          if (a.distanceTo(b) > 1e-6) yol.add(new THREE.LineCurve3(a, b));
-        }
-        // F10f: şema kendi tüp yarıçapını taşıyabilir (kol kablo yolunda ek yeri işareti 5 mm); yoksa 2,5 mm
-        const g = new THREE.TubeGeometry(yol, Math.max(24, Math.min(2400, s.pts.length * 12)), s.r || 2.5, 6, false);
+        const g = tupGeo(s.pts, s.r);
         const o = new THREE.Mesh(g, malzeme(kabloTon(s)));
         o.userData.sema = i;
         o.visible = false;
@@ -460,7 +467,9 @@
         // ad kutusu işaretin sağında ya da solunda (etkileşimli kip); yazdırma karesinde yalnız işaret
         const kutu = (cx, cy, yan) => ({ x0: cx - R - (yan < 0 ? gw + 3 : 0), y0: cy - R, x1: cx + R + (yan > 0 ? gw + 3 : 0), y1: cy + R });
         let sec = null;
-        for (const d of [0, 2.4 * R, 3.6 * R, 5 * R, 6.6 * R, 8.5 * R]) {
+        // P10.8e (P108e-gunluk.md § 9): 11R / 14R yalnız yakında yer yoksa denenir (B5a etkileşimli kipte dağıtım kartı C);
+        // yakında yer bulan etiketin konumu değişmez
+        for (const d of [0, 2.4 * R, 3.6 * R, 5 * R, 6.6 * R, 8.5 * R, 11 * R, 14 * R]) {
           for (const [dx, dy] of (d ? YON : [[0, 0]])) {
             for (const yan of (gw ? (dx < 0 ? [-1, 1] : [1, -1]) : [0])) {
               const L = Math.hypot(dx, dy) || 1, cx = q.x + dx / L * d, cy = q.y + dy / L * d, b = kutu(cx, cy, yan);
@@ -613,6 +622,20 @@
         o.material = o.userData.mat0 = o.userData.mat1 = malzeme(kabloTon(SEMA[i]), 0.3);
         const b = new THREE.Box3().setFromObject(o);
         gorunur.union(b); kutu.union(b); koseler(o, null, nokta);
+      });
+      // P10.8e (P108e-gunluk.md § 5): adım ötesi şema: sonraki adımın şemasının bu alt adımda bağlanan uç bölümü (17.11: U06'nın taban
+      // bölümü) bu adımın kablosu gibi vurgulu çizilir ve lejantta sınıfıyla sayılır; şemanın tamamı kendi adımında (SEMA_OBJ)
+      ON_OBJ.forEach((o) => { o.visible = false; o.userData.d = "gizli"; });
+      const agOn = altGrup(s);
+      if (agOn && agOn.sema_on) agOn.sema_on.forEach((x) => {
+        const sm = SEMA[x.i]; if (!sm || !x.pts || x.pts.length < 2) return;
+        let o = ON_OBJ.get(x);
+        if (!o) { o = new THREE.Mesh(tupGeo(x.pts, sm.r), malzeme(kabloTon(sm))); o.userData.sema = x.i; sahne.add(o); ON_OBJ.set(x, o); }
+        o.visible = true; o.userData.d = "on";
+        o.material = o.userData.mat0 = o.userData.mat1 = malzeme(kabloTon(sm), 1);
+        const b = new THREE.Box3().setFromObject(o);
+        gorunur.union(b); kutu.union(b); koseler(o, null, nokta);
+        if (!sm.lejant) sinifSay["k:" + (sm.kt || sm.ks || "")] = 1;
       });
       // F10e: konumun yeni parçalarının hepsi bağlantı elemanıysa (ör. 31.5, 31.10, 36.3) kadraj bağlandığı parçaları da kapsar: yalnız
       // cıvatalara sıkı kadraj yerini göstermiyordu (F10d "kadraj yakın"); cıvataların yeri işaret halkalarıyla seçilir
@@ -1418,6 +1441,10 @@
           // döndürülemez, basılı kâğıtta yanlış yönlendirir
           if (SEMA[i].ad.indexOf(x) >= 0) h.push("<span class='not'>" + esc(SEMA[i].ad.split(":")[0]) + ": " + esc(ago.sema_ortulu[x]) + (SAHNE ? "" : " (görünümü döndür)") + "</span>");
         });
+      });
+      // P10.8e: adım ötesi şema bölümünün notu (veri sira_grup[].sema_on[].not_)
+      if (ago && ago.sema_on) ago.sema_on.forEach((x) => {
+        if (SEMA[x.i] && x.not_) h.push("<span class='not'>" + esc(SEMA[x.i].ad.split(":")[0]) + ": " + esc(x.not_) + "</span>");
       });
       if (sonEv.length) h.push("<span><i style='background:" + EV_RENK + "'></i>Bağlandığı yer</span>");
       if (s > 0) h.push("<span><i style='background:" + SINIF.onceki[0] + "'></i>" + SINIF.onceki[1] + "</span>");

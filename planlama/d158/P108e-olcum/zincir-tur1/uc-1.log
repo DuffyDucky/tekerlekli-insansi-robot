@@ -1,0 +1,5 @@
+  uc etiketi: 23 konum, 60 etiket, karede gorunmez uc 34; hata 4 -> KALDI
+      U1 12 etk: 2 Dağıtım kartı C (kafa) çizilmedi (yer bulunamadı (çakışma))
+      U1 32.2 sahne: 1 Dağıtım kartı C (kafa) çizilmedi (güvenli alanın dışında)
+      U1 32.2 etk: 1 Dağıtım kartı C (kafa) çizilmedi (güvenli alanın dışında)
+      U4 32.2: 1 Dağıtım kartı C (kafa) (p1084) karede görünmüyor (0 px < 30; görünmüyorsa UC_ORTULU'ya nedeniyle)

@@ -1,0 +1,25 @@
+gercek parca 1251 2.7s
+sema taban/G07: eksen icinde 1, cizim icinde 5 (ara 4), en dar (0.0, 'Bara tutucusu yildiz barasi (GND) (5 sap'), en dar ara (0.0, 'Bara tutucusu yildiz barasi (GND) (5 sap') 2.8s
+sema taban/G16: eksen icinde 1, cizim icinde 6 (ara 1), en dar (0.0, 'Govde diregi'), en dar ara (0.0, 'Govde diregi') 2.8s
+sema taban/G22: eksen icinde 0, cizim icinde 4 (ara 0), en dar (0.381, 'Somun M5 (anahtarli 4)'), en dar ara (5.5, 'Bara tutucusu yildiz barasi (GND) (5 sap') 2.9s
+sema taban/SV3: eksen icinde 0, cizim icinde 2 (ara 0), en dar (2.951, 'Vida M3x6 (Dagitim karti C (kafa pan + t'), en dar ara (4.5, 'Guc paneli (arka kat)') 2.9s
+sema taban/G19: eksen icinde 0, cizim icinde 0 (ara 0), en dar (6.534, 'Elektronik kati (on)'), en dar ara (6.534, 'Elektronik kati (on)') 3.0s
+sema taban/M02: eksen icinde 1, cizim icinde 1 (ara 0), en dar (0.0, 'Motor JGB37-520 (arka sol)'), en dar ara (2.556, 'Aku kayisi 25 mm (z -80)') 3.1s
+sema taban/B02: eksen icinde 0, cizim icinde 0 (ara 0), en dar (2.5, 'BTS7960 motor surucu sag'), en dar ara (4.443, 'Burc M3x8 naylon burc (ESP32 tasiyici ka') 3.1s
+sema taban/N01: eksen icinde 1, cizim icinde 1 (ara 0), en dar (0.0, 'Motor JGB37-520 (arka sol)'), en dar ara (2.856, 'Alt plaka') 3.3s
+sema taban/N02: eksen icinde 1, cizim icinde 1 (ara 0), en dar (0.0, 'Motor JGB37-520 (arka sag)'), en dar ara (2.856, 'Alt plaka') 3.4s
+sema taban/Q01: eksen icinde 0, cizim icinde 0 (ara 0), en dar (3.0, 'Sonar tutucu sag'), en dar ara (4.454, 'Etek on sag') 3.5s
+sema taban/Q02: eksen icinde 0, cizim icinde 0 (ara 0), en dar (3.0, 'Sonar tutucu orta'), en dar ara (4.454, 'Etek dolgu seridi on') 3.6s
+sema kafa_ici/K01: eksen icinde 0, cizim icinde 0 (ara 0), en dar (3.122, 'Kafa iskeleti'), en dar ara None 3.6s
+sema kafa_ici/K02: eksen icinde 0, cizim icinde 1 (ara 0), en dar (2.25, 'SY8205 kafa ekrani 5 V'), en dar ara None 3.6s
+sema kafa_ici/K03: eksen icinde 0, cizim icinde 0 (ara 0), en dar (3.6, '5 V cevirici Pololu D24V50F5'), en dar ara (5.122, 'Kafa iskeleti') 3.6s
+sema kafa_ici/C01: eksen icinde 0, cizim icinde 0 (ara 0), en dar (2.752, 'Kamera Raspberry Pi Camera Module 3'), en dar ara None 3.7s
+sema kafa_ici/AU1: eksen icinde 0, cizim icinde 0 (ara 0), en dar (5.5, 'PAM8403 amfi'), en dar ara None 3.9s
+BITTI planlama/d158/P108e-olcum/sema-once.json 3.9s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+
+Importing project files......
+						(0 %)							(1 %)							(2 %)							(3 %)							(4 %)							(5 %)							(6 %)							(7 %)							(8 %)							(9 %)							(10 %)							(11 %)							(12 %)							(13 %)							(14 %)							(15 %)							(16 %)							(17 %)							(18 %)							(19 %)							(20 %)							(21 %)							(22 %)							(23 %)							(24 %)							(25 %)							(26 %)							(27 %)							(28 %)							(29 %)							(30 %)							(31 %)							(32 %)							(33 %)							(34 %)							(35 %)							(36 %)							(37 %)							(38 %)							(39 %)							(40 %)							(41 %)							(42 %)							(43 %)							(44 %)							(45 %)							(46 %)							(47 %)							(48 %)							(49 %)							(50 %)							(51 %)							(52 %)							(53 %)							(54 %)							(55 %)							(56 %)							(57 %)							(58 %)							(59 %)							(60 %)							(61 %)							(62 %)							(63 %)							(64 %)							(65 %)							(66 %)							(67 %)							(68 %)							(69 %)							(70 %)							(71 %)							(72 %)							(73 %)							(74 %)							(75 %)							(76 %)							(77 %)							(78 %)							(79 %)							(80 %)							(81 %)							(82 %)							(83 %)							(84 %)							(85 %)							(86 %)							(87 %)							(88 %)							(89 %)							(90 %)							(91 %)							(92 %)							(93 %)							(94 %)							(95 %)							(96 %)							(97 %)							(98 %)							(99 %)							(100 %)									Postprocessing......
+						(100 %)									
