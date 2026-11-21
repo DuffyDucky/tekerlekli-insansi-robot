@@ -133,7 +133,9 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       return (x.karede ? "<b class='ucn'>" + x.n + "</b> " : "") + esc(x.ad) + " <span class='t'>(" + esc(x.kablo.join(", ")) + ")</span>";
     }).join(" · ") + "</div>" : "") + (y.length ? "<div class='lej'>Uç karede görünmez: " + y.map(function (x) {
       return esc(x.ad) + " (" + esc(x.neden) + ")";
-    }).join(" · ") + "</div>" : "");
+    }).join(" · ") + "</div>" : "") +
+      // P10.8f: parça etiketleri (rehber_gorunum.etiket_isle) karede yazılı; anlamı varsa (17.4 saplama numaraları) burada
+      (g && g.etiket_not && (g.etiket || []).length ? "<div class='lej'>Karedeki yazılar: " + esc(g.etiket_not) + "</div>" : "");
   }
 
   // F7c (D-3): adım bloklara bölünür; sığmazsa bloklar sondan "devam" sayfasına taşınır. Yazı 8,5 pt'nin, küçük öğeler 8,1 pt'nin altına inmez.

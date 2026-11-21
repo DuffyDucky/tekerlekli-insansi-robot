@@ -1,0 +1,138 @@
+ M planlama/d158/F10a-dogrula.json
+ M planlama/d158/F10d-dogrula.json
+ M planlama/d158/F10e-dogrula.json
+ M planlama/d158/F10f-dogrula.json
+ M planlama/d158/F9c-goruntu-1400-dusukler.png
+ M planlama/d158/F9c-goruntu-1400-kararlar.png
+ M planlama/d158/F9c-goruntu-1400-paketler.png
+ M planlama/d158/F9c-goruntu-1400-takvim.png
+ M planlama/d158/F9c-goruntu-1400-ust.png
+ M planlama/d158/F9c-goruntu-360-dusukler.png
+ M planlama/d158/F9c-goruntu-360-kararlar.png
+ M planlama/d158/F9c-goruntu-360-paketler.png
+ M planlama/d158/F9c-goruntu-360-takvim.png
+ M planlama/d158/F9c-goruntu-360-ust.png
+ M planlama/d158/F9c-uret.py
+ M planlama/d158/sonuc-rapor.html
+ M planlama/dongu-158.md
+ M planlama/rehber/Lale-montaj-rehberi.pdf
+ M planlama/rehber/goruntu/adim-12.png
+ M planlama/rehber/goruntu/adim-17-04.png
+ M planlama/rehber/goruntu/adim-17-10.png
+ M planlama/rehber/goruntu/adim-33-04.png
+ M planlama/rehber/goruntu/adim-33-07.png
+ M planlama/rehber/kontrol.json
+ M rehber/app.js
+ M rehber/goruntu/adim-12.png
+ M rehber/goruntu/adim-17-04.png
+ M rehber/goruntu/adim-17-10.png
+ M rehber/stil.css
+ M rehber/veri/rehber-veri.js
+ M rehber/veri/rehber-veri.json
+ M rehber/yazdir.html
+ M tasarim/freecad/kabuk/gorsel/kabuk-arka-kapak-acik.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-baglanti-etek.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-baglanti-govde.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-izometrik.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-kesit-gogus.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-kesit.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-nextion-ic.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-nextion-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-omuz-duvari.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-patlatilmis-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-patlatilmis.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-yan.png
+ M tasarim/freecad/montaj/yerlesim-kontrol.json
+ M tasarim/freecad/rehber/rehber_gorunum.py
+ M tasarim/freecad/rehber/rehber_metin.py
+?? geometri2_cikar.py
+?? geometri2_dogrula.py
+?? geometri_cikar.py
+?? gez.js
+?? planlama/d158/P108d-kontrol-olcum/b2-tarama.nabiz
+?? planlama/d158/P108d-olcum/ara1.json
+?? planlama/d158/P108f-etiket-bozma.py
+?? planlama/d158/P108f-etiket-olc.py
+?? planlama/d158/P108f-gunluk.md
+?? planlama/d158/P108f-kontrol-olcum/git-status-B-bas.txt
+?? planlama/d158/P108f-olcum/ara/birlesim.log
+?? planlama/d158/P108f-olcum/ara/birlesim2.log
+?? planlama/d158/P108f-olcum/ara/etiket-bozma.log
+?? planlama/d158/P108f-olcum/ara/kablo.log
+?? planlama/d158/P108f-olcum/ara/kablo2.log
+?? planlama/d158/P108f-olcum/ara/kaynak.log
+?? planlama/d158/P108f-olcum/ara/kaynak2.log
+?? planlama/d158/P108f-olcum/git-status-bas.txt
+?? planlama/d158/P108f-olcum/kir-bas.md5
+?? planlama/d158/P108f-olcum/once/F9c-tarayicisiz.log
+?? planlama/d158/P108f-olcum/once/kare/basili-adim-12.png
+?? planlama/d158/P108f-olcum/once/kare/basili-adim-17-04.png
+?? planlama/d158/P108f-olcum/once/kare/basili-adim-17-10.png
+?? planlama/d158/P108f-olcum/once/kare/rehber-adim-12.png
+?? planlama/d158/P108f-olcum/once/kare/rehber-adim-17-04.png
+?? planlama/d158/P108f-olcum/once/kare/rehber-adim-17-10.png
+?? planlama/d158/P108f-olcum/onizleme/cekim-kaynak/12-etk.png
+?? planlama/d158/P108f-olcum/onizleme/cekim-kaynak/12-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/cekim-kaynak/17-4-etk.png
+?? planlama/d158/P108f-olcum/onizleme/cekim-kaynak/17-4-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_kenar-17-10-etk.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_kenar-17-10-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_on_alcak-17-10-etk.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_on_alcak-17-10-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_on_orta-17-10-etk.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_on_orta-17-10-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_opak_kenar-17-10-etk.png
+?? planlama/d158/P108f-olcum/onizleme/k1_10_opak_kenar-17-10-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/kaynak-12-etk.png
+?? planlama/d158/P108f-olcum/onizleme/kaynak-12-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/kaynak-17-10-etk.png
+?? planlama/d158/P108f-olcum/onizleme/kaynak-17-10-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/kaynak-17-4-etk.png
+?? planlama/d158/P108f-olcum/onizleme/kaynak-17-4-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/simdiki-12-etk.png
+?? planlama/d158/P108f-olcum/onizleme/simdiki-12-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/simdiki-17-10-etk.png
+?? planlama/d158/P108f-olcum/onizleme/simdiki-17-10-sahne.png
+?? planlama/d158/P108f-olcum/onizleme/simdiki-17-4-etk.png
+?? planlama/d158/P108f-olcum/onizleme/simdiki-17-4-sahne.png
+?? planlama/d158/P108f-olcum/sonra/F9c-goruntu.log
+?? planlama/d158/P108f-olcum/sonra/F9c-tarayicisiz-son.log
+?? planlama/d158/P108f-olcum/sonra/F9c-tarayicisiz-zincirden-sonra.log
+?? planlama/d158/P108f-olcum/sonra/F9c-tarayicisiz.log
+?? planlama/d158/P108f-olcum/sonra/F9c-uret.log
+?? planlama/d158/P108f-olcum/sonra/etiket-olc.json
+?? planlama/d158/P108f-olcum/sonra/etiket-olc.log
+?? planlama/d158/P108f-olcum/sonra/kare/devtools/12-etk.png
+?? planlama/d158/P108f-olcum/sonra/kare/devtools/12-sahne.png
+?? planlama/d158/P108f-olcum/sonra/kare/devtools/17-4-etk.png
+?? planlama/d158/P108f-olcum/sonra/kare/devtools/17-4-sahne.png
+?? planlama/d158/P108f-olcum/sonra/kare/etkilesimli-adim-12.png
+?? planlama/d158/P108f-olcum/sonra/kare/etkilesimli-adim-17-04.png
+?? planlama/d158/P108f-olcum/sonra/kare/etkilesimli-adim-17-10.png
+?? planlama/d158/P108f-olcum/sonra/kare/yazdirma-adim-12.png
+?? planlama/d158/P108f-olcum/sonra/kare/yazdirma-adim-17-04.png
+?? planlama/d158/P108f-olcum/sonra/kare/yazdirma-adim-17-10.png
+?? planlama/d158/P108f-olcum/uretim.durum
+?? planlama/d158/P108f-olcum/uretim.log
+?? planlama/d158/P108f-olcum/uretim2.durum
+?? planlama/d158/P108f-olcum/uretim2.log
+?? planlama/d158/P108f-olcum/zincir.durum
+?? planlama/d158/P108f-olcum/zincir/0a-carpisma.log
+?? planlama/d158/P108f-olcum/zincir/10-regresyon.log
+?? planlama/d158/P108f-olcum/zincir/2a-kablo.log
+?? planlama/d158/P108f-olcum/zincir/2b-kablo-bozma.log
+?? planlama/d158/P108f-olcum/zincir/2c-kaynak.log
+?? planlama/d158/P108f-olcum/zincir/3-denetim.log
+?? planlama/d158/P108f-olcum/zincir/4-F10f.log
+?? planlama/d158/P108f-olcum/zincir/5-F10e.log
+?? planlama/d158/P108f-olcum/zincir/6-F10d.log
+?? planlama/d158/P108f-olcum/zincir/6g-F10d-gizli.log
+?? planlama/d158/P108f-olcum/zincir/7-F10a.log
+?? planlama/d158/P108f-olcum/zincir/8-F9b.log
+?? planlama/d158/P108f-olcum/zincir/9-carpisma.log
+?? planlama/d158/P108f-olcum/zincir/t1-kupon.log
+?? planlama/d158/P108f-olcum/zincir/t2-kupon-bozma.log
+?? planlama/d158/P108f-onizleme.py
+?? planlama/d158/P108f-zincir.sh
+?? uc.js

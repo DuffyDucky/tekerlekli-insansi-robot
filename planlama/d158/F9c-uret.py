@@ -53,6 +53,8 @@ CS = "tasarim/freecad/carpisma-sonuc.json"
 F10Y = "planlama/d158/F10y-gunluk.md"
 GUN = "planlama/d158/P109c-gunluk.md"
 P109A, P109B = "planlama/d158/P109a-gunluk.md", "planlama/d158/P109b-gunluk.md"
+# P10.8f (21.11): sayfa P10.8a–e ve kayıt eşitlemesinden sonra yenilendi; P10.8 satırı ve F10 tablosu bugünkü kayda göre
+P108F = "planlama/d158/P108f-gunluk.md"
 EMOJI = "✅🟡⛔🔄⏳"
 
 
@@ -381,6 +383,9 @@ GRUP = {
     "K65": ("B", "K1 kablajından ve ilk sürüşten önce (sağ / sol tanımı, kurulum testi); kapandı 16.11, yazılım düzeltmesi Efe'de."),
     # P10.7b2f kısım 2 (F10n-gunluk.md § 8): K66 kuyruğa kapalı girdi; açık olsaydı KeyError vermesin diye (K64 / K65 ile aynı)
     "K66": ("A", "Elektrik güvenliği ve sipariş: ESP32 VIN'e seri 1N5819 (+1 adet); kapandı 16.11, tezgâh denemesine bağlı kabul."),
+    # P10.8f (P108f-gunluk.md § 2): K67 21.11 kayıt eşitlemesinde açık girdi, GRUP'ta yoktu (KeyError 'K67', sayfa yeniden üretilemiyordu).
+    # Grup TASLAK (A: alım sorusu, GRUP_AD["A"] tanımı); orkestratör onaylar ya da değiştirir.
+    "K67": ("A", "Sipariş listesindeki kart burcu adedi (48; CAD 52): sipariş verilmediyse siparişten önce, verildiyse eksik burçlar ayrı alınır."),
 }
 
 
@@ -428,7 +433,7 @@ PAKET_SONUC = {
     # P10.9c düzeltme turu 1 (orkestratör kararı, Echo, geri alınabilir): P10.2 ✅ 19.11; çentik kabulün dört maddesini sağlıyor
     "P10.2": ("Kapandı 19.11 (orkestratör kararı, Echo): K53 a çentiği P10.7b2j'de modelde; iniş boyunca ortak hacim 0, en küçük boşluk "
               "0,5 mm, taban içi çakışma 0, korunan değerler GEÇER. Girişim önce 3,13 mm³, taşma 0,425 mm idi. b2j'deki parça artışı K51 ve "
-              "K64'ten, çentikten değil; burç 2'nin oturması ayrı iş (P10.8 satırında).", [DONGU, "planlama/d158/F10s-gunluk.md"]),
+              "K64'ten, çentikten değil; burç 2'nin oturması ayrı iş (P10.8 satırında; P10.8d'de kapandı).", [DONGU, "planlama/d158/F10s-gunluk.md"]),
     "P10.3": ("E4 sırası, E3 625ZZ + pim, kalıcı sıra denetimi; 1 düzeltme turu (E3 \"geometrik kilitli\" sonucu yanlıştı); K54 sıfır boşluk.", [DONGU]),
     "P10.4": ("Kabuk adımları alt adımlara bölündü; açık 34 / zor 8 / anlaşılmıyor 0; 1 düzeltme turu (34 somun yanlış yerde); K55 bindirme dilleri.", [DONGU]),
     "P10.4b": ("Gerçek parça rengi, bağlandığı yer vurgusu, cıvata yeri işaretleri; 1 düzeltme turu, ikinci kontrol GEÇER; açık 40 / zor 2.", [DONGU]),
@@ -453,18 +458,23 @@ PAKET_SONUC = {
               "Devredilen (P10.8 satırına, adlarıyla): kablo boylarının ölçümü, CAD kablo yolu 10 / 11 / 12, göğüs regülatörü kartının "
               "zarfı, K31 insert boyu, rehberin açık işleri.", [DONGU]),
     # P10.9c düzeltme turu 1: P10.7'nin "Kalan"ı ve parça bekleyen işler bu satırda adlarıyla (plan P10.8 Durum hücresiyle aynı)
-    "P10.8": ("Açık: ayrıntılı satın alınan parça modelleri ve fotoğraf kartı parçalar gelince. Devralınan (19.11): parça ya da ölçüm "
+    # P10.8f (P108f-gunluk.md § 2): P10.8a–e ve kayıt eşitlemesinden sonra; parça beklemeyen işlerin kapananları çıktı, kalanlar adlarıyla
+    # (plan P10.8 Durum hücresi ve kuyruğun "P10.8d / P10.8e kapanışından açık iş" bölümüyle aynı). "Kapalı alt paketler:" kalıbı
+    # kullanılmadı: P10.8a planda kapalı yazılmıyor (kupon dosyaları hazır, basılmadı)
+    "P10.8": ("Açık: ayrıntılı satın alınan parça modelleri ve fotoğraf kartı parçalar gelince. Parça beklemeyen işler (19.–21.11): "
+              "P10.8a kupon dosyaları (hazır, basılmadı), P10.8b–e rehber ve CAD açıkları (kablo yolu 10, 11 ve 12, burç 2, acil stop "
+              "düğüm kartı ve dağıtım kartı C modelde, 16 şema tarandı, dikiş ölçümü, 17.11 ve 32.1 kareleri), P10.8f bu sayfanın "
+              "yenilemesi ve 17.4 / 17.10 / B5a kareleri. Devralınan (19.11), parça ya da ölçüm "
               "bekleyen: kablo boylarının ölçümü, D24V50F5 pin kenarı, ESP32 DevKit portu ve yönü (180° ters kart denetimde yakalanmaz; "
               "ters takılırsa ilk enerjide 5 V bir GPIO pinine gelir), PC817 çıkış jumper'ı, göğüs regülatörü kartının ürünü ve ölçüsü, "
               "RV 5.5 pabuç kalınlığı, M5 bara saplaması başı, kabuk ve etek takılıyken bara somunlarına erişim, boyun tüneli fiş "
               "denemesi, masa denemeleri KT1–KT7 ve K66 tezgâh denemesi, KT2'den sonra AU1 / AU2 ses şeması, fiş boyları ve talimat ↔ "
-              "kayıt boyları, G07 bölücü dirençlerinin toleransı; sonraki tam taramalı CAD paketinde: CAD kablo yolu 10, 11 ve "
-              "12, göğüs regülatörü kartının zarfı ve yeri, burç 2'nin oturması, K31 insert boyu, dikiş bindirmesi ölçümü, acil stop "
-              "düğüm kartının CAD modeli, dağıtım kartı C'nin güç panelindeki yeri ve bağlantı elemanı, çarpışma taramasından geçmeyen "
-              "11 taban ve 5 kafa içi şeması, geniş `TABAN_DISI_BOLGE`; rehber: 17.4, "
-              "32.1, 17.10 kare okunurluğu, 17.11 karesinde U06, `rehber_denetim --kaynak` CAD adı açığı, D6, `kafa-yerlesim` raporu. "
+              "kayıt boyları, G07 bölücü dirençlerinin toleransı, iki yeni kartın gerçek ölçüsü ve burç / vida boyu; sonraki tam "
+              "taramalı CAD paketinde: göğüs regülatörü kartının zarfı ve yeri, K31 insert boyu, CAD kablo yolu 6'nın dağıtım kartı C'ye "
+              "inmesi, kafa giriş kartı ve konnektör yerleri (TAHMİN), geniş `TABAN_DISI_BOLGE`, tam çakışma taramasının parça "
+              "modellerinden sonra yeniden koşusu. "
               "P10.7b'nin öbür açık işleri kuyruğun \"Karar değil, iş\" bölümünde izlenir. Önerilen sıra (Echo kararı, geri alınabilir) bu "
-              "sayfanın F10 tablosunda.", [DONGU, GUN]),
+              "sayfanın F10 tablosunda.", [DONGU, GUN, KUYRUK, P108F]),
     # P10.9c düzeltme turu 1 (D4): P10.9 metni plan durumundan seçilir (commit'te eskiyecek "commit bekliyor" ifadesi yok);
     # kapalı metin uret() içinde (P10_9_KAPALI)
     "P10.9": ("Açık: bu sayfanın F10 yenilemesi (P10.9c, 19.11; günlük `P109c-gunluk.md`); plan durumu kapanınca sayfa yeniden üretilir. "
@@ -508,10 +518,18 @@ TUTARSIZ_F10 = [
      "P10.9c düzeltme turu 2).", [GUN, KUYRUK, "planlama/d158/P109c-kontrol.md"]),
     ("F8a sipariş sayacı ve sipariş paketi toplamları 09.11 listesidir (P8.1 satırı, \"Sipariş paketi toplamı\", \"Bütçe farkı\"); güncel "
      "sipariş listesi `maliyet.json`. Sayfada etiketlenmedi, kaldırılmadı (P10.9a § 5.2 sorusu açık).", [P109A]),
-    ("Aciliyet gruplarının F10 taslağı (P10.9a § 3): açık kalan tek F10 kararı K62 (C); K53, K54, K55, K60, K61 kapandı, grupları sayfaya girmiyor.",
-     [P109A, KUYRUK]),
+    ("Aciliyet gruplarının F10 taslağı (P10.9a § 3): açık F10 kararları K62 (C) ve K67 (A; 21.11'de açıldı, grup P10.8f taslağı, "
+     "orkestratör onaylar); K53, K54, K55, K60, K61 kapandı, grupları sayfaya girmiyor.", [P109A, KUYRUK, P108F]),
     ("Pakete bağlanamayan 2 commit (`9145164`, `f658f15`, 13.11 gizlilik denetimi, konu öneki \"Lale:\") paket dışı bırakıldı.", [P109A]),
-    ("Tasarım demosu bu pakette yeniden üretilmedi: karar kuyruğu ve demonun kaynak dosyaları değişmedi (demo P10.7b2j'de üretildi).", [GUN, F10Y]),
+    ("Tasarım demosu P10.9c'de yeniden üretilmedi (demo P10.7b2j'de üretilmişti); P10.8e'de P10.8d montajıyla yeniden üretildi "
+     "(F9b 0).", [GUN, F10Y, DONGU]),
+    # P10.8f (P108f-gunluk.md § 2): yenileme kaydı
+    ("Sayfa 21.11'de P10.8f'de yeniden üretildi. Sayfa 19.11 hâlinde kalmıştı; P10.8a–e commit'leri ve kayıt eşitlemesinden sonra "
+     "`F9c-dogrula` 60 hata veriyordu (P10.8e commit'inde 25): hepsi sayfadaki 19.11 değeri ile bugünkü kaynak farkı (montaj sayıları, "
+     "rehber PDF ve parça sayısı, tarama koşusu, commit sayısı ve P10.8 commit hücresi, K67). Üretici K67'yi tanımadığı için sayfa "
+     "yeniden üretilemiyordu (GRUP'ta yoktu); K67 TASLAK A grubuyla eklendi, P10.8 satırı ve F10 tablosu bugünkü kayda göre "
+     "yazıldı. Sayfa kendi commit'ini taşıyamaz: commit'ten sonra `F9c-dogrula` 3 hata verir (commit sayısı, eşleşmeyen commit, "
+     "konu öneki), bir sonraki yenilemede kapanır.", [P108F, DONGU, KUYRUK]),
 ]
 
 # P10.9c düzeltme turu 1 (O5): açık düşüklerin F9 sonu satırlarına F10 notu. Anahtar F9c-dusukler.json "kod" alanı; bu sözlükte
@@ -656,9 +674,10 @@ def uret():
     w("<title>Lale 1,58 m Sonuç Raporu</title>\n<style>\n%s\n</style>\n</head>\n<body data-hazir=\"1\">\n<main>" % STIL)
     # P10.9c: başlık ve tarih F10 sonuna (F9 sonu sayfası: "(P9.3)", 09.11.2026, Ajan A)
     w('<header>\n<div>\n<h1>%s</h1>' % K("Lale 1,58 m döngüsü: sonuç raporu (F10 sonu, P10.9)", DONGU))
+    # P10.8f: yenileme tarihi (faz sonu sayfası P10.9c'nin; P10.8a–e sonrası yenilendi)
     w('<p class="sub">Uygulama ajanı (P10.9c) · %s · dal <code>lale-duzeltme</code> · üretici <code>planlama/d158/F9c-uret.py</code>, denetim '
       '<code>F9c-dogrula.py</code> · kaynaklar: <code>dongu-158.md</code>, <code>karar-kuyrugu.md</code>, paket raporları, '
-      'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026", GUN, F10Y))
+      'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026; yenileme P10.8f, 21.11.2026", GUN, F10Y, KUYRUK, P108F))
     w('</div>\n<button class="tema" type="button" id="tema">Tema: sistem</button>\n</header>')
     w('<nav class="ic"><a href="#f10">F10 sonu</a><a href="#ozet">Özet</a><a href="#yapilacak">Ahmet\'in yapacakları</a><a href="#kararlar">Açık kararlar</a>'
       '<a href="#korunan">Korunan değerler</a><a href="#sayilar">Sayılarla robot</a><a href="#takvim">Takvim</a>'
@@ -703,25 +722,32 @@ def uret():
          K("Adım ", DONGU) + J(RK, "ozet.adim") + K(", alt adım 91; seçim vurgusu, kabuk alt adımları, kol içi kablo yolu, K1 / K2 demet alt "
                                                    "adımları; 74 / 74 kablo bağlama talimatında; rehber b2j CAD'ine uyduruldu (P10.7b2k). PDF ", DONGU)
          + J(RK, "yazdir.pdf_sayfa") + K(" sayfa. Makine denetimi geçti; F10y'de 17.8–17.12, 32.x'in kalanı, B5a / B6 / E3a kareleri ve PDF "
-                                        "sayfaları gözle bakılmadı.", DONGU, F10Y),
-         K("P10.8 satırında (rehber, üretimli paket): 17.4, 32.1 ve 17.10 karelerinin okunurluğu; 17.11 karesinde U06; `rehber_denetim "
-           "--kaynak` yeni CAD adlarını üretimden önce görmüyor; D6 (`{boy.U06}` yer tutucusu).", DONGU, KUYRUK),
+                                        "sayfaları gözle bakılmadı.", DONGU, F10Y)
+         # P10.8f: P10.8b–f rehber işleri (plan P10.8 hücresi; P108f-gunluk.md)
+         + K(" P10.8b–e: K55 bant metni ölçümden, ESP32 yön denetimi, `--kaynak` CAD adları, D6, iki yeni kart rehberde modelli uç, "
+             "17.11'de U06'nın taban bölümü, 32.1 taban bakışı. P10.8f: 17.4 saplama numaraları karede, 17.10'da katın kesiği "
+             "çizgiyle, B5a'da acil stop düğüm kartı adıyla.", DONGU, P108F),
+         K("Kuyruğun \"Karar değil, iş\" bölümünde: ölçülmeyen yollar (göğüs bandı sol yanal yol, F2 ve etek arka dikişleri), "
+           "`--kaynak` CAD malzeme adlarını görmüyor, `elektrik.md` önerilen boyları kayda bağlı değil; iki yeni kartın zarfı TAHMİN "
+           "(kartlar gelince).", KUYRUK, DONGU),
          "—"),
         ("CAD ve çakışma taraması",
          K("P10.7b2j (Echo kararları: K2 a, K51 a, K53 a 17.11'de Ahmet'in devriyle; K64 a 16.11): K2 a boss, K53 a çentik, K51 a TVS, "
-           "K64 a iki bara tutucusu ve dokuz saplama; USB ses kartı modelden çıktı. Parça ", DONGU, KUYRUK)
+           "K64 a iki bara tutucusu ve dokuz saplama; USB ses kartı modelden çıktı. P10.8d (21.11): CAD kablo yolu 10, 11 ve 12 "
+           "düzeltildi, burç 2 yarıktan çıktı, acil stop düğüm kartı ve dağıtım kartı C modelde, 16 şema tarandı. Bugün: parça ",
+           DONGU, KUYRUK)
          + J(MA, "parca_sayisi", "i") + K(", kütle ", DONGU) + J(MA, "kutle_g", "k2") + K(" kg, baskı ", DONGU) + J(BA, "toplam.adet")
          + K(" adet, bağlantı elemanı ", DONGU) + J(DEMO, "anahtarlar.p_bag.deger", "i") + K(". Tam tarama tek koşu ", DONGU)
          + J(CS, "bolumler.statik.kosu", "s") + K(" (", DONGU) + J(CS, "bolumler#say") + K(" bölüm): eklem aralığında ", DONGU)
          + J(CS, "toplam.eklem_araliginda") + K(" çakışma; tarama toplamında ", DONGU) + J(CS, "toplam.cakisma")
          + K(" çakışma, hepsi eklem aralığı dışında.", DONGU, "planlama/d158/F10x-gunluk.md"),
-         K("P10.8 satırında, sonraki tam taramalı CAD paketine: CAD kablo yolu 10 (ön şarj kartına 0,1 mm değiyor), 11 ve 12 (elektronik "
-           "katını ön kesiğin dışından deliyor); göğüs regülatörü kartının (K52) zarfı ve panel yeri (modelde yok); burç 2'nin oturması; "
-           "K31 insert boyu (`arayuz.py`); E4 için dikey dikiş bindirmesi ölçümü (rehber sırayı öneri olarak veriyor); acil stop düğüm "
-           "kartının CAD modeli (yok); dağıtım kartı C'nin güç panelindeki yeri ve bağlantı elemanı (A12); 11 taban ve 5 kafa içi / ses "
-           "şeması çarpışma taramasından geçmedi; `TABAN_DISI_BOLGE` gövde bölgesi geniş. Ayrıca "
-           "`kafa-yerlesim` raporu ve notu birlikte yeniden üretilmeli; göğüs ekranı port girintisi ekran gelince (P1.4 koşullu).",
-           KUYRUK, DONGU, "planlama/d158/F10v-gunluk.md"),
+         # P10.8f: P10.8d'de kapananlar (yol 10 / 11 / 12, burç 2, dikiş ölçümü, iki kart, 16 şema) çıktı; kalanlar plan P10.8 hücresinden
+         K("P10.8 satırında, sonraki tam taramalı CAD paketine: göğüs regülatörü kartının (K52) zarfı ve panel yeri (modelde yok); "
+           "K31 insert boyu (`arayuz.py`); CAD kablo yolu 6'nın güç panelindeki dağıtım kartı C'ye inmesi (rehber S09 / S10'un kart "
+           "yanını elle bakıldı diye taşıyor); iki yeni kartın gerçek ölçüsü, zarfı ve burç / vida boyu (TAHMİN, kartlar yapılınca); "
+           "kafa giriş kartı ve kart üstü konnektör yerleri (TAHMİN); `TABAN_DISI_BOLGE` gövde bölgesi geniş; tam çakışma taraması parça "
+           "modellerinden sonra yeniden koşar. Göğüs ekranı port girintisi ekran gelince (P1.4 koşullu).",
+           KUYRUK, DONGU),
          K("K2 bütçe yarısı: AI HAT+ okul bütçesinden mi (teknik yarı a, boss modelde).", KUYRUK)),
         ("Elektrik ve kablolama",
          K("74 kablo tek kaynakta (`kablolar.json`); pin haritası K58 (orkestratör, Ahmet'in 13.11 yetkisiyle); K63 talimat boşlukları; "
@@ -744,17 +770,19 @@ def uret():
          K("F8a sipariş paketi satırları (P8.1, sipariş paketi toplamı, bütçe farkı) 09.11 listesidir, güncel değil.", P109A),
          K("K27–K30, K32, K34–K37, K42; K31 / K33 / K43 / K50 alım yarıları; K64 alım kalemleri (M5 saplama başının altıgen olması, "
            "pullar, M3 vidalar); göğüs regülatörü kartının (K52) ürünü ve ölçüsü; N02'nin N01 boyunda alınması; kondansatör yedeği "
-           "(sipariş 5, kullanım 5); KT2 geçmezse gereken USB-A uzatma ve L dirsek şimdi mi alınsın.", KUYRUK, "planlama/d158/F10u-gunluk.md")),
+           "(sipariş 5, kullanım 5); KT2 geçmezse gereken USB-A uzatma ve L dirsek şimdi mi alınsın; K67 kart burcu adedi (CAD 52, "
+           "liste 48).", KUYRUK, "planlama/d158/F10u-gunluk.md")),
         ("Parçalar gelince (P10.8 ve devralınan işler)",
          "—",
          K("Önerilen sıra (Echo kararı, geri alınabilir): 1) parça beklemeden yalnız kupon dosyaları: K54 c ve K55 a kuponları, kupon C "
-           "M5 delikleri kupon betiğinde yerel parametreyle (izlenen `arayuz.py`'ye dokunmadan); 2) Parti 0 ilk gün: tolerans kuponları, "
+           "M5 delikleri kupon betiğinde yerel parametreyle (izlenen `arayuz.py`'ye dokunmadan) (yapıldı: P10.8a, basılmadı); 2) Parti 0 ilk gün: tolerans kuponları, "
            "K54 / K55 kuponları, boyun tüneli deneme parçası; 3) gelen parçayı kumpasla teyit et: D24V50F5 pin kenarı, ESP32 DevKit micro "
            "USB portu ve yönü, PC817 çıkış jumper'ı, göğüs regülatörü kartının ölçüsü, RV 5.5 pabuç kalınlığı, M5 saplama başı, göğüs "
            "ekranı portu, AI HAT+ zarfı; 4) boyun tüneli fiş denemesi, kablo boylarının ve fiş boylarının ölçümü (kablolar gelince); 5) masa denemeleri "
            "KT1–KT7 (önce KT1 ve KT2, alımı belirliyorlar; KT2'den sonra AU1 / AU2 şeması) ve K66 tezgâh denemesi; 6) P10.8: satın alınan parça modelleri ve fotoğraf "
-           "kartı, tek tam taramalı CAD paketinde şunlarla birlikte: K52 kart zarfı ve yeri, CAD kablo yolu 10 / 11 / 12, burç 2, K31 "
-           "insert boyu (`arayuz.py`), dikiş ölçümü, acil stop düğüm kartı ve dağıtım kartı C modeli, taranmamış 16 şemanın taraması, teyitlerden çıkan değişiklikler; ardından bir rehber üretimi; 7) montajda: bara "
+           "kartı, tek tam taramalı CAD paketinde şunlarla birlikte: K52 kart zarfı ve yeri, K31 insert boyu (`arayuz.py`), CAD kablo "
+           "yolu 6'nın kart C'ye inmesi, iki yeni kartın gerçek ölçüsü, teyitlerden çıkan değişiklikler (CAD kablo yolu 10 / 11 / 12, "
+           "burç 2, dikiş ölçümü, iki kartın modeli ve 16 şemanın taraması P10.8d'de yapıldı); ardından bir rehber üretimi; 7) montajda: bara "
            "somunlarına kabuk takılıyken erişim, ölçümler K39, K45, K12, K6.", GUN, DONGU),
          K("Parti 0 değerlendirmesi rulman (6808-2RS, 625ZZ), M3 / M5 ısıl gömme somun ve kupon D vidası ister (K29 erken alım; K31, K43 "
            "insert); CF kuponları PETG-CF'ye bağlı (K42). K54 / K55 kuponları ve boyun tüneli parçası insert istemez.", KUYRUK, GUN, "planlama/d158/F4c-partiler.json")),
@@ -767,9 +795,9 @@ def uret():
         ("Depo, yayın ve kayıt",
          K("P10.7b2j ve P10.7b2k push edildi. Push öncesi kanca iki yanlış alarm verdi (STEP koordinatlarının ondalık kesri, gömülü "
            "resim verisi); orkestratör eklenen satırları kancanın kalıplarıyla kendisi taradıktan sonra iki commit kanca atlanarak "
-           "gönderildi (Echo kararı); ardından günlük commit'i `89134d5` kancadan geçti.", F10Y),
-         K("K48 dosyasının depo dışına taşınması, K49 `.gitignore` girdileri, pre-push kancasına STEP koordinatı ve gömülü görsel verisi "
-           "istisnası.", KUYRUK, F10Y),
+           "gönderildi (Echo kararı); ardından günlük commit'i `89134d5` kancadan geçti. P10.8a–e commit'leri ve kayıt eşitlemesi push "
+           "edildi; P10.8d'den sonra kancaya STEP koordinatı istisnası eklendi (21.11).", F10Y, DONGU),
+         K("K48 dosyasının depo dışına taşınması, K49 `.gitignore` girdileri, pre-push kancasına gömülü görsel verisi istisnası.", KUYRUK, F10Y),
          K("K18–K26 depo içeriği, gizlilik ve hesap adı; `main`'e birleştirme (Pages) onayı; K62 tur sayısı kaydı; `uygulama-notu.md`'deki "
            "kişi adı geçen satırlar.", KUYRUK, DONGU, F10Y)),
     ]
@@ -824,7 +852,7 @@ def uret():
         "K38 / K45 hız sınırları ve kapanma sırası, K41 S1 −45…135, K44 `eklem_sinirlari.json` üretimi, K3 / K9 el yükü kuralı; ayrıca "
         "K65 sağ / sol yazılım düzeltmesi.", KUYRUK, DONGU, P109B))
     w("<li><b>Ortak ön soru:</b> %s</li>" % K(
-        "16.11 siparişi verildi mi, hangi listeyle? Kayıtta yok; K27–K37, K42, K43, K50 ve K61'in maliyet işi bu cevaba bağlı.", KUYRUK))
+        "16.11 siparişi verildi mi, hangi listeyle? Kayıtta yok; K27–K37, K42, K43, K50, K61 ve K67'nin maliyet işi bu cevaba bağlı.", KUYRUK))
     w("</ol>")
 
     # 3. Açık kararlar

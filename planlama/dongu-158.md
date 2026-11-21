@@ -39,6 +39,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
+| P10.8f (ufak dört: F9c, 17.10, 17.4, B5a düğüm kartı) | A (uygulama), 21.11 14:26 başladı; 17:30 A bitti, commit bekliyor (`planlama/d158/P108f-gunluk.md` § 10) | `planlama/d158/P108f-*`, `planlama/d158/sonuc-rapor.html` + `F9c-*` (gerekirse), rehber kaynakları `tasarim/freecad/rehber/`, `rehber/` (app.js, veri, goruntu), `planlama/rehber/`, F10 JSON'ları; CAD geometrisi yok |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır

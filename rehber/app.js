@@ -435,16 +435,73 @@
     function ucKur(s) {
       const g = altGrup(s) || (ADIM[s] && !ADIM[s].alt ? ADIM[s] : null);
       UC.liste = ((g && g.uc) || []).filter((u) => u.karede).map((u) => ({ n: u.n, ad: u.ad, id: u.id, ip: new THREE.Vector3(u.ip[0], u.ip[1], u.ip[2]) }));
+      ETK.liste = ((g && g.etiket) || []).map((u) => ({ t: u.t, id: u.id, ip: new THREE.Vector3(u.ip[0], u.ip[1], u.ip[2]),
+        ia: u.ia ? new THREE.Vector3(u.ia[0], u.ia[1], u.ia[2]) : null }));
+    }
+    // P10.8f (planlama/d158/P108f-gunluk.md § 4, § 5): parça etiketi (veri sira_grup[].etiket / adimlar[].etiket; rehber_gorunum.etiket_isle):
+    // kablo ucu olmayan parçanın karedeki yazısı (17.4 saplama numaraları A1… / Y1…, B5a acil stop düğüm kartının adı). Yazı iki kipte de
+    // karede (yazdırma karesinde de, büyük yazıyla); yer önce parçanın hemen üstü, çakışırsa çevresi; parça noktasına ince çizgi. Uç
+    // etiketlerinden önce yerleşir; uç etiketleri bunların kutusuyla ve parça noktasıyla çakışmaz. Uç etiketiyle aynı aç / kapa (U).
+    // Çizilmeyen ve nedeni RehberTest.etiket'te.
+    const ETK = { liste: [], ciz: [], cizilmedi: [], H: SAHNE ? 22 : 18, F: SAHNE ? 14 : 12 };
+    let _etkOlc = null;
+    function etkGenislik(t) {
+      if (!_etkOlc) { _etkOlc = document.createElement("canvas").getContext("2d"); _etkOlc.font = "700 " + ETK.F + "px system-ui, 'Segoe UI', sans-serif"; }
+      return Math.ceil(_etkOlc.measureText(t).width) + 10;
     }
     function ucAlanlar(W, H) {                        // güvenli alanlar CSS px (sol, üst, sağ, alt)
       return guvenliAlanlar().map((q) => ({ x0: (q.x0 + 1) / 2 * W, x1: (q.x1 + 1) / 2 * W, y0: (1 - q.y1) / 2 * H, y1: (1 - q.y0) / 2 * H }));
     }
     function ucCiz() {
       if (!ucEl) return;
-      UC.ciz = []; UC.cizilmedi = [];
-      if (!UC.acik || !UC.liste.length) { if (ucEl.innerHTML) ucEl.innerHTML = ""; return; }
+      UC.ciz = []; UC.cizilmedi = []; ETK.ciz = []; ETK.cizilmedi = [];
+      if (!UC.acik || (!UC.liste.length && !ETK.liste.length)) { if (ucEl.innerHTML) ucEl.innerHTML = ""; return; }
       const c = tuval.getBoundingClientRect(), W = c.width, H = c.height, R = UC.R;
       const AL = ucAlanlar(W, H);
+      // P10.8f: parça etiketleri (yukarıda) önce yerleşir; kutuları ve parça noktaları uç etiketlerine engel
+      const eNokta = [];
+      ETK.liste.forEach((m) => {
+        const k = PAR[m.id], o = k && k.obj;
+        if (!o || !o.visible) { ETK.cizilmedi.push({ t: m.t, id: m.id, neden: "parça gizli" }); return; }
+        // önce parçanın üst noktası (ip), güvenli alanın dışındaysa kutu merkezi (ia)
+        let son = null;
+        for (const nk of [m.ip, m.ia]) {
+          if (!nk) continue;
+          _ip.copy(nk).add(o.position).sub(k.taban);
+          _v.copy(_ip).applyMatrix4(kamera.matrixWorldInverse);
+          if (_v.z > -kamera.near) { son = { neden: "kameranın arkasında" }; continue; }
+          _ip.project(kamera);
+          const x = (_ip.x + 1) / 2 * W, y = (1 - _ip.y) / 2 * H;
+          const al = AL.find((q) => x >= q.x0 && x <= q.x1 && y >= q.y0 && y <= q.y1);
+          if (!al) { son = { neden: "güvenli alanın dışında", x: x, y: y }; continue; }
+          son = { x: x, y: y, al: al, yedek: nk === m.ia };
+          break;
+        }
+        if (!son || !son.al) { ETK.cizilmedi.push(Object.assign({ t: m.t, id: m.id }, son || { neden: "nokta yok" })); return; }
+        eNokta.push({ m: m, x: son.x, y: son.y, al: son.al, yedek: son.yedek });
+      });
+      const eEngel = (ISARET.acik ? ISARET.kume : []).map((q) => ({ x0: q.x - 11, y0: q.y - 11, x1: q.x + 11, y1: q.y + 11 }));
+      const eKutu = [];
+      const eUst = (a, b) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+      const EYON = [[0, -1], [1, -1], [-1, -1], [1, 0], [-1, 0], [0, 1], [1, 1], [-1, 1]];
+      eNokta.forEach((q) => {
+        const w = etkGenislik(q.m.t), h = ETK.H;
+        let sec = null;
+        for (const d of [h / 2 + 7, 1.4 * h, 2.2 * h, 3.2 * h, 4.4 * h, 6 * h]) {
+          for (const [dx, dy] of EYON) {
+            const cx = q.x + dx * (d + (dx ? w / 2 : 0)), cy = q.y + dy * d;
+            const b = { x0: cx - w / 2, y0: cy - h / 2, x1: cx + w / 2, y1: cy + h / 2 };
+            if (b.x0 < q.al.x0 || b.x1 > q.al.x1 || b.y0 < q.al.y0 || b.y1 > q.al.y1) continue;
+            if (eKutu.some((z) => eUst(z, b)) || eEngel.some((z) => eUst(z, b))) continue;
+            if (eNokta.some((r) => r.x > b.x0 - 3 && r.x < b.x1 + 3 && r.y > b.y0 - 3 && r.y < b.y1 + 3)) continue;
+            sec = { x: cx, y: cy, b: b }; break;
+          }
+          if (sec) break;
+        }
+        if (!sec) { ETK.cizilmedi.push({ t: q.m.t, id: q.m.id, neden: "yer bulunamadı (çakışma)", x: q.x, y: q.y }); return; }
+        eKutu.push(sec.b);
+        ETK.ciz.push({ t: q.m.t, id: q.m.id, ax: q.x, ay: q.y, x: sec.x, y: sec.y, kutu: sec.b, alan: q.al, yedek: !!q.yedek });
+      });
       const nokta = [];
       UC.liste.forEach((m) => {
         const k = PAR[m.id], o = k && k.obj;
@@ -459,7 +516,7 @@
         nokta.push({ m: m, x: x, y: y, al: al });
       });
       const engel = (ISARET.acik ? ISARET.kume : []).map((q) => ({ x0: q.x - 11, y0: q.y - 11, x1: q.x + 11, y1: q.y + 11 }));
-      const kutular = [];
+      const kutular = eKutu.slice();                  // P10.8f: parça etiketlerinin kutuları
       const ust = (a, b) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
       const YON = [[1, -1], [-1, -1], [1, 1], [-1, 1], [0, -1], [0, 1], [1, 0], [-1, 0]];
       nokta.forEach((q) => {
@@ -476,6 +533,7 @@
               if (b.x0 < q.al.x0 || b.x1 > q.al.x1 || b.y0 < q.al.y0 || b.y1 > q.al.y1) continue;
               if (kutular.some((z) => ust(z, b)) || engel.some((z) => ust(z, b))) continue;
               if (nokta.some((r) => r !== q && r.x > b.x0 - 3 && r.x < b.x1 + 3 && r.y > b.y0 - 3 && r.y < b.y1 + 3)) continue;
+              if (eNokta.some((r) => r.x > b.x0 - 3 && r.x < b.x1 + 3 && r.y > b.y0 - 3 && r.y < b.y1 + 3)) continue;   // P10.8f
               sec = { x: cx, y: cy, b: b, d: d, yan: yan }; break;
             }
             if (sec) break;
@@ -487,7 +545,16 @@
         UC.ciz.push({ n: q.m.n, ad: q.m.ad, id: q.m.id, ax: q.x, ay: q.y, x: sec.x, y: sec.y, kutu: sec.b, uzak: sec.d, yan: sec.yan, alan: q.al });
       });
       ucEl.setAttribute("viewBox", "0 0 " + Math.round(W) + " " + Math.round(H));
-      ucEl.innerHTML = UC.ciz.map((u) => {
+      // P10.8f: parça etiketi: beyaz kutu + koyu yazı (iki temada aynı), parça noktasından kutunun en yakın kenarına ince çizgi
+      const eHtml = ETK.ciz.map((u) => {
+        const f = (v) => v.toFixed(1), k = u.kutu;
+        const ex = Math.min(Math.max(u.ax, k.x0), k.x1), ey = Math.min(Math.max(u.ay, k.y0), k.y1);
+        return "<g class='etk'><line class='c0' x1='" + f(u.ax) + "' y1='" + f(u.ay) + "' x2='" + f(ex) + "' y2='" + f(ey) + "'/><line class='c' x1='" +
+          f(u.ax) + "' y1='" + f(u.ay) + "' x2='" + f(ex) + "' y2='" + f(ey) + "'/><circle class='a' cx='" + f(u.ax) + "' cy='" + f(u.ay) + "' r='2.5'/>" +
+          "<rect class='ep' x='" + f(k.x0) + "' y='" + f(k.y0) + "' width='" + f(k.x1 - k.x0) + "' height='" + f(k.y1 - k.y0) + "' rx='4'/>" +
+          "<text class='et' x='" + f(u.x) + "' y='" + f(u.y) + "' style='font-size:" + ETK.F + "px'>" + esc(u.t) + "</text></g>";
+      }).join("");
+      ucEl.innerHTML = eHtml + UC.ciz.map((u) => {
         const f = (v) => v.toFixed(1);
         let h = "<g class='uc'>";
         if (u.uzak) {
@@ -1446,6 +1513,9 @@
       if (ago && ago.sema_on) ago.sema_on.forEach((x) => {
         if (SEMA[x.i] && x.not_) h.push("<span class='not'>" + esc(SEMA[x.i].ad.split(":")[0]) + ": " + esc(x.not_) + "</span>");
       });
+      // P10.8f: parça etiketlerinin notu (veri etiket_not; 17.4 saplama numaralarının anlamı); etiketler açıkken
+      const agE = altGrup(s) || (ADIM[s] && !ADIM[s].alt ? ADIM[s] : null);
+      if (UC.acik && agE && agE.etiket_not && (agE.etiket || []).length) h.push("<span class='not'>" + esc(agE.etiket_not) + "</span>");
       if (sonEv.length) h.push("<span><i style='background:" + EV_RENK + "'></i>Bağlandığı yer</span>");
       if (s > 0) h.push("<span><i style='background:" + SINIF.onceki[0] + "'></i>" + SINIF.onceki[1] + "</span>");
       if (ISARET.acik && ISARET.liste.length) h.push("<span><i class='hl'></i>Bağlantı elemanı yeri (×n: küme)</span>");
@@ -1754,6 +1824,15 @@
           cizilmedi: UC.cizilmedi.slice(), tuval: { w: c.width, h: c.height }, dom: ucEl ? ucEl.querySelectorAll("g.uc").length : 0 };
       },
       ucGoster: (a) => ucGoster(a),
+      // P10.8f: parça etiketleri (ekran px, tuvale göre): veri listesi, çizilenler (parça noktası ax/ay, kutu merkezi x/y, kutu, güvenli
+      // alan), çizilmeyenler ve nedeni; dom = g.etk sayısı
+      etiket() {
+        render();
+        const c = tuval.getBoundingClientRect();
+        return { acik: UC.acik, sahne: SAHNE, veri: ETK.liste.map((m) => ({ t: m.t, id: m.id })), ciz: ETK.ciz.map((u) => Object.assign({}, u)),
+          cizilmedi: ETK.cizilmedi.slice(), tuval: { w: c.width, h: c.height }, dom: ucEl ? ucEl.querySelectorAll("g.etk").length : 0,
+          uc_kutu: UC.ciz.map((u) => Object.assign({ n: u.n }, u.kutu)) };
+      },
       kareBaslik: () => { const e = $("kare-baslik"); return e && !e.hidden ? e.textContent : null; }
     };
   };

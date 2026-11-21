@@ -1,0 +1,11 @@
+saglam: hata 0
+YAKALANDI A4 düşmüş (sahne) -> 17.4 sahne: çizilen ['A1', 'A2', 'A3', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5'], veri ['A1', 'A2', 'A3', 'A4', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5']; çizilmeyen []
+YAKALANDI kutu güvenli alan dışında -> 17.4 etk: A1 kutusu güvenli alanın dışında
+YAKALANDI iki yazı üst üste -> 17.4 sahne: A1 ile A2 çakışıyor
+YAKALANDI yazı uç etiketinin üstünde -> 12 etk: Acil stop düğüm kartı uç etiketi 1 ile çakışıyor
+YAKALANDI DOM sayısı 0 -> 12 sahne: DOM g.etk 0 ≠ çizilen 1
+YAKALANDI yanlış yazı A9 -> 17.4 etk: çizilen ['A1', 'A2', 'A4', 'A9', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5'], veri ['A1', 'A2', 'A3', 'A4', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5']; çizilmeyen []
+YAKALANDI konum ölçülmemiş -> 12 sahne: çizilen [], veri ['Acil stop düğüm kartı']; çizilmeyen []
+KACTI kapsam dışı: yazı yanlış saplamaya bağlı -> -
+KACTI kapsam dışı: kutu parçadan uzak -> -
+SONUC: GECER (kapsamdaki 7 bozma yakalandı)

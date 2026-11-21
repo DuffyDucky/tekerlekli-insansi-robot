@@ -1,0 +1,38 @@
+[1] data-j (JSON, git, hesap)
+    98 değer kaynakla karşılaştırıldı
+[2] data-h (sayımlar)
+    51 sayım; paket 47, açık karar 27 / 67, grup A/B/C 15/2/10, düşük 47
+[3] data-kaynak (metindeki sayılar kaynakta)
+    541 öğe, 687 sayı
+[3b] data-satir (kontrol dosyası satır numaraları var)
+    129 satır numarası denetlendi
+[4] bağsız sayı
+    bağsız 0
+    commit hücresi muafiyeti: 168 hash, hepsi git log'da olmalı
+[5] paket envanteri
+    plan 47, tablo 47, tekrar/eksik 0
+[5b] kaynaktan bağımsız denetimler (takvim, P8.1, düşükler)
+    takvim: kaynak 9 veri satırı, sayfa 9; hücre farkı 0
+    P8.1: 136 satırın 93'ü doğrulandı (sayaç 86 + 7; F8a-rapor.html ile aynı)
+    düşük satırları sayfa = JSON (47); kontrol dosyalarında 23 KT kodu: düşükte 4, kuyrukta 16, günlük §6'da 3
+[6] açık kararlar
+    kuyruk açık 27 (satır (27, 40)), tablo 27; kapanan başlık 40
+[7] göreli bağlantılar
+    göreli 84 (benzersiz 40), kırık 0; sayfa içi çapa 11 (hedefsiz 0); dış bağlantı 0
+[8] yerel yol, takma ad, soyad
+    8 dosya; yerel yol 0; takma ad denetlenmedi (TAKMA_AD yok); soyad denetlenmedi (SOYADLAR yok)
+[9] tarayıcı: chrome.exe (DevTools; file://)
+    1400 px: innerWidth 1400, scrollWidth 1400, clientWidth 1400, yükseklik 19941, konsol hatası 0, taşan öğe 0
+      görüntü planlama/d158/F9c-goruntu-1400-ust.png
+      görüntü planlama/d158/F9c-goruntu-1400-kararlar.png
+      görüntü planlama/d158/F9c-goruntu-1400-takvim.png
+      görüntü planlama/d158/F9c-goruntu-1400-paketler.png
+      görüntü planlama/d158/F9c-goruntu-1400-dusukler.png
+    360 px: innerWidth 360, scrollWidth 360, clientWidth 360, yükseklik 50409, konsol hatası 0, taşan öğe 0
+      görüntü planlama/d158/F9c-goruntu-360-ust.png
+      görüntü planlama/d158/F9c-goruntu-360-kararlar.png
+      görüntü planlama/d158/F9c-goruntu-360-takvim.png
+      görüntü planlama/d158/F9c-goruntu-360-paketler.png
+      görüntü planlama/d158/F9c-goruntu-360-dusukler.png
+
+SONUÇ: GEÇER (hata 0)

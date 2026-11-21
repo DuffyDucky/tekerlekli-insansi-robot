@@ -1,0 +1,16 @@
+  sağlam: iki şema çiziliyor                    cizilmeyen 0 (beklenen 0) TUTTU
+  bozuk: lejanttaki K05 karede 0 px             cizilmeyen 1 (beklenen 1) TUTTU
+  bozuk: K05 eşiğin altında (29 px)             cizilmeyen 1 (beklenen 1) TUTTU
+  örtülü: AU1 0 px ama sema_ortulu'da           cizilmeyen 0 (beklenen 0) TUTTU
+  bozuk: örtülü olmayan alt adımda AU1 0 px     cizilmeyen 1 (beklenen 1) TUTTU
+sema karede bozma denemesi: 5/5
+  sağlam                                 hata 0 TUTTU
+  U1: etiket çizilmedi                   hata 1 TUTTU
+  U2: kutu tuvalden taşıyor              hata 2 TUTTU
+  U2: kutu güvenli alandan taşıyor       hata 1 TUTTU
+  U2: DOM sayısı tutmuyor                hata 1 TUTTU
+  U3: iki etiket çakışıyor               hata 1 TUTTU
+  U4: parça görünmüyor                   hata 1 TUTTU
+  U5: sağ etiketi solda                  hata 1 TUTTU
+  U6: kullanılmayan UC_ORTULU            hata 1 TUTTU
+uc etiketi bozma denemesi: 9/9

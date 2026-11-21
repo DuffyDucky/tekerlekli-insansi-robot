@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-21 09:48",
+ "tarih": "2026-11-21 16:24",
  "betik": "planlama/d158/F10f-dogrula.py",
  "veri": {
   "sinir": {
@@ -4538,7 +4538,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 39.5
+  "sure_s": 38.2
  },
  "sinama": {
   "kati": {
@@ -8879,7 +8879,7 @@
      },
      "gecti": false
     },
-    "sure_s": 11.2
+    "sure_s": 11.1
    },
    {
     "hazir": true,
@@ -9099,7 +9099,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 8.8
+    "sure_s": 8.7
    },
    {
     "hazir": true,
@@ -9471,7 +9471,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.5
    },
    {
     "hazir": true,
@@ -9491,7 +9491,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.5
    },
    {
     "hazir": true,
@@ -9511,7 +9511,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.6
    },
    {
     "hazir": true,
@@ -9551,7 +9551,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.1
+    "sure_s": 4.2
    },
    {
     "hazir": true,
@@ -9621,7 +9621,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 6.0
+    "sure_s": 6.2
    },
    {
     "hazir": true,
@@ -10113,7 +10113,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 4.8
+    "sure_s": 4.9
    },
    {
     "hazir": true,
@@ -10133,7 +10133,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.7
+    "sure_s": 2.8
    },
    {
     "hazir": true,
@@ -10467,7 +10467,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 4.5
+    "sure_s": 4.6
    },
    {
     "hazir": true,
@@ -10547,7 +10547,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.0
+    "sure_s": 3.1
    },
    {
     "hazir": true,
@@ -10567,7 +10567,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.6
+    "sure_s": 3.4
    },
    {
     "hazir": true,
@@ -10633,7 +10633,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 2.9
+    "sure_s": 3.0
    },
    {
     "hazir": true,
@@ -10665,7 +10665,7 @@
      },
      "gecti": true
     },
-    "sure_s": 26.3
+    "sure_s": 25.4
    },
    {
     "hazir": true,
@@ -10685,7 +10685,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.3
+    "sure_s": 4.1
    },
    {
     "hazir": true,
@@ -10919,7 +10919,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 7.9
+    "sure_s": 8.1
    },
    {
     "hazir": true,
@@ -11057,7 +11057,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 3.5
+    "sure_s": 3.6
    },
    {
     "hazir": true,
@@ -11473,7 +11473,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 9.0
+    "sure_s": 9.1
    },
    {
     "hazir": true,
@@ -11785,7 +11785,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 11.7
+    "sure_s": 11.5
    },
    {
     "hazir": true,
@@ -11845,7 +11845,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.5
    },
    {
     "hazir": true,
@@ -11885,7 +11885,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.5
+    "sure_s": 4.6
    },
    {
     "hazir": true,
@@ -11905,7 +11905,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.2
+    "sure_s": 4.3
    },
    {
     "hazir": true,
@@ -12521,7 +12521,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 2.7
    },
    {
     "hazir": true,
@@ -12541,7 +12541,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 2.7
    },
    {
     "hazir": true,
@@ -12835,7 +12835,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 4.5
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -12875,7 +12875,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.0
+    "sure_s": 2.9
    },
    {
     "hazir": true,
@@ -12915,7 +12915,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.9
+    "sure_s": 2.8
    },
    {
     "hazir": true,
@@ -12935,7 +12935,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.4
+    "sure_s": 3.3
    },
    {
     "hazir": true,
@@ -12955,7 +12955,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.4
+    "sure_s": 3.5
    },
    {
     "hazir": true,
@@ -13033,7 +13033,7 @@
      },
      "gecti": true
     },
-    "sure_s": 25.7
+    "sure_s": 26.0
    },
    {
     "hazir": true,
@@ -13287,10 +13287,10 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 8.1
+    "sure_s": 8.2
    }
   ],
-  "sure_s": 310.1,
+  "sure_s": 310.2,
   "gecti": null,
   "gecen_hepsi": false
  },
@@ -14015,10 +14015,10 @@
   "gecti": true
  },
  "sure": {
-  "veri_s": 53.2,
-  "kablo_kare_s": 140.9,
-  "parca_kare_s": 310.5,
-  "toplam_s": 586.4
+  "veri_s": 51.5,
+  "kablo_kare_s": 142.4,
+  "parca_kare_s": 310.1,
+  "toplam_s": 586.6
  },
  "gecti": true
 }

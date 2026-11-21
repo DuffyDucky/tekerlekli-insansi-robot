@@ -2349,7 +2349,11 @@ DEMET_ALT = {
              # kartlara / sonarlara odaklanır, elektronik katı saydam (önizleme: B01 oran 0,68, Q03 0,79, şemalar ≥ 1800 px)
              # P10.8b (P108b-gunluk.md § 4): (−0,6, 0,9, 0,5) bakışında yol 11 / 12'nin katı ön kat kesiğinin dışından deldiği yer
              # seçilemiyordu; üstten-önden bakışta saydam katın kesiği ve kesik dışından geçen çizgi ayırt ediliyor (önizleme), 8 etiket karede
-             kamera=(0.0, 1.0, 0.45), saydam=("Elektronik katı",),
+             # P10.8f (P108f-gunluk.md § 3; P108e-kontrol B3): yarı saydam katın kesiği (katın ortasındaki yarık) karede seçilmiyordu,
+             # "yol 11 / 12 de kesikten geçer" kareden doğrulanamıyordu. Katın kenar çizgisi (F10f kenar): yarığın sınırı siyah çizgi,
+             # mor hatlar yarığa giriyor, kat altındaki bölümleri saydam katın ardında soluk. Kamera aynı; opak kat BTS7960'ları
+             # (uç 2, 4) örtüyordu, öne-orta bakışta yarık BTS kartlarının ardında kalıyordu (önizleme P108f-olcum/onizleme/)
+             kamera=(0.0, 1.0, 0.45), saydam=("Elektronik katı",), kenar=("Elektronik katı",),
              odak=("Elektronik katı", "Sonar HC-SR04", "BTS7960 motor sürücü")),
         dict(ad="Direğe çıkan hatların taban kısmı", paragraf=(11,), demet=("taban elektronik katı", "boyun", "taban (K1)", "gövde (K2)"),
              # P10.8b (P108b-gunluk.md § 4): U06'nın şeması K2'nin (32.4); şema kendi adımından önce çizilmez (app.js semaDurum), bu
@@ -2409,6 +2413,19 @@ UC_ORTULU = {
     ("K2", 1): {"sağ S1 (omuz öne-arka) servosu": _DISARIDA, "sol S1 (omuz öne-arka) servosu": _DISARIDA},   # P10.8e: taban odağı
     ("K2", 2): {"kafa tilt servosu": _DISARIDA, "Dağıtım kartı C (kafa)": _DISARIDA},   # P10.8e: kart modelde, güç panelinde (F10d U1 / U4)
     ("K2", 7): {"Sigorta kutusu": _DISARIDA},
+}
+# P10.8f (planlama/d158/P108f-gunluk.md § 4, § 5): parça etiketi = kablo ucu olmayan parçanın karedeki yazısı (rehber_gorunum.etiket_isle,
+# app.js etkCiz). Anahtar UC_ORTULU gibi (adım kodu, alt adım no; 0 = alt adımı olmayan adımın kendi karesi) → dict(desen=[(düzenli
+# ifade (parçanın görünen adı), yazı)], not_=lejant notu). Yazıdaki "{1}" desenin ilk grubu (numara). Desen o konumda görünen hiçbir
+# parçaya uymazsa, aynı yazı iki parçaya düşerse ya da numaralar x'e göre soldan sağa (robota önden bakınca; adım 0 tanımı: +X önden
+# bakanın sağı) 1, 2, … sırasında değilse üretim durur. Yer modelden (parça kutusunun üst yüzünün ortası); elle koordinat yok.
+PARCA_ETIKET = {
+    # 17.4: metin saplamayı numarasıyla anar ("anahtarlı baranın 3 numaralı saplaması"); numara karede yoktu (P10.8b'den açık)
+    ("K1", 4): dict(desen=[(r"^Bara cıvatası M5x25 DIN 933 \(anahtarlı (\d)\)$", "A{1}"),
+                           (r"^Bara cıvatası M5x25 DIN 933 \(yıldız (\d)\)$", "Y{1}")],
+                    not_="A1–A4: anahtarlı baranın, Y1–Y5: yıldız barasının saplama numarası (robota önden bakınca soldan sağa)"),
+    # B5a: acil stop düğüm kartı bu adımda takılır ama kablo ucu değil (kablosu 17.8'de), uç etiketi almıyordu (P108e-kontrol B2)
+    ("B5a", 0): dict(desen=[(r"^Acil stop düğüm kartı", "Acil stop düğüm kartı")]),
 }
 ALT_TAM_HAM = {}          # alt adımlara bölünen tam metin (çapası silinmiş, göndermesi çevrilmiş): ana metin + alt adımlar = bu
 ALT_KAYNAK_HAM = {}       # kaynaktaki is_ (çapalı, "madde N" göndermeli): rehber_denetim.gonderme_denetle bağımsız yeniden kurar

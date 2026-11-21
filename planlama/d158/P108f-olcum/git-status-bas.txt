@@ -1,0 +1,24 @@
+ M tasarim/freecad/kabuk/gorsel/kabuk-arka-kapak-acik.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-baglanti-etek.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-baglanti-govde.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-izometrik.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-kesit-gogus.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-kesit.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-nextion-ic.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-nextion-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-omuz-duvari.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-patlatilmis-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-patlatilmis.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-yan.png
+ M tasarim/freecad/montaj/yerlesim-kontrol.json
+?? geometri2_cikar.py
+?? geometri2_dogrula.py
+?? geometri_cikar.py
+?? gez.js
+?? planlama/d158/P108d-kontrol-olcum/b2-tarama.nabiz
+?? planlama/d158/P108d-olcum/ara1.json
+?? planlama/d158/P108f-olcum/
+?? uc.js
+641bc6c6b6c2375eaeee17a76e95ad96a0d14703
+641bc6c6b6c2375eaeee17a76e95ad96a0d14703

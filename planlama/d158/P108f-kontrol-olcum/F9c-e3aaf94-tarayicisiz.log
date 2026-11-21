@@ -1,0 +1,29 @@
+[1] data-j (JSON, git, hesap)
+    98 değer kaynakla karşılaştırıldı
+[2] data-h (sayımlar)
+  HATA: data-h komit_sayisi: sayfa '108', hesap 109
+  HATA: data-h komit_eslesmeyen: sayfa '2', hesap 3
+    51 sayım; paket 47, açık karar 26 / 66, grup A/B/C 14/2/10, düşük 47
+[3] data-kaynak (metindeki sayılar kaynakta)
+    535 öğe, 666 sayı
+[3b] data-satir (kontrol dosyası satır numaraları var)
+    129 satır numarası denetlendi
+[4] bağsız sayı
+    bağsız 0
+    commit hücresi muafiyeti: 160 hash, hepsi git log'da olmalı
+[5] paket envanteri
+    plan 47, tablo 47, tekrar/eksik 0
+  HATA: paket P10.9: konu öneki bu pakette olan e3aaf94 commit hücresinde yok
+[5b] kaynaktan bağımsız denetimler (takvim, P8.1, düşükler)
+    takvim: kaynak 9 veri satırı, sayfa 9; hücre farkı 0
+    P8.1: 136 satırın 93'ü doğrulandı (sayaç 86 + 7; F8a-rapor.html ile aynı)
+    düşük satırları sayfa = JSON (47); kontrol dosyalarında 23 KT kodu: düşükte 4, kuyrukta 16, günlük §6'da 3
+[6] açık kararlar
+    kuyruk açık 26 (satır (26, 40)), tablo 26; kapanan başlık 40
+[7] göreli bağlantılar
+    göreli 84 (benzersiz 40), kırık 0; sayfa içi çapa 11 (hedefsiz 0); dış bağlantı 0
+[8] yerel yol, takma ad, soyad
+    8 dosya; yerel yol 0; takma ad denetlenmedi (TAKMA_AD yok); soyad denetlenmedi (SOYADLAR yok)
+[9] tarayıcı: ATLANDI (--tarayicisiz)
+
+SONUÇ: GEÇMEZ (hata 3)

@@ -653,6 +653,63 @@ def uc_isle(V, kutular, cad=None):
     return say
 
 
+def etiket_isle(V, kutular):
+    """P10.8f: parça etiketi (rehber_metin.PARCA_ETIKET) → sira_grup[].etiket / adimlar[].etiket [{t, id, ip, ia}] ve etiket_not.
+    Yer: parçanın robot.glb kutusunun üst yüzünün ortası (ip: x, z merkez; y en büyük); yedek nokta kutu merkezi (ia). Kural: her desen o konumda görünen (durum gizli
+    değil) en az bir parçaya uyar; aynı yazı iki parçaya düşmez; numaralı yazılar ("{1}") parça kutusunun x merkezine göre soldan sağa
+    1, 2, … sırasında. Uymazsa üretim durur (sessiz düşüş yok). kutular: parça kimliği → (bmin, bmax)."""
+    import rehber_metin as RM
+    A, P = V["adimlar"], V["parcalar"]
+    GH = {a["i"]: grup_harita(a) for a in A}
+    ka = {a["kod"]: a for a in A}
+    for a in A:                                                   # eski alanlar (kayıttan çıkan etiket veride kalmasın)
+        for g in [a] + list(a.get("sira_grup") or []):
+            g.pop("etiket", None)
+            g.pop("etiket_not", None)
+    say = 0
+    for (kod, j), tan in sorted(RM.PARCA_ETIKET.items()):
+        a = ka.get(kod)
+        if a is None:
+            raise SystemExit("etiket_isle: %s adımı veride yok" % kod)
+        G = a.get("sira_grup") or []
+        if j and not (a.get("alt") and 1 <= j <= len(G)):
+            raise SystemExit("etiket_isle: %s.%d alt adımı yok" % (kod, j))
+        if not j and a.get("alt"):
+            raise SystemExit("etiket_isle: %s alt adımlı; alt adım numarası gerekir" % kod)
+        g = G[j - 1] if j else a
+        liste, yazilar = [], set()
+        for desen, yazi in tan["desen"]:
+            es = []
+            for p in P:
+                m = re.search(desen, p["ad"])
+                if m and durum(p, a["i"], j, A, GH) != "gizli":
+                    es.append((yazi.replace("{1}", m.group(1)) if "{1}" in yazi else yazi, p, m))
+            if not es:
+                raise SystemExit("etiket_isle: %s.%d deseni %r bu konumda görünen hiçbir parçaya uymuyor" % (kod, j, desen))
+            if "{1}" in yazi:
+                xm = lambda x: (float(kutular[x[1]["id"]][0][0]) + float(kutular[x[1]["id"]][1][0])) / 2
+                es.sort(key=xm)
+                nolar = [int(m.group(1)) for _t, _p, m in es]
+                if nolar != list(range(1, len(es) + 1)):
+                    raise SystemExit("etiket_isle: %s.%d %r numaraları x'e göre soldan sağa %s (1..%d olmalı)" % (kod, j, desen, nolar, len(es)))
+            for t, p, _m in es:
+                if t in yazilar:
+                    raise SystemExit("etiket_isle: %s.%d yazı %r iki parçaya düşüyor" % (kod, j, t))
+                yazilar.add(t)
+                bmin, bmax = kutular[p["id"]]
+                xm, zm = round((float(bmin[0]) + float(bmax[0])) / 2, 1), round((float(bmin[2]) + float(bmax[2])) / 2, 1)
+                # ia: kutu merkezi; üst nokta karede güvenli alanın dışına düşerse app.js bunu dener (17.4'te A4 saplamasının
+                # ucu kadrajın üst kenarında, başlık şeridinin altında kalıyordu; P108f-gunluk.md § 7)
+                liste.append(dict(t=t, id=p["id"], ip=[xm, round(float(bmax[1]), 1), zm],
+                                  ia=[xm, round((float(bmin[1]) + float(bmax[1])) / 2, 1), zm]))
+        g["etiket"] = liste
+        if tan.get("not_"):
+            g["etiket_not"] = tan["not_"]
+        say += len(liste)
+    V["etiket_kaynak"] = dict(konum=len(RM.PARCA_ETIKET), etiket=say, kural="rehber_gorunum.etiket_isle (P10.8f)")
+    return say
+
+
 def yaz(V):
     open(os.path.join(VERI_DIR, "rehber-veri.json"), "w", encoding="utf-8").write(json.dumps(V, ensure_ascii=False, indent=0))
     open(os.path.join(VERI_DIR, "rehber-veri.js"), "w", encoding="utf-8").write(
@@ -667,8 +724,10 @@ def isle(yazma=False, sessiz=False):
     M = Mesh(V)
     kayit = ev_isle(V, M)
     us = uc_isle(V, {pid: (q["bmin"], q["bmax"]) for pid, q in M.P.items()})   # P10.7b2f
+    ne = etiket_isle(V, {pid: (q["bmin"], q["bmax"]) for pid, q in M.P.items()})   # P10.8f
     if not sessiz:
         print("gorunum: uc etiketi %d konumda %d etiket (karede), karede gorunmez uc %d" % (us["konum"], us["etiket"], us["yok"]))
+        print("gorunum: parca etiketi %d konumda %d yazi" % (V["etiket_kaynak"]["konum"], ne))
     if not sessiz:
         d = rk["denetim"]
         print("gorunum: renk %d parca (CAD sirasi esles %d), GuiDocument kayitli %d, ayni %d, farkli %d, GuiDocument yok %d (%s)" % (

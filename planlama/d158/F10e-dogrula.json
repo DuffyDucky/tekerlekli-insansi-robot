@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-21 09:58",
+ "tarih": "2026-11-21 16:34",
  "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -12143,7 +12143,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 1014,
+ "sure_s": 1013,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,
