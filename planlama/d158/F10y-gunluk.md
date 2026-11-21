@@ -191,3 +191,6 @@ Echo kararı), örnekler tarife çevrildi.
 - ~~F9b: tasarım demosu b2j öncesi sayılarla~~ → demo yeniden üretildi, F9b 0 (§ 8).
 - `kafa-yerlesim` rapor + not birlikte yeniden üretim; notta eski ses kartı satırları.
 - pre-push kancasına STEP koordinatı ve gömülü `data:image` base64 verisi için istisna (kuyruğa bir sonraki pakette alınacak).
+  - ~~STEP koordinatı~~ → **yapıldı 21.11** (yalnız IBAN / telefon kalıbı, yalnız `*.step` / `*.stp`, yalnız ondalık kesir;
+    `P108d-gunluk.md` § 16).
+  - Gömülü `data:image` base64 (ekip adı kalıbına rastlantısal eşleşme): **açık**.

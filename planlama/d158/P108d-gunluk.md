@@ -493,3 +493,82 @@ git status -sb                         # "## lale-duzeltme...origin/lale-duzeltm
 
 Commit tek, açık `git add` listesiyle (§ 14.2; `P108d-kontrol-olcum` 53 dosya, nabız hariç; § 14.2'deki "52" ile fark
 büyük olasılıkla en son (06:34) yazılan `b2-teslim-md5.txt`; çıkarım, doğrulanmadı). Hash ve push sonucu bu commit'in içine yazılamaz; ajan raporunda ve `git log`'da.
+
+## 16. `pre-push` kancası: STEP koordinatı yanlış alarmı giderildi (21.11.2026, ≈ 06:45–06:55; saat okundu)
+
+### 16.1 Neden
+
+`d2c6776` (P10.8d) normal push'ta kancada durdu (çıkış 1): yalnız "IBAN / telefon" bulgusu. 19.11'de aynı yanlış alarm
+`--no-verify` ile geçilmiş, istisna işi kuyruğa alınmıştı (F10y-gunluk.md § 9–10, P109c-gunluk.md O2). Orkestratör kararı:
+`--no-verify` yok; kancanın isabeti en dar biçimde düzeltilir, push kanca açıkken yapılır.
+
+Kanca yalnız `.git/hooks/pre-push` içinde; `core.hooksPath` boş, depoda izlenen kopyası ya da kurulum betiği yok (eski günlüklerde
+yalnız metin alıntıları var). Bu yüzden değişiklik commit'e girmez; kayıt bu bölümdür.
+
+### 16.2 Bağımsız doğrulama (`origin/lale-duzeltme..lale-duzeltme`, eklenen 278.608 satır)
+
+- Kancanın kendi süzgeciyle (`grep -aEo`, ±40 karakter) **448** çıktı satırı; her eklenen satır dosya adıyla eşlenip Python ile
+  ayrıca sayıldı: **448** eşleşme, `montaj/robot-montaj.step` 224, `taban/taban-montaj.step` 224, başka dosya 0.
+- 448'in hepsi `#n=CARTESIAN_POINT(...)` satırında, tırnak (metin alanı) içinde 0, devam / başlık satırında 0; hepsi bir ondalık
+  sayının kesir kısmının **tamamı** (önünde `<rakam>.`, arkasında `,` / `)`), hepsi 11 hane ve `05` ile başlıyor (telefon kalıbının
+  `\b0` + `5` dalı; `.` sözcük sınırı sayıldığı için kesrin başı eşleşiyor). `TR` / `+90` biçimli eşleşme 0.
+- STEP başlıkları: `FILE_DESCRIPTION(('FreeCAD Model'),'2;1')`; `FILE_NAME` yazar / kuruluş alanı robot-montaj'da `'Author'` / `''`,
+  taban-montaj'da `'FreeCAD'` / `'FreeCAD'`; ön işlemci `Open CASCADE STEP processor 7.8`, kaynak `FreeCAD`, yetki `Unknown`.
+  Kişisel ad, makine yolu yok. Öteki kalıplar (yasak yol, ofis belgesi, anahtar, parola, e-posta, yerel yol, takma ad, ekip adı) 0.
+
+### 16.3 Değişiklik (seçenek a: yalnız IBAN / telefon, yalnız `*.step` / `*.stp`, yalnız ondalık kesir)
+
+Öteki kalıpların taradığı `$tmp` aynen kaldı. IBAN / telefon kalıbı artık `$tmp.n`'yi tarar: `$tmp`'nin satırları **bayt bayt aynı**,
+yalnız STEP dosyasından gelen satırlarda `<rakam>.<rakamlar>` dizisinin kesir haneleri silinmiş. Satırın hangi dosyadan geldiği
+`git log -p` akışındaki `diff --git` / `+++` başlığından (büyük / küçük harf duyarsız `.step` / `.stp`) bayrak dosyasına (`$tmp.b`)
+yazılır; bayrak sayısı `$tmp` satır sayısını tutmazsa istisna uygulanmaz (`$tmp.n` = `$tmp`). Fark (önce `<`, sonra `>`):
+
+```
+< cikti=$(grep $2 ".{0,40}($3).{0,40}" "$tmp" | ...
+> cikti=$(grep $2 ".{0,40}($3).{0,40}" "${5:-$tmp}" | ...      # 5. argüman: taranacak dosya
+> git log -p --format= $aralik | awk '                          # $tmp'den hemen sonra
+>   /^diff --git /{bas=1; st=0; next}
+>   /^\+\+\+/{ if (bas) { bas=0; st=(tolower($0) ~ /\.(step|stp)"?$/) }; next }
+>   /^\+/{ print (st ? "S" : "N") }' > "$tmp.b"
+> if [ "$(wc -l < "$tmp.b")" = "$(wc -l < "$tmp")" ]; then
+>   paste -d'|' "$tmp.b" "$tmp" | sed -E '/^S\|/s/([0-9]\.)[0-9]+/\1/g; s/^[SN]\|//' > "$tmp.n"
+> else cp "$tmp" "$tmp.n"; fi
+< ara "IBAN / telefon" "-aEo" '<kalıp aynı>'
+> ara "IBAN / telefon" "-aEo" '<kalıp aynı>' '' "$tmp.n"
+```
+
+Kalıplar değişmedi; `trap` yeni geçici dosyaları da siliyor. Eski kanca yedeği oturumun geçici klasöründe (depoda değil). Neden
+`awk`'ın kendi satırları değil `paste` ile `$tmp`: Windows'taki `grep` bu akışta satır içi CR'leri siliyor (`$tmp`'de 0, ham akışta
+2.485), `awk` silmiyor; `paste` yolu STEP dışı satırları `$tmp` ile aynı tutuyor. "Gömülü resim" (`data:image` base64) istisnası
+bu işin parçası değil, açık.
+
+### 16.4 Sınama (commit'e bir şey girmeden)
+
+(i) gerçek aralıkta kancanın kendisi `bash .git/hooks/pre-push` (stdin'e ref satırı) ile; ötekiler oturumun geçici klasöründe
+boş bir depo + çıplak uzak depoya **gerçek `git push`** ile, yeni ve eski kancayla ayrı ayrı. Örnek diziler sınama anında
+kuruldu, buraya yazılmadı (19.11'deki gibi bu günlüğü kancaya takmasın diye): IBAN = `TR` + 24 rakam (bitişik ve 4'lü boşluklu),
+telefon = `0` + `5` ile başlayan 11 hane boşluklu ve `+90` ile bitişik, anahtar = AWS erişim anahtarı biçimi (`AKIA` + 16 büyük
+harf), e-posta = uydurma alan adı, koordinat = `CARTESIAN_POINT` içinde kesri `05` ile başlayan 11 haneli üç sayı.
+
+| # | Durum | Dosya | Yeni kanca | Eski kanca | Beklenen |
+|---|---|---|---|---|---|
+| i | P10.8d gidecek aralık (448 koordinat) | 2 STEP + 88 dosya | **0** geçti | 1 IBAN / telefon | geçer |
+| i-b | aynı aralık, `$tmp.n`'nin STEP dışı 23.690 satırı | | `$tmp` ile bayt bayt aynı | | aynı |
+| ii | IBAN bitişik / boşluklu | `.txt` / `.md` | 1 IBAN / telefon | 1 | yakalar |
+| ii | telefon boşluklu / `+90` | `.txt` / `.py` | 1 IBAN / telefon | 1 | yakalar |
+| iii | IBAN `FILE_NAME` yazar alanında (aynı dosyada koordinat da var) | `.step` | 1 IBAN / telefon | 1 | yakalar |
+| iii | IBAN boşluklu / telefon `PRODUCT('…')` metninde | `.step` | 1 IBAN / telefon | 1 | yakalar |
+| iii | IBAN metin alanında, büyük harf uzantı | `.STP` | 1 IBAN / telefon | 1 | yakalar |
+| iv | anahtar kalıbı metin alanında (+ koordinat) | `.step` | 1 anahtar kalıbı | 1 anahtar + IBAN / tel. | yakalar |
+| iv | e-posta `FILE_NAME` yazar alanında | `.step` | 1 e-posta | 1 | yakalar |
+| v | yalnız koordinat | `.step` / `.STP` | **0** | 1 IBAN / telefon | geçer |
+| vi | aynı koordinat metni STEP dışında | `.txt` / `.csv` | 1 IBAN / telefon | 1 | yakalar (değişmedi) |
+
+Hepsi beklendiği gibi. Bilinen sınır: STEP metin alanında `<rakam>.` ardından gelen bir rakam dizisi de (ör. sürüm benzeri yazı)
+kesir sayılır ve IBAN / telefon için taranmaz; öteki kalıplar o dizileri yine tarar.
+
+### 16.5 Kayıt ve push
+
+Bu bölüm ve `F10y-gunluk.md` § 10'daki kuyruk maddesi (STEP kısmı yapıldı, gömülü resim kısmı açık) ile `dongu-158.md` § 5 girişi
+ayrı, küçük bir commit; `d2c6776`'ya dokunulmadı. Push kanca açıkken (`git push origin lale-duzeltme`); hash ve push çıktısı bu
+commit'e yazılamaz, ajan raporunda ve `git log`'da.
