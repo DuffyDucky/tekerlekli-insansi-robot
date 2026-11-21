@@ -1,0 +1,41 @@
+kaynak denetimi: metin 636 (+ CAD ad/kod 973, arayuz 533, ASCII'ye giren arayuz gorunen dizge 149), ascii kalinti 5, elektrik iddiasi 0, zorunlu uyari eksik 0 (yalniz veride bakilan adim: -), yasak 0 (istisna 10), ciplak kritik sayi 0, cozulemeyen yer tutucu 0, bozuk yer tutucu 0, anahtar-baglam 0, onayli kritik girdi farki 0 (kayitta: kablo 220, liste 258, metin 1199)
+CAD kaynak (FCStd) etiket/kod 975; montaj-analiz.json eskime: analizde olup kaynakta olmayan (HATA) 0, kaynakta olup analizde olmayan (bilgi) 2
+  KAYNAKTA YENI (bilgi) (gösterim)
+  KAYNAKTA YENI (bilgi) Ana anahtar düğmesi (gösterim, kabuk deliği gerekir)
+standart numarasi (bilinen kume / ad-kod) HATA 0; FreeCAD artirma eki silinen etiket 9, tabani ayni belgede olmayan (HATA) 0
+  ARTIRMA kabuk K206: Cerceve civatasi M3x6 ISO 7381 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K208: Cerceve civatasi M3x6 ISO 7382 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K210: Cerceve civatasi M3x6 ISO 7383 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K212: Cerceve civatasi M3x6 ISO 7384 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K214: Cerceve civatasi M3x6 ISO 7385 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K216: Cerceve civatasi M3x6 ISO 7386 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA kabuk K218: Cerceve civatasi M3x6 ISO 7387 -> Cerceve civatasi M3x6 ISO 7380
+  ARTIRMA dirsek_sag D056: Yaka civatasi M3x6 ISO 7381 -> Yaka civatasi M3x6 ISO 7380
+  ARTIRMA dirsek_sol D056: Yaka civatasi M3x6 ISO 7381 -> Yaka civatasi M3x6 ISO 7380
+tamlik (kayit -> rehber): taranan 172 oge (GPIO rolü 24, acil stop zinciri 9, anahtar 5, kablo 74, kontak ucu 2, koruyucu 22, koruyucu yeri 7, kutuplu parça 4, köprü 2, saplama düğümü 23), eksik 0, muaf 19; kablo talimat maddesinde 74 / 74, rehberde anilan 74 (talimatta olmayan: -)
+  TAMLIK MUAF GPIO rolü AKU_ADC: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü BTS_EN: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü DURUM_LED: kart üstü LED, dışarı bağlanmaz (pin haritası)
+  TAMLIK MUAF GPIO rolü SAG_ENK_A: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_ENK_B: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_GERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_ILERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SAG_IS: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_ENK_A: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_ENK_B: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_GERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_ILERI_PWM: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SOL_IS: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SONAR_ORTA_ECHO: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SONAR_SAG_ECHO: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü SONAR_SOL_ECHO: sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve yazılımda, rehber yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü UART0_RX: veri yolu (CP2102 üzerinden USB): ESP32 kartının sabit ucu; rehber pin numarası yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF GPIO rolü UART0_TX: veri yolu (CP2102 üzerinden USB): ESP32 kartının sabit ucu; rehber pin numarası yazmaz (uçlar kablolar.md'de)
+  TAMLIK MUAF anahtar esp32-3v3: ESP32 kartının kendi regülatörü: montajda takılan ya da bağlanan ayrı parça değil
+demet alt adimlari (D1-D8): hata 0; K1 12 alt adim, 39 kablo, 17 sema / kablo yolu, K2 8 alt adim, 18 kablo, 9 sema / kablo yolu
+kablajda teyit ibaresi eksik madde: 0
+  ASCII nominal            CAD kaynak taban etiket Acil stop dugum karti (pertinaks, nomina
+  ASCII vidali             CAD kaynak taban kod Delikli pertinaks 30 x 30 (TAHMIN): 2x 2
+  ASCII dort               CAD kaynak taban kod Delikli pertinaks 30 x 30 (TAHMIN): 2x 2
+  ASCII kopru              CAD kaynak taban kod Delikli pertinaks 30 x 30 (TAHMIN): 2x 2
+  ASCII giris              CAD kaynak taban kod Delikli pertinaks 36 x 30 (TAHMIN): 16 A

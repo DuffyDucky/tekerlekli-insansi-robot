@@ -1,13 +1,13 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 1225,
+ "step_kati": 1251,
  "bom": "robot-bom.csv",
  "bom_ozet": {
   "Baglanti": {
    "kalem": 44,
-   "adet": 937,
-   "kutle_g": 1534.3
+   "adet": 953,
+   "kutle_g": 1548.2
   },
   "Baski": {
    "kalem": 64,
@@ -22,19 +22,19 @@
   "Lazer": {
    "kalem": 3,
    "adet": 3,
-   "kutle_g": 1799.3
+   "kutle_g": 1799.0
   },
   "Satin": {
-   "kalem": 53,
-   "adet": 191,
-   "kutle_g": 15090.4
+   "kalem": 55,
+   "adet": 201,
+   "kutle_g": 15117.8
   }
  },
  "boy_mm": 1580.0,
  "s3_mm": 1270.0,
  "uzama_mm": 315.0,
  "taban_w_mm": 520.0,
- "parca_sayisi": 1225,
+ "parca_sayisi": 1251,
  "grup_sayisi": 22,
  "gecersiz": [],
  "hacim_fark_mm3": 6.111804395914078e-10,
@@ -226,8 +226,8 @@
    ],
    "ayna": false,
    "not_": "yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)",
-   "parca_modulde": 401,
-   "parca": 388,
+   "parca_modulde": 427,
+   "parca": 414,
    "haric": [
     "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
     "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
@@ -244,11 +244,11 @@
     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
    ],
    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
-   "kutle_g": 8231.43,
+   "kutle_g": 8272.5,
    "agirlik_merkezi": [
-    -0.711,
-    121.299,
-    -45.942
+    -0.639,
+    121.634,
+    -46.122
    ],
    "gruplar": [
     "Taban_Govde",
@@ -11849,11 +11849,11 @@
    "grup": "Govde",
    "tur": "Lazer",
    "kod": "Guc paneli arka 270 x 274 x 5 huş kontrplak (lazer)",
-   "kutle_g": 239.95,
+   "kutle_g": 239.682,
    "merkez": [
-    0.02,
+    0.03,
     177.0,
-    -117.56
+    -117.6
    ]
   },
   {
@@ -14022,9 +14022,9 @@
    "kod": "Delikli pertinaks 70 x 50: K2 rolesi JQC-3F 12 V 7 A + 5,6 ohm 11 W tas direnc + 1N4007 (tahmini zarf)",
    "kutle_g": 39.0,
    "merkez": [
-    -97.5,
+    -97.55,
     189.23,
-    -1.0
+    -0.97
    ]
   },
   {
@@ -14115,7 +14115,7 @@
    "merkez": [
     -65.0,
     183.5,
-    -23.5
+    -18.5
    ]
   },
   {
@@ -14128,7 +14128,7 @@
    "merkez": [
     -65.0,
     188.71,
-    -23.5
+    -18.5
    ]
   },
   {
@@ -14141,7 +14141,7 @@
    "merkez": [
     -65.0,
     175.68,
-    -23.5
+    -18.5
    ]
   },
   {
@@ -14181,6 +14181,344 @@
     -65.0,
     175.68,
     21.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "Delikli pertinaks 30 x 30 (TAHMIN): 2x 2 pin 5,08 mm vidali klemens, dort ucu >= 18 AWG tel kopru",
+   "kutle_g": 10.0,
+   "merkez": [
+    -118.0,
+    192.84,
+    -90.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -130.5,
+    183.5,
+    -102.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -130.5,
+    188.71,
+    -102.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -130.5,
+    175.68,
+    -102.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -130.5,
+    183.5,
+    -77.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -130.5,
+    188.71,
+    -77.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -130.5,
+    175.68,
+    -77.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -105.5,
+    183.5,
+    -102.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -105.5,
+    188.71,
+    -102.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -105.5,
+    175.68,
+    -102.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -105.5,
+    183.5,
+    -77.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -105.5,
+    188.71,
+    -77.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -105.5,
+    175.68,
+    -77.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "Delikli pertinaks 36 x 30 (TAHMIN): 16 AWG giris klemensi, V+ / GND barasi, 2200 uF, 2x 3 pin cikis (pan, tilt)",
+   "kutle_g": 16.0,
+   "merkez": [
+    112.0,
+    192.94,
+    -77.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    96.5,
+    183.5,
+    -89.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    96.5,
+    188.71,
+    -89.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    96.5,
+    175.68,
+    -89.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    96.5,
+    183.5,
+    -64.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    96.5,
+    188.71,
+    -64.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    96.5,
+    175.68,
+    -64.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    127.5,
+    183.5,
+    -89.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    127.5,
+    188.71,
+    -89.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    127.5,
+    175.68,
+    -89.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    127.5,
+    183.5,
+    -64.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    127.5,
+    188.71,
+    -64.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    127.5,
+    175.68,
+    -64.5
    ]
   },
   {
@@ -16798,47 +17136,47 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 25835.06,
+ "kutle_g": 25876.13,
  "agirlik_merkezi": [
-  0.013,
-  526.719,
-  -9.594
+  0.034,
+  526.183,
+  -9.71
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 1225,
-   "beklenen": 1225,
-   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 357 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 388",
+   "montaj": 1251,
+   "beklenen": 1251,
+   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 357 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 414",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 25835.06,
-   "bellek": 25835.06,
-   "beklenen_analizlerden": 25835.2,
-   "carpisma": 25720.6,
-   "fark_analiz": -0.134,
-   "fark_carpisma": 114.463
+   "montaj_dosyasi": 25876.13,
+   "bellek": 25876.13,
+   "beklenen_analizlerden": 25876.3,
+   "carpisma": 25835.1,
+   "fark_analiz": -0.164,
+   "fark_carpisma": 41.034
   },
   "am": {
    "montaj_dosyasi": [
-    0.013,
-    526.719,
-    -9.594
+    0.034,
+    526.183,
+    -9.71
    ],
    "bellek": [
-    0.013,
-    526.719,
-    -9.594
+    0.034,
+    526.183,
+    -9.71
    ],
    "carpisma": [
-    -0.03,
-    528.59,
-    -9.25
+    0.01,
+    526.72,
+    -9.59
    ],
-   "fark_carpisma_mm": 1.903,
+   "fark_carpisma_mm": 0.551,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 94.2
+ "sure_s": 87.9
 }

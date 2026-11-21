@@ -1,0 +1,30 @@
+kablolar.json: 74 kablo (kesin 20, kablajda teyit edilecek 54, karara bağlı 0)
+  kesit istisnası: 25 kablo; kesit-koruma kararı bekleyen: 0 (-)
+    istisna servo-uzatmasi: 10 kablo (S01, S02, S03, S04, S05, S06, S07, S08, S09, S10); gerekçe / şart / kontrol / karar dolu: evet
+    istisna ana-hat-12awg: 5 kablo (G01, G02, G03, G04, G05); gerekçe / şart / kontrol / karar dolu: evet
+    istisna motor-fabrika-kablosu: 4 kablo (M01, M02, M03, M04); gerekçe / şart / kontrol / karar dolu: evet
+    istisna kafa-5v-donusturucu-arkasi: 3 kablo (K03, K04, K05); gerekçe / şart / kontrol / karar dolu: evet
+    istisna servo-ana-hat-16awg: 3 kablo (SV1, SV2, SV3); gerekçe / şart / kontrol / karar dolu: evet
+  boy: 17 ölçüm / CAD, 57 tahmin (P10.7b'de ölçülecek)
+  GEÇER  alanlar
+  GEÇER  iki_uc
+  GEÇER  yer_tutucu
+  GEÇER  ag
+  GEÇER  koruyucu
+  GEÇER  ayni_nokta
+  GEÇER  esp32_pin
+  GEÇER  pca_kanal
+  GEÇER  kesit
+  GEÇER  donus
+  GEÇER  tahmin
+  GEÇER  klemens
+  GEÇER  malzeme
+  GEÇER  donanim
+  GEÇER  acil_stop
+  GEÇER  kaynak
+  GEÇER  sayi_metin
+  GEÇER  denetim_62
+  GEÇER  gorunum
+  GEÇER  yon_yer
+  GEÇER  sema_boy
+SONUÇ: GEÇER

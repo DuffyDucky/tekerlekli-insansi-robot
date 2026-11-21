@@ -1,0 +1,21 @@
+[02:35:29] kosu 20261121-023529, bos bellek 7.57 GB, kaynak {"carpisma.py": "c688d738c3", "arayuz.py": "288cc20c6e", "ortak_lib.py": "a668036c1b", "sigma_profil.py": "7db14eb8d5", "iskelet/iskelet_parcalar.py": "da1de9d063", "omuz/omuz_parcalar.py": "2093a4ebd4", "kabuk/kabuk_parcalar.py": "cb2d75a334", "dirsek/dirsek_parcalar.py": "7182c29899", "kafa/kafa_parcalar.py": "2421681738", "taban/taban_parcalar.py": "5f6f3d9e81", "kafa/kafa-analiz.json": "682d561278", "dirsek/dirsek_lib.py": "51238e19bd", "kabuk/kabuk_lib.py": "ec1c00a7bd", "kafa/kafa10_lib.py": "32479026d5", "kafa/kafa_lib.py": "a0240ebf6f", "omuz/omuz_lib.py": "b5c14c4ed2", "taban/taban_lib.py": "638881cefc"}
+[02:35:29] statik basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-statik.log, bos 7.57 GB)
+[02:36:52] statik bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 83 s, tepe bellek 751 MB
+[02:36:52] omuz basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-omuz.log, bos 7.70 GB)
+[06:03:48] omuz bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 12416 s, tepe bellek 732 MB
+[06:03:48] kol_sag basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-kol_sag.log, bos 7.43 GB)
+[06:07:31] kol_sag bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 223 s, tepe bellek 733 MB
+[06:07:31] kol_sol basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-kol_sol.log, bos 7.38 GB)
+[06:11:13] kol_sol bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 222 s, tepe bellek 748 MB
+[06:11:13] kolkol basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-kolkol.log, bos 7.35 GB)
+[06:12:06] kolkol bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 53 s, tepe bellek 197 MB
+[06:12:06] kafa_sabit basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-kafa_sabit.log, bos 7.43 GB)
+[06:14:40] kafa_sabit bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 154 s, tepe bellek 743 MB
+[06:14:40] kafa_sag basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-kafa_sag.log, bos 7.41 GB)
+[06:21:45] kafa_sag bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 425 s, tepe bellek 619 MB
+[06:21:45] kafa_sol basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-kafa_sol.log, bos 7.43 GB)
+[06:28:43] kafa_sol bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 418 s, tepe bellek 621 MB
+[06:28:43] taban basladi (gunluk planlama\d158\P108d-kontrol-olcum\b2-log\carpisma-taban.log, bos 7.42 GB)
+[06:30:14] taban bitti: rc 0, sonuc yazildi, kaynak ayni True, istisna 0, 90 s, tepe bellek 795 MB
+birlestirildi: tasarim\freecad\carpisma-sonuc.json | tek kosu: True | eksik: [] | TOPLAM cakisma 364 eklem araliginda 0
+[06:30:14] OZET [{'bolum': 'statik', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 83, 'tepe_bellek_mb': 751}, {'bolum': 'omuz', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 12416, 'tepe_bellek_mb': 732}, {'bolum': 'kol_sag', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 223, 'tepe_bellek_mb': 733}, {'bolum': 'kol_sol', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 222, 'tepe_bellek_mb': 748}, {'bolum': 'kolkol', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 53, 'tepe_bellek_mb': 197}, {'bolum': 'kafa_sabit', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 154, 'tepe_bellek_mb': 743}, {'bolum': 'kafa_sag', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 425, 'tepe_bellek_mb': 619}, {'bolum': 'kafa_sol', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 418, 'tepe_bellek_mb': 621}, {'bolum': 'taban', 'rc': 0, 'ok': True, 'kaynak_ok': True, 'istisna': 0, 'sure_s': 90, 'tepe_bellek_mb': 795}]

@@ -15,9 +15,9 @@ Baglanti;M3x14 ISO 7380;6;6.5;kabuk
 Baglanti;M3x20 DIN 912;6;9.6;dirsek, kabuk
 Baglanti;M3x5 ISO 7380;2;1.2;kafa
 Baglanti;M3x5 horn vidasi (servo ile);10;7.6;dirsek, kafa, omuz
-Baglanti;M3x6 DIN 912;80;65.3;taban
+Baglanti;M3x6 DIN 912;88;71.8;taban
 Baglanti;M3x6 ISO 7380;115;72.9;dirsek, kabuk, kafa
-Baglanti;M3x8 DIN 912;68;63.0;dirsek, kabuk, kafa, omuz, taban
+Baglanti;M3x8 DIN 912;76;70.4;dirsek, kabuk, kafa, omuz, taban
 Baglanti;M4 DIN 125 pul;19;5.9;kabuk, taban
 Baglanti;M4 DIN 985 kontra somun;36;42.2;dirsek, kafa, omuz
 Baglanti;M4 DIN 985 naylon somun;11;12.9;taban
@@ -110,7 +110,7 @@ Baski;Yuz kabugu (on) sol;1;80.4;kafa
 Imalat;Boyun plakasi 3 mm Al (lazer/su jeti);1;42.9;kafa
 Lazer;Alt plaka 346 x 500 x 3 Al 5754 (lazer kesim);1;1363.7;taban
 Lazer;Elektronik kati on 270 x 226 x 5 huş kontrplak (lazer);1;195.6;taban
-Lazer;Guc paneli arka 270 x 274 x 5 huş kontrplak (lazer);1;239.9;taban
+Lazer;Guc paneli arka 270 x 274 x 5 huş kontrplak (lazer);1;239.7;taban
 Satin;12 mm altigen kaplin x 30, O6;4;140.0;taban
 Satin;25 mm cirt bant kayis (tahmini);2;54.9;taban
 Satin;25T aluminyum disk horn;10;38.7;dirsek, kafa, omuz
@@ -126,6 +126,8 @@ Satin;BTS7960B 43 A (IBT-2);2;132.0;taban
 Satin;Cift tarafli kopuk bant 1 mm (VHB);10;0.4;kabuk, kafa
 Satin;Cift tarafli kopuk bant 1 mm (VHB), 20 x 10;1;0.0;kabuk
 Satin;DS3235 servo;4;240.0;omuz
+Satin;Delikli pertinaks 30 x 30 (TAHMIN): 2x 2 pin 5,08 mm vidali klemens, dort ucu >= 18 AWG tel kopru;1;10.0;taban
+Satin;Delikli pertinaks 36 x 30 (TAHMIN): 16 AWG giris klemensi, V+ / GND barasi, 2200 uF, 2x 3 pin cikis (pan, tilt);1;16.0;taban
 Satin;"Delikli pertinaks 70 x 50 + 2x 15'li disi header (tahmini; BOM'da yok)";1;14.0;taban
 Satin;Delikli pertinaks 70 x 50: 16 AWG klemens, 2200 uF, 6x 3 pin cikis (tahmini zarf);2;58.0;taban
 Satin;Delikli pertinaks 70 x 50: K2 rolesi JQC-3F 12 V 7 A + 5,6 ohm 11 W tas direnc + 1N4007 (tahmini zarf);1;39.0;taban
@@ -144,7 +146,7 @@ Satin;Kablolu kapakli bicak sigorta yuvasi 12 AWG + 30 A;1;40.0;taban
 Satin;LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167);1;3000.0;taban
 Satin;M2,5 x 8 burc, disi-disi;4;4.6;kafa
 Satin;M2,5x8 pirinc burc;8;9.1;taban
-Satin;M3x8 naylon burc;44;7.7;taban
+Satin;M3x8 naylon burc;52;9.1;taban
 Satin;M5 x 40 burc, disi-disi, AA 8;8;96.0;taban
 Satin;MG996R servo;6;330.0;dirsek, kafa
 Satin;P6KE6V8A TVS (Pi 5 V hatti, D24V50F5 cikisi, K51 a);1;1.0;kafa

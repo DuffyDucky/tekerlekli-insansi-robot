@@ -1,16 +1,16 @@
 {
  "bolum": "kafa_sag",
- "kosu": "20261119-075818",
- "baslangic": "2026-11-19T11:22:36",
- "bitis": "2026-11-19T11:29:12",
- "sure_s": 396.4,
- "yukleme_s": 11.6,
- "tepe_bellek_mb": 620,
- "tepe_sayfa_mb": 2639,
+ "kosu": "20261121-023529",
+ "baslangic": "2026-11-21T06:14:52",
+ "bitis": "2026-11-21T06:21:45",
+ "sure_s": 412.5,
+ "yukleme_s": 12.0,
+ "tepe_bellek_mb": 619,
+ "tepe_sayfa_mb": 2642,
  "ayni_surec": [
   "kafa_sag"
  ],
- "pid": 24200,
+ "pid": 10292,
  "moduller": [
   "omuz_sag",
   "dirsek_sag",
@@ -26,7 +26,7 @@
   "kabuk/kabuk_parcalar.py": "cb2d75a334",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "2421681738",
-  "taban/taban_parcalar.py": "d00e2075e9",
+  "taban/taban_parcalar.py": "5f6f3d9e81",
   "kafa/kafa-analiz.json": "682d561278",
   "dirsek/dirsek_lib.py": "51238e19bd",
   "kabuk/kabuk_lib.py": "ec1c00a7bd",
@@ -1058,10 +1058,10 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 396.2
+    "sure_s": 412.2
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 396.4
+  "sure_s": 412.5
  }
 }

@@ -1,0 +1,58 @@
+{
+ "baglanti_tablosu_denetle": {
+  "hata": []
+ },
+ "bara_yol_denetle": {
+  "hata": []
+ },
+ "cad_kirp_denetle": {
+  "hata": []
+ },
+ "geometri_denetle": {
+  "hata": [],
+  "bilgi": [
+   "yol 6 S09 a: 'Dağıtım kartı C (kafa)' modelsiz, nominal konumu yok: elle bakıldı",
+   "yol 6 S10 a: 'Dağıtım kartı C (kafa)' modelsiz, nominal konumu yok: elle bakıldı",
+   "yol 10 A04 a: 'Acil stop düğümü' modelsiz, nominal konumu yok: elle bakıldı",
+   "yol 10 A06 a: 'Acil stop düğümü' modelsiz, nominal konumu yok: elle bakıldı"
+  ]
+ },
+ "karsitlik_denetle": {
+  "hata": []
+ },
+ "kaynak_denetle": {
+  "hata": []
+ },
+ "kirp_veri_denetle": "atlandı (zorunlu argüman)",
+ "onay_denetle": {
+  "hata": []
+ },
+ "renk_farki_denetle": {
+  "hata": []
+ },
+ "sema_boy_denetle": {
+  "hata": []
+ },
+ "sema_boy_etiketi_denetle": {
+  "hata": []
+ },
+ "sema_geometri_denetle": "([], ['şema HDMI H02 a yanı (Raspberry Pi 5) şemaya ulaşmıyor (en yakın 13.2 mm; eşik 10 mm) (istisna: baş Pi micro HDMI 1 fişinin arka ucu (pi_hdmi, Pi kutusuna 13 mm): fiş)', 'şema HDMI baş ucu: taban dışında kafa bölgesinde bitiyor, eşlenen kabloların o bölgede ucu yok (istisna: Pi micro HDMI 1 fişinin arka ucu (H02 a ile aynı): fiş gövdesi kart ku)', \"şema 12 V G21 a: 'Göğüs ekranı regülatörü'",
+ "sema_not_denetle": {
+  "hata": []
+ },
+ "siyah_l_denetle": {
+  "hata": []
+ },
+ "u06_port_denetle": {
+  "hata": []
+ },
+ "u06_yon_denetle": "atlandı (zorunlu argüman)",
+ "uc_etiket_denetle": {
+  "hata": []
+ },
+ "uc_veri_denetle": "atlandı (zorunlu argüman)",
+ "uc_yer_eki_denetle": {
+  "hata": []
+ },
+ "veri_denetle": "atlandı (zorunlu argüman)"
+}

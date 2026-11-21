@@ -195,7 +195,22 @@ XLK_C = T["xl_kafa"]["merkez"]
 XLK_DEL = [(XLK_C[0] + dx * L.XL["dx"] / 2, XLK_C[1] + dz * L.XL["dz"] / 2) for dx in (-1, 1) for dz in (-1, 1)]
 OS_C = T["on_sarj_karti"]["merkez"]
 OS_DEL = [(OS_C[0] + sx * (L.PERF["l"] / 2 - L.PERF["kenar"]), OS_C[1] + sz * (L.PERF["w"] / 2 - L.PERF["kenar"])) for sx in (-1, 1) for sz in (-1, 1)]
-kes_ar += [delik_y(x, z, A.CLEAR[3], y0d, td) for (x, z) in XLK_DEL + OS_DEL]
+# P10.8d (planlama/d158/P108d-gunluk.md madde 3): arka sag delik (2) aku kablo yariginin (z -37...-23) ustundeydi (burc panele %39
+# oturuyordu). Delik +z'ye: burc tabaninin (altigen kosesi 3,175) yarik kenarina 1,3 mm. Kart kendi yapimi pertinaks; eski kose deligi bos kalir.
+OS_DEL2_Z = -23.0 + 3.175 + 1.325
+OS_DEL[2] = (OS_DEL[2][0], OS_DEL2_Z)
+# P10.8d madde 4-5: acil stop dugum karti ve dagitim karti C (guc paneli, nominal zarf TAHMIN; burc delikleri kenardan PERF kenar 2,5)
+ESD = dict(merkez=(-118.0, -90.0), l=30.0, w=30.0, h=10.0)      # 2x 2 pin 5,08 mm vidali klemens + tel kopru (kablolar.json A02)
+DGC = dict(merkez=(112.0, -77.0), l=36.0, w=30.0, h=10.0)       # 16 AWG klemens + 2200 uF + 2x 3 pin (kablolar.json SV3); sema ucu (100; -60)
+
+
+def kart_delik(k):
+    return [(k["merkez"][0] + sx * (k["l"] / 2 - L.PERF["kenar"]), k["merkez"][1] + sz * (k["w"] / 2 - L.PERF["kenar"]))
+            for sx in (-1, 1) for sz in (-1, 1)]
+
+
+ESD_DEL, DGC_DEL = kart_delik(ESD), kart_delik(DGC)
+kes_ar += [delik_y(x, z, A.CLEAR[3], y0d, td) for (x, z) in XLK_DEL + OS_DEL + ESD_DEL + DGC_DEL]
 # K64 a: bara tutucularinin panel vidalari (ISO 7380 M3 alttan; tutucu ve saplamalar "guc" bolumunde)
 kes_ar += [delik_y(x, b["z"], A.CLEAR[3], y0d, td) for b in T["bara_tutucu"]["baralar"].values() for x in b["vida_x"]]
 
@@ -388,11 +403,43 @@ for (x, z, gorev) in T["xl"]:
 XL_I.append(kart_burclu("XL4016 %s" % T["xl_kafa"]["gorev"], "Guc", xl_local(), XLK_C[0], XLK_C[1], A.Y_DECK1, T["xl_burc"], XLK_DEL, 3, 5.5,
                         "Naylon", "M3x8 naylon burc", KAT_AR, "XL4016 8 A DC-DC dusurucu", L.XL["kutle_g"], "pcb_m", (90, 330, 20),
                         vida_ust=6, vida_alt=8, not_="karar 29.10: kafa servo hatti C (5 A mini hat sigortasi); guc panelinde, akunun onunde (Y3)"))
-OSI = kart_burclu("On sarj karti (E9: K2 + 5,6 ohm)", "Guc", perf_local(), OS_C[0], OS_C[1], A.Y_DECK1, T["on_sarj_karti"]["burc"], OS_DEL, 3,
+def yerel_delik(c, delikler):
+    return [(x - c[0], z - c[1]) for (x, z) in delikler]
+
+
+def on_sarj_local():
+    """perf_local() (zarf degismez) + P10.8d tasinan arka sag burc deligi."""
+    (x, z), = [d for i, d in enumerate(yerel_delik(OS_C, OS_DEL)) if i == 2]
+    return perf_local().cut(Part.makeCylinder(L.PERF["delik"] / 2, L.PERF["t"] + 2, V(x, -1, z), UP)).removeSplitter()
+
+
+def nominal_kart_local(k, delikler):
+    """P10.8d: nominal zarfli pertinaks (TAHMIN): kart + tek bilesen zarfi (yukseklik k['h'], A/B dagitim kartindaki 16 AWG klemensin
+    yuksekligi). Zarf ust vida baslarinin (DIN 912 M3, O5,5) 0,75 mm icinde biter."""
+    l, w, t = k["l"], k["w"], L.PERF["t"]
+    ex = l / 2 - L.PERF["kenar"] - A.DIN912[3][0] / 2 - 0.75
+    return L.kart(l, w, t, [(-ex, ex, t, t + k["h"], -(w / 2 - 1.0), w / 2 - 1.0)], yerel_delik(k["merkez"], delikler), L.PERF["delik"])
+
+
+OSI = kart_burclu("On sarj karti (E9: K2 + 5,6 ohm)", "Guc", on_sarj_local(), OS_C[0], OS_C[1], A.Y_DECK1, T["on_sarj_karti"]["burc"], OS_DEL, 3,
                   5.5, "Naylon", "M3x8 naylon burc", KAT_AR,
                   "Delikli pertinaks 70 x 50: K2 rolesi JQC-3F 12 V 7 A + 5,6 ohm 11 W tas direnc + 1N4007 (tahmini zarf)",
                   L.PERF["kutle_g"] + 25.0, "pcb_y", (-90, 330, 20), vida_ust=6, vida_alt=8,
                   not_="E9 on sarj: K2 kontagi + 5,6 ohm K1 kontagina paralel (planlama/adim3/elektrik.md); Y3'te CAD'e girdi")
+# P10.8d (planlama/d158/P108d-gunluk.md madde 4-5): iki kucuk pertinaks guc panelinde. Olcu ve kutle TAHMIN (kart olculmedi; zarf icerikten:
+# planlama/adim3/kablolar.json), burc / vida on sarj karti ile ayni (M3x8 naylon burc, ustte M3x6, alttan M3x8 DIN 912). Konum: alt vida
+# baslari akunun ve aku kayisinin disinda (x en az 93,75 / -102,75), M5 kat civatalarinin (x +-115, z -40) ustu acik.
+ESDI = kart_burclu("Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)", "Guc", nominal_kart_local(ESD, ESD_DEL), ESD["merkez"][0],
+                   ESD["merkez"][1], A.Y_DECK1, 8.0, ESD_DEL, 3, 5.5, "Naylon", "M3x8 naylon burc", KAT_AR,
+                   "Delikli pertinaks 30 x 30 (TAHMIN): 2x 2 pin 5,08 mm vidali klemens, dort ucu >= 18 AWG tel kopru", 10.0, "pcb_y",
+                   (-90, 330, -60), vida_ust=6, vida_alt=8,
+                   not_="mantar (NC) cikisi -> role K1 bobini, K2 bobini (on sarj karti), PC817 (arayuz karti); kablolar.json A02 sonlandirmasi. "
+                        "Zarf ve kutle tahmini (kart yapilinca olculecek)")
+DGCI = kart_burclu("Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)", "Guc", nominal_kart_local(DGC, DGC_DEL), DGC["merkez"][0],
+                   DGC["merkez"][1], A.Y_DECK1, 8.0, DGC_DEL, 3, 5.5, "Naylon", "M3x8 naylon burc", KAT_AR,
+                   "Delikli pertinaks 36 x 30 (TAHMIN): 16 AWG giris klemensi, V+ / GND barasi, 2200 uF, 2x 3 pin cikis (pan, tilt)", 16.0,
+                   "pcb_m", (90, 330, -60), vida_ust=6, vida_alt=8,
+                   not_="XL4016 C'nin yaninda (karar P7b2a-6); SV3 semasinin ucu (100; 192; -60) kartin +z kenarinda. Zarf ve kutle tahmini")
 
 # --- guc paneli (arka kat ustu): sigorta kutusu, role, ana sigorta yuvasi (tahmini zarflar), ana anahtar (etek plakasi alti)
 cx, cz = SK["merkez"]
@@ -642,8 +689,10 @@ X_Y12 = bara_arasi("yildiz", 1)                                   # -37,5: yildi
 BAS_A1 = [bara_uc("anahtarli", 1), (X_Y12, Y_BH, -80.0), (X_Y12, Y_BH, -42.0), bara_uc("yildiz", 1)]
 YOL += [
     ("12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu", "kirmizi",
+     # P10.8d: (88; -60)'tan sigorta yuvasina capraz bolum dagitim karti C'nin (x 94...130, z -92...-62) yerinden geciyordu -> x 88'den
+     # yuvanin +z ucuna (z -100) iner, oradan yuvaya
      [(-65.5, 133, -29), (-60, 160, Z_YRK), (-57, 168, Z_YRK), (-57, 186, Z_YRK), (-50, 199, -36), (72, 199, -36), (88, 199, -60),
-      (ax_, 192, az_ + 30), (ax_, 192, az_ - 30), (60, 200, -165), (-80, 205, -165),
+      (88, 199, az_ + 30), (ax_, 192, az_ + 30), (ax_, 192, az_ - 30), (60, 200, -165), (-80, 205, -165),
       (aax, 220, aaz + 25), (aax, 214, aaz - 10), (-20, 196, -215), (cx - 30, YD1 + 36, cz)]),
     ("Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer", "siyah",
      [(65.5, 133, -29), (62, 160, Z_YRK), (62, 168, Z_YRK), (62, 186, Z_YRK), (10, Y_BU, -36), bara_uc("yildiz", 3)]),
@@ -675,12 +724,20 @@ YOL += [
       bara_uc("yildiz", 4, -1), (bara_arasi("yildiz", 4), Y_BH, -66), (bara_arasi("yildiz", 4), Y_BH, -40)] + yarik_inis(46.0)
      + [(55, 150, 20), (T["xl"][1][0], 125, T["xl"][1][1]), (40, 150, 150), (40, 185, 160), (ESP_C[0], 200, ESP_C[1])]),
     ("Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur", "yesil",
-     [(cx + 30, YD1 + 36, cz), (ex, 205, ez), (ex, 214, ez), (ex - 10, 205, ez + 20), (rx, YD1 + 46, rz), (-110, 200, -60), (-100, 200, 40),
-      (AK_C[0], 195, AK_C[1])]),
+     # P10.8d: roleden sonra acil stop dugum kartina (klemens zarfinin icinde, y 197); on sarj kartinin ustunden y 203 (eski 200: kartin
+     # zarfina 0,1 mm giriyordu)
+     [(cx + 30, YD1 + 36, cz), (ex, 205, ez), (ex, 214, ez), (ex - 10, 205, ez + 20), (rx, YD1 + 46, rz), (ESD["merkez"][0], 197, ESD["merkez"][1]),
+      (-110, 203, -60), (-100, 203, 40), (AK_C[0], 195, AK_C[1])]),
+    # P10.8d: Q01 / Q02 semasi gibi: sonar pin blogu (PCB ust kenarinin ustu, TAHMIN) -> on ara rayin ustu -> kat alti y 155 -> on kat
+    # kesigi (x -28, z 162,5; BTS7960 sol kutusuna > 10 mm: rehber_kablo GEO_ESIK, B01 bu yola ulasmaz) -> kat ustu y 184 -> arayuz karti
+    # -> ESP32 (tasiyicinin kose vidalarindan uzak, z 85). Eski yol alt plakayi, ara rayi ve kati kesik disinda deliyordu.
     ("Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)", "mor",
-     [(-79.4, 95, 254), (-79.4, 90, 240), (-60, 140, 240), (-100, 150, 200), (AK_C[0], 190, AK_C[1] + 20), (0, 195, 90), (ESP_C[0], 190, 100)]),
+     [(-79.41, 127, 255), (-79.41, 140, 255), (-79.41, 140, 235), (-28, 155, 200), (-28, 155, 162.5), (-28, 184, 162.5),
+      (AK_C[0], 195, AK_C[1] + 15), (0, 195, 90), (ESP_C[0], 195, 85)]),
+    # P10.8d: noktalar[1] on kat kesiginin icinden (katin orta duzleminde x -25,0, z 160,7; PCA9685 kosesine >= 1 mm); rehber yalniz noktalar[0..2]'yi cizer
+    # (rehber_kablo CAD_KIRP 12: son 2, en buyuk y 190 degismedi). [2..] eski ESP32 -> kafa USB bolumu, degismedi.
     ("Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)", "mor",
-     [(-67.5, 140, 140), (-30, 160, 160), (ESP_C[0], 190, ESP_C[1]), (40, 205, 30), (20, 230, 26), (20, 262, 26), (20, S3Y - 55, 26), (20, S3Y + 20, 30),
+     [(-67.5, 140, 140), (-10, 190, 168), (ESP_C[0], 190, ESP_C[1]), (40, 205, 30), (20, 230, 26), (20, 262, 26), (20, S3Y - 55, 26), (20, S3Y + 20, 30),
       (0, S3Y + 55, 20)]),
 ]
 

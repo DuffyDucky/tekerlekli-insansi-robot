@@ -1,0 +1,38 @@
+A K1: ana + 12 alt adım = ALT_TAM_HAM True; 13 paragraf, çapalı kaynakla gönderme dışında aynı True
+A K2: ana + 8 alt adım = ALT_TAM_HAM True; 10 paragraf, çapalı kaynakla gönderme dışında aynı True
+
+B cümle (bütün kaynak metinleri, yer bağımsız, çapa / gönderme eşit): eski 1177, yeni 1177; eklenen 2 (beklenen 2), silinen 2 (beklenen 2)
+  SİLİNDİ [P10.8c F1 etek ön kuponu] Bu geçme denenmedi; bu bant için kupon henüz yok.
+  SİLİNDİ [P10.8c F1 etek ön kuponu] Bu geçme denenmedi; bu bant için kupon henüz yok.
+  EKLENDİ [P10.8c F1 etek ön kuponu] Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir.
+  EKLENDİ [P10.8c F1 etek ön kuponu] Bu geçme kuponla denenmedi (etek ön kuponu sağ banttan kesildi; sol bant için sonucu ayna çıkarımıdır); kupon sonucu gelince bu adım yeniden yazılabil
+  kart adları K1: 12 → 12; yeni: -; kalkan: -
+  kart adları K2: 8 → 8; yeni: -; kalkan: -
+
+C gönderme: çevrilen 24, çözülemeyen 0
+  K1 alt 1 1: K1 madde 1 → alt adım 17.2
+  K1 alt 1 1: K1 madde 7 → alt adım 17.11
+  K1 alt 2 2: K1 madde 2 → alt adım 17.1
+  K1 alt 4 4: K1 madde 3b → alt adım 17.5
+  K1 alt 5 5: K2 madde 1 → alt adım 32.1
+  K1 alt 7 7: K1 madde 5 → alt adım 17.8
+  K1 alt 7 7: K2 madde 3 → alt adım 32.3
+  K1 alt 7 7: K2 madde 7 → alt adım 32.7
+  K1 alt 9 9: K1 madde 3b → alt adım 17.5
+  K1 alt 9 9: K1 madde 4 → alt adım 17.7
+  K1 alt 9 9: K2 madde 1 → alt adım 32.1
+  K1 alt 10 10: K2 madde 4 → alt adım 32.4
+  K1 alt 11 11: K1 madde 4 → alt adım 17.7
+  K1 alt 11 11: K2 madde 4 → alt adım 32.4
+  K1 alt 12 12: K1 madde 5 → alt adım 17.8
+  K1 alt 12 12: K1 madde 5 → alt adım 17.8
+  K1 alt 12 12: K1 madde 2 → alt adım 17.1
+  K1 alt 12 12: K1 madde 2 → alt adım 17.1
+  K2 alt 6 6: K2 madde 6 → alt adım 32.6
+  K1 kontrol 10: K1 madde 3 → alt adım 17.4
+  K1 kontrol 13: K1 madde 2 → alt adım 17.1
+  K1 kablo 3: K1 madde 7 → alt adım 17.11
+  F5 is_: K2 madde 4 → alt adım 32.4
+  F5 alt 1: K2 madde 4 → alt adım 32.4
+
+birlesim sinamasi: GECER

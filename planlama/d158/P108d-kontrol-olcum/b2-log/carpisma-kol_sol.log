@@ -1,0 +1,44 @@
+bolum: kol_sol  | moduller: iskelet,omuz_sag,omuz_sol,kabuk,dirsek_sol,taban
+modul iskelet parca 59 haric 0 0.6s
+modul omuz_sag parca 75 haric 2 2.0s
+modul omuz_sol parca 75 haric 2 2.1s
+govde zarf: kabuk hacmi 2463 cm3 3.3s
+govde parcalari: {'alt sag': 1, 'alt sol': 1, 'uzatma1 sag': 1, 'uzatma1 sol': 1, 'uzatma2 sag': 1, 'uzatma2 sol': 1, 'orta sag': 1, 'orta sol': 1, 'gogus sag': 1, 'gogus sol': 1, 'omuz sag': 1, 'omuz sol': 1, 'kapak ': 1, 'kapak2 ': 1} 11.4s
+etek zarf: kabuk hacmi 1747 cm3 12.2s
+etek parcalari: {'arka sag': 1, 'arka sol': 1, 'orta sag': 1, 'orta sol': 1, 'on sag': 1, 'on sol': 1} {'dolgu arka': 1, 'dolgu on': 1} 13.9s
+S1 kaseti: psi 190.0...303.2 (U ucu 324.3, u_pay 6.5, pim 331.8, pim2 300.0), govde 7.9 cm3, kapak 6.0 cm3, kati 1/1 19.7s
+S1 kaseti: dikme somunlari [('Omuz bandi sag', 200.0), ('Omuz bandi sag', 226.0), ('Omuz bandi sol', 200.0), ('Omuz bandi sol', 226.0)] 19.9s
+bindirme civatasi: 84 yer, 0 atlandi [] 25.9s
+gogus cercevesi civatalari: [('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol')] 26.0s
+etek kapak civatalari: [('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sag'), ('igorta kutusu)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag')] 26.3s
+boss ve delikler islendi; ayri kalan delik tapasi: [] 41.0s
+kabuk parca sayisi 357 (baski 34), kutle 7170 g 44.4s
+modul kabuk parca 357 haric 0 46.9s
+modul dirsek_sol parca 57 haric 0 48.2s
+alt plaka 52 kesim 0.1s
+plakalar + burclar 0.6s
+tahrik 1.0s
+aku 1.0s
+guc 2.1s
+elektronik kati 2.6s
+sensor 2.9s
+kablo yolu 3.8s
+parca 427 toplam 8273 g 4.2s
+modul taban parca 427 haric 13 53.3s
+kafa (1,58 m): 161 parca (Govde/Pan 61, adaptor 13, Bas 87), 2081.4 g  5.3s
+==== bolum kol_sol basladi (bellek 409 MB)
+    sol: 1500 tam olcum, 92s
+    sol: 2000 tam olcum, 136s
+    sol: 2500 tam olcum, 157s
+kol sol: kaba 1755 + disi 279 tam poz, 2860 alt poz, 186570 aday, 2845 tam olcum 159s
+kol sol: isaretli alt poz 0 ({'UstKol': 0, 'OnKol': 0, 'El': 0}), ince aday alt poz 0
+kol sol: ince 0 alt poz, 0 aday, 0 tam olcum 159s
+  sol -> omuz_sol gobek         en kucuk bosluk 103.71 mm [-45.0, 5.0] Dirsek catali / S1 kablo tamburu
+  sol -> omuz_sol govde         en kucuk bosluk 104.24 mm [-30.0, 5.0] Dirsek catali / Omuz yuvasi
+kol sol: aralikta cakisan tam poz 0 / 1755, aralik disi 63 / 279, 159s
+==== bolum kol_sol bitti: 159 s, tepe bellek 748 MB
+bitti 221.0s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

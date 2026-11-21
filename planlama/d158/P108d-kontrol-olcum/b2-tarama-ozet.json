@@ -1,0 +1,87 @@
+{
+ "kosu": "20261121-023529",
+ "ozet": [
+  {
+   "bolum": "statik",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 83,
+   "tepe_bellek_mb": 751
+  },
+  {
+   "bolum": "omuz",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 12416,
+   "tepe_bellek_mb": 732
+  },
+  {
+   "bolum": "kol_sag",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 223,
+   "tepe_bellek_mb": 733
+  },
+  {
+   "bolum": "kol_sol",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 222,
+   "tepe_bellek_mb": 748
+  },
+  {
+   "bolum": "kolkol",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 53,
+   "tepe_bellek_mb": 197
+  },
+  {
+   "bolum": "kafa_sabit",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 154,
+   "tepe_bellek_mb": 743
+  },
+  {
+   "bolum": "kafa_sag",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 425,
+   "tepe_bellek_mb": 619
+  },
+  {
+   "bolum": "kafa_sol",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 418,
+   "tepe_bellek_mb": 621
+  },
+  {
+   "bolum": "taban",
+   "rc": 0,
+   "ok": true,
+   "kaynak_ok": true,
+   "istisna": 0,
+   "sure_s": 90,
+   "tepe_bellek_mb": 795
+  }
+ ],
+ "kaynak_bas_son_ayni": true
+}

@@ -1,0 +1,23 @@
+21.11 02:35:29 SURUCU_BASLADI kosu 20261121-023529 pid 2808 bos 7.57 GB izlenen 17 dosya
+21.11 02:35:29 statik BASLADI (bos 7.57 GB)
+21.11 02:36:52 statik BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 83 s tepe 751 MB
+21.11 02:36:52 omuz BASLADI (bos 7.70 GB)
+21.11 06:03:48 omuz BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 12416 s tepe 732 MB
+21.11 06:03:48 kol_sag BASLADI (bos 7.43 GB)
+21.11 06:07:31 kol_sag BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 223 s tepe 733 MB
+21.11 06:07:31 kol_sol BASLADI (bos 7.38 GB)
+21.11 06:11:13 kol_sol BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 222 s tepe 748 MB
+21.11 06:11:13 kolkol BASLADI (bos 7.35 GB)
+21.11 06:12:06 kolkol BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 53 s tepe 197 MB
+21.11 06:12:06 kafa_sabit BASLADI (bos 7.43 GB)
+21.11 06:14:40 kafa_sabit BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 154 s tepe 743 MB
+21.11 06:14:40 kafa_sag BASLADI (bos 7.41 GB)
+21.11 06:21:45 kafa_sag BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 425 s tepe 619 MB
+21.11 06:21:45 kafa_sol BASLADI (bos 7.43 GB)
+21.11 06:28:43 kafa_sol BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 418 s tepe 621 MB
+21.11 06:28:43 taban BASLADI (bos 7.42 GB)
+21.11 06:30:14 taban BITTI rc 0 sonuc yazildi kaynak_ayni True istisna 0 sure 90 s tepe 795 MB
+21.11 06:30:14 BIRLESTIRILDI tek_kosu True toplam cakisma 364 eklem_araliginda 0
+21.11 06:30:14 KAYNAK bas=son True
+21.11 06:30:14 SURUCU_BITTI rc 0
+21.11 06:30:14 SURUCU_CIKIS 0

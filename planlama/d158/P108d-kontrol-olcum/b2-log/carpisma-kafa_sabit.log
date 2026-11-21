@@ -1,0 +1,45 @@
+bolum: kafa_sabit  | moduller: iskelet,omuz_sag,omuz_sol,kabuk,kafa,taban
+modul iskelet parca 59 haric 0 0.6s
+modul omuz_sag parca 75 haric 2 2.0s
+modul omuz_sol parca 75 haric 2 2.0s
+govde zarf: kabuk hacmi 2463 cm3 3.2s
+govde parcalari: {'alt sag': 1, 'alt sol': 1, 'uzatma1 sag': 1, 'uzatma1 sol': 1, 'uzatma2 sag': 1, 'uzatma2 sol': 1, 'orta sag': 1, 'orta sol': 1, 'gogus sag': 1, 'gogus sol': 1, 'omuz sag': 1, 'omuz sol': 1, 'kapak ': 1, 'kapak2 ': 1} 11.1s
+etek zarf: kabuk hacmi 1747 cm3 11.8s
+etek parcalari: {'arka sag': 1, 'arka sol': 1, 'orta sag': 1, 'orta sol': 1, 'on sag': 1, 'on sol': 1} {'dolgu arka': 1, 'dolgu on': 1} 13.5s
+S1 kaseti: psi 190.0...303.2 (U ucu 324.3, u_pay 6.5, pim 331.8, pim2 300.0), govde 7.9 cm3, kapak 6.0 cm3, kati 1/1 19.3s
+S1 kaseti: dikme somunlari [('Omuz bandi sag', 200.0), ('Omuz bandi sag', 226.0), ('Omuz bandi sol', 200.0), ('Omuz bandi sol', 226.0)] 19.6s
+bindirme civatasi: 84 yer, 0 atlandi [] 25.6s
+gogus cercevesi civatalari: [('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol')] 25.7s
+etek kapak civatalari: [('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sag'), ('igorta kutusu)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag')] 25.9s
+boss ve delikler islendi; ayri kalan delik tapasi: [] 40.8s
+kabuk parca sayisi 357 (baski 34), kutle 7170 g 44.2s
+modul kabuk parca 357 haric 0 46.6s
+kafa (1,58 m): 161 parca (Govde/Pan 61, adaptor 13, Bas 87), 2081.4 g  5.2s
+modul kafa parca 161 haric 0 55.9s
+alt plaka 52 kesim 0.1s
+plakalar + burclar 0.6s
+tahrik 1.0s
+aku 1.0s
+guc 2.1s
+elektronik kati 2.6s
+sensor 2.9s
+kablo yolu 3.7s
+parca 427 toplam 8273 g 4.1s
+modul taban parca 427 haric 13 60.8s
+==== bolum kafa_sabit basladi (bellek 397 MB)
+kafa x sabit: 15633 kaba alt poz, 44308 aday, ince 6, 553 tam olcum 91s
+  kafa -> iskelet                43.05 mm [-90.0] Pan horn merkez vidasi M3 / Omuz traversi
+  kafa -> iskelet (kafa govdesi) 0.00 mm [] Boyun plakasi / Omuz traversi
+  kafa -> kabuk                  37.02 mm [-30.0, -10.0] Arka kafa kabugu sag / S1 kaset govdesi sag
+  kafa -> kabuk (kafa govdesi)   8.41 mm [] Boyun plakasi / Omuz bandi sag
+  kafa -> omuz_sag govde         50.91 mm [-30.0, -10.0] Arka kafa kabugu sag / Yuva baglanti civatasi M6x16
+  kafa -> omuz_sag govde (kafa govdesi) 22.00 mm [] Boyun plakasi / Omuz yuvasi
+  kafa -> omuz_sol govde         50.91 mm [30.0, -10.0] Arka kafa kabugu sol / Yuva baglanti civatasi M6x16
+  kafa -> omuz_sol govde (kafa govdesi) 22.00 mm [] Boyun plakasi / Omuz yuvasi
+kafa x sabit: aralikta cakisan alt poz 0, aralik disi 0
+==== bolum kafa_sabit bitti: 91 s, tepe bellek 743 MB
+bitti 153.6s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

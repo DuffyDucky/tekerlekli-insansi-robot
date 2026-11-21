@@ -1,0 +1,263 @@
+{
+ "e4": {
+  "sag_bb": [
+   -16.0,
+   136.65,
+   -64.89,
+   42.0
+  ],
+  "sol_bb": [
+   -136.65,
+   0.0,
+   -64.89,
+   42.0
+  ],
+  "yerinde_ortak": 0.0,
+  "yerinde_mesafe": 0.0,
+  "sag_hareketli": {
+   "+x": [
+    "serbest",
+    17.0
+   ],
+   "-x": [
+    "kapali",
+    1.0,
+    660.33
+   ],
+   "+y": [
+    "kapali",
+    1.0,
+    1158.83
+   ],
+   "-y": [
+    "serbest_max",
+    160.0
+   ],
+   "+z": [
+    "serbest",
+    107.0
+   ],
+   "-z": [
+    "kapali",
+    0.25,
+    18.85
+   ],
+   "+x+z": [
+    "serbest",
+    23.0
+   ],
+   "-x-z": [
+    "kapali",
+    1.0,
+    1817.73
+   ],
+   "+y-z": [
+    "kapali",
+    1.0,
+    2120.9
+   ]
+  },
+  "sol_hareketli": {
+   "+x": [
+    "kapali",
+    1.0,
+    660.33
+   ],
+   "-x": [
+    "serbest",
+    17.0
+   ],
+   "+y": [
+    "serbest_max",
+    160.0
+   ],
+   "-y": [
+    "kapali",
+    1.0,
+    1158.83
+   ],
+   "+z": [
+    "kapali",
+    0.25,
+    18.85
+   ],
+   "-z": [
+    "serbest",
+    107.0
+   ],
+   "+x+z": [
+    "kapali",
+    1.0,
+    1817.73
+   ],
+   "-x-z": [
+    "serbest",
+    23.0
+   ],
+   "+y-z": [
+    "serbest",
+    152.0
+   ]
+  },
+  "kesit_y": 1472.5,
+  "kesit": [
+   "z  -66.00 .........................................",
+   "z  -65.75 .........................................",
+   "z  -65.50 .........................................",
+   "z  -65.25 .........................................",
+   "z  -65.00 .........................................",
+   "z  -64.75 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+   "z  -64.50 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+   "z  -64.25 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+   "z  -64.00 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+   "z  -63.75 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+   "z  -63.50 LLLL.................................RRRR",
+   "z  -63.25 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+   "z  -63.00 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+   "z  -62.75 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+   "z  -62.50 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+   "z  -62.25 .........................................",
+   "z  -62.00 .........................................",
+   "z  -61.75 .........................................",
+   "z  -61.50 .........................................",
+   "z  -61.25 .........................................",
+   "z  -61.00 .........................................",
+   "z  -60.75 .........................................",
+   "z  -60.50 .........................................",
+   "z  -60.25 .........................................",
+   "z  -60.00 ........................................."
+  ]
+ },
+ "vida_taban": [
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 0 alt)",
+   -130.0,
+   -23.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 1 alt)",
+   -130.0,
+   21.5,
+   16.69,
+   13.604,
+   0.815
+  ],
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 2 alt)",
+   -65.0,
+   -18.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 3 alt)",
+   -65.0,
+   21.5,
+   16.69,
+   13.604,
+   0.815
+  ],
+  [
+   "ugum karti (pertinaks, nominal zarf TAHMIN) 0 alt)",
+   -130.5,
+   -102.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "ugum karti (pertinaks, nominal zarf TAHMIN) 1 alt)",
+   -130.5,
+   -77.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "ugum karti (pertinaks, nominal zarf TAHMIN) 2 alt)",
+   -105.5,
+   -102.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "ugum karti (pertinaks, nominal zarf TAHMIN) 3 alt)",
+   -105.5,
+   -77.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "pan + tilt; pertinaks, nominal zarf TAHMIN) 0 alt)",
+   96.5,
+   -89.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "pan + tilt; pertinaks, nominal zarf TAHMIN) 1 alt)",
+   96.5,
+   -64.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "pan + tilt; pertinaks, nominal zarf TAHMIN) 2 alt)",
+   127.5,
+   -89.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "pan + tilt; pertinaks, nominal zarf TAHMIN) 3 alt)",
+   127.5,
+   -64.5,
+   16.69,
+   14.679,
+   0.88
+  ]
+ ],
+ "vida_head": [
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 0 alt)",
+   -130.0,
+   -23.5,
+   16.69,
+   14.679,
+   0.88
+  ],
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 1 alt)",
+   -130.0,
+   21.5,
+   16.69,
+   13.604,
+   0.815
+  ],
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 2 alt)",
+   -65.0,
+   -23.5,
+   16.69,
+   6.28,
+   0.376
+  ],
+  [
+   "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 3 alt)",
+   -65.0,
+   21.5,
+   16.69,
+   13.604,
+   0.815
+  ]
+ ]
+}

@@ -1,16 +1,16 @@
 {
  "bolum": "kol_sag",
- "kosu": "20261119-075818",
- "baslangic": "2026-11-19T11:12:57",
- "bitis": "2026-11-19T11:15:31",
- "sure_s": 153.9,
- "yukleme_s": 57.5,
- "tepe_bellek_mb": 743,
- "tepe_sayfa_mb": 2653,
+ "kosu": "20261121-023529",
+ "baslangic": "2026-11-21T06:04:50",
+ "bitis": "2026-11-21T06:07:30",
+ "sure_s": 160.9,
+ "yukleme_s": 60.9,
+ "tepe_bellek_mb": 733,
+ "tepe_sayfa_mb": 2642,
  "ayni_surec": [
   "kol_sag"
  ],
- "pid": 28076,
+ "pid": 24636,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -29,7 +29,7 @@
   "kabuk/kabuk_parcalar.py": "cb2d75a334",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "2421681738",
-  "taban/taban_parcalar.py": "d00e2075e9",
+  "taban/taban_parcalar.py": "5f6f3d9e81",
   "kafa/kafa-analiz.json": "682d561278",
   "dirsek/dirsek_lib.py": "51238e19bd",
   "kabuk/kabuk_lib.py": "ec1c00a7bd",
@@ -3365,6 +3365,6 @@
   "yakin_aralikta": [],
   "yakin_aralikta_sayi": 0,
   "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-  "sure_s": 153.9
+  "sure_s": 160.8
  }
 }

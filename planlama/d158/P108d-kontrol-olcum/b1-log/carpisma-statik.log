@@ -1,0 +1,40 @@
+bolum: statik  | moduller: iskelet,omuz_sag,omuz_sol,kabuk,dirsek_sag,dirsek_sol,kafa,taban
+modul iskelet parca 59 haric 0 0.6s
+modul omuz_sag parca 75 haric 2 2.0s
+modul omuz_sol parca 75 haric 2 2.1s
+govde zarf: kabuk hacmi 2463 cm3 3.0s
+govde parcalari: {'alt sag': 1, 'alt sol': 1, 'uzatma1 sag': 1, 'uzatma1 sol': 1, 'uzatma2 sag': 1, 'uzatma2 sol': 1, 'orta sag': 1, 'orta sol': 1, 'gogus sag': 1, 'gogus sol': 1, 'omuz sag': 1, 'omuz sol': 1, 'kapak ': 1, 'kapak2 ': 1} 10.2s
+etek zarf: kabuk hacmi 1747 cm3 10.9s
+etek parcalari: {'arka sag': 1, 'arka sol': 1, 'orta sag': 1, 'orta sol': 1, 'on sag': 1, 'on sol': 1} {'dolgu arka': 1, 'dolgu on': 1} 12.5s
+S1 kaseti: psi 190.0...303.2 (U ucu 324.3, u_pay 6.5, pim 331.8, pim2 300.0), govde 7.9 cm3, kapak 6.0 cm3, kati 1/1 17.8s
+S1 kaseti: dikme somunlari [('Omuz bandi sag', 200.0), ('Omuz bandi sag', 226.0), ('Omuz bandi sol', 200.0), ('Omuz bandi sol', 226.0)] 18.1s
+bindirme civatasi: 84 yer, 0 atlandi [] 23.8s
+gogus cercevesi civatalari: [('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol')] 23.9s
+etek kapak civatalari: [('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sag'), ('igorta kutusu)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag')] 24.1s
+boss ve delikler islendi; ayri kalan delik tapasi: [] 38.4s
+kabuk parca sayisi 357 (baski 34), kutle 7170 g 41.8s
+modul kabuk parca 357 haric 0 44.2s
+modul dirsek_sag parca 57 haric 0 45.5s
+modul dirsek_sol parca 57 haric 0 45.5s
+kafa (1,58 m): 161 parca (Govde/Pan 61, adaptor 13, Bas 87), 2081.4 g  5.1s
+modul kafa parca 161 haric 0 54.6s
+alt plaka 52 kesim 0.1s
+plakalar + burclar 0.6s
+tahrik 1.0s
+aku 1.0s
+guc 2.1s
+elektronik kati 2.6s
+sensor 2.8s
+kablo yolu 3.6s
+parca 427 toplam 8273 g 4.0s
+modul taban parca 427 haric 13 59.5s
+==== bolum statik basladi (bellek 404 MB)
+arayuz uyumu: [('omuz_sag', True), ('omuz_sol', True)]
+ev pozu (S1 0, S2 5): 0 cakisma (904 sinir kutusu kesisen cift); mekanik sifir S2 0 (bilgi): 4 72.8s
+kutle 25876.1 g, AM (0.03, 526.18, -9.71)
+==== bolum statik bitti: 13 s, tepe bellek 735 MB
+bitti 72.8s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

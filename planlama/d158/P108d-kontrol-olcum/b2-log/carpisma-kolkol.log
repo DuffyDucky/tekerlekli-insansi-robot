@@ -1,0 +1,14 @@
+bolum: kolkol  | moduller: omuz_sag,omuz_sol,dirsek_sag,dirsek_sol
+modul omuz_sag parca 75 haric 2 1.4s
+modul omuz_sol parca 75 haric 2 1.5s
+modul dirsek_sag parca 57 haric 0 2.8s
+modul dirsek_sol parca 57 haric 0 2.8s
+kafa (1,58 m): 161 parca (Govde/Pan 61, adaptor 13, Bas 87), 2081.4 g  5.2s
+==== bolum kolkol basladi (bellek 179 MB)
+kol-kol: 227 poz cifti, cakisan 0, en kucuk bosluk 290.0 mm ('S1 horn merkez vidasi M3', 'S1 horn merkez vidasi M3') sag [-45, 5.0, 0, -90] sol [-45, 5.0, 0, -90]; dirsek parcalari arasi 331.2 mm ('El', 'El') sag [-45, 5.0, 105, -90] sol [-45, 5.0, 105, -90] 41s
+==== bolum kolkol bitti: 41 s, tepe bellek 197 MB
+bitti 52.5s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

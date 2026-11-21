@@ -1,16 +1,16 @@
 {
  "bolum": "omuz",
- "kosu": "20261119-075818",
- "baslangic": "2026-11-19T08:00:30",
- "bitis": "2026-11-19T11:11:59",
- "sure_s": 11488.7,
- "yukleme_s": 58.7,
- "tepe_bellek_mb": 739,
- "tepe_sayfa_mb": 2648,
+ "kosu": "20261121-023529",
+ "baslangic": "2026-11-21T02:37:54",
+ "bitis": "2026-11-21T06:03:48",
+ "sure_s": 12353.9,
+ "yukleme_s": 61.4,
+ "tepe_bellek_mb": 732,
+ "tepe_sayfa_mb": 2643,
  "ayni_surec": [
   "omuz"
  ],
- "pid": 20760,
+ "pid": 3232,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -28,7 +28,7 @@
   "kabuk/kabuk_parcalar.py": "cb2d75a334",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "2421681738",
-  "taban/taban_parcalar.py": "d00e2075e9",
+  "taban/taban_parcalar.py": "5f6f3d9e81",
   "kafa/kafa-analiz.json": "682d561278",
   "dirsek/dirsek_lib.py": "51238e19bd",
   "kabuk/kabuk_lib.py": "ec1c00a7bd",

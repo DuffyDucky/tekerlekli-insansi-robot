@@ -1,0 +1,343 @@
+{
+ "yontem": {
+  "adim_mm": 2.0,
+  "en_cok_mm": 300.0,
+  "esik_mm3": 0.5,
+  "inceltme_mm": 0.25,
+  "kaynak": "montaj/robot-montaj.FCStd ev pozu"
+ },
+ "geometri": {
+  "x_ortak_bant": [
+   -16.0,
+   0.0
+  ],
+  "sag_bant": {
+   "bb": [
+    -16.0,
+    0.01,
+    1377.0,
+    1580.0,
+    -64.89,
+    41.0
+   ],
+   "hacim_mm3": 5496.4
+  },
+  "sol_bant": {
+   "bb": [
+    -16.01,
+    0.0,
+    1377.0,
+    1580.0,
+    -64.89,
+    41.0
+   ],
+   "hacim_mm3": 5784.4
+  },
+  "yerinde_ortak_hacim_mm3": 0.0,
+  "yerinde_en_dar_mm": 0.0,
+  "kesit": [
+   {
+    "y": 1410.1,
+    "sag_z": [
+     -64.89,
+     -62.39
+    ],
+    "sag_x": [
+     -16.0,
+     0.01
+    ],
+    "sol_z": [
+     -64.89,
+     -62.39
+    ],
+    "sol_x": [
+     -16.01,
+     0.0
+    ],
+    "bosluk_mm": 0.0
+   },
+   {
+    "y": 1450.1,
+    "sag_z": [
+     -64.89,
+     -62.39
+    ],
+    "sag_x": [
+     -16.0,
+     0.01
+    ],
+    "sol_z": [
+     -64.89,
+     -62.39
+    ],
+    "sol_x": [
+     -16.01,
+     0.0
+    ],
+    "bosluk_mm": 0.0
+   },
+   {
+    "y": 1490.1,
+    "sag_z": [
+     -64.89,
+     -62.39
+    ],
+    "sag_x": [
+     -16.0,
+     0.01
+    ],
+    "sol_z": [
+     -64.89,
+     -62.39
+    ],
+    "sol_x": [
+     -16.01,
+     0.0
+    ],
+    "bosluk_mm": 0.0
+   },
+   {
+    "y": 1530.1,
+    "sag_z": [
+     -64.89,
+     -62.39
+    ],
+    "sag_x": [
+     -10.0,
+     0.01
+    ],
+    "sol_z": [
+     -64.89,
+     -63.64
+    ],
+    "sol_x": [
+     -10.0,
+     0.0
+    ],
+    "bosluk_mm": 0.0
+   },
+   {
+    "y": 1560.1,
+    "sag_z": [
+     -64.89,
+     -62.39
+    ],
+    "sag_x": [
+     -10.0,
+     0.01
+    ],
+    "sol_z": [
+     -64.89,
+     -63.64
+    ],
+    "sol_x": [
+     -10.0,
+     0.0
+    ],
+    "bosluk_mm": 0.0
+   }
+  ],
+  "kesit_haritasi": {
+   "y": 1490.1,
+   "x_ilk": -18.0,
+   "x_adim": 0.5,
+   "satirlar": [
+    "z  -66.00 .........................................",
+    "z  -65.75 .........................................",
+    "z  -65.50 .........................................",
+    "z  -65.25 .........................................",
+    "z  -65.00 .........................................",
+    "z  -64.75 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+    "z  -64.50 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+    "z  -64.25 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+    "z  -64.00 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+    "z  -63.75 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL.RRRR",
+    "z  -63.50 LLLL.................................RRRR",
+    "z  -63.25 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+    "z  -63.00 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+    "z  -62.75 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+    "z  -62.50 LLLL.RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+    "z  -62.25 .........................................",
+    "z  -62.00 .........................................",
+    "z  -61.75 .........................................",
+    "z  -61.50 .........................................",
+    "z  -61.25 .........................................",
+    "z  -61.00 .........................................",
+    "z  -60.75 .........................................",
+    "z  -60.50 .........................................",
+    "z  -60.25 .........................................",
+    "z  -60.00 ........................................."
+   ]
+  }
+ },
+ "supurme": {
+  "sag_hareketli_sol_yerinde": {
+   "+x": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 18.0
+   },
+   "-x": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 165.082,
+    "kutu_ayrisma_mm": null
+   },
+   "+y": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 5.877,
+    "kutu_ayrisma_mm": null
+   },
+   "-y": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 220.0
+   },
+   "+z": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 108.0
+   },
+   "-z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 18.85,
+    "kutu_ayrisma_mm": null
+   },
+   "+x-z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 13.329,
+    "kutu_ayrisma_mm": null
+   },
+   "-x-z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 129.973,
+    "kutu_ayrisma_mm": null
+   },
+   "+x+z": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 24.0
+   },
+   "-x+z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 104.699,
+    "kutu_ayrisma_mm": null
+   },
+   "+y-z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 17.291,
+    "kutu_ayrisma_mm": null
+   },
+   "+x+y": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 3.962,
+    "kutu_ayrisma_mm": null
+   }
+  },
+  "sol_hareketli_sag_yerinde": {
+   "+x": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 165.082,
+    "kutu_ayrisma_mm": null
+   },
+   "-x": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 18.0
+   },
+   "+y": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 220.0
+   },
+   "-y": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 5.877,
+    "kutu_ayrisma_mm": null
+   },
+   "+z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 18.85,
+    "kutu_ayrisma_mm": null
+   },
+   "-z": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 108.0
+   },
+   "+x-z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 104.699,
+    "kutu_ayrisma_mm": null
+   },
+   "-x-z": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 24.0
+   },
+   "+x+z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 129.973,
+    "kutu_ayrisma_mm": null
+   },
+   "-x+z": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 13.329,
+    "kutu_ayrisma_mm": null
+   },
+   "+y-z": {
+    "sonuc": "serbest",
+    "ilk_carpisma_mm": null,
+    "ortak_hacim_mm3": null,
+    "kutu_ayrisma_mm": 152.0
+   },
+   "+x+y": {
+    "sonuc": "kapali",
+    "ilk_carpisma_mm": 0.25,
+    "ortak_hacim_mm3": 110.128,
+    "kutu_ayrisma_mm": null
+   }
+  }
+ },
+ "sonuc": {
+  "soru": "dikey dikiş bindirmesi arka kabukların takma sırasını zorluyor mu (yalnız iki kabuk)",
+  "zorluyor": false,
+  "serbest_yonler": {
+   "sag_hareketli_sol_yerinde": [
+    "+x",
+    "-y",
+    "+z",
+    "+x+z"
+   ],
+   "sol_hareketli_sag_yerinde": [
+    "-x",
+    "+y",
+    "-z",
+    "-x-z",
+    "+y-z"
+   ]
+  }
+ },
+ "sure_s": 26.1
+}

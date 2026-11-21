@@ -1,0 +1,57 @@
+bolum: taban  | moduller: iskelet,omuz_sag,omuz_sol,kabuk,dirsek_sag,dirsek_sol,kafa,taban
+modul iskelet parca 59 haric 0 0.6s
+modul omuz_sag parca 75 haric 2 2.0s
+modul omuz_sol parca 75 haric 2 2.0s
+govde zarf: kabuk hacmi 2463 cm3 3.2s
+govde parcalari: {'alt sag': 1, 'alt sol': 1, 'uzatma1 sag': 1, 'uzatma1 sol': 1, 'uzatma2 sag': 1, 'uzatma2 sol': 1, 'orta sag': 1, 'orta sol': 1, 'gogus sag': 1, 'gogus sol': 1, 'omuz sag': 1, 'omuz sol': 1, 'kapak ': 1, 'kapak2 ': 1} 11.2s
+etek zarf: kabuk hacmi 1747 cm3 11.9s
+etek parcalari: {'arka sag': 1, 'arka sol': 1, 'orta sag': 1, 'orta sol': 1, 'on sag': 1, 'on sol': 1} {'dolgu arka': 1, 'dolgu on': 1} 13.7s
+S1 kaseti: psi 190.0...303.2 (U ucu 324.3, u_pay 6.5, pim 331.8, pim2 300.0), govde 7.9 cm3, kapak 6.0 cm3, kati 1/1 19.4s
+S1 kaseti: dikme somunlari [('Omuz bandi sag', 200.0), ('Omuz bandi sag', 226.0), ('Omuz bandi sol', 200.0), ('Omuz bandi sol', 226.0)] 19.6s
+bindirme civatasi: 84 yer, 0 atlandi [] 25.6s
+gogus cercevesi civatalari: [('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sag', 'Gogus bandi sag'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol'), ('sol', 'Gogus bandi sol')] 25.7s
+etek kapak civatalari: [('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sol'), ('igorta kutusu)', 'Etek arka sag'), ('igorta kutusu)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag'), (' (ana sigorta)', 'Etek arka sag')] 25.9s
+boss ve delikler islendi; ayri kalan delik tapasi: [] 40.6s
+kabuk parca sayisi 357 (baski 34), kutle 7170 g 44.0s
+modul kabuk parca 357 haric 0 46.4s
+modul dirsek_sag parca 57 haric 0 47.7s
+modul dirsek_sol parca 57 haric 0 47.7s
+kafa (1,58 m): 161 parca (Govde/Pan 61, adaptor 13, Bas 87), 2081.4 g  5.3s
+modul kafa parca 161 haric 0 57.0s
+alt plaka 52 kesim 0.1s
+plakalar + burclar 0.5s
+tahrik 0.9s
+aku 1.0s
+guc 2.1s
+elektronik kati 2.6s
+sensor 2.8s
+kablo yolu 3.6s
+parca 427 toplam 8273 g 4.0s
+modul taban parca 427 haric 13 61.9s
+==== bolum taban basladi (bellek 408 MB)
+taban <-> iskelet     kutu kesisen 81, cakisma 0, temas 36, en kucuk 0.00 mm ['Alt plaka', 'Sase uzun rayi sag'] 2s
+taban <-> omuz_sag    kutu kesisen 0, cakisma 0, temas 0, en kucuk 824.13 mm ['Acil stop mantari + bilezik', 'Ust kol tupu'] 2s
+taban <-> omuz_sol    kutu kesisen 0, cakisma 0, temas 0, en kucuk 857.53 mm ['Ana anahtar ASW-A01 govdesi (tahmini zarf)', 'Ust kol tupu'] 2s
+taban <-> kabuk       kutu kesisen 505, cakisma 0, temas 1, en kucuk 0.00 mm ['Acil stop mantari + bilezik', 'Etek arka sag'] 10s
+taban <-> dirsek_sag  kutu kesisen 0, cakisma 0, temas 0, en kucuk 592.74 mm ['Acil stop mantari + bilezik', 'El'] 10s
+taban <-> dirsek_sol  kutu kesisen 0, cakisma 0, temas 0, en kucuk 625.97 mm ['Ana anahtar ASW-A01 govdesi (tahmini zarf)', 'El'] 10s
+taban <-> kafa        kutu kesisen 0, cakisma 0, temas 0, en kucuk 1006.07 mm ['Acil stop mantari + bilezik', 'Cekic somun M6 (travers ust kanali)'] 10s
+  kol sag <-> acil stop            590.0 mm kol [-10.0, 5.0, 5.0, -75.0] El / Acil stop mantari + bilezik
+  kol sag <-> ana anahtar dugmesi  663.7 mm kol [-10.0, 5.0, 5.0, -75.0] El / Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)
+  kol sag <-> etek (kabuk)         599.5 mm kol [0.0, 5.0, 5.0, -90.0] El / Etek orta sag
+  kol sag <-> sonar                769.7 mm kol [15.0, 5.0, 0.0, -75.0] El / Sonar tutucu sag
+  kol sag <-> taban diger          658.3 mm kol [0.0, 5.0, 5.0, -75.0] El / XL4016 servo 6 V C (kafa pan + tilt)
+kol sag x taban: 46808 alt oge (+273 ince), 253 tam olcum, aralikta cakisan alt poz 0, kol en alt y 861 7s
+  kol sol <-> acil stop            653.6 mm kol [-10.0, 5.0, 5.0, -75.0] El / Acil stop mantari + bilezik
+  kol sol <-> ana anahtar dugmesi  597.9 mm kol [-10.0, 5.0, 5.0, -75.0] El / Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)
+  kol sol <-> etek (kabuk)         599.5 mm kol [0.0, 5.0, 5.0, -90.0] El / Etek orta sol
+  kol sol <-> sonar                769.7 mm kol [15.0, 5.0, 0.0, -75.0] El / Sonar tutucu sol
+  kol sol <-> taban diger          622.8 mm kol [-10.0, 5.0, 5.0, -75.0] El / Ana anahtar ASW-A01 govdesi (tahmini zarf)
+kol sol x taban: 46808 alt oge (+273 ince), 237 tam olcum, aralikta cakisan alt poz 0, kol en alt y 861 7s
+kafa x taban: kafa en alt y 1280, taban en ust y 290, kutu boslugu 990 mm
+==== bolum taban bitti: 28 s, tepe bellek 795 MB
+bitti 89.6s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

@@ -1,0 +1,1906 @@
+{
+ "taban": "tasarim/freecad/taban/taban-montaj.FCStd",
+ "taban_nesne": 427,
+ "taban_referans": 13,
+ "turler": [
+  "Baglanti",
+  "Baski",
+  "Lazer",
+  "Referans",
+  "Satin"
+ ],
+ "dis_parca": 837,
+ "yol": {
+  "1": {
+   "hacim": 14557.8,
+   "bb": [
+    -119.91,
+    114.5,
+    130.5,
+    222.5,
+    -217.5,
+    -26.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Aku LiFePO4 12,8 V (yatik)",
+     "taban",
+     65.973
+    ],
+    [
+     0.0,
+     "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "taban",
+     489.67
+    ],
+    [
+     0.0,
+     "Ana sigorta yuvasi 30 A (tahmini zarf)",
+     "taban",
+     1363.99
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     898.59
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Aku LiFePO4 12,8 V (yatik)",
+     "taban",
+     65.973
+    ],
+    [
+     0.0,
+     "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "taban",
+     489.67
+    ],
+    [
+     0.0,
+     "Ana sigorta yuvasi 30 A (tahmini zarf)",
+     "taban",
+     1363.99
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     898.59
+    ]
+   ]
+  },
+  "2": {
+   "hacim": 2411.4,
+   "bb": [
+    -2.5,
+    68.0,
+    130.5,
+    196.5,
+    -47.5,
+    -26.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Aku LiFePO4 12,8 V (yatik)",
+     "taban",
+     66.0
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Aku LiFePO4 12,8 V (yatik)",
+     "taban",
+     66.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 3)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "3": {
+   "hacim": 14948.2,
+   "bb": [
+    -140.5,
+    15.0,
+    82.5,
+    228.0,
+    -205.5,
+    202.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "BTS7960 motor surucu sol",
+     "taban",
+     746.125
+    ],
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sol)",
+     "iskelet",
+     38.494
+    ],
+    [
+     0.0,
+     "Motor JGB37-520 (on sol)",
+     "taban",
+     350.048
+    ],
+    [
+     0.0,
+     "Role 12 V 40 A + soket (tahmini zarf)",
+     "taban",
+     539.645
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     21.784
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "BTS7960 motor surucu sol",
+     "taban",
+     746.125
+    ],
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sol)",
+     "iskelet",
+     38.494
+    ],
+    [
+     0.0,
+     "Motor JGB37-520 (on sol)",
+     "taban",
+     350.048
+    ],
+    [
+     0.0,
+     "Role 12 V 40 A + soket (tahmini zarf)",
+     "taban",
+     539.645
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     21.784
+    ],
+    [
+     2.0,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.264,
+     "Alt plaka",
+     "taban",
+     0.0
+    ],
+    [
+     2.599,
+     "Motor braketi L 37 mm (on sol)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (anahtarli 1)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (anahtarli 2)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (anahtarli 3)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 1)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "4": {
+   "hacim": 18646.9,
+   "bb": [
+    -27.5,
+    140.5,
+    82.5,
+    199.5,
+    -187.5,
+    202.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "BTS7960 motor surucu sag",
+     "taban",
+     1171.928
+    ],
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sag)",
+     "iskelet",
+     45.005
+    ],
+    [
+     0.0,
+     "Motor JGB37-520 (arka sag)",
+     "taban",
+     216.294
+    ],
+    [
+     0.0,
+     "Motor JGB37-520 (on sag)",
+     "taban",
+     312.769
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "BTS7960 motor surucu sag",
+     "taban",
+     1171.928
+    ],
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sag)",
+     "iskelet",
+     45.005
+    ],
+    [
+     0.0,
+     "Motor JGB37-520 (arka sag)",
+     "taban",
+     216.294
+    ],
+    [
+     0.0,
+     "Motor JGB37-520 (on sag)",
+     "taban",
+     312.769
+    ],
+    [
+     0.891,
+     "Aku kayisi 25 mm (z -80)",
+     "taban",
+     0.0
+    ],
+    [
+     1.107,
+     "Alt plaka",
+     "taban",
+     0.0
+    ],
+    [
+     1.697,
+     "Aku kayisi 25 mm (z -140)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.599,
+     "Motor braketi L 37 mm (arka sag)",
+     "taban",
+     0.0
+    ],
+    [
+     2.599,
+     "Motor braketi L 37 mm (on sag)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (anahtarli 2)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 2)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "5": {
+   "hacim": 35015.9,
+   "bb": [
+    -52.5,
+    102.5,
+    127.5,
+    1272.5,
+    -107.5,
+    207.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sol)",
+     "iskelet",
+     84.324
+    ],
+    [
+     0.0,
+     "Omuz yuvasi (sag)",
+     "omuz_sag",
+     124.848
+    ],
+    [
+     0.0,
+     "Yuva baglanti civatasi M6x16 (sag)003",
+     "omuz_sag",
+     153.629
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sol)",
+     "iskelet",
+     84.324
+    ],
+    [
+     0.0,
+     "Omuz yuvasi (sag)",
+     "omuz_sag",
+     124.848
+    ],
+    [
+     0.0,
+     "Yuva baglanti civatasi M6x16 (sag)003",
+     "omuz_sag",
+     153.629
+    ],
+    [
+     1.057,
+     "Vida M3x6 (Servo dagitim karti A (sag kol) 0 ust)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.011,
+     "Servo dagitim karti A (sag kol)",
+     "taban",
+     0.0
+    ],
+    [
+     2.5,
+     "Govde diregi",
+     "iskelet",
+     0.0
+    ],
+    [
+     2.5,
+     "Guc paneli (arka kat)",
+     "taban",
+     0.0
+    ],
+    [
+     2.872,
+     "Civata M6x16 (Direk-ray sol, ayak B)",
+     "iskelet",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (anahtarli 1)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 1)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "6": {
+   "hacim": 2331.5,
+   "bb": [
+    -2.5,
+    2.5,
+    1212.5,
+    1327.5,
+    -32.5,
+    -7.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Pan servosu MG996R",
+     "kafa",
+     86.795
+    ],
+    [
+     0.0,
+     "Servo yuvasi",
+     "kafa",
+     348.514
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Pan servosu MG996R",
+     "kafa",
+     86.795
+    ],
+    [
+     0.0,
+     "Servo yuvasi",
+     "kafa",
+     348.514
+    ],
+    [
+     0.293,
+     "Pan servosu kulak pulu M002",
+     "kafa",
+     0.0
+    ],
+    [
+     0.293,
+     "Pan servosu kulak pulu M003",
+     "kafa",
+     0.0
+    ],
+    [
+     0.353,
+     "Boyun plakasi",
+     "kafa",
+     0.0
+    ],
+    [
+     0.5,
+     "Isil gomme somun M3 (servo yuvasi)002",
+     "kafa",
+     0.0
+    ],
+    [
+     0.5,
+     "Isil gomme somun M3 (servo yuvasi)003",
+     "kafa",
+     0.0
+    ],
+    [
+     1.0,
+     "Pan servosu kulak civatasi M3x002",
+     "kafa",
+     0.0
+    ],
+    [
+     1.0,
+     "Pan servosu kulak civatasi M3x003",
+     "kafa",
+     0.0
+    ]
+   ]
+  },
+  "7": {
+   "hacim": 34138.5,
+   "bb": [
+    -102.5,
+    -2.5,
+    122.5,
+    1272.5,
+    -107.5,
+    207.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sol)",
+     "iskelet",
+     9.551
+    ],
+    [
+     0.0,
+     "Omuz yuvasi (sol)",
+     "omuz_sol",
+     124.848
+    ],
+    [
+     0.0,
+     "Servo dagitim karti B (sol kol)",
+     "taban",
+     242.135
+    ],
+    [
+     0.0,
+     "Yuva baglanti civatasi M6x16 (sol)003",
+     "omuz_sol",
+     153.629
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sol)",
+     "iskelet",
+     9.551
+    ],
+    [
+     0.0,
+     "Omuz yuvasi (sol)",
+     "omuz_sol",
+     124.848
+    ],
+    [
+     0.0,
+     "Servo dagitim karti B (sol kol)",
+     "taban",
+     242.135
+    ],
+    [
+     0.0,
+     "Yuva baglanti civatasi M6x16 (sol)003",
+     "omuz_sol",
+     153.629
+    ],
+    [
+     1.057,
+     "Vida M3x6 (Servo dagitim karti B (sol kol) 2 ust)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.5,
+     "Govde diregi",
+     "iskelet",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (anahtarli 1)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 1)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "8": {
+   "hacim": 29147.9,
+   "bb": [
+    -42.5,
+    40.0,
+    191.5,
+    1327.5,
+    -205.5,
+    32.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Boyun plakasi",
+     "kafa",
+     72.297
+    ],
+    [
+     0.0,
+     "Gogus ekrani VESA tasiyici",
+     "kabuk",
+     973.081
+    ],
+    [
+     0.0,
+     "Pan servosu MG996R",
+     "kafa",
+     384.08
+    ],
+    [
+     0.0,
+     "Servo yuvasi",
+     "kafa",
+     424.225
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     32.76
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Boyun plakasi",
+     "kafa",
+     72.297
+    ],
+    [
+     0.0,
+     "Gogus ekrani VESA tasiyici",
+     "kabuk",
+     973.081
+    ],
+    [
+     0.0,
+     "Pan servosu MG996R",
+     "kafa",
+     384.08
+    ],
+    [
+     0.0,
+     "Servo yuvasi",
+     "kafa",
+     424.225
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     32.76
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 4)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "9": {
+   "hacim": 10952.1,
+   "bb": [
+    -2.5,
+    82.5,
+    122.5,
+    221.5,
+    -205.5,
+    162.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 1)",
+     "taban",
+     0.737
+    ],
+    [
+     0.0,
+     "ESP32 DevKit 30 pin",
+     "taban",
+     129.709
+    ],
+    [
+     0.0,
+     "ESP32 tasiyici kart (pertinaks)",
+     "taban",
+     19.015
+    ],
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sag)",
+     "iskelet",
+     12.147
+    ],
+    [
+     0.0,
+     "PCA9685 servo surucu",
+     "taban",
+     174.367
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     32.846
+    ],
+    [
+     0.0,
+     "Vida M2,5x5 (PCA9685 servo surucu 1 ust)",
+     "taban",
+     14.891
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 1)",
+     "taban",
+     0.737
+    ],
+    [
+     0.0,
+     "ESP32 DevKit 30 pin",
+     "taban",
+     129.709
+    ],
+    [
+     0.0,
+     "ESP32 tasiyici kart (pertinaks)",
+     "taban",
+     19.015
+    ],
+    [
+     0.0,
+     "Kose baglanti 40x40 genis (Direk-ray sag)",
+     "iskelet",
+     12.147
+    ],
+    [
+     0.0,
+     "PCA9685 servo surucu",
+     "taban",
+     174.367
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     32.846
+    ],
+    [
+     0.0,
+     "Vida M2,5x5 (PCA9685 servo surucu 1 ust)",
+     "taban",
+     14.891
+    ],
+    [
+     0.703,
+     "Vida M2,5x5 (PCA9685 servo surucu 0 ust)",
+     "taban",
+     0.0
+    ],
+    [
+     2.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     0.0
+    ],
+    [
+     2.782,
+     "XL4016 cevre 5 V",
+     "taban",
+     0.0
+    ],
+    [
+     2.881,
+     "Somun M5 (yildiz 4)",
+     "taban",
+     0.0
+    ],
+    [
+     2.946,
+     "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 0)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "10": {
+   "hacim": 11249.6,
+   "bb": [
+    -120.5,
+    119.91,
+    192.5,
+    228.0,
+    -205.5,
+    82.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)",
+     "taban",
+     263.938
+    ],
+    [
+     0.0,
+     "Acil stop kontak govdesi (1NC)",
+     "taban",
+     46.229
+    ],
+    [
+     0.0,
+     "Arayuz karti (E2/E3)",
+     "taban",
+     166.622
+    ],
+    [
+     0.0,
+     "Role 12 V 40 A + soket (tahmini zarf)",
+     "taban",
+     450.018
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     115.422
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)",
+     "taban",
+     263.938
+    ],
+    [
+     0.0,
+     "Acil stop kontak govdesi (1NC)",
+     "taban",
+     46.229
+    ],
+    [
+     0.0,
+     "Arayuz karti (E2/E3)",
+     "taban",
+     166.622
+    ],
+    [
+     0.0,
+     "Role 12 V 40 A + soket (tahmini zarf)",
+     "taban",
+     450.018
+    ],
+    [
+     0.0,
+     "Sigorta kutusu 6 yollu (tahmini zarf)",
+     "taban",
+     115.422
+    ],
+    [
+     2.9,
+     "On sarj karti (E9: K2 + 5,6 ohm)",
+     "taban",
+     0.0
+    ]
+   ]
+  },
+  "11": {
+   "hacim": 8413.5,
+   "bb": [
+    -93.0,
+    82.5,
+    124.5,
+    197.5,
+    82.5,
+    257.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Arayuz karti (E2/E3)",
+     "taban",
+     196.649
+    ],
+    [
+     0.0,
+     "ESP32 DevKit 30 pin",
+     "taban",
+     28.256
+    ],
+    [
+     0.0,
+     "ESP32 tasiyici kart (pertinaks)",
+     "taban",
+     84.633
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Arayuz karti (E2/E3)",
+     "taban",
+     196.649
+    ],
+    [
+     0.0,
+     "ESP32 DevKit 30 pin",
+     "taban",
+     28.256
+    ],
+    [
+     0.0,
+     "ESP32 tasiyici kart (pertinaks)",
+     "taban",
+     84.633
+    ],
+    [
+     0.5,
+     "Sonar tutucu sol",
+     "taban",
+     0.0
+    ],
+    [
+     1.954,
+     "Etek on sol",
+     "kabuk",
+     0.0
+    ],
+    [
+     2.5,
+     "Sase ara rayi on",
+     "iskelet",
+     0.0
+    ]
+   ]
+  },
+  "12": {
+   "hacim": 27675.8,
+   "bb": [
+    -70.0,
+    82.5,
+    137.5,
+    1327.5,
+    17.5,
+    170.5
+   ],
+   "temas": [
+    [
+     0.0,
+     "Boyun plakasi",
+     "kafa",
+     69.167
+    ],
+    [
+     0.0,
+     "ESP32 DevKit 30 pin",
+     "taban",
+     19.45
+    ],
+    [
+     0.0,
+     "ESP32 tasiyici kart (pertinaks)",
+     "taban",
+     302.748
+    ],
+    [
+     0.0,
+     "Gogus ekrani VESA tasiyici",
+     "kabuk",
+     1463.955
+    ],
+    [
+     0.0,
+     "Pan servosu MG996R",
+     "kafa",
+     434.359
+    ],
+    [
+     0.0,
+     "Servo yuvasi",
+     "kafa",
+     335.812
+    ]
+   ],
+   "yakin_3mm": [
+    [
+     0.0,
+     "Boyun plakasi",
+     "kafa",
+     69.167
+    ],
+    [
+     0.0,
+     "ESP32 DevKit 30 pin",
+     "taban",
+     19.45
+    ],
+    [
+     0.0,
+     "ESP32 tasiyici kart (pertinaks)",
+     "taban",
+     302.748
+    ],
+    [
+     0.0,
+     "Gogus ekrani VESA tasiyici",
+     "kabuk",
+     1463.955
+    ],
+    [
+     0.0,
+     "Pan servosu MG996R",
+     "kafa",
+     434.359
+    ],
+    [
+     0.0,
+     "Servo yuvasi",
+     "kafa",
+     335.812
+    ],
+    [
+     1.793,
+     "BTS7960 motor surucu sol",
+     "taban",
+     0.0
+    ],
+    [
+     2.458,
+     "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+     "taban",
+     0.0
+    ],
+    [
+     2.759,
+     "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+     "taban",
+     0.0
+    ]
+   ]
+  }
+ },
+ "kat_ad": [
+  "Elektronik kati (on)"
+ ],
+ "yol12_rehber": {
+  "noktalar": [
+   [
+    -67.5,
+    140,
+    140
+   ],
+   [
+    -10,
+    190,
+    168
+   ],
+   [
+    80.0,
+    190,
+    75.0
+   ]
+  ],
+  "komsu": [
+   [
+    0.0,
+    "ESP32 DevKit 30 pin",
+    "taban",
+    2.14
+   ],
+   [
+    0.0,
+    "ESP32 tasiyici kart (pertinaks)",
+    "taban",
+    244.402
+   ],
+   [
+    1.793,
+    "BTS7960 motor surucu sol",
+    "taban",
+    0.0
+   ],
+   [
+    2.458,
+    "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+    "taban",
+    0.0
+   ],
+   [
+    2.759,
+    "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+    "taban",
+    0.0
+   ],
+   [
+    3.317,
+    "PCA9685 servo surucu",
+    "taban",
+    0.0
+   ],
+   [
+    5.328,
+    "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 0)",
+    "taban",
+    0.0
+   ],
+   [
+    5.468,
+    "Vida M2,5x5 (PCA9685 servo surucu 0 ust)",
+    "taban",
+    0.0
+   ],
+   [
+    5.632,
+    "Elektronik kati (on)",
+    "taban",
+    0.0
+   ]
+  ],
+  "temas": [
+   [
+    0.0,
+    "ESP32 DevKit 30 pin",
+    "taban",
+    2.14
+   ],
+   [
+    0.0,
+    "ESP32 tasiyici kart (pertinaks)",
+    "taban",
+    244.402
+   ]
+  ]
+ },
+ "gecis": {
+  "11": {
+   "Elektronik kati (on)": 3.952,
+   "Alt plaka": 30.382
+  },
+  "12": {
+   "Elektronik kati (on)": 5.632,
+   "Alt plaka": 43.0
+  },
+  "12 rehber": {
+   "Elektronik kati (on)": 5.632,
+   "Alt plaka": 43.0
+  }
+ },
+ "oturma": [
+  {
+   "parca": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 0)",
+   "xz": [
+    -130.0,
+    -23.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 1)",
+   "xz": [
+    -130.0,
+    21.5
+   ],
+   "tam": 19.129,
+   "panelde": 15.635,
+   "oran": 0.817
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 2)",
+   "xz": [
+    -65.0,
+    -18.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 3)",
+   "xz": [
+    -65.0,
+    21.5
+   ],
+   "tam": 19.129,
+   "panelde": 15.635,
+   "oran": 0.817
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0)",
+   "xz": [
+    -130.5,
+    -102.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1)",
+   "xz": [
+    -130.5,
+    -77.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2)",
+   "xz": [
+    -105.5,
+    -102.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3)",
+   "xz": [
+    -105.5,
+    -77.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0)",
+   "xz": [
+    96.5,
+    -89.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1)",
+   "xz": [
+    96.5,
+    -64.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2)",
+   "xz": [
+    127.5,
+    -89.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  },
+  {
+   "parca": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3)",
+   "xz": [
+    127.5,
+    -64.5
+   ],
+   "tam": 19.129,
+   "panelde": 17.118,
+   "oran": 0.895
+  }
+ ],
+ "alt_bas": [
+  {
+   "parca": "Somun M4 (sigorta kutusu sol)",
+   "d": [
+    3.959,
+    "Aku LiFePO4 12,8 V (yatik)"
+   ]
+  },
+  {
+   "parca": "Somun M4 (sigorta kutusu sag)",
+   "d": [
+    3.959,
+    "Aku LiFePO4 12,8 V (yatik)"
+   ]
+  },
+  {
+   "parca": "Somun M4 (role)",
+   "d": [
+    16.0,
+    "Aku kayisi 25 mm (z -140)"
+   ]
+  }
+ ],
+ "yeni": {
+  "Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)": {
+   "bb": [
+    -133.0,
+    -103.0,
+    187.5,
+    199.1,
+    -105.0,
+    -75.0
+   ],
+   "hacim": 6434.8,
+   "grup_sayisi": 13,
+   "komsu_10mm": [
+    [
+     8.0,
+     "Guc paneli (arka kat)",
+     "taban",
+     0.0
+    ]
+   ],
+   "grup_komsu_3mm": [],
+   "yol_en_yakin": [
+    [
+     0.0,
+     "Kablo yolu 10:"
+    ],
+    [
+     7.291,
+     "Kablo yolu 10:"
+    ],
+    [
+     9.648,
+     "Kablo yolu 3: "
+    ],
+    [
+     9.961,
+     "Kablo yolu 3: "
+    ],
+    [
+     11.029,
+     "Kablo yolu 10:"
+    ],
+    [
+     11.479,
+     "Kablo yolu 10:"
+    ]
+   ],
+   "m5_en_yakin": [
+    30.81,
+    "Civata M5x12 (kat sol z -40)"
+   ],
+   "m5_xz_ortusme": []
+  },
+  "Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)": {
+   "bb": [
+    94.0,
+    130.0,
+    187.5,
+    199.1,
+    -92.0,
+    -62.0
+   ],
+   "hacim": 8402.8,
+   "grup_sayisi": 13,
+   "komsu_10mm": [
+    [
+     8.0,
+     "Ana sigorta yuvasi 30 A (tahmini zarf)",
+     "taban",
+     0.0
+    ],
+    [
+     8.0,
+     "Guc paneli (arka kat)",
+     "taban",
+     0.0
+    ]
+   ],
+   "grup_komsu_3mm": [
+    [
+     " nominal zarf TAHMIN) 0 alt)",
+     1.25,
+     "Aku kayisi 25 mm (z -80)",
+     "taban",
+     0.0
+    ],
+    [
+     " nominal zarf TAHMIN) 1 alt)",
+     2.25,
+     "Aku kayisi 25 mm (z -80)",
+     "taban",
+     0.0
+    ]
+   ],
+   "yol_en_yakin": [
+    [
+     6.009,
+     "Kablo yolu 1: "
+    ],
+    [
+     6.309,
+     "Kablo yolu 1: "
+    ],
+    [
+     6.482,
+     "Kablo yolu 1: "
+    ],
+    [
+     8.842,
+     "Kablo yolu 1: "
+    ],
+    [
+     10.357,
+     "Kablo yolu 1: "
+    ],
+    [
+     13.472,
+     "Kablo yolu 1: "
+    ]
+   ],
+   "m5_en_yakin": [
+    17.86,
+    "Civata M5x12 (kat sag z -40)"
+   ],
+   "m5_xz_ortusme": [],
+   "DAGITIM_C_nokta_mm": 3.0
+  }
+ },
+ "sema": [
+  {
+   "ad": "G07",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [
+    [
+     0.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     118.4,
+     [
+      -56.0,
+      184.0,
+      -66.0
+     ]
+    ]
+   ],
+   "cizim_ici": [
+    [
+     0.0,
+     "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+     "taban",
+     118.4,
+     [
+      -56.0,
+      184.0,
+      -66.0
+     ]
+    ],
+    [
+     0.5,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     74.0,
+     [
+      -56.0,
+      184.0,
+      -123.0
+     ]
+    ],
+    [
+     2.0,
+     "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "taban",
+     0.0,
+     [
+      -95.4,
+      214.0,
+      -178.0
+     ]
+    ],
+    [
+     2.0,
+     "Isil gomme somun M3 (bara tutucusu yildiz x -60.0)",
+     "taban",
+     107.6,
+     [
+      -56.0,
+      184.0,
+      -55.0
+     ]
+    ],
+    [
+     2.119,
+     "Bara civatasi M5x25 DIN 933 (yildiz 1)",
+     "taban",
+     109.9,
+     [
+      -56.0,
+      184.0,
+      -57.3
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "G16",
+   "kaynak": "taban",
+   "r": 3.6,
+   "eksen_ici": [
+    [
+     0.0,
+     "Govde diregi",
+     "iskelet",
+     44.8,
+     [
+      20.0,
+      195.0,
+      -18.0
+     ]
+    ]
+   ],
+   "cizim_ici": [
+    [
+     0.0,
+     "Govde diregi",
+     "iskelet",
+     44.8,
+     [
+      20.0,
+      195.0,
+      -18.0
+     ]
+    ],
+    [
+     0.381,
+     "Somun M5 (anahtarli 2)",
+     "taban",
+     0.0,
+     [
+      -12.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     0.447,
+     "Yayli pul M5 (anahtarli 2)",
+     "taban",
+     0.0,
+     [
+      -12.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     1.4,
+     "Pul M5 (anahtarli 2)",
+     "taban",
+     0.0,
+     [
+      -12.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     2.4,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     0.0,
+     [
+      -12.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     2.5,
+     "Bara civatasi M5x25 DIN 933 (anahtarli 2)",
+     "taban",
+     0.0,
+     [
+      -12.5,
+      191.9,
+      -110.0
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "G22",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [],
+   "cizim_ici": [
+    [
+     0.381,
+     "Somun M5 (anahtarli 4)",
+     "taban",
+     0.0,
+     [
+      37.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     0.447,
+     "Yayli pul M5 (anahtarli 4)",
+     "taban",
+     0.0,
+     [
+      37.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     1.4,
+     "Pul M5 (anahtarli 4)",
+     "taban",
+     0.0,
+     [
+      37.5,
+      191.9,
+      -110.0
+     ]
+    ],
+    [
+     2.4,
+     "Bara tutucusu anahtarli bara (+) (4 saplama)",
+     "taban",
+     0.0,
+     [
+      37.5,
+      191.9,
+      -110.0
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "SV3",
+   "kaynak": "taban",
+   "r": 3.6,
+   "eksen_ici": [],
+   "cizim_ici": [
+    [
+     2.951,
+     "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 ust)",
+     "taban",
+     0.0,
+     [
+      100.0,
+      192.0,
+      -60.0
+     ]
+    ],
+    [
+     3.0,
+     "Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)",
+     "taban",
+     0.0,
+     [
+      100.0,
+      192.0,
+      -60.0
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "G19",
+   "kaynak": "taban",
+   "r": 3.6,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "M02",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [
+    [
+     0.0,
+     "Motor JGB37-520 (arka sol)",
+     "taban",
+     9.4,
+     [
+      -130.0,
+      85.3,
+      -180.2
+     ]
+    ]
+   ],
+   "cizim_ici": [
+    [
+     0.0,
+     "Motor JGB37-520 (arka sol)",
+     "taban",
+     9.4,
+     [
+      -130.0,
+      85.3,
+      -180.2
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "B02",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "N01",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [
+    [
+     0.0,
+     "Motor JGB37-520 (arka sol)",
+     "taban",
+     5.0,
+     [
+      -107.0,
+      80.8,
+      -179.0
+     ]
+    ]
+   ],
+   "cizim_ici": [
+    [
+     0.0,
+     "Motor JGB37-520 (arka sol)",
+     "taban",
+     5.0,
+     [
+      -107.0,
+      80.8,
+      -179.0
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "N02",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [
+    [
+     0.0,
+     "Motor JGB37-520 (arka sag)",
+     "taban",
+     5.0,
+     [
+      107.0,
+      80.8,
+      -179.0
+     ]
+    ]
+   ],
+   "cizim_ici": [
+    [
+     0.0,
+     "Motor JGB37-520 (arka sag)",
+     "taban",
+     5.0,
+     [
+      107.0,
+      80.8,
+      -179.0
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "Q01",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "Q02",
+   "kaynak": "taban",
+   "r": 2.5,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "K01",
+   "kaynak": "kafa_ici",
+   "r": 3.1,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "K02",
+   "kaynak": "kafa_ici",
+   "r": 3.1,
+   "eksen_ici": [],
+   "cizim_ici": [
+    [
+     2.25,
+     "SY8205 kafa ekrani 5 V",
+     "kafa",
+     0.0,
+     [
+      12.0,
+      1515.0,
+      39.0
+     ]
+    ]
+   ]
+  },
+  {
+   "ad": "K03",
+   "kaynak": "kafa_ici",
+   "r": 3.1,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "C01",
+   "kaynak": "kafa_ici",
+   "r": 2.5,
+   "eksen_ici": [],
+   "cizim_ici": []
+  },
+  {
+   "ad": "AU1",
+   "kaynak": "kafa_ici",
+   "r": 2.5,
+   "eksen_ici": [],
+   "cizim_ici": []
+  }
+ ],
+ "sure_s": 31.3
+}

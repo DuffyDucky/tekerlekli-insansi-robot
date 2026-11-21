@@ -1,0 +1,23 @@
+bolum: kafa_sol  | moduller: omuz_sol,dirsek_sol,kafa
+modul omuz_sol parca 75 haric 2 1.4s
+modul dirsek_sol parca 57 haric 0 2.7s
+kafa (1,58 m): 161 parca (Govde/Pan 61, adaptor 13, Bas 87), 2081.4 g  5.2s
+modul kafa parca 161 haric 0 12.0s
+==== bolum kafa_sol basladi (bellek 187 MB)
+kafa x kol sol: 40050 kol alt ogesi (5580 zarfa yakin), 15633 kafa ogesi, 889537 aday, dirsegi kafaya 100 mm'den yakin tam kol pozu 323 / 1770 9s
+    1000 tam olcum, 141s
+    2000 tam olcum, 263s
+    3000 tam olcum, 352s
+    4000 tam olcum, 394s
+kafa x kol sol: kaba 4034 tam olcum 405s
+  sol kafa <-> dirsek catali  37.57 mm kol [135.0, 5.0] Dirsek catali / kafa [0.0, -10.0] Yuz kabugu (on) sol
+  sol kafa <-> el             12.55 mm kol [135.0, 5.0, 105.0, -90.0] El / kafa [-30.0, 10.0] Yuz kabugu (on) sol
+  sol kafa <-> omuz           36.58 mm kol [135.0, 5.0] Ust kol tupu / kafa [-15.0, -10.0] Yuz kabugu (on) sol
+  sol kafa <-> on kol         28.98 mm kol [135.0, 5.0, 105.0] On kol govdesi / kafa [-15.0, -10.0] Yuz kabugu (on) sol
+kafa x kol sol: aralikta cakisan cift 0, yasak kol alt pozu 0, 405s
+==== bolum kafa_sol bitti: 406 s, tepe bellek 621 MB
+bitti 417.7s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

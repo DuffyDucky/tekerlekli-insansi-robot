@@ -1,0 +1,56 @@
+{
+ "yol": [
+  "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)"
+ ],
+ "sonar": [
+  "Sonar tutucu sol"
+ ],
+ "olcum": [
+  {
+   "yol": "Kablo yolu 11: Sinyal: sonar x3 -> arayu",
+   "parca": "Sonar tutucu sol",
+   "mesafe": 0.5,
+   "ortak_mm3": 0.0,
+   "noktalar": [
+    [
+     [
+      -79.41,
+      124.5,
+      255.0
+     ],
+     [
+      -79.41,
+      124.0,
+      255.0
+     ]
+    ]
+   ],
+   "yol_bb": [
+    -93.0,
+    82.5,
+    124.5,
+    197.5,
+    82.5,
+    257.5
+   ],
+   "parca_bb": [
+    -105.41,
+    -43.41,
+    96.0,
+    125.0,
+    250.0,
+    257.6
+   ]
+  }
+ ],
+ "sonar_diger": [
+  [
+   "Sonar_acil_stop",
+   0.5
+  ],
+  [
+   "Sonar HC-SR04 (sol)",
+   4.5
+  ]
+ ]
+}

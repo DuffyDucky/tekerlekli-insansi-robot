@@ -1,0 +1,19 @@
+{
+ "arayuz.py": "288cc20c6e",
+ "carpisma.py": "c688d738c3",
+ "dirsek/dirsek_lib.py": "51238e19bd",
+ "dirsek/dirsek_parcalar.py": "7182c29899",
+ "iskelet/iskelet_parcalar.py": "da1de9d063",
+ "kabuk/kabuk_lib.py": "ec1c00a7bd",
+ "kabuk/kabuk_parcalar.py": "cb2d75a334",
+ "kafa/kafa-analiz.json": "682d561278",
+ "kafa/kafa10_lib.py": "32479026d5",
+ "kafa/kafa_lib.py": "a0240ebf6f",
+ "kafa/kafa_parcalar.py": "2421681738",
+ "omuz/omuz_lib.py": "b5c14c4ed2",
+ "omuz/omuz_parcalar.py": "2093a4ebd4",
+ "ortak_lib.py": "a668036c1b",
+ "sigma_profil.py": "7db14eb8d5",
+ "taban/taban_lib.py": "638881cefc",
+ "taban/taban_parcalar.py": "5f6f3d9e81"
+}
