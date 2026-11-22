@@ -1,0 +1,9 @@
+Y0s testleri | hedef: bellek | Python 3.14.0
+...................................................
+    iz farkı: Pi odometrisi 363.3°, gerçek 358.3° (fark -5.0°) .......
+----------------------------------------------------------------------
+Ran 58 tests in 9.650s
+
+OK
+OZET: test 58 | gecen 58 | kalan 0 | atlanan 0 | sure 9.7 s
+      (bunların 5'i güvenlik testi değil, bilinen davranış / tasarım sorusu: test_tasarim_bulgulari)

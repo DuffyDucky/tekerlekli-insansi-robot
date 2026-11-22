@@ -1,0 +1,5 @@
+fd60697a2c867d41243799da0314e7a8 *kod/ortak/protokol.json
+bf8b866155e18149dcc9ea987fd50329 *kod/araclar/sahte_esp32/cekirdek.py
+--- sonra
+fd60697a2c867d41243799da0314e7a8 *kod/ortak/protokol.json
+bf8b866155e18149dcc9ea987fd50329 *kod/araclar/sahte_esp32/cekirdek.py

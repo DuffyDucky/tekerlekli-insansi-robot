@@ -1,0 +1,24 @@
+Y0s testleri | hedef: bellek | Python 3.14.0
+......................F.....................
+======================================================================
+FAIL: test_30cm_esiginde_durur (testler.test_guvenlik.SonarDurma.test_30cm_esiginde_durur)
+Dayanak: yazilim-plani.md § İş paketleri Y3 kabul testi "30 cm'de engel olunca duruyor"; mimari "sensör 3 × HC-SR04".
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 47, in test_30cm_esiginde_durur
+    self.assertEqual((odo1["sol"], odo1["sag"]), (odo2["sol"], odo2["sag"]), "engel varken teker dönüyor")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (12796, 12796) != (12833, 12833)
+
+First differing element 0:
+12796
+12833
+
+- (12796, 12796)
++ (12833, 12833) : engel varken teker dönüyor
+
+----------------------------------------------------------------------
+Ran 44 tests in 6.367s
+
+FAILED (failures=1)
+OZET: test 44 | gecen 43 | kalan 1 | atlanan 0 | sure 6.4 s

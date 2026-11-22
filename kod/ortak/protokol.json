@@ -1,0 +1,262 @@
+{
+  "ad": "Lale Pi 5 <-> ESP32 seri protokolu (tek kaynak)",
+  "surum": "0.5.0+y0s.1",
+  "taban_surum": "0.5.0",
+  "tarih": "2026-11-22",
+  "kaynak": "origin/main 71cf76d kod/esp32/src/seri_protokol.h (firmware 0.5.0 sozlesmesi; Efe) + planlama/yazilim-plani.md + planlama/adim3/pin-haritasi.md surum 4 + planlama/adim3/elektrik.md E3/E9. Belge: kod/ortak/PROTOKOL.md (bu dosyadan uretilir, elle duzenlenmez).",
+  "not_": "taslak=true olan her oge firmware 0.5.0'da YOK: planin istedigi ama sozlesmeye henuz girmemis eklentidir (sahte ESP32 uygular; gercek kartta yoksa testler 'yetenek yok' diye atlanir). taslak=false ogeler 0.5.0'in aynisidir.",
+
+  "cerceve": {
+    "baud": 115200,
+    "satir_sonu": "\n",
+    "atilan_bayt": "\r",
+    "en_cok_bayt": 200,
+    "kodlama": "utf-8",
+    "bos_satir": "sessizce gecilir, cevap yok",
+    "uzun_satir": "200 bayttan uzun satir atilir, satir sonunda {\"ok\":false,\"hata\":\"satir_cok_uzun\"}",
+    "json_olmayan_gelen_satir_pi": "Pi yok sayar (pin-haritasi.md Y10: ROM acilis yazisi gelebilir)",
+    "port_acilisi": "DTR/RTS reset yapmayacak sirayla acilir (yazilim-plani.md 'Donanimdan gelen kurallar' E3; main kod/robot/seri.py port_ac)",
+    "kaynak": "seri_protokol.cpp SATIR_UZUNLUGU, seri_isle; yazilim-plani.md mimari 'satir basina bir JSON'",
+    "taslak": false
+  },
+
+  "zamanlar_ms": {
+    "bekci": {"deger": 500, "aciklama": "son gecerli 'sur'dan bu kadar sonra motorlar ANINDA (rampasiz) durur; rolelere dokunmaz", "kaynak": "yazilim-plani.md mimari 'guvenlik 500 ms'; Y1 kabul testi; main watchdog.cpp KOMUT_ZAMAN_ASIMI_MS", "taslak": false},
+    "sessizlik": {"deger": 5000, "aciklama": "guc 'devrede' iken bu kadar hic gecerli komut satiri gelmezse guc birakilir, ariza 'sessizlik'", "kaynak": "main guc.h SESSIZLIK_BIRAK_MS", "taslak": false},
+    "ping_onerilen": {"deger": 1000, "aciklama": "Pi devredeyken kalp atisi ('ping') araligi", "kaynak": "main seri_protokol.h ping satiri; plan hb 5 Hz (eskimis taslak)", "taslak": false},
+    "sur_tekrar_onerilen": {"deger": 200, "aciklama": "surerken 'sur' tekrar araligi (bekci 500 ms)", "kaynak": "main kod/robot/seri.py WATCHDOG notu", "taslak": false},
+    "odo_aralik": {"deger": 100, "aciklama": "{\"k\":\"odo\"} yayini (10 Hz)", "kaynak": "main seri_protokol.h ODO_ARALIK_MS", "taslak": false},
+    "onsarj_bekleme": {"deger": 500, "aciklama": "K2 cekildikten sonra bara bekleme; sonra bara yoksa ariza 'bara_yok'", "kaynak": "main kod/ortak/pinler.json arm.onsarj_bekleme_ms (300 -> 500, kanal mesaji #26/#28); elektrik.md E9 '500 ms onerilir'; pin-haritasi.md Y4 hala 300 yaziyor (Y0s-gunluk.md Ç2)", "taslak": false},
+    "k1_sonrasi": {"deger": 100, "aciklama": "K1 cekildikten sonra K2 birakilir, bara teyidi", "kaynak": "pin-haritasi.md Y4; main pinler.json", "taslak": false},
+    "k2_en_cok": {"deger": 1000, "aciklama": "K2 bundan uzun cekili kalmaz (ayri zamanlayici); dolarsa ariza 'onsarj_sure'", "kaynak": "pin-haritasi.md Y4; main pinler.json", "taslak": false},
+    "sonar_aralik": {"deger": 100, "aciklama": "{\"k\":\"sonar\"} yayini (10 Hz)", "kaynak": "TASLAK (plan belirtmiyor; plan 'st' 20 Hz idi)", "taslak": true}
+  },
+
+  "sinirlar": {
+    "v_giris": {"deger": 1.0, "birim": "m/s", "aciklama": "sur.v once +-1'e kirpilir, sonra teker azami hizina orantili kucultulur", "kaynak": "main motorlar.cpp GIRIS_SINIRI, motorlar_hedef", "taslak": false},
+    "w_giris": {"deger": 1.0, "birim": "rad/s (sola +)", "aciklama": "sur.w +-1'e kirpilir", "kaynak": "main motorlar.cpp GIRIS_SINIRI", "taslak": false},
+    "ivme_m_s2": {"kaynak": "kod/ortak/eklem_sinirlari.json teker.ivme_sinir_m_s2 (karar 29.10)", "taslak": false},
+    "servo_aci": {"aciklama": "servo komutunun 'aci'si servo sinirina kirpilir; cevapta uygulanan aci", "kaynak": "main servolar.cpp sinira_kirp; yazilim-plani.md Y2 'sinir disi komut kirpiliyor'", "taslak": false},
+    "servo_bagimli": {"aciklama": "S1 eklemi >= 120 iken S2 eklemi <= 117 (aci servo cercevesinde: S1 >= 165, S2 <= 117) kirpilir", "kaynak": "kod/ortak/eklem_sinirlari.json bagimli; firmware 0.5.0'da yok", "taslak": true}
+  },
+
+  "guvenlik": {
+    "sonar_dur_cm": {"deger": 30, "aciklama": "on sonarlardan biri bu mesafenin altindaysa ileri hiz 0'a indirilir (fren sinirli); geri ve yerinde donus serbest", "kaynak": "yazilim-plani.md Y3 kabul testi '30 cm'de engel olunca duruyor'", "taslak": true},
+    "sonar_yavas_cm": {"deger": 60, "aciklama": "bu mesafeden 30 cm'ye dek ileri hiz siniri dogrusal azalir", "kaynak": "TASLAK (plan belirtmiyor; plan Y3 'sonarla yavaslama ve durma' der, mesafe yok)", "taslak": true},
+    "sonar_yavas_en_az_m_s": {"deger": 0.05, "aciklama": "yavaslama bolgesinde ileri hiz siniri bunun altina inmez (robot 30 cm'ye gercekten varip durur; yoksa esige asimptotik yaklasir)", "kaynak": "TASLAK (plan belirtmiyor)", "taslak": true},
+    "sonar_histerezis_cm": {"deger": 5, "aciklama": "engel 30 cm altinda baslar, 30 + 5 cm ve ustunde kalkar", "kaynak": "TASLAK (plan belirtmiyor)", "taslak": true},
+    "sonar_yankisiz":{"aciklama": "menzil disi / yanki yok (null) engel sayilmaz", "kaynak": "TASLAK (plan belirtmiyor). Bilinen risk: egik yuzey yanki vermez", "taslak": true}
+  },
+
+  "guc_durumlari": {
+    "degerler": ["birakik", "onsarj", "devrede", "ariza"],
+    "aciklama": "birakik: roleler birakik (acilis, birak). onsarj: arm sirasi. devrede: sur kabul edilir. ariza: bir koruma birakti, KILITLI; yalniz yeni arm cozer, birak cozmez.",
+    "kaynak": "main guc.h; yazilim-plani.md 'ESP32 reseti = guc kapali', E3 kilit",
+    "taslak": false
+  },
+  "ariza_nedenleri": {
+    "degerler": ["acil_stop", "bara_yok", "bara_gitti", "is_sol", "is_sag", "i2c", "sessizlik", "onsarj_sure"],
+    "kaynak": "main seri_protokol.h GUC OLAYI; guc.h BIRAKMA",
+    "taslak": false
+  },
+  "genel_hatalar": {
+    "degerler": {
+      "json_bozuk": "satir JSON degil (cevapta k yok)",
+      "k_yok": "JSON'da 'k' alani yok (cevapta k yok)",
+      "bilinmeyen_komut": "k bilinen komutlardan biri degil (cevapta k = gelen ad)",
+      "satir_cok_uzun": "satir 200 bayti asti (cevapta k yok)"
+    },
+    "not_": "Bozuk satir, bilinmeyen komut ve uzun satir bekciyi ve sessizlik sayacini BESLEMEZ.",
+    "kaynak": "main seri_protokol.cpp satiri_isle, seri_isle",
+    "taslak": false
+  },
+
+  "komutlar": {
+    "arm": {
+      "aciklama": "Gucu devreye al (E3 + E9 dizisi: K2 -> 500 ms -> bara? -> K1 -> 100 ms -> K2 birak -> bara?). Hemen cevap; sonuc 'guc' olayiyla gelir. Yalniz operator istegiyle gonderilir.",
+      "alanlar": {},
+      "cevap_alanlari": {"guc": "metin"},
+      "hatalar": ["acil_stop", "pca9685_yok", "zaten_devrede", "mesgul", "zamanlayici_yok"],
+      "kaynak": "main seri_protokol.h; yazilim-plani.md 'devreye al' (plan taslaginda {\"t\":\"arm\"}); pin-haritasi.md Y4",
+      "taslak": false
+    },
+    "birak": {
+      "aciklama": "Gucu birak; her durumda kabul. Arizadaysa ariza (kilit) kalir.",
+      "alanlar": {},
+      "cevap_alanlari": {"ms": "tamsayi"},
+      "hatalar": [],
+      "kaynak": "main seri_protokol.h; pin-haritasi.md Y5",
+      "taslak": false
+    },
+    "reset": {
+      "aciklama": "Once birak, cevap, sonra ESP32 yeniden baslar; ardindan 'hazir' (guc birakik).",
+      "alanlar": {},
+      "cevap_alanlari": {},
+      "hatalar": [],
+      "kaynak": "main seri_protokol.h",
+      "taslak": false
+    },
+    "sur": {
+      "aciklama": "Surus hedefi. Guc devrede degilse reddedilir (bekci beslenmez). Kabul edilen her sur bekciyi besler.",
+      "alanlar": {
+        "v": {"tur": "sayi", "zorunlu": true, "birim": "m/s, ileri +"},
+        "w": {"tur": "sayi", "zorunlu": true, "birim": "rad/s, sola +"},
+        "rampa": {"tur": "bool", "zorunlu": false, "aciklama": "verilirse elle rampa kipini de ayarlar"}
+      },
+      "cevap_alanlari": {"rampa": "bool (yalniz istekte rampa varsa)"},
+      "hatalar": ["devrede_degil", "v_w_sayi_olmali", "rampa_bool_olmali"],
+      "kaynak": "main seri_protokol.h (plan taslaginda {\"t\":\"drv\",\"v\",\"w\"})",
+      "taslak": false
+    },
+    "dur": {
+      "aciklama": "Motorlari fren siniriyla durdur (duz 1,8 / rampa 0,1 m/s2), jesti kes. Gucu birakmaz. Bekciyi beslemez.",
+      "alanlar": {},
+      "cevap_alanlari": {},
+      "hatalar": [],
+      "kaynak": "main seri_protokol.h",
+      "taslak": false
+    },
+    "rampa": {
+      "aciklama": "Elle rampa kipi: ivme ve fren 0,1 m/s2, kollar ev pozunda, 'bosta' disi jest ve elle servo reddedilir.",
+      "alanlar": {"ac": {"tur": "bool", "zorunlu": true}},
+      "cevap_alanlari": {"rampa": "bool", "elle": "bool", "imu": "bool"},
+      "hatalar": ["ac_bool_olmali"],
+      "kaynak": "main seri_protokol.h RAMPA KIPI; yazilim-plani.md Y1 (karar 29.10)",
+      "taslak": false
+    },
+    "servo": {
+      "aciklama": "Tek servoyu elle. kanal 0-15 ya da servo adi; aci servo cercevesinde derece (0-180), sinira kirpilir.",
+      "alanlar": {
+        "kanal": {"tur": "tamsayi|metin", "zorunlu": true},
+        "aci": {"tur": "sayi", "zorunlu": true, "birim": "derece (servo cercevesi)"}
+      },
+      "cevap_alanlari": {"kanal": "metin (servo adi)", "aci": "sayi (uygulanan)"},
+      "hatalar": ["rampa_modunda", "kanal_yok", "bilinmeyen_kanal", "aci_sayi_olmali", "pca9685_yok"],
+      "kaynak": "main seri_protokol.h; yazilim-plani.md Y2 (plan taslaginda {\"t\":\"jnt\",\"q\":{...},\"ms\"})",
+      "taslak": false
+    },
+    "jest": {
+      "aciklama": "Kayitli jesti oynat. yon istege bagli (sol|sag|ileri|arka).",
+      "alanlar": {
+        "ad": {"tur": "metin", "zorunlu": true},
+        "yon": {"tur": "metin", "zorunlu": false}
+      },
+      "cevap_alanlari": {"ad": "metin", "yon": "metin", "yon_uygulandi": "bool"},
+      "hatalar": ["ad_yok", "rampa_modunda", "yon_gecersiz", "pca9685_yok", "bilinmeyen_jest"],
+      "kaynak": "main seri_protokol.h",
+      "taslak": false
+    },
+    "ping": {
+      "aciklama": "Canli misin + durum ozeti. Kalp atisi: Pi devredeyken ~1 s'de bir. Sessizlik sayacini besler, bekciyi beslemez.",
+      "alanlar": {},
+      "cevap_alanlari": {"surum": "metin", "ms": "tamsayi", "pca9685": "bool", "odo": "bool", "rampa": "bool", "guc": "metin", "acil": "bool", "bara": "bool", "aku": "sayi|null", "ariza": "metin|null", "jestler": "liste", "yetenekler": "liste (TASLAK)", "sonar": "nesne (TASLAK)", "engel": "bool (TASLAK)"},
+      "hatalar": [],
+      "kaynak": "main seri_protokol.h (plan taslaginda {\"t\":\"hb\"} 5 Hz)",
+      "taslak": false
+    },
+    "odo_sifirla": {
+      "aciklama": "Iki enkoder tik toplamini sifirla.",
+      "alanlar": {},
+      "cevap_alanlari": {},
+      "hatalar": [],
+      "kaynak": "main seri_protokol.h",
+      "taslak": false
+    }
+  },
+
+  "mesajlar": {
+    "cevap": {
+      "aciklama": "Her komuta bir cevap. ok=false ise hata alani var. Genel hatalarda k olmayabilir.",
+      "ornek": "{\"ok\":true,\"k\":\"sur\"}  {\"ok\":false,\"k\":\"sur\",\"hata\":\"devrede_degil\"}",
+      "alanlar": {"ok": "bool", "k": "metin (cogu zaman)", "hata": "metin (ok=false)"},
+      "kaynak": "main seri_protokol.h",
+      "taslak": false
+    },
+    "hazir": {
+      "aciklama": "Acilista bir kez (reset sonrasi da). Guc her zaman birakik; kendiliginden arm OLMAZ.",
+      "ornek": "{\"k\":\"hazir\",\"surum\":\"0.5.0\",\"pca9685\":true,\"guc\":\"birakik\"}",
+      "alanlar": {"k": "metin", "surum": "metin", "pca9685": "bool", "guc": "metin", "yetenekler": "liste (TASLAK)"},
+      "kaynak": "main seri_protokol.cpp seri_baslat; plan 'ev reset' yerine",
+      "taslak": false
+    },
+    "guc": {
+      "aciklama": "Guc durumu her degistiginde (komut cevabindan SONRA). neden yalniz ariza'da.",
+      "ornek": "{\"k\":\"guc\",\"guc\":\"ariza\",\"neden\":\"acil_stop\",\"ms\":12345}",
+      "alanlar": {"k": "metin", "guc": "metin", "neden": "metin|null", "ms": "tamsayi"},
+      "kaynak": "main seri_protokol.h GUC OLAYI (plan taslaginda {\"t\":\"ev\",\"k\":\"estop\"})",
+      "taslak": false
+    },
+    "odo": {
+      "aciklama": "10 Hz odometri: toplam enkoder tiki (robotun kendi solu / sagi), yaw (IMU yoksa null). Cevap degildir.",
+      "ornek": "{\"k\":\"odo\",\"sol\":1234,\"sag\":-56,\"yaw\":null,\"ms\":104200}",
+      "alanlar": {"k": "metin", "sol": "tamsayi", "sag": "tamsayi", "yaw": "sayi|null", "ms": "tamsayi"},
+      "kaynak": "main seri_protokol.h ODOMETRI",
+      "taslak": false
+    },
+    "durum": {
+      "aciklama": "Istege bagli 1 s yayin (firmware'de DURUM_YAYINI=1 ile; sahte kartta kapali).",
+      "ornek": "{\"k\":\"durum\",\"jest\":null,\"sur\":[0.2,0.0],\"wd\":false,\"rampa\":false,\"guc\":\"devrede\",...}",
+      "alanlar": {"k": "metin", "jest": "metin|null", "sur": "liste", "wd": "bool", "rampa": "bool", "guc": "metin", "acil": "bool", "bara": "bool", "aku": "sayi|null", "ariza": "metin|null"},
+      "kaynak": "main seri_protokol.h",
+      "taslak": false
+    },
+    "sonar": {
+      "aciklama": "10 Hz uc on sonar, cm (robotun KENDI solu / orta / sagi). null = menzil disi ya da yanki yok. Firmware eslemesi (K65): pin haritasi SONAR_SAG_ECHO (GPIO39, onden bakanin sagi) = robotun kendi solu = 'sol'; SONAR_SOL_ECHO (GPIO35) = 'sag'.",
+      "ornek": "{\"k\":\"sonar\",\"sol\":82.4,\"orta\":120.0,\"sag\":null,\"ms\":104200}",
+      "alanlar": {"k": "metin", "sol": "sayi|null", "orta": "sayi|null", "sag": "sayi|null", "ms": "tamsayi"},
+      "kaynak": "TASLAK (plan 'st' mesajinda \"son\":[80,120,95]; 0.5.0'da sonar surucusu yok)",
+      "taslak": true
+    },
+    "engel": {
+      "aciklama": "Sonar engel kurali durum degistirince: var=true ileri hiz kesildi, var=false kalkti.",
+      "ornek": "{\"k\":\"engel\",\"var\":true,\"sensor\":\"orta\",\"cm\":29.6,\"ms\":104200}",
+      "alanlar": {"k": "metin", "var": "bool", "sensor": "metin|null", "cm": "sayi|null", "ms": "tamsayi"},
+      "kaynak": "TASLAK (plan taslaginda {\"t\":\"ev\",\"k\":\"engel\"})",
+      "taslak": true
+    }
+  },
+
+  "yetenekler": {
+    "sonar": {"aciklama": "sonar telemetrisi + 30 cm durma (guvenlik.sonar_*)", "taslak": true},
+    "bagimli_sinir": {"aciklama": "servo bagimli siniri (sinirlar.servo_bagimli)", "taslak": true}
+  },
+
+  "servolar": {
+    "aciklama": "Kanal sirasi = PCA9685 cikisi. aci = eklem acisi + ofset (servo cercevesi 0-180). Sinirlar eklem_sinirlari.json'dan + ofset ile hesaplanir (elle yazilmaz). Adlar robotun kendi cercevesi (main yazilimi); K65 donanim adlari ters taraftir.",
+    "kaynak": "main kod/esp32/src/jest_verisi.h SERVO_TABLOSU (ofset ve hiz), kod/ortak/eklem_sinirlari.json (sinir), pin-haritasi.md § 9 pca9685_kanallar",
+    "taslak": false,
+    "liste": [
+      {"ad": "sag_omuz",     "kanal": 0, "eklem": "r_s1",     "ofset": 45, "hiz_derece_s": 85,  "ev": 45},
+      {"ad": "sag_omuz_yan", "kanal": 1, "eklem": "r_s2",     "ofset": 0,  "hiz_derece_s": 85,  "ev": 5},
+      {"ad": "sag_dirsek",   "kanal": 2, "eklem": "r_dirsek", "ofset": 0,  "hiz_derece_s": 120, "ev": 0},
+      {"ad": "sag_bilek",    "kanal": 3, "eklem": "r_bilek",  "ofset": 90, "hiz_derece_s": 120, "ev": 90},
+      {"ad": "kafa_pan",     "kanal": 4, "eklem": "pan",      "ofset": 90, "hiz_derece_s": 90,  "ev": 90},
+      {"ad": "sol_omuz",     "kanal": 5, "eklem": "l_s1",     "ofset": 45, "hiz_derece_s": 85,  "ev": 45},
+      {"ad": "sol_omuz_yan", "kanal": 6, "eklem": "l_s2",     "ofset": 0,  "hiz_derece_s": 85,  "ev": 5},
+      {"ad": "sol_dirsek",   "kanal": 7, "eklem": "l_dirsek", "ofset": 0,  "hiz_derece_s": 120, "ev": 0},
+      {"ad": "sol_bilek",    "kanal": 8, "eklem": "l_bilek",  "ofset": 90, "hiz_derece_s": 120, "ev": 90},
+      {"ad": "kafa_tilt",    "kanal": 9, "eklem": "tilt",     "ofset": 90, "hiz_derece_s": 60,  "ev": 90}
+    ]
+  },
+
+  "jestler": {
+    "degerler": ["bosta", "evet", "isaret", "selam"],
+    "yonlu": ["isaret"],
+    "yonler": ["sol", "sag", "ileri", "arka"],
+    "kaynak": "main kod/esp32/src/jest_verisi.h JEST_TABLOSU",
+    "taslak": false
+  },
+
+  "eskimis_taslak": {
+    "aciklama": "yazilim-plani.md '### Seri protokol (ilk taslak)' tablosu (11.10) firmware 0.5.0'dan once yazildi ve guncellenmedi. Karsiligi:",
+    "esleme": {
+      "{\"t\":\"drv\",\"v\",\"w\"}": "{\"k\":\"sur\",\"v\",\"w\"}",
+      "{\"t\":\"jnt\",\"q\":{...},\"ms\"}": "{\"k\":\"servo\",\"kanal\",\"aci\"} (tek servo; varis suresi yok, hiz servo tablosundan) ya da {\"k\":\"jest\"}",
+      "{\"t\":\"hb\"} 5 Hz": "{\"k\":\"ping\"} ~1 Hz (bekciyi 'sur' besler)",
+      "{\"t\":\"st\",...} 20 Hz": "{\"k\":\"odo\"} 10 Hz + ping cevabi + (TASLAK) {\"k\":\"sonar\"} 10 Hz",
+      "{\"t\":\"ev\",\"k\":\"estop\"|\"reset\"}": "{\"k\":\"guc\",\"guc\":\"ariza\",\"neden\":\"acil_stop\"} / {\"k\":\"hazir\"}",
+      "{\"t\":\"ev\",\"k\":\"engel\"}": "(TASLAK) {\"k\":\"engel\"}",
+      "{\"t\":\"arm\"}": "{\"k\":\"arm\"}"
+    }
+  }
+}

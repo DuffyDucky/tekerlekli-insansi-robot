@@ -1,0 +1,27 @@
+Y0s testleri | hedef: tcp | Python 3.14.0
+..................FF........................
+======================================================================
+FAIL: test_ivme_siniri_duz_zemin (testler.test_guvenlik.SinirDisiHiz.test_ivme_siniri_duz_zemin)
+Dayanak: yazilim-plani.md Y1 "ivme rampası (düz zeminde ? 0,5 m/s²)"; eklem_sinirlari.json teker.ivme_sinir_m_s2.duz_surus.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 418, in test_ivme_siniri_duz_zemin
+    self.assertLessEqual(v, 0.5 * 0.21 + 1e-9)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.11000000000000003 not less than or equal to 0.105000001
+
+======================================================================
+FAIL: test_rampa_kipinde_ivme_ve_kollar (testler.test_guvenlik.SinirDisiHiz.test_rampa_kipinde_ivme_ve_kollar)
+Dayanak: yazilim-plani.md § "Donanımdan gelen kurallar" + Y1 ("rampada ? 0,1 m/s² ve kollar ev pozunda"); main seri_protokol.h RAMPA KİPİ.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 432, in test_rampa_kipinde_ivme_ve_kollar
+    self.assertLessEqual(v, 0.1 * gecen_s + 1e-9, "rampa kipinde ivme 0,1 m/s²'yi aştı")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.11100000000000008 not less than or equal to 0.10700000100000001 : rampa kipinde ivme 0,1 m/s²'yi aştı
+
+----------------------------------------------------------------------
+Ran 44 tests in 115.017s
+
+FAILED (failures=2)
+OZET: test 44 | gecen 42 | kalan 2 | atlanan 0 | sure 115.0 s

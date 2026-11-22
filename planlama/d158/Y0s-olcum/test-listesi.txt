@@ -1,0 +1,116 @@
+test_gorunum.GorunumSaglamlik.test_kotu_surus_istegi_reddedilir_pilot_yasar
+    Dayanak: Y0s-kontrol.md § 3 madde 1 ({"v":1e400} pilot iş parçacığını öldürüyordu) ve madde 3 (float(v) HTTP 500).
+test_gorunum.GorunumSaglamlik.test_yalniz_ayni_koken
+    Dayanak: Y0s-kontrol.md § 3 madde 2 (Origin denetimi yok: başka site /komut'a POST atabilir).
+test_guvenlik.AcilStop.test_acil_stop_kilitler_yeniden_devreye_alma_operatorle
+    Dayanak: yazilim-plani.md § "Donanımdan gelen kurallar" (E3 + E9 dizisi, PC817 #1 HIGH → GPIO4 0 ve kilit); pin-haritasi.md § 5 Y4, Y5; elektrik.md E3.
+test_guvenlik.AcilStop.test_acilis_ve_reset_guc_kapali
+    Dayanak: yazilim-plani.md § "Donanımdan gelen kurallar" ("ESP32 reseti = güç kapalı", yeniden devreye alma yalnız operatörle); main seri_protokol.h "reset ... ESP32 yeniden başlar (ardından hazir gelir; güç birakik)", seri_protokol.cpp ESP.restart().
+test_guvenlik.AcilStop.test_bara_yoksa_devreye_girmez
+    Dayanak: pin-haritasi.md § 5 Y4 ("5 LOW olmalı (bara var), değilse 19 = 0 ve hata"); elektrik.md E3 "PC817 #2 500 ms içinde LOW olmazsa hata".
+test_guvenlik.AcilStop.test_devreye_alma_dizisi_zamani
+    Dayanak: pin-haritasi.md § 5 Y4 (K2 → bekleme → bara teyidi → K1 → 100 ms → K2 bırak); elektrik.md E9 (500 ms önerisi); main pinler.json arm.
+test_guvenlik.AcilStop.test_onsarjda_mantar_ariza
+    Dayanak: pin-haritasi.md § 5 Y4 (ön koşul mantar serbest), Y5 (mantar → bırak + kilit).
+test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir
+    Dayanak: yazilim-plani.md Y1 kabul testi "kablo çekilince 500 ms içinde duruyor"; mimari güvenlik 500 ms; main guc.h sessizlik.
+test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur
+    Dayanak: yazilim-plani.md § Mimari "güvenlik: 500 ms Pi'den mesaj gelmezse teker DUR"; Y1 kabul testi; main watchdog.cpp.
+test_guvenlik.Bekci.test_dur_fren_siniriyla_durur
+    Dayanak: eklem_sinirlari.json teker.ivme_sinir_m_s2.duz_fren 1,8 (karar 29.10); main seri_protokol.h "dur: FREN sınırıyla".
+test_guvenlik.Bekci.test_ping_bekciyi_beslemez
+    Dayanak: main seri_protokol.h ("ping ... bekçiyi beslemez"); yazilim-plani.md ile fark Y0s-gunluk.md § 3 Ç4.
+test_guvenlik.BozukMesaj.test_bos_satir_sessiz_crlf_ve_parcali_satir
+    Dayanak: main seri_protokol.cpp seri_isle ("\r" atılır, boş satır sessiz); yazilim-plani.md mimari "satır başına bir JSON".
+test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    Dayanak: main seri_protokol.cpp ("sessizlik sayacı yalnız bilinen komutlarla beslenir"), watchdog.cpp; yazilim-plani.md mimari 500 ms.
+test_guvenlik.BozukMesaj.test_bozuk_satirlar_dogru_hata
+    Dayanak: main seri_protokol.cpp satiri_isle / komut işleyicileri (hata adları protokol.json); yazilim-plani.md § İlke "ESP32 sınırları her komutta tekrar kontrol eder".
+test_guvenlik.BozukMesaj.test_istemci_protokol_disi_komutu_gondermez
+    Dayanak: kod/ortak/protokol.json komutlar (Pi tarafı aynı tek kaynaktan denetler).
+test_guvenlik.BozukMesaj.test_nan_reddedilir
+    Dayanak: main seri_protokol.cpp sayi_al (isfinite); NaN JSON değildir. Not: ArduinoJson'un NaN ayrıştırma varsayılanı doğrulanmadı (gerçek kartta hata adı farklı olabilir).
+test_guvenlik.Sessizlik.test_5s_komut_yoksa_guc_birakilir
+    Dayanak: main kod/esp32/src/guc.h SESSIZLIK_BIRAK_MS 5000 (0.5.0 sözleşmesi; plan karşılığı: kalp atışı).
+test_guvenlik.Sessizlik.test_ping_ile_canli_kalir
+    Dayanak: main seri_protokol.h ping ("Pi devredeyken saniyede bir atar (5 s sessizlik kuralı)").
+test_guvenlik.SinirDisiHiz.test_cok_buyuk_v_teker_azamisine_kirpilir
+    Dayanak: yazilim-plani.md § İlke ("ESP32 sınırları her komutta tekrar kontrol eder"); main motorlar.cpp GIRIS_SINIRI, TEKER_AZAMI_HIZ.
+test_guvenlik.SinirDisiHiz.test_cok_buyuk_w_kirpilir_donus_orani_korunur
+    Dayanak: main motorlar.cpp motorlar_hedef (w ±1'e, iki teker birlikte küçültülür; IZ_GENISLIGI_M 0,426); yazilim-plani.md K1 "yay çizerek dönüş" (0.5.0'da yok, Y0s-gunluk Ç6).
+test_guvenlik.SinirDisiHiz.test_ivme_siniri_duz_zemin
+    Dayanak: yazilim-plani.md Y1 "ivme rampası (düz zeminde ≤ 0,5 m/s²)"; eklem_sinirlari.json teker.ivme_sinir_m_s2.duz_surus.
+test_guvenlik.SinirDisiHiz.test_rampa_kipinde_ivme_ve_kollar
+    Dayanak: yazilim-plani.md § "Donanımdan gelen kurallar" + Y1 ("rampada ≤ 0,1 m/s² ve kollar ev pozunda"); main seri_protokol.h RAMPA KİPİ.
+test_guvenlik.SinirDisiServo.test_bagimli_sinir
+    Dayanak: kod/ortak/eklem_sinirlari.json bagimli ("S1 >= 120 iken S2 <= 117"); yazilim-plani.md Y2 "Sınır dışı komut kırpılıyor" (kırpma; Y0s-gunluk § 11 B4, Ç11). TASLAK: 0.5.0'da yok.
+test_guvenlik.SinirDisiServo.test_servo_sinira_kirpilir
+    Dayanak: yazilim-plani.md Y2 kabul testi "Sınır dışı komut kırpılıyor"; kod/ortak/eklem_sinirlari.json (tilt ±13, S2 ≥ +5, dirsek 0–105).
+test_guvenlik.SonarDurma.test_30cm_esiginde_durur
+    Dayanak: yazilim-plani.md § İş paketleri Y3 kabul testi "30 cm'de engel olunca duruyor"; mimari "sensör 3 × HC-SR04".
+test_guvenlik.SonarDurma.test_engelde_geri_gidilir_engel_histerezisle_kalkar
+    Dayanak: yazilim-plani.md Y3 ("sonarla yavaşlama ve durma"); geri gitme ve 5 cm histerezis TASLAK (protokol.json guvenlik).
+test_guvenlik.SonarDurma.test_yavaslama_bolgesinde_hiz_azalir
+    Dayanak: yazilim-plani.md Y3 "sonarla yavaşlama"; 60 cm başlangıcı TASLAK (plan belirtmiyor).
+test_guvenlik.SonarMenzil.test_egik_yuzey_yanki_vermez
+    Dayanak: TASLAK (plan belirtmiyor): 60°'den eğik gelen ışın yankı vermez (robot_parametreleri.json, TAHMİN).
+test_guvenlik.SonarMenzil.test_menzil_disi_null
+    Dayanak: TASLAK (plan belirtmiyor): HC-SR04 2–400 cm dışı / yankı yok = null (protokol.json mesajlar.sonar).
+test_harita.Belirlenimcilik.test_ayni_girdi_ayni_cikti
+    Dayanak: brief mimari kararı "çekirdek saf ve deterministik; her koşuda aynı sonuç".
+test_harita.HaritaTesti.test_cokgen_carpisma
+    Dayanak: hakem (çarpışma sayısı) doğru olmalı; taban 520 × 525 mm (arayuz.py ETEK_A / ETEK_B).
+test_harita.HaritaTesti.test_en_az_iki_oda_haritasi_yuklenir
+    Dayanak: brief "en az iki örnek harita" (düz veri dosyası).
+test_harita.HaritaTesti.test_esdogrusal_ve_degen_kenar_carpisma_sayilir
+    Dayanak: Y0s-kontrol.md § 3 madde 5 (katı işaret karşılaştırması eşdoğrusal / değen parçayı kaçırıyordu).
+test_harita.HaritaTesti.test_isin_uzakligi_ve_gelis_acisi
+    Dayanak: TASLAK sonar modeli (robot_parametreleri.json: koni, menzil, geliş sınırı).
+test_protokol_kaynak.TekKaynak.test_belge_guncel
+    Dayanak: kod/ortak/PROTOKOL.md protokol.json'dan üretilir (elle düzenlenmez).
+test_protokol_kaynak.TekKaynak.test_her_oge_kaynakli_ve_isaretli
+    Dayanak: brief / Y0s-gunluk § 2 (plandan gelen ile TASLAK ayrılır, her öğenin kaynağı yazılı).
+test_protokol_kaynak.TekKaynak.test_kodla_coz
+    Dayanak: yazilim-plani.md mimari "satır başına bir JSON mesajı"; main seri.py komut_satiri (boşluksuz).
+test_protokol_kaynak.TekKaynak.test_parametreler_kaynakli_ya_da_tahmin
+    Dayanak: brief "Robot parametreleri ... kaynağı yazsın; bulamadığını TAHMİN diye işaretle".
+test_protokol_kaynak.TekKaynak.test_plan_degerleri
+    Dayanak: yazilim-plani.md mimari (500 ms, 115200, satır başına JSON), Y3 (30 cm); pin-haritasi.md Y4 (100 ms, 1 s).
+test_protokol_kaynak.TekKaynak.test_sahte_kartin_hata_adlari_protokolde
+    Dayanak: kod/ortak/protokol.json (sahte kart sözleşme dışı hata adı söyleyemez).
+test_protokol_kaynak.TekKaynak.test_servo_sinirlari_eklem_kaynagindan_ve_firmware_ile_ayni
+    Dayanak: yazilim-plani.md "Eklem sınırları tek kaynaktan gelir (eklem_sinirlari.json) ... elle iki yerde yazılmaz".
+test_sozlesme.JestYonu.test_yon_uygulandi_yalniz_varyanti_olan_jestte
+    Dayanak: main jestler.h "Jestin o yön için varyantı yoksa varsayılan kareler oynar ve yon_uygulandi = false olur"; jest_verisi.h JEST_TABLOSU (yalnız "isaret" dört yön varyantlı).
+test_sozlesme.KorumaArizalari.test_devredeyken_bara_gidince_ariza_ve_aku_null
+    Dayanak: main guc.cpp devrede_denetle "k1_cekili && !guc_bara_gerilimli() -> arizaya_gec(bara_gitti)"; aku_olc AKU_YOK_V 1.0 ("ana anahtar kapalı") -> seri_protokol.cpp aku null.
+test_sozlesme.KorumaArizalari.test_i2c_kopunca_ariza
+    Dayanak: main guc.cpp "PCA9685 yoklaması (yalnız devredeyken): 100 ms'de bir I2C adres yoklaması, art arda 3 cevapsız -> bırak" (arizaya_gec "i2c").
+test_sozlesme.Odometri.test_odo_sifirla_tikleri_sifirlar
+    Dayanak: main seri_protokol.h {"k":"odo_sifirla"} "iki enkoder tik toplamını sıfırla"; motorlar.cpp sol_enk.toplam = 0.
+test_sozlesme.OlaySirasi.test_guc_olayi_komut_cevabindan_sonra
+    Dayanak: main seri_protokol.cpp satır 276 "komut gücü değiştirdiyse olay cevaptan SONRA gider"; guc.h guc_olay_gonder; seri_protokol.h GÜÇ OLAYI.
+test_sozlesme.SatirSiniri.test_200_bayt_kabul_201_red
+    Dayanak: main seri_protokol.cpp SATIR_UZUNLUGU = 200 ("bir komut satırı en çok bu kadar bayt"; satir_boy < 200 iken saklanır, fazlası satir_tasti).
+test_tasarim_bulgulari.TasarimBulgusu.test_a_arkada_sonar_yok_geri_giderken_duvara_carpar
+    [BİLİNEN DAVRANIŞ / TASARIM SORUSU; geçmesi sorunun var olduğunu gösterir] Bilinen davranış (a): arkada sonar yok (robot_parametreleri.json sonarlar: üçü de ön); geri sürüşte koruma yok (protokol.json guvenlik.sonar_dur_cm "geri serbest").
+test_tasarim_bulgulari.TasarimBulgusu.test_b_engel_varken_yerinde_donuste_kose_duvara_carpar
+    [BİLİNEN DAVRANIŞ / TASARIM SORUSU; geçmesi sorunun var olduğunu gösterir] Bilinen davranış (b): engel varken yerinde dönüş serbest (protokol.json guvenlik, TASLAK); taban köşesi yarıçapı ≈ 0,37 m > 30 cm durma mesafesi.
+test_tasarim_bulgulari.TasarimBulgusu.test_c_engel_varken_30_35_cm_arasinda_surunur
+    [BİLİNEN DAVRANIŞ / TASARIM SORUSU; geçmesi sorunun var olduğunu gösterir] Bilinen davranış (c): hız sınırı histerezissiz (d ≥ 30 cm -> en az 0,05 m/s, TASLAK) ama `engel` 35 cm'ye kadar var kalır.
+test_tasarim_bulgulari.TasarimBulgusu.test_d_yanlamasina_yaklasimda_ilerlerken_kose_surtunur
+    [BİLİNEN DAVRANIŞ / TASARIM SORUSU; geçmesi sorunun var olduğunu gösterir] Ek bulgu (d): duvara ~20°'den dar açıyla (neredeyse paralel) yaklaşınca ön sonarlar yankı almaz (> 60° geliş, TAHMİN) ve taban köşesi ileri sürüşte duvara değer.
+test_tasarim_bulgulari.TasarimBulgusu.test_e_iz_farki_odometri_360_derece_gercekte_355
+    [BİLİNEN DAVRANIŞ / TASARIM SORUSU; geçmesi sorunun var olduğunu gösterir] Bilinen fark (Ç3): firmware ve Pi odometrisi iz 0,426 m (main motorlar.cpp, ayarlar.yaml), CAD izi 0,432 m. Pi odometrisiyle 360° yerinde dönünce gerçek dönüş ≈ 355°.
+test_tcp_duman.TcpDuman.test_bozuk_satir
+    Dayanak: main seri_protokol.cpp (json_bozuk, satir_cok_uzun) gerçek soket üzerinde.
+test_tcp_duman.TcpDuman.test_devreye_al_sur_odo_artar
+    Dayanak: yazilim-plani.md H4 taşı "Pi ↔ ESP32 protokolü çalışıyor"; pin-haritasi.md Y4.
+test_tcp_duman.TcpDuman.test_ping_ve_surum
+    Dayanak: yazilim-plani.md Y0 kabul testi "Pi ile ESP32 hb / st alışverişi yapıyor" (0.5.0: ping / odo).
+test_tcp_duman.TcpDuman.test_soket_kapaninca_durur
+    Dayanak: yazilim-plani.md Y1 kabul testi "kablo çekilince 500 ms içinde duruyor" (gerçek zamanda, pay 150 ms).
+test_tcp_duman.TcpDuman.test_tek_istemci
+    Dayanak: seri hat noktadan noktaya (yazilim-plani.md mimari "USB ... ESP32 CP2102"); yeni bağlantı eskisini kapatır.
+test_tcp_duman.TcpDuman.test_yeni_baglanti_reset_yapmaz
+    Dayanak: yazilim-plani.md "Seri port DTR/RTS kapalı açılır (E3)": port açılışı kartı resetlemez, güç durumu korunur.

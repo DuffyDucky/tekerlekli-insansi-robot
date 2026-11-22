@@ -1,0 +1,16 @@
+{
+  "ad": "oda_engelli",
+  "aciklama": "8 x 6 m sinif benzeri oda: ara duvar (kapi bosluklu), masa, kolon, sehpa. Elle surus ve gorunum icin.",
+  "boyut_m": [8.0, 6.0],
+  "duvarlar": [
+    [5.0, 0.0, 5.0, 2.2],
+    [5.0, 3.4, 5.0, 6.0]
+  ],
+  "engeller": [
+    {"tur": "kutu", "x": 1.2, "y": 4.2, "g": 1.6, "d": 0.8, "ad": "masa"},
+    {"tur": "daire", "x": 3.2, "y": 1.4, "r": 0.25, "ad": "kolon"},
+    {"tur": "kutu", "x": 6.4, "y": 0.8, "g": 0.6, "d": 0.6, "ad": "sehpa"},
+    {"tur": "daire", "x": 6.8, "y": 4.6, "r": 0.35, "ad": "saksi"}
+  ],
+  "baslangic": {"x": 1.5, "y": 1.5, "aci_derece": 0}
+}

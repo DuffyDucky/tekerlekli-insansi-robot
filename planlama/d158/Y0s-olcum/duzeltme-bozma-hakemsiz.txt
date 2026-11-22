@@ -1,0 +1,63 @@
+B1 bekci 500->1500 (A'nin tekrari) | cikis 1 | OZET: test 58 | gecen 51 | kalan 7 | atlanan 0 | sure 10.6 s | kalan 7 | geri alindi True
+    - test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur.test_500ms_sur_gelmezse_durur
+    - test_protokol_kaynak.TekKaynak.test_belge_guncel.test_belge_guncel
+    - test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    - test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir.test_kablo_cekilince_durur_ve_kilitlenir
+    - test_guvenlik.Bekci.test_ping_bekciyi_beslemez.test_ping_bekciyi_beslemez
+    - test_protokol_kaynak.TekKaynak.test_plan_degerleri.test_plan_degerleri
+    - test_tcp_duman.TcpDuman.test_soket_kapaninca_durur.test_soket_kapaninca_durur
+B2 sonar durma 30->20 (A'nin tekrari) | cikis 1 | OZET: test 58 | gecen 52 | kalan 6 | atlanan 0 | sure 9.1 s | kalan 6 | geri alindi True
+    - test_guvenlik.SonarDurma.test_30cm_esiginde_durur.test_30cm_esiginde_durur
+    - test_tasarim_bulgulari.TasarimBulgusu.test_b_engel_varken_yerinde_donuste_kose_duvara_carpar.test_b_engel_varken_yerinde_donuste_kose_duvara_carpar
+    - test_protokol_kaynak.TekKaynak.test_belge_guncel.test_belge_guncel
+    - test_guvenlik.SonarDurma.test_engelde_geri_gidilir_engel_histerezisle_kalkar.test_engelde_geri_gidilir_engel_histerezisle_kalkar
+    - test_protokol_kaynak.TekKaynak.test_plan_degerleri.test_plan_degerleri
+    - test_guvenlik.SonarDurma.test_yavaslama_bolgesinde_hiz_azalir.test_yavaslama_bolgesinde_hiz_azalir
+B3 birak ariza kilidini cozer | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.6 s | kalan 1 | geri alindi True
+    - test_guvenlik.AcilStop.test_acil_stop_kilitler_yeniden_devreye_alma_operatorle.test_acil_stop_kilitler_yeniden_devreye_alma_operatorle
+B4 mantar basiliyken arm kabul | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.1 s | kalan 1 | geri alindi True
+    - test_guvenlik.AcilStop.test_acil_stop_kilitler_yeniden_devreye_alma_operatorle.test_acil_stop_kilitler_yeniden_devreye_alma_operatorle
+B5 sessizlik 5000->8000 | cikis 1 | OZET: test 58 | gecen 53 | kalan 5 | atlanan 0 | sure 9.7 s | kalan 5 | geri alindi True
+    - test_guvenlik.Sessizlik.test_5s_komut_yoksa_guc_birakilir.test_5s_komut_yoksa_guc_birakilir
+    - test_protokol_kaynak.TekKaynak.test_belge_guncel.test_belge_guncel
+    - test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    - test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir.test_kablo_cekilince_durur_ve_kilitlenir
+    - test_protokol_kaynak.TekKaynak.test_plan_degerleri.test_plan_degerleri
+B6 servo sinira kirpilmaz | cikis 1 | OZET: test 58 | gecen 50 | kalan 8 | atlanan 0 | sure 8.9 s | kalan 1 | geri alindi True
+    - test_guvenlik.SinirDisiServo.test_servo_sinira_kirpilir.test_servo_sinira_kirpilir
+B7 bozuk JSON'a ok:true doner | cikis 1 | OZET: test 58 | gecen 54 | kalan 4 | atlanan 0 | sure 10.5 s | kalan 3 | geri alindi True
+    - test_tcp_duman.TcpDuman.test_bozuk_satir.test_bozuk_satir
+    - test_guvenlik.BozukMesaj.test_bozuk_satirlar_dogru_hata.test_bozuk_satirlar_dogru_hata
+    - test_guvenlik.BozukMesaj.test_nan_reddedilir.test_nan_reddedilir
+B8 ping bekciyi besler | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.2 s | kalan 1 | geri alindi True
+    - test_guvenlik.Bekci.test_ping_bekciyi_beslemez.test_ping_bekciyi_beslemez
+B9 bekci rampali (fren) durdurur | cikis 1 | OZET: test 58 | gecen 53 | kalan 5 | atlanan 0 | sure 9.3 s | kalan 5 | geri alindi True
+    - test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur.test_500ms_sur_gelmezse_durur
+    - test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    - test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir.test_kablo_cekilince_durur_ve_kilitlenir
+    - test_guvenlik.Bekci.test_ping_bekciyi_beslemez.test_ping_bekciyi_beslemez
+    - test_tcp_duman.TcpDuman.test_soket_kapaninca_durur.test_soket_kapaninca_durur
+B10 satir siniri 200 bayt dahil reddedilir (>=) | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.2 s | kalan 1 | geri alindi True
+    - test_sozlesme.SatirSiniri.test_200_bayt_kabul_201_red.test_200_bayt_kabul_201_red
+B11 guc olayi cevaptan ONCE (arm) | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.0 s | kalan 1 | geri alindi True
+    - test_sozlesme.OlaySirasi.test_guc_olayi_komut_cevabindan_sonra.test_guc_olayi_komut_cevabindan_sonra
+B12 i2c korumasi yok | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.0 s | kalan 1 | geri alindi True
+    - test_sozlesme.KorumaArizalari.test_i2c_kopunca_ariza.test_i2c_kopunca_ariza
+B13 devredeyken bara_gitti korumasi yok | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.0 s | kalan 1 | geri alindi True
+    - test_sozlesme.KorumaArizalari.test_devredeyken_bara_gidince_ariza_ve_aku_null.test_devredeyken_bara_gidince_ariza_ve_aku_null
+B14 sonar histerezis 5->0 | cikis 1 | OZET: test 58 | gecen 55 | kalan 3 | atlanan 0 | sure 9.5 s | kalan 3 | geri alindi True
+    - test_protokol_kaynak.TekKaynak.test_belge_guncel.test_belge_guncel
+    - test_tasarim_bulgulari.TasarimBulgusu.test_c_engel_varken_30_35_cm_arasinda_surunur.test_c_engel_varken_30_35_cm_arasinda_surunur
+    - test_guvenlik.SonarDurma.test_engelde_geri_gidilir_engel_histerezisle_kalkar.test_engelde_geri_gidilir_engel_histerezisle_kalkar
+B15 odo_sifirla tikleri sifirlamaz | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.0 s | kalan 1 | geri alindi True
+    - test_sozlesme.Odometri.test_odo_sifirla_tikleri_sifirlar.test_odo_sifirla_tikleri_sifirlar
+B16 reset sonrasi ariza/kilit yerine ping ms sifirlanmaz (ms devam) | cikis 1 | OZET: test 58 | gecen 57 | kalan 1 | atlanan 0 | sure 9.5 s | kalan 1 | geri alindi True
+    - test_guvenlik.AcilStop.test_acilis_ve_reset_guc_kapali.test_acilis_ve_reset_guc_kapali
+B17 bekci yalniz bir kez (tetikli sifirlanmaz) -> sur kabul edilse de bekci beslenmez | cikis 1 | OZET: test 58 | gecen 53 | kalan 5 | atlanan 0 | sure 10.5 s | kalan 5 | geri alindi True
+    - test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur.test_500ms_sur_gelmezse_durur
+    - test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    - test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir.test_kablo_cekilince_durur_ve_kilitlenir
+    - test_guvenlik.Bekci.test_ping_bekciyi_beslemez.test_ping_bekciyi_beslemez
+    - test_tcp_duman.TcpDuman.test_soket_kapaninca_durur.test_soket_kapaninca_durur
+B18 jest yon_uygulandi hep True | cikis 1 | OZET: test 58 | gecen 56 | kalan 2 | atlanan 0 | sure 9.1 s | kalan 1 | geri alindi True
+    - test_sozlesme.JestYonu.test_yon_uygulandi_yalniz_varyanti_olan_jestte.test_yon_uygulandi_yalniz_varyanti_olan_jestte

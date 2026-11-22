@@ -1,0 +1,39 @@
+{
+  "ad": "Lale taban parametreleri (sahte ESP32 ve gorunum icin tek yer)",
+  "tarih": "2026-11-22",
+  "not_": "durum: 'kaynakli' = depodaki bir kaynaktan aynen ya da basit hesapla; 'TAHMIN' = kaynak yok ya da kaynak kendisi tahmin/olculecek diyor. Birim SI (m, s, rad) aksi yazilmadikca. Robot cercevesi: +x ileri (CAD +Z), +y robotun KENDI solu (CAD +X; K65), aci sola +.",
+  "parametreler": {
+    "teker_capi_m": {"deger": 0.125, "durum": "kaynakli", "kaynak": "tasarim/freecad/arayuz.py TEKER_D = 125.0; robot-bom.csv 'Arazi tekerlegi 125 x 58'"},
+    "iz_genisligi_m": {"deger": 0.432, "durum": "kaynakli", "kaynak": "FIZIKSEL iz (haritadaki robotun gercek hareketi): tasarim/freecad/arayuz.py _X_WH3 = 216 (teker merkezi x +-216); README 'teker izi 432 mm'. Firmware'in kullandigi sabit ayri: firmware_iz_genisligi_m (Y0s-gunluk.md C3)"},
+    "firmware_iz_genisligi_m": {"deger": 0.426, "durum": "kaynakli", "kaynak": "FIRMWARE sabiti (sur v,w -> teker hizi donusumu): main kod/esp32/src/motorlar.cpp IZ_GENISLIGI_M = 0.426f ('CAD: 2 x 213 mm; OLC'); Pi odometrisi de ayni: main kod/ayarlar.yaml konum.odometri.iz_genislik_m 0.426, kod/robot/konum/odometri.py. Fiziksel izle farki bilerek korunur (Y0s-gunluk.md C3)"},
+    "dingil_yari_m": {"deger": 0.185, "durum": "kaynakli", "kaynak": "tasarim/freecad/arayuz.py _Z_WH3 = L0/2 - 65 = 185 (on / arka teker z +-185); yalniz cizim"},
+    "taban_genislik_m": {"deger": 0.520, "durum": "kaynakli", "kaynak": "tasarim/freecad/arayuz.py ETEK_A = 260 (x +-260), TABAN_W = 520; README taban 520 mm"},
+    "taban_derinlik_m": {"deger": 0.525, "durum": "kaynakli", "kaynak": "tasarim/freecad/arayuz.py ETEK_B = _Z_WH3 + TEKER_D/2 + ETEK_BOSLUK + KABUK_T = 262.5 (z +-262,5); kose yaricapi 15 mm cizilmez"},
+    "enkoder_tik_tur": {"deger": 1980, "durum": "TAHMIN", "kaynak": "main kod/esp32/src/motorlar.cpp TIK_PER_TUR = 22 x 90 (11 darbe x 2 kenar x disli ~1:90 'tahmini; OLC')"},
+    "teker_azami_hiz_m_s": {"deger": 0.39, "durum": "TAHMIN", "kaynak": "main motorlar.cpp TEKER_AZAMI_HIZ ('60 dev/dk JGB37 + 125 mm; OLC'); hesap 60/60 x pi x 0,125 = 0,393; BOM 'JGB37-520 12 V 60 dev/dk'. Yuk altinda olculmedi"},
+    "ivme_duz_surus_m_s2": {"deger": 0.5, "durum": "kaynakli", "kaynak": "kod/ortak/eklem_sinirlari.json teker.ivme_sinir_m_s2.duz_surus"},
+    "ivme_duz_fren_m_s2": {"deger": 1.8, "durum": "kaynakli", "kaynak": "kod/ortak/eklem_sinirlari.json teker.ivme_sinir_m_s2.duz_fren"},
+    "ivme_rampa_surus_m_s2": {"deger": 0.1, "durum": "kaynakli", "kaynak": "kod/ortak/eklem_sinirlari.json teker.ivme_sinir_m_s2.rampa_surus"},
+    "ivme_rampa_fren_m_s2": {"deger": 0.1, "durum": "kaynakli", "kaynak": "kod/ortak/eklem_sinirlari.json teker.ivme_sinir_m_s2.rampa_fren"},
+    "sonarlar": {
+      "durum": "kaynakli",
+      "kaynak": "tasarim/freecad/arayuz.py SONAR x = (-100, 0, 100) x V3_W/W0 = (-79,4; 0; 79,4) mm, y 110 mm; sonar_on_z = 256 (PCB on yuzu). Uc sonar da duz ileri (+Z) bakar: CAD'de tutucu ve govde eksene paralel kutu, aci verilmemis. CAD +X robotun kendi solu (K65).",
+      "liste": {
+        "sol":  {"x_m": 0.256, "y_m": 0.0794,  "aci_rad": 0.0, "donanim": "SONAR_SAG_ECHO GPIO39 / PCA9685 kanal 10 (onden bakanin sagi, K65)"},
+        "orta": {"x_m": 0.256, "y_m": 0.0,     "aci_rad": 0.0, "donanim": "SONAR_ORTA_ECHO GPIO34 / kanal 11"},
+        "sag":  {"x_m": 0.256, "y_m": -0.0794, "aci_rad": 0.0, "donanim": "SONAR_SOL_ECHO GPIO35 / kanal 12"}
+      }
+    },
+    "sonar_menzil_m": {"deger": [0.02, 4.0], "durum": "TAHMIN", "kaynak": "HC-SR04 veri sayfasi (baglanti raporlar/kaynaklar/04-parca-olculeri.md; bu pakette acilmadi): 2-400 cm. Disinda null"},
+    "sonar_yari_aci_rad": {"deger": 0.2618, "durum": "TAHMIN", "kaynak": "HC-SR04 veri sayfasi 'measuring angle 15 degree' yari aci olarak yorumlandi (15 derece); bu pakette acilmadi"},
+    "sonar_isin_sayisi": {"deger": 7, "durum": "TAHMIN", "kaynak": "modelleme secimi: koni 7 isinla taranir, en yakin yanki alinir"},
+    "sonar_yanki_gelis_siniri_rad": {"deger": 1.0472, "durum": "TAHMIN", "kaynak": "modelleme secimi: yuzeye 60 dereceden egik gelen isin yanki vermez (ayna yansimasi)"},
+    "sonar_tur_ms": {"deger": 60, "durum": "TAHMIN", "kaynak": "modelleme secimi: uc sonar sirayla 20 ms arayla tetiklenir, her biri 60 ms'de bir yenilenir (yaygin HC-SR04 onerisi 60 ms; kaynak acilmadi)"},
+    "aku_v": {"deger": 13.1, "durum": "TAHMIN", "kaynak": "yazilim-plani.md 'st' ornegi \"vb\":13.1; sabit, desarj modellenmez"},
+    "bara_dolma_ms": {"deger": 150, "durum": "TAHMIN", "kaynak": "modelleme secimi: K2 cekildikten sonra bara bu surede gerilimli olur (< onsarj_bekleme 500)"},
+    "acilis_ms": {"deger": 300, "durum": "TAHMIN", "kaynak": "modelleme secimi: reset komutundan 'hazir'a gecen sure"},
+    "jest_suresi_ms": {"deger": 2000, "durum": "TAHMIN", "kaynak": "modelleme secimi: sahte kart jest karelerini oynatmaz, yalniz bu sure 'jest aktif' tutar"},
+    "imu_var": {"deger": false, "durum": "kaynakli", "kaynak": "main kod/esp32/OKU_BENI.md 'IMU yok, yaw null' (0.5.0); BNO055 BOM'da ama surucu yok"},
+    "pca9685_var": {"deger": true, "durum": "TAHMIN", "kaynak": "modelleme secimi: PCA9685 takili kabul edilir (ortam 'i2c_kopar' ile bozulabilir)"}
+  }
+}

@@ -1,0 +1,57 @@
+Y0s testleri | hedef: bellek | Python 3.14.0
+.....FF.F.F..............................F..
+======================================================================
+FAIL: test_kablo_cekilince_durur_ve_kilitlenir (testler.test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir)
+Dayanak: yazilim-plani.md Y1 kabul testi "kablo çekilince 500 ms içinde duruyor"; mimari güvenlik 500 ms; main guc.h sessizlik.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 281, in test_kablo_cekilince_durur_ve_kilitlenir
+    self.assertEqual(self.hakem()["v"], 0.0, "kablo çekildikten 500 ms sonra teker dönüyor")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.3 != 0.0 : kablo çekildikten 500 ms sonra teker dönüyor
+
+======================================================================
+FAIL: test_500ms_sur_gelmezse_durur (testler.test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur)
+Dayanak: yazilim-plani.md § Mimari "güvenlik: 500 ms Pi'den mesaj gelmezse teker DUR"; Y1 kabul testi; main watchdog.cpp.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 213, in test_500ms_sur_gelmezse_durur
+    self.assertEqual(self.hakem()["v"], 0.0, "500 ms sonra teker hâlâ dönüyor")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.3 != 0.0 : 500 ms sonra teker hâlâ dönüyor
+
+======================================================================
+FAIL: test_ping_bekciyi_beslemez (testler.test_guvenlik.Bekci.test_ping_bekciyi_beslemez)
+Dayanak: main seri_protokol.h ("ping ... bekçiyi beslemez"); yazilim-plani.md ile fark Y0s-gunluk.md § 3 Ç4.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 234, in test_ping_bekciyi_beslemez
+    self.assertEqual(self.hakem()["v"], 0.0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.3 != 0.0
+
+======================================================================
+FAIL: test_bozuk_satir_bekciyi_ve_sessizligi_beslemez (testler.test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez)
+Dayanak: main seri_protokol.cpp ("sessizlik sayacı yalnız bilinen komutlarla beslenir"), watchdog.cpp; yazilim-plani.md mimari 500 ms.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_guvenlik.py", line 362, in test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    self.assertEqual(self.hakem()["v"], 0.0, "geçersiz sur bekçiyi besledi")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.3 != 0.0 : geçersiz sur bekçiyi besledi
+
+======================================================================
+FAIL: test_soket_kapaninca_durur (testler.test_tcp_duman.TcpDuman.test_soket_kapaninca_durur)
+Dayanak: yazilim-plani.md Y1 kabul testi "kablo çekilince 500 ms içinde duruyor" (gerçek zamanda, pay 150 ms).
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "kod\testler\test_tcp_duman.py", line 67, in test_soket_kapaninca_durur
+    self.assertLess(gecen_ms, 500 + 150)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1495.9312999853864 not less than 650
+
+----------------------------------------------------------------------
+Ran 44 tests in 7.798s
+
+FAILED (failures=5)
+OZET: test 44 | gecen 39 | kalan 5 | atlanan 0 | sure 7.8 s
