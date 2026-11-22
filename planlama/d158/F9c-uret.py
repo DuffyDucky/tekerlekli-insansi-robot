@@ -59,6 +59,8 @@ P108F = "planlama/d158/P108f-gunluk.md"
 P108FK = "planlama/d158/P108f-kontrol.md"
 # P10.8g kayıt eşitlemesi (C, 22.11): P10.8g günlüğü (K68 seçenekleri § 5, açıklar § 10) ve bağımsız kontrolü (K1–K6 § 4)
 P108G, P108GK = "planlama/d158/P108g-gunluk.md", "planlama/d158/P108g-kontrol.md"
+# Y0s kayıt eşitlemesi (C, 22.11): sahte ESP32 simülasyonu (döngü paketi değil; K69–K74 kaynağı)
+Y0S, Y0SK = "planlama/d158/Y0s-gunluk.md", "planlama/d158/Y0s-kontrol.md"
 EMOJI = "✅🟡⛔🔄⏳"
 
 
@@ -393,6 +395,14 @@ GRUP = {
     # P10.8g kayıt eşitlemesi (C, 22.11): K68 kuyruğa açık girdi (KeyError vermesin diye K67 gibi). Grup C TASLAK (yalnız bu sayfanın
     # denetimi; sipariş ve montajı etkilemez, GRUP_AD["C"] tanımı); orkestratör onaylar ya da değiştirir.
     "K68": ("C", "Yalnız bu sayfanın denetimi (F9c'nin yapısal 3 hatası); sipariş ve montajı etkilemez. Onaya kadar commit'ten sonra 3 hata kayıtta açık."),
+    # Y0s kayıt eşitlemesi (C, 22.11): K69–K74 kuyruğa açık girdi (simülasyon bulguları; KeyError vermesin diye). Gruplar TASLAK
+    # (GRUP_AD tanımlarına göre); orkestratör onaylar ya da değiştirir.
+    "K69": ("C", "Odometri doğruluğu (360°'de −5,0°); iz ölçümüyle karar, sipariş ve montajı etkilemez."),
+    "K70": ("B", "Sonarla durma / yavaşlama ilk sürüşten önce belli olmalı (firmware'e eklenecek mi, protokolden mi çıkacak)."),
+    "K71": ("B", "Kolların ilk hareketinden önce: bağımlı servo sınırında komut kırpılacak mı reddedilecek mi."),
+    "K72": ("A", "Arka algılayıcı seçilirse sipariş listesine girer; geri sürüş sınırı seçilirse sipariş aynı kalır."),
+    "K73": ("B", "İlk sürüşten önce: engel yakınında yerinde dönüş ve dar açıyla yaklaşmada köşe çarpması."),
+    "K74": ("B", "İlk sürüşten önce, K70 ile birlikte: 30–35 cm arasında sürünme istenen davranış mı."),
 }
 
 
@@ -534,6 +544,11 @@ TUTARSIZ_F10 = [
     ("Aciliyet gruplarının F10 taslağı (P10.9a § 3): açık F10 kararları K62 (C), K67 (A; 21.11'de açıldı, grup P10.8f taslağı, "
      "orkestratör 21.11'de onayladı) ve K68 (C; 22.11'de açıldı, grup taslak, orkestratör onaylar); K53, K54, K55, K60, K61 kapandı, "
      "grupları sayfaya girmiyor.", [P109A, KUYRUK, P108F, P108FK, P108G]),
+    # Y0s kayıt eşitlemesi (C, 22.11): K69–K74 grupları taslak; Y0s commit'leri döngü paketine bağlanmıyor
+    ("K69–K74 (22.11, Y0s sahte ESP32 simülasyonunun bulguları; Ahmet + Efe kararı) gruplarla taslak (K72 A, K70 / K71 / K73 / K74 B, "
+     "K69 C), orkestratör onaylar. Bulgular simülasyonda; gerçek kartta denenmedi.", [KUYRUK, Y0S, Y0SK]),
+    ("Y0s commit'leri (konu öneki \"Lale Y0s:\", 22.11) bu döngünün paketi değil (`yazilim-plani.md` Y0–Y3'ün donanımsız ön "
+     "çalışması), pakete bağlanmıyor; eşleşmeyen commit sayısına girer.", [DONGU, Y0S]),
     ("Pakete bağlanamayan 2 commit (`9145164`, `f658f15`, 13.11 gizlilik denetimi, konu öneki \"Lale:\") paket dışı bırakıldı.", [P109A]),
     ("Tasarım demosu P10.9c'de yeniden üretilmedi (demo P10.7b2j'de üretilmişti); P10.8e'de P10.8d montajıyla yeniden üretildi "
      "(F9b 0).", [GUN, F10Y, DONGU]),
@@ -700,7 +715,8 @@ def uret():
     w('<p class="sub">Uygulama ajanı (P10.9c) · %s · dal <code>lale-duzeltme</code> · üretici <code>planlama/d158/F9c-uret.py</code>, denetim '
       '<code>F9c-dogrula.py</code> · kaynaklar: <code>dongu-158.md</code>, <code>karar-kuyrugu.md</code>, paket raporları, '
       'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026; yenileme P10.8f ve kayıt eşitlemesi, 21.11.2026; P10.8g ve "
-                                                            "kayıt eşitlemesi, 22.11.2026", GUN, F10Y, KUYRUK, P108F, P108G))
+                                                            "kayıt eşitlemesi, 22.11.2026; Y0s kayıt eşitlemesi, 22.11.2026", GUN, F10Y, KUYRUK,
+                                                            P108F, P108G, Y0S))
     w('</div>\n<button class="tema" type="button" id="tema">Tema: sistem</button>\n</header>')
     w('<nav class="ic"><a href="#f10">F10 sonu</a><a href="#ozet">Özet</a><a href="#yapilacak">Ahmet\'in yapacakları</a><a href="#kararlar">Açık kararlar</a>'
       '<a href="#korunan">Korunan değerler</a><a href="#sayilar">Sayılarla robot</a><a href="#takvim">Takvim</a>'

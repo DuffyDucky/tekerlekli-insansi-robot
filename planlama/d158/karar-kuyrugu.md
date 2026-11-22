@@ -81,11 +81,17 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K66 | ESP32 VIN'e seri Schottky: çevre 5 V → 1N5819 → VIN (çevre hat sigortası atınca geri besleme; pano #7 mesaj #26 madde 3 / #28) | kapandı (16.11; orkestratör kararı (Echo): seri 1N5819, anot çevre 5 V, katot VIN; tezgâh denemesine bağlı kabul, VIN payı tutmazsa geri alınır; malzeme 1N5819 1 → 2, +1,22 TL; P10.7b2f kısım 2) | — | — |
 | K67 | M3x8 naylon kart burcu: CAD'de 52, sipariş listesinde 48 | **açık** (P10.8d; alım sorusu, Ahmet'te) | b: listede 56 (4 yedek korunur), +14,64 TL | Taban güç paneli kartları (B5a), sipariş listesi |
 | K68 | `sonuc-rapor.html` kendi commit'ini taşıyamaz: her commit'ten sonra `F9c-dogrula` 3 yapısal hata; denetimin tanımı değişsin mi | **açık** (P10.8g; denetim tanımı, Ahmet'in onayı) | S1: sayfa taban commit'ini taşır, denetim "tabandan sonraki tek commit = sayfanın kendi commit'i" durumunu ayrı raporlar | `F9c-dogrula` commit sonrası 0 (sayfanın kayıt eşitlemeleri) |
+| K69 | Teker izi: firmware ve Pi odometrisi 0,426 m, CAD 0,432 m; hangisi doğru, hangi taraf düzeltilecek | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi: iz ölçülecek (firmware notu "ÖLÇ") | Pi odometrisi ve dönüş açısı (360°'de −5,0°) |
+| K70 | Sonar güvenliği (30 cm durma, 60 cm yavaşlama, 0,05 m/s sürünme, 5 cm histerezis, `engel` mesajı) firmware 0.5.0'da yok: firmware'e mi eklenecek, protokolden mi çıkacak | **açık** (Y0s simülasyonu, TASLAK uzantı; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Y3 sonar güvenlik testlerinin gerçek kartta koşması (5 test TASLAK yetenek ister) |
+| K71 | Servo bağımlı sınırı (S1 ≥ 120° iken S2 ≤ 117°) aşılınca komut kırpılsın mı reddedilsin mi (Ç11) | **açık** (Y0s simülasyonu; simülasyonda kırpma TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (A kırpma okudu, B belirsiz dedi) | Y2 kabul ölçütü ("sınır dışı kırpılıyor, yasak bölge reddediliyor") |
+| K72 | Arkada sonar yok: geri sürüşte robot duvara çarpıyor (simülasyon); geri sürüş sınırlansın mı, arka algılayıcı eklensin mi | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Geri sürüş güvenliği; arka algılayıcı seçilirse sipariş listesi |
+| K73 | Engel varken yerinde dönüşte taban köşesi duvara çarpıyor; ≈ 20°'den dar açıyla yaklaşmada ön sonarlar yankı almıyor, köşe sürtünüyor | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Engel yakınında dönüş ve eğik yaklaşma güvenliği |
+| K74 | Engel bölgesinde (30–35 cm) 0,05 m/s sürünme istenecek mi | **açık** (Y0s simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Y3 sonar kuralları (K70 ile birlikte) |
 
-**Açık: 28.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
+**Açık: 34.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
 K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
-K55 ölçüme ya da kupona bağlı kabul). Toplam 68 madde
-(22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
+K55 ölçüme ya da kupona bağlı kabul). Toplam 74 madde
+(22.11.2026, Y0s kayıt eşitlemesi: K69–K74 eklendi; 22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
 17.11.2026, P10.9b: 22 madde kapandı, 5 maddenin teknik yarısı karara bağlandı; özet tablosunun satırları tek tek sayıldı).
 
 **P10.9b (17.11.2026, üretimsiz kayıt paketi):** Ahmet 17.11.2026 02:36'da orkestratöre "benim yerime karar verebileceğin şeyler varsa
@@ -167,6 +173,9 @@ P10.8f (ufak dört, 21.11.2026; `f4870bf`) yeni madde açmadı; K67 açık, sonu
 `P108f-kontrol.md` § 2 gerekçesiyle); açık işleri sondaki bölümde (`P108f-gunluk.md` § 11–§ 12, `P108f-kontrol.md` § 10).
 P10.8g (ufak beş, 22.11.2026; `8d6a7c7`) → K68 (F9c sayfasının yapısal 3 hatası; `planlama/d158/P108g-gunluk.md` § 5); öbür açık
 işleri sondaki bölümde (`P108g-gunluk.md` § 10, § 12; `P108g-kontrol.md` § 4, § 8, § 11).
+Y0s (sahte ESP32 simülasyonu, 22.11.2026; `0f469f4`; `dongu-158.md` paketi değil, `planlama/yazilim-plani.md` Y0–Y3'ün donanımsız ön
+çalışması) → K69–K74 (simülasyon bulguları; `planlama/d158/Y0s-gunluk.md` § 3, § 11, `kod/SIMULASYON.md` "Simülasyonun gösterdiği
+tasarım bulguları"); öbür açık işleri sondaki bölümde (`Y0s-gunluk.md` § 3, § 11; `Y0s-kontrol.md` § 9 ve "Yeniden kontrol").
 
 ---
 
@@ -1540,6 +1549,69 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Durum:** açık (22.11.2026, P10.8g kayıt eşitlemesinde açıldı). Sonuç sayfasında aciliyet grubu C (sonra karar verilebilir; taslak,
   orkestratör onaylar).
 
+K69–K74 Y0s simülasyonunun bulguları: sahte ESP32 ve 2B haritada ölçüldü / görüldü, gerçek robotta ya da kartta denenmedi
+(kart yok). Hepsi Ahmet ile Efe'nin birlikte vereceği kararlar (firmware `origin/main`'de, Efe'nin alanı). Simülasyonda TASLAK
+olanlar protokolde `taslak: true` işaretli. Sonuç sayfasındaki aciliyet grupları taslak (orkestratör onaylar).
+
+## K69 · Teker izi: firmware / Pi 0,426 m, CAD 0,432 m (Y0s, Ç3 / Ç10)
+- **Soru:** firmware 0.5.0 `motorlar.cpp` `IZ_GENISLIGI_M` 0,426 ("CAD: 2 × 213; ÖLÇ") ve Pi odometrisi (`main` `kod/ayarlar.yaml`
+  `konum.odometri.iz_genislik_m` 0,426) aynı; CAD ve README 0,432 (x ±216, `arayuz.py` `_X_WH3`). Hangisi doğru, hangi taraf düzeltilecek?
+- **Ölçülen etki (simülasyon, `test_tasarim_bulgulari` `test_e`):** komut → teker hızı 0,426, gerçek dönüş 0,432 kabulüyle 360° dönüşte
+  Pi odometrisi 363,3°, gerçek 358,3° (−5,0°, %1,4; oran 0,426 / 0,432). `w` = 1 rad/s istenince gerçek 0,986 rad/s.
+- **Seçenekler:** a) iz ölçülür, firmware ve Pi ölçülene çekilir; b) CAD 0,432 doğru kabul edilir, firmware ve Pi düzeltilir;
+  c) CAD düzeltilir (teker yeri 213 mm).
+- **Önerilen varsayılan:** önerilmedi; firmware notu "ÖLÇ" diyor. Karar Ahmet + Efe.
+- **Kaynak:** `planlama/d158/Y0s-gunluk.md` § 3 Ç3 / Ç10, § 11 B2; `Y0s-kontrol.md` "Yeniden kontrol" (teker izi); `kod/SIMULASYON.md`.
+- **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
+
+## K70 · Sonar güvenliği firmware 0.5.0'da yok (Y0s, Ç9)
+- **Soru:** planın Y3'ü sonarla yavaşlama ve durma istiyor; firmware 0.5.0'da sonar güvenliği yok. Simülasyon TASLAK uzantı olarak
+  modelledi: 30 cm durma, 60 cm'den doğrusal yavaşlama, 0,05 m/s sürünme, 5 cm histerezis (engel ≥ 35 cm'de kalkar), `engel` mesajı.
+  Bu kurallar firmware'e mi eklenecek, protokolden mi çıkacak?
+- **Bilinmesi gereken:** firmware'e eklenmezse gerçek 0.5.0 kartına karşı ilgili testler "yetenek yok" diye atlanır (başarısız
+  sayılmaz); gerçek kartta 5 test TASLAK sonar yeteneği ve robotu konuma koymayı ister (`Y0s-gunluk.md` § 11 D9).
+  60 cm ve 0,05 m/s değerlerinin kaynağı yok (TASLAK).
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `Y0s-gunluk.md` § 2, § 3 Ç9, § 9 madde 3; `kod/ortak/protokol.json` (`taslak: true`); `kod/SIMULASYON.md`.
+- **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
+
+## K71 · Servo bağımlı sınırı aşılınca kırp mı reddet mi (Y0s, Ç11)
+- **Soru:** `eklem_sinirlari.json` `bagimli` kuralı (S1 ≥ 120° iken S2 ≤ 117°) aşılınca komut kırpılsın mı reddedilsin mi?
+- **İki okuma:** A: `yazilim-plani.md` satır 76 Y2 kabul ölçütü "Sınır dışı komut kırpılıyor, yasak bölge reddediliyor"; aynı belgede
+  "yasak bölge" satır 35 ve 67'de kafa-kol yasak bölgesi (`kafa_kol_yasak`, `"aktif": false`), `bagimli` ayrı anahtar → kırpma.
+  B: belirsiz; `planlama/adim2/K2-s1-kontrol.md:266-267` aynı kuralı "yasak kutu" diye kuruyor, Y2'deki "reddediliyor" ona da okunabilir.
+  Simülasyonda kırpma (TASLAK) kaldı; sessizce "kırp" diye kapatılmadı.
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `Y0s-gunluk.md` § 3 Ç11, § 11 B4; `Y0s-kontrol.md` "Yeniden kontrol" (Ç11).
+- **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
+
+## K72 · Arkada sonar yok: geri sürüşte duvara çarpma (Y0s)
+- **Soru:** robotun arkasında sonar yok; simülasyonda geri sürüşte robot duvara çarpıyor. Geri sürüş sınırlansın mı (hız / mesafe ya da
+  yalnız yerinde dönüş), arka algılayıcı mı eklensin?
+- **Bilinmesi gereken:** arka algılayıcı eklenirse sipariş listesi ve pin haritası değişir. Bulgu simülasyonda görüldü, gerçek robotta
+  denenmedi.
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Simülasyonun gösterdiği tasarım bulguları" (a); `kod/testler/test_tasarim_bulgulari.py`;
+  `Y0s-gunluk.md` § 11 E10.
+- **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
+
+## K73 · Engel yakınında yerinde dönüş ve dar açıyla yaklaşma: taban köşesi duvara değiyor (Y0s)
+- **Soru:** simülasyonda (1) duvara eğik yaklaşıp sonarla 30 cm'de durduktan sonra yerinde dönünce taban köşesi duvara çarpıyor
+  (köşenin dönüş yarıçapı ≈ 0,37 m > 30 cm durma mesafesi); (2) duvara ≈ 20°'den dar açıyla yaklaşırken ön
+  sonarlar yankı almıyor ve köşe sürtünüyor. Nasıl ele alınsın (dönüşü engel varken sınırlamak, yan algılama, yazılım kuralı)?
+- **Bilinmesi gereken:** yankı modeli TAHMİN (yüzeye 60°'den eğik gelen ışın yankı vermez; ±15° koni, 7 ışın); > 60° yankısız eğik
+  duvara canlı yaklaşma B tarafından bakılmadı.
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Simülasyonun gösterdiği tasarım bulguları" (b), (d); `test_tasarim_bulgulari.py`; `Y0s-gunluk.md` § 11 E10.
+- **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
+
+## K74 · Engel bölgesinde (30–35 cm) 0,05 m/s sürünme istenecek mi (Y0s)
+- **Soru:** TASLAK sonar kuralında `engel` varken 30–35 cm arasında robot 0,05 m/s sürünebiliyor. Bu istenen davranış mı?
+- **Bilinmesi gereken:** K70'e bağlı (sonar güvenliği firmware'e girmezse soru düşer).
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Simülasyonun gösterdiği tasarım bulguları" (c); `test_tasarim_bulgulari.py`.
+- **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
+
 ---
 
 ## Karar değil, iş (kuyruğa alınmadı)
@@ -2104,3 +2176,29 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     gibi açık; P10.8g dokunmadı.
   - **Bakılmadı (B, `P108g-kontrol.md` § 11; A, `P108g-gunluk.md` § 12):** koyu tema; gerçek yazıcı çıktısı (PDF 100 / 300 dpi
     görüntüsüyle bakıldı); 17.5'in yeterliliği gerçek bir montajcıyla sınanmadı.
+
+**Y0s (sahte ESP32 simülasyonu) kapanışından açık iş (22.11, `0f469f4`; `planlama/d158/Y0s-gunluk.md` § 3, § 11, `Y0s-kontrol.md` § 9
+ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
+  - **Kararlar K69–K74'te** (teker izi, sonar güvenliği, bağımlı servo sınırı, arka sonar, engel yakınında dönüş / dar açı, sürünme).
+  - **Plan ↔ firmware çelişkileri Ç1–Ç11 plan belgelerinde düzeltilmedi:** yalnız `Y0s-gunluk.md` § 3'te kayıt (ör. Ç1
+    `yazilim-plani.md` taslak protokolü `t` ↔ firmware 0.5.0 `k`; Ç2 ön şarj 300 ↔ 500 ms; Ç4 bekçi tetiği `sur`; Ç7 100 ↔ 50 Hz).
+    Simülasyon 0.5.0'ı izliyor; `yazilim-plani.md` "Seri protokol (ilk taslak)" tablosu eskimiş.
+  - **TAHMİN parametreler parça ve ölçümle doğrulanacak** (`kod/ortak/robot_parametreleri.json` `durum: TAHMIN`): enkoder 1980 tik / tur,
+    teker azami hızı 0,39 m/s, sonar menzili 0,02–4 m ve ±15° koni (yankı modeli: 7 ışın, 60°'den eğik ışın yankısız), akü 13,1 V
+    (sabit), bara dolma 150 ms, jest süresi 2 s.
+  - **Modellenmeyenler:** motor dinamiği ve gecikmesi, teker kayması, yük / eğim / rampa fiziği, pil deşarjı, sensör gürültüsü,
+    BTS akım arızası (`is_sol` / `is_sag`) ve öbürleri (`kod/SIMULASYON.md` "Modellenmeyenler"); robot bir kutunun tamamen içine
+    konursa (`konum_ayarla`) çarpışma görülmüyor (`Y0s-gunluk.md` § 11 C7).
+  - **B'nin üç küçük notu (engellemez, `Y0s-kontrol.md` "Yeniden kontrol"):** Y1 `test_gorunum.test_yalniz_ayni_koken` ≈ 21 koşuda bir
+    kez düştü (hakemsiz B12 koşusunda; 3 + 6 + 12 tekrarda tekrarlanmadı; gerçek soket ve zamanlamaya bağlı, ara sıra düşen test olabilir);
+    Y2 `test_e` 0,426'yı elle yazıyor (`firmware_iz_genisligi_m` okunmalı) ve adı "gerçekte 355" diyor, ölçülen 358,3 / 363,3 (aynı
+    "≈ 355°" `kod/SIMULASYON.md` (e)'de de geçiyor); Y3 `harita.py` `_icinde` `d == 0` için tam eşitlik kullanıyor (`_EPS` değil).
+  - **Gerçek kart geldiğinde:** `kod/pi/lale_pi/tasima.py` `SeriTasima` yer tutucu (yazılacak); operatör adımı isteyen 4 test (mantar ×2,
+    ana anahtar, kablo) için gerçek kart `Ortam`'ı yazılmadı; simülasyon `lale-duzeltme`'de, firmware `origin/main`'de (birleştirme
+    zaten Ahmet'in bekleyen kararı, `main`'e birleştirme onayı).
+  - **Bakılmadı (B, `Y0s-kontrol.md` § 9):** gerçek ESP32 / derleme (kart yok); `test_harita.py` ve `test_tcp_duman.py` satır satır değil,
+    yalnız iç duruma erişim açısından; `PROTOKOL.md`'nin tamamı (üretici `--denetle` testi geçiyor); `jest_verisi.h` kare verileri;
+    ArduinoJson 7'nin hoşgörü davranışı (F10, F11) belgeden değil bilgiden, kartta denenmeli; > 60° yankısız eğik duvara canlı
+    yaklaşma; rehber üretim zinciri ve çakışma taraması (koşulmadı).
+  - **Bakılmadı (B, "Yeniden kontrol"):** `gorunum.html` diff'i satır satır okunmadı, yalnız canlı davranışı denendi; `SIMULASYON.md`
+    tasarım bölümü göz gezdirildi; 8 yeni bozmanın 5'i (B10, B11, B14, B15, B18) yalnız hakemli koşuldu; gerçek kart yok.

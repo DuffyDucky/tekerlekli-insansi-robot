@@ -183,3 +183,35 @@ Durum: 20:05 düzeltme turu bitti. Kalan açıklar: Ç3 (iz) ve Ç11 (bağımlı
 - 18:57–19:00 kaynak okuma, § 1–3. 19:00–19:11 § 4 madde 1–4. 19:11–19:25 madde 5–11.
 - A bitti. 21 eski dosya md5 aynı (21 / 21 OK). git add / commit / push yapılmadı. Sıradaki: B (§ 9), sonra C.
 - 19:40–20:05 B "KOŞULLU GEÇER" sonrası düzeltme turu: § 11. Sıradaki: C (commit, push).
+
+## 12. Kapanış (C)
+
+C ajanı, 22.11 (saat okundu: 20:19). Komutlar depo kökünden, `PYTHONIOENCODING=utf-8`.
+
+**Adım 1, paket commit'i `0f469f4`** ("Lale Y0s: sahte ESP32 simülasyonu: …"; 53 dosya).
+- Ön kontrol: `git fetch` sonrası yerel = uzak = `fb8a3f1`; `F9c-dogrula.py --tarayicisiz` GEÇMEZ, hata 3 (P10.8g kayıt eşitlemesinden
+  beri beklenen yapısal 3, K68: commit sayısı, eşleşmeyen commit, `fb8a3f1` konu öneki); `py -3 kod/testler/kos.py` 58 / 58, 9,7 s.
+- Açık yollarla `git add`: B'nin "Yeniden kontrol" listesi (`kod/` 31, `Y0s-gunluk.md`, `Y0s-kontrol.md`, `Y0s-olcum/` 20); `__pycache__`
+  `.gitignore`'da, sahnede 0. Sahnelenmeyen yalnız 21 eski kir.
+- Konu öneki `Lale Y0s:`: `F9c-uret.py` / `F9c-dogrula.py` commit'i pakete yalnız konu önekindeki `P<sayı>.<sayı>` kodu, `(F…)` etiketi ya da
+  plan § 3 / § 5'teki hash'iyle bağlar; Y0s döngü paketi değil, bu yüzden eşleşmeyen sayılır (emsal: `9145164`, `f658f15` "Lale:"),
+  `P` öneki kullanılmadı (yanlış pakete bağlardı). Sayfada not.
+- Gizlilik taraması (`git diff --cached`, eklenen ≈ 5.400 satır; 3 JPG): e-posta, telefon, anahtar / belirteç, parola sözcükleri,
+  yerel kullanıcı yolu, IBAN, 11 haneli sayı, resmî metin / kimlik sözcükleri. Bulunan: "parola" yalnız `Y0s-kontrol.md`'nin tarama
+  cümlelerinde; "sözleşme" = protokol sözleşmesi; `%TEMP%\claude\...` ortam değişkeni (kullanıcı adı yok). JPG'ler gözle: yalnız simülasyon
+  ekranı. Bulgu yok.
+
+**Adım 2, kayıt eşitlemesi** (bu bölümle aynı commit).
+- `planlama/dongu-158.md`: § 5'e Y0s satırı; § 3 F5 tablosunun altına Y0s'un yeri notu (döngü paketi değil, yazılım planı Y0–Y3'ün
+  donanımsız ön çalışması). Plan belgeleri ve `yazilim-plani.md` değişmedi.
+- `planlama/d158/karar-kuyrugu.md`: K69–K74 (teker izi, sonar güvenliği, bağımlı servo sınırı, arka sonar, engel yakınında dönüş / dar
+  açı, sürünme) özet tablosu ve gövdeleriyle; açık 28 → 34, toplam 68 → 74; giriş notuna Y0s satırı; yeni bölüm "Y0s … kapanışından açık
+  iş" (Ç1–Ç11, TAHMİN parametreler, modellenmeyenler, B'nin Y1–Y3 notları, gerçek kart hazırlığı, B'nin iki "bakılmadı" listesi).
+- `planlama/d158/F9c-uret.py`: `Y0S`, `Y0SK`; `GRUP` K69–K74 (taslak); iki sayfa notu; başlıkta "Y0s kayıt eşitlemesi". `F9c-dogrula.py`
+  değişmedi. Sayfa yeniden üretildi: "toplam 74, açık 34"; `--tarayicisiz` GEÇER (hata 0); `--goruntu` GEÇER (1400 / 360 px konsol 0,
+  taşan 0).
+- Bu commit'ten sonra yapısal hata beklenir (K68); Y0s öneki P paketine bağlanmadığı için konu öneki hatası beklenmez. Push ve commit
+  sonrası ölçüm orkestratöre raporda.
+- İlk push denemesini `pre-push` kancası takma ad nedeniyle durdurdu (kancanın öbür kalıpları bu aralıkta temizdi); ad bu günlükte 1,
+  `Y0s-kontrol.md`'de 3 satırda geçiyordu, "Ahmet" ya da "takma ad" diye yazıldı. İki yerel commit push edilmeden yeniden yazıldı
+  (orkestratör kararı, saat 20:22; `--no-verify` kullanılmadı); paket ağacı yalnız bu 4 satırla değişti.
