@@ -88,7 +88,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K73 | Engel varken yerinde dönüşte taban köşesi duvara çarpıyor; ≈ 20°'den dar açıyla yaklaşmada ön sonarlar yankı almıyor, köşe sürtünüyor | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Engel yakınında dönüş ve eğik yaklaşma güvenliği |
 | K74 | Engel bölgesinde (30–35 cm) 0,05 m/s sürünme istenecek mi | **açık** (Y0s simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Y3 sonar kuralları (K70 ile birlikte) |
 
-| K75 | Yerinde dönüş: firmware 0.5.0'la µ ≥ 0,45'te robot dönmüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı, mekanik taraf mı | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi: motor durma torku ve zemin µ ölçülmeli (ikisi TAHMİN) | Yerinde dönüş; mekanik seçenek seçilirse sipariş listesi |
+| K75 | Dönüş: firmware 0.5.0'la µ 0,5 ve 0,8'de robot ne yerinde ne hareket hâlinde dönüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı (V1 / V2), mekanik taraf mı (V3 / V4) | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi: motor durma torku ve zemin µ ölçülmeli (ikisi TAHMİN) | Dönüş ve engel dolaşma; mekanik seçenek seçilirse sipariş listesi |
 | K76 | Rampada `dur` sonrası robot tutmuyor, geri kayıyor: tutma döngüsü ya da fren istenecek mi, robot rampada kullanılacak mı | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (kayma hızı dişli sürtünmesi TAHMİN'ine bağlı) | Rampa kullanımı |
 | K77 | Bekçi ani duruşunda arka aks kısa süre boşalıyor (21 / 15 kg·cm): rampalı fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (devrilme ilerlemiyor; aks boşalması durma torku TAHMİN'ine bağlı) | Bekçi duruşu (firmware 0.5.0'da rampasız) |
 | K78 | Acil stopta sürücü kesik, robot boşta kayıyor (0,08–0,29 m): bu mesafe kabul mü, aktif fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (aralık yansıyan atalet ve dişli sürtünmesi TAHMİN'ine bağlı) | Acil stop duruş mesafesi |
@@ -1637,7 +1637,26 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
   (temas modeline duyarsız), eşik TAHMİN (µ, durma torku). µ 0,4'teki 0,30 eşiğe yakın, yük dağılımına duyarlı (`Y0f-kontrol.md` § 10.4).
 - **Önerilen varsayılan:** önerilmedi; önce durma torku ve µ ölçülmeli. Karar Ahmet + Efe.
 - **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Dönüş) ve "Karar isteyenler"; `Y0f-gunluk.md` § 10 K1; `Y0f-kontrol.md` § 3.4, § 10.4.
-- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+- **Güncelleme (23.11, Y0f eki: hareket hâlinde dönüş ve varyantlar; `Y0f-gunluk.md` § 12–13, `Y0f-kontrol.md` § 11):**
+  - **Hareket hâlinde de dönmüyor:** bugünkü firmware ile µ 0,5 ve 0,8'de yerinde de hareket hâlinde de dönmüyor (16 v / w bileşiminde,
+    21 ve 9 kg·cm, gerçekleşen w ≤ 0,001 rad/s; kolon önünde 20 tekrarlı ileri-geri manevrada toplam 0,0–3,4°). Ahmet 3B pencerede elle
+    denedi: on kez ileri-geri manevrayla kolonu aşamadı. Neden: firmware karışımı iki yan arasındaki PWM farkını w ≤ 1 ile 1,09'a
+    sınırlıyor. Sınıf: mekanizma sağlam (üretilen dönme momenti ≈ 14,3 N·m, yanal direnç momenti µ × 47,5 N·m, eşik µ ≈ 0,30–0,40);
+    "sıfır" değeri modelin kötümser tarafı (MuJoCo'nun Coulomb temasında yanal direnç hıza bağlı değil; gerçek lastikte küçük w'de
+    çok yavaş, geniş bir yay olabilir, B'nin kaba tahmini 0,04–0,10 rad/s, viraj sertliği ölçülmediği için TAHMİN); kullanışlı bir
+    dönüş yine yok. Düşük hızda yay µ 0,45'te 0,021 rad/s (B).
+  - **Varyantlar (hepsi VARSAYIM; 21 kg·cm, yerinde w, µ 0,5 / 0,8):** V0 bugünkü robot 0,001. V1 firmware `w` tavanı 3, tam ters
+    PWM: 0,063–0,147 rad/s (temas sertliğine duyarlı; "yavaş döner" sağlam, tek sayı değil), kolon 35–44 s, tork / sürekli 2,3. V2
+    kapalı çevrim PI: kazanca göre 0,03–0,10 rad/s, hiçbir kazançta V1'i geçmiyor, kolon 44–53 s. V3 ön omni: 0,71–0,79 rad/s (en iyi
+    durum, makara yanal direnci sıfır), kolon 12 s, tork / sürekli 0,6–0,8, 9 kg·cm ile de dönüyor (0,25–0,43); bedel 5° yan eğimde
+    5 s'de 0,24 m kayma ve 16,5° (en kötü durum). V4 önde bilyalı sarhoş: 0,38–0,52 rad/s (çatallı teker için iyimser), kolon
+    14–15 s, düz hız 0,336 m/s, yan eğimde 0,43 m ve 29°. V1+V3 / V2+V3: 1,0–1,7 rad/s, kolon 11 s; V2+V3 yan eğimde 0,06 m.
+    9 kg·cm motorla V0 / V1 / V2 / V4 dönmüyor. Tork oranları ve kolon süreleri "sürekli tork = durmanın %30'u" varsayımına ve basit
+    yönlendirmeye bağlı, yalnız karşılaştırma için. Ölçülmeyen: iz / dingil oranı, arkada sarhoş teker, çatallı sarhoş teker.
+  - **Seçenekler sırasız kalır.** Aciliyet: mekanik seçenek (V3 / V4) sipariş listesini değiştirir.
+  - Kaynak: `kod/SIMULASYON.md` "Hareket hâlinde dönüş (yay)", "Dönüş varyantları", "Karar isteyenler"; `Y0f-olcum/donus-hareket.md`,
+    `donus-varyantlar.md`; `Y0f-kontrol.md` § 11.2–§ 11.3.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f ekiyle güncellendi).
 
 ## K76 · Rampada `dur` sonrası tutmama (Y0f)
 - **Soru:** kısa devre freni sıfır hızda tork vermiyor; `dur` sonrası robot rampada geri kayıyor. Kararlı kayma 5°'de 5,8–34,4 mm/s,
@@ -2304,3 +2323,14 @@ ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
     mujoco yokken fizik testleri "atlandı" der.
   - **B'nin düşük önemli notları (`Y0f-kontrol.md` § 7):** K8 hakem 1e-4 m/s kırpması arka uçta (belgede yazılı); K9 `olcum.md`
     6.004 satırlık JSON dökümü, okunur özet değil; `dur_fren_yolu` payı +5 mm (ölçülen fazlalık 0,1 mm), engel değil (§ 10.2).
+  - **Y0f eki (23.11; 3B pencere kumandası, hareket hâlinde dönüş, dönüş varyantları; `Y0f-gunluk.md` § 12–13, `Y0f-kontrol.md` § 11):**
+    karar K75'in güncellemesinde. İş:
+    - Lastiğin viraj sertliği ölçülmedi ve modelde yok (Coulomb temas): hareket hâlinde dönüşte model kötümser.
+    - Çatallı (dönen) sarhoş teker ve arkada sarhoş teker modellenmedi; V4 bilyalı teker modeli.
+    - 3B pencere acil stop basılıyken firmware'in reddettiği `sur`u göstermiyor (küçük kullanım eksiği, `Y0f-kontrol.md` § 11.5).
+    - Eski pencere `sur.v`'yi 0,39'a bölüp gönderiyordu (düzeltildi); ölçümleri etkilemedi, yalnız `Y0f-gunluk.md` § 7'deki pencere
+      gözlemlerinde gönderilen hız yazılandan büyüktü.
+    - **B'nin bakmadıkları (§ 11.7):** pencerede Enter (kol pozu) ve Shift+6–9 denenmedi; `gorunum3b.py`'nin kumanda dışı yeni kısımları
+      satır satır okunmadı; `olcum_donus_hareket.py` yeniden koşulmadı (md5 ve sayılar okundu); V3 / V4 yan eğim ve yanal itme
+      sayıları, kolon dolaşma süreleri ve 20 tekrarlı manevra yeniden üretilmedi; gerçek klavyeyle (insan eli) deneme B tarafından
+      yapılmadı (Ahmet'in elle denemesi A'nın günlüğünde).

@@ -278,3 +278,14 @@ firmware 0.5.0 + mekanik), testler ve sayı özeti değişmez.
 - **Denetim.** 2B 58 / 58; fizik koşusu çıkış 0, sayı özeti `f3507f3911bd53da` (değişmedi; koşunun yazdığı `olcum.json`'da
   yalnız süre alanları değişmişti, commit'teki hâline döndürüldü); `donus-hareket.json` md5 aynı (`c8caa97b…`); 21 eski dosya
   md5 21 / 21; kalıp taraması 14 dosya 0 bulgu, satır başı `@` yok.
+
+## 14. Ek kapanışı (C)
+
+- 23.11 00:28 (saat okundu). Paket commit'i `89583a5` (15 dosya, B'nin listesiyle birebir; `__pycache__` yok). Commit'ten önce
+  `SIMULASYON.md`'de yalnız B'nin § 11 düzeltmeleri E1–E4 uygulandı; dosyada kanca kalıpları 0.
+- Ön denetim: yerel = uzak = `5d5d3e4`; 2B 58 / 58; fizik koşusu çıkış 0, fizik 6 / 6, Y0s fizikte 58 / 58, sayı özeti
+  `f3507f3911bd53da`; koşunun yeniden yazdığı `Y0f-olcum/olcum.json` `git checkout --` ile döndürüldü, `git diff` boş.
+- Kanca, sahnelenen ağaçtan üretilmiş dalda olmayan bir commit nesnesi üzerinde değiştirilmeden çalıştırıldı: çıkış 0.
+- Kayıt eşitlemesi: `dongu-158.md` § 5, K75 güncellemesi (yeni numara yok; açık 40, toplam 80), açık işlere "Y0f eki" maddesi,
+  `sonuc-rapor.html` yeniden üretildi. `F9c-uret.py` Windows konsolunda (cp1254) yazdırırken `UnicodeEncodeError` verdi ve
+  sayfayı yazmadı; `PYTHONIOENCODING=utf-8` ile yeniden koşuldu (betik değişmedi).
