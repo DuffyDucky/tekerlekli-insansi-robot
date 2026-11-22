@@ -61,6 +61,8 @@ P108FK = "planlama/d158/P108f-kontrol.md"
 P108G, P108GK = "planlama/d158/P108g-gunluk.md", "planlama/d158/P108g-kontrol.md"
 # Y0s kayıt eşitlemesi (C, 22.11): sahte ESP32 simülasyonu (döngü paketi değil; K69–K74 kaynağı)
 Y0S, Y0SK = "planlama/d158/Y0s-gunluk.md", "planlama/d158/Y0s-kontrol.md"
+# Y0f kayıt eşitlemesi (C, 22.11): fizik simülasyonu (döngü paketi değil; K75–K80 kaynağı)
+Y0F, Y0FK = "planlama/d158/Y0f-gunluk.md", "planlama/d158/Y0f-kontrol.md"
 EMOJI = "✅🟡⛔🔄⏳"
 
 
@@ -403,6 +405,14 @@ GRUP = {
     "K72": ("A", "Arka algılayıcı seçilirse sipariş listesine girer; geri sürüş sınırı seçilirse sipariş aynı kalır."),
     "K73": ("B", "İlk sürüşten önce: engel yakınında yerinde dönüş ve dar açıyla yaklaşmada köşe çarpması."),
     "K74": ("B", "İlk sürüşten önce, K70 ile birlikte: 30–35 cm arasında sürünme istenen davranış mı."),
+    # Y0f kayıt eşitlemesi (C, 22.11): K75–K80 kuyruğa açık girdi (fizik bulguları; KeyError vermesin diye). Gruplar TASLAK
+    # (GRUP_AD tanımlarına göre); orkestratör onaylar ya da değiştirir.
+    "K75": ("A", "Mekanik seçenek (omni / sarhoş teker) seçilirse sipariş listesi değişir; firmware seçeneği siparişi değiştirmez."),
+    "K76": ("B", "Robot rampada kullanılmadan önce: dur sonrası tutma döngüsü ya da fren."),
+    "K77": ("B", "İlk sürüşten önce: bekçi duruşunda arka aks boşalması, rampalı fren."),
+    "K78": ("B", "İlk sürüşten önce: acil stopta boşta kayma mesafesi (0,08–0,29 m) kabul mü."),
+    "K79": ("B", "İlk sürüşten önce: açık çevrimde düşük hızda tork, kapalı çevrim hız kontrolü."),
+    "K80": ("B", "İlk sürüşten önce, K70 ile birlikte: rampa kipinde sonar kuralı."),
 }
 
 
@@ -549,6 +559,12 @@ TUTARSIZ_F10 = [
      "K69 C), orkestratör onaylar. Bulgular simülasyonda; gerçek kartta denenmedi.", [KUYRUK, Y0S, Y0SK]),
     ("Y0s commit'leri (konu öneki \"Lale Y0s:\", 22.11) bu döngünün paketi değil (`yazilim-plani.md` Y0–Y3'ün donanımsız ön "
      "çalışması), pakete bağlanmıyor; eşleşmeyen commit sayısına girer.", [DONGU, Y0S]),
+    # Y0f kayıt eşitlemesi (C, 22.11): K75–K80 grupları taslak; Y0f commit'leri döngü paketine bağlanmıyor
+    ("K75–K80 (22.11, Y0f fizik simülasyonunun bulguları; Ahmet + Efe kararı) gruplarla taslak (K75 A, K76–K80 B), orkestratör "
+     "onaylar. Sayıların çoğu TAHMİN parametrelere bağlı (motor durma torku, zemin µ, dişli sürtünmesi); gerçek robotta denenmedi.",
+     [KUYRUK, Y0F, Y0FK]),
+    ("Y0f commit'leri (konu öneki \"Lale Y0f:\", 22.11) Y0s gibi bu döngünün paketi değil (Y0s'un fizik katmanı), pakete "
+     "bağlanmıyor; eşleşmeyen commit sayısına girer.", [DONGU, Y0F]),
     ("Pakete bağlanamayan 2 commit (`9145164`, `f658f15`, 13.11 gizlilik denetimi, konu öneki \"Lale:\") paket dışı bırakıldı.", [P109A]),
     ("Tasarım demosu P10.9c'de yeniden üretilmedi (demo P10.7b2j'de üretilmişti); P10.8e'de P10.8d montajıyla yeniden üretildi "
      "(F9b 0).", [GUN, F10Y, DONGU]),
@@ -715,8 +731,8 @@ def uret():
     w('<p class="sub">Uygulama ajanı (P10.9c) · %s · dal <code>lale-duzeltme</code> · üretici <code>planlama/d158/F9c-uret.py</code>, denetim '
       '<code>F9c-dogrula.py</code> · kaynaklar: <code>dongu-158.md</code>, <code>karar-kuyrugu.md</code>, paket raporları, '
       'regresyon JSON\'ları, <code>git log</code></p>' % K("19.11.2026; yenileme P10.8f ve kayıt eşitlemesi, 21.11.2026; P10.8g ve "
-                                                            "kayıt eşitlemesi, 22.11.2026; Y0s kayıt eşitlemesi, 22.11.2026", GUN, F10Y, KUYRUK,
-                                                            P108F, P108G, Y0S))
+                                                            "kayıt eşitlemesi, 22.11.2026; Y0s ve Y0f kayıt eşitlemeleri, 22.11.2026", GUN, F10Y,
+                                                            KUYRUK, P108F, P108G, Y0S, Y0F))
     w('</div>\n<button class="tema" type="button" id="tema">Tema: sistem</button>\n</header>')
     w('<nav class="ic"><a href="#f10">F10 sonu</a><a href="#ozet">Özet</a><a href="#yapilacak">Ahmet\'in yapacakları</a><a href="#kararlar">Açık kararlar</a>'
       '<a href="#korunan">Korunan değerler</a><a href="#sayilar">Sayılarla robot</a><a href="#takvim">Takvim</a>'

@@ -88,10 +88,17 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K73 | Engel varken yerinde dönüşte taban köşesi duvara çarpıyor; ≈ 20°'den dar açıyla yaklaşmada ön sonarlar yankı almıyor, köşe sürtünüyor | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Engel yakınında dönüş ve eğik yaklaşma güvenliği |
 | K74 | Engel bölgesinde (30–35 cm) 0,05 m/s sürünme istenecek mi | **açık** (Y0s simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Y3 sonar kuralları (K70 ile birlikte) |
 
-**Açık: 34.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
+| K75 | Yerinde dönüş: firmware 0.5.0'la µ ≥ 0,45'te robot dönmüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı, mekanik taraf mı | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi: motor durma torku ve zemin µ ölçülmeli (ikisi TAHMİN) | Yerinde dönüş; mekanik seçenek seçilirse sipariş listesi |
+| K76 | Rampada `dur` sonrası robot tutmuyor, geri kayıyor: tutma döngüsü ya da fren istenecek mi, robot rampada kullanılacak mı | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (kayma hızı dişli sürtünmesi TAHMİN'ine bağlı) | Rampa kullanımı |
+| K77 | Bekçi ani duruşunda arka aks kısa süre boşalıyor (21 / 15 kg·cm): rampalı fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (devrilme ilerlemiyor; aks boşalması durma torku TAHMİN'ine bağlı) | Bekçi duruşu (firmware 0.5.0'da rampasız) |
+| K78 | Acil stopta sürücü kesik, robot boşta kayıyor (0,08–0,29 m): bu mesafe kabul mü, aktif fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (aralık yansıyan atalet ve dişli sürtünmesi TAHMİN'ine bağlı) | Acil stop duruş mesafesi |
+| K79 | Açık çevrimde düşük hız komutunda tork düşük (0,2 m/s ile yalnız 5 mm eşik): kapalı çevrim hız kontrolü istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (durma torku TAHMİN) | Eşik ve rampada düşük hızlı sürüş |
+| K80 | TASLAK sonar kuralı 15° ve üstü rampayı ve 40 mm eşiği engel sayıp durduruyor: rampa kipinde sonar kuralı ne olacak | **açık** (Y0f fizik simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (bulgu bağımsız kontrol edilmedi; K70'e bağlı) | Rampa ve eşik geçişi (K70 ile birlikte) |
+
+**Açık: 40.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
 K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
-K55 ölçüme ya da kupona bağlı kabul). Toplam 74 madde
-(22.11.2026, Y0s kayıt eşitlemesi: K69–K74 eklendi; 22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
+K55 ölçüme ya da kupona bağlı kabul). Toplam 80 madde
+(22.11.2026, Y0f kayıt eşitlemesi: K75–K80 eklendi; 22.11.2026, Y0s kayıt eşitlemesi: K69–K74 eklendi; 22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
 17.11.2026, P10.9b: 22 madde kapandı, 5 maddenin teknik yarısı karara bağlandı; özet tablosunun satırları tek tek sayıldı).
 
 **P10.9b (17.11.2026, üretimsiz kayıt paketi):** Ahmet 17.11.2026 02:36'da orkestratöre "benim yerime karar verebileceğin şeyler varsa
@@ -176,6 +183,9 @@ işleri sondaki bölümde (`P108g-gunluk.md` § 10, § 12; `P108g-kontrol.md` §
 Y0s (sahte ESP32 simülasyonu, 22.11.2026; `0f469f4`; `dongu-158.md` paketi değil, `planlama/yazilim-plani.md` Y0–Y3'ün donanımsız ön
 çalışması) → K69–K74 (simülasyon bulguları; `planlama/d158/Y0s-gunluk.md` § 3, § 11, `kod/SIMULASYON.md` "Simülasyonun gösterdiği
 tasarım bulguları"); öbür açık işleri sondaki bölümde (`Y0s-gunluk.md` § 3, § 11; `Y0s-kontrol.md` § 9 ve "Yeniden kontrol").
+Y0f (fizik simülasyonu, MuJoCo, 22.11.2026; `0ed416f`; `dongu-158.md` paketi değil, Y0s'un fizik katmanı) → K75–K80 (fizik bulguları;
+`planlama/d158/Y0f-gunluk.md` § 5, § 10, `kod/SIMULASYON.md` "Fizik simülasyonu (Y0f)"); öbür açık işleri sondaki bölümde
+(`Y0f-kontrol.md` § 7, § 9, § 10).
 
 ---
 
@@ -1612,6 +1622,69 @@ olanlar protokolde `taslak: true` işaretli. Sonuç sayfasındaki aciliyet grupl
 - **Kaynak:** `kod/SIMULASYON.md` "Simülasyonun gösterdiği tasarım bulguları" (c); `test_tasarim_bulgulari.py`.
 - **Durum:** açık (22.11.2026, Y0s kayıt eşitlemesinde açıldı).
 
+K75–K80 Y0f fizik simülasyonunun (MuJoCo, CAD kütle ve atalet, firmware 0.5.0 davranışı) bulguları; gerçek robotta denenmedi.
+Sayıların çoğu üç TAHMİN parametreye bağlı: motor durma torku (depoda iki kaynak: 21 ve 9 kg·cm), zemin sürtünmesi µ, dişli kutusu
+geri sürülme sürtünmesi. Sınıflama (sağlam / TAHMİN) `kod/SIMULASYON.md` "Karar isteyenler" ve `Y0f-kontrol.md` § 3. Hepsi Ahmet ile
+Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör onaylar).
+
+## K75 · Yerinde dönüş: firmware mi mekanik mi (Y0f)
+- **Soru:** firmware dönüş komutunu 1 rad/s'de kırpıyor ve açık çevrimde PWM ≈ %55'te kalıyor (`u = 0,213 / 0,39`); bu hâliyle µ ≥ 0,45'te
+  robot dönmüyor. Tam PWM'de 21 kg·cm motorla 0,30 / 0,16 / 0,12 rad/s (µ 0,4 / 0,5 / 0,8); µ 0,8'de 90° ≈ 13 s, tam tur ≈ 52 s, motorlar
+  durma noktasına yakın. 9 kg·cm motorla hiçbir koşulda dönmüyor. Nasıl çözülsün?
+- **Seçenekler (sırasız):** firmware tarafı (dönüşte `w` sınırı, PWM eşlemesine ileri besleme / durma torku telafisi, enkoderle kapalı
+  çevrim) ve / veya mekanik taraf (ör. ön tekerlerde omni, sarhoş teker, iz / dingil oranı).
+- **Bilinmesi gereken:** firmware düzeltmesi tek başına işe yarar bir yerinde dönüş vermez (21 kg·cm'de bile). Geometri sağlam
+  (temas modeline duyarsız), eşik TAHMİN (µ, durma torku). µ 0,4'teki 0,30 eşiğe yakın, yük dağılımına duyarlı (`Y0f-kontrol.md` § 10.4).
+- **Önerilen varsayılan:** önerilmedi; önce durma torku ve µ ölçülmeli. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Dönüş) ve "Karar isteyenler"; `Y0f-gunluk.md` § 10 K1; `Y0f-kontrol.md` § 3.4, § 10.4.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+
+## K76 · Rampada `dur` sonrası tutmama (Y0f)
+- **Soru:** kısa devre freni sıfır hızda tork vermiyor; `dur` sonrası robot rampada geri kayıyor. Kararlı kayma 5°'de 5,8–34,4 mm/s,
+  10°'de 72–101 mm/s (aralık dişli sürtünmesi 0,2 / 0,05 N·m TAHMİN'ine bağlı); 3°'de de tutmuyor (3° / 0,2'deki 2,5 mm/s model ürünü).
+  Tutma döngüsü (enkoderle konum tutma) ya da fren / kilit istenecek mi; robot rampada kullanılacak mı?
+- **Bilinmesi gereken:** mekanizma fizik olarak sağlam, hız TAHMİN. 5°'de tutmak için dişli sürtünmesi ≥ 0,23 N·m gerekir. Rampaya
+  15°'ye dek çıkılıyor, 20°'de geri devrilme (statik geri devrilme 18,6°).
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Rampa, tablo); `Y0f-gunluk.md` § 10 K2; `Y0f-kontrol.md` § 3.3.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+
+## K77 · Bekçi ani duruşunda arka aks boşalması (Y0f)
+- **Soru:** bekçi (500 ms `sur` yok) tam hızdan PWM 0 + kısa devre freniyle ani durduruyor. 21 ve 15 kg·cm motorda arka aks kısa süre
+  boşalıyor (0 N), 9 kg·cm'de boşalmıyor (en az 65 N). Devrilme ilerleyemiyor: arka tekerler yükünü kaybedince yalnız ön tekerler
+  frenliyor, ≈ 2,5 m/s² < eşik 3,68 m/s². Bekçiye de rampalı fren istenecek mi?
+- **Bilinmesi gereken:** devrilmeme sağlam; aks boşalması durma torku TAHMİN'ine bağlı. Tepe yavaşlama ve 0 N süresi ölçüm / temas
+  ayarı ürünü (hüküm değil). Firmware 0.5.0'da bekçi duruşu rampasız.
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Durma (a)–(c)); `Y0f-gunluk.md` § 10 K3; `Y0f-kontrol.md` § 3.2.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+
+## K78 · Acil stopta boşta kayma mesafesi (Y0f)
+- **Soru:** acil stopta sürücü kesiliyor (EN LOW) ve robot boşta kayıyor: tam hızdan 0,08–0,29 m (0,5–1,5 s). Bu mesafe kabul mü,
+  aktif fren istenecek mi?
+- **Bilinmesi gereken:** aralık yansıyan atalet (0–0,015 kg·m²) ve dişli sürtünmesi (0,05 / 0,2 N·m) TAHMİN'ine bağlı; ana
+  parametrelerle 0,218 m.
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Acil stop); `olcum.json` `fren.acil_stop_araligi`; `Y0f-kontrol.md` § 7 K7.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+
+## K79 · Açık çevrimde düşük hız komutunda düşük tork: kapalı çevrim hız kontrolü (Y0f)
+- **Soru:** firmware PWM'i hıza orantılı veriyor; 0,2 m/s komutla robot yalnız 5 mm eşiği geçiyor (azami hızla 30 mm; 40 mm'de ön teker
+  çıkıyor ama etek takılıyor). Kapalı çevrim hız kontrolü (PID) ya da ileri besleme istenecek mi?
+- **Bilinmesi gereken:** sayılar durma torku TAHMİN'ine bağlı; 9 kg·cm motorla azami hızda da 5 mm. K75'in firmware seçenekleriyle ilişkili.
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Eşik) ve "Karar isteyenler"; `Y0f-kontrol.md` § 3.5–§ 3.6.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+
+## K80 · TASLAK sonar kuralı rampayı ve eşiği engel sayıyor (Y0f)
+- **Soru:** sonar kuralı açıkken (TASLAK, 30 cm'de dur) robot 15° ve 20° rampayı ve 40 mm eşiği engel görüp 30 cm önünde duruyor;
+  10°'ye dek geçiyor. Rampa kipinde sonar kuralı ne olacak?
+- **Bilinmesi gereken:** sonar ışın modeli ve bu bulgu bağımsız kontrol edilmedi (`Y0f-kontrol.md` § 9). K70'e bağlı (sonar güvenliği
+  firmware'e girmezse soru düşer).
+- **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
+- **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Rampa, Eşik) ve "Karar isteyenler".
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+
 ---
 
 ## Karar değil, iş (kuyruğa alınmadı)
@@ -2202,3 +2275,32 @@ ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
     yaklaşma; rehber üretim zinciri ve çakışma taraması (koşulmadı).
   - **Bakılmadı (B, "Yeniden kontrol"):** `gorunum.html` diff'i satır satır okunmadı, yalnız canlı davranışı denendi; `SIMULASYON.md`
     tasarım bölümü göz gezdirildi; 8 yeni bozmanın 5'i (B10, B11, B14, B15, B18) yalnız hakemli koşuldu; gerçek kart yok.
+
+**Y0f (fizik simülasyonu, MuJoCo) kapanışından açık iş (22.11, `0ed416f`; `planlama/d158/Y0f-gunluk.md` § 3, § 10, `Y0f-kontrol.md` § 7,
+§ 9, § 10, `kod/SIMULASYON.md` "Fizik simülasyonu (Y0f)"; karar değil, iş)**
+  - **Kararlar K75–K80'de** (yerinde dönüş, rampada tutma, bekçi duruşu, acil stop kayması, kapalı çevrim, sonar kuralı ve rampa).
+  - **Ölçülmesi gereken üç parametre:** motor durma torku (depoda iki kaynak: 21 ve 9 kg·cm; Ç-f3, `planlama/adim3/elektrik.md` uyarısı),
+    zemin sürtünmesi µ, dişli kutusu geri sürülme sürtünmesi. Dönüş, rampa ve acil stop sonuçları bunlara bağlı; ölçülünce fizik
+    koşusu yeniden (`kod/fizik/fizik_parametreleri.json`).
+  - **Ç-f1 ad eşlemesi şüpheli:** `protokol.json` `sag_omuz → r_s1`; model robotun kendi çerçevesinde (`sag_*` = CAD "Sol", K65'e uygun),
+    `eklem_sinirlari.json` `r_s1` CAD adını izliyor. Sayıları etkilemiyor (sınırlar ve `bagimli` iki yanda aynı); B'ye göre bu paketten
+    önce de vardı. K65 § 3 eşlemesiyle kapatılmalı (`Y0f-kontrol.md` § 2).
+  - **Bilgi, sağlam sonuçlar:** statik devrilme el hesabı ileri 20,6°, geri 18,5° (fizik 20,7 / 18,6°), yana 25,2° (fizik teker dış
+    kenarı geometrisiyle; fizik 25,3°, taban-analiz teker merkeziyle 22,5°); model kütlesi 26.276 g ve AM CAD ile aynı (fark ≤ 0,05 mm);
+    rampaya 15°'ye dek çıkılıyor, 20°'de geri devrilme (çıkış durma torkuna bağlı; duyarlılık `Y0f-olcum/olcum.md`).
+  - **Bağımsız kontrol edilmeyenler (B, `Y0f-kontrol.md` § 9):** `cad_cikar.py`'nin FreeCAD'den yeniden çıkarımı (FreeCAD koşulmadı;
+    grup ataletleri parça düzeyinde doğrulanmadı, yalnız mertebe); `carpisma_denetim.py` ve kol zarf taraması; sonar ışın modeli ve
+    "sonar açıkken 15° rampa / 40 mm eşik engel" bulgusu (yalnız A'nın sayısı okundu); dinamik kol salınımı; rampa sahnesinde pencereden
+    sürüş; gerçek klavyeyle F12.
+  - **Bağımsız kontrol edilmeyenler (B, § 10.7):** `fren.bekci_duyarlilik` ve `fren.acil_stop_araligi` yeni ölçüm kodu satır satır
+    okunmadı; pencere yeniden açılmadı; `olcum.md` (K9) bakılmadı; payların fiziksel bir gerileme (ör. fren torku yarıya) karşısında
+    denenmesi yapılmadı, yalnız sayılarla akıl yürütüldü. Ek: F10 / F12 tuşları gerçek klavyeyle denenmedi (B'nin pencere denemesi
+    sentetik tuş olaylarıyla, `Y0f-kontrol.md` § 5).
+  - **Fizikte de modellenmeyenler:** lastik esnekliği ve temas yaması, akım sınırı ve motor endüktansı, akü gerilim düşümü (13,1 V sabit),
+    dişli boşluğu, servo iç dinamiği, esnek parçalar, sensör gürültüsü, IMU; çarpışma ilkel şekillerle (`kod/SIMULASYON.md` "Fizikte de
+    modellenmeyenler").
+  - **Fizik bağımlılığı:** MuJoCo 4.0.1, Python 3.14, depo dışı sanal ortam (`%LOCALAPPDATA%\lale-sim-venv`); kurulum adımları
+    `kod/SIMULASYON.md` "Fizik simülasyonu (Y0f)" bölümünde (`py -3.14 -m venv …`, `pip install -r kod\fizik\gereksinimler.txt`).
+    mujoco yokken fizik testleri "atlandı" der.
+  - **B'nin düşük önemli notları (`Y0f-kontrol.md` § 7):** K8 hakem 1e-4 m/s kırpması arka uçta (belgede yazılı); K9 `olcum.md`
+    6.004 satırlık JSON dökümü, okunur özet değil; `dur_fren_yolu` payı +5 mm (ölçülen fazlalık 0,1 mm), engel değil (§ 10.2).

@@ -180,3 +180,20 @@ B'nin raporu okundu; K1–K10 ve küçük maddeler. Sınırlar aynı (git add / 
   yazıldı: sayı özeti aynı (`f3507f3911bd53da`), süre alanları o koşunun. `kod/fizik/testler/test_fizik.py`'de atlama dekoratörü
   bir ada bağlandı (`fizik_gerekli`), çünkü `pre-push` kancasının e-posta kalıbı sütun 0'daki `@unittest.skipUnless` satırını
   yanlış alarm olarak yakalıyordu; davranış değişmedi (mujoco yokken 6 test atlandı, sanal ortamda fizik 6 / 6).
+
+## 11. Kapanış (C)
+
+C ajanı, 22.11 (saat okundu: 23:04).
+
+**Adım 1, paket commit'i `0ed416f`** ("Lale Y0f: fizik simülasyonu (MuJoCo): …"; 50 dosya, ≈ 4,3 MB).
+- Ön kontrol: yerel = uzak = `bec3f03`; F9c 2 (yapısal, K68); 2B 58 / 58; fizik koşusu çıkış 0, fizik 6 / 6, Y0s fizikte 58 / 58,
+  sayı özeti `f3507f3911bd53da`; 21 eski dosya md5 21 / 21.
+- Commit'ten önce B'nin Y1 önerisiyle iki belge düzeltmesi (`kod/SIMULASYON.md` "Karar isteyenler" dönüş satırı; 0,17 / 0,30 farkının
+  açıklaması `SIMULASYON.md` ve bu günlük § 10 K1'de) ve `test_fizik.py` dekoratörü (yukarıda). Atlama iki yönde sınandı: sistem
+  Python'u (mujoco yok) 6 / 6 "atlandı"; sanal ortam fizik 6 / 6, özet aynı.
+- `pre-push` kalıpları sahnelenen farkın tamamında 0 (dekoratörden önce e-posta kalıbı 2 satırda yanlış alarm veriyordu); commit'ten
+  sonra kanca bu aralıkta çalıştırıldı: çıkış 0. Konu öneki `Lale Y0f:` (Y0s emsali; döngü paketine bağlanmaz).
+
+**Adım 2, kayıt eşitlemesi** (bu bölümle aynı commit): `dongu-158.md` § 5 satırı ve § 3 F5 altına Y0f notu; `karar-kuyrugu.md`
+K75–K80 (açık 34 → 40, toplam 80) ve "Y0f … kapanışından açık iş" bölümü; `F9c-uret.py` `Y0F` / `Y0FK`, `GRUP` K75–K80 (taslak), iki
+sayfa notu; sayfa yeniden üretildi. `F9c-dogrula.py` değişmedi. Push ve commit sonrası ölçüm orkestratöre raporda.
