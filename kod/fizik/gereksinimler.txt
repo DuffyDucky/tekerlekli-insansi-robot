@@ -1,0 +1,15 @@
+# Y0f fizik simülasyonu: sanal ortam paketleri (pip freeze, 22.11.2026). Python 3.14.0 (64 bit, Windows).
+# Sanal ortam DEPO DIŞINDA: %LOCALAPPDATA%\lale-sim-venv (başka yer için LALE_SIM_VENV ortam değişkeni).
+#   py -3.14 -m venv "%LOCALAPPDATA%\lale-sim-venv"
+#   "%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe" -m pip install -r kod\fizik\gereksinimler.txt
+# Bunlar yoksa 2B simülasyon ve 58 test (py -3 kod\testler\kos.py) değişmeden çalışır; fizik koşucusu "atlandı" der.
+# mujoco 4.0.1 kendi bağımlılıkları olarak mujoco-core, mujoco-studio(-wasm), glfw, numpy, PyOpenGL, websockets'i çeker.
+# pip 25.2 (sanal ortamın kendi pip'i)
+glfw==2.11.0
+mujoco==4.0.1
+mujoco-core==4.0.1
+mujoco-studio==4.0.1
+mujoco-studio-wasm==4.0.1
+numpy==2.5.5
+PyOpenGL==3.1.10
+websockets==17.4

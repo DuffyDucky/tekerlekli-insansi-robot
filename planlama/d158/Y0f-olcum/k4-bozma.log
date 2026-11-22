@@ -1,0 +1,115 @@
+# K4 bozma deneyi (düzeltme turu): cekirdek.py _bekci_kontrol içindeki _motor_ani_dur() -> pass; deneyden sonra geri alındı
+# cekirdek.py md5 önce bf8b866155e18149dcc9ea987fd50329 | bozukken b12fecefeb8c6c55fe65dfc37e9258b0 | sonra bf8b866155e18149dcc9ea987fd50329
+## 2B py -3 kod/testler/kos.py: çıkış 1
+FAIL: test_kablo_cekilince_durur_ve_kilitlenir (testler.test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir)
+FAIL: test_500ms_sur_gelmezse_durur (testler.test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur)
+FAIL: test_ping_bekciyi_beslemez (testler.test_guvenlik.Bekci.test_ping_bekciyi_beslemez)
+FAIL: test_bozuk_satir_bekciyi_ve_sessizligi_beslemez (testler.test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez)
+FAIL: test_soket_kapaninca_durur (testler.test_tcp_duman.TcpDuman.test_soket_kapaninca_durur)
+FAILED (failures=5)
+OZET: test 58 | gecen 53 | kalan 5 | atlanan 0 | sure 10.7 s
+
+## fizik kos_fizik.py --olcum-yok: çıkış 1
+Y0f fizik koşusu | Python 3.14.0
+MuJoCo 4.0.1
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.843s
+
+OK
+OZET fizik testleri: test 6 | gecen 6 | kalan 0 | atlanan 0 | sure 0.8 s
+Y0s testleri fizikte: OZET: test 58 | gecen 53 | kalan 5 | atlanan 0 | sure 17.8 s (18.1 s)
+  YENİ KALAN     test_500ms_sur_gelmezse_durur
+  YENİ KALAN     test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+  YENİ KALAN     test_kablo_cekilince_durur_ve_kilitlenir
+  YENİ KALAN     test_ping_bekciyi_beslemez
+  YENİ KALAN     test_soket_kapaninca_durur
+  doğrulama farkı dur_fren_yolu  dur fren yolu üst sınırına +5 mm (açık çevrim: teker komut rampasının arkasından gelir; ölçülen fazlalık 0,1 mm)
+  doğrulama farkı durus          anında durma yerine: sürücü komutu kesik (hedef 0; fren = EN HIGH + PWM 0, boşta = EN LOW) ve robot FIZIK_DURUS payı içinde durur (enkoder sabit, yol sınırlı)
+  doğrulama farkı hiz_esitligi   hakem teker / gövde hızı 6 basamak eşitlik yerine ±0,01 m/s (açık çevrim KP = 0: akü 13,1 V, yük)
+  doğrulama farkı kablo_yolu     kopukken yol üst sınırına fren payı (bekçi durmasından sonra kısa devre freni kayması)
+  doğrulama farkı reset_odo      reset sonrası ilk odo (0, 0) yerine: sayaç sıfırlandı (reset öncesinden küçük) ve boşta kayma payından az tik
+  doğrulama farkı w_kirpma       yay dönüşünde enkoder oranı yerine firmware'in sürücüye verdiği teker hedefleri oranı (kırpma firmware'in işi); kızak yönlendirmeli robotun yayı gerçekten çizip çizmediği fiziğin bulgusudur (SIMULASYON.md dönüş)
+FAIL: test_500ms_sur_gelmezse_durur (testler.test_guvenlik.Bekci.test_500ms_sur_gelmezse_durur)
+Dayanak: yazilim-plani.md § Mimari "güvenlik: 500 ms Pi'den mesaj gelmezse teker DUR"; Y1 kabul testi; main watchdog.cpp.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<depo>/kod\testler\test_guvenlik.py", line 271, in test_500ms_sur_gelmezse_durur
+    self.hakem_durdu("fren", "500 ms sonra teker hâlâ dönüyor")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 270, in hakem_durdu
+    self.surucu_kesik_dogrula(durus)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 260, in surucu_kesik_dogrula
+    self.assertEqual(s["hedef_m_s"], [0.0, 0.0], "durma komutunda firmware teker hedefi sıfırlanmadı: %r" % (s,))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [0.3, 0.3] != [0.0, 0.0]
+
+First differing element 0:
+0.3
+0.0
+
+- [0.3, 0.3]
+?    ^    ^
+
++
+FAIL: test_bozuk_satir_bekciyi_ve_sessizligi_beslemez (testler.test_guvenlik.BozukMesaj.test_bozuk_satir_bekciyi_ve_sessizligi_beslemez)
+Dayanak: main seri_protokol.cpp ("sessizlik sayacı yalnız bilinen komutlarla beslenir"), watchdog.cpp; yazilim-plani.md mimari 500 ms.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<depo>/kod\testler\test_guvenlik.py", line 444, in test_bozuk_satir_bekciyi_ve_sessizligi_beslemez
+    self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p0 + PLAN_BEKCI_MS + 20 + self.tol, durus="fren"),
+                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 248, in enkoder_duruyor
+    sonra_ms = self.durus_dogrula(durus, sonra_ms, bas, en_az)
+  File "<depo>/kod\testler\duzenek.py", line 287, in durus_dogrula
+    self.surucu_kesik_dogrula(durus)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 260, in surucu_kesik_dogrula
+    self.assertEqual(s["h
+FAIL: test_kablo_cekilince_durur_ve_kilitlenir (testler.test_guvenlik.BaglantiKopmasi.test_kablo_cekilince_durur_ve_kilitlenir)
+Dayanak: yazilim-plani.md Y1 kabul testi "kablo çekilince 500 ms içinde duruyor"; mimari güvenlik 500 ms; main guc.h sessizlik.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<depo>/kod\testler\test_guvenlik.py", line 355, in test_kablo_cekilince_durur_ve_kilitlenir
+    self.hakem_durdu("fren", "kablo çekildikten 500 ms sonra teker dönüyor")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 270, in hakem_durdu
+    self.surucu_kesik_dogrula(durus)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 260, in surucu_kesik_dogrula
+    self.assertEqual(s["hedef_m_s"], [0.0, 0.0], "durma komutunda firmware teker hedefi sıfırlanmadı: %r" % (s,))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [0.3, 0.3] != 
+FAIL: test_ping_bekciyi_beslemez (testler.test_guvenlik.Bekci.test_ping_bekciyi_beslemez)
+Dayanak: main seri_protokol.h ("ping ... bekçiyi beslemez"); yazilim-plani.md ile fark Y0s-gunluk.md § 3 Ç4.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<depo>/kod\testler\test_guvenlik.py", line 291, in test_ping_bekciyi_beslemez
+    self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p_ms + PLAN_BEKCI_MS + 20 + self.tol, durus="fren"),
+                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 248, in enkoder_duruyor
+    sonra_ms = self.durus_dogrula(durus, sonra_ms, bas, en_az)
+  File "<depo>/kod\testler\duzenek.py", line 287, in durus_dogrula
+    self.surucu_kesik_dogrula(durus)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "<depo>/kod\testler\duzenek.py", line 260, in surucu_kesik_dogrula
+    self.assertEqual(s["hedef_m_s"], [0.0, 0.0], "durma komutunda firmware teker hedefi sıfırlanmadı: %r" % (s,))
+ 
+FAIL: test_soket_kapaninca_durur (testler.test_tcp_duman.TcpDuman.test_soket_kapaninca_durur)
+Dayanak: yazilim-plani.md Y1 kabul testi "kablo çekilince 500 ms içinde duruyor" (gerçek zamanda, pay 150 ms).
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<depo>/kod\testler\test_tcp_duman.py", line 66, in test_soket_kapaninca_durur
+    self.assertEqual(self.hakem()["v"], 0.0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.3 != 0.0
+
+----------------------------------------------------------------------
+Ran 58 tests in 17.802s
+
+FAILED (failures=5)
+OZET: test 58 | gecen 53 | kalan 5 | atlanan 0 | sure 17.8 s
+      (bunların 5'i güvenlik testi değil, bilinen davranış / tasarım sorusu: test_tasarim_bulgulari)
+
+SONUÇ: FARK VAR | toplam 18.9 s

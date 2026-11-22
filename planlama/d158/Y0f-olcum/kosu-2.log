@@ -1,0 +1,22 @@
+Y0f fizik koşusu | Python 3.14.0
+MuJoCo 4.0.1
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.734s
+
+OK
+OZET fizik testleri: test 6 | gecen 6 | kalan 0 | atlanan 0 | sure 0.7 s
+Y0s testleri fizikte: OZET: test 58 | gecen 48 | kalan 10 | atlanan 0 | sure 13.7 s (14.0 s)
+  beklenen fark  test_500ms_sur_gelmezse_durur                              bekçi ani dur (PWM 0, EN HIGH = kısa devre freni) viskoz: hız üstel söner, test anında 0 bekliyor
+  beklenen fark  test_acil_stop_kilitler_yeniden_devreye_alma_operatorle    acil stop EN LOW = motor boşta; robot 0 m/s'ye anında inmez, ≈ 1,1 s / 0,22 m kayar (2B anında 0)
+  beklenen fark  test_acilis_ve_reset_guc_kapali                            reset anında robot hâlâ kayıyor: reset sonrası odo 0 değil (boşta kayma)
+  beklenen fark  test_bozuk_satir_bekciyi_ve_sessizligi_beslemez            bekçi durmasında hız anında 0 değil (kısa devre freni viskoz)
+  beklenen fark  test_cok_buyuk_v_teker_azamisine_kirpilir                  açık çevrim (KP = 0): akü 13,1 V / 12 V anma -> boş hız %9 yüksek, yük altında 0,396 m/s (2B tam 0,39)
+  beklenen fark  test_cok_buyuk_w_kirpilir_donus_orani_korunur              kızak yönlendirme: mu 0,8'de yerinde dönme torku yetmiyor (yanal kayma direnci), robot dönmüyor; el hesabı aynı (Y0f § bulgular)
+  beklenen fark  test_dur_fren_siniriyla_durur                              dur sonrası firmware rampası 0'a inince kısa devre freni: son birkaç mm/s üstel sönüyor; testin anlık 0 beklentisi tutmuyor
+  beklenen fark  test_ivme_siniri_duz_zemin                                 açık çevrim: yuvarlanma direnci + dişli sürtünmesi altında 0,3 m/s komutu 0,297 m/s verir (2B tam 0,3)
+  beklenen fark  test_kablo_cekilince_durur_ve_kilitlenir                   bağlantı kopunca arıza -> EN LOW (boşta): durma anlık değil
+  beklenen fark  test_ping_bekciyi_beslemez                                 bekçi durmasında hız anında 0 değil (kısa devre freni viskoz)
+Ölçümler: planlama\d158\Y0f-olcum\olcum.json (120.9 s) | sayı özeti (SHA-256, süreler hariç) 70a9a5a6e4b0dd5c
+SONUÇ: beklendiği gibi | toplam 135.5 s
+cikis=0

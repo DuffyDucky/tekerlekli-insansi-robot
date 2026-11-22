@@ -1,0 +1,13 @@
+{
+  "ad": "oda_rampa",
+  "aciklama": "Y0f 3B sahnesi: oda_engelli haritasi (8 x 6 m; ara duvar, masa, kolon, sehpa, saksi) + sol odada 10 derecelik rampa ve ustte platform, sag odada 15 mm ve 30 mm esik. Kapi boslugu x = 5, y 2,2-3,4.",
+  "harita": "oda_engelli",
+  "baslangic": {"x": 1.5, "y": 1.5, "aci_derece": 0},
+  "rampalar": [
+    {"x": 3.8, "y": 2.3, "aci_derece": 90, "egim_derece": 10, "uzunluk_m": 1.5, "genislik_m": 0.9, "ust_uzunluk_m": 0.9}
+  ],
+  "esikler": [
+    {"x": 6.0, "y": 3.0, "aci_derece": 0, "yukseklik_mm": 15, "derinlik_m": 0.5, "genislik_m": 1.6},
+    {"x": 7.0, "y": 3.0, "aci_derece": 0, "yukseklik_mm": 30, "derinlik_m": 0.5, "genislik_m": 1.6}
+  ]
+}

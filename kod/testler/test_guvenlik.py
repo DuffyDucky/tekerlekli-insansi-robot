@@ -10,7 +10,7 @@ Plan değerleri (30 cm, 500 ms, 5 s, 600 ms) burada BİLEREK sabit yazılı: tes
 
 import unittest
 
-from testler.duzenek import TIK_M, LaleTesti
+from testler.duzenek import FIZIK_DURUS, TIK_M, LaleTesti
 
 PLAN_SONAR_DUR_CM = 30        # yazilim-plani.md Y3 kabul testi
 TASLAK_HISTEREZIS_CM = 5      # protokol.json guvenlik.sonar_histerezis_cm (TASLAK; plan belirtmiyor)
@@ -155,7 +155,7 @@ class AcilStop(LaleTesti):
         olay = self.guc_olayi_bekle("ariza", 50)
         self.assertEqual(olay["neden"], "acil_stop")
         self.esp.bekle(350)
-        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=olay["ms"]), "acil stop sonrası enkoder sayıyor")
+        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=olay["ms"], durus="bosta"), "acil stop sonrası enkoder sayıyor")
         h = self.hakem_varsa()
         if h:
             self.assertEqual(h["v"], 0.0)
@@ -219,6 +219,7 @@ class AcilStop(LaleTesti):
         self.esp.sur_tut(0.3, 0.0, 1000)
         once = self.esp.ping()
         self.assertGreater(self.esp.son["odo"]["sol"], 0)
+        odo_once = dict(self.esp.son["odo"])
         bas = len(self.esp.gelen)
         self.assertTrue(self.esp.istek({"k": "reset"})["ok"])
         hazir = self.esp.bekle_kosul(lambda m: m.get("k") == "hazir", 2000, bas=bas)
@@ -227,7 +228,15 @@ class AcilStop(LaleTesti):
         sonra = self.esp.ping()
         self.assertLess(sonra["ms"], once["ms"], "reset sonrası kartın saati sıfırlanmadı")
         odo = self.esp.bekle_kosul(lambda m: m.get("k") == "odo", 500)
-        self.assertEqual((odo["sol"], odo["sag"]), (0, 0), "reset sonrası enkoder toplamı sıfır değil")
+        if self.ortam.fizik:
+            # FIZIK_FARKLARI "reset_odo" / "durus": reset = kart kapalı, EN LOW; robot boşta kayarken sayaç yeniden sayar
+            self.surucu_kesik_dogrula("bosta")
+            self.assertLess(odo["sol"], odo_once["sol"], "reset sonrası enkoder toplamı sıfırlanmadı")
+            self.assertLessEqual(max(odo["sol"], odo["sag"]), FIZIK_DURUS["bosta"]["m"] / TIK_M,
+                                 "reset sonrası boşta kayma payından uzun yol")
+            self.esp.bekle(FIZIK_DURUS["bosta"]["ms"])
+        else:
+            self.assertEqual((odo["sol"], odo["sag"]), (0, 0), "reset sonrası enkoder toplamı sıfır değil")
         h = self.hakem_varsa()
         if h:
             self.assertEqual(h["v"], 0.0)
@@ -259,16 +268,14 @@ class Bekci(LaleTesti):
         if h:
             self.assertGreater(h["v"], 0.25, "bekçi erken tetiklendi")
         self.esp.bekle(30 + 2 * self.tol)
-        h = self.hakem_varsa()
-        if h:
-            self.assertEqual(h["v"], 0.0, "500 ms sonra teker hâlâ dönüyor")
+        self.hakem_durdu("fren", "500 ms sonra teker hâlâ dönüyor")
         self.esp.bekle(600)
         # protokol: odo, son sur'dan sonraki ~400 ms boyunca artıyor, 500 + pay ms sonra sabit
         odo = self.esp.mesajlar("odo", bas)
         once = [m["sol"] for m in odo if m["ms"] <= p_ms + PLAN_BEKCI_MS - 100]
         self.assertGreater(len(once), 2)
         self.assertTrue(all(b > a for a, b in zip(once, once[1:])), "bekçiden önce teker durmuş")
-        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p_ms + PLAN_BEKCI_MS + 20 + self.tol, en_az=3),
+        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p_ms + PLAN_BEKCI_MS + 20 + self.tol, en_az=3, durus="fren"),
                         "bekçiden sonra enkoder sayıyor")
         # güç bırakılmaz: bekçi yalnız motoru durdurur, yeni sur yeniden sürer
         self.assertEqual(self.esp.ping()["guc"], "devrede")
@@ -281,7 +288,7 @@ class Bekci(LaleTesti):
         for _ in range(9):
             self.esp.ping()
             self.esp.bekle(100)
-        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p_ms + PLAN_BEKCI_MS + 20 + self.tol),
+        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p_ms + PLAN_BEKCI_MS + 20 + self.tol, durus="fren"),
                         "yalnız ping varken teker dönmeye devam ediyor")
         h = self.hakem_varsa()
         if h:
@@ -306,7 +313,8 @@ class Bekci(LaleTesti):
         fren_yolu = yol - 0.3 * (t_dur - ilk["ms"]) / 1000.0
         beklenen = 0.3 ** 2 / (2 * FREN_DUZ)                        # 0,025 m
         self.assertGreater(fren_yolu, 0.5 * beklenen, "fren yolu yok: anında durdu")
-        self.assertLess(fren_yolu, 1.5 * beklenen + 0.3 * self.tol / 1000.0, "fren 1,8 m/s²'den yavaş")
+        pay = 0.005 if self.ortam.fizik else 0.0               # FIZIK_FARKLARI "dur_fren_yolu"
+        self.assertLess(fren_yolu, 1.5 * beklenen + 0.3 * self.tol / 1000.0 + pay, "fren 1,8 m/s²'den yavaş")
 
 
 class Sessizlik(LaleTesti):
@@ -344,9 +352,7 @@ class BaglantiKopmasi(LaleTesti):
             except (ConnectionError, OSError):
                 pass
             self.esp.bekle(100)
-        h = self.hakem_varsa()
-        if h:
-            self.assertEqual(h["v"], 0.0, "kablo çekildikten 500 ms sonra teker dönüyor")
+        self.hakem_durdu("fren", "kablo çekildikten 500 ms sonra teker dönüyor")
         self.esp.bekle(PLAN_SESSIZLIK_MS)
         self.ortam.kablo_bagla()
         self.esp.bekle(50)
@@ -356,6 +362,8 @@ class BaglantiKopmasi(LaleTesti):
         odo1 = self.esp.bekle_kosul(lambda m: m.get("k") == "odo", 500)
         yol = (odo1["sol"] - odo0["sol"] + odo1["sag"] - odo0["sag"]) / 2.0 * TIK_M
         en_cok = 0.3 * (p_ms - odo0["ms"] + PLAN_BEKCI_MS + 30 + self.tol) / 1000.0
+        if self.ortam.fizik:                                   # FIZIK_FARKLARI "kablo_yolu"
+            en_cok += FIZIK_DURUS["fren"]["m"]
         self.assertLessEqual(yol, en_cok, "kablo çekildikten sonra 500 ms'den uzun sürdü")
         self.hata_bekle(self.esp.sur(0.3, 0.0), "devrede_degil", "sur")
         self.devreye_al()
@@ -433,7 +441,7 @@ class BozukMesaj(LaleTesti):
         for _ in range(9):
             self.esp.ham_gonder(b'{"k":"sur","v":0.3}\n{bozuk\n{"k":"ucus"}\n')
             self.esp.bekle(100)
-        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p0 + PLAN_BEKCI_MS + 20 + self.tol),
+        self.assertTrue(self.enkoder_duruyor(bas, sonra_ms=p0 + PLAN_BEKCI_MS + 20 + self.tol, durus="fren"),
                         "geçersiz sur bekçiyi besledi")
         h = self.hakem_varsa()
         if h:
@@ -476,15 +484,16 @@ class SinirDisiHiz(LaleTesti):
         self.esp.sur_tut(5.0, 0.0, 2500)
         h = self.hakem_varsa()
         if h:
-            self.assertAlmostEqual(h["teker"][0], TEKER_AZAMI, places=6)
-            self.assertAlmostEqual(h["teker"][1], TEKER_AZAMI, places=6)
+            self.hiz_esit(h["teker"][0], TEKER_AZAMI)
+            self.hiz_esit(h["teker"][1], TEKER_AZAMI)
         # protokol: 100 ms'lik odo farkı teker azamisinin üstüne çıkmaz (1980 tik / tur, Ø125; TAHMİN)
         bas = len(self.esp.gelen)
         self.esp.sur_tut(5.0, 0.0, 1000)
         hiz = self.odo_hizlari(bas)
         self.assertTrue(hiz)
+        pay = 0.01 if self.ortam.fizik else 0.0               # FIZIK_FARKLARI "hiz_esitligi"
         for _, sol, sag in hiz:
-            self.assertLessEqual(max(sol, sag), TEKER_AZAMI + 2 * TIK_M / 0.1)
+            self.assertLessEqual(max(sol, sag), TEKER_AZAMI + 2 * TIK_M / 0.1 + pay)
         self.assertGreater(hiz[-1][1], TEKER_AZAMI - 2 * TIK_M / 0.1)
 
     def test_cok_buyuk_w_kirpilir_donus_orani_korunur(self):
@@ -495,6 +504,15 @@ class SinirDisiHiz(LaleTesti):
         odo = self.esp.mesajlar("odo", bas)
         d_sol, d_sag = odo[-1]["sol"] - odo[0]["sol"], odo[-1]["sag"] - odo[0]["sag"]
         beklenen = (0.3 - FW_IZ / 2) / (0.3 + FW_IZ / 2)       # w 1'e kırpılır; oran firmware iziyle
+        if self.ortam.fizik:
+            # FIZIK_FARKLARI "w_kirpma": kırpmayı firmware'in sürücüye verdiği hedeflerden doğrula; yayın çizilip
+            # çizilmediği (enkoder oranı) kızak yönlendirmenin fiziksel sonucudur, firmware doğrulaması değil
+            s = self.hakem()["surucu"]
+            self.assertTrue(s["suruluyor"])
+            self.assertAlmostEqual(s["hedef_m_s"][1], TEKER_AZAMI, places=6)
+            self.assertAlmostEqual(s["hedef_m_s"][0] / s["hedef_m_s"][1], beklenen, places=6)
+            self.assertAlmostEqual(s["pwm"][0] / s["pwm"][1], beklenen, places=6)
+            return
         self.assertAlmostEqual(d_sol / d_sag, beklenen, delta=0.01)
         sag_hiz = self.odo_hizlari(bas)[-1][2]
         self.assertAlmostEqual(sag_hiz, TEKER_AZAMI, delta=2 * TIK_M / 0.1)
@@ -514,7 +532,7 @@ class SinirDisiHiz(LaleTesti):
         self.assertGreater(max(ivme), IVME_DUZ - 0.1)
         h = self.hakem_varsa()
         if h:
-            self.assertAlmostEqual(h["v"], 0.3, places=6)
+            self.hiz_esit(h["v"], 0.3)
 
     def test_rampa_kipinde_ivme_ve_kollar(self):
         """Dayanak: yazilim-plani.md § "Donanımdan gelen kurallar" + Y1 ("rampada ≤ 0,1 m/s² ve kollar ev pozunda"); main seri_protokol.h RAMPA KİPİ."""

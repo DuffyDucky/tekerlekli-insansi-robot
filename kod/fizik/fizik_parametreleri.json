@@ -1,0 +1,33 @@
+{
+  "ad": "Lale fizik modeli parametreleri (Y0f): CAD'de olmayan her fiziksel sayi burada, kaynagi ya da TAHMIN isaretiyle",
+  "tarih": "2026-11-22",
+  "not_": "durum: 'kaynakli' = depodaki bir kaynaktan aynen ya da basit hesapla; 'TAHMIN' = olculmedi / kaynak kendisi tahmin diyor / modelleme secimi. 'alternatif' = duyarlilik kosularinda denenen ikinci deger. Birim SI. Kutle, AM, atalet ve eklem eksenleri bu dosyada DEGIL: CAD'den (kod/fizik/model/cad_govdeler.json, tasarim/freecad/montaj/montaj-analiz.json).",
+  "parametreler": {
+    "teker_zemin_surtunme": {"deger": 0.8, "alternatif": [0.5, 1.0], "durum": "TAHMIN", "kaynak": "kaucuk arazi tekerlegi (BOM 'Arazi tekerlegi 125 x 58') kuru sert zeminde tipik aralik; olculmedi. taban-analiz.json donus varsayimi mu_senaryo 0,4-0,6 kullaniyor (dusuk ucta)"},
+    "govde_zemin_surtunme": {"deger": 0.3, "durum": "TAHMIN", "kaynak": "PETG etek / aluminyum plaka zemine surterse (yalniz devrilme / eşik takilmasinda); olculmedi"},
+    "temas_solref_s": {"deger": 0.004, "durum": "TAHMIN", "kaynak": "modelleme secimi: temas zaman sabiti (MuJoCo solref[0]); lastik esnekligi modellenmez, 26 kg altinda ~1 mm batma"},
+    "motor_durma_torku_Nm": {"deger": 2.059, "alternatif": [0.883], "durum": "TAHMIN", "kaynak": "21 kg*cm: Direnc.net JGB37-520 12V 60RPM sayfasi (raporlar/kaynaklar/05-fiyat-arastirmasi.md, taban-analiz.json motor.stall_kgcm; 'dogrulanmadi', elektrik.md E0). Alternatif 9 kg*cm: Aslong JGB37-520 tablosu oran 90 (raporlar/kaynaklar/06-aku-secimi.md). Iki kaynak 2,3 kat farkli"},
+    "motor_surekli_torku_Nm": {"deger": 0.618, "durum": "TAHMIN", "kaynak": "6,3 kg*cm: taban-analiz.json motor.surekli_kgcm (= durma x 0,3, 'surekli_oran 0,3' varsayimi). Yalniz oran raporu icin"},
+    "motor_bos_hiz_dev_dk": {"deger": 60.0, "durum": "TAHMIN", "kaynak": "BOM 'JGB37-520 12 V 60 dev/dk'; satici degeri yuksuz hiz kabul edildi (yuk altinda olculmedi); firmware TEKER_AZAMI_HIZ 0,39 m/s ayni sayidan"},
+    "motor_anma_gerilimi_V": {"deger": 12.0, "durum": "kaynakli", "kaynak": "BOM 'JGB37-520 12 V'"},
+    "motor_gerilimle_olcekle": {"deger": true, "durum": "TAHMIN", "kaynak": "modelleme secimi: DC motor bos hizi gerilimle orantili; aku 13,1 V (robot_parametreleri aku_v, TAHMIN) iken %100 PWM bos hiz 60 x 13,1 / 12 = 65,5 dev/dk. Firmware acik cevrim (KP = KI = 0, main motorlar.cpp) bunu duzeltmez"},
+    "motor_disli_surtunme_Nm": {"deger": 0.05, "alternatif": [0.2], "durum": "TAHMIN", "kaynak": "teker milinde Coulomb surtunmesi (disli kutusu + kaplin + rulmansiz mil); olculmedi. Bosta (EN LOW) yavaslamayi bu belirler"},
+    "yuvarlanma_direnci_katsayisi": {"deger": 0.03, "durum": "TAHMIN", "kaynak": "tasarim/freecad/taban/taban-analiz.json donus.varsayim.crr 0,03 (el hesabiyla ayni); teker ekleminde sabit Coulomb surtunmesi olarak (crr x statik teker yuku x r = 0,12 N*m), yuk degisimi izlenmez"},
+    "motor_yansiyan_atalet_kgm2": {"deger": 0.005, "alternatif": [0.0], "durum": "TAHMIN", "kaynak": "rotor ataleti ~6e-7 kg*m2 (520 boy DC motor, TAHMIN) x disli orani^2 (~90^2, motorlar.cpp TIK_PER_TUR yorumu 'tahmini')"},
+    "motor_ayni_taraf_paralel": {"deger": true, "durum": "kaynakli", "kaynak": "4 x JGB37, 2 x BTS7960 (raporlar/kaynaklar/06-aku-secimi.md); her taraftaki iki motor ayni PWM'i alir, her biri kendi hizina gore tork uretir"},
+    "enkoder_teker": {"deger": "on", "durum": "TAHMIN", "kaynak": "firmware tarafta bir enkoder (PIN_SOL_ENK_A / PIN_SAG_ENK_A); hangi tekerin motorunda oldugu kaynakta yok: on teker kabul edildi"},
+    "fren_davranisi": {"deger": "EN HIGH + PWM 0 = kisa devre freni (tork = -durma_torku x w / w0); EN LOW ya da bara yok = bosta (yalniz disli surtunmesi)", "durum": "kaynakli", "kaynak": "main kod/esp32/src/motorlar.cpp teker_yaz yorumu '0 iken iki PWM de 0 = BTS7960'ta fren (iki alt transistor iletimde; EN HIGH iken). EN LOW iken (birakik) motor bostadir'; guc.cpp birakma sirasi EN LOW -> PWM 0 -> K1 LOW. Fren torkunun sekli (dogrusal, endüktans yok) TAHMIN"},
+    "servo_ds3235_tork_Nm": {"deger": 3.43, "durum": "TAHMIN", "kaynak": "DS3235 satici etiketi ~35 kg*cm (6,8 V); depoda dogrulanmis veri sayfasi yok. Omuz S1, S2"},
+    "servo_mg996r_tork_Nm": {"deger": 1.08, "durum": "TAHMIN", "kaynak": "MG996R veri sayfasi 11 kg*cm (6 V; raporlar/kaynaklar/04-parca-olculeri.md baglantisi, tork degeri bu pakette acilmadi). Dirsek, bilek, kafa pan / tilt"},
+    "servo_kp_Nm_rad": {"deger": 40.0, "durum": "TAHMIN", "kaynak": "modelleme secimi: servo ic konum dongusu sert kabul; hedef aci sahte ESP32'nin hiz sinirli izlemesinden (cekirdek.py servo_simdi)"},
+    "servo_kv_Nms_rad": {"deger": 1.0, "durum": "TAHMIN", "kaynak": "modelleme secimi"},
+    "servo_gucsuz_surtunme_Nm": {"deger": 0.3, "durum": "TAHMIN", "kaynak": "bara gerilimsizken servo disli kutusunun tutmasi (olculmedi); kollar bu surtunmeyi asarsa yercekimiyle iner"},
+    "servo_yansiyan_atalet_kgm2": {"deger": 0.002, "durum": "TAHMIN", "kaynak": "modelleme secimi (servo rotoru x disli orani^2); sayisal kararlilik"},
+    "kablo_payi": {"deger": {"kutle_g": 400.0, "merkez_cad_mm": [0.0, 150.0, -60.0]}, "durum": "TAHMIN", "kaynak": "tasarim/freecad/taban/taban-analiz.json kablo_payi ('tahmini'); parca listesinde yok. Taban govdesine nokta kutle olarak eklenir"},
+    "zaman_adimi_s": {"deger": 0.001, "durum": "TAHMIN", "kaynak": "modelleme secimi (implicitfast); cekirdegin 10 ms dilimi = 10 fizik adimi"},
+    "duvar_kalinligi_m": {"deger": 0.04, "durum": "TAHMIN", "kaynak": "modelleme secimi: 2B haritanin cevre duvari 3B'de bu kalinlikta kutu, disa dogru kalinlasir (ic yuz haritadaki cizgide)"},
+    "ic_duvar_kalinligi_m": {"deger": 0.002, "durum": "TAHMIN", "kaynak": "modelleme secimi: ic duvar ve kutu kenarlari (2B'de kalinliksiz cizgi) cizgiye ortali ince levha; sonar uzakligi 2B'den en cok 1 mm kisa"},
+    "duvar_yuksekligi_m": {"deger": 1.0, "durum": "TAHMIN", "kaynak": "modelleme secimi"},
+    "sonar_dikey_isin": {"deger": 3, "durum": "TAHMIN", "kaynak": "modelleme secimi: koni 7 yatay x 3 dikey isinla (+-sonar_yari_aci) taranir; yanki kurali 2B ile ayni (gelis > 60 derece yanki yok, robot_parametreleri)"}
+  }
+}

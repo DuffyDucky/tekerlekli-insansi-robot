@@ -1,0 +1,160 @@
+<!-- Y0f Lale fizik modeli. URETILIR: py -3 kod/fizik/model_uret.py (elle duzenleme).
+     Kutle / AM / atalet: CAD (kod/fizik/model/cad_govdeler.json, FreeCAD katilarindan); eklemler: montaj-analiz.json;
+     eklem siniri: kod/ortak/eklem_sinirlari.json; temas, motor, servo: kod/fizik/fizik_parametreleri.json (cogu TAHMIN).
+     Carpisma geometrisi ilkel sekiller (etek / govde / kafa kutusu, kol kapsulleri, teker silindirleri); gorsel ag CAD'den.
+     Sahne (zemin, duvar, rampa) kod/fizik/dunya.py'de eklenir: <!--SAHNE--> isareti. -->
+<mujoco model="lale">
+  <compiler angle="degree" meshdir="__AG__" inertiafromgeom="false" autolimits="true"/>
+  <option timestep="0.001" integrator="implicitfast" cone="elliptic" gravity="0 0 -9.81"/>
+  <size memory="64M"/>
+  <visual><global offwidth="1280" offheight="720"/><quality shadowsize="2048"/></visual>
+  <default>
+    <geom solref="0.004 1"/>
+    <default class="gorsel"><geom type="mesh" contype="0" conaffinity="0" group="1" density="0"/></default>
+    <default class="carpisma"><geom contype="2" conaffinity="1" group="3" friction="0.3 0.005 0.0001" rgba="0.9 0.5 0.1 0.25"/></default>
+    <default class="kol_carpisma"><geom contype="2" conaffinity="1" group="3" friction="0.4 0.005 0.0001" rgba="0.9 0.5 0.1 0.25"/></default>
+    <default class="teker_carpisma"><geom contype="2" conaffinity="1" group="3" friction="0.8 0.005 0.0001" rgba="0.1 0.1 0.1 0.6" condim="3"/></default>
+    <default class="teker"><joint type="hinge" armature="0.005" frictionloss="0.05" damping="0"/></default>
+    <default class="servo_eklem"><joint type="hinge" armature="0.002" damping="0.05"/></default>
+  </default>
+  <asset>
+    <mesh name="m_taban" file="taban.stl" inertia="shell"/>
+    <mesh name="m_govde" file="govde.stl" inertia="shell"/>
+    <mesh name="m_kafa_boyun" file="kafa_boyun.stl" inertia="shell"/>
+    <mesh name="m_kafa_bas" file="kafa_bas.stl" inertia="shell"/>
+    <mesh name="m_sag_omuz_gobek" file="sag_omuz_gobek.stl" inertia="shell"/>
+    <mesh name="m_sag_ust_kol" file="sag_ust_kol.stl" inertia="shell"/>
+    <mesh name="m_sag_on_kol" file="sag_on_kol.stl" inertia="shell"/>
+    <mesh name="m_sag_el" file="sag_el.stl" inertia="shell"/>
+    <mesh name="m_sol_omuz_gobek" file="sol_omuz_gobek.stl" inertia="shell"/>
+    <mesh name="m_sol_ust_kol" file="sol_ust_kol.stl" inertia="shell"/>
+    <mesh name="m_sol_on_kol" file="sol_on_kol.stl" inertia="shell"/>
+    <mesh name="m_sol_el" file="sol_el.stl" inertia="shell"/>
+    <mesh name="m_teker_on_sol" file="teker_on_sol.stl" inertia="shell"/>
+    <mesh name="m_teker_arka_sol" file="teker_arka_sol.stl" inertia="shell"/>
+    <mesh name="m_teker_on_sag" file="teker_on_sag.stl" inertia="shell"/>
+    <mesh name="m_teker_arka_sag" file="teker_arka_sag.stl" inertia="shell"/>
+  </asset>
+  <worldbody>
+    <!--SAHNE-->
+    <body name="taban" pos="0 0 0">
+      <inertial pos="-0.0509434 -0.000664352 0.128347" mass="7.96071" fullinertia="0.0719183 0.16147 0.205158 -0.00129619 0.0103755 0.000411718"/>
+      <freejoint name="kok"/>
+      <geom class="gorsel" mesh="m_taban" rgba="0.35 0.36 0.4 1"/>
+      <geom name="c_etek" class="carpisma" type="box" pos="0 0 0.15" size="0.2625 0.26 0.115"/>
+      <site name="sonar_sol" pos="0.256 0.0794 0.110" size="0.012" rgba="0.1 0.6 0.9 1"/>
+      <site name="sonar_orta" pos="0.256 0 0.110" size="0.012" rgba="0.1 0.6 0.9 1"/>
+      <site name="sonar_sag" pos="0.256 -0.0794 0.110" size="0.012" rgba="0.1 0.6 0.9 1"/>
+      <site name="imu" pos="0 0 0.2" size="0.01"/>
+      <body name="govde" pos="0 0 0">
+        <inertial pos="0.00650922 0.000315676 0.583156" mass="14.3817" fullinertia="3.13602 3.16957 0.348434 0.000112065 -0.0537407 -0.00121132"/>
+        <geom class="gorsel" mesh="m_govde" rgba="0.86 0.84 0.8 1"/>
+        <geom name="c_govde" class="carpisma" type="box" pos="0 0 0.79519" size="0.2642 0.2617 0.53319"/>
+        <body name="kafa_boyun" pos="0 0 1.3346">
+          <inertial pos="0.0068731 0.0005013 0.0892013" mass="0.278558" fullinertia="0.000709446 0.000735927 0.000149477 3.717e-06 -9.295e-05 -9.2864e-06"/>
+          <joint name="kafa_pan" class="servo_eklem" axis="-0 0 1" range="-90 90"/>
+          <geom class="gorsel" mesh="m_kafa_boyun" rgba="0.4 0.4 0.45 1"/>
+          <body name="kafa_bas" pos="0.025 0.0269 0.144278">
+            <inertial pos="-3.38e-05 -0.0258781 0.0009556" mass="1.46925" fullinertia="0.0145802 0.00891782 0.0128242 2.37454e-05 0.000672464 -8.00353e-05"/>
+            <joint name="kafa_tilt" class="servo_eklem" axis="0 1 0" range="-13 13"/>
+            <geom class="gorsel" mesh="m_kafa_bas" rgba="0.9 0.9 0.92 1"/>
+            <geom name="c_kafa" class="carpisma" type="box" pos="-0.021445 -0.0269 -0.006378" size="0.070145 0.1367 0.10915"/>
+          </body>
+        </body>
+        <body name="sag_omuz_gobek" pos="0 -0.15 1.27">
+          <inertial pos="-0.0023208 -0.023982 0.0076059" mass="0.177611" fullinertia="9.10657e-05 9.18784e-05 7.16873e-05 -5.4205e-06 1.3533e-06 9.4059e-06"/>
+          <joint name="sag_omuz" class="servo_eklem" axis="0 -1 0" range="-45 135"/>
+          <geom class="gorsel" mesh="m_sag_omuz_gobek" rgba="0.75 0.73 0.7 1"/>
+          <body name="sag_ust_kol" pos="0.0202 -0.035 0">
+            <inertial pos="-0.0218233 -0.00228049 -0.105688" mass="0.269632" fullinertia="0.0013123 0.00130328 0.000179073 5.30402e-07 -3.23935e-05 -5.25864e-05"/>
+            <joint name="sag_omuz_yan" class="servo_eklem" axis="-1 0 0" range="5 120"/>
+            <geom class="gorsel" mesh="m_sag_ust_kol" rgba="0.75 0.73 0.7 1"/>
+            <geom name="c_sag_ust_kol" class="kol_carpisma" type="capsule" pos="-0.024575 -0.00795 -0.1015" size="0.037875 0.079625"/>
+            <body name="sag_on_kol" pos="-0.02145 -0.0316 -0.203">
+              <inertial pos="0.0010701 0.023605 -0.0494829" mass="0.200852" fullinertia="0.00042743 0.000381335 6.4747e-05 2.906e-07 2.0468e-06 -1.9015e-05"/>
+              <joint name="sag_dirsek" class="servo_eklem" axis="0 -1 0" range="0 105"/>
+              <geom class="gorsel" mesh="m_sag_on_kol" rgba="0.75 0.73 0.7 1"/>
+              <geom name="c_sag_on_kol" class="kol_carpisma" type="capsule" pos="-0.00275 0.02525 -0.04575" size="0.01675 0.05"/>
+              <body name="sag_el" pos="0 0.0316 -0.1155">
+                <inertial pos="0.0004502 0.0022377 -0.0451208" mass="0.0889721" fullinertia="7.81917e-05 8.52983e-05 1.99938e-05 8.96e-08 2.304e-07 6.8178e-06"/>
+                <joint name="sag_bilek" class="servo_eklem" axis="-0 0 -1" range="-90 90"/>
+                <geom class="gorsel" mesh="m_sag_el" rgba="0.75 0.73 0.7 1"/>
+                <geom name="c_sag_el" class="kol_carpisma" type="capsule" pos="0.004 0.002175 -0.04335" size="0.020825 0.024225"/>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="sol_omuz_gobek" pos="0 0.15 1.27">
+          <inertial pos="-0.0023208 0.023982 0.0076059" mass="0.177611" fullinertia="9.10657e-05 9.18784e-05 7.16873e-05 5.4205e-06 1.3533e-06 -9.4059e-06"/>
+          <joint name="sol_omuz" class="servo_eklem" axis="-0 -1 0" range="-45 135"/>
+          <geom class="gorsel" mesh="m_sol_omuz_gobek" rgba="0.75 0.73 0.7 1"/>
+          <body name="sol_ust_kol" pos="0.0202 0.035 0">
+            <inertial pos="-0.0218233 0.00228049 -0.105688" mass="0.269632" fullinertia="0.0013123 0.00130328 0.000179073 -5.30402e-07 -3.23935e-05 5.25864e-05"/>
+            <joint name="sol_omuz_yan" class="servo_eklem" axis="1 0 0" range="5 120"/>
+            <geom class="gorsel" mesh="m_sol_ust_kol" rgba="0.75 0.73 0.7 1"/>
+            <geom name="c_sol_ust_kol" class="kol_carpisma" type="capsule" pos="-0.024575 0.00795 -0.1015" size="0.037875 0.079625"/>
+            <body name="sol_on_kol" pos="-0.02145 0.0316 -0.203">
+              <inertial pos="0.0010701 -0.023605 -0.0494829" mass="0.200852" fullinertia="0.00042743 0.000381335 6.4747e-05 -2.906e-07 2.0468e-06 1.9015e-05"/>
+              <joint name="sol_dirsek" class="servo_eklem" axis="-0 -1 0" range="0 105"/>
+              <geom class="gorsel" mesh="m_sol_on_kol" rgba="0.75 0.73 0.7 1"/>
+              <geom name="c_sol_on_kol" class="kol_carpisma" type="capsule" pos="-0.00275 -0.02525 -0.04575" size="0.01675 0.05"/>
+              <body name="sol_el" pos="0 -0.0316 -0.1155">
+                <inertial pos="0.0004502 -0.0022377 -0.0451208" mass="0.0889721" fullinertia="7.81917e-05 8.52983e-05 1.99938e-05 -8.96e-08 2.304e-07 -6.8178e-06"/>
+                <joint name="sol_bilek" class="servo_eklem" axis="-0 0 1" range="-90 90"/>
+                <geom class="gorsel" mesh="m_sol_el" rgba="0.75 0.73 0.7 1"/>
+                <geom name="c_sol_el" class="kol_carpisma" type="capsule" pos="0.004 -0.002175 -0.04335" size="0.020825 0.024225"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="teker_on_sol" pos="0.185 0.216 0.0625">
+        <inertial pos="0 -0.0057322 0" mass="0.177948" fullinertia="0.000229957 0.000348657 0.000229957 0 0 0"/>
+        <joint name="teker_on_sol" class="teker" axis="0 1 0"/>
+        <geom class="gorsel" mesh="m_teker_on_sol" rgba="0.2 0.2 0.22 1"/>
+        <geom name="c_teker_on_sol" class="teker_carpisma" type="cylinder" size="0.0625 0.029" pos="0 0 0" quat="0.7071068 0.7071068 0 0"/>
+      </body>
+      <body name="teker_arka_sol" pos="-0.185 0.216 0.0625">
+        <inertial pos="0 -0.0057322 0" mass="0.177948" fullinertia="0.000229957 0.000348657 0.000229957 0 0 0"/>
+        <joint name="teker_arka_sol" class="teker" axis="0 1 0"/>
+        <geom class="gorsel" mesh="m_teker_arka_sol" rgba="0.2 0.2 0.22 1"/>
+        <geom name="c_teker_arka_sol" class="teker_carpisma" type="cylinder" size="0.0625 0.029" pos="0 0 0" quat="0.7071068 0.7071068 0 0"/>
+      </body>
+      <body name="teker_on_sag" pos="0.185 -0.216 0.0625">
+        <inertial pos="0 0.0057322 0" mass="0.177948" fullinertia="0.000229957 0.000348657 0.000229957 0 0 0"/>
+        <joint name="teker_on_sag" class="teker" axis="0 1 0"/>
+        <geom class="gorsel" mesh="m_teker_on_sag" rgba="0.2 0.2 0.22 1"/>
+        <geom name="c_teker_on_sag" class="teker_carpisma" type="cylinder" size="0.0625 0.029" pos="0 0 0" quat="0.7071068 0.7071068 0 0"/>
+      </body>
+      <body name="teker_arka_sag" pos="-0.185 -0.216 0.0625">
+        <inertial pos="0 0.0057322 0" mass="0.177948" fullinertia="0.000229957 0.000348657 0.000229957 0 0 0"/>
+        <joint name="teker_arka_sag" class="teker" axis="0 1 0"/>
+        <geom class="gorsel" mesh="m_teker_arka_sag" rgba="0.2 0.2 0.22 1"/>
+        <geom name="c_teker_arka_sag" class="teker_carpisma" type="cylinder" size="0.0625 0.029" pos="0 0 0" quat="0.7071068 0.7071068 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+  <contact>
+    <exclude body1="taban" body2="govde"/>
+  </contact>
+  <actuator>
+    <motor name="motor_teker_on_sol" joint="teker_on_sol" ctrlrange="-6.177 6.177"/>
+    <motor name="motor_teker_arka_sol" joint="teker_arka_sol" ctrlrange="-6.177 6.177"/>
+    <motor name="motor_teker_on_sag" joint="teker_on_sag" ctrlrange="-6.177 6.177"/>
+    <motor name="motor_teker_arka_sag" joint="teker_arka_sag" ctrlrange="-6.177 6.177"/>
+    <position name="servo_kafa_pan" joint="kafa_pan" kp="40" kv="1" forcerange="-1.08 1.08" ctrlrange="-3.2 3.2"/>
+    <position name="servo_kafa_tilt" joint="kafa_tilt" kp="40" kv="1" forcerange="-1.08 1.08" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sag_omuz" joint="sag_omuz" kp="40" kv="1" forcerange="-3.43 3.43" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sag_omuz_yan" joint="sag_omuz_yan" kp="40" kv="1" forcerange="-3.43 3.43" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sag_dirsek" joint="sag_dirsek" kp="40" kv="1" forcerange="-1.08 1.08" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sag_bilek" joint="sag_bilek" kp="40" kv="1" forcerange="-1.08 1.08" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sol_omuz" joint="sol_omuz" kp="40" kv="1" forcerange="-3.43 3.43" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sol_omuz_yan" joint="sol_omuz_yan" kp="40" kv="1" forcerange="-3.43 3.43" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sol_dirsek" joint="sol_dirsek" kp="40" kv="1" forcerange="-1.08 1.08" ctrlrange="-3.2 3.2"/>
+    <position name="servo_sol_bilek" joint="sol_bilek" kp="40" kv="1" forcerange="-1.08 1.08" ctrlrange="-3.2 3.2"/>
+  </actuator>
+  <sensor>
+    <framepos name="taban_konum" objtype="body" objname="taban"/>
+    <subtreecom name="am" body="taban"/>
+  </sensor>
+</mujoco>

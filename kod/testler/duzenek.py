@@ -8,12 +8,15 @@ için okunur, kartın iç durumuna (çekirdek değişkenleri) testten erişilmez
 Hedef `LALE_HEDEF` ortam değişkeniyle seçilir:
 - `bellek` (varsayılan): sahte kart, bellek içi taşıma, sanal saat (deterministik, hızlı).
 - `tcp`: sahte kart gerçek zamanda, yerel TCP portundan (sanal seri hat). Zaman toleransı geniş.
+- `fizik`: aynı sahte kart (firmware modeli aynen), dünya 2B yerine MuJoCo fiziği (Y0f, `kod/fizik/`); bellek içi, sanal
+  saat. `mujoco` kurulu değilse testler "atlandı" olur (2B dünya etkilenmez). Koşucu: `kod/fizik/kos_fizik.py`.
 - `seri:COM3` gibi: gerçek ESP32. `SeriTasima` henüz yazılmadı: bütün testler "atlandı" olur. Gerçek kartta
   ortam işlemleri (mantar, kablo) operatör eliyle yapılacak; hakem yok (hakem isteyen kontroller atlanır).
 """
 
 import math
 import os
+import sys
 import unittest
 
 import lale_protokol as P
@@ -26,6 +29,27 @@ from lale_pi.tasima import SeriTasima, TcpTasima
 
 TIK_M = math.pi * P.parametre("teker_capi_m") / P.parametre("enkoder_tik_tur")   # bir enkoder tikinin teker yolu (TAHMİN)
 
+# Fizik hedefinde (LALE_HEDEF=fizik) DOĞRULAMA düzeyindeki farklar. 2B dünya ideal (anında durma, kaymasız teker, tam hız);
+# fizikte yalnız aşağıdaki doğrulamalar fiziksel karşılığıyla değişir, testin geri kalanı (bekçi tetiklenmesi, kilit,
+# reset, olay iletileri, hata cevapları) iki dünyada aynen koşar. 2B'de bu sözlük hiç okunmaz.
+# Duruş payları: 0,3 m/s'den protokol üstünden ölçülen (Y0f-gunluk düzeltme turu; ana parametreler) x ≈ 1,5.
+FIZIK_DURUS = {
+    # PWM 0 + EN HIGH (kısa devre freni): bekçi, ping / bozuk satır, kablo kopması (bekçi). Ölçülen 270 ms, 15,6 mm.
+    "fren": dict(ms=400, m=0.025),
+    # EN LOW (motor boşta): acil stop, reset. Ölçülen 870 ms, 0,128 m.
+    "bosta": dict(ms=1300, m=0.20),
+}
+FIZIK_FARKLARI = {
+    "durus": "anında durma yerine: sürücü komutu kesik (hedef 0; fren = EN HIGH + PWM 0, boşta = EN LOW) ve robot "
+             "FIZIK_DURUS payı içinde durur (enkoder sabit, yol sınırlı)",
+    "reset_odo": "reset sonrası ilk odo (0, 0) yerine: sayaç sıfırlandı (reset öncesinden küçük) ve boşta kayma payından az tik",
+    "dur_fren_yolu": "dur fren yolu üst sınırına +5 mm (açık çevrim: teker komut rampasının arkasından gelir; ölçülen fazlalık 0,1 mm)",
+    "kablo_yolu": "kopukken yol üst sınırına fren payı (bekçi durmasından sonra kısa devre freni kayması)",
+    "hiz_esitligi": "hakem teker / gövde hızı 6 basamak eşitlik yerine ±0,01 m/s (açık çevrim KP = 0: akü 13,1 V, yük)",
+    "w_kirpma": "yay dönüşünde enkoder oranı yerine firmware'in sürücüye verdiği teker hedefleri oranı (kırpma firmware'in "
+                "işi); kızak yönlendirmeli robotun yayı gerçekten çizip çizmediği fiziğin bulgusudur (SIMULASYON.md dönüş)",
+}
+
 
 def _operator(is_):
     raise unittest.SkipTest("operatör adımı gerekli (gerçek kart Ortam'ı henüz yok): %s" % is_)
@@ -37,6 +61,7 @@ class Ortam:
 
     tolerans_ms = 10
     hakem_var = False
+    fizik = False          # True: MuJoCo dünyası (FIZIK_FARKLARI doğrulamaları)
 
     def mantar_bas(self):
         _operator("mantara bas")
@@ -125,7 +150,12 @@ def duzenek_kur(harita="oda_bos", konum=None):
         raise unittest.SkipTest("gerçek kart taşıması (SeriTasima) henüz yazılmadı: %s" % hedef)
     h = Harita.dosyadan(harita)
     k = None if konum is None else (konum[0], konum[1], math.radians(konum[2]))
-    c = SahteEsp32(h, konum=k)
+    fizik = hedef == "fizik"
+    if fizik:
+        c = _fizik_karti(h, k)
+        hedef = "bellek"
+    else:
+        c = SahteEsp32(h, konum=k)
     hakemsiz = os.environ.get("LALE_HAKEM") == "yok"     # gerçek kart provası: hakem okunamaz, yalnız protokol
     if hedef == "bellek":
         t = BellekTasima(c)
@@ -133,6 +163,7 @@ def duzenek_kur(harita="oda_bos", konum=None):
         esp.baglan()
         o = SahteOrtam(c, t)
         o.hakem_var = not hakemsiz
+        o.fizik = fizik
         return esp, o
     if hedef == "tcp":
         from sahte_esp32.tcp_sunucu import TcpSunucu
@@ -146,6 +177,18 @@ def duzenek_kur(harita="oda_bos", konum=None):
         o.tolerans_ms = 80
         return esp, o
     raise ValueError("bilinmeyen LALE_HEDEF: %r" % hedef)
+
+
+def _fizik_karti(harita, konum):
+    """Y0f fizik arka ucu (kod/fizik/fizik_esp32.py); bağımlılık yoksa test atlanır."""
+    fizik = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "fizik")
+    if fizik not in sys.path:
+        sys.path.insert(0, fizik)
+    import dunya
+    if not dunya.FIZIK_VAR:
+        raise unittest.SkipTest("fizik bağımlılığı (mujoco) yok: %s" % dunya.FIZIK_HATA)
+    from fizik_esp32 import FizikEsp32
+    return FizikEsp32(harita, konum=konum)
 
 
 class LaleTesti(unittest.TestCase):
@@ -196,11 +239,69 @@ class LaleTesti(unittest.TestCase):
         _, sol, sag = h[-1]
         return (sol + sag) / 2.0, sol, sag
 
-    def enkoder_duruyor(self, bas=0, sonra_ms=None, en_az=2):
-        """gelen[bas:] içinde (ms > sonra_ms olan) odo mesajları en az `en_az` tane ve hepsi aynı tik mi?"""
+    def enkoder_duruyor(self, bas=0, sonra_ms=None, en_az=2, durus=None):
+        """gelen[bas:] içinde (ms > sonra_ms olan) odo mesajları en az `en_az` tane ve hepsi aynı tik mi?
+
+        durus ("fren" / "bosta"): durma komutunun türü. 2B'de etkisiz (anında durur). Fizikte `durus_dogrula` koşar
+        (sürücü komutu kesik, robot FIZIK_DURUS payı içinde durur) ve sabitlik pay süresinden sonrası için aranır."""
+        if durus is not None and self.ortam.fizik:
+            sonra_ms = self.durus_dogrula(durus, sonra_ms, bas, en_az)
         odo = [m for m in self.esp.mesajlar("odo", bas) if sonra_ms is None or m["ms"] > sonra_ms]
         self.assertGreaterEqual(len(odo), en_az, "yeterli odo yok")
         return len({(m["sol"], m["sag"]) for m in odo}) == 1
+
+    # ------------------------------------------------------------ fizik hedefi: doğrulama düzeyindeki farklar
+
+    def surucu_kesik_dogrula(self, durus):
+        """Fizik: motor sürücüsünün girişi kesik mi (firmware hedefi 0; fren: EN HIGH + PWM 0, boşta: EN LOW)?"""
+        if not (self.ortam.fizik and self.ortam.hakem_var):
+            return
+        s = self.ortam.hakem()["surucu"]
+        self.assertEqual(s["hedef_m_s"], [0.0, 0.0], "durma komutunda firmware teker hedefi sıfırlanmadı: %r" % (s,))
+        if durus == "fren":
+            self.assertEqual((s["suruluyor"], s["pwm"]), (True, [0.0, 0.0]), "kısa devre freni yok: %r" % (s,))
+        else:
+            self.assertFalse(s["suruluyor"], "boşta beklenirken sürücü EN HIGH: %r" % (s,))
+
+    def hakem_durdu(self, durus, mesaj):
+        """2B: hakem gövde hızı tam 0 (anında durma). Fizik: o anda sürücü komutu kesik (FIZIK_FARKLARI "durus"); robotun
+        pay içinde durduğu ayrıca `enkoder_duruyor(..., durus=)` ya da testin yol sınırıyla doğrulanır."""
+        if self.ortam.fizik:
+            self.surucu_kesik_dogrula(durus)
+            return
+        h = self.hakem_varsa()
+        if h:
+            self.assertEqual(h["v"], 0.0, mesaj)
+
+    def hiz_esit(self, gercek, beklenen, mesaj=None):
+        """2B: 6 basamak eşit. Fizik: ±0,01 m/s (FIZIK_FARKLARI "hiz_esitligi")."""
+        if self.ortam.fizik:
+            self.assertAlmostEqual(gercek, beklenen, delta=0.01, msg=mesaj)
+        else:
+            self.assertAlmostEqual(gercek, beklenen, places=6, msg=mesaj)
+
+    def durus_dogrula(self, durus, sonra_ms, bas, en_az=2):
+        """Fizik: "anında durma"nın fiziksel karşılığı. Sürücü komutu kesik; sonra_ms'den en çok FIZIK_DURUS[durus]
+        süresi içinde enkoder durur ve bu arada en çok FIZIK_DURUS yolu alınır. Sabitliğin aranacağı yeni sonra_ms'i döner."""
+        pay = FIZIK_DURUS[durus]
+        self.surucu_kesik_dogrula(durus)
+        sinir = sonra_ms + pay["ms"]
+        for _ in range(200):                    # pay süresinden sonra en az en_az odo gelene dek bekle
+            if len([m for m in self.esp.mesajlar("odo", bas) if m["ms"] > sinir]) >= en_az:
+                break
+            self.esp.bekle(50)
+        odo = [m for m in self.esp.mesajlar("odo") if m["ms"] > 0]
+        once = [m for m in odo if m["ms"] <= sonra_ms]
+        if once:
+            yol = (odo[-1]["sol"] - once[-1]["sol"] + odo[-1]["sag"] - once[-1]["sag"]) / 2.0 * TIK_M
+            hiz = self.odo_hizlari(bas)
+            v0 = max([abs(a + b) / 2.0 for ms, a, b in hiz if ms <= sonra_ms + 100] or [0.0])
+            # durma komutuna kadar süren tam hız kısmı (en çok bir odo aralığı) yoldan düşülür
+            yol -= v0 * (sonra_ms - once[-1]["ms"]) / 1000.0
+            self.assertLessEqual(abs(yol), pay["m"], "durma komutundan sonra %.3f m gitti (pay %.3f m)" % (yol, pay["m"]))
+        if self.ortam.hakem_var:
+            self.assertEqual(self.ortam.hakem()["v"], 0.0, "pay süresi (%d ms) sonunda gövde duruyor değil" % pay["ms"])
+        return sinir
 
     def yetenek_gerek(self, ad):
         y = self.esp.ping().get("yetenekler", [])

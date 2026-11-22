@@ -1,0 +1,18 @@
+Y0f fizik koşusu | Python 3.14.0
+MuJoCo 4.0.1
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.745s
+
+OK
+OZET fizik testleri: test 6 | gecen 6 | kalan 0 | atlanan 0 | sure 0.7 s
+Y0s testleri fizikte: OZET: test 58 | gecen 58 | kalan 0 | atlanan 0 | sure 14.7 s (14.9 s)
+  doğrulama farkı dur_fren_yolu  dur fren yolu üst sınırına +5 mm (açık çevrim: teker komut rampasının arkasından gelir; ölçülen fazlalık 0,1 mm)
+  doğrulama farkı durus          anında durma yerine: sürücü komutu kesik (hedef 0; fren = EN HIGH + PWM 0, boşta = EN LOW) ve robot FIZIK_DURUS payı içinde durur (enkoder sabit, yol sınırlı)
+  doğrulama farkı hiz_esitligi   hakem teker / gövde hızı 6 basamak eşitlik yerine ±0,01 m/s (açık çevrim KP = 0: akü 13,1 V, yük)
+  doğrulama farkı kablo_yolu     kopukken yol üst sınırına fren payı (bekçi durmasından sonra kısa devre freni kayması)
+  doğrulama farkı reset_odo      reset sonrası ilk odo (0, 0) yerine: sayaç sıfırlandı (reset öncesinden küçük) ve boşta kayma payından az tik
+  doğrulama farkı w_kirpma       yay dönüşünde enkoder oranı yerine firmware'in sürücüye verdiği teker hedefleri oranı (kırpma firmware'in işi); kızak yönlendirmeli robotun yayı gerçekten çizip çizmediği fiziğin bulgusudur (SIMULASYON.md dönüş)
+Ölçümler: planlama\d158\Y0f-olcum\olcum.json (155.3 s) | sayı özeti (SHA-256, süreler hariç) f3507f3911bd53da
+SONUÇ: beklendiği gibi | toplam 170.9 s
+kosu 5 cikis 0
