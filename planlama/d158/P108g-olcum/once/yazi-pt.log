@@ -1,0 +1,5 @@
+12    PDF s.13  genislik 73.3 mm, 0.1731 pt/px, esleme farki 0.000; yazi 14 px = 2.42 pt; koyu yukseklik Acil stop düğüm kartı:2.08 pt (kayma (0, 0))
+17.4  PDF s.24  genislik 75.9 mm, 0.1794 pt/px, esleme farki 0.000; yazi 14 px = 2.51 pt; koyu yukseklik A1:1.79/A2:1.79/A3:1.79/A4:1.79/Y1:1.79/Y2:1.79/Y3:1.79/Y4:1.79/Y5:1.79 pt (kayma (0, 0))
+  HATA 12: yazı 2.42 pt < 8.0 pt
+  HATA 17.4: yazı 2.51 pt < 8.0 pt
+yazi boyu: 2 konum; alt sinir 8.0 pt; hata 2 -> KALDI

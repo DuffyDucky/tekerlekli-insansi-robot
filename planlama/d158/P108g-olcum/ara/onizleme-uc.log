@@ -1,0 +1,17 @@
+  12     sahne tuval 1182x624 yazi 47px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 1, çizilmeyen []; teslim farkı -
+  12     etk   tuval 982x700 yazi 12px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 1, çizilmeyen []; teslim farkı -
+  17.1   sahne tuval 1200x720 yazi 47px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 9, çizilmeyen []; teslim farkı -
+  17.1   etk   tuval 1000x796 yazi 12px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 9, çizilmeyen []; teslim farkı -
+  17.4   sahne tuval 1200x720 yazi 47px yerlesim {'kusur': 0, 'yontem': 'radyal'} çizilen 9, çizilmeyen []; teslim farkı -
+  17.4   etk   tuval 1000x796 yazi 12px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 9, çizilmeyen []; teslim farkı -
+  17.5   sahne tuval 1200x720 yazi 47px yerlesim {'kusur': 0, 'yontem': 'radyal'} çizilen 9, çizilmeyen []; teslim farkı -
+  17.5   etk   tuval 1000x796 yazi 12px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 9, çizilmeyen []; teslim farkı -
+parca etiketi: 4 konum, 28 yazi; teslim karsilastirmasi yok (--teslimsiz); hata 0 -> GECTI
+  uc etiketi: 23 konum, 59 etiket, karede gorunmez uc 35; hata 0 -> GECTI
+gorunum: uc etiketi 24 konumda 59 etiket (karede), karede gorunmez uc 37
+gorunum: parca etiketi 4 konumda 28 yazi
+gorunum: renk 1264 parca (CAD sirasi esles 1264), GuiDocument kayitli 676, ayni 676, farkli 0, GuiDocument yok 588 (kafa,taban)
+gorunum: rehber_metin alanlari, degisen 0
+gorunum: baglandigi yer 102 / 140 konumda, kaynak {'önceki parça yok': 1, 'baglanti': 74, 'masa tabanı (yeni)': 16, 'temas 0.6 mm': 12, 'yeni parça yok': 37}, bos ['1 önceki parça yok', '17 yeni parça yok', '17.1 yeni parça yok', '17.2 yeni parça yok', '17.3 yeni parça yok', '17.4 yeni parça yok', '17.5 yeni parça yok', '17.6 yeni parça yok', '17.7 yeni parça yok', '17.8 yeni parça yok', '17.9 yeni parça yok', '17.10 yeni parça yok', '17.11 yeni parça yok', '17.12 yeni parça yok', '32 yeni parça yok', '32.1 yeni parça yok', '32.2 yeni parça yok', '32.3 yeni parça yok', '32.4 yeni parça yok', '32.5 yeni parça yok', '32.6 yeni parça yok', '32.7 yeni parça yok', '32.8 yeni parça yok', '36.4 yeni parça yok', '36.5 yeni parça yok', '40.2 yeni parça yok', '40.3 yeni parça yok', '41.2 yeni parça yok', '41.3 yeni parça yok', '41.4 yeni parça yok', '41.5 yeni parça yok', '42.2 yeni parça yok', '42.3 yeni parça yok', '44.2 yeni parça yok', '44.3 yeni parça yok', '48.2 yeni parça yok', '48.3 yeni parça yok', '49.2 yeni parça yok'] (34 s)
+etiket-olc cikis 0
+F10d --yalniz-uc cikis 0

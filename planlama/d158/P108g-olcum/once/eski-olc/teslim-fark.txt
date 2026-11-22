@@ -1,0 +1,4 @@
+12 sahne (1200, 720) farkli piksel 343395
+12 etk (1400, 900) farkli piksel 225649
+17-4 sahne (1200, 720) farkli piksel 0
+17-4 etk (1400, 900) farkli piksel 0

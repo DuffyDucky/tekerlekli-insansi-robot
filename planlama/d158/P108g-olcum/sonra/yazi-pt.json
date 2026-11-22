@@ -1,0 +1,215 @@
+{
+ "konum": [
+  {
+   "konum": "12",
+   "kare": "rehber/goruntu/adim-12.png",
+   "pdf_sayfa": 13,
+   "eslesme_ort_fark": 0.0,
+   "basili_genislik_pt": 207.75,
+   "basili_genislik_mm": 73.3,
+   "olcek_pt_px": 0.1731,
+   "yazi_px": 47,
+   "yazi_pt": 8.14,
+   "kayma": [
+    0,
+    0
+   ],
+   "yazilar": [
+    {
+     "t": "Acil stop düğüm kartı",
+     "koyu_px": 41,
+     "koyu_pt": 7.1
+    }
+   ]
+  },
+  {
+   "konum": "17.1",
+   "kare": "rehber/goruntu/adim-17-01.png",
+   "pdf_sayfa": 23,
+   "eslesme_ort_fark": 0.0,
+   "basili_genislik_pt": 215.25,
+   "basili_genislik_mm": 75.9,
+   "olcek_pt_px": 0.1794,
+   "yazi_px": 47,
+   "yazi_pt": 8.43,
+   "kayma": [
+    0,
+    0
+   ],
+   "yazilar": [
+    {
+     "t": "A1",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A2",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A3",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A4",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y1",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y2",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y3",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y4",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y5",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    }
+   ]
+  },
+  {
+   "konum": "17.4",
+   "kare": "rehber/goruntu/adim-17-04.png",
+   "pdf_sayfa": 24,
+   "eslesme_ort_fark": 0.0,
+   "basili_genislik_pt": 215.25,
+   "basili_genislik_mm": 75.9,
+   "olcek_pt_px": 0.1794,
+   "yazi_px": 47,
+   "yazi_pt": 8.43,
+   "kayma": [
+    0,
+    0
+   ],
+   "yazilar": [
+    {
+     "t": "A1",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A2",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A3",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A4",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y5",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y4",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y3",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y2",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y1",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    }
+   ]
+  },
+  {
+   "konum": "17.5",
+   "kare": "rehber/goruntu/adim-17-05.png",
+   "pdf_sayfa": 24,
+   "eslesme_ort_fark": 0.0,
+   "basili_genislik_pt": 215.25,
+   "basili_genislik_mm": 75.9,
+   "olcek_pt_px": 0.1794,
+   "yazi_px": 47,
+   "yazi_pt": 8.43,
+   "kayma": [
+    0,
+    0
+   ],
+   "yazilar": [
+    {
+     "t": "Y2",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y1",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A1",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A2",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A3",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "A4",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y5",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y4",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    },
+    {
+     "t": "Y3",
+     "koyu_px": 33,
+     "koyu_pt": 5.92
+    }
+   ]
+  }
+ ],
+ "hata": [],
+ "alt_sinir_pt": 8.0,
+ "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf"
+}

@@ -1,0 +1,9 @@
+  12     sahne tuval 1200x720 @ None,None yazi Nonepx yerlesim None çizilen 1, çizilmeyen []; teslim farkı 0
+  12     etk   tuval 1000x796 @ None,None yazi Nonepx yerlesim None çizilen 1, çizilmeyen []; teslim farkı 0
+  17.4   sahne tuval 1200x720 @ None,None yazi Nonepx yerlesim None çizilen 9, çizilmeyen []; teslim farkı 0
+  17.4   etk   tuval 1000x796 @ None,None yazi Nonepx yerlesim None çizilen 9, çizilmeyen []; teslim farkı 0
+  HATA 12 sahne: kare boyutu ya da tuval yeri ölçülmedi
+  HATA 12 etk: kare boyutu ya da tuval yeri ölçülmedi
+  HATA 17.4 sahne: kare boyutu ya da tuval yeri ölçülmedi
+  HATA 17.4 etk: kare boyutu ya da tuval yeri ölçülmedi
+parca etiketi: 2 konum, 10 yazi; teslim karsilastirmasi var; hata 4 -> KALDI

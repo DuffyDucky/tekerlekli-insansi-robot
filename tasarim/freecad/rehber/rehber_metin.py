@@ -2419,11 +2419,16 @@ UC_ORTULU = {
 # ifade (parçanın görünen adı), yazı)], not_=lejant notu). Yazıdaki "{1}" desenin ilk grubu (numara). Desen o konumda görünen hiçbir
 # parçaya uymazsa, aynı yazı iki parçaya düşerse ya da numaralar x'e göre soldan sağa (robota önden bakınca; adım 0 tanımı: +X önden
 # bakanın sağı) 1, 2, … sırasında değilse üretim durur. Yer modelden (parça kutusunun üst yüzünün ortası); elle koordinat yok.
+_SAPLAMA = dict(desen=[(r"^Bara cıvatası M5x25 DIN 933 \(anahtarlı (\d)\)$", "A{1}"),
+                       (r"^Bara cıvatası M5x25 DIN 933 \(yıldız (\d)\)$", "Y{1}")],
+                not_="A1–A4: anahtarlı baranın, Y1–Y5: yıldız barasının saplama numarası (robota önden bakınca soldan sağa)")
 PARCA_ETIKET = {
     # 17.4: metin saplamayı numarasıyla anar ("anahtarlı baranın 3 numaralı saplaması"); numara karede yoktu (P10.8b'den açık)
-    ("K1", 4): dict(desen=[(r"^Bara cıvatası M5x25 DIN 933 \(anahtarlı (\d)\)$", "A{1}"),
-                           (r"^Bara cıvatası M5x25 DIN 933 \(yıldız (\d)\)$", "Y{1}")],
-                    not_="A1–A4: anahtarlı baranın, Y1–Y5: yıldız barasının saplama numarası (robota önden bakınca soldan sağa)"),
+    ("K1", 4): _SAPLAMA,
+    # P10.8g (planlama/d158/P108g-gunluk.md § 2): 17.1 (toprak: "yıldız barasının ortadaki (3 numaralı) saplaması", yığın kuralı
+    # numaralarla) ve 17.5 (bara çıkışları: "anahtarlı baranın 1 numaralı …") da saplamayı numarasıyla anar; aynı kalıp
+    ("K1", 1): _SAPLAMA,
+    ("K1", 5): _SAPLAMA,
     # B5a: acil stop düğüm kartı bu adımda takılır ama kablo ucu değil (kablosu 17.8'de), uç etiketi almıyordu (P108e-kontrol B2)
     ("B5a", 0): dict(desen=[(r"^Acil stop düğüm kartı", "Acil stop düğüm kartı")]),
 }

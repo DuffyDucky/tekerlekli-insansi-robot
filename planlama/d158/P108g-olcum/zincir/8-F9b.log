@@ -1,0 +1,176 @@
+F9b dogrulama: tasarim/Robot-Tasarim-Demosu.html
+[1] data-k: bagli sayilar kaynak JSON'la ayni mi
+    127 anahtar, sayfada 130 bagli eleman
+    boy                                1.580                        tasarim/freecad/lale158/lale158-kontrol.json · toplam_boy_mm
+    boy_m                              1,58                         tasarim/freecad/lale158/lale158-kontrol.json · toplam_boy_mm
+    kutle_kg                           25,88                        tasarim/freecad/montaj/montaj-analiz.json · kutle_g
+    kutle_g                            25.876,13                    tasarim/freecad/montaj/montaj-analiz.json · kutle_g
+    am_y                               526,2                        tasarim/freecad/montaj/montaj-analiz.json · agirlik_merkezi.1
+    parca                              1.251                        tasarim/freecad/montaj/montaj-analiz.json · parca_sayisi
+    p_baski                            74                           tasarim/freecad/montaj/montaj-analiz.json · parcalar[tur=Baski]#say
+    p_satin                            220                          tasarim/freecad/montaj/montaj-analiz.json · parcalar[tur=Satin]#say
+    p_satin_bom                        201                          tasarim/freecad/montaj/montaj-analiz.json · bom_ozet.Satin.adet
+    p_bag                              953                          tasarim/freecad/montaj/montaj-analiz.json · parcalar[tur=Baglanti]#say
+    p_lazer                            3                            tasarim/freecad/montaj/montaj-analiz.json · parcalar[tur=Lazer]#say
+    p_imalat                           1                            tasarim/freecad/montaj/montaj-analiz.json · parcalar[tur=Imalat]#say
+    servo                              10                           planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler#say
+    s_ds                               4                            tasarim/freecad/montaj/montaj-analiz.json · parcalar[kod=DS3235 servo]#say
+    s_mg                               6                            tasarim/freecad/montaj/montaj-analiz.json · parcalar[kod=MG996R servo]#say
+    kafa_in                            10,1                         tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Yuz ekrani WaveShare 10,1in QLED HDMI].kod#re:(\d+,\d+) in
+    kafa_w                             1280                         tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Yuz ekrani WaveShare 10,1in QLED HDMI].kod#re:(\d+)x\d+
+    kafa_h                             720                          tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Yuz ekrani WaveShare 10,1in QLED HDMI].kod#re:\d+x(\d+)
+    kafa_kod                           WaveShare 10.1HP-CAPQLED 10, tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Yuz ekrani WaveShare 10,1in QLED HDMI].kod
+    gogus_in                           11,6                         tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Gogus ekrani 11,6 in HDMI 1920x1080 kasali].ad#re:(\d+,\d+) in
+    gogus_w                            1920                         tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Gogus ekrani 11,6 in HDMI 1920x1080 kasali].kod#re:(\d+)x\d+
+    gogus_h                            1080                         tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Gogus ekrani 11,6 in HDMI 1920x1080 kasali].kod#re:\d+x(\d+)
+    gogus_kod                          Waveshare 11.6inch HDMI LCD  tasarim/freecad/montaj/montaj-analiz.json · parcalar[ad=Gogus ekrani 11,6 in HDMI 1920x1080 kasali].kod
+    glb_dugum                          1.264                        rehber/veri/robot.glb · nodes#say
+    glb_ref                            13                           rehber/veri/rehber-veri.json · parcalar[tur=Referans]#say
+    glb_kablo                          12                           rehber/veri/rehber-veri.json · parcalar[tur=Referans][r=kablo]#say
+    rehber_adim                        50                           rehber/veri/rehber-veri.json · adimlar#say
+    reg_tarih                          2026-11-09                   planlama/d158/regresyon-son-kosu.json · tarih#re:^(\d{4}-\d\d-\d\d)
+    reg_saat                           14:30                        planlama/d158/regresyon-son-kosu.json · tarih#re:T(\d\d:\d\d)
+    reg_cikis                          0                            planlama/d158/regresyon-son-kosu.json · cikis_kodu
+    tarama_eklem                       0                            tasarim/freecad/carpisma-sonuc.json · toplam.eklem_araliginda
+    tarama_kutle                       25,88                        tasarim/freecad/carpisma-sonuc.json · kutle_toplam_g
+    bag_s1                             120                          planlama/d158/F6a-eklem_sinirlari-oneri.json · bagimli.0.kosul.r_s1.0
+    bag_s2                             117                          planlama/d158/F6a-eklem_sinirlari-oneri.json · bagimli.0.sinir.r_s2.1
+    iv_duz                             0,5                          planlama/d158/F6a-eklem_sinirlari-oneri.json · teker.ivme_sinir_m_s2.duz_surus
+    iv_fren                            1,8                          planlama/d158/F6a-eklem_sinirlari-oneri.json · teker.ivme_sinir_m_s2.duz_fren
+    iv_rampa                           0,1                          planlama/d158/F6a-eklem_sinirlari-oneri.json · teker.ivme_sinir_m_s2.rampa_surus
+    iv_rampa_fren                      0,1                          planlama/d158/F6a-eklem_sinirlari-oneri.json · teker.ivme_sinir_m_s2.rampa_fren
+    b_adet                             74                           tasarim/freecad/lale158/baski-analiz.json · toplam.adet
+    b_g0                               7.722,7                      tasarim/freecad/lale158/baski-analiz.json · toplam.toplam_g.0
+    b_g1                               7.780,5                      tasarim/freecad/lale158/baski-analiz.json · toplam.toplam_g.1
+    b_destek                           124,5                        tasarim/freecad/lale158/baski-analiz.json · toplam.destek_g.0
+    b_sa0                              161,02                       tasarim/freecad/lale158/baski-analiz.json · toplam.sure_sa.0
+    b_sa1                              162,20                       tasarim/freecad/lale158/baski-analiz.json · toplam.sure_sa.1
+    b_destekli                         13                           tasarim/freecad/lale158/baski-analiz.json · toplam.destekli_adet
+    b_destekli_tur                     9                            tasarim/freecad/lale158/baski-analiz.json · toplam.destekli_tur
+    b_sigmayan                         0                            tasarim/freecad/lale158/baski-analiz.json · toplam.x2d_sigmayan#say
+    x2d_0                              246                          tasarim/freecad/lale158/baski-analiz.json · yontem.x2d.0
+    x2d_1                              246                          tasarim/freecad/lale158/baski-analiz.json · yontem.x2d.1
+    x2d_2                              250                          tasarim/freecad/lale158/baski-analiz.json · yontem.x2d.2
+    cf0                                1.194,0                      planlama/y2/Y2b-baski.json · toplam.cf_g.0
+    cf1                                1.251,8                      planlama/y2/Y2b-baski.json · toplam.cf_g.1
+    petg                               6.528,7                      planlama/y2/Y2b-baski.json · toplam.petg_g.0
+    reg_boy_mm_etiket                  Toplam boy, mm               planlama/d158/regresyon-son-kosu.json · degerler.boy_mm.etiket
+    reg_boy_mm                         1.580,0                      planlama/d158/regresyon-son-kosu.json · degerler.boy_mm.deger
+    reg_boy_mm_esik                    1.580,0                      planlama/d158/regresyon-son-kosu.json · degerler.boy_mm.esik
+    reg_boy_mm_durum                   sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.boy_mm.esik_durumu
+    reg_cakisma_kafa_ici_etiket        Çakışma, kafa içi            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kafa_ici.etiket
+    reg_cakisma_kafa_ici               0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kafa_ici.deger
+    reg_cakisma_kafa_ici_esik          0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kafa_ici.esik
+    reg_cakisma_kafa_ici_durum         sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kafa_ici.esik_durumu
+    reg_cakisma_kabuk_ici_etiket       Çakışma, kabuk içi           planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_ici.etiket
+    reg_cakisma_kabuk_ici              0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_ici.deger
+    reg_cakisma_kabuk_ici_esik         0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_ici.esik
+    reg_cakisma_kabuk_ici_durum        sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_ici.esik_durumu
+    reg_cakisma_kabuk_x_iskelet_etiket Çakışma, kabuk × iskelet     planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_x_iskelet.etiket
+    reg_cakisma_kabuk_x_iskelet        0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_x_iskelet.deger
+    reg_cakisma_kabuk_x_iskelet_esik   0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_x_iskelet.esik
+    reg_cakisma_kabuk_x_iskelet_durum  sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.cakisma_kabuk_x_iskelet.esik_durumu
+    reg_cakisma_ev_pozu_etiket         Çakışma, ev pozu (tam model) planlama/d158/regresyon-son-kosu.json · degerler.cakisma_ev_pozu.etiket
+    reg_cakisma_ev_pozu                0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_ev_pozu.deger
+    reg_cakisma_ev_pozu_esik           0                            planlama/d158/regresyon-son-kosu.json · degerler.cakisma_ev_pozu.esik
+    reg_cakisma_ev_pozu_durum          sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.cakisma_ev_pozu.esik_durumu
+    reg_rampa_yuksuz_etiket            Devrilme payı, yüksüz, rampa planlama/d158/regresyon-son-kosu.json · degerler.rampa_yuksuz.etiket
+    reg_rampa_yuksuz                   1,519                        planlama/d158/regresyon-son-kosu.json · degerler.rampa_yuksuz.deger
+    reg_rampa_yuksuz_esik              1,5                          planlama/d158/regresyon-son-kosu.json · degerler.rampa_yuksuz.esik
+    reg_rampa_yuksuz_durum             sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.rampa_yuksuz.esik_durumu
+    reg_tilt_payi_etiket               Tilt servo payı, ±15         planlama/d158/regresyon-son-kosu.json · degerler.tilt_payi.etiket
+    reg_tilt_payi                      3,64                         planlama/d158/regresyon-son-kosu.json · degerler.tilt_payi.deger
+    reg_tilt_payi_esik                 3,0                          planlama/d158/regresyon-son-kosu.json · degerler.tilt_payi.esik
+    reg_tilt_payi_durum                sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.tilt_payi.esik_durumu
+    reg_pan_payi_etiket                Pan servo payı               planlama/d158/regresyon-son-kosu.json · degerler.pan_payi.etiket
+    reg_pan_payi                       2,21                         planlama/d158/regresyon-son-kosu.json · degerler.pan_payi.deger
+    reg_pan_payi_esik                  2,0                          planlama/d158/regresyon-son-kosu.json · degerler.pan_payi.esik
+    reg_pan_payi_durum                 sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.pan_payi.esik_durumu
+    reg_mik_hoparlor_mm_etiket         Mikrofon-hoparlör, tüm pozla planlama/d158/regresyon-son-kosu.json · degerler.mik_hoparlor_mm.etiket
+    reg_mik_hoparlor_mm                574,3                        planlama/d158/regresyon-son-kosu.json · degerler.mik_hoparlor_mm.deger
+    reg_mik_hoparlor_mm_esik           400                          planlama/d158/regresyon-son-kosu.json · degerler.mik_hoparlor_mm.esik
+    reg_mik_hoparlor_mm_durum          sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.mik_hoparlor_mm.esik_durumu
+    reg_sy8205_x_usb_mm3_etiket        SY8205 × kafa kabloları (USB planlama/d158/regresyon-son-kosu.json · degerler.sy8205_x_usb_mm3.etiket
+    reg_sy8205_x_usb_mm3               0                            planlama/d158/regresyon-son-kosu.json · degerler.sy8205_x_usb_mm3.deger
+    reg_sy8205_x_usb_mm3_esik          0                            planlama/d158/regresyon-son-kosu.json · degerler.sy8205_x_usb_mm3.esik
+    reg_sy8205_x_usb_mm3_durum         sağlıyor                     planlama/d158/regresyon-son-kosu.json · degerler.sy8205_x_usb_mm3.esik_durumu
+    mod_iskelet_parca                  59                           tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=iskelet].parca
+    mod_iskelet_kg                     6,41                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=iskelet].kutle_g
+    mod_taban_parca                    414                          tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=taban].parca
+    mod_taban_kg                       8,27                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=taban].kutle_g
+    mod_kabuk_parca                    357                          tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=kabuk].parca
+    mod_kabuk_kg                       7,17                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=kabuk].kutle_g
+    mod_kafa_parca                     161                          tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=kafa].parca
+    mod_kafa_kg                        2,08                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=kafa].kutle_g
+    mod_omuz_sag_parca                 73                           tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=omuz_sag].parca
+    mod_omuz_sag_kg                    0,57                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=omuz_sag].kutle_g
+    mod_omuz_sol_parca                 73                           tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=omuz_sol].parca
+    mod_omuz_sol_kg                    0,57                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=omuz_sol].kutle_g
+    mod_dirsek_sag_parca               57                           tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=dirsek_sag].parca
+    mod_dirsek_sag_kg                  0,40                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=dirsek_sag].kutle_g
+    mod_dirsek_sol_parca               57                           tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=dirsek_sol].parca
+    mod_dirsek_sol_kg                  0,40                         tasarim/freecad/montaj/montaj-analiz.json · moduller[ad=dirsek_sol].kutle_g
+    ek_r_s1_min                        −45                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_s1.min
+    ek_r_s1_max                        135                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_s1.max
+    ek_r_s1_servo                      DS3235 (180 derece), S1 ve S planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_s1.servo
+    ek_r_s2_min                        5                            planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_s2.min
+    ek_r_s2_max                        120                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_s2.max
+    ek_r_s2_servo                      DS3235 (180 derece), S1 ve S planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_s2.servo
+    ek_r_dirsek_min                    0                            planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_dirsek.min
+    ek_r_dirsek_max                    105                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_dirsek.max
+    ek_r_dirsek_servo                  MG996R (180 derece)          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_dirsek.servo
+    ek_r_bilek_min                     −90                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_bilek.min
+    ek_r_bilek_max                     90                           planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_bilek.max
+    ek_r_bilek_servo                   MG996R (180 derece)          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.r_bilek.servo
+    ek_pan_min                         −90                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.pan.min
+    ek_pan_max                         90                           planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.pan.max
+    ek_pan_servo                       MG996R (180 derece), pan ve  planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.pan.servo
+    ek_tilt_min                        −13                          planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.tilt.min
+    ek_tilt_max                        13                           planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.tilt.max
+    ek_tilt_servo                      MG996R (180 derece), pan ve  planlama/d158/F6a-eklem_sinirlari-oneri.json · eklemler.tilt.servo
+    bilgi: planlama/d158/karar-kuyrugu.md uretimden sonra degisti (b189da2b7f3e -> 3f076167526d); degerler yukarida yeniden okundu
+    bilgi: rehber/veri/rehber-veri.json uretimden sonra degisti (dba6668b90d8 -> 83c7f7296c3c); degerler yukarida yeniden okundu
+[2] sayi taramasi (statik HTML)
+    sayi: 119 bagli, 5 muaf {'secenek': 5}, 0 bagsiz
+[3] maliyet: gomulu JSON = planlama/maliyet.json
+    ayni (163 kalem); sayfa kurali: 125 kalem, ara 105.090,29, genel 120.853,83 TL
+[4] model: sayfa rehber dosyalarini goreli yukluyor; o anki halleri tutarli mi
+    rehber/veri/robot-glb.js: GLB 2693088 bayt = rehber/veri/robot.glb (sha256 52dbf9847dae, o anki hali)
+    rehber/veri/rehber-veri.js: 1264 parca = rehber/veri/rehber-veri.json; 1264 GLB dugumunun hepsi parcalar'da
+[5] kararlar: sayfadaki 'karar bekliyor' = kuyrukta acik
+    6 karar, 16 etiket: K2×2, K28×3, K29×2, K32×3, K34×3, K42×3
+[6] sayfa iddialari
+    eklem sinirlari: 10 eklemin min/max'i, bagimli sinirlar ve teker ivmesi kod/ ile ayni
+    boy: kaynak 1580.0, brief 1580.0
+    reg_rampa_yuksuz: kaynak 1.519, brief 1.519
+    reg_tilt_payi: kaynak 3.64, brief 3.64
+    reg_pan_payi: kaynak 2.21, brief 2.21
+    reg_mik_hoparlor_mm: kaynak 574.3, brief 574.3
+    maliyet isaretleri (gomulu): kalem 33 duzeltme, kalem 36 eski, kalem 78 eski
+    servo 10 = 4 DS3235 + 6 MG996R; kafa 10,1" QLED; gogus 11,6"
+[7] eski 1,65 aramasi
+[8] tarayici: chrome.exe (DevTools protokolu; 360 px Emulation ile)
+    1400 px: innerWidth 1400, scrollWidth 1400, clientWidth 1400, data-hazir=1, data-hata='', konsol hatasi 0
+    1400 px: maliyet isaretleri: kalem 33 F9b notu, kalem 36 eski tasarım notu, kalem 78 eski tasarım notu
+    1400 px: data-k 131, data-mk 1006 (maliyet), sayi 2091 bagli, 5 muaf {'secenek': 5}, 0 bagsiz
+      muaf secenek     5  pay seçenekleri (arayüz)
+    360 px: innerWidth 360, scrollWidth 360, clientWidth 360, data-hazir=1, data-hata='', konsol hatasi 0
+    360 px: maliyet isaretleri: kalem 33 F9b notu, kalem 36 eski tasarım notu, kalem 78 eski tasarım notu
+    360 px: data-k 131, data-mk 1006 (maliyet), sayi 2091 bagli, 5 muaf {'secenek': 5}, 0 bagsiz
+      muaf secenek     5  pay seçenekleri (arayüz)
+    1,65 eslesmeleri: 24
+      DOM                                                1  maliyet.json metni (kalemler.107.not)
+      DOM                                                1  maliyet.json metni (kalemler.139.not)
+      DOM                                                1  maliyet.json metni (kalemler.14.not)
+      DOM                                                1  maliyet.json metni (kalemler.19.not)
+      DOM                                                1  maliyet.json metni (kalemler.33.not)
+      DOM                                                1  maliyet.json metni (kalemler.5.not)
+      DOM                                                1  maliyet.json metni (kalemler.8.not)
+      DOM                                                1  maliyet.json metni (kalemler.92.not)
+      DOM                                                1  maliyet.json metni (notlar.0.b)
+      DOM                                                1  maliyet.json metni (notlar.0.t)
+      DOM                                                1  maliyet.json metni (notlar.1.b)
+      DOM                                                1  maliyet.json metni (toplam:61)
+      tasarim/Robot-Tasarim-Demosu.html                 12  maliyet.json gömülü kopyası (dokunulmaz kaynak; kalem ve not metni)
+
+SONUC: GECER (hata 0)

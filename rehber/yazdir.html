@@ -124,6 +124,13 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     }).join(" · ") + "</div>" : "") + (O.length ? "<div class='lej'>Karede görünmez: " + O.map(esc).join(" · ") + "</div>" : "");
   }
 
+  // P10.8g (planlama/d158/P108g-gunluk.md § 3): adım ötesi şema bölümünün notu (veri sira_grup[].sema_on[].not_, P10.8e; 17.11 U06).
+  // app.js lejantıyla aynı metin ("<şema adı>: <not>"); basılı sayfada karenin altında (≥ 8,1 pt).
+  function semaOnMetin(g) {
+    var n = ((g && g.sema_on) || []).filter(function (x) { return SEMA[x.i] && x.not_; });
+    return n.length ? "<div class='lej'>" + n.map(function (x) { return esc(SEMA[x.i].ad.split(":")[0]) + ": " + esc(x.not_); }).join(" · ") + "</div>" : "";
+  }
+
   // P10.7b2f: uç etiketleri (veri sira_grup[].uc / adimlar[].uc, rehber_gorunum.uc_isle). Karede numara (app.js ?sahne=1), adı burada
   // karenin altında (≥ 8,1 pt); karede numarası olmayan (fazla) uç numarasız. uc_yok: parçası modelde olmayan ya da o konumda takılı
   // olmayan uç, nedeniyle "karede görünmez" satırında.
@@ -221,7 +228,7 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     (st.alt ? st.sira_grup : []).forEach(function (g, n) {
       var j = n + 1, ad = s + "." + j;
       b.push({ tur: "alt", h: "<div class='altkart'><div><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
-        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g), g.sema_ortulu) + ucMetin(g) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
+        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g), g.sema_ortulu) + semaOnMetin(g) + ucMetin(g) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
         (g.is_ ? "<div class='is'>" + md(g.is_) + "</div>" : "") +
         ((g.kablo || []).length ? "<ul class='kablo'>" + g.kablo.map(function (i) { return st.kablo[i] ? "<li>" + md(st.kablo[i]) + "</li>" : ""; }).join("") + "</ul>" : "") +
         (g.satir.length ? "<table>" + g.satir.map(function (k) { return satir(st, k); }).join("") + "</table>" : "") + "</div></div>" });

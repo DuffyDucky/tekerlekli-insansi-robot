@@ -1,0 +1,53 @@
+paket 47 (✅ 44, 🟡 1, ⛔ 1, ⏳ 1); komit 118; plandaki bulunamayan hash 0; eşleşmeyen commit 2
+  eşleşmeyen commit: 9145164 Lale: raporlar/kaynaklar/06-onayli-satici-A.md (13.11 gizlilik denetimi, "gidebilir" sınıf
+  eşleşmeyen commit: f658f15 Lale: izlenmeyen eski dosyalar (13.11 gizlilik denetimi, "gidebilir" sınıfı): raporlar/kay
+  P0.1  ✅ 8dcc4eb 0b8a245 fa49caa 680b965 93da9af c1bb4ed
+  P0.2  ✅ 93da9af c1bb4ed
+  P0.3  ✅ 93da9af c1bb4ed
+  P1.1  ✅ f567ac2 da17f1d 74cf048
+  P1.2  ✅ 76a5701 d37a671 93089df 24a703d
+  P1.3  ✅ 76a5701 d37a671 93089df 24a703d
+  P1.4  🟡 fc8d7b5 da17f1d 74cf048
+  P1.5  ✅ 409d521 da17f1d 74cf048
+  P1.6  ✅ 76a5701 d37a671 93089df 24a703d
+  P1.7  ✅ 76a5701 d37a671 93089df 24a703d
+  P2.1  ✅ ff1c2e9 b7c7cb8 33d2f76
+  P2.2  ✅ ff1c2e9 b7c7cb8 33d2f76
+  P3.1  ✅ 9cca013 1a319f2
+  P3.2  ✅ 9cca013 1a319f2
+  P4.1  ✅ 79fb383 233ce00
+  P4.2  ✅ 79fb383 233ce00
+  P4.3  ✅ f7ed8c4 e796f15
+  P4.4  ✅ 79fb383 233ce00
+  P4.5  ⛔ c7f9af4 34d0cc0 0979d70 647cafc a051281 4d1898a 684f4f2 a98de2d 22bcfd2
+  P5.1  ✅ 4d242eb 3159125
+  P5.2  ✅ 4d242eb 3159125
+  P5.3  ✅ 4d242eb 3159125 5cc17c4
+  P6.1  ✅ 647cafc a051281 4d1898a 684f4f2 a98de2d 22bcfd2
+  P6.2  ✅ 0f8e1ad 45af546 8bead02
+  P7.1  ✅ 887bcfe 3946ad5
+  P7.2  ✅ 649885f 2d1f412 059a849
+  P7.3  ✅ e448eab 00a2f56 4c7e2ec
+  P7.4  ✅ 1a67071 c96ed03 e7e6f0d 0089d97
+  P8.1  ✅ a35cab1 76fd4b2 fbaa7ab 2879c86
+  P8.2  ✅ f7ed8c4 e796f15
+  P8.3  ✅ fc9c651 15b0a30
+  P8.4  ✅ f747bb0 7e78b45
+  P9.1  ✅ 979b995 92efdb0 e700636
+  P9.2  ✅ a3fbcd6 8ce30ec 059a849
+  P9.4  ✅ afea121 5d1fbd1 e7e6f0d 0089d97
+  P9.3  ✅ 58238f7 a209e30 63cede7 b3e2f0b
+  P10.1 ✅ 749627b b0fd119 ada0b87 84f1a4a
+  P10.2 ✅ 5e43c62 9d0c58a 84f1a4a
+  P10.3 ✅ 98d5a3d 84b12b2 10b60d6 84f1a4a
+  P10.4 ✅ a90011b 65d6f17 90c270a 84f1a4a
+  P10.4b ✅ 759bb28 035517d 5831e2f 84f1a4a
+  P10.5 ✅ 5b0185f 84f1a4a
+  P10.5b ✅ b1c2a8d 84f1a4a
+  P10.6 ✅ 4c2f231 84f1a4a
+  P10.7 ✅ 9a0c6fe 8134519 1328b60 4a097fb b6022c3 1c4e882 78d160d 84f1a4a b5fc255 9b019d2 d542472 376fe90 8bca2f5 896c9a7 043fb09 3cefae0 89134d5
+  P10.8 ⏳ 84f1a4a 1d7fb71 d8ade70 1fbe337 d2c6776 269e51b 1db7a9c 641bc6c f4870bf 94cd024
+  P10.9 ✅ 84f1a4a 437d864 3bc5aa9 e3aaf94
+karar: toplam 67, açık 27; faz: F0 7, F1 1, F10 2, F4 5, F7 1, F8 11
+bilgi: GRUP'ta kapanmış karar ['K4', 'K9', 'K11', 'K12', 'K51', 'K52', 'K1', 'K6', 'K10', 'K14', 'K38', 'K39', 'K40', 'K41', 'K44', 'K45', 'K46', 'K3', 'K7', 'K47', 'K48', 'K49', 'K53', 'K54', 'K55', 'K60', 'K61', 'K64', 'K65', 'K66']
+yazıldı: planlama/d158/sonuc-rapor.html (155221 bayt)

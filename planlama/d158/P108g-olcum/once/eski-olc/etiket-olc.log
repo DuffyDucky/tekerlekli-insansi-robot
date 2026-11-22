@@ -1,0 +1,9 @@
+  12     sahne tuval 1200x720 çizilen 1, çizilmeyen []
+  12     etk   tuval 1000x796 çizilen 1, çizilmeyen []
+  17.4   sahne tuval 1200x720 çizilen 9, çizilmeyen []
+  17.4   etk   tuval 1000x796 çizilen 9, çizilmeyen []
+parca etiketi: 2 konum, 10 yazi; hata 0 -> GECTI
+
+real	0m16.420s
+user	0m0.000s
+sys	0m0.015s

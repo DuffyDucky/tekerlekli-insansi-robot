@@ -1,0 +1,94 @@
+{
+ "konum": [
+  {
+   "konum": "12",
+   "kare": "rehber/goruntu/adim-12.png",
+   "pdf_sayfa": 13,
+   "eslesme_ort_fark": 0.0,
+   "basili_genislik_pt": 207.75,
+   "basili_genislik_mm": 73.3,
+   "olcek_pt_px": 0.1731,
+   "yazi_px": 14,
+   "yazi_pt": 2.42,
+   "kayma": [
+    0,
+    0
+   ],
+   "yazilar": [
+    {
+     "t": "Acil stop düğüm kartı",
+     "koyu_px": 12,
+     "koyu_pt": 2.08
+    }
+   ]
+  },
+  {
+   "konum": "17.4",
+   "kare": "rehber/goruntu/adim-17-04.png",
+   "pdf_sayfa": 24,
+   "eslesme_ort_fark": 0.0,
+   "basili_genislik_pt": 215.25,
+   "basili_genislik_mm": 75.9,
+   "olcek_pt_px": 0.1794,
+   "yazi_px": 14,
+   "yazi_pt": 2.51,
+   "kayma": [
+    0,
+    0
+   ],
+   "yazilar": [
+    {
+     "t": "A1",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "A2",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "A3",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "A4",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "Y1",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "Y2",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "Y3",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "Y4",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    },
+    {
+     "t": "Y5",
+     "koyu_px": 10,
+     "koyu_pt": 1.79
+    }
+   ]
+  }
+ ],
+ "hata": [
+  "12: yazı 2.42 pt < 8.0 pt",
+  "17.4: yazı 2.51 pt < 8.0 pt"
+ ],
+ "alt_sinir_pt": 8.0,
+ "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf"
+}

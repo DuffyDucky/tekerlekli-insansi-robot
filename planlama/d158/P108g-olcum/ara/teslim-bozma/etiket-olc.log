@@ -1,0 +1,7 @@
+  12     sahne tuval 1200x720 @ 0,0 yazi 47px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 1, çizilmeyen []; teslim farkı 33920
+  12     etk   tuval 1000x796 @ 0,46.5 yazi 12px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 1, çizilmeyen []; teslim farkı 0
+  17.4   sahne tuval 1200x720 @ 0,0 yazi 47px yerlesim {'kusur': 0, 'yontem': 'radyal'} çizilen 9, çizilmeyen []; teslim farkı 46229
+  17.4   etk   tuval 1000x796 @ 0,46.5 yazi 12px yerlesim {'kusur': 0, 'yontem': 'üst'} çizilen 9, çizilmeyen []; teslim farkı 0
+  HATA 12 sahne: ölçülen kare teslim edilen kare değil (farklı piksel 33920, rehber/goruntu/adim-12.png)
+  HATA 17.4 sahne: ölçülen kare teslim edilen kare değil (farklı piksel 46229, rehber/goruntu/adim-17-04.png)
+parca etiketi: 2 konum, 10 yazi; teslim karsilastirmasi var; hata 2 -> KALDI

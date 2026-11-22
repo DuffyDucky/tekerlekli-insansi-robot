@@ -1,0 +1,10 @@
+saglam: gecti (28 yazı)
+YAKALANDI desen hiçbir parçaya uymuyor -> durdu: etiket_isle: B5a.0 deseni '^Acil stop dugum' bu konumda görünen hiçbir parçaya uymuyor
+YAKALANDI aynı yazı iki parçaya (numarasız yazı numaralı desende) -> durdu: etiket_isle: K1.1 yazı 'A' iki parçaya düşüyor
+YAKALANDI iki desen aynı yazıyı veriyor -> durdu: etiket_isle: K1.1 yazı 'A1' iki parçaya düşüyor
+YAKALANDI numara x sırasında değil (anahtarlı 1 / 2 kutuları yer değiştirdi) -> durdu: etiket_isle: K1.1 '^Bara cıvatası M5x25 DIN 933 \\(anahtarlı (\\d)\\)$' numaraları x'e göre soldan sağa [2, 1, 3, 4] (1..4 olmalı)
+YAKALANDI alt adım yok (K1.40) -> durdu: etiket_isle: K1.40 alt adımı yok
+YAKALANDI alt adımlı adımda numarasız konum (K1, 0) -> durdu: etiket_isle: K1 alt adımlı; alt adım numarası gerekir
+YAKALANDI parça bu konumda takılı değil (B5a karesinde K1 sonrası parça) -> durdu: etiket_isle: B5a.0 deseni '^ESP32 DevKit' bu konumda görünen hiçbir parçaya uymuyor
+YAKALANDI adım veride yok -> durdu: etiket_isle: X9 adımı veride yok
+SONUC: GECER (8 / 8)

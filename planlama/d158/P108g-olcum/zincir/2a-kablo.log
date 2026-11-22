@@ -1,0 +1,85 @@
+bara yolu (CAD yolu × tutucu / saplama, izin ±12 mm): hedef yol 2 G05− yildiz 3, yol 3 G12− yildiz 1, yol 3 G12+ anahtarli 1, yol 3 G09+ anahtarli 3, yol 3 G11+ anahtarli 3, yol 4 G13− yildiz 2, yol 4 G13+ anahtarli 2, yol 5 G14− yildiz 1, yol 5 G14+ anahtarli 1, yol 7 G15− yildiz 1, yol 7 G15+ anahtarli 1, yol 8 G17− yildiz 4, yol 9 G18− yildiz 4; hata 0
+kırpma kesimi: yol 9 (0, 0.7071, 0.7071) · p ≤ 143.92, yol 12 y ≤ 192.5; hata 0
+kablo eşleme: tablo 74 kablo, çizilen 68, çizilmeyen 6
+  çizilmeyen: G06, I01, I02, P01, P02, P03
+  üç sınıf (P10.7b2c): yol çizimi 68 (CAD 39, kol 6, şema 29) · bağlantı tablosu 5 (I01, I02, P01, P02, P03) · hiçbiri 1 (G06)
+  karışık sınıflı CAD yolu (ana kablonun rengini alır): Kablo yolu 3 (kirmizi/turuncu); Kablo yolu 5 (sari/turuncu); Kablo yolu 7 (sari/turuncu)
+geometri: yol 12, eşik 10 mm, taban dışı y >= 400; hata 0, bilgi 2
+  BILGI yol 6 S09 a: 'Dağıtım kartı C (kafa)' yola ulaşmıyor, elle bakıldı (GEO_YAN_ELLE: yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (ta)
+  BILGI yol 6 S10 a: 'Dağıtım kartı C (kafa)' yola ulaşmıyor, elle bakıldı (GEO_YAN_ELLE: yol 6 (taban_parcalar.py YOL) yalnız boyun → kafa bölümünü çiziyor (ta)
+şema geometrisi: 27 şema (yollar 8, kafa_ici_qled 3, taban 11, kafa_ici 5), eşik 10 mm; hata 0, bilgi 13, istisnalı 4
+  ŞEMA HDMI                               K2   H02       yan H02a:istisna H02b:tamam · uç baş:istisna son:tamam · istisna H02 a, baş
+  ŞEMA Hub uzatmasi                       K2   U03       yan U03a:tamam U03b:tamam · uç baş:tamam son:tamam
+  ŞEMA ESP32 USB                          K2   U06       yan U06a:tamam U06b:tamam · uç baş:tamam son:tamam
+  ŞEMA Hoparlor                           K2   AU3       yan AU3a:tamam AU3b:tamam · uç baş:tamam son:tamam
+  ŞEMA 12 V                               K2   G21/G20   yan G21a:tamam G21b:tamam G20a:istisna G20b:tamam · uç baş:tamam son:tamam · istisna G20 a
+  ŞEMA USB dokunmatik                     F3   U05       yan U05a:tamam U05b:tamam · uç baş:tamam son:tamam
+  ŞEMA Dizi USB                           E4   U01       yan U01a:tamam U01b:istisna · uç baş:istisna son:tamam · istisna U01 b, baş
+  ŞEMA PAM 5 V                            E4   K05       yan K05a:tamam K05b:tamam · uç baş:tamam son:tamam
+  ŞEMA HDMI (serit, 2 lehimsiz fis)       E4   H01       yan H01a:istisna H01b:tamam · uç baş:tamam son:istisna · istisna H01 a, son
+  ŞEMA Touch USB (kutu kablosu)           E4   U04       yan U04a:tamam U04b:tamam · uç baş:tamam son:tamam
+  ŞEMA Power USB (30 cm, A ucu kesik)     E4   K04       yan K04a:tamam K04b:tamam · uç baş:tamam son:tamam
+  ŞEMA G07                                K1   G07       yan G07a:tamam G07b:tamam · uç baş:tamam son:tamam
+  ŞEMA G16                                K1   G16       yan G16a:tamam G16b:tamam · uç baş:tamam son:tamam
+  ŞEMA G22                                K1   G22       yan G22a:tamam G22b:tamam · uç baş:tamam son:tamam
+  ŞEMA SV3                                B5a  SV3       yan SV3a:tamam SV3b:tamam · uç baş:tamam son:tamam
+  ŞEMA G19                                K1   G19       yan G19a:tamam G19b:tamam · uç baş:tamam son:tamam · geçiş kat:tamam
+  ŞEMA M02                                B3   M02       yan M02a:tamam M02b:tamam · uç baş:tamam son:tamam · geçiş alt plaka:tamam
+  ŞEMA B02                                K1   B02       yan B02a:tamam B02b:tamam · uç baş:tamam son:tamam · geçiş kat:tamam
+  ŞEMA N01                                K1   N01       yan N01a:tamam N01b:tamam · uç baş:tamam son:tamam · geçiş alt plaka:tamam kat:tamam
+  ŞEMA N02                                K1   N02       yan N02a:tamam N02b:tamam · uç baş:tamam son:tamam · geçiş alt plaka:tamam kat:tamam
+  ŞEMA Q01                                K1   Q01       yan Q01a:tamam Q01b:tamam · uç baş:tamam son:tamam · geçiş kat:tamam
+  ŞEMA Q02                                K1   Q02       yan Q02a:tamam Q02b:tamam · uç baş:tamam son:tamam · geçiş kat:tamam
+  ŞEMA K01                                E3a  K01       yan K01a:tamam K01b:tamam · uç baş:tamam son:tamam
+  ŞEMA K02                                E3a  K02       yan K02a:tamam K02b:tamam · uç baş:tamam son:tamam
+  ŞEMA K03                                E3a  K03       yan K03a:tamam K03b:tamam · uç baş:tamam son:tamam
+  ŞEMA C01                                E4   C01       yan C01a:tamam C01b:tamam · uç baş:tamam son:tamam
+  ŞEMA AU1                                E4   AU1/AU2   yan AU1a:tamam AU1b:tamam AU2a:tamam AU2b:tamam · uç baş:tamam son:tamam
+  BILGI şema HDMI H02 a yanı (Raspberry Pi 5) şemaya ulaşmıyor (en yakın 13.2 mm; eşik 10 mm) (istisna: baş Pi micro HDMI 1 fişinin arka ucu (pi_hdmi, Pi kutusuna 13 mm): fiş)
+  BILGI şema HDMI baş ucu: taban dışında kafa bölgesinde bitiyor, eşlenen kabloların o bölgede ucu yok (istisna: Pi micro HDMI 1 fişinin arka ucu (H02 a ile aynı): fiş gövdesi kart ku)
+  BILGI şema 12 V G21 a: 'Göğüs ekranı regülatörü' modelsiz, nominal konumu yok: elle bakıldı
+  BILGI şema 12 V G20 a yanı (Sigorta kutusu) şemaya ulaşmıyor (en yakın 13.0 mm; eşik 10 mm) (istisna: baş güç panelinde sigorta kutusunun yanında (F6 çıkışı, kutuya 13 mm);)
+  BILGI şema 12 V G20 b: 'Göğüs ekranı regülatörü (LM2577 + LM2596)' modelsiz, nominal konumu yok: elle bakıldı
+  BILGI şema Dizi USB U01 b yanı (ReSpeaker Mic Array v2.0) şemaya ulaşmıyor (en yakın 19.4 mm; eşik 10 mm) (istisna: baş ReSpeaker micro USB fişinin arka ucu (d_uc, kart kenarı + 35 + fiş)
+  BILGI şema Dizi USB baş ucu: taban dışında tanımsız bölgesinde bitiyor, eşlenen kabloların o bölgede ucu yok (istisna: ReSpeaker micro USB fişinin arka ucu (U01 b ile aynı; kafa bölgesinin )
+  BILGI şema HDMI (serit, 2 lehimsiz fis) H01 a yanı (Raspberry Pi 5) şemaya ulaşmıyor (en yakın 25.8 mm; eşik 10 mm) (istisna: son Pi micro HDMI 0 fişinin arka ucu (hdmi0, Pi kutusuna 26 mm): fiş g)
+  BILGI şema HDMI (serit, 2 lehimsiz fis) son ucu: taban dışında kafa bölgesinde bitiyor, eşlenen kabloların o bölgede ucu yok (istisna: Pi micro HDMI 0 fişinin arka ucu (H01 a ile aynı): fiş gövdesi kart ku)
+bağlantı tablosu: 5 kablo (I01 B6a, I02 B6a, P01 B6a, P02 B6a, P03 K1); hata 0
+şema boyu (gösterim şeması yolu; ölçüm değil): 27 şema, kayıt tazeliği hata 0; şema > kayıttaki: 0
+  BOY AU1  hazır 3,5 mm kablo (kalk kayıt   300 mm (tahmin) · şema   219 mm · fark -81 · ortak AU2
+  BOY AU3  2 × 0,50 mm² kordon (lis kayıt  1030 mm (önerilen) · şema   824 mm · fark -206
+  BOY B02  22 AWG (0,33 mm²)        kayıt   400 mm (tahmin) · şema   116 mm · fark -284
+  BOY C01  hazır kablo              kayıt   300 mm (tahmin) · şema    70 mm · fark -230
+  BOY G07  22 AWG (0,33 mm²)        kayıt   450 mm (tahmin) · şema   267 mm · fark -183
+  BOY G16  16 AWG (1,31 mm²)        kayıt   400 mm (tahmin) · şema   165 mm · fark -235
+  BOY G19  16 AWG (1,31 mm²)        kayıt   300 mm (tahmin) · şema   219 mm · fark -81
+  BOY G21  18 AWG (0,82 mm²)        kayıt  1720 mm (önerilen) · şema  1376 mm · fark -344 · ortak G20
+  BOY G22  22 AWG (0,33 mm²)        kayıt   500 mm (tahmin) · şema   258 mm · fark -242
+  BOY H01  hazır kablo              kayıt   300 mm (liste) · şema   254 mm · fark -46
+  BOY H02  hazır kablo              kayıt   950 mm (önerilen) · şema   757 mm · fark -193
+  BOY K01  18 AWG (0,82 mm²)        kayıt   200 mm (tahmin) · şema    14 mm · fark -186
+  BOY K02  18 AWG (0,82 mm²)        kayıt   200 mm (tahmin) · şema    71 mm · fark -129
+  BOY K03  18 AWG (0,82 mm²)        kayıt   200 mm (tahmin) · şema    47 mm · fark -153
+  BOY K04  hazır 30 cm USB-A → micr kayıt   300 mm (liste) · şema   114 mm · fark -186
+  BOY K05  18 AWG (0,82 mm²)        kayıt    80 mm (önerilen) · şema    64 mm · fark -16
+  BOY M02  motorun kendi kablosu (6 kayıt   600 mm (tahmin) · şema   384 mm · fark -216
+  BOY N01  22 AWG (0,33 mm²)        kayıt   800 mm (tahmin) · şema   617 mm · fark -183
+  BOY N02  22 AWG (0,33 mm²)        kayıt   600 mm (tahmin) · şema   553 mm · fark -47
+  BOY Q01  22 AWG (0,33 mm²)        kayıt   550 mm (tahmin) · şema   305 mm · fark -245
+  BOY Q02  22 AWG (0,33 mm²)        kayıt   450 mm (tahmin) · şema   228 mm · fark -222
+  BOY SV3  16 AWG (1,31 mm²)        kayıt   300 mm (tahmin) · şema    39 mm · fark -261
+  BOY U01  hazır kablo              kayıt   110 mm (önerilen) · şema    85 mm · fark -25
+  BOY U03  hazır kablo              kayıt   920 mm (önerilen) · şema   617 mm · fark -303
+  BOY U04  hazır kablo              kayıt   350 mm (liste) · şema   217 mm · fark -133
+  BOY U05  hazır kablo              kayıt   640 mm (önerilen) · şema   395 mm · fark -245
+  BOY U06  hazır kablo              kayıt  1560 mm (önerilen) · şema  1129 mm · fark -431
+düzeltme turu 1: kart boy etiketi hata 0; gösterim şeması notu (kafa_ici/taban) 16 şema, hata 0; yer eki (Dağıtım kartı C (kafa)) hata 0
+uç etiketi: 51 kısa ad modelde, 6 modelsiz; hata 0
+geometrinin ayırt edemediği çiftler (onay kaydı korur): 0
+renk farkı (ΔE00, light) en yakın: beyaz ↔ hazir-usb 15.9; vurgu ↔ sınıf lazer 16.6; kirmizi ↔ turuncu 17.1; mavi ↔ beyaz 17.4; vurgu ↔ EV_RENK 17.4
+renk farkı (ΔE00, dark) en yakın: turuncu ↔ hazir-csi 15.1; mavi ↔ hazir-hdmi 15.3; siyah ↔ beyaz 15.7; siyah ↔ hazir-usb 15.9; hazir-usb ↔ hazir-csi 18.4
+onay kaydı (kablo bölümü): tutuyor
+veri uç etiketi: 24 konum, hata 0
+kırpılan CAD yolları (yol 9 (0, 0.7071, 0.7071) · p ≤ 143.92, yol 12 y ≤ 192.5): robot.glb okundu; hata 0
+veri: eşlemesiz çizim 0
+SONUÇ GEÇER

@@ -443,7 +443,10 @@
     // karede (yazdırma karesinde de, büyük yazıyla); yer önce parçanın hemen üstü, çakışırsa çevresi; parça noktasına ince çizgi. Uç
     // etiketlerinden önce yerleşir; uç etiketleri bunların kutusuyla ve parça noktasıyla çakışmaz. Uç etiketiyle aynı aç / kapa (U).
     // Çizilmeyen ve nedeni RehberTest.etiket'te.
-    const ETK = { liste: [], ciz: [], cizilmedi: [], H: SAHNE ? 22 : 18, F: SAHNE ? 14 : 12 };
+    // P10.8g (planlama/d158/P108g-gunluk.md § 4): yazdırma karesi (1200 px) basılı sayfada en dar 73,3 mm (yazdir.html .gorsel, GH_MIN
+    // döngüsünün son değeri 44 mm yükseklik → 207,8 pt; alt adım karesi .agorsel 76 mm → 215,4 pt). Yazı rehberin basılı alt sınırına
+    // (yazdir.html 8,1 pt; rehber_uret YAZI_ALT_PT 8) uysun: 8,1 pt / (207,8 / 1200) = 46,8 → 47 px. Etkileşimli kip ekranda okunur (12 px).
+    const ETK = { liste: [], ciz: [], cizilmedi: [], H: SAHNE ? 58 : 18, F: SAHNE ? 47 : 12 };
     let _etkOlc = null;
     function etkGenislik(t) {
       if (!_etkOlc) { _etkOlc = document.createElement("canvas").getContext("2d"); _etkOlc.font = "700 " + ETK.F + "px system-ui, 'Segoe UI', sans-serif"; }
@@ -454,7 +457,7 @@
     }
     function ucCiz() {
       if (!ucEl) return;
-      UC.ciz = []; UC.cizilmedi = []; ETK.ciz = []; ETK.cizilmedi = [];
+      UC.ciz = []; UC.cizilmedi = []; ETK.ciz = []; ETK.cizilmedi = []; ETK.yerlesim = null;
       if (!UC.acik || (!UC.liste.length && !ETK.liste.length)) { if (ucEl.innerHTML) ucEl.innerHTML = ""; return; }
       const c = tuval.getBoundingClientRect(), W = c.width, H = c.height, R = UC.R;
       const AL = ucAlanlar(W, H);
@@ -481,27 +484,72 @@
         eNokta.push({ m: m, x: son.x, y: son.y, al: son.al, yedek: son.yedek });
       });
       const eEngel = (ISARET.acik ? ISARET.kume : []).map((q) => ({ x0: q.x - 11, y0: q.y - 11, x1: q.x + 11, y1: q.y + 11 }));
-      const eKutu = [];
       const eUst = (a, b) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
       const EYON = [[0, -1], [1, -1], [-1, -1], [1, 0], [-1, 0], [0, 1], [1, 1], [-1, 1]];
-      eNokta.forEach((q) => {
-        const w = etkGenislik(q.m.t), h = ETK.H;
-        let sec = null;
-        for (const d of [h / 2 + 7, 1.4 * h, 2.2 * h, 3.2 * h, 4.4 * h, 6 * h]) {
-          for (const [dx, dy] of EYON) {
-            const cx = q.x + dx * (d + (dx ? w / 2 : 0)), cy = q.y + dy * d;
-            const b = { x0: cx - w / 2, y0: cy - h / 2, x1: cx + w / 2, y1: cy + h / 2 };
-            if (b.x0 < q.al.x0 || b.x1 > q.al.x1 || b.y0 < q.al.y0 || b.y1 > q.al.y1) continue;
-            if (eKutu.some((z) => eUst(z, b)) || eEngel.some((z) => eUst(z, b))) continue;
-            if (eNokta.some((r) => r.x > b.x0 - 3 && r.x < b.x1 + 3 && r.y > b.y0 - 3 && r.y < b.y1 + 3)) continue;
-            sec = { x: cx, y: cy, b: b }; break;
+      // P10.8g (P108g-gunluk.md § 4): yazdırma karesinde yazı büyüdü (47 px); sık saplamalarda (17.4, 17.5) "önce hemen üstü" açgözlü
+      // yerleşimi çizgileri çaprazlıyordu. İki yerleşim: (1) "üst": hepsi P10.8f kuralıyla (önce hemen üstü, sonra 8 yön); (2) "radyal":
+      // yazılar noktaların ağırlık merkezinden dışarı, merkez çevresindeki açı sırasıyla yerleşir, her yazı önce kendi dış yönüne en yakın
+      // yönleri dener (16 yön). Seçim: önce çizilemeyen yazı sayısı az olan, sonra çizgi kusuru (iki bağlantı çizgisinin kesişmesi ya da
+      // çizginin başka yazının kutusundan geçmesi) az olan; eşitse (1). Kurallar (güvenli alan, çakışma, nokta) ikisinde aynı.
+      const eYerlestir = (sira, yonler) => {
+        const kutu = [], ciz = [], yok = [];
+        sira.forEach((q) => {
+          const w = etkGenislik(q.m.t), h = ETK.H;
+          let sec = null;
+          for (const d of [h / 2 + 7, 1.4 * h, 2.2 * h, 3.2 * h, 4.4 * h, 6 * h]) {
+            for (const [dx, dy] of yonler(q)) {
+              const cx = q.x + dx * (d + Math.abs(dx) * w / 2), cy = q.y + dy * d;
+              const b = { x0: cx - w / 2, y0: cy - h / 2, x1: cx + w / 2, y1: cy + h / 2 };
+              if (b.x0 < q.al.x0 || b.x1 > q.al.x1 || b.y0 < q.al.y0 || b.y1 > q.al.y1) continue;
+              if (kutu.some((z) => eUst(z, b)) || eEngel.some((z) => eUst(z, b))) continue;
+              if (eNokta.some((r) => r.x > b.x0 - 3 && r.x < b.x1 + 3 && r.y > b.y0 - 3 && r.y < b.y1 + 3)) continue;
+              sec = { x: cx, y: cy, b: b }; break;
+            }
+            if (sec) break;
           }
-          if (sec) break;
-        }
-        if (!sec) { ETK.cizilmedi.push({ t: q.m.t, id: q.m.id, neden: "yer bulunamadı (çakışma)", x: q.x, y: q.y }); return; }
-        eKutu.push(sec.b);
-        ETK.ciz.push({ t: q.m.t, id: q.m.id, ax: q.x, ay: q.y, x: sec.x, y: sec.y, kutu: sec.b, alan: q.al, yedek: !!q.yedek });
-      });
+          if (!sec) { yok.push({ t: q.m.t, id: q.m.id, neden: "yer bulunamadı (çakışma)", x: q.x, y: q.y }); return; }
+          kutu.push(sec.b);
+          ciz.push({ t: q.m.t, id: q.m.id, ax: q.x, ay: q.y, x: sec.x, y: sec.y, kutu: sec.b, alan: q.al, yedek: !!q.yedek });
+        });
+        return { kutu: kutu, ciz: ciz, yok: yok };
+      };
+      const eCizgi = (u) => [u.ax, u.ay, Math.min(Math.max(u.ax, u.kutu.x0), u.kutu.x1), Math.min(Math.max(u.ay, u.kutu.y0), u.kutu.y1)];
+      const kesis = (p, q) => {                       // iki doğru parçası kesişiyor mu (uç noktaları ortak değilse)
+        const o = (a, b, c, d, e, f) => Math.sign((c - a) * (f - b) - (d - b) * (e - a));
+        return o(p[0], p[1], p[2], p[3], q[0], q[1]) * o(p[0], p[1], p[2], p[3], q[2], q[3]) < 0 &&
+          o(q[0], q[1], q[2], q[3], p[0], p[1]) * o(q[0], q[1], q[2], q[3], p[2], p[3]) < 0;
+      };
+      const kutuKes = (s, b) => {                     // doğru parçası kutunun içinden geçiyor mu (8 örnek nokta)
+        for (let k = 1; k < 8; k++) { const x = s[0] + (s[2] - s[0]) * k / 8, y = s[1] + (s[3] - s[1]) * k / 8; if (x > b.x0 && x < b.x1 && y > b.y0 && y < b.y1) return true; }
+        return false;
+      };
+      const kusur = (r) => {
+        let n = 0;
+        r.ciz.forEach((u, i) => r.ciz.forEach((v, k) => {
+          if (k === i) return;
+          if (k > i && kesis(eCizgi(u), eCizgi(v))) n++;
+          if (kutuKes(eCizgi(u), v.kutu)) n++;
+        }));
+        return n;
+      };
+      let eSon = eYerlestir(eNokta, () => EYON);
+      eSon.kusur = kusur(eSon);
+      if (eNokta.length > 2 && (eSon.yok.length || eSon.kusur)) {
+        const mx = eNokta.reduce((t, p) => t + p.x, 0) / eNokta.length, my = eNokta.reduce((t, p) => t + p.y, 0) / eNokta.length;
+        const aci = (p) => Math.atan2(p.y - my, p.x - mx);
+        const Y16 = Array.from({ length: 16 }, (_, k) => [Math.cos(k * Math.PI / 8), Math.sin(k * Math.PI / 8)]);
+        const radyal = eYerlestir(eNokta.slice().sort((a, b) => aci(a) - aci(b)), (q) => {
+          const a = aci(q);
+          const fark = (v) => { const d = Math.abs(Math.atan2(v[1], v[0]) - a); return Math.min(d, 2 * Math.PI - d); };
+          return Y16.slice().sort((u, v) => fark(u) - fark(v));
+        });
+        radyal.kusur = kusur(radyal); radyal.yontem = "radyal";
+        if (radyal.yok.length < eSon.yok.length || (radyal.yok.length === eSon.yok.length && radyal.kusur < eSon.kusur)) eSon = radyal;
+      }
+      ETK.yerlesim = { kusur: eSon.kusur, yontem: eSon.yontem || "üst" };
+      const eKutu = eSon.kutu;
+      ETK.ciz = eSon.ciz;
+      ETK.cizilmedi = ETK.cizilmedi.concat(eSon.yok);
       const nokta = [];
       UC.liste.forEach((m) => {
         const k = PAR[m.id], o = k && k.obj;
@@ -1830,8 +1878,9 @@
         render();
         const c = tuval.getBoundingClientRect();
         return { acik: UC.acik, sahne: SAHNE, veri: ETK.liste.map((m) => ({ t: m.t, id: m.id })), ciz: ETK.ciz.map((u) => Object.assign({}, u)),
-          cizilmedi: ETK.cizilmedi.slice(), tuval: { w: c.width, h: c.height }, dom: ucEl ? ucEl.querySelectorAll("g.etk").length : 0,
-          uc_kutu: UC.ciz.map((u) => Object.assign({ n: u.n }, u.kutu)) };
+          cizilmedi: ETK.cizilmedi.slice(), tuval: { w: c.width, h: c.height, x: c.left, y: c.top, vw: window.innerWidth, vh: window.innerHeight },
+          dom: ucEl ? ucEl.querySelectorAll("g.etk").length : 0,
+          uc_kutu: UC.ciz.map((u) => Object.assign({ n: u.n }, u.kutu)), yazi_px: ETK.F, kutu_h: ETK.H, yerlesim: ETK.yerlesim };   // P10.8g: yazı boyu, yerleşim
       },
       kareBaslik: () => { const e = $("kare-baslik"); return e && !e.hidden ? e.textContent : null; }
     };

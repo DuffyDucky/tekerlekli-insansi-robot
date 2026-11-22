@@ -62,6 +62,9 @@ F10 tablosu, ön soru, başlık tarihi) 19.11 hâlindeydi; yalnız yeniden üret
 **Commit'ten sonra kalacak 3 hata (yapısal, muaf tutulmadı).** Sayfa kendi commit'inin hash'ini içeremez; P10.8f commit'inden sonra
 `F9c-dogrula` beklenen 3 hata verir: commit sayısı (+1), eşleşmeyen commit (+1), "konu öneki bu pakette olan <yeni hash> commit hücresinde
 yok". Emsal `e3aaf94` (aynı 3). Bu TAHMİN (commit yapılmadan ölçülemez); bir sonraki yenilemede kapanır.
+**Ölçüldü (P10.8g düzeltmesi, 22.11; `P108g-gunluk.md` § 5):** `f4870bf`'ten sonra **3** (C, § 13 adım 1); kayıt eşitlemesi `94cd024`'ten
+sonra da **3** (`F9c-dogrula.py --tarayicisiz`, `P108g-olcum/once/F9c-tarayicisiz.log`: komit_sayisi sayfa 117 / hesap 118, komit_eslesmeyen
+2 / 3, "konu öneki bu pakette olan 94cd024 commit hücresinde yok"). Tahmin tuttu; artık TAHMİN değil.
 
 ## 3. İş 2: kare 17.10 (K1 alt adım 10), kesikten geçiş
 
@@ -259,7 +262,7 @@ Lale P10.8f: ufak dört: F9c sayfası yeniden üretildi (60 → 0; K67 üreticid
 
 CAD geometrisi değişmedi; FreeCAD açılmadı.
 
-**Doğrulanmayanlar:** commit'ten sonra F9c'nin tam 3 hata vereceği (emsalden TAHMİN, § 2); görev özetindeki "59"un kaynağı (A 60 ölçtü);
+**Doğrulanmayanlar:** commit'ten sonra F9c'nin tam 3 hata vereceği (emsalden TAHMİN, § 2; **P10.8g'de ölçüldü: 3**, § 2 sonu); görev özetindeki "59"un kaynağı (A 60 ölçtü);
 K67 grubu (TASLAK); kare görünüşü bir insan gözüyle değerlendirilmedi (A'nın bakışı ve ölçüm araçları); yazdırılabilir PDF'teki 17.4 / B5a
 sayfaları ayrıca açılıp bakılmadı (üretim "esleme tutarli, tasan -" dedi).
 
@@ -311,5 +314,6 @@ C ajanı, 21.11 (saat okundu: yazım 17:55). Komutlar depo kökünden, `PYTHONIO
 - Eşitlemeden önce (yalnız adım 1 commit'i): F9c 3 (yukarıda). Sayfa yeniden üretildi: `F9c-uret.py` çıkış 0, "toplam 67, açık 27",
   P10.8 commit hücresi `… 641bc6c f4870bf`, 155.199 bayt; `--tarayicisiz` **GEÇER (hata 0)**; `--goruntu` **GEÇER (hata 0)**, 1400 ve
   360 px konsol hatası 0, taşan öğe 0 (F9c görüntülerinden 9'u yeniden yazıldı, `1400-kararlar` bayt bayt aynı).
-- Bu commit'ten sonra beklenen: F9c 3 (yapısal; commit sayısı, eşleşmeyen commit, konu öneki). TAHMİN; ölçüm commit'ten sonra, bu
+- Bu commit'ten sonra beklenen: F9c 3 (yapısal; commit sayısı, eşleşmeyen commit, konu öneki). **P10.8g'de ölçüldü (22.11, `94cd024`): 3**,
+  aynı üç hata (`P108g-gunluk.md` § 5). Eski metin: TAHMİN; ölçüm commit'ten sonra, bu
   günlüğe yazılmadı (izlenen dosyada değişiklik bırakılmadı), orkestratöre raporda.

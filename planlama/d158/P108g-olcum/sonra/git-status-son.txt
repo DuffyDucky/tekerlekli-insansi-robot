@@ -1,0 +1,47 @@
+ M planlama/d158/F10a-dogrula.json
+ M planlama/d158/F10d-dogrula.json
+ M planlama/d158/F10e-dogrula.json
+ M planlama/d158/F10f-dogrula.json
+ M planlama/d158/P108f-etiket-olc.py
+ M planlama/d158/P108f-gunluk.md
+ M planlama/d158/sonuc-rapor.html
+ M planlama/rehber/Lale-montaj-rehberi.pdf
+ M planlama/rehber/goruntu/adim-17-01.png
+ M planlama/rehber/goruntu/adim-17-05.png
+ M planlama/rehber/goruntu/adim-33-07.png
+ M planlama/rehber/kontrol.json
+ M rehber/app.js
+ M rehber/goruntu/adim-12.png
+ M rehber/goruntu/adim-17-01.png
+ M rehber/goruntu/adim-17-04.png
+ M rehber/goruntu/adim-17-05.png
+ M rehber/veri/rehber-veri.js
+ M rehber/veri/rehber-veri.json
+ M rehber/yazdir.html
+ M tasarim/freecad/kabuk/gorsel/kabuk-arka-kapak-acik.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-baglanti-etek.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-baglanti-govde.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-izometrik.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-kesit-gogus.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-kesit.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-nextion-ic.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-nextion-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-omuz-duvari.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-patlatilmis-on.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-patlatilmis.png
+ M tasarim/freecad/kabuk/gorsel/kabuk-yan.png
+ M tasarim/freecad/montaj/yerlesim-kontrol.json
+ M tasarim/freecad/rehber/rehber_metin.py
+?? geometri2_cikar.py
+?? geometri2_dogrula.py
+?? geometri_cikar.py
+?? gez.js
+?? planlama/d158/P108d-kontrol-olcum/b2-tarama.nabiz
+?? planlama/d158/P108d-olcum/ara1.json
+?? planlama/d158/P108g-gunluk.md
+?? planlama/d158/P108g-olcum/
+?? planlama/d158/P108g-onizleme.py
+?? planlama/d158/P108g-yazi-pt.py
+?? planlama/d158/P108g-zincir.sh
+?? uc.js
