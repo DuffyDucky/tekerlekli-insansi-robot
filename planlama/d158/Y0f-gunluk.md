@@ -356,3 +356,17 @@ A ajanı, 23.11 (saat okundu: bölüm yazılırken 02:12). B'nin hükmü: `lale-
   tuşla sınandı (6, Yukarı 1,5 s, Backspace): robot başlangıçta dik, teker yükleri 61 / 68 N, satır göründü.
 - **Ölçüm** yeniden üretildi (iki koşu md5 aynı `6699257d…`). Dönüş sayıları değişmedi (21 kg·cm 0,97–0,98; 9 kg·cm 0,72–0,86;
   9 kg·cm w 0,5 0,46–0,49); ONERI-T kolon µ 0,8'de 60 s'de başarılı (önce başarısız; dönemeyen tekerler açık çevrime düştü).
+
+## 17. İkinci ek kapanışı (C)
+
+- 23.11 02:31 (saat okundu). Paket commit'i `8b9d49e` (14 dosya, B § 13 listesiyle birebir; `__pycache__` yok). Öneri dalında
+  B'nin N1–N4'ü yerel commit `fc940a0` (`ONERI-donus.md` ve `motorlar.cpp` yorumu; C++ davranışı değişmedi, derlenmedi; push yok).
+  `SIMULASYON.md`'de yalnız yakalanmayan enkoder arızaları cümlesi ve K75 satırı değişti.
+- Ön denetim: yerel = uzak = `749d6ee`; `index.lock` yok; fizik koşusu çıkış 0, fizik 10 / 10, Y0s fizikte 58 / 58, sayı özeti
+  `f3507f3911bd53da`; `olcum.json` `git checkout --` ile döndürüldü, `git diff` boş. 2B beş tam koşuda iki kez 57 / 58: kalan
+  `test_gorunum.test_yalniz_ayni_koken` (403 cevabında `WinError 10053`), tek başına 6 / 6 geçti; § 6'daki kayıtlı kararsızlık, paket
+  2B koduna dokunmuyor.
+- Kanca iki dalın gönderilecek farkında (öneri dalı için yalnız sınama, gönderilmedi) değiştirilmeden çalıştırıldı: çıkış 0; ek tarama
+  (takma ad, ekip soyadları, e-posta, yerel yol) 0.
+- K75: dosyanın kuralına göre Ahmet'in kararı yazıldı; firmware yarısı Efe'de ve teker seçilmediği için K2 gibi açık kalır, sayaç
+  değişmez (açık 40, toplam 80). İlk sürümde durum hücresinden "F5 yazılım hizası" düşmüş, F9c faz hatası verdi; geri eklendi.

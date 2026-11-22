@@ -88,7 +88,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K73 | Engel varken yerinde dönüşte taban köşesi duvara çarpıyor; ≈ 20°'den dar açıyla yaklaşmada ön sonarlar yankı almıyor, köşe sürtünüyor | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Engel yakınında dönüş ve eğik yaklaşma güvenliği |
 | K74 | Engel bölgesinde (30–35 cm) 0,05 m/s sürünme istenecek mi | **açık** (Y0s simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Y3 sonar kuralları (K70 ile birlikte) |
 
-| K75 | Dönüş: firmware 0.5.0'la µ 0,5 ve 0,8'de robot ne yerinde ne hareket hâlinde dönüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı (V1 / V2), mekanik taraf mı (V3 / V4) | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi: motor durma torku ve zemin µ ölçülmeli (ikisi TAHMİN) | Dönüş ve engel dolaşma; mekanik seçenek seçilirse sipariş listesi |
+| K75 | Dönüş: firmware 0.5.0'la µ 0,5 ve 0,8'de robot ne yerinde ne hareket hâlinde dönüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı (V1 / V2), mekanik taraf mı (V3 / V4) | **açık** (yön kararı 23.11.2026 01:02, Ahmet: ön iki teker omni + firmware düzeltmesi, sarhoş teker yok; firmware yarısı Efe'de, teker seçilmedi; F5 yazılım hizası tarafı, Ahmet + Efe) | — (yön seçildi) | Dönüş ve engel dolaşma; omni teker siparişi, CAD, `maliyet.json`, rehber |
 | K76 | Rampada `dur` sonrası robot tutmuyor, geri kayıyor: tutma döngüsü ya da fren istenecek mi, robot rampada kullanılacak mı | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (kayma hızı dişli sürtünmesi TAHMİN'ine bağlı) | Rampa kullanımı |
 | K77 | Bekçi ani duruşunda arka aks kısa süre boşalıyor (21 / 15 kg·cm): rampalı fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (devrilme ilerlemiyor; aks boşalması durma torku TAHMİN'ine bağlı) | Bekçi duruşu (firmware 0.5.0'da rampasız) |
 | K78 | Acil stopta sürücü kesik, robot boşta kayıyor (0,08–0,29 m): bu mesafe kabul mü, aktif fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (aralık yansıyan atalet ve dişli sürtünmesi TAHMİN'ine bağlı) | Acil stop duruş mesafesi |
@@ -1656,7 +1656,25 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
   - **Seçenekler sırasız kalır.** Aciliyet: mekanik seçenek (V3 / V4) sipariş listesini değiştirir.
   - Kaynak: `kod/SIMULASYON.md` "Hareket hâlinde dönüş (yay)", "Dönüş varyantları", "Karar isteyenler"; `Y0f-olcum/donus-hareket.md`,
     `donus-varyantlar.md`; `Y0f-kontrol.md` § 11.2–§ 11.3.
-- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f ekiyle güncellendi).
+- **Karar (Ahmet, 23.11.2026 01:02; Y0f ikinci eki, `Y0f-gunluk.md` § 15–16, `Y0f-kontrol.md` § 12–13):** ön iki teker omni + firmware
+  düzeltmesi. Sarhoş tekerli düzen istenmiyor, modellenmeyecek. Firmware Efe'nin; Efe ile konuşulacak. Öneri dalı `oneri/donus-omni`
+  (`origin/main` 0.5.0 üstüne) yerel, push edilmedi: beş commit (`a41815f`, `120a9a7`, `e308120`, `f22a149`, `11b2931`) + bu kapanışın
+  `fc940a0` (B'nin N1–N4 not düzeltmeleri); B: Efe'ye KOŞULLU HAZIR.
+  - **Simülasyon (VARSAYIM; geometri ve mekanizma sağlam, sayılar TAHMİN'e bağlı, masada doğrulanmadı):** öneri firmware + ön omni
+    yerinde dönüş 0,97–0,98 rad/s (21 kg·cm), 0,72–0,86 rad/s (9 kg·cm; makara sürtünmesine duyarlı); aynı firmware bugünkü lastikle
+    0,08 / 0,001 rad/s (lastikle kapalı çevrim de dönmüyor: sağlam); 90° 2,1–2,8 s, aşma ≈ 5°; 5° yan eğimde 5 s'de 0,05 m; `dur`
+    mesafesi 0,046 m; rampada tutma DEĞİŞMEDİ (K76 ayrı); 15 mm eşik kazancı PI'dan, omni makarayla eşik geçişi modellenmedi.
+  - **Enkoder arızası:** korumasız 3 s'de 1,28 m / −88°; korumalı 0,38 m / −6,3°, tespit 510–550 ms. Yarı sayan enkoder ve aralıklı
+    kopma yakalanmıyor; asıl güvence Pi'nin yön denetimi, `dur`, bekçi ve acil stop.
+  - **Teker: seçilmedi.** Aday araştırması (ürün sayfaları, 23.11; doğrulanmadı): Nexus 127 mm çift sıra omni, rulmanlı makara (14073)
+    ya da pirinç borulu (14075; `maliyet.json`'da zaten koşullu satır), Ø127 × 29 mm, 480 g, yük 30 kg; göbek olarak 6 mm delikli
+    Nexus göbeği; Türkiye'de bu çapta stok bulunamadı (ithalat). Aday ölçüleriyle yana devrilme payı 25,2° → 23,5°. Makara yanal
+    sürtünmesi mertebe olarak 21 kg·cm'de ≲ 13 N, 9 kg·cm'de ≲ 5 N (sınır değil; masada çekme ölçümü, tarifi `Y0f-kontrol.md` § 12).
+  - Uygulaması iş (karar değil): sondaki Y0f bölümünde "Y0f ikinci eki".
+  - Kaynak: `kod/SIMULASYON.md` "Öneri firmware + ön omni (ONERI; VARSAYIM)" ve "Karar isteyenler"; `Y0f-olcum/donus-oneri.md`;
+    öneri dalında `ONERI-donus.md`.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f ekiyle güncellendi; 23.11.2026 01:02 yön kararı Ahmet'in:
+  ön omni + firmware düzeltmesi; firmware yarısı Efe'de ve teker seçilmediği için K2 gibi açık kalır, sayaç değişmez).
 
 ## K76 · Rampada `dur` sonrası tutmama (Y0f)
 - **Soru:** kısa devre freni sıfır hızda tork vermiyor; `dur` sonrası robot rampada geri kayıyor. Kararlı kayma 5°'de 5,8–34,4 mm/s,
@@ -2334,3 +2352,16 @@ ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
       satır satır okunmadı; `olcum_donus_hareket.py` yeniden koşulmadı (md5 ve sayılar okundu); V3 / V4 yan eğim ve yanal itme
       sayıları, kolon dolaşma süreleri ve 20 tekrarlı manevra yeniden üretilmedi; gerçek klavyeyle (insan eli) deneme B tarafından
       yapılmadı (Ahmet'in elle denemesi A'nın günlüğünde).
+  - **Y0f ikinci eki (23.11; K75 omni yönü: öneri firmware modeli, enkoder arızası koruması, ONERI varyantları, pencere düzeltmeleri;
+    `Y0f-gunluk.md` § 15–16, `Y0f-kontrol.md` § 12–13):** karar K75'te. İş:
+    - Göbek ile tekerin cıvata deseni uyumu (satıcıya sorulacak).
+    - Motor mil boyu ve D kesimi (CAD'deki 15 mm tahmin).
+    - Standart teker siparişi verildi mi (verildiyse iki teker artar, verilmediyse listeden düşer).
+    - CAD, `maliyet.json` ve rehber omniye göre güncellenmedi.
+    - Depoda iki tutarsızlık: omni merkezinin içeri kayması `arayuz.py` ile `taban_lib.py` arasında farklı; rehberde teker ekseni
+      ±178, CAD'de 216.
+    - `enk_ariza` telemetri alanı (protokol önerisi, protokol değiştirilmedi).
+    - Katman 1'in 500 ms içindeki çıkış sınırı için test.
+    - Enkoder kilidinin kullanıcıya görünmesi.
+    - PI kapalı derlemenin 0.5.0 ile ikili karşılaştırması (bugün yalnız koddan okundu).
+    - Pi tarafında dönüşü erken durdurma (aşma ≈ 5°).
