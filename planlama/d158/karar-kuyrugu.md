@@ -80,11 +80,12 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K65 | Sağ / sol tanımı: CAD'de sağ (+X) robota önden bakanın sağı = robotun kendi solu; ESP32 yazılımı robotun kendi sağını kullanıyor | kapandı (16.11; orkestratör kararı (Echo): donanım adları korunur, rehber / kablo tablosu / pin haritasına tanım cümlesi, K1'e kurulum testi; yazılım düzeltmesi Efe'de, iş; P10.7b2e kısım 2, `planlama/d158/sag-sol-karari.md`) | — | — |
 | K66 | ESP32 VIN'e seri Schottky: çevre 5 V → 1N5819 → VIN (çevre hat sigortası atınca geri besleme; pano #7 mesaj #26 madde 3 / #28) | kapandı (16.11; orkestratör kararı (Echo): seri 1N5819, anot çevre 5 V, katot VIN; tezgâh denemesine bağlı kabul, VIN payı tutmazsa geri alınır; malzeme 1N5819 1 → 2, +1,22 TL; P10.7b2f kısım 2) | — | — |
 | K67 | M3x8 naylon kart burcu: CAD'de 52, sipariş listesinde 48 | **açık** (P10.8d; alım sorusu, Ahmet'te) | b: listede 56 (4 yedek korunur), +14,64 TL | Taban güç paneli kartları (B5a), sipariş listesi |
+| K68 | `sonuc-rapor.html` kendi commit'ini taşıyamaz: her commit'ten sonra `F9c-dogrula` 3 yapısal hata; denetimin tanımı değişsin mi | **açık** (P10.8g; denetim tanımı, Ahmet'in onayı) | S1: sayfa taban commit'ini taşır, denetim "tabandan sonraki tek commit = sayfanın kendi commit'i" durumunu ayrı raporlar | `F9c-dogrula` commit sonrası 0 (sayfanın kayıt eşitlemeleri) |
 
-**Açık: 27.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
+**Açık: 28.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
 K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
-K55 ölçüme ya da kupona bağlı kabul). Toplam 67 madde
-(21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
+K55 ölçüme ya da kupona bağlı kabul). Toplam 68 madde
+(22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
 17.11.2026, P10.9b: 22 madde kapandı, 5 maddenin teknik yarısı karara bağlandı; özet tablosunun satırları tek tek sayıldı).
 
 **P10.9b (17.11.2026, üretimsiz kayıt paketi):** Ahmet 17.11.2026 02:36'da orkestratöre "benim yerime karar verebileceğin şeyler varsa
@@ -164,6 +165,8 @@ P10.8d (CAD açıkları, 20.–21.11.2026; `d2c6776`) → K67 (naylon kart burcu
 P10.8e (rehber açıkları, 21.11.2026; `1db7a9c`) yeni madde açmadı; açık işleri sondaki bölümde (`P108e-gunluk.md` § 11, `P108e-kontrol.md` § 7–§ 8).
 P10.8f (ufak dört, 21.11.2026; `f4870bf`) yeni madde açmadı; K67 açık, sonuç sayfasındaki aciliyet grubu A (orkestratör onayı,
 `P108f-kontrol.md` § 2 gerekçesiyle); açık işleri sondaki bölümde (`P108f-gunluk.md` § 11–§ 12, `P108f-kontrol.md` § 10).
+P10.8g (ufak beş, 22.11.2026; `8d6a7c7`) → K68 (F9c sayfasının yapısal 3 hatası; `planlama/d158/P108g-gunluk.md` § 5); öbür açık
+işleri sondaki bölümde (`P108g-gunluk.md` § 10, § 12; `P108g-kontrol.md` § 4, § 8, § 11).
 
 ---
 
@@ -1516,6 +1519,27 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Durum:** açık (21.11.2026, kayıt eşitlemesinde açıldı). Sonuç sayfasında aciliyet grubu A (sipariş öncesi; P10.8f taslağı,
   orkestratör onayı 21.11, `P108f-kontrol.md` § 2).
 
+## K68 · `sonuc-rapor.html` kendi commit'ini taşıyamaz: F9c'nin yapısal 3 hatası (P10.8g)
+- **Soru:** `F9c-dogrula.py`'nin üç kuralı HEAD'e kadarki `git log`'la hesaplanır: (1) `komit_sayisi` (F0 tabanından HEAD'e commit
+  sayısı), (2) `komit_eslesmeyen` (sayfanın hiçbir commit hücresinde geçmeyen döngü commit'leri), (3) konusu `Lale P10.8…` olan her commit
+  P10.8 satırının commit hücresinde olmalı. Sayfayı içeren commit'in kısa hash'i sayfanın içeriğine bağlı; sayfa onu taşıyamaz. Bu yüzden
+  sayfayı commit'leyen her commit'ten sonra denetim 3 hata verir (ölçülen: `e3aaf94`, `f4870bf`, `94cd024` sonrası 3). Denetimin tanımı
+  değişsin mi?
+- **Seçenekler** (`planlama/d158/P108g-gunluk.md` § 5):
+  S1) Taban commit'i: üretici sayfaya üretildiği anki HEAD'i yazar (`data-taban`); denetim üç git kuralını tabana kadar hesaplar;
+  `taban..HEAD` aralığı tek commit ve o commit sayfayı değiştiren son commit ise ayrı satırda "sayfanın kendi commit'i" diye raporlanır;
+  aralıkta başka her commit eskisi gibi hata. Bayatlığı gizlemez; denetimin tanımı değişir.
+  S2) İçerik özeti, git kuralları kalkar (gevşetme; A reddetti).
+  S3) Commit'ten sonra yeniden üretip `--amend` (sabit nokta yok, geçmiş yeniden yazılır; A reddetti).
+  S4) Kısa hash'i madencilikle sabitlemek (≈ 2^28 deneme; A reddetti).
+  S5) Bugünkü uygulama: commit'ten hemen önce 0, sonra 3, kayıtta açık; bir sonraki yenilemede kapanır.
+- **Bilinmesi gereken:** S1 `F9c-dogrula.py` ve `F9c-uret.py` değişikliği ister (ayrı küçük paket, bozma sınamasıyla: "taban..HEAD'de
+  ikinci commit", "taban sayfayı değiştiren commit'in atası değil", "taban git log'da yok"). Onaya kadar S5 sürer; denetimde muafiyet yok.
+- **Önerilen varsayılan:** S1 (A'nın önerisi, `P108g-gunluk.md` § 5). Yalnız öneri; karar Ahmet'te. `F9c-dogrula.py` değişmedi.
+- **Kaynak:** `planlama/d158/P108g-gunluk.md` § 5, § 12; `P108g-kontrol.md` § 3 madde 4; `P108f-gunluk.md` § 2, § 13.
+- **Durum:** açık (22.11.2026, P10.8g kayıt eşitlemesinde açıldı). Sonuç sayfasında aciliyet grubu C (sonra karar verilebilir; taslak,
+  orkestratör onaylar).
+
 ---
 
 ## Karar değil, iş (kuyruğa alınmadı)
@@ -2032,14 +2056,51 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     17.10 katın kenar çizgisi; 17.4 saplama numaraları; B5a acil stop düğüm kartı yazısı (yukarıdaki iki bölümde işaretli).
   - **Saplama numarası 17.1 ve 17.5'te yok:** iki panel de saplama numarası veriyor (numaralama kuralı B5a metninde), karede numara
     yazısı yok. `rehber_metin.py` `PARCA_ETIKET`'e konum eklemek (17.4 kalıbı) ve rehber üretimi (`P108f-gunluk.md` § 12).
+    → 22.11 P10.8g (`8d6a7c7`): **kapandı** (17.1 ve 17.5'te 9 / 9, iki kipte; `P108g-gunluk.md` § 2, `P108g-kontrol.md` § 3 madde 1;
+    17.5'in okunurluk sınırı aşağıdaki P10.8g bölümünde).
   - **Basılı lejantta şema notu yok:** 17.11'deki adım ötesi şema (`sema_on`, P10.8e) notunu etkileşimli lejant yazıyor, basılı sayfa
     lejantı (`rehber/yazdir.html`) yazmıyor (`P108f-gunluk.md` § 12).
+    → 22.11 P10.8g (`8d6a7c7`): **kapandı** (PDF s. 26'da; `P108g-kontrol.md` § 3 madde 2).
   - **PDF'te etiket yazısı çok küçük:** yazdırma karesi PDF'te 73–76 mm genişlikte; 14 px yazı ≈ 0,86 mm, yani ≈ 2,4 pt (uç numaraları
     da aynı ölçekte). 300 dpi'de okunuyor, kâğıtta çok küçük; rehber aracı işi (`P108f-kontrol.md` § 10 N3).
+    → 22.11 P10.8g (`8d6a7c7`): **parça etiketi için kapandı** (47 px; PDF'te em 8,14 / 8,43 pt, B'nin bağımsız ölçümünde büyük harf
+    5,73–6,00 pt; `P108g-kontrol.md` § 3 madde 3). Uç numaraları ve kare şeritleri açık (aşağıdaki P10.8g bölümünde).
   - **F9c sayfası kendi commit'ini taşıyamaz (yapısal):** sayfayı içeren her commit'ten sonra `F9c-dogrula` en az 3 hata verir (commit
     sayısı, eşleşmeyen commit, konu öneki bu pakette olan commit hücrede yok); bir sonraki yenilemede kapanır. Kayıt eşitlemesi
     sayfayı aynı commit'te yeniden üretmezse daha fazla (`641bc6c`: +35). Denetimde muafiyet yok, bilerek eklenmedi
     (`P108f-gunluk.md` § 2, § 12; `P108f-kontrol.md` § 8).
+    → 22.11 P10.8g (`8d6a7c7`): kayıttaki TAHMİN ölçülenle düzeltildi (`f4870bf` ve `94cd024` sonrası 3); **açık, karar: K68**
+    (denetimin tanımı değişmeden çözülmüyor; öneri S1, `P108g-gunluk.md` § 5).
   - **`P108f-etiket-olc.py` alt adımsız karelerde başka çekimi ölçüyor:** araç (F10d uç etiketi ölçümü gibi) DevTools çekimini
     (`cekim=1`) ölçer; alt adımlı karede (17.4) bu çekim teslim edilen kareyle aynı, alt adımsız karede (B5a) teslim edilen kare üretimin
     `--screenshot` çekimi, kadrajı farklı. B5a'nın teslim edilen iki karesi yalnız gözle doğrulandı (`P108f-kontrol.md` § 10 N4).
+    → 22.11 P10.8g (`8d6a7c7`): **`P108f-etiket-olc.py` için kapandı** (teslim karesini çekip karşılaştırıyor, 8 / 8 çekimde fark 0;
+    B'nin bozma sınaması 1 px yazı farkını yakaladı; `P108g-kontrol.md` § 3 madde 5). F10d tarafı açık (aşağıda).
+
+**P10.8g kapanışından açık iş (22.11, `8d6a7c7`; `planlama/d158/P108g-gunluk.md` § 10, § 12, `P108g-kontrol.md` § 4, § 8, § 11; karar değil, iş)**
+  - **Kapandı:** 17.1 / 17.5 saplama numaraları, basılı 17.11 şema notu, PDF'te parça etiketi yazısı, `P108f-etiket-olc.py` teslim karesi
+    (yukarıdaki P10.8f bölümünde işaretli). F9c'nin yapısal 3 hatası karar oldu: K68.
+  - **(orta) 17.5 basılı karesi dokuz saplamayı tek başına ayırt ettirmiyor:** yazılar okunuyor (≈ 8,4 pt), ama saplama kümesi kâğıtta
+    ≈ 10 × 6 mm; 9 yazının 6'sında etiket noktası başka bir yazının kutusuna kendi kutusundan daha yakın; Y3'ün çizgisi uç 3 dairesinin
+    altından geçiyor. B'nin hükmü (göz + ölçü, gerçek montajcıyla sınanmadı): eşleme güvenilir değil; 17.1, 17.4 ve etkileşimli rehberle
+    birlikte kullanılabilir. Öneri (rehber kararı): 17.5'e saplamalara odaklı ikinci kare / kamera ya da basılı sayfada "saplamalar için
+    17.1 / 17.4 karesine bak" notu (`P108g-kontrol.md` § 4 K1).
+  - **(orta) Büyük etiket kutusu saplamanın kendisini örtüyor:** 17.1'de A2, A3; 17.4'te A2, A3, Y2 (17.4'teki A3, G09 / G11'in takıldığı
+    saplama). Yerleşimin "kusur" sayımı (`app.js` `kusur()`) yazının parçayı örtmesini ve parça etiketi çizgisinin uç etiketi dairesi /
+    çizgisiyle kesişmesini saymıyor (17.5'te Y3 çizgisi uç 3 dairesinden geçiyor, ölçülen kusur 0); "kusur 0" kalite kanıtı değil
+    (`P108g-kontrol.md` § 4 K2, K3).
+  - **Uç numaraları ve kare şeritleri basılı sayfada küçük:** uç etiketi numaraları ≈ 2,3–2,4 pt (13 px), kare başlık ve lejant şeritleri
+    ≈ 2,5 pt (anlamları karenin altında 8,1 pt; daha düşük öncelik). P10.8g'nin madde 3'ü yalnız parça etiketini kapsadı
+    (`P108g-gunluk.md` § 10, `P108g-kontrol.md` § 8).
+  - **(düşük) `P108g-yazi-pt.py` geçme ölçütü ayarı okuyor ve zincirde değil:** "em" sütunu çizilen glifi değil `app.js` `ETK.F` = 47 px
+    ayarını ölçekle çarpıyor (gerçek ölçü koyu piksel yüksekliği sütunu). 47 px bugünkü en dar kareye (73,3 mm) bağlı; yazdırma yerleşimi
+    değişirse 8 pt'nin altına düşmeyi zincirde yakalayan adım yok; zincire alınması önerildi (`P108g-kontrol.md` § 4 K5, K6).
+  - **(düşük) F10d alt adımsız kareleri teslim edilenden farklı çekimle ölçüyor:** alt adımı olmayan adımların teslim karesi sayfa
+    1182 × 624'te yüklenip 1200 × 720'ye büyütülerek çekiliyor; F10d uç etiketi ölçümü bu kareleri DevTools'ta doğrudan 1200 × 720 açıyor
+    (P10.8g madde 5'teki sorunun F10d tarafı; `P108g-gunluk.md` § 10, `P108f-kontrol.md` § 10 N4).
+  - **Bilgi:** etkileşimli kip 360 px telefonda 17.4 ve 17.5'te radyal yerleşim seçiyor; 17.5'te Y4 / Y5 kutusunu uç çizgisi ve dairesi
+    kısmen örtüyor (aynı tür örtüşme HEAD'de 17.4 telefonda da vardı; `P108g-kontrol.md` § 4 K4).
+  - **Not:** `pre-push` kancasındaki gömülü `data:image` istisnası ve kancanın depoda izlenmemesi yukarıdaki P10.8d / P10.8e bölümündeki
+    gibi açık; P10.8g dokunmadı.
+  - **Bakılmadı (B, `P108g-kontrol.md` § 11; A, `P108g-gunluk.md` § 12):** koyu tema; gerçek yazıcı çıktısı (PDF 100 / 300 dpi
+    görüntüsüyle bakıldı); 17.5'in yeterliliği gerçek bir montajcıyla sınanmadı.

@@ -230,3 +230,34 @@ Lale P10.8g: ufak beş: 17.1 / 17.5 saplama numaraları, basılı 17.11 şema no
 
 **Doğrulanmayanlar:** koyu temada kareler açılmadı; basılı kâğıtta (gerçek yazıcı) bakılmadı, PDF 110 dpi görüntüsüyle bakıldı; 17.5'in
 kalabalığının kullanıcı için yeterliliği insan gözüyle değerlendirilmedi.
+
+## 13. Kapanış (C)
+
+C ajanı, 22.11 (saat okundu: 04:42). Komutlar depo kökünden, `PYTHONIOENCODING=utf-8`, `py -3 -B -X utf8`.
+
+**Adım 1, paket commit'i `8d6a7c7`** ("Lale P10.8g: ufak beş: …"; 153 dosya).
+- Ön kontrol: `git fetch` sonrası yerel = uzak = `94cd024`; `F9c-dogrula.py --tarayicisiz` GEÇER (hata 0); `md5sum -c
+  P108f-olcum/kir-bas.md5` 21 / 21 OK; `FREECAD-KILIT.txt` `.git/info/exclude`'da.
+- Açık yollarla `git add`: § 11 listesi + `P108g-kontrol.md` + `P108g-olcum/` tamamı (127 dosya; B'nin önerisi, emsal `P108f-olcum/`).
+  Sahnede 153 = 26 + 127; sahnelenmeyen yalnız 21 eski kir (14 M + 7 ??).
+- Gizlilik taraması (`git diff --cached`, eklenen ≈ 19.700 satır): e-posta, telefon (+90 / 05xx), anahtar / belirteç kalıpları,
+  parola / şifre / token sözcükleri, yerel kullanıcı yolu (Windows ve Git Bash biçimi, kullanıcı adı, eşitleme ve uygulama verisi
+  klasörü), IBAN, 11 haneli sayı, resmî metin ve kimlik sözcükleri. Bulunan: kalıp sözcükleri yalnız `P108g-kontrol.md` § 10'da (B'nin
+  tarama listesi, veri değil); 11 hane = etiket ölçüm JSON'larında koordinat ondalığı; "masaustu" = görünüm adı ("masaustu 50/50");
+  "kimlik" = kablo kimliği. Gerçek ya da sınırda bulgu yok.
+
+**Adım 2, kayıt eşitlemesi** (bu bölümle aynı commit).
+- `planlama/dongu-158.md`: § 5'e P10.8g satırı (P10.8f satırı yazılmamıştı, geriye dönük yazılmadı); P10.8 hücresinin rehber
+  listesinde P10.8f'in dört açığı "kapandı: P10.8g `8d6a7c7`", yapısal 3 hata "açık, karar: K68", P10.8g'nin açıkları adlarıyla.
+- `planlama/d158/karar-kuyrugu.md`: **K68** (sayfanın yapısal 3 hatası; seçenekler § 5, öneri S1, Ahmet'in onayı) özet tablosu ve
+  gövdesiyle, açık 27 → 28, toplam 67 → 68; giriş notuna P10.8g satırı; "P10.8f kapanışından açık iş" maddelerine kapanış / K68
+  işaretleri; yeni bölüm "P10.8g kapanışından açık iş" (17.5 basılı karesinde eşleme, etiket kutusunun saplamayı örtmesi ve kusur
+  sayımı, uç numaraları / şeritler ≈ 2,3–2,5 pt, `P108g-yazi-pt.py` ayar okuyor ve zincirde değil, F10d alt adımsız karede başka çekim,
+  360 px bilgi notu, kanca notu, B'nin "bakılmadı" listesi).
+- `planlama/d158/F9c-uret.py`: kaynak sabitleri `P108G`, `P108GK`; `GRUP["K68"]` C (TASLAK, orkestratör onaylar; yoksa `KeyError`);
+  P10.8 satırına P10.8g; F10 tablosunda rehber "Bitti" / "Açık iş" P10.8g'ye göre, depo satırının karar sütununa K68; aciliyet notu ve
+  yeni kayıt notu; başlıkta "P10.8g ve kayıt eşitlemesi, 22.11.2026". `F9c-dogrula.py`'ye dokunulmadı, muafiyet yok.
+- Sayfa yeniden üretildi: `F9c-uret.py` çıkış 0, "toplam 68, açık 28", P10.8 commit hücresi `… 94cd024 8d6a7c7`, 157.709 bayt;
+  `--tarayicisiz` **GEÇER (hata 0)**; `--goruntu` **GEÇER (hata 0)**, 1400 ve 360 px konsol hatası 0, taşan öğe 0.
+- Bu commit'ten sonra F9c'nin yapısal 3 hatası beklenir (K68). Push ve commit sonrası ölçüm bu günlüğe yazılmadı (izlenen dosyada
+  değişiklik bırakılmadı), orkestratöre raporda.
