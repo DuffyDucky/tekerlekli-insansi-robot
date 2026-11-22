@@ -1,0 +1,71 @@
+"""Y0f: dönüş için karşılaştırma VARYANTLARI ("ya şöyle olsaydı"). Hepsi VARSAYIM; varsayılan (V0) bugünkü firmware 0.5.0
+ve bugünkü mekaniktir. Testler, `olcumler.py` ve sayı özeti yalnız V0 ile koşar; varyant yalnız açıkça istenince
+(`olcum_varyantlar.py`, `gorunum3b.py --varyant` / `simulasyon3b.bat <sahne> <varyant>`) devreye girer.
+
+Anahtarlar:
+  fw_w_giris        firmware `w` giriş tavanı (rad/s; 0.5.0'da 1). 3 ile yerinde dönüşte iki yan teker azamisine (±0,39 m/s)
+                    ölçeklenir: PWM ±1 (açık çevrim).
+  fw_kapali_cevrim  firmware teker hızı denetimi: u = hedef / 0,39 + kp (hedef - ölçülen) + ki ∫(hedef - ölçülen), |u| ≤ 1,
+                    doyumda integral durur (anti-windup). Ölçülen = o yanın enkoderli tekeri. Kazançlar TAHMİN.
+                    (main motorlar.cpp'de KP / KI / KD sabitleri var, 0.5.0'da KP = 0: bu varyant onların sıfırdan büyük hâli.)
+  on_teker          "omni": ön iki teker yanal serbest (top teker modeli, aşağıda), tahrikli.
+                    "sarhos": ön iki teker yanal ve boyuna serbest, tahriksiz (bilyalı sarhoş teker; dönen çatallı
+                    sarhoş tekerin çatal dinamiği yok), tahrik ve enkoder arka tekerlerde.
+
+Ön teker modeli (omni / sarhoş): ön teker gövdesi tabana yanal ekseni robotun x'i olan pasif bir menteşeyle ("makara",
+sönüm 0,001 N·m·s/rad) bağlanır; tekerin kendi ekseni (y) bu menteşenin içinde. Temas geometrisi aynı yarıçapta küre (silindir
+yerine), merkezi iki eksenin kesişiminde: yanal kayma yerine küre x ekseni çevresinde yuvarlanır, yanal direnç ≈ 0; boyuna
+yönde tutuş ve normal yük değişmez. Makara açısı her fizik adımından sonra 0'a döner (`dunya.adim`): küre kendi merkezi
+çevresinde simetrik olduğundan temas geometrisi değişmez, teker ekseni yatay kalır ("hep alttaki makara"), makara hızı korunur.
+Bu sıfırlama olmadan makara dönerken teker ekseni yatırılıyor ve tahrik çekişi kayboluyordu (ilk denemede görüldü). Doğru verdiği: ön aksta yanal direncin yokluğu (dönme momenti gereksinimi, yan eğimde ön
+aksın kayması, frende yönsel kararlılık kaybı). Kaba verdiği: gerçek omni tekerin ayrık makaraları (titreşim, makara
+yuvarlanma direnci, sert zeminde düşük boyuna tutuş), temas yaması (tek nokta), makaranın kendi sürtünmesi; sarhoş tekerde
+çatal izi ve dönme gecikmesi. Görsel ağ "makara" gövdesinde durur (dönmez).
+"""
+
+VARYANTLAR = {
+    "V0": dict(ad="V0 bugunku robot", aciklama="firmware 0.5.0 + dört lastik teker (varsayılan)"),
+    "V1": dict(ad="V1 firmware w tavani 3 rad/s", aciklama="w girişi 3'e dek; yerinde dönüşte PWM ±1 (açık çevrim)",
+               fw_w_giris=3.0),
+    "V2": dict(ad="V2 firmware kapali cevrim PI", aciklama="enkoderden teker hızı PI (kp 2, ki 10; TAHMİN), PWM doyuma dek",
+               fw_kapali_cevrim=dict(kp=2.0, ki=10.0)),
+    "V3": dict(ad="V3 on tekerler omni", aciklama="ön iki teker yanal serbest, tahrikli", on_teker="omni"),
+    "V4": dict(ad="V4 onde sarhos teker", aciklama="ön iki teker serbest (bilyalı sarhoş), yalnız arka iki teker tahrikli",
+               on_teker="sarhos"),
+    "V1+V3": dict(ad="V1+V3 w tavani 3 + on omni", aciklama="V1 ve V3 birlikte", fw_w_giris=3.0, on_teker="omni"),
+    "V2+V3": dict(ad="V2+V3 kapali cevrim + on omni", aciklama="V2 ve V3 birlikte", fw_kapali_cevrim=dict(kp=2.0, ki=10.0),
+                  on_teker="omni"),
+}
+SIRA = list(VARYANTLAR)
+
+
+def al(ad):
+    """Varyant sözlüğü; None / "V0" -> None (bugünkü robot: hiçbir kod yolu değişmez)."""
+    if ad in (None, "", "V0"):
+        return None
+    if ad not in VARYANTLAR:
+        raise ValueError("bilinmeyen varyant %r (seçenekler: %s)" % (ad, ", ".join(SIRA)))
+    return VARYANTLAR[ad]
+
+
+def on_teker_xml(x, tur):
+    """lale.xml metninde ön iki tekeri "makara" menteşeli küre tekere çevirir (omni / sarhoş). Başka hiçbir şeye dokunmaz."""
+    import re
+    for yan in ("sol", "sag"):
+        ad = "teker_on_" + yan
+        m = re.search(r'( *)<body name="%s" pos="([^"]+)">(.*?)\n\1</body>' % ad, x, flags=re.S)
+        if m is None:
+            raise RuntimeError("lale.xml'de %s gövdesi bulunamadı" % ad)
+        girinti, pos, ic = m.group(1), m.group(2), m.group(3)
+        gorsel = re.search(r'\n *<geom class="gorsel"[^>]*/>', ic).group(0)
+        ic = ic.replace(gorsel, "")
+        ic = re.sub(r'(<geom name="c_%s" class="teker_carpisma") type="cylinder" size="[^"]+" pos="0 0 0" quat="[^"]+"' % ad,
+                    r'\1 type="sphere" size="0.0625"', ic)
+        yeni = ('%s<body name="makara_on_%s" pos="%s">\n'
+                '%s  <inertial pos="0 0 0" mass="0.001" diaginertia="1e-6 1e-6 1e-6"/>\n'
+                '%s  <joint name="makara_on_%s" type="hinge" axis="1 0 0" damping="0.001" armature="0"/>%s\n'
+                '%s  <body name="%s" pos="0 0 0">%s\n%s  </body>\n%s</body>'
+                % (girinti, yan, pos, girinti, girinti, yan, gorsel.replace("\n", "\n  "), girinti, ad,
+                   ic.replace("\n", "\n  "), girinti, girinti))
+        x = x[:m.start()] + yeni + x[m.end():]
+    return x

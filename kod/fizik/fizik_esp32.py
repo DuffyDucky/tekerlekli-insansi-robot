@@ -27,9 +27,12 @@ import dunya as D  # noqa: E402
 
 
 class FizikEsp32(SahteEsp32):
-    def __init__(self, harita, konum=None, sonar_acik=True, bagimli_sinir_acik=True, sahne=None, degis=None):
+    def __init__(self, harita, konum=None, sonar_acik=True, bagimli_sinir_acik=True, sahne=None, degis=None, varyant=None):
+        """varyant: `varyantlar.al(ad)` sözlüğü ya da None (bugünkü firmware 0.5.0 + mekanik; varsayılan)."""
         x, y, a = konum if konum is not None else harita.baslangic
-        self.dunya = D.FizikDunya(harita, sahne=sahne, konum=(float(x), float(y), float(a)), degis=degis)
+        self.varyant = varyant
+        self._pi = None
+        self.dunya = D.FizikDunya(harita, sahne=sahne, konum=(float(x), float(y), float(a)), degis=degis, varyant=varyant)
         self._kesir = [0.0, 0.0]
         self._son_aci = None
         self._adimlandi = False
@@ -37,6 +40,11 @@ class FizikEsp32(SahteEsp32):
         self.kayitci = None                  # ölçüm: her 10 ms dilimin sonunda kayitci(self) çağrılır
         self.pwm_zorla = None                # yalnız ölçüm (olcumler.py dönüş): sürülürken firmware PWM eşlemesi yerine bu [u_sol, u_sag]
         super().__init__(harita, konum=konum, sonar_acik=sonar_acik, bagimli_sinir_acik=bagimli_sinir_acik)
+        if varyant:                                  # VARSAYIM (varyantlar.py); V0'da bu dal yok
+            if varyant.get("fw_w_giris"):
+                self.w_giris = float(varyant["fw_w_giris"])
+            if varyant.get("fw_kapali_cevrim"):
+                self._pi = dict(varyant["fw_kapali_cevrim"], integral=[0.0, 0.0], u=[0.0, 0.0])
         self.dunya.gerilim(self.aku_v)
         # kollar ve kafa servo "ev" açısında başlar (montaj ev pozu eklem 0; S2 ev 5 derece)
         self.dunya.servo_eklem_ayarla({t["ad"]: math.radians(a - t["ofset"]) for t, a in zip(self.servo_tablo, self.servo_simdi)})
@@ -46,6 +54,8 @@ class FizikEsp32(SahteEsp32):
     # ------------------------------------------------------------ yardımcılar
     def _enkoder_teker(self):
         """Her yanda enkoderin olduğu teker (TAHMİN: ön): dunya.TEKERLER sırası on_sol, arka_sol, on_sag, arka_sag."""
+        if self.varyant and self.varyant.get("on_teker") == "sarhos":
+            return (1, 3)                            # V4: tahrikli (enkoderli) tekerler arkada
         return (0, 2) if self.dunya.p["enkoder_teker"] == "on" else (1, 3)
 
     def _enkoder_bas(self):
@@ -69,9 +79,31 @@ class FizikEsp32(SahteEsp32):
             u = [0.0 if h == 0.0 else ui for h, ui in zip(self.rampa_hiz, u)]
             if self.pwm_zorla is not None:
                 u = list(self.pwm_zorla)
+            elif self._pi is not None:
+                u = list(self._pi["u"])
         return suruluyor, u
 
+    def _pi_adim(self, dt):
+        """VARSAYIM V2: teker hızı PI (enkoderli tekerin hızı). Hedef 0 ise firmware gibi PWM 0 (fren), integral sıfırlanır."""
+        pi = self._pi
+        tv = self.dunya.teker_hizlari()
+        i, j = self._enkoder_teker()
+        olculen = [tv[i] * self.teker_capi / 2.0, tv[j] * self.teker_capi / 2.0]
+        for k in range(2):
+            h = self.rampa_hiz[k]
+            if h == 0.0 or not (self.en and self._bara_gerilimli() and self.calisiyor):
+                pi["integral"][k] = 0.0
+                pi["u"][k] = 0.0
+                continue
+            hata = h - olculen[k]
+            u = h / self.azami_hiz + pi["kp"] * hata + pi["ki"] * pi["integral"][k]
+            if -1.0 < u < 1.0 or (u >= 1.0 and hata < 0) or (u <= -1.0 and hata > 0):
+                pi["integral"][k] += hata * dt          # doyumda integral büyümez (anti-windup)
+            pi["u"][k] = max(-1.0, min(1.0, u))
+
     def _fizik_adim(self, dt):
+        if self._pi is not None:
+            self._pi_adim(dt)
         suruluyor, u = self._surucu()
         self._servo_uygula()
         self.dunya.adim(dt, u[0], u[1], suruluyor)

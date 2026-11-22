@@ -82,10 +82,11 @@ def poz_servo(poz, iki_kol=True):
 
 # ====================================================================== deney düzeneği (protokol üstünden)
 class Deney:
-    def __init__(self, degis=None, sahne=None, konum=(10.0, 40.0, 0.0), poz=None, harita=None, sonar_acik=True):
+    def __init__(self, degis=None, sahne=None, konum=(10.0, 40.0, 0.0), poz=None, harita=None, sonar_acik=True, varyant=None):
         h = Harita(dict(BOS, baslangic={"x": konum[0], "y": konum[1], "aci_derece": math.degrees(konum[2])})) \
             if harita is None else harita
-        self.c = FizikEsp32(h, konum=konum, sahne=sahne, degis=degis, sonar_acik=sonar_acik)
+        # varyant: yalnız olcum_varyantlar.py (VARSAYIM); bu dosyanın ölçümleri hep None (bugünkü robot)
+        self.c = FizikEsp32(h, konum=konum, sahne=sahne, degis=degis, sonar_acik=sonar_acik, varyant=varyant)
         self.w = self.c.dunya
         if poz is not None:                          # ölçüm kurulumu: kollar pozda başlar (servo hedefi de)
             for ad, a in poz_servo(poz).items():

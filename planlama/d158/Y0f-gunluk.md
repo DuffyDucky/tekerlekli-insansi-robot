@@ -197,3 +197,84 @@ C ajanı, 22.11 (saat okundu: 23:04).
 **Adım 2, kayıt eşitlemesi** (bu bölümle aynı commit): `dongu-158.md` § 5 satırı ve § 3 F5 altına Y0f notu; `karar-kuyrugu.md`
 K75–K80 (açık 34 → 40, toplam 80) ve "Y0f … kapanışından açık iş" bölümü; `F9c-uret.py` `Y0F` / `Y0FK`, `GRUP` K75–K80 (taslak), iki
 sayfa notu; sayfa yeniden üretildi. `F9c-dogrula.py` değişmedi. Push ve commit sonrası ölçüm orkestratöre raporda.
+
+## 12. Kumanda ve hareket hâlinde dönüş (A, commit yok)
+
+Ahmet 3B pencereyi denedi: "basılı tutunca dönsün ve ileri geri gitsin bide o kadar az dönüş yapıyor ki 10 kere ileri geri
+yaptım hala daha engeli aşamadım"; Home tuşunu dizüstünde bulamadı.
+
+**1. Kumanda** (`kod/fizik/gorunum3b.py`, `kod/SIMULASYON.md` tuş bölümü):
+- Oklar basılı tuttukça sürer: Yukarı / Aşağı 0,25 m/s (Shift 0,39), Sol / Sağ 1 rad/s, birlikte yay; bırakınca `dur`. Kademeli
+  artırma kalktı. `sur` 200 ms'de bir protokolden (bekçi 500 ms). Eski görünüm `sur.v`'yi 0,39'a bölüp gönderiyordu (m/s yerine
+  oran; 0,3 m/s komut 0,77'ye gidip kırpılıyordu): düzeltildi, artık m/s.
+- Bırakma: Windows'ta her döngüde `GetAsyncKeyState`, yalnız ön plandaki pencere bu süreçteyse; odak yoksa basılı tuş yok
+  sayılır (robot durur). Görüntüleyicinin tuş geri çağrısı yalnız basma / tekrar veriyor.
+- Tuşlar: 6 devreye al, 7 dur, 8 acil stop, 9 gücü bırak, Enter kol pozu, Shift+6..9 rampa kipi / kafa / başa koy / sonraki
+  sahne; eski tuşlar duruyor. Çakışma: görüntüleyici modülünün kısayol tablosu (harfler `mjVISSTRING` / `mjRNDSTRING`
+  bayrakları, " 0".." 5" geom grubu, "S0".."S5" site grubu) ve canlı sınama (pencerede 0 geom grubu 0'ı kapattı; 6–9,
+  Shift+6–9, Enter görüntüleyici seçeneklerini değiştirmedi).
+- Katman: sol üstte kalıcı ipucu (devrede değilken en üstte "ONCE 6'YA BAS", acil stopta "önce 8, sonra 6", odak yokken uyarı);
+  sol altta komut / gerçek v ve w yan yana.
+- Sınama (`kod\simulasyon3b.bat` temiz açılış, gerçek tarama kodlu basılı tutma / bırakma olayları): 6 -> arm ok; Yukarı
+  basılı 2,5 s -> komut 0,25 / gerçek 0,24, bırakınca dur; Sol basılı -> komut w 1,00 / gerçek 0,00 (yerinde dönmüyor, K75);
+  Yukarı+Sol (yay) -> v 0,25 / 0,02, w 1,00 / 0,00; Aşağı, Shift+Yukarı (0,39) çalıştı; Yukarı basılıyken başka pencere öne
+  geldi -> "odak kayboldu", dur, gerçek 0 / 0 (tuş hâlâ basılı); 8 -> arıza ACIL STOP, 8 + 6 -> yeniden sürüş. Pencere
+  yanıt veriyor, en uzun döngü 97 ms; kapanınca python süreci 0. Ekran görüntülerine bakıldı (depo dışında).
+- 2B 58 / 58; fizik koşusu çıkış 0, sayı özeti `f3507f3911bd53da` (değişmedi; görünüm ölçümlere girmiyor).
+
+**2. Hareket hâlinde dönüş** (`kod/fizik/olcum_donus_hareket.py` yeni; çıktı `Y0f-olcum/donus-hareket.json` / `.md`; iki koşu
+md5 aynı `c8caa97b…`; `olcumler.py` ve `olcum.json` değişmedi, sayı özeti aynı):
+- Firmware karışımı `origin/main:kod/esp32/src/motorlar.cpp` `motorlar_hedef` (satır 268–280) ve `teker_adim` (220–244) ile
+  model (`cekirdek.py` `_motor_hedef`, `_teker_hedefleri`; `fizik_esp32.py` `_surucu`) aynı: v, w ±1 kırpma, iz 0,426, büyük
+  teker 0,39'u aşarsa iki teker birlikte ölçek, u = rampa_hiz / 0,39, KP = 0, hedef 0 ise PWM 0 (fren).
+- µ 0,5 / 0,8 × 21 / 9 kg·cm × v 0,1 / 0,2 / 0,3 / −0,2 × w 0,1 / 0,25 / 0,5 / 1: gerçekleşen w hepsinde ≤ 0,001 rad/s; yarıçap
+  ve 90° süresi tanımsız (dönmüyor). Dönme µ 0,4'te başlıyor (w 1 ile 0,04–0,05), µ 0,3'te 0,13, µ 0,2'de 0,24–0,27 rad/s; en
+  iyi komut her µ'de w 1 (pencerenin w'si değiştirilmedi).
+- Manevra (kolonun 0,9 m önü, 1,5 s ileri-sol + 1,5 s geri, sonar açık): geri-sağ ile 20 tekrarda 0,0 / 0,1°, geri-sol ile
+  3,3 / 3,4°; 45° ve 90°'ye ulaşılmadı. Pencerede Aşağı+Sağ w −1 gönderir (yön oku gibi değil, dönme yönü), ileri-sol ile
+  birbirini götürür; ama tutarlı yönle de dönmüyor.
+- Pencere gözlemi (Yukarı+Sol'da v 0,02): aynı tuş dizisi başsız, sonar açık 0,022 (kolona 32 cm, firmware ileri sınırı
+  0,05), kapalı 0,199 m/s: neden TASLAK sonar kuralı, karışım değil; pencerenin komutu başsızla aynı.
+- Eski pencerenin `sur.v`'yi 0,39'a bölmesi ölçümleri etkilemedi: `olcumler.py`, testler ve bu ölçüm istemciyi doğrudan m/s
+  ile sürer, pencereyi kullanmaz; yalnız § 7'deki pencere gözlemlerinde gönderilen hız yazılandan büyüktü (0,3 -> 0,77, 0,39'a
+  kırpılır).
+
+## 13. Dönüş varyantları (A, commit yok)
+
+A ajanı, 22–23.11 (saat okundu: 00:04). İstek: "ya şöyle olsaydı" karşılaştırması; hepsi VARSAYIM, varsayılan V0 (bugünkü
+firmware 0.5.0 + mekanik), testler ve sayı özeti değişmez.
+
+- **Kod.** Yeni `kod/fizik/varyantlar.py` (V0, V1, V2, V3, V4, V1+V3, V2+V3; ön teker XML dönüşümü), `kod/fizik/olcum_varyantlar.py`.
+  `dunya.py` (`model_kur` / `FizikDunya` `varyant` seçeneği; V3 / V4 makara açısı her adımda 0; V4 ön tekerler tahriksiz),
+  `fizik_esp32.py` (`varyant`: `w_giris`, PI, V4'te enkoder arkada), `olcumler.py` (`Deney` `varyant` geçirir; kendi ölçümleri
+  hep None). Varyant None iken hiçbir yeni dal çalışmaz.
+- **Modelleme.** V1 `w_giris` 3. V2 PI kp 2, ki 10 (TAHMİN), doyumda integral durur, hedef 0'da PWM 0. V3 ön temas küre +
+  robotun x ekseninde pasif makara menteşesi; ilk denemede makara dönerken teker ekseni yatıyor ve çekiş kayboluyordu
+  (yerinde w 0); çözüm makara açısını her adım sonunda 0'a döndürmek (küre simetrik: temas değişmez, hız korunur). V4 aynı
+  model, ön motor ve dişli yok (bilyalı sarhoş). Yapılmayan: arkada sarhoş teker, dönen çatallı sarhoş teker dinamiği, iz /
+  dingil oranı. Doğru / kaba verdikleri `SIMULASYON.md` "Dönüş varyantları".
+- **Ölçüm** (`Y0f-olcum/donus-varyantlar.json` / `.md`, ≈ 85 s, iki koşu md5 aynı `03d05734…`). 21 kg·cm yerinde w µ 0,5 / 0,8:
+  V0 0,001 / 0,001; V1 0,118 / 0,126; V2 0,088 / 0,086; V3 0,79 / 0,71; V4 0,52 / 0,38; V1+V3 1,66 / 1,58; V2+V3 0,98 / 0,98.
+  9 kg·cm: yalnız V3 (0,43 / 0,25), V1+V3, V2+V3 döner. Kolon dolaşma (`oda_engelli`, 3 ara nokta, 60 s): V0 başarısız; V1 35 /
+  44 s, V2 44 / 53 s (21 kg·cm); V3 11–18 s, V4 14–15 s (9 kg·cm'de başarısız), birleşimler 10–14 s. Tork / sürekli (yerinde):
+  V0 2,0, V1 / V2 2,1–2,3 (9 kg·cm 3,6 = durma), V3 0,6–0,8. Yan etkiler (µ 0,8, 21 kg·cm): düz gidiş ve fren simetrik
+  modelde yönsüz (bu yüzden 10 N / 0,3 s yanal itme eklendi: V3 / V4 6 mm, 0,3 / 0,4°); 5° yan eğimde 5 s düz gidiş V0 0,3
+  mm, V3 0,24 m / 16,5°, V4 0,43 m / 29°, V2+V3 0,06 m / 2,9°; V4 `dur` 0,083 m (V0 0,070), V2 0,055.
+- **Bulgu (B bakmalı).** Dönerken anlık teker yükü çırpıntılı: std ≈ 100 N, ortalama doğru (61 / 68 N); V0'da da µ 0,2
+  kaymasında var (std 116–149 N), yani kayan silindir - düzlem temasının; dönüş hızı iterasyon 200, noslip 5, piramit koniyle
+  ±%5 değişti. Pencerede tek karede "88 0 89 0" görüldü, bu çırpıntı.
+- **Pencere.** `--varyant`, `kod\simulasyon3b.bat <sahne> <varyant>` (ikinci argüman V ile başlarsa), Shift+Enter sonraki
+  varyant (pencere yeni modelle yeniden açılır). V0 dışında üstte kalıcı `VARSAYIM: <ad> (bugunku robot DEGIL)`; durum
+  satırında `[sahne, varyant]`. V1'de pencere w'si 3. Geri giderken araba direksiyonu: Aşağı+Sağ w +1 (arka sağa); yalnız
+  komut işareti. Bırakma günlüğüne konum (x, y, yön) eklendi. Shift+Enter çakışma sınaması: görüntüleyici seçenekleri
+  değişmedi (denetim tuşu 0 geom grubunu değiştirdi).
+- **Pencere sınaması** (gerçek tarama kodlu tuşlar, oda_rampa). V0: 6, Yukarı, Sağ 1,6 s, Yukarı, Sol… -> yön hep 0°, kolona
+  x 2,36'da yaklaştı (sonar yavaşlattı), dolaşamadı; Aşağı+Sağ -> komut v −0,25 / w +1,00, gerçek −0,20 / 0,00; Shift+Enter ->
+  V1 penceresi açıldı, üstte "VARSAYIM: V1 firmware w tavani 3 rad/s (bugunku robot DEGIL)". V3 (bat ikinci argümanı): Sağ 2,2
+  s -> −76°, güneyden kolonun yanına (x 2,97, y 0,68), Sol 2 s -> +55° (kolona dönünce sonar durdurdu); Aşağı+Sağ -> yön 59 ->
+  99° (arka sağa). Dolaşmayı penceredeki tuş dizim tamamlamadı (dizim kolona döndü), başsız ölçümde V3 12 s'de dolaşıyor.
+  Sınama sırasında pencere iki kez odak kaybetti (başka pencere öne geldi); robot o anlarda durdu, kayıtta "odak kayboldu".
+  Yanıt veriyor, en uzun döngü 61–81 ms, kapanınca python süreci 0. Ekran görüntülerine bakıldı (depo dışında).
+- **Denetim.** 2B 58 / 58; fizik koşusu çıkış 0, sayı özeti `f3507f3911bd53da` (değişmedi; koşunun yazdığı `olcum.json`'da
+  yalnız süre alanları değişmişti, commit'teki hâline döndürüldü); `donus-hareket.json` md5 aynı (`c8caa97b…`); 21 eski dosya
+  md5 21 / 21; kalıp taraması 14 dosya 0 bulgu, satır başı `@` yok.

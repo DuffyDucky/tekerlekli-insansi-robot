@@ -345,3 +345,148 @@ planlama dosyaları, yeni `k4-bozma.log`, `kosu-4/5.log` dahil): **0 isabet** (`
 `fren.bekci_duyarlilik` ve `fren.acil_stop_araligi` yeni ölçüm kodu satır satır okunmadı (sayıları önceki kontrolün tablosuyla
 uyuştuğu için); pencere yeniden açılmadı; `olcum.md` (K9) bakılmadı; pay payının fiziksel bir gerileme (ör. fren torku yarıya)
 karşısında denenmesi yapılmadı, yalnız sayılarla akıl yürütüldü.
+
+
+## 11. Ek kontrol: kumanda, hareketli dönüş, varyantlar (commit edilmemiş ek, `Y0f-gunluk.md` § 12–13)
+
+Depo `5d5d3e4` üstüne çalışma ağacındaki ek. Paket dosyalarına kalıcı yazı yok; deneyler geçici klasörde, fizik koşusu
+geçici klasöre yazdı (`olcum.json` / `olcum.md` için `git diff` boş).
+
+**Hüküm: KOŞULLU GEÇER.** Commit'i engelleyen kod ya da veri sorunu yok. Koşul: K75'e gidecek iki belge cümlesi (11.4'teki
+E1, E2) commit'ten önce düzeltilmeli; öbürleri öneri.
+
+### 11.1 Varsayılanın korunması
+
+- 2B 58 / 58 (9,0 s). Fizik tam koşu çıkış 0, fizik 6 / 6, Y0s fizikte 58 / 58, sayı özeti **`f3507f3911bd53da`** (değişmedi).
+- `dunya.py`, `fizik_esp32.py`, `olcumler.py` farkı satır satır okundu: her yeni dal `varyant` doluysa çalışıyor; `varyantlar.al`
+  V0 / None için None döner; V0'da makara listesi boş, `tahriksiz` boş, PI yok, enkoder tekeri aynı. `olcumler.py`'de yalnız
+  `Deney`'e `varyant` geçişi. `olcum.json` commit'teki hâliyle aynı. `donus-hareket.json` md5 `c8caa97b…`, `donus-varyantlar.json`
+  `03d05734…` (A'nın yazdığıyla aynı).
+
+### 11.2 Hareket hâlinde dönüş (B bulgusu)
+
+**Firmware karışımı.** `origin/main` `motorlar.cpp` `motorlar_hedef` ve `teker_adim` okundu; model aynı (v, w ±1 kırpma, iz
+0,426, büyük teker 0,39'u aşarsa ikisi birlikte ölçek, u = rampa_hiz / 0,39, KP = KI = 0, hedef 0'da PWM 0).
+v 0,25 + w 1: sol 0,25 − 0,213 = 0,037, sağ 0,463 -> ölçek 0,842 -> 0,031 / 0,39 m/s -> **PWM iç 0,080 / dış 1,000** (A ile aynı).
+v 0,1 + w 1: −0,290 / 0,803 (aynı).
+
+**El hesabı (moment).** Düz gidiş dengesi (iki yan torkunun toplamı = 2 x 0,171 N·m eklem sürtünmesi): ω / ω0 = 0,506, v =
+0,199 m/s (fizik 0,199); dış tork +1,20, iç −0,86 N·m (A ile aynı); teker başı kuvvet ±16,5 N; dönme momenti 4 x 16,5 x 0,216 =
+**14,3 N·m**. Yerinde (u ±0,546, durmada): 4 x (1,225 − 0,171) / 0,0625 x 0,216 = **14,6 N·m**: hareketli ve yerinde neredeyse aynı
+moment ("PWM farkı 1,09'la sınırlı" doğru). Yanal kayma direncinin AM çevresindeki momenti (Coulomb, saf yanal kayma, üst sınır):
+µ (121,6 x 0,1955 + 136,2 x 0,1745) = **µ x 47,5 N·m**; µ 0,5'te 23,8, µ 0,8'de 38,0 N·m > 14,3. Eşik µ ≈ 0,30 (saf yanal) ile
+0,40 (önceki 0,65 katsayılı hesap) arası; fizikte dönme µ 0,40–0,45'te başlıyor (B: v 0,25 + w 1'de µ 0,40 -> 0,009, 0,35 -> 0,041,
+0,30 -> 0,083 rad/s; v 0,1 + w 1'de µ 0,45 -> 0,021, 0,40 -> 0,044).
+
+**Temas / zaman adımı duyarlılığı** (V0, v 0,25 + w 1, µ 0,5 ve 0,8): ana, dt 0,5 ms, solref 0,002 / 0,008, impratio 10, noslip 5:
+w 0,000–0,002; piramit koni µ 0,5'te 0,023 (µ 0,8'de 0,002). Bulgu temas ayarına duyarsız (piramit koni önceki kontrolde de tek
+sapan ayardı).
+
+**Yanal direncin hıza bağlı olmaması.** MuJoCo'da (eliptik koni, Coulomb) kayan temasta kuvvet µN, kayma hızının yönünde;
+yuvarlanan tekerde en küçük yanal kayma bile tam µN yanal kuvvet ister (yumuşak kısıtın küçük sürünmesi dışında). Bu modelin
+özelliği, gerçek lastiğin değil: lastikte yanal kuvvet kayma açısıyla (α ≈ a·w / v) kademeli doğar (viraj sertliği C), µN'ye ancak
+birkaç derecede doyar. Sonuç: hareket hâlinde küçük w için gerçek robot modele göre daha kolay döner; sapma **kötümser** yönde.
+Kaba büyüklük (TAHMİN, C ölçülmedi): kararlı yayda w ≈ M v / (4 C a²); M 14,3 N·m, v 0,2 m/s, a 0,185 m, C 200–500 N/rad ile w ≈
+0,04–0,10 rad/s (90° için 15–40 s). Yani gerçekte "yayla hiç dönmez" değil, "çok yavaş, geniş yay" olabilir; kullanışlı dönüş
+yine yok.
+
+**Sınıf.** Yerinde dönmeme (µ ≥ 0,45): fizik olarak sağlam mekanizma (firmware PWM farkı sınırı, moment dengesi), eşik TAHMİN
+(µ, durma torku). Hareket hâlinde "hiç dönmüyor" (w ≤ 0,001): **mekanizması sağlam, sıfır değeri model ürünü** (Coulomb yanal
+temas); doğru cümle "yay yerinde dönüşten kolay değil ve kullanışlı bir dönüş vermez", "yay çizemez" değil.
+
+### 11.3 Varyantlar
+
+**Yeniden üretim** (B'nin betiği, `olcum_varyantlar` ile aynı kurulum, 21 kg·cm, µ 0,5 / 0,8, yerinde w rad/s): V0 0,001 / 0,001;
+V1 0,118 / 0,126; V2 0,088 / 0,086; V3 0,793 / 0,711; V4 0,519 / 0,382; V1+V3 1,664 / 1,579; V3 9 kg·cm 0,431 / 0,253. Hepsi
+tabloyla aynı.
+
+**Ayar duyarlılığı (µ 0,8, yerinde; ana / dt 0,5 ms / solref 0,002 / solref 0,008 / piramit / noslip 5 / impratio 10):**
+- V3: 0,711 / 0,711 / 0,717 / 0,709 / 0,738 / 0,711 / 0,709: **±%4, güvenilir.**
+- V1: 0,126 / 0,119 / **0,147** / **0,063** / 0,124 / 0,123 / 0,120: temas sertliğine **−%50 / +%17** duyarlı. Belgedeki "±%5"
+  V1 için yanlış. Neden: V1'de dört teker de kayarak döner, teker yükü çırpıntısı (std 108–155 N; V0 düz gidişte 4 N) temas
+  sertliğiyle değişiyor. V1 sayısı "yavaş döner (≈ 0,06–0,15 rad/s)" düzeyinde okunmalı.
+- V2 kazançları (µ 0,5 / 0,8): kp 2 ki 10 -> 0,088 / 0,086; kp 1 ki 5 -> 0,095 / 0,091; kp 4 ki 20 -> 0,074 / 0,073; kp 8 ki 40 ->
+  0,059 / 0,063; kp 2 ki 0 -> 0,054 / 0,033. Aralık 0,03–0,10; V1'i hiçbirinde geçmiyor (PWM tavanı aynı). "V2 0,09" TAHMİN'e bağlı;
+  hüküm (V1 düzeyinde ya da altında) sağlam.
+
+**V3 makara sıfırlaması.** Gerçek omni tekerde göbek ekseni hiç yatmaz, yanal serbestliği ayrı makaralar verir; açıyı her
+adımda 0'a döndürmek bunun kinematik idealleştirmesi, savunulabilir. Enerji / kuvvet üretimi aranıp bulunmadı: dururken 10 s
+(güç kapalı ve devrede) kayma ≤ 1e-8 m, dönme ≤ 1e-5°; yerinde dönerken güç kesilince w tekdüze sönüyor (V3 0,55 -> 0 / 0,25 s,
+hiç artış yok); 30 N x 0,2 s yanal itmede güç kapalıyken V3 / V4 0,1° döner, kendiliğinden hızlanma yok. İtme davranışı makul
+(ön aks yanal serbest, arka aks tutuyor). Ancak "yanal direnç 0" bir üst sınır: gerçek makaraların yuvarlanma direnci ve
+boşluğu var; V3'ün yan eğim kayması (5° yanda 5 s'de 0,24 m / 16,5°) **en kötü durum**, dönüş hızı ise **en iyi durum**.
+
+**Belgede eksik omni sınırlamaları.** Yazılı: ayrık makara titreşimi, makara yuvarlanma direnci, boyuna tutuşun düşmesi, temas
+yaması. Yazılı değil: **eşik / kablo / halı geçişi** (küçük makaralar takılır; bugünkü 30 mm eşik bulgusu V3 için geçersiz), **yük
+kapasitesi** (teker başı ≈ 61–68 N statik, frende ön aks yükü artar; 125 mm sınıfı omni tekerin taşıma değeri doğrulanmalı),
+zemin kirine / pürüze duyarlılık.
+
+**V4.** Küre + iki eksen serbest, tahriksiz: bilyalı (top) sarhoş teker; belge bunu söylüyor. Gerçekte yaygın olan dönen çatallı
+sarhoş teker değil: çatalın yeniden yönlenme gecikmesi ve geri dönüşte savrulma yok; V4'ün dönüş sayıları çatallı teker için
+**iyimser**, yan eğim kayması (0,43 m) model ürünü (çatal yanal yükte döner ama sürtünmesi var).
+
+**Sınıflama.**
+
+| Sayı | Sınıf |
+| --- | --- |
+| V0 yerinde / yay 0,001 | mekanizma sağlam; eşik TAHMİN (µ, durma torku); yay için sıfır model ürünü (Coulomb) |
+| V1 0,12–0,13, 90° 12–13 s | "yavaş döner" sağlam; sayı temas ayarına ±%50 duyarlı (model) ve durma torkuna bağlı (TAHMİN) |
+| V2 0,09 | kazanç TAHMİN'i (0,03–0,10); V1'i geçmez sağlam |
+| V3 0,71–0,79; 9 kg·cm 0,25–0,43 | omni idealleştirmesine bağlı (üst sınır), ayara duyarsız; µ, durma torku TAHMİN |
+| V4 0,38–0,52 | bilyalı idealleştirme (çatallı teker için iyimser); 9 kg·cm'de dönmez sağlam |
+| V1+V3 / V2+V3 1,0–1,7 | V1 / V2 ve V3 TAHMİN'leri birlikte |
+| tork / sürekli (2,0 / 2,3 / 0,6–0,8 …) | "sürekli = durmanın %30'u" VARSAYIM'ına bağlı; oranlar arası sıra sağlam |
+| kolon süreleri | A'nın basit yönlendirmesine ve sonar kuralına bağlı; yalnız karşılaştırma için |
+| V3 / V4 yan eğim 0,24 / 0,43 m | en kötü durum (yanal direnç 0, makara / çatal sürtünmesi yok) |
+| yanal itme 6 mm, `dur` 0,083 m (V4) | model, büyüklük mertebesi |
+
+### 11.4 Belge (`kod/SIMULASYON.md`)
+
+Taraf tutmuyor: varyant tablosu ve "Kazanç / bedel" maddeleri iki yanı da sayıyor; başlıkta ve pencerede V0 dışı açıkça
+"VARSAYIM, bugünkü robot değil". Düzeltilecekler:
+- **E1 (koşul), satır 251 ve 257–258:** "bugünkü firmware'le robot yay da çizemiyor" / "Yanal kayma direnci (Coulomb) hıza bağlı
+  olmadığı için yay, yerinde dönüşten kolay değil": modelin Coulomb temasının sonucu olarak yazılmalı; gerçek lastikte küçük
+  w'de yavaş, geniş yay olası (model kötümser; büyüklük viraj sertliğine bağlı, ölçülmedi). Satır 261 "küçük w hiçbir µ'de daha
+  iyi değil" aynı nedenle "modelde".
+- **E2 (koşul), satır 294:** "dönüş hızı çözücü ayarlarına ±%5 duyarlı" V3 için doğru, V1 için yanlış (temas sertliğiyle 0,063–0,147).
+  V1 / V2 sayıları aralıkla verilmeli; V2 için kazanç aralığı (0,03–0,10).
+- **E3 (öneri), satır 290:** omni / sarhoş sınırlamalarına eşik / kablo geçişi ve yük kapasitesi eklenmeli; V3 yan eğim kayması
+  "en kötü durum", V3 / V4 dönüş hızı "en iyi durum" diye etiketlenmeli.
+- **E4 (öneri), satır 343 (K75):** "µ ≥ 0,45'te ne yerinde ne yayla döner": düşük v'de yay µ 0,45'te 0,021 rad/s veriyor (B);
+  "µ ≥ 0,5" daha doğru. Satır, varyant sayılarını tek değerle veriyor (V1 0,12–0,13); E2'deki aralıklar oraya da taşınmalı.
+  Hüküm cümlesinin geri kalanı (TAHMİN'lere ve idealleştirmeye bağlı) doğru.
+
+### 11.5 Pencere
+
+`kod\simulasyon3b.bat` temiz açılış, gerçek tarama kodlu tuş olayları (SendInput), pencerenin kendi günlüğü:
+- 6 -> `arm ok`; Yukarı basılı 2,5 s -> `surus v 0,25`, bırakınca `tus birakildi -> dur`.
+- Yukarı basılıyken başka pencere (B'nin açtığı boş form) öne -> aynı anda "odak kayboldu" + `dur`.
+- **Başka pencere öndeyken Yukarı 2 s basılı tutuldu: hiçbir sürüş satırı yok** (robot sürülmedi). Kod: yoklama yalnız ön
+  plandaki pencerenin süreci bu süreçse; MuJoCo penceresi aynı süreçte (görüntüleyici iş parçacığı), bat konsolu ayrı süreç.
+- 8 -> "ACIL STOP mantari BASILDI"; basılıyken Yukarı: pencere `sur` gönderiyor (günlükte "surus" satırı), firmware reddediyor,
+  robot yerinde (x 2,28, önceki fren yolu). Pencere reddi göstermiyor (küçük kullanım eksiği, `gonder(denetle=False)`). 8 + 6 ->
+  `arm ok`, yeniden sürüş.
+- Aşağı+Sağ -> komut v −0,25 / w **+1,00**; Aşağı+Sol -> w −1,00 (araba direksiyonu, belgedeki gibi).
+- Shift+Enter -> pencere aynı süreçte yeni modelle açıldı, günlük "varyant V1 (VARSAYIM)"; ekran görüntüsünde en üstte
+  "VARSAYIM: V1 firmware w tavani 3 rad/s (bugunku robot DEGIL)", durum satırında `[oda_rampa, V1]`; V0 görüntüsünde bu satır
+  yok. V1'de Sol -> komut w 3,00.
+- En uzun döngü 66–148 ms; pencere kapatılınca (WM_CLOSE) bat ve python süreçleri bitti, kalan süreç 0 (üç açılışta).
+
+### 11.6 Özel veri ve commit
+
+Kanca kalıpları değişen ve yeni dosyaların eklenecek satırlarına uygulandı (kanca gibi `+` önekli: 6.224 satır): anahtar, parola,
+e-posta, IBAN / telefon, yerel yol, takma ad, ekip adı **0 isabet**. Satır başı dekoratör: yalnız `test_fizik.py`'deki
+`fizik_gerekli` (noktasız ad; e-posta kalıbı alan adında nokta istediği için takılmaz). Not: kanca `+` önekli satıra baktığı için
+sütun 0'da noktalı bir dekoratör (`modul.ad` biçimi) e-posta sayılır; bu ekte yok. 21 eski dosya md5 21 / 21 aynı.
+
+**Girecek:** `kod/SIMULASYON.md`, `kod/simulasyon3b.bat`, `kod/fizik/dunya.py`, `fizik_esp32.py`, `gorunum3b.py`, `olcumler.py`,
+yeni `kod/fizik/varyantlar.py`, `olcum_varyantlar.py`, `olcum_donus_hareket.py`, `planlama/d158/Y0f-olcum/donus-hareket.json|md`,
+`donus-varyantlar.json|md`, `planlama/d158/Y0f-gunluk.md`, `planlama/d158/Y0f-kontrol.md`. **Girmeyecek:** 21 eski dosya
+(değişmedi), `__pycache__/`.
+
+### 11.7 Bakılmayanlar
+
+`gorunum3b.py`'nin kumanda dışı yeni kısımları (katman metni, kol pozu) satır satır okunmadı; Enter (kol pozu), Shift+6–9
+pencerede denenmedi; `olcum_donus_hareket.py` yeniden koşulmadı (md5 ve sayılar okundu, kendi ölçümüm aynı yönde); V3 / V4 yan
+eğim ve yanal itme sayıları yeniden üretilmedi; kolon dolaşma süreleri yeniden üretilmedi; manevra (20 tekrar) yeniden koşulmadı;
+gerçek klavyeyle (insan eli) deneme yapılmadı.

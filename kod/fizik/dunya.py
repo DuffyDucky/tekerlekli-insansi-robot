@@ -155,11 +155,14 @@ VARLIK = """
 """
 
 
-def model_kur(harita=None, sahne=None, p=None):
+def model_kur(harita=None, sahne=None, p=None, varyant=None):
     if not FIZIK_VAR:
         raise RuntimeError("fizik bağımlılığı yok (mujoco): %s" % FIZIK_HATA)
     with open(MODEL_XML, encoding="utf-8") as f:
         x = f.read()
+    if varyant and varyant.get("on_teker"):              # VARSAYIM (varyantlar.py); V0'da bu dal yok
+        import varyantlar
+        x = varyantlar.on_teker_xml(x, varyant["on_teker"])
     x = x.replace("__AG__", AG.replace("\\", "/"))
     x = x.replace("<!--SAHNE-->", sahne_xml(harita, sahne, p))
     x = x.replace("<asset>", "<asset>" + VARLIK, 1)
@@ -169,11 +172,12 @@ def model_kur(harita=None, sahne=None, p=None):
 class FizikDunya:
     """Robot + sahne. Zaman `adim(dt)` ile ilerler (deterministik; duvar saati yok)."""
 
-    def __init__(self, harita=None, sahne=None, konum=(0.0, 0.0, 0.0), degis=None):
+    def __init__(self, harita=None, sahne=None, konum=(0.0, 0.0, 0.0), degis=None, varyant=None):
         self.p = parametreler(degis)
         self.harita = harita
         self.sahne = sahne
-        self.m = model_kur(harita, sahne, self.p)
+        self.varyant = varyant
+        self.m = model_kur(harita, sahne, self.p, varyant)
         self.d = mujoco.MjData(self.m)
         m = self.m
         ad = lambda t, n: mujoco.mj_name2id(m, t, n)
@@ -214,6 +218,18 @@ class FizikDunya:
         for dof in self.teker_dof:
             m.dof_frictionloss[dof] = self.teker_surtunme
             m.dof_armature[dof] = self.p["motor_yansiyan_atalet_kgm2"]
+        # VARSAYIM V4 (varyantlar.py): ön tekerler tahriksiz sarhoş: motor / dişli yok, yalnız yuvarlanma direnci
+        self.tahriksiz = set()
+        # VARSAYIM V3 / V4: ön "makara" menteşeleri; açısı her adımda 0'a döner (küre kendi merkezi çevresinde simetrik,
+        # temas geometrisi değişmez; teker ekseni yatay kalır = hep alttaki makara, hızı korunur). V0'da liste boş.
+        self.makara_qpos = []
+        if varyant and varyant.get("on_teker"):
+            self.makara_qpos = [m.jnt_qposadr[ad(J, "makara_on_" + y)] for y in ("sol", "sag")]
+        if varyant and varyant.get("on_teker") == "sarhos":
+            self.tahriksiz = {0, 2}
+            for i in self.tahriksiz:
+                m.dof_frictionloss[self.teker_dof[i]] = self.teker_surtunme - self.p["motor_disli_surtunme_Nm"]
+                m.dof_armature[self.teker_dof[i]] = 0.0
         m.geom_solref[:, 0] = self.p["temas_solref_s"]
         m.opt.timestep = self.p["zaman_adimi_s"]
         self.tau_durma = self.p["motor_durma_torku_Nm"]
@@ -268,7 +284,7 @@ class FizikDunya:
         d = self.d
         for _ in range(n):
             for i, dof in enumerate(self.teker_dof):
-                if suruluyor:
+                if suruluyor and i not in self.tahriksiz:
                     u = u_sol if i < 2 else u_sag
                     t = self.tau_durma * (u * self.k_V - d.qvel[dof] / self.w0)
                 else:
@@ -280,6 +296,8 @@ class FizikDunya:
             if dis_kuvvet is not None:
                 dis_kuvvet(self)
             mujoco.mj_step(self.m, d)
+            for a in self.makara_qpos:
+                d.qpos[a] = 0.0
             self.zaman_s += self.m.opt.timestep
             if self.adim_kaydi is not None:
                 self.adim_kaydi(self)
