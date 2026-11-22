@@ -134,6 +134,7 @@ Kurulum yoksa hiçbir şey bozulmaz: `py -3 kod\testler\kos.py` 58 / 58 kalır, 
 | Modeli CAD'den yeniden üret | `py -3 kod\fizik\model_uret.py --cad` (FreeCAD 1.1, `~/.robot-cad/run_fc.py`; CAD klasörüne yazmaz, FCStd geçici kopyadan okunur) ya da önbellekten `py -3 kod\fizik\model_uret.py` | ≈ 1 dk |
 | Kol çarpışması (zarf) | `%V% kod\fizik\carpisma_denetim.py` | ≈ 10 s |
 | Hareket hâlinde dönüş / dönüş varyantları | `%V% kod\fizik\olcum_donus_hareket.py` / `%V% kod\fizik\olcum_varyantlar.py` | ≈ 35 s / ≈ 1,5 dk |
+| Öneri firmware + omni (ONERI) | `%V% kod\fizik\olcum_oneri.py` | ≈ 4,5 dk |
 
 **3B pencere tuşları.** Önce **6** (devreye al); devrede değilken sürüş reddedilir, pencerenin üstünde yazar.
 
@@ -144,7 +145,7 @@ Kurulum yoksa hiçbir şey bozulmaz: `py -3 kod\testler\kos.py` 58 / 58 kalır, 
 | 6 / 7 / 8 / 9 | devreye al / dur / ACİL STOP mantarı bas - bırak (fiziksel düğme; sonra yeniden 6) / gücü bırak |
 | Enter | kol pozu (ev, öne, öne-yukarı, yana, dirsek bükük, geri) |
 | Shift+6 / Shift+7 / Shift+8 / Shift+9 | rampa kipi / kafa sola - ortaya - sağa / robotu başa koy / sonraki sahne |
-| Shift+Enter | sonraki dönüş varyantı (V0 -> V1 -> … -> V2+V3 -> V0; pencere yeni modelle yeniden açılır). V0 dışında üstte kalıcı `VARSAYIM: <ad> (bugunku robot DEGIL)` satırı |
+| Shift+Enter | sonraki dönüş varyantı (V0 -> V1 -> … -> V2+V3 -> ONERI -> ONERI-T -> ONERI-ADAY -> V0; pencere yeni modelle yeniden açılır). V0 dışında üstte kalıcı `VARSAYIM: <ad> (bugunku robot DEGIL)` satırı |
 
 Eski tuşlar da çalışır (Home, End, Delete, Insert, Page Up / Down, F9–F12). Rakamlar seçildi, çünkü MuJoCo görüntüleyicisi
 harflerin hepsini görselleştirme / çizim bayraklarına (`mjVISSTRING`, `mjRNDSTRING`), 0–5'i geom gruplarına, Shift+0–5'i
@@ -157,14 +158,20 @@ tuş ipucu, sol altta durum: güç, **komut / gerçek** ileri hız ve dönüş h
 "+1,00 / +0,00" görünür), eğim, kol, teker yükleri, son olay. Sahneler `kod/fizik/sahneler/*.json` (harita + rampa / eşik).
 Tuşlar yalnız pencere odaktayken gelir (pencereye bir kez tıklayın); B'nin ilk denemesinde F10 / F12 ulaşmadı. Sahne
 değiştirmenin tuşsuz yolu komut satırı: pencereyi kapat, `kod\simulasyon3b.bat rampa_parkuru` ya da `kod\simulasyon3b.bat
-oda_rampa` ile yeniden aç (ilk argüman sahne adı; `kod\fizik\sahneler\` altındaki dosya adı uzantısız). İkinci argüman V ile
-başlarsa dönüş varyantıdır: `kod\simulasyon3b.bat oda_rampa V3` (yoksa V0, bugünkü robot; aşağıda "Dönüş varyantları").
+oda_rampa` ile yeniden aç (ilk argüman sahne adı; `kod\fizik\sahneler\` altındaki dosya adı uzantısız). İkinci argüman `-`
+ile başlamıyorsa dönüş varyantıdır: `kod\simulasyon3b.bat oda_rampa V3` (yoksa V0, bugünkü robot; aşağıda "Dönüş
+varyantları"). Öneri firmware + ön omni tek tıkla: `kod\simulasyon3b-omni.bat` (= `simulasyon3b.bat oda_rampa ONERI`).
+Reddedilen `sur` (acil stop basılı, devrede değil) durum kutusunda 1,5 s görünür: "acil stop: komut reddedildi" ya da
+"komut reddedildi (<hata>)". MuJoCo'nun kendi Backspace tuşu simülasyonu sıfırlar (`mj_resetData`: robot oda dışında modelin
+sıfır pozuna ışınlanıp devrilirdi, firmware modeli sürerdi); pencere bunu zamanın geri gitmesinden algılar ve "başa koy"a
+çevirir: robot başlangıç pozuna, servolar firmware'in bildiği açılara, `dur` gönderilir, durum kutusunda 3 s "MuJoCo
+sifirlandi (Backspace): robot basa kondu".
 
 **Düzen.** `kod/fizik/`: `cad_cikar.py` (FreeCAD: parça kütle / AM / atalet tensörü / ağ), `model_uret.py` (gövde ağacı,
 eklemler, sınırlar, ağ seyreltme -> `model/lale.xml`, `model/kutle_karsilastirma.md`), `fizik_parametreleri.json` (CAD'de
 olmayan her sayı, kaynağı ya da TAHMİN), `dunya.py` (MuJoCo dünyası, sahne, motor modeli, ışın), `fizik_esp32.py`
 (`SahteEsp32` alt sınıfı; yalnız dünya kancaları), `olcumler.py`, `carpisma_denetim.py`, `kos_fizik.py`, `gorunum3b.py`,
-`testler/test_fizik.py`. Y0s'tan değişen iki dosya: `kod/testler/duzenek.py` (`LALE_HEDEF=fizik` hedefi, `FIZIK_FARKLARI`
+`testler/test_fizik.py`, `testler/test_enkoder_ariza.py` (öneri firmware, VARSAYIM). Y0s'tan değişen iki dosya: `kod/testler/duzenek.py` (`LALE_HEDEF=fizik` hedefi, `FIZIK_FARKLARI`
 yardımcıları) ve `kod/testler/test_guvenlik.py` (10 testte fiziğe özgü doğrulamalar yardımcılardan geçer; 2B yolu aynı).
 
 **Y0s testleri fizikte (58 / 58 geçer).** Test düzeyinde muafiyet yok. Fiziğin 2B ideal dünyadan bilerek farklı olduğu
@@ -345,6 +352,60 @@ Kazanç / bedel / dayandığı TAHMİN (taraf tutmadan):
 iki kaynak, dişli sürtünmesi, yansıyan atalet, temas sertliği). Hiçbir sonuç "devrilmez" kesinliğinde değildir; ölçülmüş
 motor ve zemin değerleriyle yeniden koşulmalı.
 
+### Öneri firmware + ön omni (ONERI; VARSAYIM)
+
+Ahmet'in K75 kararı (ön iki teker omni + firmware düzeltmesi) için firmware **önerisi** ayrı dalda: `oneri/donus-omni`
+(`origin/main` 0.5.0 üstüne, push edilmedi; `kod/esp32/src/motorlar.cpp`, Efe için not `ONERI-donus.md`). Değişenler: PI
+(KP 4, KI 20, TAHMİN; dalda **ilk yüklemede kapalı**, `ONERI_PI_ACIK 0`), `INTEGRAL_SINIRI` 0,3 -> 0,6 (9 kg·cm motorla yavaş
+yerinde dönüşte 0,3 ile 0,30–0,36, 0,6 ile 0,46–0,49 rad/s), iki tekerin PWM'i birlikte doyum ölçeklemesi (PWM oranı korunur;
+doyumda hız oranı tam korunmaz: v 0,3 / w 5'te enkoder oranı 0,214, beklenen 0,170, açık çevrim omni 0,295), doyumda integral
+geri alma, hızlanma rampasında integral durur, w için ayrı `W_GIRIS_SINIRI` (1,0, protokol değişmedi) ve **enkoder arızası
+koruması**. Bekçi, acil stop, güç durumları ve `dur` aynı ve PI durumunu sıfırlıyor; yeni risk enkoder arızası: korumasız PI
+çalışırken takılan / ters enkoderde tam güce çıkar (v 0,10 komutu 0,42 m/s; tek yan takılı 3 s'de −84°). Koruma: PI
+düzeltmesi en çok |ileri besleme| + 0,3; düzeltme bu payın sonundayken hız < 0,02 m/s ya da ters işaretli ve 500 ms sürerse o
+teker açık çevrime düşer (yeniden başlatmaya dek; sıkışmış teker de aynı davranışı alır; durum protokolde yok, notta öneri).
+Korumalı: iki yan takılı / ters 0,36 m yol, son 1 s 0,08 m/s, tespit 510–550 ms; tek yan −6,3° (`kod/fizik/testler/test_enkoder_ariza.py`,
+korumasız / korumalı). Koruma yalnız takılı / ters enkoderi yakalar: yarı sayan enkoder (v 0,2 komutunda 3 s'de −48° ve 0,26 m/s) ve aralıklı kopma (100 / 100 ms: kaçma yok, tespit de yok) yakalanmaz; asıl güvence Pi'nin yön denetimi, `dur`, bekçi ve acil stop. Simülasyonda `ONERI` (öneri, PI açık + ön omni, makara yanal sürtünmesi 0,05 TAHMİN), `ONERI-T` (öneri +
+bugünkü lastikler), `ONERI-ADAY` (öneri + aday omni Nexus 14075 ölçüleri: Ø127 × 29 mm, 480 g, merkez 14,5 mm içeri; teker
+SEÇİLMEDİ). Model sabitleri `varyantlar.py` `ONERI_FW` = C++ (satır eşlemesi dal notunda); farklar: rampa modelde 10 ms
+dilimle, PI 20 ms'de bir ve PWM arada tutulur, tamsayı tik farkından hız (1980 tik / tur). Ölçüm
+`planlama/d158/Y0f-olcum/donus-oneri.md` / `.json` (≈ 5 dk, iki koşu md5 aynı).
+
+| | V0 | ONERI-T | ONERI | ONERI-ADAY |
+| --- | --- | --- | --- | --- |
+| yerinde w, komut 1; 21 / 9 kg·cm (µ 0,5–0,8) | 0,001 / 0,001 | 0,08–0,09 / 0,001 | 0,97–0,98 / 0,72–0,86 | 1,05–1,06 / 0,69–0,84 |
+| 90°: s / `dur` sonrası aşma ° | - | 18–20 / < 1 | 1,9–2,6 / 4–6 | 1,8–2,8 / 5–6 |
+| kolon (oda_engelli) | başarısız | 46–60 s / başarısız | 11–13 s | 11–14 s |
+| tork / sürekli (yerinde) 21 / 9 kg·cm | 2,0 / 2,0 | 2,0–2,2 / 3,6 | 1,0–1,1 / 2,1–2,4 | 1,1–1,3 / 2,3–2,5 |
+| `dur` / acil stop m | 0,070 / 0,228 | 0,046 / 0,222 | 0,046 / 0,223 | 0,047 / 0,227 |
+| 5° yan eğim, 5 s düz: m / ° | 0 | 0 | 0,05 / 2,2 | 0,05 / 2,3 |
+| rampa tutma 5° / 10° (5 s geri) | 0,17 / 0,49 | aynı | aynı | 0,18 / 0,51 |
+| eşik 0,2 m/s, 21 kg·cm | 5 mm | 15 mm | 15 mm (omniyle modellenmedi) | 15 mm (omniyle modellenmedi) |
+| statik devrilme yana ° (geometri) | 25,2 | 25,2 | 23,9 | 23,5 |
+
+90° aşması ≈ 5° `dur` sonrası frenden (yön 10 ms'de bir denetlenir; ilk sürümdeki 8–15° ölçümün 200 ms denetim aralığıydı).
+Eşik kazancı PI'dan (lastikli ONERI-T de 15 mm geçiyor); ön omni modelde sürekli çember, makaraların eşik kenarına çarpması
+yok: omniyle eşik masada denenmeli. Koruma bütün ölçümlerde izlendi: tetiklenme yalnız gerçek durmada (eşiği geçemeyen 9
+kg·cm koşuları, lastikle yerinde dönemeyen ONERI-T); kalkış, omni dönüş, 9 kg·cm doyum, rampa, yan eğim ve geçilen eşikte 0.
+
+Güvenlik: Y0s 58 testi fizikte öneriyle 57 / 58 (üç varyantta da). Kalan `test_cok_buyuk_w_kirpilir_donus_orani_korunur`
+sürücüye giden PWM oranını hedef oranına eşit bekliyor: açık çevrime özgü beklenti; aynı testin hedef kırpma ve oran
+denetimleri geçiyor; test gevşetilmedi. Önerinin ilk sürümü (integral rampada da birikiyordu) Y1 ivme testlerini de
+düşürüyordu (0,575 > 0,56 m/s², rampa kipi 0,159 > 0,15): gerçek gerileme, firmware'de düzeltildi. 2B çekirdekte PWM /
+enkoder yok, w sınırı aynı: 2B koşusu aynı kod yolu, 58 / 58.
+
+Duyarlılık (ONERI, µ 0,8, 21 kg·cm, yerinde w): KP 2–8 / KI 10–40 0,968 (değişmez); yalnız P 0,81; enkoder arka tekerde 0,89;
+koruma yok / integral sınırı 0,3 aynı (bu koşulda); yarı enkoder çözünürlüğü, dt 0,5 ms, koni, noslip, impratio ±%1; temas
+sertliği 0,93–0,98. Makara yanal sürtünmesi (ONERI-ADAY; üretici değeri yok; model yükten bağımsız sabit Coulomb): 21 kg·cm'de
+teker başına ≈ 13 N'a dek w 0,93–1,0, 20 N'da 0,70–0,80 (tork 2,2–2,4 × sürekli); 9 kg·cm'de geçiş 3–7 N arasında. **Mertebe,
+karar sınırı değil**; masada gerçek yükte, gerçek zeminde, yavaş sabit hızla yana çekerken sürekli kuvvet (birkaç makara
+geçişi, iki yön, iki yük) ölçülüp karşılaştırılır. Aday çap farkı (ön Ø127 / arka Ø125, aynı PWM): düz gidişte yön sapması 0
+(simetrik), ön aks torku 0,186 / arka 0,165 N·m; firmware `TEKER_CAPI_M` enkoderli tekerin çapı olmalı (0,125 kalırsa hız /
+odometri %1,6 sapar).
+
+Modellenmeyen: gerçek omni makaraları (titreşim, eşik / halı / kablo, boyuna tutuş), makara sürtünmesinin yükle değişimi,
+enkoder gürültüsü ve PCNT süzgeci, döngü titremesi, motor akım sınırı, KD.
+
 ### Karar isteyenler (Efe / Ahmet)
 
 Etiket: **sağlam** = fizik olarak sağlam (geometri / CAD / firmware sabiti), **TAHMİN** = TAHMİN parametreye bağlı (hangisi
@@ -352,7 +413,7 @@ yazılı). Sınıflama B'nin bağımsız kontrolüyle (`planlama/d158/Y0f-kontro
 
 | Konu | Etiket | Ne gerekiyor |
 | --- | --- | --- |
-| Yerinde dönüş (firmware mi mekanik mi) | Geometri sağlam; eşik TAHMİN (µ, durma torku) | Bugünkü firmware'le µ ≥ 0,5'te ne yerinde ne yayla döner (düşük hızda yay µ 0,45'te 0,021 rad/s, B). Seçenekler, öncelik sırası olmadan, varyant olarak ölçüldü ("Dönüş varyantları" tablosu; hepsi VARSAYIM): firmware tarafı V1 (`w` tavanı 3, tam ters PWM: 21 kg·cm'de 0,063–0,147 rad/s, temas sertliğine duyarlı; tork sürekli değerin 2,3 katı; 9 kg·cm'de dönmez) ve V2 (kapalı çevrim PI: kazanca göre 0,03–0,10 rad/s, V1'i geçmez; aynı ısınma; 9 kg·cm'de dönmez); mekanik taraf V3 (ön omni: 0,71–0,79 rad/s en iyi durum, 9 kg·cm'de 0,25–0,43; yan eğimde 5 s'de 0,24 m kayar, en kötü durum) ve V4 (önde bilyalı sarhoş: 0,38–0,52 rad/s, çatallı teker için iyimser; 9 kg·cm'de dönmez; yan eğimde 0,43 m); birleşimler V1+V3 / V2+V3 (≈ 1–1,7 rad/s, iki motorla da). Ölçülmeyen: iz / dingil oranı, arkada sarhoş teker. Hüküm motor durma torku, zemin µ ve sürekli tork oranına (TAHMİN) ve omni / sarhoş idealleştirmesine bağlı |
+| Yerinde dönüş (firmware mi mekanik mi) | Geometri ve mekanizma sağlam; sayılar TAHMİN (durma torku, µ, makara sürtünmesi), masada doğrulanmadı | **Karar (Ahmet, 23.11.2026 01:02): ön iki teker omni + firmware düzeltmesi**; sarhoş tekerli düzen istenmiyor, modellenmeyecek. Firmware Efe'nin: öneri dalı `oneri/donus-omni` yerel, push edilmedi, Efe ile konuşulacak. Simülasyon (VARSAYIM): öneri firmware + ön omni yerinde 0,97–0,98 rad/s (21 kg·cm), 0,72–0,86 (9 kg·cm; makara sürtünmesine duyarlı); aynı firmware bugünkü lastikle 0,08 / 0,001 (lastikle kapalı çevrim de dönmüyor: sağlam); 90° 2,1–2,8 s, aşma ≈ 5°; 5° yan eğimde 5 s'de 0,05 m; `dur` mesafesi 0,046 m; rampada tutma değişmedi (K76 ayrı); 15 mm eşik kazancı PI'dan, omni makarayla eşik geçişi modellenmedi. Teker seçilmedi (aday Nexus 127 mm çift sıra omni, doğrulanmadı); makara yanal sürtünmesi masada ölçülmeli (`planlama/d158/Y0f-kontrol.md` § 12) |
 | Rampada `dur` sonrası tutma | Mekanizma sağlam; hız TAHMİN (dişli geri sürülme sürtünmesi) | Kısa devre freni tutmaz; 3° / 5° / 10°'de geri kayar (tablo yukarıda). Tutma ya ölçülmüş yüksek dişli sürtünmesinden (5°'de ≥ 0,23 N·m) ya da firmware'den (enkoderle konum tutma, fren / kilit) gelir |
 | Bekçi duruşunun sertliği | Devrilmeme sağlam (kendini sınırlar); aks boşalması TAHMİN (durma torku) | Tam hızda ani durma arka tekerleri kısa süre kaldırır; istenmiyorsa bekçiye de fren rampası (firmware 0.5.0'da rampasız) |
 | Sonar kuralı rampa ve eşiği engel sayıyor | TASLAK firmware kuralı; fizik bulgusu bağımsız kontrol edilmedi | 15° / 20° rampa ve 40 mm eşik önünde 30 cm'de durur; rampa kipinde sonar kuralı ne olacak |

@@ -162,7 +162,8 @@ def model_kur(harita=None, sahne=None, p=None, varyant=None):
         x = f.read()
     if varyant and varyant.get("on_teker"):              # VARSAYIM (varyantlar.py); V0'da bu dal yok
         import varyantlar
-        x = varyantlar.on_teker_xml(x, varyant["on_teker"])
+        x = varyantlar.on_teker_xml(x, varyant["on_teker"], r=varyant.get("on_teker_r", 0.0625),
+                                    kutle_kg=varyant.get("on_teker_kutle_kg"), y_iceri_m=varyant.get("on_teker_y_iceri_m", 0.0))
     x = x.replace("__AG__", AG.replace("\\", "/"))
     x = x.replace("<!--SAHNE-->", sahne_xml(harita, sahne, p))
     x = x.replace("<asset>", "<asset>" + VARLIK, 1)
@@ -225,6 +226,11 @@ class FizikDunya:
         self.makara_qpos = []
         if varyant and varyant.get("on_teker"):
             self.makara_qpos = [m.jnt_qposadr[ad(J, "makara_on_" + y)] for y in ("sol", "sag")]
+            # gerçek omni ideal değil: makara yuvarlanma / yatak direnci, eşdeğer yanal sürtünme katsayısı x statik teker
+            # yükü x yarıçap (TAHMİN; 0 = ideal, üst sınır)
+            mu_yan = float(varyant.get("makara_mu_yan", 0.0))
+            for y in ("sol", "sag"):
+                m.dof_frictionloss[m.jnt_dofadr[ad(J, "makara_on_" + y)]] = mu_yan * n_teker * r_teker
         if varyant and varyant.get("on_teker") == "sarhos":
             self.tahriksiz = {0, 2}
             for i in self.tahriksiz:

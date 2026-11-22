@@ -289,3 +289,70 @@ firmware 0.5.0 + mekanik), testler ve sayı özeti değişmez.
 - Kayıt eşitlemesi: `dongu-158.md` § 5, K75 güncellemesi (yeni numara yok; açık 40, toplam 80), açık işlere "Y0f eki" maddesi,
   `sonuc-rapor.html` yeniden üretildi. `F9c-uret.py` Windows konsolunda (cp1254) yazdırırken `UnicodeEncodeError` verdi ve
   sayfayı yazmadı; `PYTHONIOENCODING=utf-8` ile yeniden koşuldu (betik değişmedi).
+
+## 15. Öneri firmware + ön omni (A, commit yok)
+
+A ajanı, 23.11 (saat okundu: 01:07 – 01:32). İstek: K75 yönü (Ahmet: ön iki teker omni, sarhoş teker yok) için firmware önerisi
+ve simülasyonda sınanması. Teker seçilmedi; CAD, sipariş listesi, `arayuz.py`, `maliyet.json` değişmedi.
+
+- **Firmware önerisi** (ayrı çalışma ağacı, depo dışında; dal `oneri/donus-omni`, `origin/main` `71cf76d` üstüne; push yok,
+  birleştirme yok). Commit'ler: `a41815f` (PI KP 4 / KI 20 TAHMİN, `INTEGRAL_SINIRI` 1,0, iki teker birlikte doyum ölçeklemesi,
+  doyumda integral geri alma, hızlanma rampasında integral durur, `W_GIRIS_SINIRI` 1,0), `120a9a7` (integral yalnız hızlanmada
+  dursun, frende çalışsın), `e308120` (Efe notu `ONERI-donus.md`). Yalnız `motorlar.cpp` / `motorlar.h`; protokol, watchdog,
+  acil stop, güç durumları aynı. `pio run` (esp32dev, depo dışı venv) başarılı: RAM %6,9, Flash %24,4; karta yüklenmedi.
+- **Model.** `varyantlar.py`: `ONERI_FW` (C++ sabitleriyle aynı), varyantlar `ONERI`, `ONERI-T`, `ONERI-ADAY` (Nexus 14075
+  ölçüleri: temas küresi r 63,5 mm, 480 g, merkez 14,5 mm içeri; ön uç 1 mm yükselir), `oneri_varyanti()`; `SIRA_V` eski
+  karşılaştırmayı sabit tutar. `dunya.py`: makara eklemine `frictionloss` (yanal sürtünme × statik teker yükü × r), ön teker
+  ölçü seçenekleri. `fizik_esp32.py`: `_oneri_adim` (20 ms; tik farkından hız, PI, doyum, geri alma). Yeni
+  `kod/fizik/olcum_oneri.py` -> `Y0f-olcum/donus-oneri.md` / `.json` (≈ 4,5 dk; iki koşu md5 aynı `802bc870…`).
+- **Bulunan gerileme ve düzeltme.** İlk öneriyle Y0s fizikte 55 / 58: Y1 ivme testleri (düz 0,575 > 0,56, rampa kipi 0,159 >
+  0,15 m/s²) ve PWM oranı testi kaldı. İvme gerçek gerilemeydi (rampa sırasında biriken integral rampa sonunda %6 hız aşması);
+  integral hızlanma rampasında durdurularak düzeltildi (ilk düzeltme frende de durduruyordu, 90° aşmasını 7'den 13°'ye
+  çıkardı; ikinci commit yalnız hızlanmaya indirdi). Kalan tek test `test_cok_buyuk_w_kirpilir_donus_orani_korunur`: PWM
+  oranının hedef oranına eşitliği açık çevrime özgü; hedef kırpma ve oran denetimleri geçiyor; test gevşetilmedi.
+- **Sonuç** (ayrıntı `SIMULASYON.md` "Öneri firmware + ön omni"). Yerinde w komut 1: ONERI 0,97–0,98 (21 kg·cm), 0,72–0,86 (9);
+  ONERI-T 0,08 / 0,001 (lastikle kapalı çevrim de dönmüyor); ONERI-ADAY 1,05 / 0,69–0,84. 90° 1,9–3,0 s, aşma 8–15° (`dur`
+  sonrası fren), salınım yok. Kolon 11–14 s. `dur` 0,046 m (V0 0,070). 5° yan eğim 5 s'de 0,05 m (V3 açık çevrim 0,24).
+  Rampada tutma değişmedi. Makara yanal sürtünmesi eşiği: 21 kg·cm ≈ 13 N / teker, 9 kg·cm ≈ 5 N.
+- **Pencere.** `kod\simulasyon3b-omni.bat` yeni (tek tık ONERI); bat ikinci argümanı `-` ile başlamıyorsa varyant; Shift+Enter
+  döngüsü ONERI / ONERI-T / ONERI-ADAY'ı da içerir. B § 11: reddedilen `sur` durum kutusunda "acil stop: komut reddedildi"
+  (1,5 s); senaryo `oda_rampa`'da acil stop sırasında Yukarı basılı tutulur. Gerçek tuşlarla sınandı: bat penceresi ONERI
+  açtı, Sağ / Sol ile −107° / +92° döndü, kolonun güneyinden geçti; 6, 8, Yukarı -> "sur  acil stop: komut reddedildi" görüldü;
+  Shift+Enter -> ONERI-T. Bir denemede pencereye dışarıdan Backspace (GLFW 259, MuJoCo'nun sıfırlama tuşu) geldi, robot model
+  başlangıç pozuna döndü; tekrar denemede yok, kaynağı bu sınama betiği değil.
+- **Denetim.** 2B 58 / 58; fizik koşusu V0 sayı özeti `f3507f3911bd53da` (değişmedi; `olcum.json` döndürüldü);
+  `donus-varyantlar.json` `03d05734…`, `donus-hareket.json` `c8caa97b…` aynı; Y0s fizikte ONERI / ONERI-T / ONERI-ADAY 57 / 58.
+
+## 16. Düzeltme turu: B § 12 (A, commit yok)
+
+A ajanı, 23.11 (saat okundu: bölüm yazılırken 02:12). B'nin hükmü: `lale-duzeltme` KOŞULLU GEÇER
+(B1–B3), firmware önerisi HENÜZ HAZIR DEĞİL (F1–F3), pencere R1.
+
+- **F1, enkoder arızası koruması** (öneri dalı `f22a149`). İki katman: (1) PI düzeltmesi en çok `DUZELTME_ORANI` 1,0 ×
+  |ileri besleme| + `DUZELTME_TABANI` 0,3 (çıkış ≤ 2 × ileri besleme + 0,3); (2) makullük: düzeltme payın sonundayken hız <
+  `KUSKU_HIZ_M_S` 0,02 m/s ya da ters işaretli, `KUSKU_SURE_MS` 500 ms sürerse o teker açık çevrime (0.5.0 davranışı), kilit
+  yeniden başlatmaya dek; sıkışmış teker de aynı davranışı alır. Hepsi TAHMİN. `motorlar_enkoder_arizali()`; protokolde alan
+  yok, değiştirilmedi (notta `durum` / `ping` için `enk_ariza` önerisi). İlk dar pay (0,5 × + 0,15) 9 kg·cm motorla yavaş
+  yerinde dönüşü durdurup yanlış alarm verdi (w 0,5 komutunda 0,008–0,14 rad/s): genişletildi.
+- **Model ve test.** `fizik_esp32.py` `_oneri_adim` aynı koşullar; `enkoder_bozuk` (yalnız deneme: "takili" / "ters").
+  Yeni `kod/fizik/testler/test_enkoder_ariza.py` (4 test; sağlam 1 s v 0,10, sonra arıza, 3 s): iki yan takılı ya da ters
+  korumasız 1,22 m / son 1 s 0,42 m/s -> korumalı 0,36–0,37 m / 0,08 m/s, tespit 510–550 ms; tek yan takılı −84° -> −6,3°,
+  tespit 550 ms; sağlam enkoderde alarm yok. Bulunan model hatası: önceki turda eklediğim `_k_odo_sifirla` aynı sınıftaki
+  eski tanımın gölgesinde kalıyordu (öneri modelinde odo sıfırlamada `onceki_tik` sıfırlanmıyordu); tek tanımda birleştirildi.
+- **Yanlış alarm.** `olcum_oneri.py` korumayı bütün ölçümlerde izler (`donus-oneri.md` "Enkoder arızası koruması"):
+  tetiklenme yalnız gerçek durmada: eşiği geçemeyen 9 kg·cm koşuları (her varyantta 4) ve lastikle yerinde dönemeyen ONERI-T.
+  Kalkış, omni dönüş (9 kg·cm doyum dahil), rampa, yan eğim, geçilen eşik, duyarlılık ve makara taramasında 0. Eşik tablosu
+  korumadan önceki koşuyla aynı.
+- **F2.** Dalda `ONERI_PI_ACIK 0` varsayılan: ilk yüklemede KP = KI = 0 (kaçma riski olmayan varsayılan); masada 1 yapılır
+  ya da `-DONERI_PI_ACIK=1`. İki hâl de derlendi. Not: masada güvenli sıra (havada yön / enkoder -> elde acil stopla arıza
+  denemesi -> KP, sonra KI -> yerde düşük hız), PWM oranı (yarıçap değil; enkoder oranı 0,214 / beklenen 0,170 / açık çevrim
+  omni 0,295), ivme eşiği 0,56, makara çekme tarifi ve "mertebe, sınır değil" (öneri dalı `11b2931`).
+- **F3.** `INTEGRAL_SINIRI` 0,6, gerekçe ölçümle: 9 kg·cm, yerinde w 0,5: 0,3 ile 0,30–0,36, 0,6 ile 0,46–0,49 rad/s (1,0 ile
+  aynı); 21 kg·cm'de fark yok. Kod yorumu ve not aynı sayıyı yazıyor.
+- **B1.** `doksan` yönü 10 ms'de bir denetler: aşma 4,4–6,3° (önce 8–15°, 200 ms denetim). **B2.** Eşik bölümüne "kazanç PI'dan,
+  omniyle eşik modellenmedi". **B3.** `SIMULASYON.md` ve notta "güvenlik aynı" cümlesine enkoder arızası riski ve koruma.
+- **R1.** `gorunum3b.py`: her döngüde `d.time` geri giderse (MuJoCo Backspace = `mj_resetData`) "başa koy": robot başlangıç
+  pozuna, servolar firmware açılarına, `dur`; durum kutusunda 3 s "MuJoCo sifirlandi (Backspace): robot basa kondu". Gerçek
+  tuşla sınandı (6, Yukarı 1,5 s, Backspace): robot başlangıçta dik, teker yükleri 61 / 68 N, satır göründü.
+- **Ölçüm** yeniden üretildi (iki koşu md5 aynı `6699257d…`). Dönüş sayıları değişmedi (21 kg·cm 0,97–0,98; 9 kg·cm 0,72–0,86;
+  9 kg·cm w 0,5 0,46–0,49); ONERI-T kolon µ 0,8'de 60 s'de başarılı (önce başarısız; dönemeyen tekerler açık çevrime düştü).

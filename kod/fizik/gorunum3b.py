@@ -20,7 +20,7 @@ harfler görselleştirme / çizim bayrakları, Space, + -, [ ], Tab, Esc, F1-F5 
   Shift+6 rampa kipi aç / kapa   Shift+7 kafa sola / ortaya / sağa   Shift+8 robotu başa koy   Shift+9 sonraki sahne
 Eski tuşlar da çalışır: Home arm, End dur, Delete mantar, Insert birak, Page Up / Down kol pozu, F9 rampa, F10 kafa,
 F11 başa koy, F12 sonraki sahne.
-Shift+Enter  sonraki dönüş varyantı (V0 bugünkü robot, V1..V2+V3 VARSAYIM; `varyantlar.py`). Varyant V0 değilse üstte kalıcı
+Shift+Enter  sonraki dönüş varyantı (V0 bugünkü robot; V1..V2+V3, ONERI, ONERI-T, ONERI-ADAY VARSAYIM; `varyantlar.py`). Varyant V0 değilse üstte kalıcı
 "VARSAYIM: <ad> (bugunku robot DEGIL)" satırı. Komut satırından: `kod\\simulasyon3b.bat <sahne> <varyant>` ya da `--varyant`.
 
     "%LALE_SIM_VENV%\\Scripts\\python.exe" kod/fizik/gorunum3b.py --sahne oda_rampa
@@ -171,6 +171,9 @@ class Pencere:
         self.gunluk = []
         self.sahne_degis = False
         self.varyant_degis = None
+        self.red = None                           # son reddedilen sur: (hata, sanal ms)
+        self.son_t = None                         # MuJoCo d.time (Backspace sıfırlamasını algılamak için)
+        self.sifir_ms = None
 
     def _yaz(self, s):
         self.gunluk.append("%7.2f s  %s" % (self.e.zaman_ms / 1000.0, s))
@@ -253,8 +256,12 @@ class Pencere:
         if v or w:
             if degisti or self.e.zaman_ms - self.son_sur_ms >= SUR_ARALIK_MS:
                 # sur m/s ve rad/s (protokol); firmware w'yi giriş tavanına (0.5.0: 1), tekerleri azamiye kırpar
-                self.e.gonder({"k": "sur", "v": v, "w": w}, denetle=False)
+                c = self.e.istek({"k": "sur", "v": v, "w": w}, denetle=False)
                 self.son_sur_ms = self.e.zaman_ms
+                if c.get("ok"):
+                    self.red = None
+                else:                             # reddedilen sur (acil stop, devrede değil): durum kutusunda görünür
+                    self.red = (c.get("hata", "?"), self.e.zaman_ms)
             if not self.suruyor:
                 self._yaz("surus v %.2f m/s  w %.2f rad/s" % (v, w))
             self.suruyor = True
@@ -263,6 +270,19 @@ class Pencere:
             self.e.gonder({"k": "dur"}, denetle=False)
             x, y, _, yaw, _, _ = self.w.poz()
             self._yaz("tus birakildi -> dur  (x %.2f y %.2f yon %.0f)" % (x, y, math.degrees(yaw)))
+
+    def mujoco_sifirlandi(self):
+        """MuJoCo görüntüleyicisinin Backspace'i mj_resetData yapar: robot modelin sıfır pozuna (oda dışı) ışınlanır, servo
+        hedefleri 0 olur, firmware modeli sürmeye devam eder. Bunu "başa koy"a çevir: robot başlangıç pozuna, servolar
+        firmware'in bildiği açılara, sürüş `dur`; enkoder sayımı sıçramaz (konum_ayarla taban açıyı yeniler)."""
+        self.v = self.w_cmd = 0.0
+        self.suruyor = False
+        self.c.konum_ayarla(*self.bas)
+        self.w.servo_eklem_ayarla({t["ad"]: math.radians(a - t["ofset"]) for t, a in zip(self.c.servo_tablo, self.c.servo_simdi)})
+        self.c._servo_uygula()
+        self.e.gonder({"k": "dur"}, denetle=False)
+        self.sifir_ms = self.e.zaman_ms
+        self._yaz("MuJoCo sifirlandi (Backspace): robot basa kondu, dur")
 
     def adim(self, ms):
         self._surus_guncelle()
@@ -288,6 +308,12 @@ class Pencere:
                % (h["guc"], " ACIL STOP" if self.c.mantar else "", self.sahne_ad, self.varyant_ad, self.v, h["v"], self.w_cmd, h["w"],
                   math.degrees(f["pitch"]), math.degrees(f["roll"]), "acik" if self.rampa else "kapali",
                   KOL_POZLARI[self.kol][0], " ".join("%.0f" % n for n in f["teker_yuk_N"])))
+        if self.sifir_ms is not None and self.e.zaman_ms - self.sifir_ms < 3000:
+            sol += "\nsifir"
+            sag += "\nMuJoCo sifirlandi (Backspace): robot basa kondu"
+        if self.red is not None and self.e.zaman_ms - self.red[1] < 1500:
+            sol += "\nsur"
+            sag += "\n" + ("acil stop: komut reddedildi" if self.c.mantar else "komut reddedildi (%s)" % self.red[0])
         if self.gunluk:
             sol += "\nson"
             sag += "\n" + self.gunluk[-1].strip()
@@ -308,8 +334,8 @@ def kamera_kur(cam, w, taban):
 SENARYOLAR = {
     "oda_rampa": [
         (0.5, T_6, None), (2.0, ("tut", {T_YUKARI}, False), None), (4.0, ("tut", {T_YUKARI, T_SOL}, False), None),
-        (5.5, None, "1-surus-yay"), (6.0, ("tut", set(), False), None), (7.0, T_8, None), (8.0, None, "2-acil-stop"),
-        (8.5, T_8, None), (9.0, T_6, None), (9.5, T_ENTER, None), (10.0, T_ENTER, None), (13.0, None, "3-kollar-one-yukari"),
+        (5.5, None, "1-surus-yay"), (6.0, ("tut", set(), False), None), (7.0, T_8, None), (7.3, ("tut", {T_YUKARI}, False), None),
+        (8.0, None, "2-acil-stop"), (8.2, ("tut", set(), False), None), (8.5, T_8, None), (9.0, T_6, None), (9.5, T_ENTER, None), (10.0, T_ENTER, None), (13.0, None, "3-kollar-one-yukari"),
         (14.0, (T_9, True), None)],
     "rampa_parkuru": [   # 10 derecelik rampaya (y = 15) rampa kipinde tırman
         (0.5, T_6, None), (1.0, (T_6, True), None), (1.5, ("tut", {T_YUKARI}, True), None),
@@ -356,7 +382,10 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
                     png_yaz(os.path.join(ekran, foto + ".png"), rgb)
                     p._yaz("ekran goruntusu %s.png" % foto)
             with v.lock():
+                if p.son_t is not None and p.w.d.time < p.son_t - 1e-9:
+                    p.mujoco_sifirlandi()         # zaman geri gitti: görüntüleyici sıfırladı
                 p.adim(20)
+                p.son_t = p.w.d.time
             ust, sol, sag = p.metin()
             # set_texts kendi kilidini alır; v.lock() içinde çağrılırsa görüntüleyici kilitlenir ("Yanıt Vermiyor")
             v.set_texts([(mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_TOPLEFT, ust, None),

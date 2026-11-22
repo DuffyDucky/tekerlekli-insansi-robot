@@ -490,3 +490,285 @@ yeni `kod/fizik/varyantlar.py`, `olcum_varyantlar.py`, `olcum_donus_hareket.py`,
 pencerede denenmedi; `olcum_donus_hareket.py` yeniden koşulmadı (md5 ve sayılar okundu, kendi ölçümüm aynı yönde); V3 / V4 yan
 eğim ve yanal itme sayıları yeniden üretilmedi; kolon dolaşma süreleri yeniden üretilmedi; manevra (20 tekrar) yeniden koşulmadı;
 gerçek klavyeyle (insan eli) deneme yapılmadı.
+
+
+## 12. Ek kontrol 2: firmware önerisi ve omni (`Y0f-gunluk.md` § 15)
+
+Depo `749d6ee` üstüne çalışma ağacındaki ek ve depo dışı öneri dalı `oneri/donus-omni` (`e308120`; `origin/main` `71cf76d`
+üstüne üç commit). Kalıcı yazı yok: derleme çıktısı ve deneyler geçici klasörde; öneri dalının çalışma ağacı `git status` temiz.
+
+**Hüküm.** `lale-duzeltme` commit'i: **KOŞULLU GEÇER** (kod / veri engeli yok; 12.5'teki B1–B3 belge cümleleri düzeltilmeli).
+Firmware önerisi Efe'ye: **HENÜZ HAZIR DEĞİL** (F1 enkoder arızasında kaçma riski not ya da kodda karşılanmalı; F2, F3 not
+düzeltmesi). Kod mantığında hata bulunmadı; güvenlik yolları (bekçi, acil stop, `dur`, arm / bırak) PI durumunu doğru sıfırlıyor.
+
+### 12.1 Firmware farkı (`motorlar.cpp` +47 / −14, `motorlar.h` 1 yorum satırı)
+
+Satır satır okundu; `pio run` yeniden üretildi (ayrı derleme klasörüne): SUCCESS, RAM %6,9, Flash %24,3.
+- **Sıfırlama yolları doğru.** Bekçi (`watchdog.cpp` -> `motorlar_ani_dur`), acil stop / arıza / bırak (`guc.cpp` -> `motorlar_ani_dur`)
+  -> `teker_ani_dur`: hedef, rampa, integral, önceki hata 0, PWM hemen 0. `dur`: rampa fren sınırıyla 0'a iner; o adımda PID dalına
+  girilmez, `integral = onceki_hata = 0`, çıkış 0. Güç devrede değilken savunma satırı hâlâ önce koşuyor. Yeniden devreye almada
+  integral 0'dan başlar, `onceki_tik` güncel: sıçrama yolu yok. `dur` / acil stop sonrası birikmiş integralle kendiliğinden hareket
+  yolu yok (hedef 0 -> çıkış 0).
+- **Sarma önleme.** Hızlanma rampasında integral durur (`|rampa| >= |hedef| − 1e-4`); hedefte, frende ve yön değişiminin
+  yavaşlama yarısında çalışır. Doyumda geri alma `cikis * onceki_hata > 0` ile; `onceki_hata` o adımda yeni hatayla güncellendiği
+  için koşul "çıkış, bu adımın hatasıyla aynı yönde" demek: doğru, ad yanıltıcı (öneri: `hata` diye ayrı tutmak). Bölme yalnız
+  `en_buyuk > 1` iken: sıfıra bölme yok. `DT` sabit 20 ms; döngü `main.cpp` 20 ms'lik yakalamalı zamanlayıcı (eski kodla aynı varsayım).
+- **`INTEGRAL_SINIRI` 1,0.** Anlamı: integral teriminin PWM'e katkısı en çok ±1,0 (integralin kendisi ±0,05 m). Gerekçe sayısal
+  olarak desteklenmiyor: A'nın kendi duyarlılığında 0,3 ile sonuç aynı (0,968), Efe notu satır 71 de "0,3 simülasyonda yetti"
+  diyor. Değişiklik gereksiz yetki ekliyor; 0,3'te bırakmak ya da gerekçeyi masaya bırakmak daha temiz (F3).
+- **F1 (risk, notta eksik): enkoder takılı / kopuk / ters.** `hazir` yalnız açılışta (`enkoder_kur`) belirleniyor; çalışırken kopan ya
+  da takılan enkoder 0 hız okur, ters bağlı enkoder işaretli okur. B'nin modelde denemesi (ONERI, düz v 0,10 komutu, µ 0,8):
+  enkoder sağlam 0,100 m/s (PWM 0,31); **iki yan takılı 0,396 m/s (PWM 1,0), ters 0,394 m/s (PWM 1,0), tek yan takılı v 0,21 + w −0,50
+  rad/s (kendiliğinden döner)**. `dur`, bekçi ve acil stop bunu durduruyor (hepsinde PWM 0, v 0). Kodda algılama yok. Efe notu
+  satır 64 ve 80 yalnız ters yönü yazıyor ve "okunamazsa (`hazir` false) açık çevrime düşer" diyor: çalışırken kopmada doğru değil.
+  Öneri: (a) notta açık risk olarak yaz; (b) basit makullük denetimi (|çıkış| ≥ 0,8 iken |ölçülen| < 0,02 m/s 300 ms sürerse o yanı
+  açık çevrime düşür ya da arıza olayı ver) ya da PI düzeltmesini ileri beslemenin ±0,5'iyle sınırla.
+- **Uyum.** Adlandırma ve yapı Efe'nin koduyla uyumlu (`teker_adim`, `kirp`, `Teker` alanı, Türkçe yorumlar). Fark küçük; tek
+  davranışsız ek `W_GIRIS_SINIRI` (1,0, eskisiyle aynı): belgeleme amaçlı, kabul edilebilir. `teker_adim` başka yerden çağrılmıyor.
+
+### 12.2 Model ↔ C++
+
+`fizik_esp32.py` `_oneri_adim` ve `varyantlar.py` `ONERI_FW` satır satır C++ ile karşılaştırıldı: sabitler, tik farkından hız,
+ileri besleme, PI, rampa kapısı, integral kırpma, `rampa == 0` sıfırlama, birlikte doyum + geri alma aynı. Farklar A'nın yazdığı
+gibi: rampa 10 ms dilimle (C++ 20 ms, `teker_adim` içinde), PWM 20 ms'de bir; ek olarak `_surucu` rampa 0 olunca PWM'i 20 ms
+beklemeden 0 yapar (C++'ta `teker_ani_dur` da hemen yazar; `dur` sonunda en çok 20 ms fark). Modelin C++'ta olmayan bir kolaylığı
+bulunmadı; sayılar bu firmware'in modeli.
+
+### 12.3 Güvenlik testleri ve bozma deneyleri (B'nin kendi koşucusu, Y0s testleri fizikte, varyant yamalı)
+
+V0 58 / 58 (koşucu doğrulaması); ONERI 57 / 58, ONERI-T 57 / 58 (A ile aynı, kalan aynı test).
+- Bozma 1, bekçi motoru durdurmuyor: ONERI'de 4 güvenlik testi kalıyor (bekçi × 2, bozuk satır, kablo; "firmware teker hedefi
+  sıfırlanmadı", PWM 0,75–0,79). Yakalanıyor.
+- Bozma 2, integral sıfırlanmıyor ve rampa 0'da PWM integralden geliyor (C++'ta `else` dalı ve `rampa == 0 -> 0` satırı silinmiş
+  gibi): 7 test kalıyor (bekçi × 2, bozuk satır, kablo, `dur` freni, sonar 30 cm, odo sıfırlama; "kısa devre freni yok", PWM 0,008).
+  Yakalanıyor. İkisi de yalnız bellekte (yama); paket dosyası değişmedi.
+
+**Kalan test yorumu doğru.** `test_cok_buyuk_w_kirpilir_donus_orani_korunur` (v 0,3, w 5): firmware hedefleri 0,066 / 0,39 (kırpma
+ve oran doğru, testin bu kısmı geçiyor). PWM oranı PI'da hız hatasına göre değiştiği için tutmaz (iç teker robotça sürükleniyor,
+PI iç PWM'i 0'a indiriyor). Korunan özelliğin fiziksel karşılığı enkoder oranı: beklenen 0,170; ONERI 0,214, açık çevrim omni (V3)
+0,295, lastikle (V0 / ONERI-T) 0,99 (yay yok). Öneri oranı açık çevrimden iyi tutuyor ama tam değil: dış teker PWM 1'de 0,39'a
+ulaşmıyor. Bu yüzden notun "oran = dönüş yarıçapı korunur" cümlesi (satır 17) fazla: korunan PWM oranı, hız oranı doyumda korunmaz.
+Testi fizikte enkoder oranına (±%30) çevirmek daha anlamlı olur; gevşetmemek de savunulabilir (bilerek kalan, belgeli).
+
+### 12.4 Ölçümler (yeniden üretim ve sınıf)
+
+Yeniden üretim (yerinde, komut w 1; µ 0,5 / 0,8): ONERI 21 kg·cm 0,977 / 0,968, 9 kg·cm 0,860 / 0,720; ONERI-T 21 kg·cm 0,085 /
+0,077, 9 kg·cm 0,001 / 0,001; 90° (A'nın yöntemi) 2,12 s, aşma 13,4°. Tabloyla aynı.
+
+- **Yerinde dönüş ONERI 0,97 / 0,72–0,86:** ayar ve kazançlara duyarsız (A'nın duyarlılığı, B'nin yeniden üretimi); omni
+  idealleştirmesine (küre + makara) ve TAHMİN'lere (durma torku, µ, makara sürtünmesi) bağlı. "Komutu izler" 21 kg·cm'de sağlam;
+  9 kg·cm sayısı makara sürtünmesine çok duyarlı (aşağıda).
+- **ONERI-T ≈ 0,08:** sağlam yön (lastikle kapalı çevrim de dönmüyor); sayı V1 gibi temas ayarına duyarlı olabilir (yeniden
+  ölçülmedi).
+- **90° aşması 8–15° "dur sonrası frenden" yanlış.** Ölçüm yönü `sur_tut`'un 200 ms'lik döngüsünde denetliyor. B yönü 10 ms'de bir
+  denetleyince: `dur` 90,3°'de (w 0,96), son yön 95,0°: **frenden aşma ≈ 5°** (µ 0,5 / 0,8 aynı); kalan 8–10° ölçümün 200 ms denetim
+  gecikmesi (w 1'de ort. ≈ 5,7°, en çok 11,5°). 0,213 m/s'den 1,8 m/s² ile el hesabı ≈ 3,4° + 20 ms döngü ≈ 1,1° = 4,5°: uyumlu.
+  Pi tarafına öneri (erken / yavaşlayarak durma) yine geçerli ama gerekçe sayısı ≈ 5°.
+- **`dur` 0,046 m (V0 0,070):** sağlam mekanizma: PI rampayı izliyor (açık çevrimde robot rampanın arkasından süzülüyordu). Rampa
+  ivme sınırı aynı; Y1 testleri geçiyor.
+- **Rampada tutma değişmedi:** sağlam (hedef 0 -> PWM 0 -> PI kapalı; tutma yalnız sürtünmeden). C++'ta da aynı.
+- **Eşik 15 mm:** ONERI-T (lastik) de 15 mm geçiyor: kazanç **PI'nın düşük hızda tork vermesinden**, omniden değil. Ön omni küre
+  olarak modellendi (makarasız, sürekli çember, µ 0,8 tutuş): gerçek omni tekerin basamak kenarına makara ya da makara arası
+  boşlukla çarpması modelde yok. ONERI / ONERI-ADAY sütunundaki 15 mm ön omni için savunulamaz; belgede "lastikle (ONERI-T)
+  ölçüldü; omniyle eşik geçişi modellenmedi, masada denenmeli" diye yazılmalı.
+- **Makara yanal sürtünmesi, 13 N / 5 N eşikleri:** model eklemde sabit Coulomb sürtünmesi = katsayı × ortalama statik teker yükü
+  (≈ 66 N) × r; yükle değişmez (dönerken teker yükü std ≈ 100 N çırpıyor, gerçek makara direnci yükle artar), yumuşak kısıt. Eşikler
+  **TAHMİN'e (durma torku, µ) ve bu modele bağlı**; 21 kg·cm'de 13 N ile 20 N arası geçiş, 9 kg·cm'de 3–7 N arası geçiş yumuşak.
+  Mertebe için kullanılabilir, karar sınırı olarak değil. Masadaki ölçüm tarifi (notta daha açık yazılmalı): teker gerçek yükte
+  (≈ 65 N; robotun kendisi ya da ağırlık), gerçek zeminde, tekeri **yana yavaş ve sabit hızla** iten / çeken kuvvet ölçerle
+  **sürekli (kinetik) kuvveti** oku, ilk kopma tepesini değil; birkaç makara geçişi boyunca ortalama ve en büyük; iki yön; ayrıca yük
+  yarıya / 1,5 katına çıkınca kuvvetin değişimi (modelin sabit kabulünü sınar). Karşılaştırılacak sütun "yanal kuvvet N / teker".
+- **Yan eğim 0,05 m, yana devrilme 23,5–23,9°:** geometri sağlam (ön temas noktası içeri), kayma omni idealleştirmesine bağlı.
+- **Tork / sürekli:** "sürekli = durmanın %30'u" VARSAYIM'ı; 9 kg·cm'de 2,1–2,5 kat (ısınma) yön olarak sağlam.
+
+### 12.5 Belgeler
+
+Düzeltilecekler (`kod/SIMULASYON.md` = SIM, `donus-oneri.md`, Efe notu `ONERI-donus.md` = NOT):
+- **B1, SIM 367 ve NOT 44:** 90° aşması 8–15° ve "dur sonrası fren" -> frenden ≈ 5°, gerisi ölçüm denetim aralığı (200 ms).
+- **B2, SIM 373 ve NOT 47:** eşik 15 mm'nin kaynağı PI; omniyle eşik geçişi modellenmedi (ONERI-T'nin değeri lastik).
+- **B3, SIM 356–358 ve NOT 25:** "Güvenlik davranışı aynı" -> bekçi / acil stop / güç yolları aynı; yeni risk: enkoder takılı /
+  ters / kopukken PI tam güce çıkar (F1).
+- **F2, NOT 64 / 80:** "okunamazsa (`hazir` false) açık çevrime düşer" yalnız açılışta geçerli; çalışırken kopma / takılma eklenmeli.
+  Masada güvenli sıra öneri: (1) tekerlek havada, **KP = KI = 0** ile yön ve enkoder işareti (odo artıyor mu); (2) enkoder kablosu
+  çekilerek / teker tutularak davranış (PI açıkken kaçma görülür: düşük KP ile ve elde acil stop); (3) KP, sonra KI; (4) yerde düşük
+  hız, sonra dönüş. Notun 1. maddesi (1) i söylüyor; kodun varsayılanı KP 4 / KI 20 olduğu için "ilk yüklemede KP = KI = 0'a çek"
+  açık yazılmalı.
+- **F3, NOT 71 ve `motorlar.cpp` `INTEGRAL_SINIRI` yorumu:** 1,0 gerekçesi simülasyonda yok (0,3 ile aynı sonuç); iki metin
+  birbirini tutmuyor ("0,3 yetmeyebilir" / "0,3 yetti").
+- **NOT 17:** "oran = dönüş yarıçapı korunur" -> PWM oranı korunur; doyumda hız oranı (yarıçap) tam korunmaz (12.3).
+- **NOT 20:** "ivme 0,575 m/s² (sınır 0,5)": testin eşiği 0,56 (SIM'de doğru).
+- "Masada doğrulanacak" uyarısı ve "öneri, birleştirilmedi, karta yüklenmedi" açık; TAHMİN etiketleri (KP / KI, makara sürtünmesi,
+  durma torku) yerinde. Taraf tutmuyor.
+
+### 12.6 Pencere (`kod\simulasyon3b-omni.bat`, gerçek tarama kodlu tuş olayları)
+
+Temiz açıldı, üstte "VARSAYIM: ONERI firmware oneri + on omni (bugunku robot DEGIL)". 6 -> arm; Sağ basılı 1,6 s -> −70°, Sol
+1,6 s -> +70° (yerinde dönüyor); Yukarı -> ileri. 8 + Yukarı -> durum kutusunda "sur: acil stop: komut reddedildi" (ekran görüntüsü).
+Odak başka pencereye geçince "odak kayboldu" + `dur`; arkadayken basılan oklar sürmedi. Kapatınca süreç kalmadı. Kolon dolaşma
+tuşlarla denenmedi (başsız ölçüm var).
+- **Backspace (R1):** B pencereye bilerek Backspace gönderdi: MuJoCo görüntüleyicisi `mj_resetData` yapıyor, robot modelin
+  sıfır pozuna (odanın dışında, dünya başlangıcı) ışınlanıp **devrildi** (pitch −82°, teker yükleri 0); firmware durumu sürüyor.
+  Kullanıcı sürerken yanlış tuşla "robot devrildi" görüntüsü üretir, yanlış bulgu riskidir. Öneri: modelin `qpos0`'ını başlangıç
+  pozuna (serbest eklem + servo açıları) eşitlemek (Backspace başa koyar), ya da her döngüde `d.time` geri sıçramasını algılayıp
+  "MuJoCo sıfırlaması: sahne başa kondu" yazmak; tuş ipucuna "Backspace: MuJoCo sıfırlama, kullanmayın" eklemek. A'nın gördüğü
+  dışarıdan Backspace'in kaynağı bulunamadı (B'nin denemesinde kendiliğinden gelmedi); pencere sınamalarında iki kez nedeni
+  bilinmeyen odak kaybı da görüldü (robot durdu: odak güvenliği çalışıyor).
+
+### 12.7 Varsayılan, özel veri, commit
+
+- 2B 58 / 58; V0 fizik koşusu çıkış 0, sayı özeti `f3507f3911bd53da`; `olcum.json`, `olcum.md`, `donus-varyantlar.json`,
+  `donus-hareket.json` için `git diff` boş; 21 eski dosya md5 21 / 21.
+- Kanca kalıpları (`+` önekli eklenecek satırlar: depoda 3.450, öneri dalında 149): **0 isabet**. Satır başı `@`: yalnız
+  `simulasyon3b-omni.bat`'ta `@echo off` (noktasız, kalıba takılmaz). Öneri dalının commit yazarı bilgisi depodaki öbür
+  commit'lerle aynı (kanca üst veriyi taramaz; mevcut düzen).
+- **Girecek (`lale-duzeltme`):** `kod/SIMULASYON.md`, `kod/simulasyon3b.bat`, yeni `kod/simulasyon3b-omni.bat`, `kod/fizik/dunya.py`,
+  `fizik_esp32.py`, `gorunum3b.py`, `olcum_varyantlar.py`, `varyantlar.py`, yeni `kod/fizik/olcum_oneri.py`,
+  `planlama/d158/Y0f-olcum/donus-oneri.json|md`, `planlama/d158/Y0f-gunluk.md`, `planlama/d158/Y0f-kontrol.md`. **Girmeyecek:**
+  21 eski dosya, `__pycache__/`. Öneri dalı ayrı (Efe'nin deposuna gidecekse F1–F3 sonrası).
+
+### 12.8 Bakılmayanlar
+
+ONERI-ADAY sayıları ve makara taraması yeniden üretilmedi (tablo okundu, model kodu incelendi); ONERI-T'nin temas duyarlılığı;
+kolonu tuşlarla dolaşma; `gorunum3b.py`'nin reddedilen `sur` gösterimi dışındaki yeni satırları; karta yükleme ve gerçek enkoder
+(yapılamaz); derlemede uyarı listesi (yalnız sonuç satırları okundu).
+
+## 13. Ek kontrol 3: § 12 düzeltmeleri (dar ikinci kontrol)
+
+B ajanı, 23.11 (02:15 – 02:45). Yalnız değişene bakıldı: öneri dalı `f22a149` (kod) ve `11b2931` (not), `lale-duzeltme` çalışma
+ağacındaki commit edilmemiş değişiklikler (`Y0f-gunluk.md` § 16). A'nın iddiaları doğru sayılmadı; her biri koşuyla ya da
+kodla denendi. Denemeler geçici dizinde, paket dosyalarına yazılmadı (paket dosyalarının son yazılma saati 02:12, bu turdan önce;
+öneri çalışma ağacında `git status` boş).
+
+**Hüküm.** `lale-duzeltme` commit'i: **GEÇER** (B1–B3 yapıldı; testler, özetler ve kanca temiz). Firmware önerisi Efe'ye:
+**KOŞULLU HAZIR**: kodda engel yok, F1 koruması çalışıyor; koşul notta dört cümle (13.5: N1–N4). Test boşluğu (13.2) engel değil.
+
+### 13.1 F1 kodda ve modelde
+
+Kod (`git diff e308120..11b2931`): katman 1 `pay = DUZELTME_ORANI × |ileri besleme| + DUZELTME_TABANI`, düzeltme paya kırpılır,
+payda iken integral artışı hatayla aynı yöndeyse geri alınır; katman 2 `supheli = payda && (|ölçülen| < 0,02 || ölçülen × rampa < 0)`,
+25 ardışık adımda (500 ms) `enk_arizali` kilitlenir, o adımın çıkışı ileri beslemeye döner, integral / hata sıfırlanır. Model
+(`fizik_esp32.py` `_oneri_adim`) aynı koşulları aynı sırayla uyguluyor; `kusku` sayaç sıfırlaması C++'ta `teker_ani_dur`'da, modelde
+rampa 0 olunca (bir adım sonra, etkisi aynı). Küçük: `KUSKU_ADIM = KUSKU_SURE_MS / 20` DT yerine sabit 20 kullanıyor (DT
+değişirse sessizce kayar).
+
+Arıza senaryoları (B'nin betiği; sağlam enkoderle `once` süresince sür, sonra arıza, 3 s daha aynı komut; µ 0,8, 21 kg·cm; açı ve yol
+arıza anından):
+
+| Senaryo | Korumasız: yol / açı / son hız | Korumalı: yol / açı / son hız | Tespit |
+| --- | --- | --- | --- |
+| iki yan takılı, v 0,10 | 1,28 m / 0° / 0,396 m/s | 0,38 m / 0° / 0,077 | 550 ms |
+| iki yan ters, v 0,10 | 1,28 m / 0° / 0,396 | 0,37 m / 0° / 0,077 | 510 ms |
+| tek yan takılı, v 0,10 | 0,65 m / −88° / 0,20, w −0,50 | 0,36 m / −6,3° / 0,098, w +0,01 | 550 ms (yalnız o yan) |
+| v 0,25'te iki yan kopma | 1,30 m / 0° / 0,396 | 0,88 m / 0° / 0,242 | 510 ms |
+| tam hızda (0,39) iki yan kopma | 1,32 m / 0° / 0,396 | 1,32 m / 0° / 0,396 | 510 ms |
+| tam hızda tek yan kopma | 1,00 m / −21,9° / 0,30 | 1,25 m / −2,6° / 0,39 | 510 ms |
+| yerinde dönüşte (w 1) tek yan kopma | w 1,04, v −0,071 | **w 0,73, v 0,055** (sağlam: w 0,97, v 0,005) | 510 ms |
+| aralıklı kopma (100 ms kopuk / 100 ms sağlam), v 0,2 | 0,76 m / 0° / 0,149 | aynı | **tetiklenmez** |
+| yarı sayan sol enkoder, v 0,2 | 0,84 m / **−48,3°** / 0,261, w −0,27 | aynı | **tetiklenmez** |
+
+Karşılaştırma, sağlam: v 0,10'da 3 s 0,33 m; tam hızda 1,30 m. Yani korumalı "0,36–0,38 m"nin ≈ 0,04 m'si arızadan, gerisi
+komutun kendisi: 500 ms penceresinin bedeli küçük. Tam hızda koruma gerekmiyor (ileri besleme zaten 1, kaçacak pay yok); kilit
+yine de 510 ms'de kuruluyor (zararsız). A'nın sayıları (1,22 m / 0,36–0,37 m / 510–550 ms / −84° / −6,3°) testte birebir çıktı;
+benim betiğimde korumasız yol 1,28 m / −88° (ölçüm penceresi 100 ms dilimli, `ping`'li; fark yöntemden).
+
+- **Korumanın yan etkisi (yeni tehlike?).** Düz gidişte küçük: tek yan kilitliyken öbür yan kapalı çevrimde kalıyor, sapma tam
+  hızda −2,6°, v 0,10'da kilitten sonra w +0,01. Yerinde dönüşte belirgin: tek teker açık çevrime düşünce w 0,97'den 0,73'e iniyor
+  ve robot 0,055 m/s ile kayarak çember çiziyor (korumasızda da kayma vardı, ters yönde). Tehlike değil, ama notta yok (N3).
+- **Kilit sonrası `dur`, acil stop, bekçi** (tam hızda iki yan kilitli): `dur` 0,072 m (V0 0,070), acil stop 0,228 m (V0 0,228),
+  bekçi 0,188 m; üçünde PWM 0. Doğru.
+- **Kilit `birak` + `arm` ile kalkmıyor** (modelde denendi: `[True, True]` kaldı); C++'ta da yalnız yeniden açılışta (statik ilk
+  değer) temizleniyor. Seçim doğru: kopuk enkoder `arm` ile düzelmez, yeniden açılış bilinçli bir adım olur. Ama not ve kod yorumu
+  "yeniden başlatmaya dek kalır (`motorlar_baslat`)" diyor; `motorlar_baslat` `enk_arizali`'yi **sıfırlamıyor** (yalnız `teker_kur`,
+  enkoder kurulumu, `onceki_tik`). Davranış doğru (`motorlar_baslat` yalnız `main.cpp:107` `setup`'ta çağrılıyor), cümle yanıltıcı (N1).
+- **Gerçek durmada kilit kullanıcıya nasıl görünür:** hiç görünmez. Eşikte bir kez 500 ms takılan teker o oturumun sonuna dek açık
+  çevrimde kalır; PI'nın getirdiği eşik kazancı ve dönüş hızı sessizce kaybolur (tek yan: yukarıdaki w 0,73). Protokol alanı yok
+  (notta öneri var). Masa sırasının 2. adımı (tekeri elle tutma) kilidi kurar; sonraki adımdan önce yeniden başlatma yazılmalı (N2).
+- **Kalan kaçma ve asıl güvence.** Takılı / ters enkoderde kalan kaçma küçük (yukarıda). Ama koruma yalnız "≈ 0 ya da ters" hızı
+  görür: **yarı sayan enkoder** (ya da kayan kayış, yanlış `TIK_PER_TUR`) yakalanmaz ve robot v 0,2 komutunda 3 s'de −48° döner,
+  hız 0,26; korumalı ile korumasız aynı. Aralıklı kopma da yakalanmaz (bu desende kaçma yok, robot yavaşlıyor). Bu durumlarda asıl
+  güvence Pi'nin yön / odometri denetimi, `dur` ve acil stop; notun Riskler bölümü bunu söylemiyor (N3). PI kapalıyken (ilk
+  yükleme) bu risklerin hiçbiri yok.
+- **Yanlış alarm, iki koşuldan fazlasında yeniden üretildi:** yerinde dönüş 21 ve 9 kg·cm × µ 0,5 / 0,8 × w 0,5 / 1,0 (8 koşu;
+  9 kg·cm µ 0,8 w 1'de gerçek w 0,72), 9 kg·cm ile 5° ve 10° yokuşta v 0,2 (10°'de gerçek hız 0,040, eşiğin hemen üstü; tetiklenmedi),
+  21 kg·cm ileri 0,3'ten ani geri 0,3: hepsinde `arizali` `[False, False]`. 10° / 9 kg·cm koşusu sınıra yakın: biraz daha dik ya da
+  ağır yükte gerçek durma sayılıp kilitlenebilir (o zaman doğru davranış).
+
+### 13.2 Mutasyon (bellekte, dosyaya dokunmadan)
+
+| Bozma | 4 testten kalan |
+| --- | --- |
+| yok | 0 |
+| katman 2 kapalı (`kusku_adim` 10⁹) | 3 (iki yan takılı, iki yan ters, tek yan) |
+| katman 1 sınırsız (`duzeltme_tabani` 100; payda hiç olmadığı için katman 2'yi de kapatıyor) | 3 |
+| **yalnız katman 1 kırpması kaldırıldı** (payda tespiti duruyor) | **0** |
+
+Testler katman 2'yi ve "korumanın tamamını" yakalıyor; katman 1'in asıl işi olan 500 ms boyunca çıkışı 2 × ileri besleme + 0,3'te
+tutmak test edilmiyor (kırpma kaldırılınca yol 0,37 -> 0,40 m, testler yine geçti). Öneri (engel değil): pencere içinde PWM'in
+`2 × ileri besleme + 0,3`'ü aşmadığını ya da ilk 500 ms yolunu denetleyen bir satır.
+
+### 13.3 F2: `ONERI_PI_ACIK 0`
+
+İki hâl de derlendi (öneri ağacı değişmedi, derleme dizini geçici): PI 0: RAM 22712 B (%6,9), Flash 319301 B (%24,4); PI 1: RAM aynı,
+Flash 319329 B. Not satır 4 doğru. Kodda PI 0 iken `KP = KI = KD = 0` -> düzeltme 0 < pay (≥ 0,3) -> `payda` hiç olmaz, kilit
+kurulmaz; çıkış = ileri besleme ve `motorlar_hedef` iki yanı 0,39'a ölçeklediği için |çıkış| ≤ 1: birlikte doyum ölçeklemesi de
+hiç devreye girmez. Davranış 0.5.0 ile aynı (ikili 0.5.0 derlemesiyle karşılaştırılmadı; koddan). Not satır 15 "yeni olan yalnız
+birlikte doyum ölçeklemesi" doğru ama PI kapalıyken o da etkisiz (N4, küçük). Simülasyonun PI açıkken yapıldığı açık: not satır 18
+"Simülasyon sayılarının hepsi PI açıkken", `SIMULASYON.md` 368 "ONERI (öneri, PI açık + ön omni ...)".
+
+### 13.4 F3, B1
+
+- **F3:** 9 kg·cm, yerinde w 0,5, son 1,5 s ortalaması, µ 0,5 / 0,8: integral sınırı 0,3 -> 0,357 / 0,298; 0,6 -> 0,490 / 0,464;
+  1,0 -> 0,490 / 0,464. A'nın 0,30–0,36 / 0,46–0,49'u doğru.
+- **B1:** yön 10 ms'de bir, 90°'de `dur`: µ 0,5 `dur` 90,2°, son 95,1° (aşma 4,9°); µ 0,8 90,3° / 95,0° (4,8°). § 12'deki kendi
+  değerimle (90,3° / 95,0°) aynı; A'nın 4,4–6,3° aralığıyla tutarlı.
+
+### 13.5 Belgeler
+
+Yapılanlar (satır numaraları güncel dosyada): B1 not 74, SIM 386; B2 not 77, SIM 387; B3 not 35–38, SIM 363–367; F2 not 13–18 (ilk
+yükleme kapalı) ve 37 (`hazir` yalnız açılışta); § 12'deki NOT 17 (PWM oranı) not 25–27. TAHMİN'e dayanıp hüküm gibi yazılmış cümle
+bulmadım (eşik, kazanç, süre, makara sayıları TAHMİN / "mertebe" etiketli).
+
+Kalan (Efe'ye gitmeden):
+- **N1, not 48 ve `motorlar.cpp` 66:** "yeniden başlatmaya dek kalır (`motorlar_baslat`)" -> "yalnız kartın yeniden açılışında
+  temizlenir; `arm` / `birak` / `motorlar_baslat` temizlemez".
+- **N2, not 95–96 (masa sırası 2):** tekeri elle tutma ya da fişi çekme kilidi kurar; 3. adımdan önce kartı yeniden başlat.
+- **N3, not 49–51 ve Riskler 110 (SIM 363–367 de):** koruma yalnız takılı / ters enkoderi yakalar; yarı sayan / kayan enkoder ve
+  aralıklı kopma yakalanmaz (simülasyonda yarı sayan sol enkoder, v 0,2: 3 s'de −48°); asıl güvence Pi'nin yön denetimi, `dur`,
+  acil stop. Kilidin sessiz sonucu: gerçek durmada (eşik) o oturum boyunca o teker açık çevrimde; yerinde dönüşte tek teker
+  kilitliyken w 0,97 -> 0,73 ve 0,055 m/s kayma.
+- **N4, not 15 (küçük):** PI kapalıyken birlikte doyum da hiç devreye girmez; ilk yükleme davranışça 0.5.0.
+- **K75:** Pakette önerilmiş bir K75 karar metni bulamadım. `karar-kuyrugu.md` K75 satırı hâlâ "açık / Önerilmedi", `SIMULASYON.md`
+  416 hâlâ "seçenekler, öncelik sırası olmadan"; Ahmet'in 23.11 kararı (ön omni + firmware düzeltmesi, sarhoş teker yok) yalnız
+  SIM 357'de ve günlükte. Kuyruğa yazılacak metin benim sınıflamamla tutarlı olmak için: geometri sağlam; dönüş sayıları ve
+  makara sınırı TAHMİN (durma torku, µ, makara sürtünmesi) ve omni idealleştirmesine bağlı; masada doğrulanmadı. Kuyruğu
+  güncellemek bu paketin işi mi, orkestratör kararı.
+
+### 13.6 R1, gerçek Backspace
+
+`simulasyon3b-omni.bat` penceresi, gerçek tuş olayları: 6, Sağ 1 s, Yukarı 1,5 s, **Backspace**, Yukarı 1,5 s, Yukarı basılıyken
+Backspace. İki sıfırlamada da günlükte "MuJoCo sifirlandi (Backspace): robot basa kondu, dur", ekran görüntüsünde durum kutusunda
+"sifir" satırı, robot başlangıçta dik (pitch 0,0, roll −0,0, teker yükleri 61 / 68 / 61 / 68 N), güç "devrede". Sonra Yukarı ile
+robot sürülüyor (başlangıç x 1,50'den 1,80'e; başsız tekrarla doğrulandı: ONERI 1,5 s'de 0,323 m, V0 0,293 m; öneri modelinde
+`arizali` yanlış alarm yok, PWM ve rampa sıfırlamadan sonra 0). Basılıyken Backspace: sıfırlama `dur` yapar, tuş hâlâ basılı
+olduğu için sonraki döngüde sürüş yeniden başlar (basılı tut mantığıyla tutarlı). R1 kapandı.
+
+### 13.7 Commit hazırlığı ve depo
+
+- 2B 58 / 58; fizik testleri 10 / 10 (yeni 4 test dahil); Y0s fizikte V0 58 / 58, ONERI 57 / 58 (aynı test, aynı biçim: iç teker
+  PWM'i ≈ 0); V0 sayı özeti `f3507f3911bd53da` (geçici dizine). `olcum.json|md`, `donus-varyantlar.json|md`, `donus-hareket.json|md`
+  farkı boş. 21 eski dosya md5 aynı.
+- Kanca kalıpları: `lale-duzeltme` çalışma ağacındaki 14 dosyanın tamamı ve öneri dalının `origin/main..11b2931` eklenen 300 satırı:
+  0 bulgu. Satır başı süsleyici: `test_enkoder_ariza.py` yalnız girintili `@classmethod` (noktasız, girintili; kalıba takılmaz).
+- `.git/index.lock` olayı: kilit dosyası yok, `git fsck --no-dangling` temiz (çıkış 0), `MERGE_HEAD` / `CHERRY_PICK_HEAD` /
+  `rebase-*` yok, `git status` normal. Yarım kalmış işlem izi yok.
+- **Girecek (`lale-duzeltme`, 14):** `kod/SIMULASYON.md`, `kod/simulasyon3b.bat`, yeni `kod/simulasyon3b-omni.bat`,
+  `kod/fizik/dunya.py`, `fizik_esp32.py`, `gorunum3b.py`, `olcum_varyantlar.py`, `varyantlar.py`, yeni `kod/fizik/olcum_oneri.py`,
+  yeni `kod/fizik/testler/test_enkoder_ariza.py`, yeni `planlama/d158/Y0f-olcum/donus-oneri.json|md`, `planlama/d158/Y0f-gunluk.md`,
+  `planlama/d158/Y0f-kontrol.md`. **Girmeyecek:** 21 eski dosya, `P108d*` dosyaları (başka paket), `__pycache__/`. Öneri dalı
+  (`a41815f`, `120a9a7`, `e308120`, `f22a149`, `11b2931`) ayrı; N1–N4'ten sonra Efe'ye.
+
+### 13.8 Bakılmayanlar
+
+PI kapalı ikilisinin 0.5.0 ikilisiyle bayt karşılaştırması (yalnız koddan); başka aralıklı kopma desenleri (ör. 400 / 100 ms) ve
+gürültülü (rastgele) enkoder; ONERI-ADAY ve ONERI-T'de arıza senaryoları; `donus-oneri.json` yeniden üretimi (A'nın md5'i
+okunmadı); kolonun tuşlarla dolaşılması; karta yükleme ve gerçek enkoder (yapılamaz).

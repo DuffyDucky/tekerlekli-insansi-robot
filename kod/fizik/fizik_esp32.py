@@ -32,12 +32,14 @@ class FizikEsp32(SahteEsp32):
         x, y, a = konum if konum is not None else harita.baslangic
         self.varyant = varyant
         self._pi = None
+        self._oneri = None
         self.dunya = D.FizikDunya(harita, sahne=sahne, konum=(float(x), float(y), float(a)), degis=degis, varyant=varyant)
         self._kesir = [0.0, 0.0]
         self._son_aci = None
         self._adimlandi = False
         self._carpisma_onceki = False
         self.kayitci = None                  # ölçüm: her 10 ms dilimin sonunda kayitci(self) çağrılır
+        self.enkoder_bozuk = [None, None]    # yalnız arıza denemesi: yan başına None | "takili" (sayım durur) | "ters"
         self.pwm_zorla = None                # yalnız ölçüm (olcumler.py dönüş): sürülürken firmware PWM eşlemesi yerine bu [u_sol, u_sag]
         super().__init__(harita, konum=konum, sonar_acik=sonar_acik, bagimli_sinir_acik=bagimli_sinir_acik)
         if varyant:                                  # VARSAYIM (varyantlar.py); V0'da bu dal yok
@@ -45,6 +47,12 @@ class FizikEsp32(SahteEsp32):
                 self.w_giris = float(varyant["fw_w_giris"])
             if varyant.get("fw_kapali_cevrim"):
                 self._pi = dict(varyant["fw_kapali_cevrim"], integral=[0.0, 0.0], u=[0.0, 0.0])
+        if varyant and varyant.get("fw_oneri"):      # öneri firmware (oneri/donus-omni motorlar.cpp'nin birebir modeli)
+            o = varyant["fw_oneri"]
+            self.w_giris = float(o["w_giris"])
+            self._oneri = dict(o, integral=[0.0, 0.0], onceki_integral=[0.0, 0.0], onceki_hata=[0.0, 0.0],
+                               onceki_tik=None, u=[0.0, 0.0], olculen=[0.0, 0.0], kusku=[0, 0], arizali=[False, False],
+                               ariza_ms=[None, None])
         self.dunya.gerilim(self.aku_v)
         # kollar ve kafa servo "ev" açısında başlar (montaj ev pozu eklem 0; S2 ev 5 derece)
         self.dunya.servo_eklem_ayarla({t["ad"]: math.radians(a - t["ofset"]) for t, a in zip(self.servo_tablo, self.servo_simdi)})
@@ -81,7 +89,65 @@ class FizikEsp32(SahteEsp32):
                 u = list(self.pwm_zorla)
             elif self._pi is not None:
                 u = list(self._pi["u"])
+            elif self._oneri is not None:
+                # 20 ms'de bir yazılan PWM tutulur; rampa 0 ise (ani_dur ya da fren sonu) çıkış 0
+                u = [0.0 if h == 0.0 else ui for h, ui in zip(self.rampa_hiz, self._oneri["u"])]
         return suruluyor, u
+
+    def _oneri_adim(self):
+        """Öneri firmware `motorlar_guncelle` (20 ms): teker_adim (ileri besleme + PI, enkoder tik farkından hız) iki
+        teker için, sonra doyum ölçeklemesi + integral geri alma. Sabitler varyantlar.py ONERI_FW = motorlar.cpp."""
+        o = self._oneri
+        dt = o["dt_ms"] / 1000.0
+        if o["onceki_tik"] is None:
+            o["onceki_tik"] = list(self.tik)
+        cikis = [0.0, 0.0]
+        for k in range(2):
+            rampa = self.rampa_hiz[k]
+            fark = self.tik[k] - o["onceki_tik"][k]
+            o["onceki_tik"][k] = self.tik[k]
+            olculen = (fark / self.tik_tur) * (math.pi * self.teker_capi) / dt
+            o["olculen"][k] = olculen
+            c = rampa / self.azami_hiz
+            if rampa != 0.0 and not o["arizali"][k]:
+                hata = rampa - olculen
+                o["onceki_integral"][k] = o["integral"][k]
+                lim = o["integral_siniri"] / o["ki"] if o["ki"] > 0.0 else 0.0
+                if o.get("integral_rampada", True) or abs(rampa) >= abs(self.hedef[k]) - 1e-4:   # öneri: hızlanma rampasında integral durur (RAMPA_BITTI_M_S)
+                    o["integral"][k] = max(-lim, min(lim, o["integral"][k] + hata * dt))
+                o["onceki_hata"][k] = hata
+                duz = o["kp"] * hata + o["ki"] * o["integral"][k]
+                if o.get("duzeltme_orani") is not None:              # enkoder arızası katmanı 1 (DUZELTME_*)
+                    pay = o["duzeltme_orani"] * abs(c) + o["duzeltme_tabani"]
+                    payda = abs(duz) >= pay
+                    if payda:
+                        if duz * hata > 0.0:
+                            o["integral"][k] = o["onceki_integral"][k]
+                        duz = max(-pay, min(pay, duz))
+                    c += duz
+                    # katman 2, makullük (KUSKU_*): pay sonunda, teker dönmüyor ya da ters dönüyor
+                    supheli = payda and (abs(olculen) < o["kusku_hiz"] or olculen * rampa < 0.0)
+                    o["kusku"][k] = o["kusku"][k] + 1 if supheli else 0
+                    if o["kusku"][k] >= o["kusku_adim"]:
+                        o["arizali"][k] = True
+                        o["ariza_ms"][k] = self.ms
+                        o["integral"][k] = o["onceki_hata"][k] = 0.0
+                        c = rampa / self.azami_hiz
+                else:
+                    c += duz
+            else:
+                o["integral"][k] = o["onceki_hata"][k] = 0.0
+                o["kusku"][k] = 0
+                if rampa == 0.0:
+                    c = 0.0
+            cikis[k] = c
+        en_buyuk = max(abs(cikis[0]), abs(cikis[1]))
+        if en_buyuk > 1.0:
+            for k in range(2):
+                if cikis[k] * o["onceki_hata"][k] > 0.0:
+                    o["integral"][k] = o["onceki_integral"][k]
+            cikis = [c / en_buyuk for c in cikis]
+        o["u"] = [max(-1.0, min(1.0, c)) for c in cikis]
 
     def _pi_adim(self, dt):
         """VARSAYIM V2: teker hızı PI (enkoderli tekerin hızı). Hedef 0 ise firmware gibi PWM 0 (fren), integral sıfırlanır."""
@@ -104,6 +170,8 @@ class FizikEsp32(SahteEsp32):
     def _fizik_adim(self, dt):
         if self._pi is not None:
             self._pi_adim(dt)
+        if self._oneri is not None and self.calisiyor and self.ms % self._oneri["dt_ms"] == 0:
+            self._oneri_adim()
         suruluyor, u = self._surucu()
         self._servo_uygula()
         self.dunya.adim(dt, u[0], u[1], suruluyor)
@@ -121,7 +189,10 @@ class FizikEsp32(SahteEsp32):
         a = self.dunya.teker_acilari()
         i, j = self._enkoder_teker()
         for k, yeni in enumerate((a[i], a[j])):
-            self._kesir[k] += (yeni - self._son_aci[k]) / (2 * math.pi) * self.tik_tur
+            fark = (yeni - self._son_aci[k]) / (2 * math.pi) * self.tik_tur
+            if self.enkoder_bozuk[k] is not None:     # yalnız arıza denemesi
+                fark = 0.0 if self.enkoder_bozuk[k] == "takili" else -fark
+            self._kesir[k] += fark
             tam = int(self._kesir[k])
             self.tik[k] += tam
             self._kesir[k] -= tam
@@ -142,6 +213,8 @@ class FizikEsp32(SahteEsp32):
     def _k_odo_sifirla(self, d, simdi):
         super()._k_odo_sifirla(d, simdi)
         self._kesir = [0.0, 0.0]
+        if self._oneri is not None:
+            self._oneri["onceki_tik"] = [0, 0]           # öneri firmware motor_tik_sifirla: onceki_tik = 0
 
     def _acilis(self):
         super()._acilis()

@@ -30,12 +30,19 @@ SUREKLI_ORAN = 0.30          # sürekli tork = durmanın %30'u (fizik_parametrel
 ARA_NOKTALAR = [(2.6, 2.25), (3.8, 2.25), (4.3, 1.4)]
 
 
-def deney(vad, mu, durma, **kw):
-    return O.Deney(degis={"teker_zemin_surtunme": mu, "motor_durma_torku_Nm": durma}, varyant=VR.al(vad), **kw)
+def _var(vad):
+    """Varyant adı ya da doğrudan varyant sözlüğü (olcum_oneri.py duyarlılığı)."""
+    return VR.al(vad) if isinstance(vad, str) or vad is None else vad
+
+
+def deney(vad, mu, durma, degis=None, **kw):
+    d = {"teker_zemin_surtunme": mu, "motor_durma_torku_Nm": durma}
+    d.update(degis or {})
+    return O.Deney(degis=d, varyant=_var(vad), **kw)
 
 
 def w_tavan(vad):
-    v = VR.al(vad)
+    v = _var(vad)
     return float(v["fw_w_giris"]) if v and v.get("fw_w_giris") else 1.0
 
 
@@ -148,8 +155,8 @@ def main():
             akis.reconfigure(errors="replace")
         except (AttributeError, ValueError):
             pass
-    sonuc = dict(varyantlar={k: dict(ad=v["ad"], aciklama=v["aciklama"]) for k, v in VR.VARYANTLAR.items()}, kosular=[], yan_etki={})
-    for vad in VR.SIRA:
+    sonuc = dict(varyantlar={k: dict(ad=VR.VARYANTLAR[k]["ad"], aciklama=VR.VARYANTLAR[k]["aciklama"]) for k in VR.SIRA_V}, kosular=[], yan_etki={})
+    for vad in VR.SIRA_V:
         for dad, st in DURMA.items():
             for mu in (0.5, 0.8):
                 yer = donus_kos(vad, mu, st, 0.0)
