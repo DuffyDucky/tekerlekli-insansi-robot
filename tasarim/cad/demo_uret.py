@@ -3,6 +3,8 @@
 Lale tasarim demosunu uretir (1,58 m ana tasarim; F9b / P9.2, 09.11.2026).
 
   viewer-template.html + kaynak JSON'lar + planlama/maliyet.json  ->  ../Robot-Tasarim-Demosu.html
+  On omni teker (aday, 23.11.2026): tasarim/cad/omni-teker.json sayfaya gomulur; sayfa on iki tekeri bu parametrelerle
+  three.js ile kurar (CAD'de henuz yok; demo geometrisi). GLB ve rehber dosyalari degismez.
   3B model: sayfa rehber/veri/robot-glb.js (GLB) ve rehber/veri/rehber-veri.js (parcalar) dosyalarini goreli <script> ile
   yukler (F7b ciktisi; bu betik onlari yazmaz, yalniz okur).
 
@@ -49,6 +51,8 @@ KAYNAK = {
     "maliyet": "planlama/maliyet.json",
     "glb": "rehber/veri/robot.glb",
     "rehber": "rehber/veri/rehber-veri.json",
+    # On omni teker (aday, 23.11.2026): CAD'de henuz yok; demo geometrisi bu dosyadan (sayfaya /*OMNI_JSON*/ ile gomulur)
+    "omni": "tasarim/cad/omni-teker.json",
 }
 KUYRUK = "planlama/d158/karar-kuyrugu.md"
 
@@ -62,6 +66,8 @@ MODULLER = ["iskelet", "taban", "kabuk", "kafa", "omuz_sag", "omuz_sol", "dirsek
 EKLEMLER = ["r_s1", "r_s2", "r_dirsek", "r_bilek", "pan", "tilt"]
 KAFA_EKRAN = "parcalar[ad=Yuz ekrani WaveShare 10,1in QLED HDMI]"
 GOGUS_EKRAN = "parcalar[ad=Gogus ekrani 11,6 in HDMI 1920x1080 kasali]"
+LASTIK_ON = "parcalar[ad=Teker 125 x 58 (on sol)]"
+OMNI_KALEM = "kalemler[ad=Omni teker (K1 seçeneği)]"
 
 SAYILAR = [
     # boy, kutle, parca
@@ -125,6 +131,25 @@ SAYILAR = [
     ("cf0", "y2b", "toplam.cf_g.0", 1),
     ("cf1", "y2b", "toplam.cf_g.1", 1),
     ("petg", "y2b", "toplam.petg_g.0", 1),
+    # on omni teker (aday; tasarim/cad/omni-teker.json) ve yerine gectigi lastik teker (montaj)
+    ("omni_urun", "omni", "urun", "s"),
+    ("omni_cap", "omni", "cap_mm", 0),
+    ("omni_en", "omni", "en_mm", 0),
+    ("omni_sira", "omni", "sira", 0),
+    ("omni_makara", "omni", "makara_sayisi", 0),
+    ("omni_kutle", "omni", "kutle_g", 0),
+    ("omni_gobek_cap", "omni", "gobek.dis_cap_mm", 0),
+    ("omni_gobek_boy", "omni", "gobek.boy_mm", 0),
+    ("omni_gobek_delik", "omni", "gobek.delik_mm", 0),
+    ("omni_makara_cap", "omni", "makara.cap_mm", 0),
+    ("omni_makara_boy", "omni", "makara.boy_mm", 0),
+    ("omni_fizik_iceri", "omni", "merkez_fizik.iceri_mm", 1),
+    ("omni_fizik_iz_dar", "omni", "merkez_fizik.on_iz_daralma_mm", 0),
+    ("lastik_cap", "montaj", LASTIK_ON + ".kod#re:(\\d+) x \\d+", "s"),
+    ("lastik_en", "montaj", LASTIK_ON + ".kod#re:\\d+ x (\\d+)", "s"),
+    ("lastik_kutle", "montaj", LASTIK_ON + ".kutle_g", 0),
+    ("omni_adet", "maliyet", OMNI_KALEM + ".adet", 0),
+    ("omni_tl", "maliyet", OMNI_KALEM + ".tl", 2),
 ]
 for _k, _d, _e in REG:
     SAYILAR += [("reg_%s_etiket" % _k, "reg", "degerler.%s.etiket" % _k, "s"),
@@ -350,7 +375,8 @@ def build(model_json=None):
     js = json.dumps(kaynak, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     with open(yol("maliyet"), encoding="utf-8") as f:
         cost = json.dumps(json.load(f), ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
-    h = h.replace("/*KAYNAK_JSON*/", js).replace("/*COST_JSON*/", cost)
+    omni = json.dumps(veri("omni"), ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    h = h.replace("/*KAYNAK_JSON*/", js).replace("/*COST_JSON*/", cost).replace("/*OMNI_JSON*/", omni)
     kalan = re.findall(r"\{\{[^}]*\}\}|/\*[A-Z_]+_JSON\*/", h)
     if kalan:
         raise SystemExit("doldurulmamis yer tutucu: %s" % kalan[:5])

@@ -1,0 +1,46 @@
+{
+  "surum": 1,
+  "ad": "Ön omni teker (aday)",
+  "durum": "aday",
+  "not": "Aday teker, kesinleşmedi. Ahmet'in 23.11.2026 kararı: ön iki teker omni, arka iki teker lastik kalır; ürün seçimi açık. CAD'de henüz yok: tasarim/freecad/arayuz.py TABAN['omni'] koşullu ve kapalı (aktif=False). Bu dosya tasarım demosunun omni geometrisini besler (tasarim/cad/demo_uret.py sayfaya gömer); sonraki adımda CAD aynı dosyadan beslenebilir.",
+  "urun": "Nexus Robot 14075, 5 inç çift sıra alüminyum omni teker",
+  "urun_sayfasi": "https://ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/",
+  "konum": ["ön sol", "ön sağ"],
+  "cap_mm": 127.0,
+  "en_mm": 29.0,
+  "sira": 2,
+  "makara_sayisi": 22,
+  "kutle_g": 480.0,
+  "gobek": {"dis_cap_mm": 57.0, "boy_mm": 25.0, "delik_mm": 6.0},
+  "makara": {"cap_mm": 19.0, "boy_mm": 22.0, "sira_ofset_mm": 5.0, "profil": "fıçı: dış yüzey teker çapı çemberinde"},
+  "merkez_notu": "Demo kabulü: merkez lastikle aynı çizildi (aks, iz ve aks aralığı değişmez). Fizik modeli (kod/fizik/omni_teker.json) tekeri 14,5 mm içeri alıyor (ön iz 29 mm daralır), CAD içinde de iki dosya çelişiyor (arayuz.py TABAN['omni'] ile taban_lib.py omni_local()): teker merkezi kararı açık. Tek kaynak adayı bu dosya; kod/fizik/omni_teker.json ile birleştirme CAD adımında.",
+  "merkez_fizik": {"iceri_mm": 14.5, "on_iz_daralma_mm": 29.0, "kaynak": "kod/fizik/omni_teker.json (fizik modeli merkezi içeri alır; ön iz 2 × 14,5 mm daralır)"},
+  "yerlesim": {
+    "merkez": "lastik tekerle aynı merkez (aks, motor, braket, kaplin değişmez); omni dar olduğu için iç yüzle omni arası göbek adaptörü",
+    "adaptor_cap_mm": 40.0,
+    "adaptor_delik_mm": 14.0,
+    "kaynak": "tasarim/freecad/taban/taban_lib.py omni_local() (aynı merkez, adaptör Ø40, sıralar ±5 mm). arayuz.py TABAN['omni'] yorumu 'merkezi içeri kayar' der; çelişki demo raporunda."
+  },
+  "gorsel": {
+    "plaka_kalinlik_mm": 2.0,
+    "plaka_ofset_mm": 5.75,
+    "plaka_ic_cap_mm": 56.0,
+    "kulak_genislik_mm": 6.0,
+    "kulak_ust_mm": 2.5,
+    "hafifletme": {"adet": 6, "cap_mm": 10.0, "yaricap_mm": 36.5}
+  },
+  "kaynak": {
+    "cap_mm": "ürün sayfası (Nexus 14075: Ø127 mm)",
+    "en_mm": "ürün sayfası (toplam genişlik 29 mm)",
+    "sira": "ürün sayfası (çift sıra)",
+    "makara_sayisi": "ürün sayfası (22 kauçuk makara; sıralar yarım adım kaydırılmış)",
+    "kutle_g": "ürün sayfası (480 g)",
+    "gobek": "brief'te ürün sayfası değeri olarak verildi (göbek dış Ø57, delik boyu 25 mm, 6 mm delik); kod/fizik/omni_teker.json kaydı 6 mm deliği sayfada bulamadı (TAHMIN), CAD 12 mm altıgen adaptör diyor: teyit edilecek",
+    "makara.cap_mm": "ürün sayfası 'Roller diameter: 19mm' (kod/fizik/omni_teker.json kaydı, 23.11.2026 okunmuş; bu işte yeniden okunmadı); CAD arayuz.py TABAN['omni'].makara_d = 19 ile aynı",
+    "makara.boy_mm": "görsel tahmin (ürün sayfasında yok); kod/fizik/omni_teker.json tahminiyle aynı (22 mm). taban_lib.py omni_local() formülü 2·rc·sin(π/11) − 9 ≈ 21,4 mm verir",
+    "makara.sira_ofset_mm": "taban_lib.py omni_local() (sıralar x = ±(en/2 − makara yarıçapı))",
+    "yerlesim": "taban_lib.py omni_local()",
+    "gorsel": "görsel tahmin (plaka, kulak, hafifletme delikleri; ölçü değil)"
+  },
+  "gorsel_tahmin": ["makara.boy_mm", "gobek.delik_mm", "yerlesim.adaptor_delik_mm", "gorsel"]
+}

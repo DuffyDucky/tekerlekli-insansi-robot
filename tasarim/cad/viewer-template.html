@@ -125,7 +125,7 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
 
   <div class="kpis">
     <div class="kpi"><div class="lab">Boy</div><div class="val">{{boy}} mm</div><div class="sub">Zeminden kafa tepesine, ana montajda ölçülen.</div></div>
-    <div class="kpi"><div class="lab">Kütle</div><div class="val">{{kutle_kg}} kg</div><div class="sub">Montajın toplamı {{kutle_g}} g; ağırlık merkezi yerden {{am_y}} mm yüksekte.</div></div>
+    <div class="kpi"><div class="lab">Kütle</div><div class="val">{{kutle_kg}} kg</div><div class="sub">Montajın toplamı {{kutle_g}} g; ağırlık merkezi yerden {{am_y}} mm yüksekte.<span data-ui="secenek" id="kutle-omni"></span></div></div>
     <div class="kpi"><div class="lab">Parça</div><div class="val">{{parca}}</div><div class="sub">Baskı {{p_baski}} · satın alınan {{p_satin}} katı (alım listesinde {{p_satin_bom}} adet; fark servo çıkış milleri ve rulman bilezikleri) · bağlantı elemanı {{p_bag}} · lazer kesim {{p_lazer}} · imalat {{p_imalat}}</div></div>
     <div class="kpi"><div class="lab">Servo</div><div class="val">{{servo}}</div><div class="sub">{{s_ds}} × DS3235 (omuz öne-arka ve yana açma) + {{s_mg}} × MG996R (dirsek, bilek, kafa pan ve tilt)</div></div>
     <div class="kpi"><div class="lab">Kafa ekranı (yüz)</div><div class="val">{{kafa_in}}" QLED</div><div class="sub">{{kafa_w}} × {{kafa_h}} · {{kafa_kod}} · temin yolu {{K:K32}}</div></div>
@@ -147,6 +147,9 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
       <div class="seg" role="group" aria-label="Kabuk" id="shells"><button data-s="opak" aria-pressed="true">Opak</button><button data-s="seffaf">Şeffaf</button><button data-s="gizli">Gizli</button></div>
       <h4>Renk</h4>
       <div class="seg" role="group" aria-label="Renk" id="renk"><button data-r="tur" aria-pressed="true">Parça türü</button><button data-r="modul">Modül</button></div>
+      <h4>Ön teker</h4>
+      <div class="seg" role="group" aria-label="Ön teker" id="teker"><button data-t="omni" aria-pressed="true">Omni (aday)</button><button data-t="lastik">Lastik (CAD)</button></div>
+      <p class="uyari" id="omni-not" style="margin:8px 0 0"><b>Aday teker, kesinleşmedi.</b> CAD'de henüz yok: ön iki teker demo geometrisi (<code>tasarim/cad/omni-teker.json</code>). {{omni_urun}}: Ø{{omni_cap}} × {{omni_en}} mm, {{omni_sira}} sıra, {{omni_makara}} makara, {{omni_kutle}} g; göbek Ø{{omni_gobek_cap}} × {{omni_gobek_boy}} mm, {{omni_gobek_delik}} mm delik. Makara Ø{{omni_makara_cap}} × {{omni_makara_boy}} mm (boy görsel tahmin; göbek deliği teyit edilecek). Yerine geçtiği lastik Ø{{lastik_cap}} × {{lastik_en}} mm, {{lastik_kutle}} g<span data-ui="secenek" id="omni-fark"></span>. <b>Demo kabulü:</b> merkez lastikle aynı çizildi (aks, iz ve aks aralığı değişmez). Fizik modeli tekeri {{omni_fizik_iceri}} mm içeri alıyor (ön iz {{omni_fizik_iz_dar}} mm daralır), CAD içinde de iki dosya çelişiyor: teker merkezi kararı açık. Arka iki teker lastik. Maliyette koşullu kalem ({{omni_adet}} × {{omni_tl}} TL), toplama girmez.</p>
       <h4>Modüller</h4>
       <div class="chk" id="mods"></div>
       <h4>Renkler</h4>
@@ -278,6 +281,7 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
 <footer>Lale · <code>tasarim/Robot-Tasarim-Demosu.html</code> üretilmiş dosyadır; elle düzenleme. Üretici <code>tasarim/cad/demo_uret.py</code>, şablon <code>tasarim/cad/viewer-template.html</code>.</footer>
 
 <script id="kaynak" type="application/json">/*KAYNAK_JSON*/</script>
+<script id="omni" type="application/json">/*OMNI_JSON*/</script>
 <script src="../rehber/veri/rehber-veri.js"></script>
 <script src="../rehber/veri/robot-glb.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -328,10 +332,64 @@ J.nodes.forEach(function(n,ix){
   var o=new T.Mesh(GEO[n.mesh],HL);o.matrixAutoUpdate=false;o.matrix.fromArray(n.matrix);
   var rec={o:o,id:p.id,ad:p.ad,modul:p.modul,r:p.r,g:modGrup(p.modul)};o.userData.rec=rec;PARCA.push(rec);root.add(o);
 });
-var ST={view:Q.get("gorunum")||"iso",kabuk:Q.get("kabuk")||"opak",renk:Q.get("renk")||"tur",gizli:{}};
-function renkOf(r){return ST.renk==="modul"?(MOD[r.g]||MOD.iskelet)[0]:(TUR[r.r]||TUR.ref)[0];}
+/* ---------- on omni teker (aday, 23.11.2026; CAD'de henuz yok: demo geometrisi). Parametreler tasarim/cad/omni-teker.json
+   (sayfaya gomulu, <script id="omni">). Merkez lastik tekerle ayni (taban_lib.py omni_local); lastik ic yuzu ile omni arasi
+   gobek adaptoru. On lastikler "lastik" seciminde gorunur; "omni"de gizlenir ve yerlerine bu parcalar gelir. ---------- */
+var OM=null;try{OM=JSON.parse(document.getElementById("omni").textContent);}catch(e){console.error("omni-teker JSON okunamadı");}
+var KNA={};try{KNA=JSON.parse(document.getElementById("kaynak").textContent).anahtarlar||{};}catch(e){}
+var ONLAS=PARCA.filter(function(r){return /^Teker .*\(ön (sol|sağ)\)$/.test(r.ad);}),ARLAS=PARCA.filter(function(r){return /^Teker .*\(arka (sol|sağ)\)$/.test(r.ad);});
+ONLAS.forEach(function(r){r.lastikOn=true;});
+function kutu(r){var g=r.o.geometry;if(!g.boundingBox)g.computeBoundingBox();return g.boundingBox.clone().applyMatrix4(r.o.matrix);}
+var TILT=null;
+if(OM&&ONLAS.length){(function(){
+  var R=OM.cap_mm/2,rd=OM.makara.cap_mm/2,rc=R-rd,n=Math.round(OM.makara_sayisi/OM.sira),L=OM.makara.boy_mm,ofs=OM.makara.sira_ofset_mm,
+    GV=OM.gorsel,pt=GV.plaka_kalinlik_mm,rb=rc-rd+0.5,re=rc+GV.kulak_ust_mm,kh=(GV.kulak_genislik_mm/2)/rc,ri=GV.plaka_ic_cap_mm/2,
+    gr=OM.gobek.dis_cap_mm/2,gb=OM.gobek.boy_mm,gd=OM.gobek.delik_mm/2,ar=OM.yerlesim.adaptor_cap_mm/2,ad=OM.yerlesim.adaptor_delik_mm/2;
+  function plakaGeo(sira){var sh=new T.Shape(),ilk=true;
+    for(var k=0;k<n;k++){var e=2*Math.PI*(k+0.5*sira+0.5)/n,a0=e-kh,a1=e+kh,an=2*Math.PI*(k+1+0.5*sira+0.5)/n-kh;
+      if(ilk){sh.moveTo(rb*Math.cos(a0),rb*Math.sin(a0));ilk=false;}
+      sh.lineTo(re*Math.cos(a0),re*Math.sin(a0));sh.absarc(0,0,re,a0,a1,false);sh.lineTo(rb*Math.cos(a1),rb*Math.sin(a1));sh.absarc(0,0,rb,a1,an,false);}
+    var h=new T.Path();h.absarc(0,0,ri,0,2*Math.PI,true);sh.holes.push(h);
+    var HF=GV.hafifletme;for(var j=0;j<HF.adet;j++){var b=2*Math.PI*(j+0.5)/HF.adet,p=new T.Path();p.absarc(HF.yaricap_mm*Math.cos(b),HF.yaricap_mm*Math.sin(b),HF.cap_mm/2,0,2*Math.PI,true);sh.holes.push(p);}
+    var g=new T.ExtrudeGeometry(sh,{depth:pt,bevelEnabled:false,curveSegments:10});g.translate(0,0,-pt/2);return g;}
+  function halka(r0,r1,z0,z1){var g=new T.LatheGeometry([new T.Vector2(r0,z0),new T.Vector2(r1,z0),new T.Vector2(r1,z1),new T.Vector2(r0,z1),new T.Vector2(r0,z0)],40);g.rotateX(Math.PI/2);return g;}
+  var prof=[new T.Vector2(0,-L/2)];for(var q=0;q<=12;q++){var y=-L/2+L*q/12;prof.push(new T.Vector2(R-Math.sqrt(rc*rc+y*y),y));}prof.push(new T.Vector2(0,L/2));
+  var MAKG=new T.LatheGeometry(prof,18),PLG=[plakaGeo(0),plakaGeo(1)],arka=ARLAS.length?kutu(ARLAS[0]):null,bir=null;
+  ONLAS.forEach(function(lr){
+    var bb=kutu(lr),cx=(bb.min.x+bb.max.x)/2,cy=(bb.min.y+bb.max.y)/2,cz=(bb.min.z+bb.max.z)/2,yan=cx<0?-1:1,ic=Math.abs(cx-(yan>0?bb.min.x:bb.max.x));
+    var grp=new T.Group();grp.position.set(cx,cy,cz);grp.rotation.y=yan*Math.PI/2;root.add(grp);  /* yerel +Z = disa */
+    var yad=/\((ön (sol|sağ))\)/.exec(lr.ad)[1],idk=lr.id+"-omni-";
+    function ekle(geo,id,adi,ozel){var o=new T.Mesh(geo,HL);if(ozel)ozel(o);grp.add(o);
+      var rec={o:o,id:idk+id,ad:adi+" ("+yad+")",modul:lr.modul,r:lr.r,g:lr.g,omni:true,koyu:/makara/.test(id)};o.userData.rec=rec;PARCA.push(rec);}
+    ekle(halka(gd,gr,-gb/2,gb/2),"gobek","Omni teker göbeği");
+    ekle(halka(ad,ar,-ic,-gb/2),"adaptor","Göbek adaptörü (CAD taslağındaki çözüm, tahmini)");
+    [0,1].forEach(function(s){var zs=(s?1:-1)*ofs;
+      ekle(PLG[s],"plaka"+s,"Omni teker plakası, "+(s?"dış":"iç")+" sıra",function(o){o.position.z=(s?1:-1)*GV.plaka_ofset_mm;});
+      for(var i=0;i<n;i++){(function(i){var a=2*Math.PI*(i+0.5*s)/n;
+        ekle(MAKG,"makara"+s+"-"+i,"Omni makara "+(i+1)+", "+(s?"dış":"iç")+" sıra",function(o){o.position.set(rc*Math.cos(a),rc*Math.sin(a),zs);o.rotation.z=a;});})(i);}
+    });
+    if(!bir)bir={cz:cz,Rl:(bb.max.y-bb.min.y)/2};
+  });
+  /* on uc yaricap farki kadar yukselir: arka teker temas cizgisi etrafinda kucuk egim (arka temas yerde kalir) */
+  if(arka&&bir){var zr=(arka.min.z+arka.max.z)/2,dz=bir.cz-zr,th=Math.atan((R-bir.Rl)/dz);
+    TILT=new T.Matrix4().makeTranslation(0,0,zr).multiply(new T.Matrix4().makeRotationX(-th)).multiply(new T.Matrix4().makeTranslation(0,0,-zr));}
+  root.matrixAutoUpdate=false;
+})();}
+function omniYazi(){
+  var a=function(k){return KNA[k]?Number(KNA[k].deger):NaN;},nf=function(v,d){return v.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d});};
+  var f=a("omni_kutle")-a("lastik_kutle"),iki=f*ONLAS.length,tot=a("kutle_g"),yuk=(a("omni_cap")-a("lastik_cap"))/2;
+  var el=document.getElementById("omni-fark"),k=document.getElementById("kutle-omni"),
+    tl="omni_kutle − lastik_kutle; montaj kutle_g + fark × ön teker sayısı; (omni_cap − lastik_cap) / 2 (sayfadaki kaynak anahtarlarından hesap)";
+  if(el){el.textContent="; fark teker başına +"+nf(f,0)+" g, "+ONLAS.length+" teker +"+nf(iki,0)+" g (montaj "+nf(tot/1000,2)+" kg → "+nf((tot+iki)/1000,2)+" kg); yarıçap farkıyla ön uç ≈ "+nf(yuk,0)+" mm yükselir";el.title=tl;}
+  if(k){k.textContent=ST.teker==="omni"?" Ön omni teker (aday) ile "+nf((tot+iki)/1000,2)+" kg.":"";k.title=tl;}
+}
+var ST={view:Q.get("gorunum")||"iso",kabuk:Q.get("kabuk")||"opak",renk:Q.get("renk")||"tur",teker:Q.get("teker")==="lastik"||!OM?"lastik":"omni",gizli:{}};
+function koyu(c){return "#"+new T.Color(c).multiplyScalar(0.55).getHexString();}
+function renkOf(r){var c=ST.renk==="modul"?(MOD[r.g]||MOD.iskelet)[0]:(TUR[r.r]||TUR.ref)[0];return r.koyu?koyu(c):c;}
 function uygula(){
-  PARCA.forEach(function(r){var kab=r.modul==="kabuk";r.o.material=secili===r?HL:mat(renkOf(r),kab);r.o.visible=!ST.gizli[r.g]&&!(kab&&ST.kabuk==="gizli");});
+  PARCA.forEach(function(r){var kab=r.modul==="kabuk";r.o.material=secili===r?HL:mat(renkOf(r),kab);r.o.visible=!ST.gizli[r.g]&&!(kab&&ST.kabuk==="gizli")&&!(r.lastikOn&&ST.teker==="omni")&&!(r.omni&&ST.teker!=="omni");});
+  if(!root.matrixAutoUpdate){if(ST.teker==="omni"&&TILT)root.matrix.copy(TILT);else root.matrix.identity();root.updateMatrixWorld(true);}
+  omniYazi();
   Object.keys(MATS).forEach(function(k){var x=MATS[k];if(!x.k)return;var tr=ST.kabuk==="seffaf";x.m.transparent=tr;x.m.opacity=tr?0.18:1;x.m.depthWrite=!tr;x.m.needsUpdate=true;});
   var L=ST.renk==="modul"?MOD:TUR,used={};PARCA.forEach(function(r){used[ST.renk==="modul"?r.g:r.r]=1;});
   document.getElementById("legend").innerHTML=Object.keys(L).filter(function(k){return used[k];}).map(function(k){return '<li><i class="sw" style="background:'+L[k][0]+'"></i>'+L[k][1]+'</li>';}).join("");
@@ -369,12 +427,13 @@ function pick(e){
   var hit=rc.intersectObjects(list,false)[0];secim(hit?hit.object.userData.rec:null);}
 function secim(r){secili=r;var info=document.getElementById("info");uygula();
   if(!r){info.hidden=true;return;}
-  info.innerHTML='<button class="x" aria-label="Kapat">×</button><b>'+esc(r.ad)+'</b>'+esc(MODAD[r.modul]||r.modul)+' · '+esc((TUR[r.r]||TUR.ref)[1]);
+  info.innerHTML='<button class="x" aria-label="Kapat">×</button><b>'+esc(r.ad)+'</b>'+esc(MODAD[r.modul]||r.modul)+' · '+esc((TUR[r.r]||TUR.ref)[1])+(r.omni?'<br><i>Aday teker, kesinleşmedi; CAD\'de henüz yok (demo geometrisi, tasarim/cad/omni-teker.json).</i>':"");
   info.hidden=false;info.querySelector(".x").addEventListener("click",function(){secim(null);});}
 Array.prototype.forEach.call(document.querySelectorAll("#views button"),function(b){b.addEventListener("click",function(){setView(b.getAttribute("data-v"));});});
 Array.prototype.forEach.call(document.querySelectorAll("#shells button"),function(b){b.addEventListener("click",function(){ST.kabuk=b.getAttribute("data-s");press("#shells","data-s",ST.kabuk);uygula();});});
 Array.prototype.forEach.call(document.querySelectorAll("#renk button"),function(b){b.addEventListener("click",function(){ST.renk=b.getAttribute("data-r");press("#renk","data-r",ST.renk);uygula();});});
-press("#shells","data-s",ST.kabuk);press("#renk","data-r",ST.renk);
+Array.prototype.forEach.call(document.querySelectorAll("#teker button"),function(b){b.disabled=!OM;b.addEventListener("click",function(){ST.teker=b.getAttribute("data-t");press("#teker","data-t",ST.teker);uygula();if(secili&&!secili.o.visible)secim(null);});});
+press("#shells","data-s",ST.kabuk);press("#renk","data-r",ST.renk);press("#teker","data-t",ST.teker);
 resize();setView(ST.view);uygula();
 document.getElementById("yuk").hidden=true;
 var ilk=true;
