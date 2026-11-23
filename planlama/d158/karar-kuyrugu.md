@@ -93,7 +93,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K77 | Bekçi ani duruşunda arka aks kısa süre boşalıyor (21 / 15 kg·cm): rampalı fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (devrilme ilerlemiyor; aks boşalması durma torku TAHMİN'ine bağlı) | Bekçi duruşu (firmware 0.5.0'da rampasız) |
 | K78 | Acil stopta sürücü kesik, robot boşta kayıyor (0,08–0,29 m): bu mesafe kabul mü, aktif fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (aralık yansıyan atalet ve dişli sürtünmesi TAHMİN'ine bağlı) | Acil stop duruş mesafesi |
 | K79 | Açık çevrimde düşük hız komutunda tork düşük (0,2 m/s ile yalnız 5 mm eşik): kapalı çevrim hız kontrolü istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (durma torku TAHMİN) | Eşik ve rampada düşük hızlı sürüş |
-| K80 | TASLAK sonar kuralı 15° ve üstü rampayı ve 40 mm eşiği engel sayıp durduruyor: rampa kipinde sonar kuralı ne olacak | **açık** (Y0f fizik simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (bulgu bağımsız kontrol edilmedi; K70'e bağlı) | Rampa ve eşik geçişi (K70 ile birlikte) |
+| K80 | TASLAK sonar kuralı 15° ve üstü rampayı ve 40 mm eşiği engel sayıp durduruyor: rampa kipinde sonar kuralı ne olacak; Lale en çok kaç derecelik rampaya çıkacak | **açık** (Y0f fizik simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Sonar: önerilmedi (bulgu bağımsız kontrol edilmedi; K70'e bağlı). Rampa: 10° (ana oturumun önerisi) | Rampa ve eşik geçişi (K70 ile birlikte) |
 
 **Açık: 40.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
 K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
@@ -1661,7 +1661,8 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
   (`origin/main` 0.5.0 üstüne) yerel, push edilmedi: beş commit (`a41815f`, `120a9a7`, `e308120`, `f22a149`, `11b2931`) + bu kapanışın
   `fc940a0` (B'nin N1–N4 not düzeltmeleri); B: Efe'ye KOŞULLU HAZIR.
   - **Simülasyon (VARSAYIM; geometri ve mekanizma sağlam, sayılar TAHMİN'e bağlı, masada doğrulanmadı):** öneri firmware + ön omni
-    yerinde dönüş 0,97–0,98 rad/s (21 kg·cm), 0,72–0,86 rad/s (9 kg·cm; makara sürtünmesine duyarlı); aynı firmware bugünkü lastikle
+    yerinde dönüş 0,97–0,98 rad/s (21 kg·cm), 0,72–0,86 rad/s (9 kg·cm; makara sürtünmesine duyarlı; bu iki aralık enkoder önde
+    varsayımıyla, aşağıdaki DÜZELTME); aynı firmware bugünkü lastikle
     0,08 / 0,001 rad/s (lastikle kapalı çevrim de dönmüyor: sağlam); 90° 2,1–2,8 s, aşma ≈ 5°; 5° yan eğimde 5 s'de 0,05 m; `dur`
     mesafesi 0,046 m; rampada tutma DEĞİŞMEDİ (K76 ayrı); 15 mm eşik kazancı PI'dan, omni makarayla eşik geçişi modellenmedi.
   - **Enkoder arızası:** korumasız 3 s'de 1,28 m / −88°; korumalı 0,38 m / −6,3°, tespit 510–550 ms. Yarı sayan enkoder ve aralıklı
@@ -1670,11 +1671,25 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
     ya da pirinç borulu (14075; `maliyet.json`'da zaten koşullu satır), Ø127 × 29 mm, 480 g, yük 30 kg; göbek olarak 6 mm delikli
     Nexus göbeği; Türkiye'de bu çapta stok bulunamadı (ithalat). Aday ölçüleriyle yana devrilme payı 25,2° → 23,5°. Makara yanal
     sürtünmesi mertebe olarak 21 kg·cm'de ≲ 13 N, 9 kg·cm'de ≲ 5 N (sınır değil; masada çekme ölçümü, tarifi `Y0f-kontrol.md` § 12).
-  - Uygulaması iş (karar değil): sondaki Y0f bölümünde "Y0f ikinci eki".
+  - **DÜZELTME (23.11, Y0f üçüncü eki; `Y0f-kontrol.md` § 14.4, `Y0f-gunluk.md` § 18–19):** enkoderler arka motorlarda
+    (`planlama/adim3/pin-haritasi.md` 100–103, `elektrik.md` 488–489 / 495, `kablolar.md` N01 / N02, firmware `pinler.h`).
+    Önceki kayıttaki "0,97–0,98 rad/s" enkoder önde varsayımıyla ölçülmüştü. Arka enkoderle yerinde dönüş (komut 1): ONERI
+    0,89–0,92 (21 kg·cm) / 0,74–0,88 (9 kg·cm); makaralı model 0,90–0,93 / 0,81–0,92; lastikle 0,09 / 0,001. Enkoderli teker
+    arka Ø125 lastik olduğu için `TEKER_CAPI_M` 0,125 doğru. `elektrik.md` ≈ 204'teki "ön enkoderler" cümlesi eski ve 495 ile
+    çelişiyor (açık iş; dosyaya dokunulmadı).
+  - **Makaralı omni modeli (aday Nexus 127 mm ölçüleriyle; VARSAYIM):** küre modeliyle dönüş sayıları uyumlu. Makara yatağı
+    sürtünmesi 9 kg·cm motorda belirleyici: yana çekme ≈ 2 N'da rahat, 5 N'da yarı, ≥ 7 N'da dönmez; 21 kg·cm'de 7 N'da 0,83–0,87.
+    Mertebe, sınır değil. Model sürtünmeyi makara başına uyguluyor; iki sıra birden değerken ≈ 2,1 katı; masadaki yanal çekme
+    ölçümü tek temas değeriyle karşılaştırılır. Eşik geçişi (modelde 25 mm'ye dek) ve titreşim (0,09–2,5 mm) MODEL ÜRÜNÜ, masada
+    ölçülecek.
+  - **Web demosu:** ön tekerler omni olarak gösteriliyor (aday, CAD'de yok; teker merkezi demo kabulü). Yayın `main`'den; demo
+    `main`'e birleşince değişir.
+  - Uygulaması iş (karar değil): sondaki Y0f bölümünde "Y0f ikinci eki" ve "Y0f üçüncü eki".
   - Kaynak: `kod/SIMULASYON.md` "Öneri firmware + ön omni (ONERI; VARSAYIM)" ve "Karar isteyenler"; `Y0f-olcum/donus-oneri.md`;
     öneri dalında `ONERI-donus.md`.
 - **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f ekiyle güncellendi; 23.11.2026 01:02 yön kararı Ahmet'in:
-  ön omni + firmware düzeltmesi; firmware yarısı Efe'de ve teker seçilmediği için K2 gibi açık kalır, sayaç değişmez).
+  ön omni + firmware düzeltmesi; firmware yarısı Efe'de ve teker seçilmediği için K2 gibi açık kalır, sayaç değişmez; 23.11 Y0f
+  üçüncü ekiyle güncellendi: arka enkoder düzeltmesi, makaralı model).
 
 ## K76 · Rampada `dur` sonrası tutmama (Y0f)
 - **Soru:** kısa devre freni sıfır hızda tork vermiyor; `dur` sonrası robot rampada geri kayıyor. Kararlı kayma 5°'de 5,8–34,4 mm/s,
@@ -1720,7 +1735,13 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
   firmware'e girmezse soru düşer).
 - **Önerilen varsayılan:** önerilmedi. Karar Ahmet + Efe.
 - **Kaynak:** `kod/SIMULASYON.md` "Fiziğin söyledikleri" (Rampa, Eşik) ve "Karar isteyenler".
-- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı).
+- **Ek soru (23.11, Y0f üçüncü eki): Lale en çok kaç derecelik rampaya çıkacak?** Önerilen: 10° (ana oturumun önerisi); karar
+  Ahmet + Efe.
+  - **Rampa teşhisi (yalnız A ölçtü, B kontrol etmedi; `Y0f-gunluk.md` § 18–19):** `rampa_parkuru`nda 15° ve 20° rampada robotu
+    TASLAK sonar kuralı durduruyor (eşik tam 15°, iki TAHMİN parametreye bağlı; rampa kipi sonar kuralını değiştirmiyor). Sonar
+    kapalıyken 15°'de tırmanamıyor (ön teker yükü 61 → 12 N, devrilme payı 3,5°), 20°'de geriye devriliyor. 10° rampada `dur`
+    sonrası 0,83 m geri kayıyor (K76).
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f üçüncü ekiyle rampa sorusu eklendi).
 
 ---
 
@@ -2365,3 +2386,16 @@ ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
     - Enkoder kilidinin kullanıcıya görünmesi.
     - PI kapalı derlemenin 0.5.0 ile ikili karşılaştırması (bugün yalnız koddan okundu).
     - Pi tarafında dönüşü erken durdurma (aşma ≈ 5°).
+  - **Y0f üçüncü eki (23.11; makaralı omni modeli, arka enkoder düzeltmesi, web demosunda omni; `Y0f-gunluk.md` § 18–19,
+    `Y0f-kontrol.md` § 14):** karar K75'te, rampa sorusu K80'de. İş:
+    - İki parametre dosyasının (`kod/fizik/omni_teker.json`, `tasarim/cad/omni-teker.json`) tek kaynakta birleştirilmesi (CAD adımı).
+    - Teker merkezi kararı: 14,5 mm içeri mi (fizik modeli), lastikle aynı mı (demo); CAD içinde de `arayuz.py` ile `taban_lib.py` çelişiyor.
+    - 12 mm altıgen kaplin ile 6 mm delikli göbek uyuşmazlığı (demoda kaplin göbeğe ≈ 1 mm giriyor; adaptör tasarımı yok).
+    - CAD omniye göre güncellenmedi (Ahmet'in onayını bekliyor).
+    - Efe notundaki (`ONERI-donus.md`) tek teker kilidi sayısı (w 0,97 → 0,73) ön enkoderle ölçüldü, arka enkoderle yeniden
+      ölçülmedi (notta işaretli). Notun enkoder cümleleri öneri dalında A'nın yerel commit'i `95b7066` ile arkaya göre güncellendi
+      (push yok; bu kapanışta dala dokunulmadı).
+    - `elektrik.md` ≈ 204 "ön enkoderler" cümlesi 495 ile çelişiyor.
+    - **B'nin bakmadıkları (§ 14.9):** demoda parça tıklama ve `?teker=lastik`; kaplinin göbeğe girme ölçüsü; makara çapı ve kapsül
+      eşik taraması, titreşim ve hız tablosu yeniden üretilmedi; 9 kg·cm 15° rampa kilitleri; `omni-makara.json` yeniden üretimi;
+      gerçek teker ve karta yükleme. Rampa teşhisi de bağımsız kontrol edilmedi.

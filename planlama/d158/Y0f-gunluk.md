@@ -437,3 +437,16 @@ A ajanı, 23.11 (saat okundu: bölüm yazılırken 04:23). B'nin hükmü: makara
   üst ipucu "Shift+ ... Enter varyant  fare: kamera" dahil tam, ACIL STOP satırıyla tam, sol alt kutu "son" satırına dek
   görev çubuğunun üstünde.
 - **Doğrulama.** 2B 58 / 58.
+
+## 20. Üçüncü ek kapanışı (C)
+
+- 23.11 04:29 (saat okundu). Commit 1 `413b8ba` (19 dosya: B § 14.8'in 15'i + düzeltme turunun `olcum_oneri.py`,
+  `fizik_parametreleri.json`, `donus-oneri.json|md`). Commit 2 `3ec5b12` (web demosu, 4 dosya; önek `Lale Y0f:`, çünkü F9c'de
+  eşleşen tek önek türü döngü paketi etiketi ve demo bir paketin işi değil).
+- Ön denetim: fizik çıkış 0, 10 / 10, Y0s fizikte 58 / 58, V0 özeti `f3507f3911bd53da`; `olcum.json` döndürüldü, `olcum.*`,
+  `donus-varyantlar.*`, `donus-hareket.*` diff boş; `donus-oneri.md` ONERI 0,892, `omni-makara.md` ONERI-MAKARA ana satırı 0,904 (B: 0,892 / 0,904);
+  `SIMULASYON.md`'de ONERI için "0,97" yalnız "enkoder önde olsaydı" (383, 393, 483); 329'daki 0,97 eski V2+V3 tablosunun
+  9 kg·cm değeri, bu farkta değişmedi. 2B 58 / 58.
+- D1: şablon notu "Demo kabulü" oldu; F9b ilk denemede iki bağsız sayı (14,5 / 29) yüzünden 6 hata verdi; sayılar
+  `omni-teker.json` `merkez_fizik` alanına bağlandı (`demo_uret.py`'ye iki anahtar), sayfa yeniden üretildi, F9b GEÇER.
+- Kanca her commit'ten önce sahnelenen ağaçta değiştirilmeden: çıkış 0; ek tarama 0. Pages kaynağı `main` /.
