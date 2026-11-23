@@ -93,12 +93,12 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K77 | Bekçi ani duruşunda arka aks kısa süre boşalıyor (21 / 15 kg·cm): rampalı fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (devrilme ilerlemiyor; aks boşalması durma torku TAHMİN'ine bağlı) | Bekçi duruşu (firmware 0.5.0'da rampasız) |
 | K78 | Acil stopta sürücü kesik, robot boşta kayıyor (0,08–0,29 m): bu mesafe kabul mü, aktif fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (aralık yansıyan atalet ve dişli sürtünmesi TAHMİN'ine bağlı) | Acil stop duruş mesafesi |
 | K79 | Açık çevrimde düşük hız komutunda tork düşük (0,2 m/s ile yalnız 5 mm eşik): kapalı çevrim hız kontrolü istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (durma torku TAHMİN) | Eşik ve rampada düşük hızlı sürüş |
-| K80 | TASLAK sonar kuralı 15° ve üstü rampayı ve 40 mm eşiği engel sayıp durduruyor: rampa kipinde sonar kuralı ne olacak; Lale en çok kaç derecelik rampaya çıkacak | **açık** (Y0f fizik simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Sonar: önerilmedi (bulgu bağımsız kontrol edilmedi; K70'e bağlı). Rampa: 10° (ana oturumun önerisi) | Rampa ve eşik geçişi (K70 ile birlikte) |
+| K80 | TASLAK sonar kuralı 15° ve üstü rampayı ve 40 mm eşiği engel sayıp durduruyor: rampa kipinde sonar kuralı ne olacak; Lale en çok kaç derecelik rampaya çıkacak | **açık** (rampa yarısı 23.11.2026'da karara bağlandı, Ahmet: rampa sınırı 10°; sonar yarısı açık: Y0f fizik simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Sonar: önerilmedi (bulgu bağımsız kontrol edilmedi; K70'e bağlı). Rampa: — (karar verildi, 10°) | Rampa kipinde sonar kuralı ve eşik geçişi (K70 ile birlikte) |
 
 **Açık: 40.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
 K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
 K55 ölçüme ya da kupona bağlı kabul). Toplam 80 madde
-(22.11.2026, Y0f kayıt eşitlemesi: K75–K80 eklendi; 22.11.2026, Y0s kayıt eşitlemesi: K69–K74 eklendi; 22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
+(23.11.2026: K80'in rampa yarısı karara bağlandı (Ahmet: 10°), madde açık, sayaç değişmez; 22.11.2026, Y0f kayıt eşitlemesi: K75–K80 eklendi; 22.11.2026, Y0s kayıt eşitlemesi: K69–K74 eklendi; 22.11.2026, P10.8g kayıt eşitlemesi: K68 eklendi; 21.11.2026, P10.8d / P10.8e kayıt eşitlemesi: K67 eklendi; 16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
 17.11.2026, P10.9b: 22 madde kapandı, 5 maddenin teknik yarısı karara bağlandı; özet tablosunun satırları tek tek sayıldı).
 
 **P10.9b (17.11.2026, üretimsiz kayıt paketi):** Ahmet 17.11.2026 02:36'da orkestratöre "benim yerime karar verebileceğin şeyler varsa
@@ -1741,7 +1741,9 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
     TASLAK sonar kuralı durduruyor (eşik tam 15°, iki TAHMİN parametreye bağlı; rampa kipi sonar kuralını değiştirmiyor). Sonar
     kapalıyken 15°'de tırmanamıyor (ön teker yükü 61 → 12 N, devrilme payı 3,5°), 20°'de geriye devriliyor. 10° rampada `dur`
     sonrası 0,83 m geri kayıyor (K76).
-- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f üçüncü ekiyle rampa sorusu eklendi).
+  - **Karar (rampa; Ahmet, 23.11.2026):** "rampa sınırı 10°." Yalnız karar kaydı: kod, sonar kuralı ve parkur değişmedi.
+- **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f üçüncü ekiyle rampa sorusu eklendi; 23.11.2026 rampa
+  yarısı Ahmet'in kararıyla kapandı (10°); sonar yarısı açık olduğu için madde açık kalır, sayaç değişmez).
 
 ---
 
