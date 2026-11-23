@@ -701,12 +701,49 @@ TABAN = dict(
                yaw_ivme=1.0,                                      # rad/s2 donus ivmesi (tahmini, yazilim siniri)
                kayma_c=0.05,                                      # lastik kayma (creep) olcegi: kayma/hiz = 0,05'te kuvvet ~0,7 mu N (tahmini)
                not_="Coulomb surtunme dairesi (ana model) + 'yanal tam muN' ust sinir (Wong mu_t(R)); ayrinti donus_hesap.py"),
-    # K1 secenegi (a): on iki teker omni. VARSAYILAN KAPALI; True (ya da ortam degiskeni TABAN_OMNI=1) taban CAD'ini omni ile kurar.
-    # Aks yeri ayni (motor, braket, kaplin degismez); teker ic yuzu ayni x'te kalir, omni dar oldugu icin merkezi iceri kayar.
-    omni=dict(aktif=False, cap=127.0, en=29.0, makara_d=19.0, makara=22, kutle_g=480.0, gobek="12 mm altigen adaptor (tahmini; Nexus 14075 gobegi teyit edilecek)",
-              kaynak="Nexus Robot 14075 5 inch double aluminum omni wheel: O127, eksenel 29 mm, 22 makara O19, 480 g, 30 kg "
-                     "(ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/)"),
+    # ON IKI TEKER OMNI (K75 yon karari, Ahmet 23.11.2026: on iki teker omni, arka iki teker lastik kalir). Gecerli tasarim: aktif=True.
+    # Geri donus (lastik on teker): aktif=False ya da ortam degiskeni TABAN_OMNI=0 (taban_parcalar). Arka teker, motor, braket, kaplin,
+    # enkoder degismez. Teker merkezi tek degerden: OMNI_X (asagida, modul duzeyi); taban_lib / taban_parcalar / donus_hesap bunu okur.
+    # Merkez zinciri (taban_lib olculeri, taban_lib.omni_kontrol() ayni sayilari dogrular): kaplin ucu x = _X_BR 171 + braket 1,5 +
+    # bosluk 2 + kaplin 30 = 204,5 (oturma duzlemi, degismez); adaptor lastik tekerin gobegini taklit eder: altigen yuva kaplina
+    # 17,5 mm kavrar, gogus 6 mm, ayni M4x16 + pul. Adaptorun teker oturma yuzu = kaplin ucu - 17,5 = 187 = lastik tekerin ic yuzu
+    # -> omni merkezi 187 + 29 / 2 = 201,5 (lastik 216: 14,5 mm iceri; on iz 403, arka iz 432).
+    omni=dict(aktif=True, konum="on", cap=127.0, en=29.0, makara_d=19.0, makara=22, makara_boy=22.0, kutle_g=480.0, yuk_kg=30.0,
+              urun="Nexus Robot 14073, 127 mm cift sira aluminyum omni, rulmanli makara (14075 'Basic' ayni dis olcu, pirinc boru yatak)",
+              kaynak="urun sayfasi (ozrobotics.com 14073 / 14075, 23.11.2026 okundu): O127, eksenel 29 mm, 2 sira x 11 = 22 kaucuk makara "
+                     "O19, 480 g, 30 kg. Makara boyu sayfada yok (22, TAHMIN; kod/fizik/omni_teker.json ile ayni)",
+              kaplin_ucu_x=_X_BR + 1.5 + 2.0 + 30.0,        # 204,5: taban_lib BRK t + kaplin araligi + KAP L (kaplin teker tarafi ucu)
+              kavrama=17.5,                                 # altigen yuvanin kaplina kavramasi (lastik teker yuva_derin ile ayni)
+              # Gobek adaptoru (PETG baski; 12 mm altigen kaplin -> omni gobek deseni). Teker yuzu (oturma) = kaplin_ucu_x - kavrama.
+              adaptor=dict(flans_d=56.0, flans_t=8.0, pilot_bosluk=0.4, altigen_pay=0.1, gogus=6.0, m4_delik=4.5,
+                           insert=3, civata=(3, 35), malzeme="PETG", yon="flansin motor tarafi yuzu tablada (pilot yukari)",
+                           not_="pilot teker gobek deligine girer (merkezleme), tork altigenden, teker 4x M3 ile flanstaki isil gomme somunlara"),
+              # TAHMIN: satici ciziminden DOGRULANMADI (Nexus 14073/14075 PDF cizimi okunamadi; Omni-teker-adaylari arastirmasi). Tek yer burasi;
+              # siparis oncesi kumpasla / saticidan dogrulanacak. Deger degisince adaptor bu sozlukten yeniden uretilir.
+              tahmin=dict(gobek_delik_d=22.4,      # teker merkez deligi (pilot buraya girer; pilot = delik - pilot_bosluk)
+                          pcd=44.0,                # gobek civata dairesi capi (Nexus gobek 18007 dis O57 icinde kabul)
+                          civata_n=4,              # gobek civata adedi
+                          civata_d=3,              # gobek civata dis capi (M3)
+                          civata_aci0=45.0,        # ilk civatanin acisi (derece; y ekseninden)
+                          gobek_t=29.0,            # civatanin gectigi teker gobek kalinligi (tam genislik kabul)
+                          govde_r=45.5,            # aluminyum govde yaricapi (gosterim; makaralara 1 mm gomulu)
+                          makara_boy=22.0,         # makara boyu (sayfada yok)
+                          sira_ofset=5.0),         # iki sira makara ekseninin teker orta duzleminden uzakligi (29 - 19) / 2
+              olculecek=["teker merkez (gobek) deligi capi ve derinligi: pilot O22 buna gore (22,4 - 0,4)",
+                         "gobek civata deseni: PCD, civata adedi, dis capi, delik gecme mi disli mi (Nexus gobek 18007 ile ayni desen)",
+                         "civatanin gectigi gobek kalinligi (M3 boyu buna bagli; 29 kabul -> M3x35)",
+                         "teker ic yuzunden flansa kadar duzluk: flans O56 tekere tam oturuyor mu (ic yuzde cikinti / civata basi var mi)",
+                         "JGB37 mil boyu ve D duzlugu (CAD 15 mm, tahmini): kaplin set vidasi duzluge oturuyor mu (degismedi, lastik tekerle ortak)",
+                         "makara boyu ve govde yaricapi (yalniz gorsel / bosluk; etek payini etkilemez)"]),
 )
+# On omni teker merkezi (tek kaynak; mutlak x, sag; sol = -). Lastik on teker secenegi: _X_WH (216).
+# OMNI_AKTIF: aktif bayragi; ortam degiskeni TABAN_OMNI=0 lastik on tekere doner, TABAN_OMNI=1 omniyi zorlar.
+import os as _os
+OMNI_AKTIF = (bool(TABAN["omni"]["aktif"]) and _os.environ.get("TABAN_OMNI", "") != "0") or _os.environ.get("TABAN_OMNI", "") == "1"
+OMNI_X = TABAN["omni"]["kaplin_ucu_x"] - TABAN["omni"]["kavrama"] + TABAN["omni"]["en"] / 2    # 201,5
+OMNI_ICERI = _X_WH - OMNI_X                                                                       # 14,5
+ON_IZ = 2 * (OMNI_X if OMNI_AKTIF else _X_WH)                                                     # 403 (lastikle 432)
+ARKA_IZ = 2 * _X_WH                                                                               # 432
 MODULLER["taban"] = dict(konum=(0.0, 0.0, 0.0), ayna=False,
                          not_="yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)")
 _T = TABAN

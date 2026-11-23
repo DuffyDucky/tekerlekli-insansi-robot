@@ -1,0 +1,22 @@
+{
+ "kip": "TABAN_OMNI=0",
+ "omni_aktif": false,
+ "parca": 427,
+ "gercek": 414,
+ "baglanti": 148,
+ "on_tekerler": [
+  "Teker 125 x 58 (on sol)",
+  "Teker 125 x 58 (on sag)"
+ ],
+ "gecersiz": [],
+ "coklu": [],
+ "baski": [
+  "Aku on takozu",
+  "Bara tutucusu anahtarli bara (+) (4 saplama)",
+  "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+  "Sonar tutucu orta",
+  "Sonar tutucu sag",
+  "Sonar tutucu sol"
+ ],
+ "toplam_kutle_g": 8272.5
+}

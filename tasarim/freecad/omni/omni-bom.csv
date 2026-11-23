@@ -1,0 +1,9 @@
+﻿Degisim;Tur;Kalem;Malzeme;Adet;Toplam kutle (g)
+eklenir;Baglanti;M3 DIN 125 pul;Celik;8;1.0
+eklenir;Baglanti;M3 isil gomme somun;Pirinc;8;2.1
+eklenir;Baglanti;M3x35 DIN 912;Celik 8.8;8;19.4
+eklenir;Baski;Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski;PETG;2;50.8
+eklenir;Satin;Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu);Al + kaucuk;2;960.0
+cikar (on iki kose);Satin;Arazi tekerlegi 125 x 58;Kaucuk + plastik;2;280.0
+ayni (on iki kose);Satin;12 mm altigen kaplin x 30, O6 + M4x16 DIN 912 + M4 pul (lastik tekerdeki gibi);Pirinc / celik;2;
+alinmaz (secenek);Satin;"Nexus 6 mm gobek 18007 (adaptor yerine; motor mili D 6 mm, kaplin kalkar)";Al;0;

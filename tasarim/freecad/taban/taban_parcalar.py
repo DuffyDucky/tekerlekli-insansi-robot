@@ -3,8 +3,8 @@
 # role, ana sigorta, ana anahtar), kartlar (ESP32 + tasiyici, PCA9685, BNO055, arayuz karti, 2 servo dagitim karti), HC-SR04 x3 +
 # tutucular, acil stop, tum baglanti elemanlari ve kablo yolu semasi (Referans).
 # 15 Ekim 2026 (duzeltme plani 3. adim): K4 Pi 5 + o gunku I2S amfi kafaya gitti (kafa/; amfi 04-05.11.2026'da PAM8403 + USB ses karti oldu); Pi'nin XL4016'si servo B oldu (E1); eski Pi yerine
-# arayuz karti (E2/E3); on kat on bandinda servo dagitim A/B (E1). K1 (a) omni secenegi arayuz.TABAN['omni']['aktif'] ya da
-# TABAN_OMNI=1 ile (varsayilan kapali). Elektrik kararlari planlama/adim3/elektrik.md. Import edilebilir: taban_montaj.py (kontroller + kayit), 2. asamada ../carpisma.py ve montaj/.
+# arayuz karti (E2/E3); on kat on bandinda servo dagitim A/B (E1). On iki teker omni + PETG gobek adaptoru (K75, Ahmet 23.11.2026;
+# arayuz.OMNI_AKTIF, merkez arayuz.OMNI_X; TABAN_OMNI=0 ile lastik on tekere donulur). Elektrik kararlari planlama/adim3/elektrik.md. Import edilebilir: taban_montaj.py (kontroller + kayit), 2. asamada ../carpisma.py ve montaj/.
 # Koordinat = global (arayuz.py): orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri, mm. Olculer arayuz.TABAN'dan.
 # 1,65 m / TABAN 520 (Y2a, 29 Ekim 2026; taslak-170 davranisi): tahrik her yana TABAN_DX (38) disari, alt plaka 346 genis, braket
 # M4'leri plaka ustunde DIN 985 (ray disinda), acil stop / ana anahtar etekle (arayuz). Kat ve guc paneli 270 kalir. Aku 75 mm one
@@ -259,10 +259,16 @@ motor0 = tasi(jgb37_local(), X_BR, A.AX, Z_WH)
 braket0 = tasi(braket_local(T["braket_civata"]["x"] - X_BR, T["braket_civata"]["dz"]), X_BR, A.AX, Z_WH)
 kaplin0 = tasi(kaplin_local(), X_BR + L.BRK["t"] + 2.0, A.AX, Z_WH)
 teker0 = tasi(teker_local(), X_WH, A.AX, Z_WH)
-# K1 (a) secenegi: on iki teker omni (varsayilan kapali). Aks, motor, braket, kaplin, M4 eksenel vida ayni; omni ayni teker duzleminde.
-OMNI = bool(T["omni"]["aktif"]) or os.environ.get("TABAN_OMNI", "") == "1"
-omni0 = tasi(omni_local(), X_WH, A.AX, Z_WH) if OMNI else None
+# On iki teker omni (gecerli tasarim, K75 / Ahmet 23.11.2026; arayuz.OMNI_AKTIF, TABAN_OMNI=0 ile lastik on tekere doner). Aks, motor,
+# braket, kaplin, M4x16 eksenel vida ayni; omni + PETG gobek adaptoru, merkez arayuz.OMNI_X (201,5; lastik 216). Arka tekerler lastik.
+OMNI = A.OMNI_AKTIF
+X_OMNI = A.OMNI_X
+OM = T["omni"]
+omni0 = tasi(omni_local(), X_OMNI, A.AX, Z_WH) if OMNI else None
+adap0 = tasi(omni_adaptor_local(), X_OMNI, A.AX, Z_WH) if OMNI else None
 TEKER = {}
+TEKER_DONEN = {}    # (sx, sz) -> teker ile donen parca indeksleri (ana montaj teker grubu icin; 2. asama montaj/moduller.py)
+OMNI_I = {}         # (sx, sz) -> dict(teker, adaptor, kaplin, m4, pul4, m3=[...], pul3=[...], insert=[...]) (on tekerler)
 for sx in (-1, 1):
     for sz in (-1, 1):
         k = "%s %s" % (SZ(sz), SX(sx))
@@ -273,11 +279,17 @@ for sx in (-1, 1):
                   renk="celik", patlat=(sx * 90, -20, sz * 40), kutle=L.BRK["kutle_g"])
         ik = add("Kaplin 12 mm altigen (%s)" % k, "Tahrik", ayna(kaplin0, sx, sz), "Satin", "Pirinc", kod="12 mm altigen kaplin x 30, O6",
                  renk="pirinc", patlat=(sx * 120, -40, sz * 40), kutle=L.KAP["kutle_g"])
-        if OMNI and sz > 0:
-            OM = T["omni"]
+        omni_k = OMNI and sz > 0
+        if omni_k:
             it = add("Omni teker %.0f x %.0f (%s)" % (OM["cap"], OM["en"], k), "Tahrik", ayna(omni0, sx, sz), "Satin", "Al + kaucuk",
-                     kod="Nexus 14075 omni teker O127 x 29 + 12 mm altigen gobek adaptoru (tahmini)", renk="lastik",
-                     patlat=(sx * 170, -40, sz * 40), kutle=OM["kutle_g"], not_="K1 (a) secenegi; " + OM["kaynak"])
+                     kod="Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)", renk="lastik",
+                     patlat=(sx * 210, -40, sz * 40), kutle=OM["kutle_g"], not_="on teker (K75, Ahmet 23.11.2026); " + OM["kaynak"])
+            ad_a = "Omni gobek adaptoru (%s)" % k
+            ia = add(ad_a, "Tahrik", ayna(adap0, sx, sz), "Baski", OM["adaptor"]["malzeme"],
+                     kod="Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski", renk="petg", patlat=(sx * 160, -40, sz * 40),
+                     not_="gobek deseni TAHMIN (arayuz.TABAN['omni']['tahmin']); " + OM["adaptor"]["not_"])
+            if sx > 0:
+                BASKI[ad_a] = dict(yukari=V(1, 0, 0), yon=OM["adaptor"]["yon"] + " (2 adet; sol ayni parca)")
         else:
             it = add("Teker 125 x 58 (%s)" % k, "Tahrik", ayna(teker0, sx, sz), "Satin", "Kaucuk + plastik", kod="Arazi tekerlegi 125 x 58",
                      renk="lastik", patlat=(sx * 170, -40, sz * 40), kutle=L.TEK["kutle_g"])
@@ -318,8 +330,10 @@ for sx in (-1, 1):
             bag("Motor - braket (%s, delik %d)" % (k, i), "dis", dict(vida=iv, govde=[ibr], dis=im),
                 dict(d=3, kavrama=6 - L.BRK["t"], delik=L.JGB["delik_derin"]), temas=[(iv, ibr), (ibr, im)],
                 eksen=(p, V(-sx, 0, 0), [(iv, 1.5), (im, 1.5)]), aciklama="reduktor on yuzu M3 dis (O31 daire), 4,5 mm kavrama")
-        # teker -> kaplin: M4x16 + pul, teker gobek gogsunden kaplinin M4 disine
-        xg = X_WH - A.TEKER_W / 2 + L.TEK["yuva_derin"] + L.TEK["gogus"]
+        # teker -> kaplin: M4x16 + pul, teker gobek gogsunden kaplinin M4 disine. Omni: ayni vida ayni yerde, adaptor gogsunden
+        # (adaptor gogsu lastik tekerin gogsuyle ayni x: kaplin ucu + 6 = 210,5).
+        ig = ia if omni_k else it                            # gogsu tasiyan parca
+        xg = (OM["kaplin_ucu_x"] + OM["adaptor"]["gogus"]) if omni_k else (X_WH - A.TEKER_W / 2 + L.TEK["yuva_derin"] + L.TEK["gogus"])
         p = V(sx * xg, A.AX, sz * Z_WH)
         iw = add("Pul M4 (teker %s)" % k, "Tahrik", pul(4, p, V(sx, 0, 0)), "Baglanti", "Celik", kod="M4 DIN 125 pul", renk="celik",
                  patlat=(sx * 200, -40, sz * 40))
@@ -327,12 +341,50 @@ for sx in (-1, 1):
         iv = add("Civata M4x16 (teker %s)" % k, "Tahrik", vida912(4, 16, pb, V(-sx, 0, 0)), "Baglanti", "Celik 8.8", kod="M4x16 DIN 912",
                  renk="celik", patlat=(sx * 220, -40, sz * 40))
         kav = 16 - A.WASH125[4][2] - L.TEK["gogus"] - 0.0
-        bag("Teker - kaplin (%s)" % k, "dis", dict(vida=iv, pul=iw, govde=[it], dis=ik),
-            dict(d=4, kavrama=kav, delik=L.KAP["m4_derin"]), temas=[(iw, it), (iv, iw), (ik, it)],
-            eksen=(p, V(-sx, 0, 0), [(iv, 2.0), (ik, 2.0)]), aciklama="altigen kaplin teker yuvasina 17,5 mm girer, M4 eksenel vida")
+        if omni_k:
+            bag("Omni adaptoru - kaplin (%s)" % k, "dis", dict(vida=iv, pul=iw, govde=[ia], dis=ik),
+                dict(d=4, kavrama=kav, delik=L.KAP["m4_derin"]), temas=[(iw, ia), (iv, iw), (ik, ia)],
+                eksen=(p, V(-sx, 0, 0), [(iv, 2.0), (ik, 2.0)]),
+                aciklama="adaptorun altigen yuvasi kaplina %.1f mm (lastik tekerde 17,5), kaplin ucu gogse dayanir, M4 eksenel vida" % (
+                    L.omni_olcu()["kaplin_kavrama"]))
+        else:
+            bag("Teker - kaplin (%s)" % k, "dis", dict(vida=iv, pul=iw, govde=[it], dis=ik),
+                dict(d=4, kavrama=kav, delik=L.KAP["m4_derin"]), temas=[(iw, it), (iv, iw), (ik, it)],
+                eksen=(p, V(-sx, 0, 0), [(iv, 2.0), (ik, 2.0)]), aciklama="altigen kaplin teker yuvasina 17,5 mm girer, M4 eksenel vida")
         bag("Kaplin - motor mili (%s)" % k, "mil", dict(govde=[ik], mil=im), dict(d=6, kavrama=L.JGB["sh_l"] - 2.0 - 1.5 + 2.0 - 2.0),
-            temas=[], eksen=(V(sx * X_BR, A.AX, sz * Z_WH), V(sx, 0, 0), [(ik, 3.05), (it, 2.25)]),
+            temas=[], eksen=(V(sx * X_BR, A.AX, sz * Z_WH), V(sx, 0, 0), [(ik, 3.05), (ig, 2.25)]),
             aciklama="O6 D mil kaplina 11,5 mm; kaplinin set vidalari mil duzlugune (cizilmedi)")
+        donen = [it, ik, iw, iv]
+        if omni_k:
+            # omni -> adaptor: 4x M3x35 + pul, teker dis yuzunden gobek deliklerinden flanstaki M3 isil gomme somunlara (desen TAHMIN)
+            Tm, Ad = OM["tahmin"], OM["adaptor"]
+            m3d, m3L = Ad["civata"]
+            xi = X_OMNI - OM["en"] / 2                       # teker ic yuzu = flansin teker yuzu (187)
+            xo = X_OMNI + OM["en"] / 2                       # teker dis yuzu (216)
+            oi = dict(teker=it, adaptor=ia, kaplin=ik, m4=iv, pul4=iw, m3=[], pul3=[], insert=[])
+            for j in range(Tm["civata_n"]):
+                a = math.radians(Tm["civata_aci0"] + 360.0 * j / Tm["civata_n"])
+                yy, zz = Tm["pcd"] / 2 * math.sin(a), Tm["pcd"] / 2 * math.cos(a)
+                pi_ = V(sx * xi, A.AX + yy, sz * Z_WH + zz)
+                po = V(sx * xo, A.AX + yy, sz * Z_WH + zz)
+                ii = add("Isil gomme somun M3 (omni %s %d)" % (k, j + 1), "Tahrik", insert(Ad["insert"], pi_, V(-sx, 0, 0)), "Baglanti", "Pirinc",
+                         kod="M3 isil gomme somun", renk="pirinc", patlat=(sx * 160, -40, sz * 40))
+                iw3 = add("Pul M3 (omni %s %d)" % (k, j + 1), "Tahrik", pul(m3d, po, V(sx, 0, 0)), "Baglanti", "Celik", kod="M3 DIN 125 pul",
+                          renk="celik", patlat=(sx * 260, -40, sz * 40))
+                pb3 = po + V(sx * A.WASH125[m3d][2], 0, 0)
+                iv3 = add("Civata M%dx%d (omni %s %d)" % (m3d, m3L, k, j + 1), "Tahrik", vida912(m3d, m3L, pb3, V(-sx, 0, 0)), "Baglanti",
+                          "Celik 8.8", kod="M%dx%d DIN 912" % (m3d, m3L), renk="celik", patlat=(sx * 300, -40, sz * 40))
+                bag("Omni teker - adaptor (%s %d)" % (k, j + 1), "insert", dict(vida=iv3, pul=iw3, govde=[it], insert=ii, parca=ia),
+                    dict(d=m3d, kavrama=m3L - A.WASH125[m3d][2] - Tm["gobek_t"], insert_boy=A.INSERT[Ad["insert"]][1]),
+                    temas=[(iw3, it), (iv3, iw3), (it, ia)], eksen=(po, V(-sx, 0, 0), [(iv3, m3d / 2), (ii, m3d / 2)]),
+                    aciklama="teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN")
+                oi["m3"].append(iv3)
+                oi["pul3"].append(iw3)
+                oi["insert"].append(ii)
+                donen += [ii, iw3, iv3]
+            donen.append(ia)
+            OMNI_I[(sx, sz)] = oi
+        TEKER_DONEN[(sx, sz)] = donen
 log("tahrik")
 
 # ====================================================================== 4) AKU + KAYIS + TAKOZ

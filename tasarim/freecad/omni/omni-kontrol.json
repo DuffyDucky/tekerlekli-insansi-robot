@@ -1,0 +1,1384 @@
+{
+ "asama": "1 (tasarim ajani; resmi carpisma taramasi, taban_montaj / ana montaj regresyonu 2. asamada)",
+ "olcu": {
+  "kaplin_ucu_x": 204.5,
+  "teker_ic_yuz_x": 187.0,
+  "teker_dis_yuz_x": 216.0,
+  "merkez_x": 201.5,
+  "lastik_merkez_x": 216.0,
+  "iceri_mm": 14.5,
+  "on_iz": 403.0,
+  "arka_iz": 432.0,
+  "on_iz_daralma": 29.0,
+  "flans_motor_yuzu_x": 179.0,
+  "gogus_dis_x": 210.5,
+  "m4_bas_dis_x": 215.3,
+  "m3_bas_dis_x": 219.5,
+  "kaplin_kavrama": 25.5,
+  "kaplin_acik": 4.5,
+  "pilot_d": 22.0,
+  "pilot_et": 4.014061742805528,
+  "flans_et_insert": 4.0,
+  "insert_taban": 1.7999999999999998,
+  "m4_kavrama": 9.2,
+  "m3_kavrama": 5.5,
+  "zemin_y": -1.0,
+  "cap_farki_yaricap": 1.0
+ },
+ "olcu_not": "taban_lib.omni_olcu(): analitik zincir (mm, sag on kose; sol ayna)",
+ "merkez": {
+  "omni_x": 201.5,
+  "lastik_x": 216.0,
+  "iceri_mm": 14.5,
+  "on_iz": 403.0,
+  "arka_iz": 432.0,
+  "beklenti_iceri": 14.5,
+  "beklenti_daralma": 29.0,
+  "fark_iceri": 0.0,
+  "fark_daralma": 0.0,
+  "cad_teker_merkez_x": 201.5,
+  "cad_teker_ic_yuz_x": 187.0,
+  "cad_teker_dis_yuz_x": 216.0,
+  "cad_kaplin_ucu_x": 204.5,
+  "cad_mil_ucu_x": 186.0,
+  "cad_adaptor_x": [
+   179.0,
+   210.5
+  ]
+ },
+ "yeni_parca": [
+  {
+   "ad": "Omni teker 127 x 29 (on sol)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 480.0,
+   "hacim_mm3": 271458.0
+  },
+  {
+   "ad": "Omni gobek adaptoru (on sol)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 25.4,
+   "hacim_mm3": 24996.8
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sol 1)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sol 1)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sol 1)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sol 2)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sol 2)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sol 2)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sol 3)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sol 3)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sol 3)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sol 4)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sol 4)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sol 4)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Omni teker 127 x 29 (on sag)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 480.0,
+   "hacim_mm3": 271458.0
+  },
+  {
+   "ad": "Omni gobek adaptoru (on sag)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 25.4,
+   "hacim_mm3": 24996.8
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sag 1)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sag 1)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sag 1)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sag 2)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sag 2)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sag 2)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sag 3)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sag 3)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sag 3)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  },
+  {
+   "ad": "Isil gomme somun M3 (omni on sag 4)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.3,
+   "hacim_mm3": 31.3
+  },
+  {
+   "ad": "Pul M3 (omni on sag 4)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 0.1,
+   "hacim_mm3": 15.2
+  },
+  {
+   "ad": "Civata M3x35 (omni on sag 4)",
+   "gecerli": true,
+   "kati": 1,
+   "kutle_g": 2.4,
+   "hacim_mm3": 308.9
+  }
+ ],
+ "gecersiz": [],
+ "yeni_x_taban": {
+  "cift": 80,
+  "cakisma": []
+ },
+ "baglanti": [
+  {
+   "ad": "Omni adaptoru - kaplin (on sol)",
+   "tip": "dis",
+   "olcu": {
+    "d": 4,
+    "kavrama": 9.2,
+    "delik": 12.0
+   },
+   "hata": [],
+   "aciklama": "adaptorun altigen yuvasi kaplina 25.5 mm (lastik tekerde 17,5), kaplin ucu gogse dayanir, M4 eksenel vida",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kaplin - motor mili (on sol)",
+   "tip": "mil",
+   "olcu": {
+    "d": 6,
+    "kavrama": 11.5
+   },
+   "hata": [],
+   "aciklama": "O6 D mil kaplina 11,5 mm; kaplinin set vidalari mil duzlugune (cizilmedi)",
+   "temas_mm": [],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 1)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 2)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 3)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 4)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni adaptoru - kaplin (on sag)",
+   "tip": "dis",
+   "olcu": {
+    "d": 4,
+    "kavrama": 9.2,
+    "delik": 12.0
+   },
+   "hata": [],
+   "aciklama": "adaptorun altigen yuvasi kaplina 25.5 mm (lastik tekerde 17,5), kaplin ucu gogse dayanir, M4 eksenel vida",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kaplin - motor mili (on sag)",
+   "tip": "mil",
+   "olcu": {
+    "d": 6,
+    "kavrama": 11.5
+   },
+   "hata": [],
+   "aciklama": "O6 D mil kaplina 11,5 mm; kaplinin set vidalari mil duzlugune (cizilmedi)",
+   "temas_mm": [],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 1)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 2)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 3)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 4)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "aciklama": "teker dis yuzunden M3, adaptor flansinda isil gomme somun; gobek deseni ve kalinligi TAHMIN",
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  }
+ ],
+ "baglanti_tamam": 12,
+ "bosluk": {
+  "zarf_dilim": [
+   {
+    "x0": 187.0,
+    "x1": 216.0,
+    "r": 63.5,
+    "r_ic": 11.2,
+    "parca": "Omni teker 127 x 29 (on sag)"
+   },
+   {
+    "x0": 210.5,
+    "x1": 211.3,
+    "r": 4.5,
+    "r_ic": 2.15,
+    "parca": "Pul M4 (teker on sag)"
+   },
+   {
+    "x0": 195.3,
+    "x1": 215.3,
+    "r": 3.5,
+    "r_ic": 1.73,
+    "parca": "Civata M4x16 (teker on sag)"
+   },
+   {
+    "x0": 181.3,
+    "x1": 187.0,
+    "r": 24.0,
+    "r_ic": 20.0,
+    "parca": "Isil gomme somun M3 (omni on sag 1)"
+   },
+   {
+    "x0": 216.0,
+    "x1": 216.5,
+    "r": 25.5,
+    "r_ic": 18.5,
+    "parca": "Pul M3 (omni on sag 1)"
+   },
+   {
+    "x0": 181.5,
+    "x1": 219.5,
+    "r": 24.75,
+    "r_ic": 19.25,
+    "parca": "Civata M3x35 (omni on sag 1)"
+   },
+   {
+    "x0": 181.3,
+    "x1": 187.0,
+    "r": 24.0,
+    "r_ic": 20.0,
+    "parca": "Isil gomme somun M3 (omni on sag 2)"
+   },
+   {
+    "x0": 216.0,
+    "x1": 216.5,
+    "r": 25.5,
+    "r_ic": 18.5,
+    "parca": "Pul M3 (omni on sag 2)"
+   },
+   {
+    "x0": 181.5,
+    "x1": 219.5,
+    "r": 24.75,
+    "r_ic": 19.25,
+    "parca": "Civata M3x35 (omni on sag 2)"
+   },
+   {
+    "x0": 181.3,
+    "x1": 187.0,
+    "r": 24.0,
+    "r_ic": 20.0,
+    "parca": "Isil gomme somun M3 (omni on sag 3)"
+   },
+   {
+    "x0": 216.0,
+    "x1": 216.5,
+    "r": 25.5,
+    "r_ic": 18.5,
+    "parca": "Pul M3 (omni on sag 3)"
+   },
+   {
+    "x0": 181.5,
+    "x1": 219.5,
+    "r": 24.75,
+    "r_ic": 19.25,
+    "parca": "Civata M3x35 (omni on sag 3)"
+   },
+   {
+    "x0": 181.3,
+    "x1": 187.0,
+    "r": 24.0,
+    "r_ic": 20.0,
+    "parca": "Isil gomme somun M3 (omni on sag 4)"
+   },
+   {
+    "x0": 216.0,
+    "x1": 216.5,
+    "r": 25.5,
+    "r_ic": 18.5,
+    "parca": "Pul M3 (omni on sag 4)"
+   },
+   {
+    "x0": 181.5,
+    "x1": 219.5,
+    "r": 24.75,
+    "r_ic": 19.25,
+    "parca": "Civata M3x35 (omni on sag 4)"
+   },
+   {
+    "x0": 179.0,
+    "x1": 210.5,
+    "r": 28.0,
+    "r_ic": 6.05,
+    "parca": "Omni gobek adaptoru (on sag)"
+   }
+  ],
+  "taban_zarf": [
+   {
+    "parca": "Motor JGB37-520 (on sag)",
+    "bosluk_mm": 3.05,
+    "nokta_teker": [
+     179.0,
+     62.5,
+     191.1
+    ],
+    "nokta_diger": [
+     179.0,
+     62.5,
+     188.0
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 0)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     76.0,
+     197.7
+    ],
+    "nokta_diger": [
+     175.5,
+     76.0,
+     197.7
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 2)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     76.0,
+     170.9
+    ],
+    "nokta_diger": [
+     175.5,
+     76.0,
+     170.9
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 3)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     60.5,
+     170.9
+    ],
+    "nokta_diger": [
+     175.5,
+     60.5,
+     170.9
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 5)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     60.5,
+     197.7
+    ],
+    "nokta_diger": [
+     175.5,
+     60.5,
+     197.7
+    ]
+   },
+   {
+    "parca": "Alt plaka",
+    "bosluk_mm": 6.08,
+    "nokta_teker": [
+     179.0,
+     90.5,
+     185.0
+    ],
+    "nokta_diger": [
+     173.0,
+     91.5,
+     185.0
+    ]
+   },
+   {
+    "parca": "Motor braketi L 37 mm (on sag)",
+    "bosluk_mm": 6.5,
+    "nokta_teker": [
+     179.0,
+     77.2,
+     173.3
+    ],
+    "nokta_diger": [
+     172.5,
+     77.2,
+     173.3
+    ]
+   },
+   {
+    "parca": "Pul M4 (braket on sag -1)",
+    "bosluk_mm": 21.71,
+    "nokta_teker": [
+     179.0,
+     86.6,
+     170.8
+    ],
+    "nokta_diger": [
+     157.5,
+     89.2,
+     169.3
+    ]
+   },
+   {
+    "parca": "Pul M4 (braket on sag +1)",
+    "bosluk_mm": 21.71,
+    "nokta_teker": [
+     179.0,
+     86.6,
+     199.2
+    ],
+    "nokta_diger": [
+     157.5,
+     89.2,
+     200.7
+    ]
+   },
+   {
+    "parca": "Civata M4x16 (braket on sag -1)",
+    "bosluk_mm": 22.5,
+    "nokta_teker": [
+     179.0,
+     85.5,
+     169.0
+    ],
+    "nokta_diger": [
+     156.5,
+     85.5,
+     169.0
+    ]
+   },
+   {
+    "parca": "Civata M4x16 (braket on sag +1)",
+    "bosluk_mm": 22.5,
+    "nokta_teker": [
+     179.0,
+     85.5,
+     201.0
+    ],
+    "nokta_diger": [
+     156.5,
+     85.5,
+     201.0
+    ]
+   },
+   {
+    "parca": "Somun M4 DIN 985 (braket on sag -1)",
+    "bosluk_mm": 23.54,
+    "nokta_teker": [
+     179.0,
+     88.2,
+     173.8
+    ],
+    "nokta_diger": [
+     156.5,
+     94.5,
+     171.0
+    ]
+   }
+  ],
+  "taban_statik": [
+   {
+    "parca": "Motor JGB37-520 (on sag)",
+    "bosluk_mm": 3.05,
+    "nokta_teker": [
+     179.0,
+     59.5,
+     190.2
+    ],
+    "nokta_diger": [
+     179.0,
+     61.0,
+     187.6
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 0)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     76.0,
+     197.7
+    ],
+    "nokta_diger": [
+     175.5,
+     76.0,
+     197.7
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 2)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     76.0,
+     170.9
+    ],
+    "nokta_diger": [
+     175.5,
+     76.0,
+     170.9
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 3)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     60.5,
+     170.9
+    ],
+    "nokta_diger": [
+     175.5,
+     60.5,
+     170.9
+    ]
+   },
+   {
+    "parca": "Civata M3x6 (motor on sag 5)",
+    "bosluk_mm": 3.5,
+    "nokta_teker": [
+     179.0,
+     60.5,
+     197.7
+    ],
+    "nokta_diger": [
+     175.5,
+     60.5,
+     197.7
+    ]
+   },
+   {
+    "parca": "Alt plaka",
+    "bosluk_mm": 6.08,
+    "nokta_teker": [
+     179.0,
+     90.5,
+     185.0
+    ],
+    "nokta_diger": [
+     173.0,
+     91.5,
+     185.0
+    ]
+   },
+   {
+    "parca": "Motor braketi L 37 mm (on sag)",
+    "bosluk_mm": 6.5,
+    "nokta_teker": [
+     179.0,
+     56.5,
+     188.5
+    ],
+    "nokta_diger": [
+     172.5,
+     56.5,
+     188.5
+    ]
+   },
+   {
+    "parca": "Pul M4 (braket on sag -1)",
+    "bosluk_mm": 21.71,
+    "nokta_teker": [
+     179.0,
+     86.6,
+     170.8
+    ],
+    "nokta_diger": [
+     157.5,
+     89.2,
+     169.3
+    ]
+   }
+  ],
+  "sensor": [
+   {
+    "parca": "Sonar tutucu sag",
+    "bosluk_mm": 82.15,
+    "nokta_teker": [
+     187.0,
+     91.6,
+     241.4
+    ],
+    "nokta_diger": [
+     105.4,
+     96.0,
+     250.0
+    ]
+   },
+   {
+    "parca": "Sonar HC-SR04 (sag)",
+    "bosluk_mm": 86.47,
+    "nokta_teker": [
+     187.0,
+     92.7,
+     240.9
+    ],
+    "nokta_diger": [
+     101.9,
+     100.0,
+     254.4
+    ]
+   },
+   {
+    "parca": "Sonar tutucu orta",
+    "bosluk_mm": 151.2,
+    "nokta_teker": [
+     179.0,
+     77.6,
+     208.6
+    ],
+    "nokta_diger": [
+     36.0,
+     104.0,
+     250.0
+    ]
+   },
+   {
+    "parca": "Sonar HC-SR04 (orta)",
+    "bosluk_mm": 164.56,
+    "nokta_teker": [
+     179.0,
+     75.8,
+     209.6
+    ],
+    "nokta_diger": [
+     22.5,
+     100.0,
+     254.4
+    ]
+   },
+   {
+    "parca": "Sonar tutucu sol",
+    "bosluk_mm": 227.77,
+    "nokta_teker": [
+     179.0,
+     77.6,
+     208.6
+    ],
+    "nokta_diger": [
+     -43.4,
+     104.0,
+     250.0
+    ]
+   },
+   {
+    "parca": "Sonar HC-SR04 (sol)",
+    "bosluk_mm": 241.34,
+    "nokta_teker": [
+     179.0,
+     75.8,
+     209.6
+    ],
+    "nokta_diger": [
+     -56.9,
+     100.0,
+     254.4
+    ]
+   }
+  ],
+  "etek_zarf": [
+   {
+    "parca": "Kabuk/etek katisi 018",
+    "bosluk_mm": 11.0,
+    "nokta_teker": [
+     216.0,
+     62.5,
+     248.5
+    ],
+    "nokta_diger": [
+     216.0,
+     62.5,
+     259.5
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 345",
+    "bosluk_mm": 33.5,
+    "nokta_teker": [
+     216.0,
+     109.6,
+     142.4
+    ],
+    "nokta_diger": [
+     216.0,
+     134.5,
+     120.0
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 016",
+    "bosluk_mm": 42.71,
+    "nokta_teker": [
+     216.0,
+     60.8,
+     121.5
+    ],
+    "nokta_diger": [
+     251.3,
+     60.1,
+     97.5
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 350",
+    "bosluk_mm": 44.01,
+    "nokta_teker": [
+     216.0,
+     100.0,
+     133.7
+    ],
+    "nokta_diger": [
+     245.0,
+     119.5,
+     107.0
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 178",
+    "bosluk_mm": 45.08,
+    "nokta_teker": [
+     216.0,
+     60.8,
+     121.5
+    ],
+    "nokta_diger": [
+     252.8,
+     60.1,
+     95.5
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 349",
+    "bosluk_mm": 45.23,
+    "nokta_teker": [
+     216.0,
+     100.0,
+     133.7
+    ],
+    "nokta_diger": [
+     245.7,
+     120.1,
+     106.2
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 179",
+    "bosluk_mm": 46.39,
+    "nokta_teker": [
+     216.0,
+     60.8,
+     121.5
+    ],
+    "nokta_diger": [
+     254.1,
+     60.0,
+     95.0
+    ]
+   },
+   {
+    "parca": "Kabuk/etek katisi 180",
+    "bosluk_mm": 46.68,
+    "nokta_teker": [
+     216.0,
+     77.7,
+     123.3
+    ],
+    "nokta_diger": [
+     252.8,
+     84.5,
+     95.4
+    ]
+   }
+  ],
+  "iskelet_zarf": [
+   {
+    "parca": "Iskelet katisi 1",
+    "bosluk_mm": 44.33,
+    "nokta_teker": [
+     179.0,
+     90.5,
+     185.0
+    ],
+    "nokta_diger": [
+     135.0,
+     95.8,
+     185.0
+    ]
+   },
+   {
+    "parca": "Iskelet katisi 055",
+    "bosluk_mm": 75.46,
+    "nokta_teker": [
+     179.0,
+     90.0,
+     190.3
+    ],
+    "nokta_diger": [
+     106.8,
+     111.6,
+     194.4
+    ]
+   },
+   {
+    "parca": "Iskelet katisi 053",
+    "bosluk_mm": 78.25,
+    "nokta_teker": [
+     179.0,
+     90.5,
+     185.0
+    ],
+    "nokta_diger": [
+     102.3,
+     106.0,
+     185.0
+    ]
+   },
+   {
+    "parca": "Iskelet katisi 004",
+    "bosluk_mm": 85.03,
+    "nokta_teker": [
+     179.0,
+     84.5,
+     202.4
+    ],
+    "nokta_diger": [
+     95.0,
+     94.8,
+     210.6
+    ]
+   },
+   {
+    "parca": "Iskelet katisi 041",
+    "bosluk_mm": 117.99,
+    "nokta_teker": [
+     187.0,
+     81.5,
+     124.4
+    ],
+    "nokta_diger": [
+     102.3,
+     106.0,
+     46.0
+    ]
+   },
+   {
+    "parca": "Iskelet katisi 043",
+    "bosluk_mm": 122.24,
+    "nokta_teker": [
+     187.0,
+     83.3,
+     125.0
+    ],
+    "nokta_diger": [
+     106.8,
+     113.5,
+     37.8
+    ]
+   }
+  ],
+  "kabuk_cakisma": [],
+  "iskelet_cakisma": [],
+  "yon": {
+   "yan (+x, teker dis yuzunden, aks yuksekliginde)": {
+    "bosluk_mm": 41.0,
+    "parca": "Kabuk/etek katisi 018"
+   },
+   "yan (+x, M3 basi dis yuzunden)": {
+    "bosluk_mm": 37.5,
+    "parca": "Kabuk/etek katisi 018"
+   },
+   "on (+z, aks yuksekliginde)": {
+    "bosluk_mm": 11.0,
+    "parca": "Kabuk/etek katisi 018"
+   },
+   "ust (+y, teker tepesinden)": {
+    "bosluk_mm": 108.04,
+    "parca": "Kabuk/etek katisi 018"
+   },
+   "ic (-x, teker ic yuzunden, aks ustu 45)": {
+    "bosluk_mm": 52.0,
+    "parca": "Iskelet katisi 1"
+   }
+  },
+  "lastik_karsilastirma": {
+   "yan_mm": 12.0,
+   "on_mm": 12.0,
+   "not_": "arayuz ETEK_A / ETEK_B (analitik, lastik 125 x 58 x 216)"
+  },
+  "ic_yuz": {
+   "flans_motor_yuzu_x": 179.0,
+   "motor_civata_bas_x": 175.5,
+   "braket_x": 172.5,
+   "flans_m3_bas_bosluk": 3.5,
+   "flans_braket_bosluk": 6.5,
+   "kaplin_acik_boy": 4.5
+  },
+  "zemin": {
+   "teker_alt_y": -1.011,
+   "aks_y": 62.5,
+   "teker_yaricap": 63.5,
+   "analitik": -1.0,
+   "not_": "aks yuksekligi AX 62,5 ortak (motor braketi); O127 omni CAD'de zeminin 1.0 mm altina iner. Gercekte on uc 1.0 mm yukselir, egim atan(1.0 / 370) = 0.15 derece (fizik modeli ONERI-ADAY ile ayni kabul)"
+  },
+  "kaynak": {
+   "kabuk": "kabuk-montaj.step (Import.insert, 18 kati)",
+   "iskelet": "iskelet-montaj.step (Import.insert, 6 kati)"
+  }
+ },
+ "baski": {
+  "ad": "Omni gobek adaptoru (on sag)",
+  "olcu": [
+   56.0,
+   56.0,
+   31.5
+  ],
+  "tabla_aci": 45,
+  "sigar": true,
+  "sigar_cift": true,
+  "cikinti_orani": 0.0118,
+  "cikinti_alan_cm2": 1.11,
+  "yuzey_cm2": 93.8,
+  "destek_sorun": [],
+  "destek_sorun_sayi": 0,
+  "desteksiz": true,
+  "kesit_kaydirma": [],
+  "hacim_cm3": 25.0,
+  "kutle_g": 25.4,
+  "filament_g": 26.7,
+  "sure_saat": 0.56,
+  "katman": 31,
+  "yon": "flansin motor tarafi yuzu tablada (pilot yukari) (2 adet; sol ayni parca)",
+  "adet": 2
+ },
+ "bom": [
+  {
+   "degisim": "eklenir",
+   "tur": "Baglanti",
+   "kalem": "M3 DIN 125 pul",
+   "malzeme": "Celik",
+   "adet": 8,
+   "kutle_g": 1.0
+  },
+  {
+   "degisim": "eklenir",
+   "tur": "Baglanti",
+   "kalem": "M3 isil gomme somun",
+   "malzeme": "Pirinc",
+   "adet": 8,
+   "kutle_g": 2.1
+  },
+  {
+   "degisim": "eklenir",
+   "tur": "Baglanti",
+   "kalem": "M3x35 DIN 912",
+   "malzeme": "Celik 8.8",
+   "adet": 8,
+   "kutle_g": 19.4
+  },
+  {
+   "degisim": "eklenir",
+   "tur": "Baski",
+   "kalem": "Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski",
+   "malzeme": "PETG",
+   "adet": 2,
+   "kutle_g": 50.8
+  },
+  {
+   "degisim": "eklenir",
+   "tur": "Satin",
+   "kalem": "Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)",
+   "malzeme": "Al + kaucuk",
+   "adet": 2,
+   "kutle_g": 960.0
+  },
+  {
+   "degisim": "cikar (on iki kose)",
+   "tur": "Satin",
+   "kalem": "Arazi tekerlegi 125 x 58",
+   "malzeme": "Kaucuk + plastik",
+   "adet": 2,
+   "kutle_g": 280.0
+  },
+  {
+   "degisim": "ayni (on iki kose)",
+   "tur": "Satin",
+   "kalem": "12 mm altigen kaplin x 30, O6 + M4x16 DIN 912 + M4 pul (lastik tekerdeki gibi)",
+   "malzeme": "Pirinc / celik",
+   "adet": 2,
+   "kutle_g": null
+  },
+  {
+   "degisim": "alinmaz (secenek)",
+   "tur": "Satin",
+   "kalem": "Nexus 6 mm gobek 18007 (adaptor yerine; motor mili D 6 mm, kaplin kalkar)",
+   "malzeme": "Al",
+   "adet": 0,
+   "kutle_g": null
+  }
+ ],
+ "kutle": {
+  "on_iki_kose_fark_g": 753.3,
+  "taban_toplam_g": 9025.8
+ },
+ "tahmin": {
+  "gobek_delik_d": 22.4,
+  "pcd": 44.0,
+  "civata_n": 4,
+  "civata_d": 3,
+  "civata_aci0": 45.0,
+  "gobek_t": 29.0,
+  "govde_r": 45.5,
+  "makara_boy": 22.0,
+  "sira_ofset": 5.0
+ },
+ "olculecek": [
+  "teker merkez (gobek) deligi capi ve derinligi: pilot O22 buna gore (22,4 - 0,4)",
+  "gobek civata deseni: PCD, civata adedi, dis capi, delik gecme mi disli mi (Nexus gobek 18007 ile ayni desen)",
+  "civatanin gectigi gobek kalinligi (M3 boyu buna bagli; 29 kabul -> M3x35)",
+  "teker ic yuzunden flansa kadar duzluk: flans O56 tekere tam oturuyor mu (ic yuzde cikinti / civata basi var mi)",
+  "JGB37 mil boyu ve D duzlugu (CAD 15 mm, tahmini): kaplin set vidasi duzluge oturuyor mu (degismedi, lastik tekerle ortak)",
+  "makara boyu ve govde yaricapi (yalniz gorsel / bosluk; etek payini etkilemez)"
+ ],
+ "adaptor": {
+  "flans_d": 56.0,
+  "flans_t": 8.0,
+  "pilot_bosluk": 0.4,
+  "altigen_pay": 0.1,
+  "gogus": 6.0,
+  "m4_delik": 4.5,
+  "insert": 3,
+  "civata": [
+   3,
+   35
+  ],
+  "malzeme": "PETG",
+  "yon": "flansin motor tarafi yuzu tablada (pilot yukari)",
+  "not_": "pilot teker gobek deligine girer (merkezleme), tork altigenden, teker 4x M3 ile flanstaki isil gomme somunlara"
+ },
+ "geri_donus": {
+  "kip": "TABAN_OMNI=0",
+  "omni_aktif": false,
+  "parca": 427,
+  "gercek": 414,
+  "baglanti": 148,
+  "on_tekerler": [
+   "Teker 125 x 58 (on sol)",
+   "Teker 125 x 58 (on sag)"
+  ],
+  "gecersiz": [],
+  "coklu": [],
+  "baski": [
+   "Aku on takozu",
+   "Bara tutucusu anahtarli bara (+) (4 saplama)",
+   "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+   "Sonar tutucu orta",
+   "Sonar tutucu sag",
+   "Sonar tutucu sol"
+  ],
+  "toplam_kutle_g": 8272.5
+ },
+ "sure_s": 11.6
+}

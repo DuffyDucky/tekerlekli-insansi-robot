@@ -1,6 +1,6 @@
 # Taban modulu - parca kutuphanesi (FreeCAD 1.1, Part)
 # Genel elemanlar ../ortak_lib.py'de; baski analizi ../dirsek/dirsek_lib.py'den (kabuk/kafa ile ayni yontem).
-# Burada tabana ozgu: JGB37-520 motor + L braket + 12 mm altigen kaplin + 125 x 58 teker (rc:204-258), LiFePO4 aku (rc:339),
+# Burada tabana ozgu: JGB37-520 motor + L braket + 12 mm altigen kaplin + 125 x 58 teker (rc:204-258) + on omni teker ve gobek adaptoru, LiFePO4 aku (rc:339),
 # kartlar (Pi 5 + Active Cooler, ESP32, PCA9685, BNO055, I2S amfi (AMP, yalniz eski V3 yeri), BTS7960, XL4016; rc:302-337 + 04), HC-SR04 (rc:349),
 # Emas acil stop (rc:357), tahmini zarflar (sigorta kutusu, role, ana anahtar, ana sigorta yuvasi), burclar, plaka yardimcilari,
 # M2,5 / M4 / M5 / ISO 7380 M6 elemanlari ve DXF (R12) yazici. Yerel cizimler global eksenlerde, cagiran yerlestirir.
@@ -200,37 +200,100 @@ def teker_local():
     return tire.fuse(jant).removeSplitter()
 
 
-# K1 (a) secenegi: on omni teker (arayuz.TABAN['omni']: Nexus 14075, O127 x 29, 22 makara O19, 480 g). Yerel: merkez orijin,
-# eksen X, standart tekerle AYNI merkez (teker duzlemi x 178: ayni yandaki on/arka teker birbirine karsi calismasin). Ic yuz
-# x = -14,5; standart tekerin ic yuzu x = -29'dan baslayan altigen yuva + gogus + M4 deligi aynen korunur: -29...-14,5 arasi
-# "gobek adaptoru" (12 mm altigen -> omni flansi; tahmini, Nexus gobegi teyit edilecek). Makaralar iki sirada (x +-5), 11'er,
-# yarim adim kaydirilmis; govde diski makaralara 0,5 mm gomulu (tek kati gosterim). Geometri gosterimdir, olcu: cap, en, makara.
+# ON OMNI TEKER (gecerli tasarim, K75; arayuz.TABAN['omni']: Nexus 14073, O127 x 29, 2 sira x 11 = 22 makara O19, 480 g).
+# Merkez arayuz.OMNI_X (201,5; lastik 216). Yerel cerceve (teker + adaptor ortak): merkez orijin, eksen X (+X robotun disi),
+# ic yuz x = -14,5 (adaptor flansinin teker yuzu), dis yuz x = +14,5. Kaplin ucu yerelde OMNI_YEREL_KAPLIN (+3,0).
+# Gosterim (olcu: cap, en, makara capi; geri kalani arayuz.TABAN['omni']['tahmin']): aluminyum govde tek disk (govde_r, tam genislik),
+# merkez deligi + gobek civata delikleri + 6 hafifletme deligi; makaralar fici (dis profili teker capi cemberinde: zarf her acida
+# O127), iki sira x +-sira_ofset, yarim adim kaydirilmis, govdeye ~1 mm gomulu (tek kati).
+OMNI_YEREL_KAPLIN = A.TABAN["omni"]["kaplin_ucu_x"] - A.OMNI_X       # +3,0
+assert abs(A.TABAN["omni"]["kaplin_ucu_x"] - (A._X_BR + BRK["t"] + 2.0 + KAP["L"])) < 1e-9, "arayuz kaplin_ucu_x taban_lib ile uyusmuyor"
+assert abs(A.TABAN["omni"]["kavrama"] - TEK["yuva_derin"]) < 1e-9 and abs(A.TABAN["omni"]["adaptor"]["gogus"] - TEK["gogus"]) < 1e-9
+# lastik tekerin ic yuzu = adaptorun teker oturma yuzu (ayni kaplin, ayni kavrama): merkez farki = (TEKER_W - en) / 2
+assert abs((A._X_WH - A.TEKER_W / 2) - (A.OMNI_X - A.TABAN["omni"]["en"] / 2)) < 1e-9
+
+
+def omni_makara(rd, boy, R, rc):
+    """Fici makara: yerel eksen X, merkez orijin. Profil yayi teker merkezinde (y = -rc) R yaricapli cember: dis yuzu teker capinda."""
+    ye = math.sqrt(R * R - (boy / 2) ** 2) - rc              # uc yaricapi (17,1 / 2 = 8,55)
+    p0, p1, p2, p3 = V(-boy / 2, 0, 0), V(-boy / 2, ye, 0), V(boy / 2, ye, 0), V(boy / 2, 0, 0)
+    ed = [Part.LineSegment(p0, p1).toShape(), Part.Arc(p1, V(0, rd, 0), p2).toShape(), Part.LineSegment(p2, p3).toShape(),
+          Part.LineSegment(p3, p0).toShape()]
+    f = Part.Face(Part.Wire(ed))
+    s = f.revolve(V(0, 0, 0), V(1, 0, 0), 360)
+    return s if s.ShapeType == "Solid" else Part.Solid(s.Shells[0])
+
+
 def omni_local():
     O = A.TABAN["omni"]
+    Tm = O["tahmin"]
     R, w, rd = O["cap"] / 2, O["en"], O["makara_d"] / 2
-    rc = R - rd                                          # makara ekseni yaricapi (54)
+    rc = R - rd                                              # makara ekseni yaricapi (54)
     n = O["makara"] // 2
-    disk = Part.makeCylinder(rc - rd + 0.5, w, V(-w / 2, 0, 0), V(1, 0, 0))
-    for i in range(6):                                   # hafifletme
-        a = math.radians(60 * i + 30)
-        disk = disk.cut(Part.makeCylinder(7.0, w + 2, V(-w / 2 - 1, 30 * math.sin(a), 30 * math.cos(a)), V(1, 0, 0)))
+    boy = Tm["makara_boy"]
+    disk = Part.makeCylinder(Tm["govde_r"], w, V(-w / 2, 0, 0), V(1, 0, 0))
+    disk = disk.cut(Part.makeCylinder(Tm["gobek_delik_d"] / 2, w + 2, V(-w / 2 - 1, 0, 0), V(1, 0, 0)))
+    for k in range(Tm["civata_n"]):                          # gobek civata delikleri (gecme)
+        a = math.radians(Tm["civata_aci0"] + 360.0 * k / Tm["civata_n"])
+        disk = disk.cut(Part.makeCylinder(A.CLEAR[Tm["civata_d"]] / 2, w + 2, V(-w / 2 - 1, Tm["pcd"] / 2 * math.sin(a), Tm["pcd"] / 2 * math.cos(a)), V(1, 0, 0)))
+    for i in range(6):                                       # hafifletme (gosterim)
+        a = math.radians(60 * i)
+        disk = disk.cut(Part.makeCylinder(6.0, w + 2, V(-w / 2 - 1, 34.5 * math.sin(a), 34.5 * math.cos(a)), V(1, 0, 0)))
+    m0 = omni_makara(rd, boy, R, rc)
     parca = []
-    boy = 2 * rc * math.sin(math.pi / n) - 9.0           # makara boyu: komsu makaraya ~9 mm bosluk
-    for sira, xs in ((0, -w / 2 + rd), (1, w / 2 - rd)):
+    for sira, xs in ((0, -Tm["sira_ofset"]), (1, Tm["sira_ofset"])):
         for i in range(n):
             a = 2 * math.pi * (i + 0.5 * sira) / n
             c = V(xs, rc * math.sin(a), rc * math.cos(a))
-            t = V(0, math.cos(a), -math.sin(a))          # teget
-            parca.append(Part.makeCylinder(rd, boy, c - t * (boy / 2), t))
-    x0 = -TEK["W"] / 2 + TEK["yuva_derin"]               # gogus ic yuzu (-11,5): standart tekerle ayni
-    gobek = Part.makeCylinder(TEK["gobek_r"], TEK["yuva_derin"] + TEK["gogus"], V(-TEK["W"] / 2, 0, 0), V(1, 0, 0))
-    adaptor = Part.makeCylinder(20.0, (-w / 2) - (-TEK["W"] / 2) + 0.5, V(-TEK["W"] / 2, 0, 0), V(1, 0, 0))
-    g = disk.fuse(parca + [gobek, adaptor])
-    g = g.cut(hexprism(KAP["af"] + 0.1, V(-TEK["W"] / 2 - 1, 0, 0), V(x0, 0, 0), V(0, 1, 0)))
-    g = g.cut(Part.makeCylinder(2.25, 20, V(x0 - 2, 0, 0), V(1, 0, 0)))
-    # gogus (M4 vida basi + pul icin dis taraf acik): standart tekerdeki gibi x0 + gogus'ten disari bosluk
-    g = g.cut(Part.makeCylinder(7.0, w, V(x0 + TEK["gogus"], 0, 0), V(1, 0, 0)))
-    return g.removeSplitter()
+            t = V(0, math.cos(a), -math.sin(a))              # teget
+            parca.append(yerlestir(m0, App.Placement(c, App.Rotation(V(1, 0, 0), t))))
+    return disk.fuse(parca).removeSplitter()
+
+
+def omni_adaptor_local():
+    """12 mm altigen kaplin -> omni gobegi adaptoru (PETG baski), omni_local ile ayni yerel cerceve. Flans (motor tarafi) x -22,5...-14,5;
+    pilot x -14,5...+9 (teker gobek deligine girer); altigen yuva flans yuzunden kaplin ucuna (x +3) dek; gogus x +3...+9, M4 gecme
+    deligi (lastik tekerdeki M4x16 + pul aynen); teker yuzunde 4x M3 isil gomme somun deligi (gobek deseni, TAHMIN)."""
+    O = A.TABAN["omni"]
+    Tm, Ad = O["tahmin"], O["adaptor"]
+    w = O["en"]
+    xf0, xf1 = -w / 2 - Ad["flans_t"], -w / 2
+    xk = OMNI_YEREL_KAPLIN
+    xg = xk + Ad["gogus"]
+    rp = (Tm["gobek_delik_d"] - Ad["pilot_bosluk"]) / 2
+    s = Part.makeCylinder(Ad["flans_d"] / 2, Ad["flans_t"], V(xf0, 0, 0), V(1, 0, 0))
+    s = s.fuse(Part.makeCylinder(rp, xg - xf1, V(xf1, 0, 0), V(1, 0, 0)))
+    s = s.cut(hexprism(KAP["af"] + Ad["altigen_pay"], V(xf0 - 1, 0, 0), V(xk, 0, 0), V(0, 1, 0)))
+    s = s.cut(Part.makeCylinder(Ad["m4_delik"] / 2, xg - xk + 2, V(xk - 1, 0, 0), V(1, 0, 0)))
+    for k in range(Tm["civata_n"]):
+        a = math.radians(Tm["civata_aci0"] + 360.0 * k / Tm["civata_n"])
+        s = s.cut(insert_hole(Ad["insert"], (xf1, Tm["pcd"] / 2 * math.sin(a), Tm["pcd"] / 2 * math.cos(a)), V(-1, 0, 0)))
+    return s.removeSplitter()
+
+
+def omni_olcu():
+    """Adaptor / teker zincirinin analitik olculeri (rapor ve kontrol icin; mm, global sag on)."""
+    O = A.TABAN["omni"]
+    Tm, Ad = O["tahmin"], O["adaptor"]
+    w = O["en"]
+    m3d, m3L = Ad["civata"]
+    alt_pay = (KAP["af"] + Ad["altigen_pay"]) / math.sqrt(3)            # altigen kose yaricapi
+    rp = (Tm["gobek_delik_d"] - Ad["pilot_bosluk"]) / 2
+    pul3 = A.WASH125[m3d][2]
+    pul4 = A.WASH125[4][2]
+    m3_bas = DIN912_T[m3d]
+    return dict(
+        kaplin_ucu_x=O["kaplin_ucu_x"], teker_ic_yuz_x=A.OMNI_X - w / 2, teker_dis_yuz_x=A.OMNI_X + w / 2, merkez_x=A.OMNI_X,
+        lastik_merkez_x=A._X_WH, iceri_mm=A.OMNI_ICERI, on_iz=2 * A.OMNI_X, arka_iz=2 * A._X_WH, on_iz_daralma=2 * A._X_WH - 2 * A.OMNI_X,
+        flans_motor_yuzu_x=A.OMNI_X - w / 2 - Ad["flans_t"], gogus_dis_x=O["kaplin_ucu_x"] + Ad["gogus"],
+        m4_bas_dis_x=O["kaplin_ucu_x"] + Ad["gogus"] + pul4 + DIN912_T[4][1],
+        m3_bas_dis_x=A.OMNI_X + w / 2 + pul3 + m3_bas[1],
+        kaplin_kavrama=O["kaplin_ucu_x"] - (A.OMNI_X - w / 2 - Ad["flans_t"]),
+        kaplin_acik=(A.OMNI_X - w / 2 - Ad["flans_t"]) - (A._X_BR + BRK["t"] + 2.0),
+        pilot_d=2 * rp, pilot_et=rp - alt_pay, flans_et_insert=Ad["flans_d"] / 2 - Tm["pcd"] / 2 - A.INSERT_DELIK[Ad["insert"]] / 2,
+        insert_taban=Ad["flans_t"] - (A.INSERT[Ad["insert"]][1] + 0.5),
+        m4_kavrama=16 - pul4 - Ad["gogus"], m3_kavrama=m3L - pul3 - Tm["gobek_t"],
+        zemin_y=A.AX - O["cap"] / 2, cap_farki_yaricap=O["cap"] / 2 - A.TEKER_D / 2)
 
 
 # ------------------------------------------------------------------ LiFePO4 aku (rc:339-345, yatik: 181 x, 77 y, 167 z; kutuplar +Z
