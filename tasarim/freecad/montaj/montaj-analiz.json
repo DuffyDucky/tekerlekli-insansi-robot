@@ -1,18 +1,18 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 1251,
+ "step_kati": 1277,
  "bom": "robot-bom.csv",
  "bom_ozet": {
   "Baglanti": {
-   "kalem": 44,
-   "adet": 953,
-   "kutle_g": 1548.2
+   "kalem": 45,
+   "adet": 977,
+   "kutle_g": 1570.7
   },
   "Baski": {
-   "kalem": 64,
-   "adet": 74,
-   "kutle_g": 7291.4
+   "kalem": 66,
+   "adet": 76,
+   "kutle_g": 7342.2
   },
   "Imalat": {
    "kalem": 1,
@@ -25,16 +25,16 @@
    "kutle_g": 1799.0
   },
   "Satin": {
-   "kalem": 55,
+   "kalem": 56,
    "adet": 201,
-   "kutle_g": 15117.8
+   "kutle_g": 15797.8
   }
  },
  "boy_mm": 1580.0,
  "s3_mm": 1270.0,
  "uzama_mm": 315.0,
  "taban_w_mm": 520.0,
- "parca_sayisi": 1251,
+ "parca_sayisi": 1277,
  "grup_sayisi": 22,
  "gecersiz": [],
  "hacim_fark_mm3": 6.111804395914078e-10,
@@ -226,8 +226,8 @@
    ],
    "ayna": false,
    "not_": "yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)",
-   "parca_modulde": 427,
-   "parca": 414,
+   "parca_modulde": 453,
+   "parca": 440,
    "haric": [
     "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
     "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
@@ -244,11 +244,11 @@
     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
    ],
    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
-   "kutle_g": 8272.5,
+   "kutle_g": 9025.78,
    "agirlik_merkezi": [
-    -0.639,
-    121.634,
-    -46.122
+    -0.586,
+    116.699,
+    -26.833
    ],
    "gruplar": [
     "Taban_Govde",
@@ -12313,13 +12313,26 @@
   },
   {
    "modul": "taban",
-   "ad": "Teker 125 x 58 (on sol)",
+   "ad": "Omni teker 127 x 29 (on sol)",
    "grup": "OnSolTeker",
    "tur": "Satin",
-   "kod": "Arazi tekerlegi 125 x 58",
-   "kutle_g": 140.0,
+   "kod": "Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)",
+   "kutle_g": 480.0,
    "merkez": [
-    -215.36,
+    -201.5,
+    62.5,
+    185.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Omni gobek adaptoru (on sol)",
+   "grup": "OnSolTeker",
+   "tur": "Baski",
+   "kod": "Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski",
+   "kutle_g": 25.397,
+   "merkez": [
+    -187.39,
     62.5,
     185.0
    ]
@@ -12478,6 +12491,162 @@
     -207.28,
     62.5,
     185.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sol 1)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -184.15,
+    78.06,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sol 1)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    -216.25,
+    78.06,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sol 1)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    -202.77,
+    78.06,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sol 2)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -184.15,
+    78.06,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sol 2)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    -216.25,
+    78.06,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sol 2)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    -202.77,
+    78.06,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sol 3)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -184.15,
+    46.94,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sol 3)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    -216.25,
+    46.94,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sol 3)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    -202.77,
+    46.94,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sol 4)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -184.15,
+    46.94,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sol 4)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    -216.25,
+    46.94,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sol 4)",
+   "grup": "OnSolTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    -202.77,
+    46.94,
+    200.56
    ]
   },
   {
@@ -12729,13 +12898,26 @@
   },
   {
    "modul": "taban",
-   "ad": "Teker 125 x 58 (on sag)",
+   "ad": "Omni teker 127 x 29 (on sag)",
    "grup": "OnSagTeker",
    "tur": "Satin",
-   "kod": "Arazi tekerlegi 125 x 58",
-   "kutle_g": 140.0,
+   "kod": "Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)",
+   "kutle_g": 480.0,
    "merkez": [
-    215.36,
+    201.5,
+    62.5,
+    185.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Omni gobek adaptoru (on sag)",
+   "grup": "OnSagTeker",
+   "tur": "Baski",
+   "kod": "Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski",
+   "kutle_g": 25.397,
+   "merkez": [
+    187.39,
     62.5,
     185.0
    ]
@@ -12894,6 +13076,162 @@
     207.28,
     62.5,
     185.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sag 1)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    184.15,
+    78.06,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sag 1)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    216.25,
+    78.06,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sag 1)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    202.77,
+    78.06,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sag 2)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    184.15,
+    78.06,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sag 2)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    216.25,
+    78.06,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sag 2)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    202.77,
+    78.06,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sag 3)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    184.15,
+    46.94,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sag 3)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    216.25,
+    46.94,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sag 3)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    202.77,
+    46.94,
+    169.44
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (omni on sag 4)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    184.15,
+    46.94,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M3 (omni on sag 4)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.119,
+   "merkez": [
+    216.25,
+    46.94,
+    200.56
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x35 (omni on sag 4)",
+   "grup": "OnSagTeker",
+   "tur": "Baglanti",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.425,
+   "merkez": [
+    202.77,
+    46.94,
+    200.56
    ]
   },
   {
@@ -16991,7 +17329,7 @@
    "ust": "Taban_Govde",
    "alt": "Taban_OnSagTeker",
    "nokta": [
-    216.0,
+    201.5,
     62.5,
     185.0
    ],
@@ -17001,7 +17339,7 @@
     0.0
    ],
    "yerel_nokta": [
-    216.0,
+    201.5,
     62.5,
     185.0
    ],
@@ -17011,7 +17349,7 @@
     0.0
    ],
    "sinir": null,
-   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = +216, y = 62.5, z = +185), eksen +X (motor mili)"
+   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = +202, y = 62.5, z = +185), eksen +X (motor mili)"
   },
   {
    "isim": "Taban_TekerOnSol",
@@ -17023,7 +17361,7 @@
    "ust": "Taban_Govde",
    "alt": "Taban_OnSolTeker",
    "nokta": [
-    -216.0,
+    -201.5,
     62.5,
     185.0
    ],
@@ -17033,7 +17371,7 @@
     0.0
    ],
    "yerel_nokta": [
-    -216.0,
+    -201.5,
     62.5,
     185.0
    ],
@@ -17043,7 +17381,7 @@
     0.0
    ],
    "sinir": null,
-   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = -216, y = 62.5, z = +185), eksen +X (motor mili)"
+   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = -202, y = 62.5, z = +185), eksen +X (motor mili)"
   },
   {
    "isim": "Taban_TekerArkaSag",
@@ -17136,47 +17474,47 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 25876.13,
+ "kutle_g": 26629.42,
  "agirlik_merkezi": [
   0.034,
-  526.183,
-  -9.71
+  513.066,
+  -4.202
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 1251,
-   "beklenen": 1251,
-   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 357 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 414",
+   "montaj": 1277,
+   "beklenen": 1277,
+   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 357 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 440",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 25876.13,
-   "bellek": 25876.13,
-   "beklenen_analizlerden": 25876.3,
-   "carpisma": 25835.1,
-   "fark_analiz": -0.164,
-   "fark_carpisma": 41.034
+   "montaj_dosyasi": 26629.42,
+   "bellek": 26629.42,
+   "beklenen_analizlerden": 26629.6,
+   "carpisma": 25876.1,
+   "fark_analiz": -0.182,
+   "fark_carpisma": 753.315
   },
   "am": {
    "montaj_dosyasi": [
     0.034,
-    526.183,
-    -9.71
+    513.066,
+    -4.202
    ],
    "bellek": [
     0.034,
-    526.183,
-    -9.71
+    513.066,
+    -4.202
    ],
    "carpisma": [
-    0.01,
-    526.72,
-    -9.59
+    0.03,
+    526.18,
+    -9.71
    ],
-   "fark_carpisma_mm": 0.551,
+   "fark_carpisma_mm": 14.223,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 87.9
+ "sure_s": 138.9
 }

@@ -327,19 +327,59 @@
    "not_": "Coulomb surtunme dairesi (ana model) + 'yanal tam muN' ust sinir (Wong mu_t(R)); ayrinti donus_hesap.py"
   },
   "omni": {
-   "aktif": false,
+   "aktif": true,
+   "konum": "on",
    "cap": 127.0,
    "en": 29.0,
    "makara_d": 19.0,
    "makara": 22,
+   "makara_boy": 22.0,
    "kutle_g": 480.0,
-   "gobek": "12 mm altigen adaptor (tahmini; Nexus 14075 gobegi teyit edilecek)",
-   "kaynak": "Nexus Robot 14075 5 inch double aluminum omni wheel: O127, eksenel 29 mm, 22 makara O19, 480 g, 30 kg (ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/)"
+   "yuk_kg": 30.0,
+   "urun": "Nexus Robot 14073, 127 mm cift sira aluminyum omni, rulmanli makara (14075 'Basic' ayni dis olcu, pirinc boru yatak)",
+   "kaynak": "urun sayfasi (ozrobotics.com 14073 / 14075, 23.11.2026 okundu): O127, eksenel 29 mm, 2 sira x 11 = 22 kaucuk makara O19, 480 g, 30 kg. Makara boyu sayfada yok (22, TAHMIN; kod/fizik/omni_teker.json ile ayni)",
+   "kaplin_ucu_x": 204.5,
+   "kavrama": 17.5,
+   "adaptor": {
+    "flans_d": 56.0,
+    "flans_t": 8.0,
+    "pilot_bosluk": 0.4,
+    "altigen_pay": 0.1,
+    "gogus": 6.0,
+    "m4_delik": 4.5,
+    "insert": 3,
+    "civata": [
+     3,
+     35
+    ],
+    "malzeme": "PETG",
+    "yon": "flansin motor tarafi yuzu tablada (pilot yukari)",
+    "not_": "pilot teker gobek deligine girer (merkezleme), tork altigenden, teker 4x M3 ile flanstaki isil gomme somunlara"
+   },
+   "tahmin": {
+    "gobek_delik_d": 22.4,
+    "pcd": 44.0,
+    "civata_n": 4,
+    "civata_d": 3,
+    "civata_aci0": 45.0,
+    "gobek_t": 29.0,
+    "govde_r": 45.5,
+    "makara_boy": 22.0,
+    "sira_ofset": 5.0
+   },
+   "olculecek": [
+    "teker merkez (gobek) deligi capi ve derinligi: pilot O22 buna gore (22,4 - 0,4)",
+    "gobek civata deseni: PCD, civata adedi, dis capi, delik gecme mi disli mi (Nexus gobek 18007 ile ayni desen)",
+    "civatanin gectigi gobek kalinligi (M3 boyu buna bagli; 29 kabul -> M3x35)",
+    "teker ic yuzunden flansa kadar duzluk: flans O56 tekere tam oturuyor mu (ic yuzde cikinti / civata basi var mi)",
+    "JGB37 mil boyu ve D duzlugu (CAD 15 mm, tahmini): kaplin set vidasi duzluge oturuyor mu (degismedi, lastik tekerle ortak)",
+    "makara boyu ve govde yaricapi (yalniz gorsel / bosluk; etek payini etkilemez)"
+   ]
   }
  },
- "parca_sayisi": 414,
+ "parca_sayisi": 440,
  "referans_sayisi": 13,
- "baski_sayisi": 6,
+ "baski_sayisi": 7,
  "lazer_sayisi": 3,
  "parcalar": [
   {
@@ -2954,35 +2994,64 @@
   },
   {
    "i": 90,
-   "ad": "Teker 125 x 58 (on sol)",
+   "ad": "Omni teker 127 x 29 (on sol)",
    "grup": "Tahrik",
    "tur": "Satin",
-   "malzeme": "Kaucuk + plastik",
-   "kod": "Arazi tekerlegi 125 x 58",
-   "kutle_g": 140.0,
-   "hacim_mm3": 476508.7,
+   "malzeme": "Al + kaucuk",
+   "kod": "Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)",
+   "kutle_g": 480.0,
+   "hacim_mm3": 271458.0,
    "merkez": [
-    -215.364,
+    -201.5,
     62.5,
     185.0
    ],
    "bb": [
-    -245.0,
+    -216.0,
     -187.0,
-    -5.15,
-    130.15,
-    117.35,
-    252.65
+    -0.99,
+    125.99,
+    121.5,
+    248.5
    ],
    "patlat": [
-    -170,
+    -210,
     -40,
     40
    ],
-   "not_": ""
+   "not_": "on teker (K75, Ahmet 23.11.2026); urun sayfasi (ozrobotics.com 14073 / 14075, 23.11.2026 okundu): O127, eksenel 29 mm, 2 sira x 11 = 22 kaucuk makara O19, 480 g, 30 kg. Makara boyu sayfada yok (22, TAHMIN; kod/fizik/omni_teker.json ile ayni)"
   },
   {
    "i": 91,
+   "ad": "Omni gobek adaptoru (on sol)",
+   "grup": "Tahrik",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski",
+   "kutle_g": 25.4,
+   "hacim_mm3": 24996.8,
+   "merkez": [
+    -187.392,
+    62.5,
+    185.0
+   ],
+   "bb": [
+    -210.5,
+    -179.0,
+    34.5,
+    90.5,
+    157.0,
+    213.0
+   ],
+   "patlat": [
+    -160,
+    -40,
+    40
+   ],
+   "not_": "gobek deseni TAHMIN (arayuz.TABAN['omni']['tahmin']); pilot teker gobek deligine girer (merkezleme), tork altigenden, teker 4x M3 ile flanstaki isil gomme somunlara"
+  },
+  {
+   "i": 92,
    "ad": "Pul M4 (braket on sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3011,7 +3080,7 @@
    "not_": ""
   },
   {
-   "i": 92,
+   "i": 93,
    "ad": "Civata M4x16 (braket on sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3040,7 +3109,7 @@
    "not_": ""
   },
   {
-   "i": 93,
+   "i": 94,
    "ad": "Somun M4 DIN 985 (braket on sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3069,7 +3138,7 @@
    "not_": ""
   },
   {
-   "i": 94,
+   "i": 95,
    "ad": "Pul M4 (braket on sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3098,7 +3167,7 @@
    "not_": ""
   },
   {
-   "i": 95,
+   "i": 96,
    "ad": "Civata M4x16 (braket on sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3127,7 +3196,7 @@
    "not_": ""
   },
   {
-   "i": 96,
+   "i": 97,
    "ad": "Somun M4 DIN 985 (braket on sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3156,7 +3225,7 @@
    "not_": ""
   },
   {
-   "i": 97,
+   "i": 98,
    "ad": "Civata M3x6 (motor on sol 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3185,7 +3254,7 @@
    "not_": ""
   },
   {
-   "i": 98,
+   "i": 99,
    "ad": "Civata M3x6 (motor on sol 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3214,7 +3283,7 @@
    "not_": ""
   },
   {
-   "i": 99,
+   "i": 100,
    "ad": "Civata M3x6 (motor on sol 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3243,7 +3312,7 @@
    "not_": ""
   },
   {
-   "i": 100,
+   "i": 101,
    "ad": "Civata M3x6 (motor on sol 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3272,7 +3341,7 @@
    "not_": ""
   },
   {
-   "i": 101,
+   "i": 102,
    "ad": "Pul M4 (teker on sol)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3301,7 +3370,7 @@
    "not_": ""
   },
   {
-   "i": 102,
+   "i": 103,
    "ad": "Civata M4x16 (teker on sol)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3330,7 +3399,355 @@
    "not_": ""
   },
   {
-   "i": 103,
+   "i": 104,
+   "ad": "Isil gomme somun M3 (omni on sol 1)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    -184.15,
+    78.056,
+    200.556
+   ],
+   "bb": [
+    -187.0,
+    -181.3,
+    76.06,
+    80.06,
+    198.56,
+    202.56
+   ],
+   "patlat": [
+    -160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 105,
+   "ad": "Pul M3 (omni on sol 1)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    -216.25,
+    78.056,
+    200.556
+   ],
+   "bb": [
+    -216.5,
+    -216.0,
+    74.56,
+    81.56,
+    197.06,
+    204.06
+   ],
+   "patlat": [
+    -260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 106,
+   "ad": "Civata M3x35 (omni on sol 1)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    -202.765,
+    78.056,
+    200.556
+   ],
+   "bb": [
+    -219.5,
+    -181.5,
+    75.31,
+    80.81,
+    197.81,
+    203.31
+   ],
+   "patlat": [
+    -300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 107,
+   "ad": "Isil gomme somun M3 (omni on sol 2)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    -184.15,
+    78.056,
+    169.444
+   ],
+   "bb": [
+    -187.0,
+    -181.3,
+    76.06,
+    80.06,
+    167.44,
+    171.44
+   ],
+   "patlat": [
+    -160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 108,
+   "ad": "Pul M3 (omni on sol 2)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    -216.25,
+    78.056,
+    169.444
+   ],
+   "bb": [
+    -216.5,
+    -216.0,
+    74.56,
+    81.56,
+    165.94,
+    172.94
+   ],
+   "patlat": [
+    -260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 109,
+   "ad": "Civata M3x35 (omni on sol 2)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    -202.765,
+    78.056,
+    169.444
+   ],
+   "bb": [
+    -219.5,
+    -181.5,
+    75.31,
+    80.81,
+    166.69,
+    172.19
+   ],
+   "patlat": [
+    -300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 110,
+   "ad": "Isil gomme somun M3 (omni on sol 3)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    -184.15,
+    46.944,
+    169.444
+   ],
+   "bb": [
+    -187.0,
+    -181.3,
+    44.94,
+    48.94,
+    167.44,
+    171.44
+   ],
+   "patlat": [
+    -160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 111,
+   "ad": "Pul M3 (omni on sol 3)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    -216.25,
+    46.944,
+    169.444
+   ],
+   "bb": [
+    -216.5,
+    -216.0,
+    43.44,
+    50.44,
+    165.94,
+    172.94
+   ],
+   "patlat": [
+    -260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 112,
+   "ad": "Civata M3x35 (omni on sol 3)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    -202.765,
+    46.944,
+    169.444
+   ],
+   "bb": [
+    -219.5,
+    -181.5,
+    44.19,
+    49.69,
+    166.69,
+    172.19
+   ],
+   "patlat": [
+    -300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 113,
+   "ad": "Isil gomme somun M3 (omni on sol 4)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    -184.15,
+    46.944,
+    200.556
+   ],
+   "bb": [
+    -187.0,
+    -181.3,
+    44.94,
+    48.94,
+    198.56,
+    202.56
+   ],
+   "patlat": [
+    -160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 114,
+   "ad": "Pul M3 (omni on sol 4)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    -216.25,
+    46.944,
+    200.556
+   ],
+   "bb": [
+    -216.5,
+    -216.0,
+    43.44,
+    50.44,
+    197.06,
+    204.06
+   ],
+   "patlat": [
+    -260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 115,
+   "ad": "Civata M3x35 (omni on sol 4)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    -202.765,
+    46.944,
+    200.556
+   ],
+   "bb": [
+    -219.5,
+    -181.5,
+    44.19,
+    49.69,
+    197.81,
+    203.31
+   ],
+   "patlat": [
+    -300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 116,
    "ad": "Motor JGB37-520 (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3359,7 +3776,7 @@
    "not_": ""
   },
   {
-   "i": 104,
+   "i": 117,
    "ad": "Motor braketi L 37 mm (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3388,7 +3805,7 @@
    "not_": ""
   },
   {
-   "i": 105,
+   "i": 118,
    "ad": "Kaplin 12 mm altigen (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3417,7 +3834,7 @@
    "not_": ""
   },
   {
-   "i": 106,
+   "i": 119,
    "ad": "Teker 125 x 58 (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3446,7 +3863,7 @@
    "not_": ""
   },
   {
-   "i": 107,
+   "i": 120,
    "ad": "Pul M4 (braket arka sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3475,7 +3892,7 @@
    "not_": ""
   },
   {
-   "i": 108,
+   "i": 121,
    "ad": "Civata M4x16 (braket arka sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3504,7 +3921,7 @@
    "not_": ""
   },
   {
-   "i": 109,
+   "i": 122,
    "ad": "Somun M4 DIN 985 (braket arka sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3533,7 +3950,7 @@
    "not_": ""
   },
   {
-   "i": 110,
+   "i": 123,
    "ad": "Pul M4 (braket arka sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3562,7 +3979,7 @@
    "not_": ""
   },
   {
-   "i": 111,
+   "i": 124,
    "ad": "Civata M4x16 (braket arka sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3591,7 +4008,7 @@
    "not_": ""
   },
   {
-   "i": 112,
+   "i": 125,
    "ad": "Somun M4 DIN 985 (braket arka sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3620,7 +4037,7 @@
    "not_": ""
   },
   {
-   "i": 113,
+   "i": 126,
    "ad": "Civata M3x6 (motor arka sag 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3649,7 +4066,7 @@
    "not_": ""
   },
   {
-   "i": 114,
+   "i": 127,
    "ad": "Civata M3x6 (motor arka sag 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3678,7 +4095,7 @@
    "not_": ""
   },
   {
-   "i": 115,
+   "i": 128,
    "ad": "Civata M3x6 (motor arka sag 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3707,7 +4124,7 @@
    "not_": ""
   },
   {
-   "i": 116,
+   "i": 129,
    "ad": "Civata M3x6 (motor arka sag 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3736,7 +4153,7 @@
    "not_": ""
   },
   {
-   "i": 117,
+   "i": 130,
    "ad": "Pul M4 (teker arka sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3765,7 +4182,7 @@
    "not_": ""
   },
   {
-   "i": 118,
+   "i": 131,
    "ad": "Civata M4x16 (teker arka sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3794,7 +4211,7 @@
    "not_": ""
   },
   {
-   "i": 119,
+   "i": 132,
    "ad": "Motor JGB37-520 (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3823,7 +4240,7 @@
    "not_": ""
   },
   {
-   "i": 120,
+   "i": 133,
    "ad": "Motor braketi L 37 mm (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3852,7 +4269,7 @@
    "not_": ""
   },
   {
-   "i": 121,
+   "i": 134,
    "ad": "Kaplin 12 mm altigen (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3881,36 +4298,65 @@
    "not_": ""
   },
   {
-   "i": 122,
-   "ad": "Teker 125 x 58 (on sag)",
+   "i": 135,
+   "ad": "Omni teker 127 x 29 (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
-   "malzeme": "Kaucuk + plastik",
-   "kod": "Arazi tekerlegi 125 x 58",
-   "kutle_g": 140.0,
-   "hacim_mm3": 476508.7,
+   "malzeme": "Al + kaucuk",
+   "kod": "Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)",
+   "kutle_g": 480.0,
+   "hacim_mm3": 271458.0,
    "merkez": [
-    215.364,
+    201.5,
     62.5,
     185.0
    ],
    "bb": [
     187.0,
-    245.0,
-    -5.15,
-    130.15,
-    117.35,
-    252.65
+    216.0,
+    -0.99,
+    125.99,
+    121.5,
+    248.5
    ],
    "patlat": [
-    170,
+    210,
     -40,
     40
    ],
-   "not_": ""
+   "not_": "on teker (K75, Ahmet 23.11.2026); urun sayfasi (ozrobotics.com 14073 / 14075, 23.11.2026 okundu): O127, eksenel 29 mm, 2 sira x 11 = 22 kaucuk makara O19, 480 g, 30 kg. Makara boyu sayfada yok (22, TAHMIN; kod/fizik/omni_teker.json ile ayni)"
   },
   {
-   "i": 123,
+   "i": 136,
+   "ad": "Omni gobek adaptoru (on sag)",
+   "grup": "Tahrik",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Omni gobek adaptoru: 12 mm altigen kaplin -> omni gobegi, PETG baski",
+   "kutle_g": 25.4,
+   "hacim_mm3": 24996.8,
+   "merkez": [
+    187.392,
+    62.5,
+    185.0
+   ],
+   "bb": [
+    179.0,
+    210.5,
+    34.5,
+    90.5,
+    157.0,
+    213.0
+   ],
+   "patlat": [
+    160,
+    -40,
+    40
+   ],
+   "not_": "gobek deseni TAHMIN (arayuz.TABAN['omni']['tahmin']); pilot teker gobek deligine girer (merkezleme), tork altigenden, teker 4x M3 ile flanstaki isil gomme somunlara"
+  },
+  {
+   "i": 137,
    "ad": "Pul M4 (braket on sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3939,7 +4385,7 @@
    "not_": ""
   },
   {
-   "i": 124,
+   "i": 138,
    "ad": "Civata M4x16 (braket on sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3968,7 +4414,7 @@
    "not_": ""
   },
   {
-   "i": 125,
+   "i": 139,
    "ad": "Somun M4 DIN 985 (braket on sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3997,7 +4443,7 @@
    "not_": ""
   },
   {
-   "i": 126,
+   "i": 140,
    "ad": "Pul M4 (braket on sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4026,7 +4472,7 @@
    "not_": ""
   },
   {
-   "i": 127,
+   "i": 141,
    "ad": "Civata M4x16 (braket on sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4055,7 +4501,7 @@
    "not_": ""
   },
   {
-   "i": 128,
+   "i": 142,
    "ad": "Somun M4 DIN 985 (braket on sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4084,7 +4530,7 @@
    "not_": ""
   },
   {
-   "i": 129,
+   "i": 143,
    "ad": "Civata M3x6 (motor on sag 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4113,7 +4559,7 @@
    "not_": ""
   },
   {
-   "i": 130,
+   "i": 144,
    "ad": "Civata M3x6 (motor on sag 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4142,7 +4588,7 @@
    "not_": ""
   },
   {
-   "i": 131,
+   "i": 145,
    "ad": "Civata M3x6 (motor on sag 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4171,7 +4617,7 @@
    "not_": ""
   },
   {
-   "i": 132,
+   "i": 146,
    "ad": "Civata M3x6 (motor on sag 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4200,7 +4646,7 @@
    "not_": ""
   },
   {
-   "i": 133,
+   "i": 147,
    "ad": "Pul M4 (teker on sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4229,7 +4675,7 @@
    "not_": ""
   },
   {
-   "i": 134,
+   "i": 148,
    "ad": "Civata M4x16 (teker on sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4258,7 +4704,355 @@
    "not_": ""
   },
   {
-   "i": 135,
+   "i": 149,
+   "ad": "Isil gomme somun M3 (omni on sag 1)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    184.15,
+    78.056,
+    200.556
+   ],
+   "bb": [
+    181.3,
+    187.0,
+    76.06,
+    80.06,
+    198.56,
+    202.56
+   ],
+   "patlat": [
+    160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 150,
+   "ad": "Pul M3 (omni on sag 1)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    216.25,
+    78.056,
+    200.556
+   ],
+   "bb": [
+    216.0,
+    216.5,
+    74.56,
+    81.56,
+    197.06,
+    204.06
+   ],
+   "patlat": [
+    260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 151,
+   "ad": "Civata M3x35 (omni on sag 1)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    202.765,
+    78.056,
+    200.556
+   ],
+   "bb": [
+    181.5,
+    219.5,
+    75.31,
+    80.81,
+    197.81,
+    203.31
+   ],
+   "patlat": [
+    300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 152,
+   "ad": "Isil gomme somun M3 (omni on sag 2)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    184.15,
+    78.056,
+    169.444
+   ],
+   "bb": [
+    181.3,
+    187.0,
+    76.06,
+    80.06,
+    167.44,
+    171.44
+   ],
+   "patlat": [
+    160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 153,
+   "ad": "Pul M3 (omni on sag 2)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    216.25,
+    78.056,
+    169.444
+   ],
+   "bb": [
+    216.0,
+    216.5,
+    74.56,
+    81.56,
+    165.94,
+    172.94
+   ],
+   "patlat": [
+    260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 154,
+   "ad": "Civata M3x35 (omni on sag 2)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    202.765,
+    78.056,
+    169.444
+   ],
+   "bb": [
+    181.5,
+    219.5,
+    75.31,
+    80.81,
+    166.69,
+    172.19
+   ],
+   "patlat": [
+    300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 155,
+   "ad": "Isil gomme somun M3 (omni on sag 3)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    184.15,
+    46.944,
+    169.444
+   ],
+   "bb": [
+    181.3,
+    187.0,
+    44.94,
+    48.94,
+    167.44,
+    171.44
+   ],
+   "patlat": [
+    160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 156,
+   "ad": "Pul M3 (omni on sag 3)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    216.25,
+    46.944,
+    169.444
+   ],
+   "bb": [
+    216.0,
+    216.5,
+    43.44,
+    50.44,
+    165.94,
+    172.94
+   ],
+   "patlat": [
+    260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 157,
+   "ad": "Civata M3x35 (omni on sag 3)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    202.765,
+    46.944,
+    169.444
+   ],
+   "bb": [
+    181.5,
+    219.5,
+    44.19,
+    49.69,
+    166.69,
+    172.19
+   ],
+   "patlat": [
+    300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 158,
+   "ad": "Isil gomme somun M3 (omni on sag 4)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
+   "merkez": [
+    184.15,
+    46.944,
+    200.556
+   ],
+   "bb": [
+    181.3,
+    187.0,
+    44.94,
+    48.94,
+    198.56,
+    202.56
+   ],
+   "patlat": [
+    160,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 159,
+   "ad": "Pul M3 (omni on sag 4)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    216.25,
+    46.944,
+    200.556
+   ],
+   "bb": [
+    216.0,
+    216.5,
+    43.44,
+    50.44,
+    197.06,
+    204.06
+   ],
+   "patlat": [
+    260,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 160,
+   "ad": "Civata M3x35 (omni on sag 4)",
+   "grup": "Tahrik",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x35 DIN 912",
+   "kutle_g": 2.43,
+   "hacim_mm3": 308.9,
+   "merkez": [
+    202.765,
+    46.944,
+    200.556
+   ],
+   "bb": [
+    181.5,
+    219.5,
+    44.19,
+    49.69,
+    197.81,
+    203.31
+   ],
+   "patlat": [
+    300,
+    -40,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 161,
    "ad": "Aku LiFePO4 12,8 V (yatik)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4287,7 +5081,7 @@
    "not_": "rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle 3,0 kg (Victron datasheet; planlama/maliyet.json aku satiri; P1.1 08.11.2026, onceki 2,8 kg Landport)"
   },
   {
-   "i": 136,
+   "i": 162,
    "ad": "Aku kayisi 25 mm (z -140)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4316,7 +5110,7 @@
    "not_": "plakadaki yariklardan gecip plaka altindan doner"
   },
   {
-   "i": 137,
+   "i": 163,
    "ad": "Aku kayisi 25 mm (z -80)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4345,7 +5139,7 @@
    "not_": "plakadaki yariklardan gecip plaka altindan doner"
   },
   {
-   "i": 138,
+   "i": 164,
    "ad": "Aku on takozu",
    "grup": "Guc",
    "tur": "Baski",
@@ -4374,7 +5168,7 @@
    "not_": "aku ile orta ara ray arasindaki 18 mm bosluk; kutuplar takozun ustunde serbest"
   },
   {
-   "i": 139,
+   "i": 165,
    "ad": "Isil gomme somun M3 (takoz x -60)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4403,7 +5197,7 @@
    "not_": ""
   },
   {
-   "i": 140,
+   "i": 166,
    "ad": "Civata M3x8 (takoz x -60)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4432,7 +5226,7 @@
    "not_": ""
   },
   {
-   "i": 141,
+   "i": 167,
    "ad": "Isil gomme somun M3 (takoz x +60)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4461,7 +5255,7 @@
    "not_": ""
   },
   {
-   "i": 142,
+   "i": 168,
    "ad": "Civata M3x8 (takoz x +60)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4490,7 +5284,7 @@
    "not_": ""
   },
   {
-   "i": 143,
+   "i": 169,
    "ad": "BTS7960 motor surucu sol",
    "grup": "Guc",
    "tur": "Satin",
@@ -4519,7 +5313,7 @@
    "not_": "sol motor cifti (on + arka paralel)"
   },
   {
-   "i": 144,
+   "i": 170,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4548,7 +5342,7 @@
    "not_": ""
   },
   {
-   "i": 145,
+   "i": 171,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4577,7 +5371,7 @@
    "not_": ""
   },
   {
-   "i": 146,
+   "i": 172,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4606,7 +5400,7 @@
    "not_": ""
   },
   {
-   "i": 147,
+   "i": 173,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4635,7 +5429,7 @@
    "not_": ""
   },
   {
-   "i": 148,
+   "i": 174,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4664,7 +5458,7 @@
    "not_": ""
   },
   {
-   "i": 149,
+   "i": 175,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4693,7 +5487,7 @@
    "not_": ""
   },
   {
-   "i": 150,
+   "i": 176,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4722,7 +5516,7 @@
    "not_": ""
   },
   {
-   "i": 151,
+   "i": 177,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4751,7 +5545,7 @@
    "not_": ""
   },
   {
-   "i": 152,
+   "i": 178,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4780,7 +5574,7 @@
    "not_": ""
   },
   {
-   "i": 153,
+   "i": 179,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4809,7 +5603,7 @@
    "not_": ""
   },
   {
-   "i": 154,
+   "i": 180,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4838,7 +5632,7 @@
    "not_": ""
   },
   {
-   "i": 155,
+   "i": 181,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4867,7 +5661,7 @@
    "not_": ""
   },
   {
-   "i": 156,
+   "i": 182,
    "ad": "BTS7960 motor surucu sag",
    "grup": "Guc",
    "tur": "Satin",
@@ -4896,7 +5690,7 @@
    "not_": "sag motor cifti (on + arka paralel)"
   },
   {
-   "i": 157,
+   "i": 183,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4925,7 +5719,7 @@
    "not_": ""
   },
   {
-   "i": 158,
+   "i": 184,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4954,7 +5748,7 @@
    "not_": ""
   },
   {
-   "i": 159,
+   "i": 185,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4983,7 +5777,7 @@
    "not_": ""
   },
   {
-   "i": 160,
+   "i": 186,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5012,7 +5806,7 @@
    "not_": ""
   },
   {
-   "i": 161,
+   "i": 187,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5041,7 +5835,7 @@
    "not_": ""
   },
   {
-   "i": 162,
+   "i": 188,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5070,7 +5864,7 @@
    "not_": ""
   },
   {
-   "i": 163,
+   "i": 189,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5099,7 +5893,7 @@
    "not_": ""
   },
   {
-   "i": 164,
+   "i": 190,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5128,7 +5922,7 @@
    "not_": ""
   },
   {
-   "i": 165,
+   "i": 191,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5157,7 +5951,7 @@
    "not_": ""
   },
   {
-   "i": 166,
+   "i": 192,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5186,7 +5980,7 @@
    "not_": ""
   },
   {
-   "i": 167,
+   "i": 193,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5215,7 +6009,7 @@
    "not_": ""
   },
   {
-   "i": 168,
+   "i": 194,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5244,7 +6038,7 @@
    "not_": ""
   },
   {
-   "i": 169,
+   "i": 195,
    "ad": "XL4016 servo 6 V B (sol kol)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5273,7 +6067,7 @@
    "not_": "servo 6 V B (sol kol)"
   },
   {
-   "i": 170,
+   "i": 196,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5302,7 +6096,7 @@
    "not_": ""
   },
   {
-   "i": 171,
+   "i": 197,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5331,7 +6125,7 @@
    "not_": ""
   },
   {
-   "i": 172,
+   "i": 198,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5360,7 +6154,7 @@
    "not_": ""
   },
   {
-   "i": 173,
+   "i": 199,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5389,7 +6183,7 @@
    "not_": ""
   },
   {
-   "i": 174,
+   "i": 200,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5418,7 +6212,7 @@
    "not_": ""
   },
   {
-   "i": 175,
+   "i": 201,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5447,7 +6241,7 @@
    "not_": ""
   },
   {
-   "i": 176,
+   "i": 202,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5476,7 +6270,7 @@
    "not_": ""
   },
   {
-   "i": 177,
+   "i": 203,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5505,7 +6299,7 @@
    "not_": ""
   },
   {
-   "i": 178,
+   "i": 204,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5534,7 +6328,7 @@
    "not_": ""
   },
   {
-   "i": 179,
+   "i": 205,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5563,7 +6357,7 @@
    "not_": ""
   },
   {
-   "i": 180,
+   "i": 206,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5592,7 +6386,7 @@
    "not_": ""
   },
   {
-   "i": 181,
+   "i": 207,
    "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5621,7 +6415,7 @@
    "not_": ""
   },
   {
-   "i": 182,
+   "i": 208,
    "ad": "XL4016 cevre 5 V",
    "grup": "Guc",
    "tur": "Satin",
@@ -5650,7 +6444,7 @@
    "not_": "cevre 5 V"
   },
   {
-   "i": 183,
+   "i": 209,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5679,7 +6473,7 @@
    "not_": ""
   },
   {
-   "i": 184,
+   "i": 210,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5708,7 +6502,7 @@
    "not_": ""
   },
   {
-   "i": 185,
+   "i": 211,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5737,7 +6531,7 @@
    "not_": ""
   },
   {
-   "i": 186,
+   "i": 212,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5766,7 +6560,7 @@
    "not_": ""
   },
   {
-   "i": 187,
+   "i": 213,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5795,7 +6589,7 @@
    "not_": ""
   },
   {
-   "i": 188,
+   "i": 214,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5824,7 +6618,7 @@
    "not_": ""
   },
   {
-   "i": 189,
+   "i": 215,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5853,7 +6647,7 @@
    "not_": ""
   },
   {
-   "i": 190,
+   "i": 216,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5882,7 +6676,7 @@
    "not_": ""
   },
   {
-   "i": 191,
+   "i": 217,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5911,7 +6705,7 @@
    "not_": ""
   },
   {
-   "i": 192,
+   "i": 218,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5940,7 +6734,7 @@
    "not_": ""
   },
   {
-   "i": 193,
+   "i": 219,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5969,7 +6763,7 @@
    "not_": ""
   },
   {
-   "i": 194,
+   "i": 220,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5998,7 +6792,7 @@
    "not_": ""
   },
   {
-   "i": 195,
+   "i": 221,
    "ad": "XL4016 servo 6 V A (sag kol)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6027,7 +6821,7 @@
    "not_": "servo 6 V A (sag kol)"
   },
   {
-   "i": 196,
+   "i": 222,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6056,7 +6850,7 @@
    "not_": ""
   },
   {
-   "i": 197,
+   "i": 223,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6085,7 +6879,7 @@
    "not_": ""
   },
   {
-   "i": 198,
+   "i": 224,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6114,7 +6908,7 @@
    "not_": ""
   },
   {
-   "i": 199,
+   "i": 225,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6143,7 +6937,7 @@
    "not_": ""
   },
   {
-   "i": 200,
+   "i": 226,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6172,7 +6966,7 @@
    "not_": ""
   },
   {
-   "i": 201,
+   "i": 227,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6201,7 +6995,7 @@
    "not_": ""
   },
   {
-   "i": 202,
+   "i": 228,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6230,7 +7024,7 @@
    "not_": ""
   },
   {
-   "i": 203,
+   "i": 229,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6259,7 +7053,7 @@
    "not_": ""
   },
   {
-   "i": 204,
+   "i": 230,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6288,7 +7082,7 @@
    "not_": ""
   },
   {
-   "i": 205,
+   "i": 231,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6317,7 +7111,7 @@
    "not_": ""
   },
   {
-   "i": 206,
+   "i": 232,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6346,7 +7140,7 @@
    "not_": ""
   },
   {
-   "i": 207,
+   "i": 233,
    "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6375,7 +7169,7 @@
    "not_": ""
   },
   {
-   "i": 208,
+   "i": 234,
    "ad": "XL4016 servo 6 V C (kafa pan + tilt)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6404,7 +7198,7 @@
    "not_": "karar 29.10: kafa servo hatti C (5 A mini hat sigortasi); guc panelinde, akunun onunde (Y3)"
   },
   {
-   "i": 209,
+   "i": 235,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6433,7 +7227,7 @@
    "not_": ""
   },
   {
-   "i": 210,
+   "i": 236,
    "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6462,7 +7256,7 @@
    "not_": ""
   },
   {
-   "i": 211,
+   "i": 237,
    "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6491,7 +7285,7 @@
    "not_": ""
   },
   {
-   "i": 212,
+   "i": 238,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6520,7 +7314,7 @@
    "not_": ""
   },
   {
-   "i": 213,
+   "i": 239,
    "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6549,7 +7343,7 @@
    "not_": ""
   },
   {
-   "i": 214,
+   "i": 240,
    "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6578,7 +7372,7 @@
    "not_": ""
   },
   {
-   "i": 215,
+   "i": 241,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6607,7 +7401,7 @@
    "not_": ""
   },
   {
-   "i": 216,
+   "i": 242,
    "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6636,7 +7430,7 @@
    "not_": ""
   },
   {
-   "i": 217,
+   "i": 243,
    "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6665,7 +7459,7 @@
    "not_": ""
   },
   {
-   "i": 218,
+   "i": 244,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6694,7 +7488,7 @@
    "not_": ""
   },
   {
-   "i": 219,
+   "i": 245,
    "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6723,7 +7517,7 @@
    "not_": ""
   },
   {
-   "i": 220,
+   "i": 246,
    "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6752,7 +7546,7 @@
    "not_": ""
   },
   {
-   "i": 221,
+   "i": 247,
    "ad": "On sarj karti (E9: K2 + 5,6 ohm)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6781,7 +7575,7 @@
    "not_": "E9 on sarj: K2 kontagi + 5,6 ohm K1 kontagina paralel (planlama/adim3/elektrik.md); Y3'te CAD'e girdi"
   },
   {
-   "i": 222,
+   "i": 248,
    "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6810,7 +7604,7 @@
    "not_": ""
   },
   {
-   "i": 223,
+   "i": 249,
    "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6839,7 +7633,7 @@
    "not_": ""
   },
   {
-   "i": 224,
+   "i": 250,
    "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6868,7 +7662,7 @@
    "not_": ""
   },
   {
-   "i": 225,
+   "i": 251,
    "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6897,7 +7691,7 @@
    "not_": ""
   },
   {
-   "i": 226,
+   "i": 252,
    "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6926,7 +7720,7 @@
    "not_": ""
   },
   {
-   "i": 227,
+   "i": 253,
    "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6955,7 +7749,7 @@
    "not_": ""
   },
   {
-   "i": 228,
+   "i": 254,
    "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6984,7 +7778,7 @@
    "not_": ""
   },
   {
-   "i": 229,
+   "i": 255,
    "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7013,7 +7807,7 @@
    "not_": ""
   },
   {
-   "i": 230,
+   "i": 256,
    "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7042,7 +7836,7 @@
    "not_": ""
   },
   {
-   "i": 231,
+   "i": 257,
    "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7071,7 +7865,7 @@
    "not_": ""
   },
   {
-   "i": 232,
+   "i": 258,
    "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7100,7 +7894,7 @@
    "not_": ""
   },
   {
-   "i": 233,
+   "i": 259,
    "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7129,7 +7923,7 @@
    "not_": ""
   },
   {
-   "i": 234,
+   "i": 260,
    "ad": "Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7158,7 +7952,7 @@
    "not_": "mantar (NC) cikisi -> role K1 bobini, K2 bobini (on sarj karti), PC817 (arayuz karti); kablolar.json A02 sonlandirmasi. Zarf ve kutle tahmini (kart yapilinca olculecek)"
   },
   {
-   "i": 235,
+   "i": 261,
    "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7187,7 +7981,7 @@
    "not_": ""
   },
   {
-   "i": 236,
+   "i": 262,
    "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7216,7 +8010,7 @@
    "not_": ""
   },
   {
-   "i": 237,
+   "i": 263,
    "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7245,7 +8039,7 @@
    "not_": ""
   },
   {
-   "i": 238,
+   "i": 264,
    "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7274,7 +8068,7 @@
    "not_": ""
   },
   {
-   "i": 239,
+   "i": 265,
    "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7303,7 +8097,7 @@
    "not_": ""
   },
   {
-   "i": 240,
+   "i": 266,
    "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7332,7 +8126,7 @@
    "not_": ""
   },
   {
-   "i": 241,
+   "i": 267,
    "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7361,7 +8155,7 @@
    "not_": ""
   },
   {
-   "i": 242,
+   "i": 268,
    "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7390,7 +8184,7 @@
    "not_": ""
   },
   {
-   "i": 243,
+   "i": 269,
    "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7419,7 +8213,7 @@
    "not_": ""
   },
   {
-   "i": 244,
+   "i": 270,
    "ad": "Burc M3x8 naylon burc (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7448,7 +8242,7 @@
    "not_": ""
   },
   {
-   "i": 245,
+   "i": 271,
    "ad": "Vida M3x6 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7477,7 +8271,7 @@
    "not_": ""
   },
   {
-   "i": 246,
+   "i": 272,
    "ad": "Vida M3x8 (Acil stop dugum karti (pertinaks, nominal zarf TAHMIN) 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7506,7 +8300,7 @@
    "not_": ""
   },
   {
-   "i": 247,
+   "i": 273,
    "ad": "Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7535,7 +8329,7 @@
    "not_": "XL4016 C'nin yaninda (karar P7b2a-6); SV3 semasinin ucu (100; 192; -60) kartin +z kenarinda. Zarf ve kutle tahmini"
   },
   {
-   "i": 248,
+   "i": 274,
    "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7564,7 +8358,7 @@
    "not_": ""
   },
   {
-   "i": 249,
+   "i": 275,
    "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7593,7 +8387,7 @@
    "not_": ""
   },
   {
-   "i": 250,
+   "i": 276,
    "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7622,7 +8416,7 @@
    "not_": ""
   },
   {
-   "i": 251,
+   "i": 277,
    "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7651,7 +8445,7 @@
    "not_": ""
   },
   {
-   "i": 252,
+   "i": 278,
    "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7680,7 +8474,7 @@
    "not_": ""
   },
   {
-   "i": 253,
+   "i": 279,
    "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7709,7 +8503,7 @@
    "not_": ""
   },
   {
-   "i": 254,
+   "i": 280,
    "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7738,7 +8532,7 @@
    "not_": ""
   },
   {
-   "i": 255,
+   "i": 281,
    "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7767,7 +8561,7 @@
    "not_": ""
   },
   {
-   "i": 256,
+   "i": 282,
    "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7796,7 +8590,7 @@
    "not_": ""
   },
   {
-   "i": 257,
+   "i": 283,
    "ad": "Burc M3x8 naylon burc (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7825,7 +8619,7 @@
    "not_": ""
   },
   {
-   "i": 258,
+   "i": 284,
    "ad": "Vida M3x6 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7854,7 +8648,7 @@
    "not_": ""
   },
   {
-   "i": 259,
+   "i": 285,
    "ad": "Vida M3x8 (Dagitim karti C (kafa pan + tilt; pertinaks, nominal zarf TAHMIN) 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7883,7 +8677,7 @@
    "not_": ""
   },
   {
-   "i": 260,
+   "i": 286,
    "ad": "Sigorta kutusu 6 yollu (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7912,7 +8706,7 @@
    "not_": "olcu bilinmiyor: zarf 105 x 60 x 35 tahmini, kumpasla olculecek"
   },
   {
-   "i": 261,
+   "i": 287,
    "ad": "Pul M4 (sigorta kutusu sol)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7941,7 +8735,7 @@
    "not_": ""
   },
   {
-   "i": 262,
+   "i": 288,
    "ad": "Civata M4x16 (sigorta kutusu sol)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7970,7 +8764,7 @@
    "not_": ""
   },
   {
-   "i": 263,
+   "i": 289,
    "ad": "Somun M4 (sigorta kutusu sol)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -7999,7 +8793,7 @@
    "not_": ""
   },
   {
-   "i": 264,
+   "i": 290,
    "ad": "Pul M4 (sigorta kutusu sag)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8028,7 +8822,7 @@
    "not_": ""
   },
   {
-   "i": 265,
+   "i": 291,
    "ad": "Civata M4x16 (sigorta kutusu sag)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8057,7 +8851,7 @@
    "not_": ""
   },
   {
-   "i": 266,
+   "i": 292,
    "ad": "Somun M4 (sigorta kutusu sag)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8086,7 +8880,7 @@
    "not_": ""
   },
   {
-   "i": 267,
+   "i": 293,
    "ad": "Role 12 V 40 A + soket (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -8115,7 +8909,7 @@
    "not_": "acil stop NC kontagi bobini keser -> motor + servo gucu duser (Pi acik kalir)"
   },
   {
-   "i": 268,
+   "i": 294,
    "ad": "Pul M4 (role)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8144,7 +8938,7 @@
    "not_": ""
   },
   {
-   "i": 269,
+   "i": 295,
    "ad": "Civata M4x16 (role)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8173,7 +8967,7 @@
    "not_": ""
   },
   {
-   "i": 270,
+   "i": 296,
    "ad": "Somun M4 (role)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8202,7 +8996,7 @@
    "not_": ""
   },
   {
-   "i": 271,
+   "i": 297,
    "ad": "Ana sigorta yuvasi 30 A (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -8231,7 +9025,7 @@
    "not_": "kablo uzerinde; panele 2 kablo bagi ile (cizilmedi)"
   },
   {
-   "i": 272,
+   "i": 298,
    "ad": "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -8260,7 +9054,7 @@
    "not_": "oneri: etek ust plakasinin altinda, acil stobun aynasi; kabukta delik yok (2. asama). Olcu bilinmiyor (zarf)"
   },
   {
-   "i": 273,
+   "i": 299,
    "ad": "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
    "grup": "Referans",
    "tur": "Referans",
@@ -8289,7 +9083,7 @@
    "not_": ""
   },
   {
-   "i": 274,
+   "i": 300,
    "ad": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
    "grup": "Guc",
    "tur": "Baski",
@@ -8318,7 +9112,7 @@
    "not_": "5 M5 saplama, 12 AWG siyah koprulerle zincir (kablolar.json bara-pabuc); K64 a"
   },
   {
-   "i": 275,
+   "i": 301,
    "ad": "Bara civatasi M5x25 DIN 933 (yildiz 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8347,7 +9141,7 @@
    "not_": ""
   },
   {
-   "i": 276,
+   "i": 302,
    "ad": "Pul M5 (yildiz 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8376,7 +9170,7 @@
    "not_": ""
   },
   {
-   "i": 277,
+   "i": 303,
    "ad": "Yayli pul M5 (yildiz 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8405,7 +9199,7 @@
    "not_": ""
   },
   {
-   "i": 278,
+   "i": 304,
    "ad": "Somun M5 (yildiz 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8434,7 +9228,7 @@
    "not_": ""
   },
   {
-   "i": 279,
+   "i": 305,
    "ad": "Bara civatasi M5x25 DIN 933 (yildiz 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8463,7 +9257,7 @@
    "not_": ""
   },
   {
-   "i": 280,
+   "i": 306,
    "ad": "Pul M5 (yildiz 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8492,7 +9286,7 @@
    "not_": ""
   },
   {
-   "i": 281,
+   "i": 307,
    "ad": "Yayli pul M5 (yildiz 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8521,7 +9315,7 @@
    "not_": ""
   },
   {
-   "i": 282,
+   "i": 308,
    "ad": "Somun M5 (yildiz 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8550,7 +9344,7 @@
    "not_": ""
   },
   {
-   "i": 283,
+   "i": 309,
    "ad": "Bara civatasi M5x25 DIN 933 (yildiz 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8579,7 +9373,7 @@
    "not_": ""
   },
   {
-   "i": 284,
+   "i": 310,
    "ad": "Pul M5 (yildiz 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8608,7 +9402,7 @@
    "not_": ""
   },
   {
-   "i": 285,
+   "i": 311,
    "ad": "Yayli pul M5 (yildiz 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8637,7 +9431,7 @@
    "not_": ""
   },
   {
-   "i": 286,
+   "i": 312,
    "ad": "Somun M5 (yildiz 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8666,7 +9460,7 @@
    "not_": ""
   },
   {
-   "i": 287,
+   "i": 313,
    "ad": "Bara civatasi M5x25 DIN 933 (yildiz 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8695,7 +9489,7 @@
    "not_": ""
   },
   {
-   "i": 288,
+   "i": 314,
    "ad": "Pul M5 (yildiz 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8724,7 +9518,7 @@
    "not_": ""
   },
   {
-   "i": 289,
+   "i": 315,
    "ad": "Yayli pul M5 (yildiz 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8753,7 +9547,7 @@
    "not_": ""
   },
   {
-   "i": 290,
+   "i": 316,
    "ad": "Somun M5 (yildiz 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8782,7 +9576,7 @@
    "not_": ""
   },
   {
-   "i": 291,
+   "i": 317,
    "ad": "Bara civatasi M5x25 DIN 933 (yildiz 5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8811,7 +9605,7 @@
    "not_": ""
   },
   {
-   "i": 292,
+   "i": 318,
    "ad": "Pul M5 (yildiz 5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8840,7 +9634,7 @@
    "not_": ""
   },
   {
-   "i": 293,
+   "i": 319,
    "ad": "Yayli pul M5 (yildiz 5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8869,7 +9663,7 @@
    "not_": ""
   },
   {
-   "i": 294,
+   "i": 320,
    "ad": "Somun M5 (yildiz 5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8898,7 +9692,7 @@
    "not_": ""
   },
   {
-   "i": 295,
+   "i": 321,
    "ad": "Isil gomme somun M3 (bara tutucusu yildiz x -60.0)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8927,7 +9721,7 @@
    "not_": ""
   },
   {
-   "i": 296,
+   "i": 322,
    "ad": "Civata M3x10 ISO 7380 (bara tutucusu yildiz x -60.0)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8956,7 +9750,7 @@
    "not_": ""
   },
   {
-   "i": 297,
+   "i": 323,
    "ad": "Isil gomme somun M3 (bara tutucusu yildiz x +60.0)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -8985,7 +9779,7 @@
    "not_": ""
   },
   {
-   "i": 298,
+   "i": 324,
    "ad": "Civata M3x10 ISO 7380 (bara tutucusu yildiz x +60.0)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9014,7 +9808,7 @@
    "not_": ""
   },
   {
-   "i": 299,
+   "i": 325,
    "ad": "Bara tutucusu anahtarli bara (+) (4 saplama)",
    "grup": "Guc",
    "tur": "Baski",
@@ -9043,7 +9837,7 @@
    "not_": "4 M5 saplama, 12 AWG kirmizi koprulerle zincir; besleme 3. saplama; K64 a"
   },
   {
-   "i": 300,
+   "i": 326,
    "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9072,7 +9866,7 @@
    "not_": ""
   },
   {
-   "i": 301,
+   "i": 327,
    "ad": "Pul M5 (anahtarli 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9101,7 +9895,7 @@
    "not_": ""
   },
   {
-   "i": 302,
+   "i": 328,
    "ad": "Yayli pul M5 (anahtarli 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9130,7 +9924,7 @@
    "not_": ""
   },
   {
-   "i": 303,
+   "i": 329,
    "ad": "Somun M5 (anahtarli 1)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9159,7 +9953,7 @@
    "not_": ""
   },
   {
-   "i": 304,
+   "i": 330,
    "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9188,7 +9982,7 @@
    "not_": ""
   },
   {
-   "i": 305,
+   "i": 331,
    "ad": "Pul M5 (anahtarli 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9217,7 +10011,7 @@
    "not_": ""
   },
   {
-   "i": 306,
+   "i": 332,
    "ad": "Yayli pul M5 (anahtarli 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9246,7 +10040,7 @@
    "not_": ""
   },
   {
-   "i": 307,
+   "i": 333,
    "ad": "Somun M5 (anahtarli 2)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9275,7 +10069,7 @@
    "not_": ""
   },
   {
-   "i": 308,
+   "i": 334,
    "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9304,7 +10098,7 @@
    "not_": ""
   },
   {
-   "i": 309,
+   "i": 335,
    "ad": "Pul M5 (anahtarli 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9333,7 +10127,7 @@
    "not_": ""
   },
   {
-   "i": 310,
+   "i": 336,
    "ad": "Yayli pul M5 (anahtarli 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9362,7 +10156,7 @@
    "not_": ""
   },
   {
-   "i": 311,
+   "i": 337,
    "ad": "Somun M5 (anahtarli 3)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9391,7 +10185,7 @@
    "not_": ""
   },
   {
-   "i": 312,
+   "i": 338,
    "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9420,7 +10214,7 @@
    "not_": ""
   },
   {
-   "i": 313,
+   "i": 339,
    "ad": "Pul M5 (anahtarli 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9449,7 +10243,7 @@
    "not_": ""
   },
   {
-   "i": 314,
+   "i": 340,
    "ad": "Yayli pul M5 (anahtarli 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9478,7 +10272,7 @@
    "not_": ""
   },
   {
-   "i": 315,
+   "i": 341,
    "ad": "Somun M5 (anahtarli 4)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9507,7 +10301,7 @@
    "not_": ""
   },
   {
-   "i": 316,
+   "i": 342,
    "ad": "Isil gomme somun M3 (bara tutucusu anahtarli x -47.5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9536,7 +10330,7 @@
    "not_": ""
   },
   {
-   "i": 317,
+   "i": 343,
    "ad": "Civata M3x10 ISO 7380 (bara tutucusu anahtarli x -47.5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9565,7 +10359,7 @@
    "not_": ""
   },
   {
-   "i": 318,
+   "i": 344,
    "ad": "Isil gomme somun M3 (bara tutucusu anahtarli x +47.5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9594,7 +10388,7 @@
    "not_": ""
   },
   {
-   "i": 319,
+   "i": 345,
    "ad": "Civata M3x10 ISO 7380 (bara tutucusu anahtarli x +47.5)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -9623,7 +10417,7 @@
    "not_": ""
   },
   {
-   "i": 320,
+   "i": 346,
    "ad": "Arayuz karti (E2/E3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -9652,7 +10446,7 @@
    "not_": "E2/E3 pertinaks: sonar bolucu x3, aku ADC bolucu, PC817 x2 (acil stop durumu, anahtarli 12 V), role surucu MOSFET + diyot"
   },
   {
-   "i": 321,
+   "i": 347,
    "ad": "Burc M3x8 naylon burc (Arayuz karti (E2/E3) 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -9681,7 +10475,7 @@
    "not_": ""
   },
   {
-   "i": 322,
+   "i": 348,
    "ad": "Vida M3x6 (Arayuz karti (E2/E3) 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9710,7 +10504,7 @@
    "not_": ""
   },
   {
-   "i": 323,
+   "i": 349,
    "ad": "Vida M3x8 (Arayuz karti (E2/E3) 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9739,7 +10533,7 @@
    "not_": ""
   },
   {
-   "i": 324,
+   "i": 350,
    "ad": "Burc M3x8 naylon burc (Arayuz karti (E2/E3) 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -9768,7 +10562,7 @@
    "not_": ""
   },
   {
-   "i": 325,
+   "i": 351,
    "ad": "Vida M3x6 (Arayuz karti (E2/E3) 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9797,7 +10591,7 @@
    "not_": ""
   },
   {
-   "i": 326,
+   "i": 352,
    "ad": "Vida M3x8 (Arayuz karti (E2/E3) 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9826,7 +10620,7 @@
    "not_": ""
   },
   {
-   "i": 327,
+   "i": 353,
    "ad": "Burc M3x8 naylon burc (Arayuz karti (E2/E3) 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -9855,7 +10649,7 @@
    "not_": ""
   },
   {
-   "i": 328,
+   "i": 354,
    "ad": "Vida M3x6 (Arayuz karti (E2/E3) 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9884,7 +10678,7 @@
    "not_": ""
   },
   {
-   "i": 329,
+   "i": 355,
    "ad": "Vida M3x8 (Arayuz karti (E2/E3) 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9913,7 +10707,7 @@
    "not_": ""
   },
   {
-   "i": 330,
+   "i": 356,
    "ad": "Burc M3x8 naylon burc (Arayuz karti (E2/E3) 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -9942,7 +10736,7 @@
    "not_": ""
   },
   {
-   "i": 331,
+   "i": 357,
    "ad": "Vida M3x6 (Arayuz karti (E2/E3) 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -9971,7 +10765,7 @@
    "not_": ""
   },
   {
-   "i": 332,
+   "i": 358,
    "ad": "Vida M3x8 (Arayuz karti (E2/E3) 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10000,7 +10794,7 @@
    "not_": ""
   },
   {
-   "i": 333,
+   "i": 359,
    "ad": "Servo dagitim karti A (sag kol)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10029,7 +10823,7 @@
    "not_": "E1: 16 AWG giris + 2200 uF + 3 pinli cikislar; sinyal PCA9685'ten kisa kopruyle, V+ PCA uzerinden GECMEZ"
   },
   {
-   "i": 334,
+   "i": 360,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10058,7 +10852,7 @@
    "not_": ""
   },
   {
-   "i": 335,
+   "i": 361,
    "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10087,7 +10881,7 @@
    "not_": ""
   },
   {
-   "i": 336,
+   "i": 362,
    "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10116,7 +10910,7 @@
    "not_": ""
   },
   {
-   "i": 337,
+   "i": 363,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10145,7 +10939,7 @@
    "not_": ""
   },
   {
-   "i": 338,
+   "i": 364,
    "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10174,7 +10968,7 @@
    "not_": ""
   },
   {
-   "i": 339,
+   "i": 365,
    "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10203,7 +10997,7 @@
    "not_": ""
   },
   {
-   "i": 340,
+   "i": 366,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10232,7 +11026,7 @@
    "not_": ""
   },
   {
-   "i": 341,
+   "i": 367,
    "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10261,7 +11055,7 @@
    "not_": ""
   },
   {
-   "i": 342,
+   "i": 368,
    "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10290,7 +11084,7 @@
    "not_": ""
   },
   {
-   "i": 343,
+   "i": 369,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10319,7 +11113,7 @@
    "not_": ""
   },
   {
-   "i": 344,
+   "i": 370,
    "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10348,7 +11142,7 @@
    "not_": ""
   },
   {
-   "i": 345,
+   "i": 371,
    "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10377,7 +11171,7 @@
    "not_": ""
   },
   {
-   "i": 346,
+   "i": 372,
    "ad": "Servo dagitim karti B (sol kol)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10406,7 +11200,7 @@
    "not_": "E1: 16 AWG giris + 2200 uF + 3 pinli cikislar; sinyal PCA9685'ten kisa kopruyle, V+ PCA uzerinden GECMEZ"
   },
   {
-   "i": 347,
+   "i": 373,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10435,7 +11229,7 @@
    "not_": ""
   },
   {
-   "i": 348,
+   "i": 374,
    "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10464,7 +11258,7 @@
    "not_": ""
   },
   {
-   "i": 349,
+   "i": 375,
    "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10493,7 +11287,7 @@
    "not_": ""
   },
   {
-   "i": 350,
+   "i": 376,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10522,7 +11316,7 @@
    "not_": ""
   },
   {
-   "i": 351,
+   "i": 377,
    "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10551,7 +11345,7 @@
    "not_": ""
   },
   {
-   "i": 352,
+   "i": 378,
    "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10580,7 +11374,7 @@
    "not_": ""
   },
   {
-   "i": 353,
+   "i": 379,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10609,7 +11403,7 @@
    "not_": ""
   },
   {
-   "i": 354,
+   "i": 380,
    "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10638,7 +11432,7 @@
    "not_": ""
   },
   {
-   "i": 355,
+   "i": 381,
    "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10667,7 +11461,7 @@
    "not_": ""
   },
   {
-   "i": 356,
+   "i": 382,
    "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10696,7 +11490,7 @@
    "not_": ""
   },
   {
-   "i": 357,
+   "i": 383,
    "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10725,7 +11519,7 @@
    "not_": ""
   },
   {
-   "i": 358,
+   "i": 384,
    "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10754,7 +11548,7 @@
    "not_": ""
   },
   {
-   "i": 359,
+   "i": 385,
    "ad": "PCA9685 servo surucu",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10783,7 +11577,7 @@
    "not_": ""
   },
   {
-   "i": 360,
+   "i": 386,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10812,7 +11606,7 @@
    "not_": ""
   },
   {
-   "i": 361,
+   "i": 387,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10841,7 +11635,7 @@
    "not_": ""
   },
   {
-   "i": 362,
+   "i": 388,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10870,7 +11664,7 @@
    "not_": ""
   },
   {
-   "i": 363,
+   "i": 389,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10899,7 +11693,7 @@
    "not_": ""
   },
   {
-   "i": 364,
+   "i": 390,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10928,7 +11722,7 @@
    "not_": ""
   },
   {
-   "i": 365,
+   "i": 391,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -10957,7 +11751,7 @@
    "not_": ""
   },
   {
-   "i": 366,
+   "i": 392,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -10986,7 +11780,7 @@
    "not_": ""
   },
   {
-   "i": 367,
+   "i": 393,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11015,7 +11809,7 @@
    "not_": ""
   },
   {
-   "i": 368,
+   "i": 394,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11044,7 +11838,7 @@
    "not_": ""
   },
   {
-   "i": 369,
+   "i": 395,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11073,7 +11867,7 @@
    "not_": ""
   },
   {
-   "i": 370,
+   "i": 396,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11102,7 +11896,7 @@
    "not_": ""
   },
   {
-   "i": 371,
+   "i": 397,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11131,7 +11925,7 @@
    "not_": ""
   },
   {
-   "i": 372,
+   "i": 398,
    "ad": "BNO055 IMU",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11160,7 +11954,7 @@
    "not_": ""
   },
   {
-   "i": 373,
+   "i": 399,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11189,7 +11983,7 @@
    "not_": ""
   },
   {
-   "i": 374,
+   "i": 400,
    "ad": "Vida M2,5x5 (BNO055 IMU 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11218,7 +12012,7 @@
    "not_": ""
   },
   {
-   "i": 375,
+   "i": 401,
    "ad": "Vida M2,5x8 (BNO055 IMU 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11247,7 +12041,7 @@
    "not_": ""
   },
   {
-   "i": 376,
+   "i": 402,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11276,7 +12070,7 @@
    "not_": ""
   },
   {
-   "i": 377,
+   "i": 403,
    "ad": "Vida M2,5x5 (BNO055 IMU 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11305,7 +12099,7 @@
    "not_": ""
   },
   {
-   "i": 378,
+   "i": 404,
    "ad": "Vida M2,5x8 (BNO055 IMU 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11334,7 +12128,7 @@
    "not_": ""
   },
   {
-   "i": 379,
+   "i": 405,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11363,7 +12157,7 @@
    "not_": ""
   },
   {
-   "i": 380,
+   "i": 406,
    "ad": "Vida M2,5x5 (BNO055 IMU 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11392,7 +12186,7 @@
    "not_": ""
   },
   {
-   "i": 381,
+   "i": 407,
    "ad": "Vida M2,5x8 (BNO055 IMU 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11421,7 +12215,7 @@
    "not_": ""
   },
   {
-   "i": 382,
+   "i": 408,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11450,7 +12244,7 @@
    "not_": ""
   },
   {
-   "i": 383,
+   "i": 409,
    "ad": "Vida M2,5x5 (BNO055 IMU 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11479,7 +12273,7 @@
    "not_": ""
   },
   {
-   "i": 384,
+   "i": 410,
    "ad": "Vida M2,5x8 (BNO055 IMU 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11508,7 +12302,7 @@
    "not_": ""
   },
   {
-   "i": 385,
+   "i": 411,
    "ad": "ESP32 tasiyici kart (pertinaks)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11537,7 +12331,7 @@
    "not_": ""
   },
   {
-   "i": 386,
+   "i": 412,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11566,7 +12360,7 @@
    "not_": ""
   },
   {
-   "i": 387,
+   "i": 413,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11595,7 +12389,7 @@
    "not_": ""
   },
   {
-   "i": 388,
+   "i": 414,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11624,7 +12418,7 @@
    "not_": ""
   },
   {
-   "i": 389,
+   "i": 415,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11653,7 +12447,7 @@
    "not_": ""
   },
   {
-   "i": 390,
+   "i": 416,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11682,7 +12476,7 @@
    "not_": ""
   },
   {
-   "i": 391,
+   "i": 417,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11711,7 +12505,7 @@
    "not_": ""
   },
   {
-   "i": 392,
+   "i": 418,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11740,7 +12534,7 @@
    "not_": ""
   },
   {
-   "i": 393,
+   "i": 419,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11769,7 +12563,7 @@
    "not_": ""
   },
   {
-   "i": 394,
+   "i": 420,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11798,7 +12592,7 @@
    "not_": ""
   },
   {
-   "i": 395,
+   "i": 421,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11827,7 +12621,7 @@
    "not_": ""
   },
   {
-   "i": 396,
+   "i": 422,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11856,7 +12650,7 @@
    "not_": ""
   },
   {
-   "i": 397,
+   "i": 423,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -11885,7 +12679,7 @@
    "not_": ""
   },
   {
-   "i": 398,
+   "i": 424,
    "ad": "ESP32 DevKit 30 pin",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -11914,7 +12708,7 @@
    "not_": "disi header'a takili (pin 6 mm)"
   },
   {
-   "i": 399,
+   "i": 425,
    "ad": "Sonar HC-SR04 (sol)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -11943,7 +12737,7 @@
    "not_": "transduserler etek deliklerinden (O17)"
   },
   {
-   "i": 400,
+   "i": 426,
    "ad": "Sonar tutucu sol",
    "grup": "Sensor",
    "tur": "Baski",
@@ -11972,7 +12766,7 @@
    "not_": "PCB yandan raylara surulur; on ara rayin on kanalina M6"
   },
   {
-   "i": 401,
+   "i": 427,
    "ad": "Civata M6x14 ISO 7380 (sonar sol x -48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12001,7 +12795,7 @@
    "not_": ""
   },
   {
-   "i": 402,
+   "i": 428,
    "ad": "Cekic somun M6 (sonar sol x -48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12030,7 +12824,7 @@
    "not_": ""
   },
   {
-   "i": 403,
+   "i": 429,
    "ad": "Sonar HC-SR04 (orta)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -12059,7 +12853,7 @@
    "not_": "transduserler etek deliklerinden (O17)"
   },
   {
-   "i": 404,
+   "i": 430,
    "ad": "Sonar tutucu orta",
    "grup": "Sensor",
    "tur": "Baski",
@@ -12088,7 +12882,7 @@
    "not_": "PCB yandan raylara surulur; on ara rayin on kanalina M6"
   },
   {
-   "i": 405,
+   "i": 431,
    "ad": "Civata M6x14 ISO 7380 (sonar orta x -31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12117,7 +12911,7 @@
    "not_": ""
   },
   {
-   "i": 406,
+   "i": 432,
    "ad": "Cekic somun M6 (sonar orta x -31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12146,7 +12940,7 @@
    "not_": ""
   },
   {
-   "i": 407,
+   "i": 433,
    "ad": "Civata M6x14 ISO 7380 (sonar orta x +31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12175,7 +12969,7 @@
    "not_": ""
   },
   {
-   "i": 408,
+   "i": 434,
    "ad": "Cekic somun M6 (sonar orta x +31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12204,7 +12998,7 @@
    "not_": ""
   },
   {
-   "i": 409,
+   "i": 435,
    "ad": "Sonar HC-SR04 (sag)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -12233,7 +13027,7 @@
    "not_": "transduserler etek deliklerinden (O17)"
   },
   {
-   "i": 410,
+   "i": 436,
    "ad": "Sonar tutucu sag",
    "grup": "Sensor",
    "tur": "Baski",
@@ -12262,7 +13056,7 @@
    "not_": "PCB yandan raylara surulur; on ara rayin on kanalina M6"
   },
   {
-   "i": 411,
+   "i": 437,
    "ad": "Civata M6x14 ISO 7380 (sonar sag x +48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12291,7 +13085,7 @@
    "not_": ""
   },
   {
-   "i": 412,
+   "i": 438,
    "ad": "Cekic somun M6 (sonar sag x +48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -12320,7 +13114,7 @@
    "not_": ""
   },
   {
-   "i": 413,
+   "i": 439,
    "ad": "Acil stop mantari + bilezik",
    "grup": "Sensor",
    "tur": "Satin",
@@ -12349,7 +13143,7 @@
    "not_": "Emas B200E60 (rc:357-365; 04). Elde B200E-E (40 mm mantar): O60 zarf buyuk tarafta kalir"
   },
   {
-   "i": 414,
+   "i": 440,
    "ad": "Acil stop kontak govdesi (1NC)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -12378,7 +13172,7 @@
    "not_": "etek ust plakasinin O22,4 deliginde; bilezik plaka ustune oturur"
   },
   {
-   "i": 415,
+   "i": 441,
    "ad": "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
    "grup": "Referans",
    "tur": "Referans",
@@ -12407,7 +13201,7 @@
    "not_": ""
   },
   {
-   "i": 416,
+   "i": 442,
    "ad": "Kablo yolu 2: Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer",
    "grup": "Referans",
    "tur": "Referans",
@@ -12436,7 +13230,7 @@
    "not_": ""
   },
   {
-   "i": 417,
+   "i": 443,
    "ad": "Kablo yolu 3: Motor 12 V: F1 20 A -> role K1 -> anahtarli bara 3. saplama (kopru) 1. saplama -> BTS7960 sol -> on sol motor",
    "grup": "Referans",
    "tur": "Referans",
@@ -12465,7 +13259,7 @@
    "not_": ""
   },
   {
-   "i": 418,
+   "i": 444,
    "ad": "Kablo yolu 4: Motor 12 V sag kol + arka motorlar: anahtarli bara / yildiz 2. saplama -> BTS7960 sag (plaka altindan z 36 deliginden)",
    "grup": "Referans",
    "tur": "Referans",
@@ -12494,7 +13288,7 @@
    "not_": ""
   },
   {
-   "i": 419,
+   "i": 445,
    "ad": "Kablo yolu 5: Servo 6 V A (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
    "grup": "Referans",
    "tur": "Referans",
@@ -12523,7 +13317,7 @@
    "not_": ""
   },
   {
-   "i": 420,
+   "i": 446,
    "ad": "Kablo yolu 6: Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
    "grup": "Referans",
    "tur": "Referans",
@@ -12552,7 +13346,7 @@
    "not_": ""
   },
   {
-   "i": 421,
+   "i": 447,
    "ad": "Kablo yolu 7: Servo 6 V B (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
    "grup": "Referans",
    "tur": "Referans",
@@ -12581,7 +13375,7 @@
    "not_": ""
   },
   {
-   "i": 422,
+   "i": 448,
    "ad": "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A + yildiz 4. saplama -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
    "grup": "Referans",
    "tur": "Referans",
@@ -12610,7 +13404,7 @@
    "not_": ""
   },
   {
-   "i": 423,
+   "i": 449,
    "ad": "Kablo yolu 9: Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
    "grup": "Referans",
    "tur": "Referans",
@@ -12639,7 +13433,7 @@
    "not_": ""
   },
   {
-   "i": 424,
+   "i": 450,
    "ad": "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
    "grup": "Referans",
    "tur": "Referans",
@@ -12668,7 +13462,7 @@
    "not_": ""
   },
   {
-   "i": 425,
+   "i": 451,
    "ad": "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
    "grup": "Referans",
    "tur": "Referans",
@@ -12697,7 +13491,7 @@
    "not_": ""
   },
   {
-   "i": 426,
+   "i": 452,
    "ad": "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)",
    "grup": "Referans",
    "tur": "Referans",
@@ -12826,7 +13620,8 @@
     "Motor JGB37-520 (on sol)",
     "Motor braketi L 37 mm (on sol)",
     "Kaplin 12 mm altigen (on sol)",
-    "Teker 125 x 58 (on sol)",
+    "Omni teker 127 x 29 (on sol)",
+    "Omni gobek adaptoru (on sol)",
     "Pul M4 (braket on sol -1)",
     "Civata M4x16 (braket on sol -1)",
     "Somun M4 DIN 985 (braket on sol -1)",
@@ -12839,6 +13634,18 @@
     "Civata M3x6 (motor on sol 5)",
     "Pul M4 (teker on sol)",
     "Civata M4x16 (teker on sol)",
+    "Isil gomme somun M3 (omni on sol 1)",
+    "Pul M3 (omni on sol 1)",
+    "Civata M3x35 (omni on sol 1)",
+    "Isil gomme somun M3 (omni on sol 2)",
+    "Pul M3 (omni on sol 2)",
+    "Civata M3x35 (omni on sol 2)",
+    "Isil gomme somun M3 (omni on sol 3)",
+    "Pul M3 (omni on sol 3)",
+    "Civata M3x35 (omni on sol 3)",
+    "Isil gomme somun M3 (omni on sol 4)",
+    "Pul M3 (omni on sol 4)",
+    "Civata M3x35 (omni on sol 4)",
     "Motor JGB37-520 (arka sag)",
     "Motor braketi L 37 mm (arka sag)",
     "Kaplin 12 mm altigen (arka sag)",
@@ -12858,7 +13665,8 @@
     "Motor JGB37-520 (on sag)",
     "Motor braketi L 37 mm (on sag)",
     "Kaplin 12 mm altigen (on sag)",
-    "Teker 125 x 58 (on sag)",
+    "Omni teker 127 x 29 (on sag)",
+    "Omni gobek adaptoru (on sag)",
     "Pul M4 (braket on sag -1)",
     "Civata M4x16 (braket on sag -1)",
     "Somun M4 DIN 985 (braket on sag -1)",
@@ -12870,9 +13678,21 @@
     "Civata M3x6 (motor on sag 3)",
     "Civata M3x6 (motor on sag 5)",
     "Pul M4 (teker on sag)",
-    "Civata M4x16 (teker on sag)"
+    "Civata M4x16 (teker on sag)",
+    "Isil gomme somun M3 (omni on sag 1)",
+    "Pul M3 (omni on sag 1)",
+    "Civata M3x35 (omni on sag 1)",
+    "Isil gomme somun M3 (omni on sag 2)",
+    "Pul M3 (omni on sag 2)",
+    "Civata M3x35 (omni on sag 2)",
+    "Isil gomme somun M3 (omni on sag 3)",
+    "Pul M3 (omni on sag 3)",
+    "Civata M3x35 (omni on sag 3)",
+    "Isil gomme somun M3 (omni on sag 4)",
+    "Pul M3 (omni on sag 4)",
+    "Civata M3x35 (omni on sag 4)"
    ],
-   "kutle_g": 1677.8
+   "kutle_g": 2431.1
   },
   "Guc": {
    "hareket": "sabit (sase / iskelete sabit)",
@@ -13206,7 +14026,7 @@
  "gecersiz": [],
  "coklu_kati": [],
  "ic_cakisma": [],
- "cift_sayisi": 708,
+ "cift_sayisi": 782,
  "tolerans_mm3": 0.5,
  "baglanti_kontrol": [
   {
@@ -14117,7 +14937,7 @@
    "tamam": true
   },
   {
-   "ad": "Teker - kaplin (on sol)",
+   "ad": "Omni adaptoru - kaplin (on sol)",
    "tip": "dis",
    "olcu": {
     "d": 4,
@@ -14145,6 +14965,86 @@
    },
    "hata": [],
    "temas_mm": [],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 1)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 2)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 3)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sol 4)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
    "eksen_mm": [
     0.0,
     0.0
@@ -14423,7 +15323,7 @@
    "tamam": true
   },
   {
-   "ad": "Teker - kaplin (on sag)",
+   "ad": "Omni adaptoru - kaplin (on sag)",
    "tip": "dis",
    "olcu": {
     "d": 4,
@@ -14451,6 +15351,86 @@
    },
    "hata": [],
    "temas_mm": [],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 1)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 2)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 3)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eksen_mm": [
+    0.0,
+    0.0
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Omni teker - adaptor (on sag 4)",
+   "tip": "insert",
+   "olcu": {
+    "d": 3,
+    "kavrama": 5.5,
+    "insert_boy": 5.7
+   },
+   "hata": [],
+   "temas_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
    "eksen_mm": [
     0.0,
     0.0
@@ -16416,7 +17396,7 @@
   "temas": 36
  },
  "kabuk": {
-  "cift": 509,
+  "cift": 533,
   "cakisma": [],
   "temas": 1
  },
@@ -16437,18 +17417,18 @@
    ]
   },
   {
-   "teker": "Teker 125 x 58 (on sol)",
-   "bosluk_mm": 12.0,
+   "teker": "Omni teker 127 x 29 (on sol)",
+   "bosluk_mm": 11.0,
    "parca": "Etek on sol",
    "teker_nokta": [
-    -245.0,
+    -196.5,
     62.5,
-    227.0
+    248.5
    ],
    "etek_nokta": [
-    -257.0,
+    -196.5,
     62.5,
-    227.0
+    259.5
    ]
   },
   {
@@ -16467,18 +17447,18 @@
    ]
   },
   {
-   "teker": "Teker 125 x 58 (on sag)",
-   "bosluk_mm": 12.0,
+   "teker": "Omni teker 127 x 29 (on sag)",
+   "bosluk_mm": 11.0,
    "parca": "Etek on sag",
    "teker_nokta": [
-    245.0,
+    196.5,
     62.5,
-    227.0
+    248.5
    ],
    "etek_nokta": [
-    257.0,
+    196.5,
     62.5,
-    227.0
+    259.5
    ]
   }
  ],
@@ -16550,13 +17530,18 @@
    "bosluk_mm": 3.2
   },
   {
-   "parca": "Teker 125 x 58 (arka sol)",
-   "kabuk_parca": "Etek arka sol",
-   "bosluk_mm": 12.0
+   "parca": "Omni teker 127 x 29 (on sol)",
+   "kabuk_parca": "Etek on sol",
+   "bosluk_mm": 11.0
   },
   {
-   "parca": "Teker 125 x 58 (on sol)",
-   "kabuk_parca": "Etek on sol",
+   "parca": "Omni teker 127 x 29 (on sag)",
+   "kabuk_parca": "Etek on sag",
+   "bosluk_mm": 11.0
+  },
+  {
+   "parca": "Teker 125 x 58 (arka sol)",
+   "kabuk_parca": "Etek arka sol",
    "bosluk_mm": 12.0
   },
   {
@@ -16565,9 +17550,14 @@
    "bosluk_mm": 12.0
   },
   {
-   "parca": "Teker 125 x 58 (on sag)",
+   "parca": "Omni gobek adaptoru (on sol)",
+   "kabuk_parca": "Etek on sol",
+   "bosluk_mm": 46.5
+  },
+  {
+   "parca": "Omni gobek adaptoru (on sag)",
    "kabuk_parca": "Etek on sag",
-   "bosluk_mm": 12.0
+   "bosluk_mm": 46.5
   },
   {
    "parca": "Acil stop dugum karti (pertinaks, nominal zarf TAHMIN)",
@@ -16580,6 +17570,31 @@
   "ihlal": []
  },
  "baski": [
+  {
+   "ad": "Omni gobek adaptoru (on sag)",
+   "olcu": [
+    56.0,
+    56.0,
+    31.5
+   ],
+   "tabla_aci": 45,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0118,
+   "cikinti_alan_cm2": 1.11,
+   "yuzey_cm2": 93.8,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "kesit_kaydirma": [],
+   "hacim_cm3": 25.0,
+   "kutle_g": 25.4,
+   "filament_g": 26.7,
+   "sure_saat": 0.56,
+   "katman": 31,
+   "yon": "flansin motor tarafi yuzu tablada (pilot yukari) (2 adet; sol ayni parca)",
+   "adet": 1
+  },
   {
    "ad": "Aku on takozu",
    "olcu": [
@@ -16827,7 +17842,7 @@
    "kutle_g": 239.7
   }
  ],
- "kutle_g": 8272.5,
+ "kutle_g": 9025.8,
  "kablo_payi": {
   "kutle_g": 400.0,
   "merkez": [
@@ -16837,29 +17852,29 @@
   ],
   "not_": "kablo payi (tahmini): 12 AWG ~4 m, 18 AWG ~10 m, servo uzatma ~8 m, Dupont, XT60, WAGO; parca listesine girmez"
  },
- "kutle_payli_g": 8672.5,
+ "kutle_payli_g": 9425.8,
  "agirlik_merkezi": [
-  -0.639,
-  121.634,
-  -46.122
+  -0.586,
+  116.699,
+  -26.833
  ],
  "agirlik_merkezi_payli": [
-  -0.61,
-  122.943,
-  -46.762
+  -0.561,
+  118.112,
+  -28.241
  ],
  "kutle_grup": {
   "Plaka": 2150.5,
-  "Tahrik": 1677.8,
+  "Tahrik": 2431.1,
   "Guc": 4109.3,
   "Elektronik": 166.1,
   "Sensor": 168.8
  },
  "kutle_tur": {
   "Lazer": 1799.0,
-  "Baglanti": 536.8,
-  "Satin": 5801.1,
-  "Baski": 135.6
+  "Baglanti": 559.3,
+  "Satin": 6481.1,
+  "Baski": 186.4
  },
  "en_agir": [
   [
@@ -16869,6 +17884,14 @@
   [
    "Alt plaka",
    1363.7
+  ],
+  [
+   "Omni teker 127 x 29 (on sol)",
+   480.0
+  ],
+  [
+   "Omni teker 127 x 29 (on sag)",
+   480.0
   ],
   [
    "Guc paneli (arka kat)",
@@ -16901,23 +17924,15 @@
   [
    "Teker 125 x 58 (arka sol)",
    140.0
-  ],
-  [
-   "Teker 125 x 58 (on sol)",
-   140.0
-  ],
-  [
-   "Teker 125 x 58 (arka sag)",
-   140.0
   ]
  ],
  "robot": {
   "kaynak": "montaj/montaj-analiz.json (tabansiz 837 parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
   "tabansiz_kutle_g": 17603.63,
   "tabansiz_am": [
-   0.352,
+   0.35,
    716.293,
-   7.402
+   7.401
   ],
   "tabansiz_parca": 837,
   "hareketli_gruplar": {
@@ -16962,7 +17977,20 @@
     ]
    }
   },
-  "temas": "teker merkez duzlemleri x +-216, z +-185 (520 taban); fren ivmesi 1,5 m/s2 (acil stop, tahmini)",
+  "temas": "teker merkez duzlemleri: on x +-201.5, arka x +-216.0, z +-185 (520 taban; on omni ise yamuk destek, yan kenar dik uzaklikla); fren ivmesi 1,5 m/s2 (acil stop, tahmini)",
+  "destek": {
+   "on_x_mm": 201.5,
+   "arka_x_mm": 216.0,
+   "z_mm": 185.0,
+   "on_iz_mm": 403.0,
+   "arka_iz_mm": 432.0,
+   "omni": true
+  },
+  "zemin": {
+   "on_teker_zemin_alti_mm": 1.0,
+   "durus_egimi_derece": 0.155,
+   "not_": "CAD ve ana montaj zemini arka teker temasi (y = 0); aks 62,5 ortak oldugundan O127 on omni CAD'de zeminin 1.0 mm altina iner (gosterim). Gercek durus: on uc 1.0 mm yukari, burun yukari 0.155 derece; devrilme hesabinda geri yone eklendi (ileri kazanci alinmadi)"
+  },
   "pozlar": [
    {
     "kod": "ev",
@@ -16978,41 +18006,43 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 26276.1,
+    "kutle_g": 27029.4,
     "am": [
      0.0,
-     520.5,
-     -10.5
+     507.7,
+     -5.0
     ],
     "duz": {
-     "ileri": 3.68,
-     "geri": 3.29,
-     "yan": 4.07,
-     "pay_ileri": 2.46,
-     "pay_geri": 2.19,
-     "pay_yan": 2.71,
-     "statik_egim_ileri": 20.6,
-     "statik_egim_geri": 18.5,
-     "statik_egim_yan": 22.5,
-     "dF": 195.5,
-     "dR": 174.5,
-     "dS": 216.0,
-     "h": 520.5
+     "ileri": 3.67,
+     "geri": 3.45,
+     "yan": 4.03,
+     "pay_ileri": 2.45,
+     "pay_geri": 2.3,
+     "pay_yan": 2.69,
+     "statik_egim_ileri": 20.5,
+     "statik_egim_geri": 19.4,
+     "statik_egim_yan": 22.4,
+     "dF": 190.0,
+     "dR": 180.0,
+     "dS": 208.8,
+     "h": 507.7,
+     "durus_egimi_derece": 0.155
     },
     "rampa5": {
-     "ileri": 2.82,
-     "geri": 2.42,
-     "yan": 3.2,
-     "pay_ileri": 1.88,
-     "pay_geri": 1.61,
-     "pay_yan": 2.13,
-     "statik_egim_ileri": 20.6,
-     "statik_egim_geri": 18.5,
-     "statik_egim_yan": 22.5,
-     "dF": 195.5,
-     "dR": 174.5,
-     "dS": 216.0,
-     "h": 520.5
+     "ileri": 2.8,
+     "geri": 2.58,
+     "yan": 3.16,
+     "pay_ileri": 1.87,
+     "pay_geri": 1.72,
+     "pay_yan": 2.11,
+     "statik_egim_ileri": 20.5,
+     "statik_egim_geri": 19.4,
+     "statik_egim_yan": 22.4,
+     "dF": 190.0,
+     "dR": 180.0,
+     "dS": 208.8,
+     "h": 507.7,
+     "durus_egimi_derece": 0.155
     }
    },
    {
@@ -17029,41 +18059,43 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 26276.1,
+    "kutle_g": 27029.4,
     "am": [
      0.0,
-     528.8,
-     -2.0
+     515.8,
+     3.2
     ],
     "duz": {
-     "ileri": 3.47,
-     "geri": 3.39,
-     "yan": 4.01,
+     "ileri": 3.46,
+     "geri": 3.55,
+     "yan": 3.96,
      "pay_ileri": 2.31,
-     "pay_geri": 2.26,
-     "pay_yan": 2.67,
-     "statik_egim_ileri": 19.5,
-     "statik_egim_geri": 19.1,
-     "statik_egim_yan": 22.2,
-     "dF": 187.0,
-     "dR": 183.0,
-     "dS": 216.0,
-     "h": 528.8
+     "pay_geri": 2.37,
+     "pay_yan": 2.64,
+     "statik_egim_ileri": 19.4,
+     "statik_egim_geri": 19.9,
+     "statik_egim_yan": 22.0,
+     "dF": 181.8,
+     "dR": 188.2,
+     "dS": 208.4,
+     "h": 515.8,
+     "durus_egimi_derece": 0.155
     },
     "rampa5": {
-     "ileri": 2.6,
-     "geri": 2.53,
-     "yan": 3.14,
+     "ileri": 2.59,
+     "geri": 2.68,
+     "yan": 3.09,
      "pay_ileri": 1.73,
-     "pay_geri": 1.68,
-     "pay_yan": 2.09,
-     "statik_egim_ileri": 19.5,
-     "statik_egim_geri": 19.1,
-     "statik_egim_yan": 22.2,
-     "dF": 187.0,
-     "dR": 183.0,
-     "dS": 216.0,
-     "h": 528.8
+     "pay_geri": 1.79,
+     "pay_yan": 2.06,
+     "statik_egim_ileri": 19.4,
+     "statik_egim_geri": 19.9,
+     "statik_egim_yan": 22.0,
+     "dF": 181.8,
+     "dR": 188.2,
+     "dS": 208.4,
+     "h": 515.8,
+     "durus_egimi_derece": 0.155
     }
    },
    {
@@ -17080,41 +18112,43 @@
      0
     ],
     "yuk": true,
-    "kutle_g": 27276.1,
+    "kutle_g": 28029.4,
     "am": [
      0.0,
-     555.9,
-     13.0
+     542.6,
+     17.6
     ],
     "duz": {
-     "ileri": 3.04,
-     "geri": 3.49,
-     "yan": 3.81,
+     "ileri": 3.03,
+     "geri": 3.64,
+     "yan": 3.76,
      "pay_ileri": 2.02,
-     "pay_geri": 2.33,
-     "pay_yan": 2.54,
-     "statik_egim_ileri": 17.2,
-     "statik_egim_geri": 19.6,
-     "statik_egim_yan": 21.2,
-     "dF": 172.0,
-     "dR": 198.0,
-     "dS": 216.0,
-     "h": 555.9
+     "pay_geri": 2.42,
+     "pay_yan": 2.51,
+     "statik_egim_ileri": 17.1,
+     "statik_egim_geri": 20.3,
+     "statik_egim_yan": 21.0,
+     "dF": 167.4,
+     "dR": 202.6,
+     "dS": 207.9,
+     "h": 542.6,
+     "durus_egimi_derece": 0.155
     },
     "rampa5": {
-     "ileri": 2.17,
-     "geri": 2.63,
-     "yan": 2.94,
-     "pay_ileri": 1.45,
-     "pay_geri": 1.75,
-     "pay_yan": 1.96,
-     "statik_egim_ileri": 17.2,
-     "statik_egim_geri": 19.6,
-     "statik_egim_yan": 21.2,
-     "dF": 172.0,
-     "dR": 198.0,
-     "dS": 216.0,
-     "h": 555.9
+     "ileri": 2.16,
+     "geri": 2.77,
+     "yan": 2.89,
+     "pay_ileri": 1.44,
+     "pay_geri": 1.84,
+     "pay_yan": 1.93,
+     "statik_egim_ileri": 17.1,
+     "statik_egim_geri": 20.3,
+     "statik_egim_yan": 21.0,
+     "dF": 167.4,
+     "dR": 202.6,
+     "dS": 207.9,
+     "h": 542.6,
+     "durus_egimi_derece": 0.155
     }
    },
    {
@@ -17131,41 +18165,43 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 26276.1,
+    "kutle_g": 27029.4,
     "am": [
      0.0,
-     534.7,
-     -4.4
+     521.6,
+     0.9
     ],
     "duz": {
-     "ileri": 3.48,
-     "geri": 3.31,
-     "yan": 3.96,
-     "pay_ileri": 2.32,
-     "pay_geri": 2.21,
-     "pay_yan": 2.64,
-     "statik_egim_ileri": 19.5,
-     "statik_egim_geri": 18.7,
-     "statik_egim_yan": 22.0,
-     "dF": 189.4,
-     "dR": 180.6,
-     "dS": 216.0,
-     "h": 534.7
+     "ileri": 3.46,
+     "geri": 3.47,
+     "yan": 3.92,
+     "pay_ileri": 2.31,
+     "pay_geri": 2.31,
+     "pay_yan": 2.61,
+     "statik_egim_ileri": 19.4,
+     "statik_egim_geri": 19.5,
+     "statik_egim_yan": 21.8,
+     "dF": 184.1,
+     "dR": 185.9,
+     "dS": 208.5,
+     "h": 521.6,
+     "durus_egimi_derece": 0.155
     },
     "rampa5": {
-     "ileri": 2.61,
-     "geri": 2.45,
-     "yan": 3.09,
-     "pay_ileri": 1.74,
-     "pay_geri": 1.63,
-     "pay_yan": 2.06,
-     "statik_egim_ileri": 19.5,
-     "statik_egim_geri": 18.7,
-     "statik_egim_yan": 22.0,
-     "dF": 189.4,
-     "dR": 180.6,
-     "dS": 216.0,
-     "h": 534.7
+     "ileri": 2.6,
+     "geri": 2.6,
+     "yan": 3.05,
+     "pay_ileri": 1.73,
+     "pay_geri": 1.73,
+     "pay_yan": 2.03,
+     "statik_egim_ileri": 19.4,
+     "statik_egim_geri": 19.5,
+     "statik_egim_yan": 21.8,
+     "dF": 184.1,
+     "dR": 185.9,
+     "dS": 208.5,
+     "h": 521.6,
+     "durus_egimi_derece": 0.155
     }
    },
    {
@@ -17182,41 +18218,43 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 26276.1,
+    "kutle_g": 27029.4,
     "am": [
      0.0,
-     523.0,
-     -16.4
+     510.1,
+     -10.8
     ],
     "duz": {
-     "ileri": 3.78,
-     "geri": 3.16,
-     "yan": 4.05,
-     "pay_ileri": 2.52,
-     "pay_geri": 2.11,
-     "pay_yan": 2.7,
-     "statik_egim_ileri": 21.1,
-     "statik_egim_geri": 17.9,
-     "statik_egim_yan": 22.4,
-     "dF": 201.4,
-     "dR": 168.6,
-     "dS": 216.0,
-     "h": 523.0
+     "ileri": 3.76,
+     "geri": 3.32,
+     "yan": 4.02,
+     "pay_ileri": 2.51,
+     "pay_geri": 2.22,
+     "pay_yan": 2.68,
+     "statik_egim_ileri": 21.0,
+     "statik_egim_geri": 18.7,
+     "statik_egim_yan": 22.3,
+     "dF": 195.8,
+     "dR": 174.2,
+     "dS": 209.0,
+     "h": 510.1,
+     "durus_egimi_derece": 0.155
     },
     "rampa5": {
-     "ileri": 2.91,
-     "geri": 2.3,
-     "yan": 3.18,
-     "pay_ileri": 1.94,
-     "pay_geri": 1.53,
-     "pay_yan": 2.12,
-     "statik_egim_ileri": 21.1,
-     "statik_egim_geri": 17.9,
-     "statik_egim_yan": 22.4,
-     "dF": 201.4,
-     "dR": 168.6,
-     "dS": 216.0,
-     "h": 523.0
+     "ileri": 2.9,
+     "geri": 2.46,
+     "yan": 3.15,
+     "pay_ileri": 1.93,
+     "pay_geri": 1.64,
+     "pay_yan": 2.1,
+     "statik_egim_ileri": 21.0,
+     "statik_egim_geri": 18.7,
+     "statik_egim_yan": 22.3,
+     "dF": 195.8,
+     "dR": 174.2,
+     "dS": 209.0,
+     "h": 510.1,
+     "durus_egimi_derece": 0.155
     }
    },
    {
@@ -17233,41 +18271,43 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 26276.1,
+    "kutle_g": 27029.4,
     "am": [
-     4.2,
-     524.8,
-     -10.5
+     4.1,
+     511.9,
+     -5.0
     ],
     "duz": {
-     "ileri": 3.65,
-     "geri": 3.26,
-     "yan": 3.96,
-     "pay_ileri": 2.44,
-     "pay_geri": 2.18,
-     "pay_yan": 2.64,
+     "ileri": 3.64,
+     "geri": 3.42,
+     "yan": 3.92,
+     "pay_ileri": 2.43,
+     "pay_geri": 2.28,
+     "pay_yan": 2.62,
      "statik_egim_ileri": 20.4,
-     "statik_egim_geri": 18.4,
-     "statik_egim_yan": 22.0,
-     "dF": 195.5,
-     "dR": 174.5,
-     "dS": 211.8,
-     "h": 524.8
+     "statik_egim_geri": 19.2,
+     "statik_egim_yan": 21.8,
+     "dF": 190.0,
+     "dR": 180.0,
+     "dS": 204.7,
+     "h": 511.9,
+     "durus_egimi_derece": 0.155
     },
     "rampa5": {
-     "ileri": 2.79,
-     "geri": 2.4,
-     "yan": 3.09,
-     "pay_ileri": 1.86,
-     "pay_geri": 1.6,
-     "pay_yan": 2.06,
+     "ileri": 2.77,
+     "geri": 2.55,
+     "yan": 3.05,
+     "pay_ileri": 1.85,
+     "pay_geri": 1.7,
+     "pay_yan": 2.04,
      "statik_egim_ileri": 20.4,
-     "statik_egim_geri": 18.4,
-     "statik_egim_yan": 22.0,
-     "dF": 195.5,
-     "dR": 174.5,
-     "dS": 211.8,
-     "h": 524.8
+     "statik_egim_geri": 19.2,
+     "statik_egim_yan": 21.8,
+     "dF": 190.0,
+     "dR": 180.0,
+     "dS": 204.7,
+     "h": 511.9,
+     "durus_egimi_derece": 0.155
     }
    }
   ]
@@ -17276,37 +18316,37 @@
   "duz": {
    "rampa": 0.0,
    "a": 0.5,
-   "F_N": 20.9,
-   "T_kgcm": 3.33,
-   "oran": 0.528
+   "F_N": 21.5,
+   "T_kgcm": 3.42,
+   "oran": 0.543
   },
   "rampa5": {
    "rampa": 5.0,
    "a": 0.5,
-   "F_N": 43.3,
-   "T_kgcm": 6.9,
-   "oran": 1.095
+   "F_N": 44.5,
+   "T_kgcm": 7.1,
+   "oran": 1.127
   },
   "rampa5_yavas": {
    "rampa": 5.0,
    "a": 0.25,
-   "F_N": 36.7,
-   "T_kgcm": 5.85,
-   "oran": 0.929
+   "F_N": 37.8,
+   "T_kgcm": 6.02,
+   "oran": 0.956
   },
   "rampa5_durus": {
    "rampa": 5.0,
    "a": 0.0,
-   "F_N": 30.2,
-   "T_kgcm": 4.81,
-   "oran": 0.763
+   "F_N": 31.0,
+   "T_kgcm": 4.94,
+   "oran": 0.785
   },
   "rampa5_yuk2": {
    "rampa": 5.0,
    "a": 0.5,
-   "F_N": 46.6,
-   "T_kgcm": 7.43,
-   "oran": 1.179
+   "F_N": 47.8,
+   "T_kgcm": 7.62,
+   "oran": 1.21
   },
   "surekli_kgcm": 6.3,
   "stall_kgcm": 21.0,
@@ -17319,9 +18359,9 @@
   }
  },
  "aks": {
-  "on_N": 121.6,
+  "on_N": 129.0,
   "arka_N": 136.2,
-  "mu_gereken_rampa5": 0.169
+  "mu_gereken_rampa5": 0.168
  },
  "aku": {
   "wh": 256.0,
@@ -17426,11 +18466,11 @@
    "kaynak_stall": "Direnc.net sayfasi (21 kg, durma)",
    "kaynak_akim": "tahmini (06-aku-secimi.md 2,4-2,8 A)"
   },
-  "kutle_kg": 26.276,
+  "kutle_kg": 27.029,
   "am_mm": [
    0.0,
-   520.5,
-   -10.5
+   507.7,
+   -5.0
   ],
   "teker_x_mm": 216.0,
   "aks_z_mm": 185.0,
@@ -17460,55 +18500,55 @@
     "k": -1.0,
     "omni": false,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -23.7,
+    "ani_merkez_z_mm": -11.3,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 10.29,
+      "N": 64.5,
+      "T_kgcm": 11.36,
       "rol": "surus",
-      "oran_surekli": 1.63,
-      "oran_stall": 0.49,
-      "akim_A": 1.43
+      "oran_surekli": 1.8,
+      "oran_stall": 0.54,
+      "akim_A": 1.57
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 10.29,
+      "N": 64.5,
+      "T_kgcm": 11.36,
       "rol": "surus",
-      "oran_surekli": 1.63,
-      "oran_stall": 0.49,
-      "akim_A": 1.43
+      "oran_surekli": 1.8,
+      "oran_stall": 0.54,
+      "akim_A": 1.57
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 13.11,
+      "T_kgcm": 12.75,
       "rol": "surus",
-      "oran_surekli": 2.08,
-      "oran_stall": 0.62,
-      "akim_A": 1.79
+      "oran_surekli": 2.02,
+      "oran_stall": 0.61,
+      "akim_A": 1.75
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 13.11,
+      "T_kgcm": 12.75,
       "rol": "surus",
-      "oran_surekli": 2.08,
-      "oran_stall": 0.62,
-      "akim_A": 1.79
+      "oran_surekli": 2.02,
+      "oran_stall": 0.61,
+      "akim_A": 1.75
      }
     ],
-    "en_cok_kgcm": 13.11,
+    "en_cok_kgcm": 12.75,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.08,
-    "en_cok_oran_stall": 0.62,
-    "en_cok_akim_A": 1.79,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.02,
+    "en_cok_oran_stall": 0.61,
+    "en_cok_akim_A": 1.75,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -17520,55 +18560,55 @@
     "k": -1.0,
     "omni": false,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -24.1,
+    "ani_merkez_z_mm": -11.5,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 12.62,
+      "N": 64.5,
+      "T_kgcm": 13.97,
       "rol": "surus",
-      "oran_surekli": 2.0,
-      "oran_stall": 0.6,
-      "akim_A": 1.73
+      "oran_surekli": 2.22,
+      "oran_stall": 0.67,
+      "akim_A": 1.9
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 12.62,
+      "N": 64.5,
+      "T_kgcm": 13.97,
       "rol": "surus",
-      "oran_surekli": 2.0,
-      "oran_stall": 0.6,
-      "akim_A": 1.73
+      "oran_surekli": 2.22,
+      "oran_stall": 0.67,
+      "akim_A": 1.9
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 16.19,
+      "T_kgcm": 15.72,
       "rol": "surus",
-      "oran_surekli": 2.57,
-      "oran_stall": 0.77,
-      "akim_A": 2.19
+      "oran_surekli": 2.49,
+      "oran_stall": 0.75,
+      "akim_A": 2.13
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 16.19,
+      "T_kgcm": 15.72,
       "rol": "surus",
-      "oran_surekli": 2.57,
-      "oran_stall": 0.77,
-      "akim_A": 2.19
+      "oran_surekli": 2.49,
+      "oran_stall": 0.75,
+      "akim_A": 2.13
      }
     ],
-    "en_cok_kgcm": 16.19,
+    "en_cok_kgcm": 15.72,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.57,
-    "en_cok_oran_stall": 0.77,
-    "en_cok_akim_A": 2.19,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.49,
+    "en_cok_oran_stall": 0.75,
+    "en_cok_akim_A": 2.13,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -17580,55 +18620,55 @@
     "k": -1.0,
     "omni": false,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -24.4,
+    "ani_merkez_z_mm": -11.6,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 14.94,
+      "N": 64.5,
+      "T_kgcm": 16.56,
       "rol": "surus",
-      "oran_surekli": 2.37,
-      "oran_stall": 0.71,
-      "akim_A": 2.03
+      "oran_surekli": 2.63,
+      "oran_stall": 0.79,
+      "akim_A": 2.23
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 14.94,
+      "N": 64.5,
+      "T_kgcm": 16.56,
       "rol": "surus",
-      "oran_surekli": 2.37,
-      "oran_stall": 0.71,
-      "akim_A": 2.03
+      "oran_surekli": 2.63,
+      "oran_stall": 0.79,
+      "akim_A": 2.23
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 19.26,
+      "T_kgcm": 18.67,
       "rol": "surus",
-      "oran_surekli": 3.06,
-      "oran_stall": 0.92,
-      "akim_A": 2.58
+      "oran_surekli": 2.96,
+      "oran_stall": 0.89,
+      "akim_A": 2.5
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 19.26,
+      "T_kgcm": 18.67,
       "rol": "surus",
-      "oran_surekli": 3.06,
-      "oran_stall": 0.92,
-      "akim_A": 2.58
+      "oran_surekli": 2.96,
+      "oran_stall": 0.89,
+      "akim_A": 2.5
      }
     ],
-    "en_cok_kgcm": 19.26,
+    "en_cok_kgcm": 18.67,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 3.06,
-    "en_cok_oran_stall": 0.92,
-    "en_cok_akim_A": 2.58,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.96,
+    "en_cok_oran_stall": 0.89,
+    "en_cok_akim_A": 2.5,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -17647,50 +18687,50 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.79,
+      "N": 64.5,
+      "T_kgcm": 5.99,
       "rol": "surus",
-      "oran_surekli": 0.44,
-      "oran_stall": 0.13,
-      "akim_A": 0.48
+      "oran_surekli": 0.95,
+      "oran_stall": 0.29,
+      "akim_A": 0.88
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.79,
+      "N": 64.5,
+      "T_kgcm": 5.99,
       "rol": "surus",
-      "oran_surekli": 0.44,
-      "oran_stall": 0.13,
-      "akim_A": 0.48
+      "oran_surekli": 0.95,
+      "oran_stall": 0.29,
+      "akim_A": 0.88
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 2.56,
-      "rol": "surus",
-      "oran_surekli": 0.41,
-      "oran_stall": 0.12,
-      "akim_A": 0.45
+      "T_kgcm": 0.13,
+      "rol": "fren",
+      "oran_surekli": 0.02,
+      "oran_stall": 0.01,
+      "akim_A": 0.14
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 2.56,
-      "rol": "surus",
-      "oran_surekli": 0.41,
-      "oran_stall": 0.12,
-      "akim_A": 0.45
+      "T_kgcm": 0.13,
+      "rol": "fren",
+      "oran_surekli": 0.02,
+      "oran_stall": 0.01,
+      "akim_A": 0.14
      }
     ],
-    "en_cok_kgcm": 2.79,
+    "en_cok_kgcm": 5.99,
     "en_cok_teker": "on sag",
-    "en_cok_oran_surekli": 0.44,
-    "en_cok_oran_stall": 0.13,
-    "en_cok_akim_A": 0.48,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 0.95,
+    "en_cok_oran_stall": 0.29,
+    "en_cok_akim_A": 0.88,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
@@ -17707,53 +18747,53 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 3.18,
+      "N": 64.5,
+      "T_kgcm": 8.03,
       "rol": "surus",
-      "oran_surekli": 0.5,
-      "oran_stall": 0.15,
-      "akim_A": 0.53
+      "oran_surekli": 1.27,
+      "oran_stall": 0.38,
+      "akim_A": 1.14
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 3.18,
+      "N": 64.5,
+      "T_kgcm": 8.03,
       "rol": "surus",
-      "oran_surekli": 0.5,
-      "oran_stall": 0.15,
-      "akim_A": 0.53
+      "oran_surekli": 1.27,
+      "oran_stall": 0.38,
+      "akim_A": 1.14
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 2.18,
-      "rol": "surus",
-      "oran_surekli": 0.35,
+      "T_kgcm": 2.03,
+      "rol": "fren",
+      "oran_surekli": 0.32,
       "oran_stall": 0.1,
-      "akim_A": 0.4
+      "akim_A": 0.38
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 2.18,
-      "rol": "surus",
-      "oran_surekli": 0.35,
+      "T_kgcm": 2.03,
+      "rol": "fren",
+      "oran_surekli": 0.32,
       "oran_stall": 0.1,
-      "akim_A": 0.4
+      "akim_A": 0.38
      }
     ],
-    "en_cok_kgcm": 3.18,
+    "en_cok_kgcm": 8.03,
     "en_cok_teker": "on sag",
-    "en_cok_oran_surekli": 0.5,
-    "en_cok_oran_stall": 0.15,
-    "en_cok_akim_A": 0.53,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 1.27,
+    "en_cok_oran_stall": 0.38,
+    "en_cok_akim_A": 1.14,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
-     "iterasyon": 6
+     "iterasyon": 5
     },
     "etiket": "senaryo"
    },
@@ -17767,50 +18807,50 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 3.65,
+      "N": 64.5,
+      "T_kgcm": 10.45,
       "rol": "surus",
-      "oran_surekli": 0.58,
-      "oran_stall": 0.17,
-      "akim_A": 0.59
+      "oran_surekli": 1.66,
+      "oran_stall": 0.5,
+      "akim_A": 1.45
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 3.65,
+      "N": 64.5,
+      "T_kgcm": 10.45,
       "rol": "surus",
-      "oran_surekli": 0.58,
-      "oran_stall": 0.17,
-      "akim_A": 0.59
+      "oran_surekli": 1.66,
+      "oran_stall": 0.5,
+      "akim_A": 1.45
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 1.72,
-      "rol": "surus",
-      "oran_surekli": 0.27,
-      "oran_stall": 0.08,
-      "akim_A": 0.34
+      "T_kgcm": 4.3,
+      "rol": "fren",
+      "oran_surekli": 0.68,
+      "oran_stall": 0.2,
+      "akim_A": 0.67
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 1.72,
-      "rol": "surus",
-      "oran_surekli": 0.27,
-      "oran_stall": 0.08,
-      "akim_A": 0.34
+      "T_kgcm": 4.3,
+      "rol": "fren",
+      "oran_surekli": 0.68,
+      "oran_stall": 0.2,
+      "akim_A": 0.67
      }
     ],
-    "en_cok_kgcm": 3.65,
+    "en_cok_kgcm": 10.45,
     "en_cok_teker": "on sag",
-    "en_cok_oran_surekli": 0.58,
-    "en_cok_oran_stall": 0.17,
-    "en_cok_akim_A": 0.59,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 1.66,
+    "en_cok_oran_stall": 0.5,
+    "en_cok_akim_A": 1.45,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
@@ -17823,56 +18863,56 @@
     "mu": 0.4,
     "k": -0.5,
     "omni": false,
-    "yaricap_mm": 124.0,
-    "ani_merkez_z_mm": -22.9,
+    "yaricap_mm": 125.0,
+    "ani_merkez_z_mm": -10.9,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 10.21,
+      "N": 64.5,
+      "T_kgcm": 11.25,
       "rol": "surus",
-      "oran_surekli": 1.62,
-      "oran_stall": 0.49,
-      "akim_A": 1.42
+      "oran_surekli": 1.79,
+      "oran_stall": 0.54,
+      "akim_A": 1.56
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 10.21,
+      "N": 64.5,
+      "T_kgcm": 11.25,
       "rol": "surus",
-      "oran_surekli": 1.62,
-      "oran_stall": 0.49,
-      "akim_A": 1.42
+      "oran_surekli": 1.79,
+      "oran_stall": 0.54,
+      "akim_A": 1.56
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 12.91,
+      "T_kgcm": 12.57,
       "rol": "surus",
-      "oran_surekli": 2.05,
-      "oran_stall": 0.61,
-      "akim_A": 1.77
+      "oran_surekli": 2.0,
+      "oran_stall": 0.6,
+      "akim_A": 1.72
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 12.91,
+      "T_kgcm": 12.57,
       "rol": "surus",
-      "oran_surekli": 2.05,
-      "oran_stall": 0.61,
-      "akim_A": 1.77
+      "oran_surekli": 2.0,
+      "oran_stall": 0.6,
+      "akim_A": 1.72
      }
     ],
-    "en_cok_kgcm": 12.91,
+    "en_cok_kgcm": 12.57,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.05,
-    "en_cok_oran_stall": 0.61,
-    "en_cok_akim_A": 1.77,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.0,
+    "en_cok_oran_stall": 0.6,
+    "en_cok_akim_A": 1.72,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -17882,56 +18922,56 @@
     "mu": 0.4,
     "k": 0.0,
     "omni": false,
-    "yaricap_mm": 372.0,
-    "ani_merkez_z_mm": -21.1,
+    "yaricap_mm": 374.0,
+    "ani_merkez_z_mm": -10.1,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 9.97,
+      "N": 64.5,
+      "T_kgcm": 10.93,
       "rol": "surus",
-      "oran_surekli": 1.58,
-      "oran_stall": 0.47,
-      "akim_A": 1.39
+      "oran_surekli": 1.74,
+      "oran_stall": 0.52,
+      "akim_A": 1.51
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 8.81,
+      "N": 64.5,
+      "T_kgcm": 9.7,
       "rol": "tutma",
-      "oran_surekli": 1.4,
-      "oran_stall": 0.42,
-      "akim_A": 1.24
+      "oran_surekli": 1.54,
+      "oran_stall": 0.46,
+      "akim_A": 1.36
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 12.39,
+      "T_kgcm": 12.11,
       "rol": "surus",
-      "oran_surekli": 1.97,
-      "oran_stall": 0.59,
-      "akim_A": 1.7
+      "oran_surekli": 1.92,
+      "oran_stall": 0.58,
+      "akim_A": 1.67
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 11.09,
+      "T_kgcm": 10.81,
       "rol": "tutma",
-      "oran_surekli": 1.76,
-      "oran_stall": 0.53,
-      "akim_A": 1.53
+      "oran_surekli": 1.72,
+      "oran_stall": 0.51,
+      "akim_A": 1.5
      }
     ],
-    "en_cok_kgcm": 12.39,
+    "en_cok_kgcm": 12.11,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 1.97,
-    "en_cok_oran_stall": 0.59,
-    "en_cok_akim_A": 1.7,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 1.92,
+    "en_cok_oran_stall": 0.58,
+    "en_cok_akim_A": 1.67,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -17941,56 +18981,56 @@
     "mu": 0.4,
     "k": 0.5,
     "omni": false,
-    "yaricap_mm": 1120.0,
-    "ani_merkez_z_mm": -16.5,
+    "yaricap_mm": 1122.0,
+    "ani_merkez_z_mm": -7.8,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 8.86,
+      "N": 64.5,
+      "T_kgcm": 9.57,
       "rol": "surus",
-      "oran_surekli": 1.41,
-      "oran_stall": 0.42,
-      "akim_A": 1.25
+      "oran_surekli": 1.52,
+      "oran_stall": 0.46,
+      "akim_A": 1.34
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 6.54,
+      "N": 64.5,
+      "T_kgcm": 7.11,
       "rol": "fren",
-      "oran_surekli": 1.04,
-      "oran_stall": 0.31,
-      "akim_A": 0.95
+      "oran_surekli": 1.13,
+      "oran_stall": 0.34,
+      "akim_A": 1.03
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 10.5,
+      "T_kgcm": 10.38,
       "rol": "surus",
-      "oran_surekli": 1.67,
-      "oran_stall": 0.5,
-      "akim_A": 1.46
+      "oran_surekli": 1.65,
+      "oran_stall": 0.49,
+      "akim_A": 1.44
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 7.9,
+      "T_kgcm": 7.78,
       "rol": "fren",
-      "oran_surekli": 1.25,
-      "oran_stall": 0.38,
-      "akim_A": 1.13
+      "oran_surekli": 1.23,
+      "oran_stall": 0.37,
+      "akim_A": 1.11
      }
     ],
-    "en_cok_kgcm": 10.5,
+    "en_cok_kgcm": 10.38,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 1.67,
-    "en_cok_oran_stall": 0.5,
-    "en_cok_akim_A": 1.46,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 1.65,
+    "en_cok_oran_stall": 0.49,
+    "en_cok_akim_A": 1.44,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -18000,87 +19040,28 @@
     "mu": 0.5,
     "k": -0.5,
     "omni": false,
-    "yaricap_mm": 124.0,
-    "ani_merkez_z_mm": -23.6,
+    "yaricap_mm": 125.0,
+    "ani_merkez_z_mm": -11.2,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 12.55,
+      "N": 64.5,
+      "T_kgcm": 13.87,
       "rol": "surus",
-      "oran_surekli": 1.99,
-      "oran_stall": 0.6,
-      "akim_A": 1.72
+      "oran_surekli": 2.2,
+      "oran_stall": 0.66,
+      "akim_A": 1.89
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 12.55,
+      "N": 64.5,
+      "T_kgcm": 13.87,
       "rol": "surus",
-      "oran_surekli": 1.99,
-      "oran_stall": 0.6,
-      "akim_A": 1.72
-     },
-     {
-      "teker": "arka sag",
-      "omni": false,
-      "N": 68.1,
-      "T_kgcm": 16.02,
-      "rol": "surus",
-      "oran_surekli": 2.54,
-      "oran_stall": 0.76,
-      "akim_A": 2.16
-     },
-     {
-      "teker": "arka sol",
-      "omni": false,
-      "N": 68.1,
-      "T_kgcm": 16.02,
-      "rol": "surus",
-      "oran_surekli": 2.54,
-      "oran_stall": 0.76,
-      "akim_A": 2.16
-     }
-    ],
-    "en_cok_kgcm": 16.02,
-    "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.54,
-    "en_cok_oran_stall": 0.76,
-    "en_cok_akim_A": 2.16,
-    "ivme_payi_kgcm": 0.76,
-    "yakinsama": {
-     "artik_N": 0.0,
-     "iterasyon": 5
-    }
-   },
-   {
-    "mu": 0.5,
-    "k": 0.0,
-    "omni": false,
-    "yaricap_mm": 372.0,
-    "ani_merkez_z_mm": -22.2,
-    "tekerler": [
-     {
-      "teker": "on sag",
-      "omni": false,
-      "N": 60.8,
-      "T_kgcm": 12.37,
-      "rol": "surus",
-      "oran_surekli": 1.96,
-      "oran_stall": 0.59,
-      "akim_A": 1.7
-     },
-     {
-      "teker": "on sol",
-      "omni": false,
-      "N": 60.8,
-      "T_kgcm": 11.2,
-      "rol": "tutma",
-      "oran_surekli": 1.78,
-      "oran_stall": 0.53,
-      "akim_A": 1.55
+      "oran_surekli": 2.2,
+      "oran_stall": 0.66,
+      "akim_A": 1.89
      },
      {
       "teker": "arka sag",
@@ -18096,11 +19077,11 @@
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 14.27,
-      "rol": "tutma",
-      "oran_surekli": 2.26,
-      "oran_stall": 0.68,
-      "akim_A": 1.94
+      "T_kgcm": 15.57,
+      "rol": "surus",
+      "oran_surekli": 2.47,
+      "oran_stall": 0.74,
+      "akim_A": 2.11
      }
     ],
     "en_cok_kgcm": 15.57,
@@ -18108,7 +19089,66 @@
     "en_cok_oran_surekli": 2.47,
     "en_cok_oran_stall": 0.74,
     "en_cok_akim_A": 2.11,
-    "ivme_payi_kgcm": 0.76,
+    "ivme_payi_kgcm": 0.79,
+    "yakinsama": {
+     "artik_N": 0.0,
+     "iterasyon": 5
+    }
+   },
+   {
+    "mu": 0.5,
+    "k": 0.0,
+    "omni": false,
+    "yaricap_mm": 374.0,
+    "ani_merkez_z_mm": -10.6,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": false,
+      "N": 64.5,
+      "T_kgcm": 13.61,
+      "rol": "surus",
+      "oran_surekli": 2.16,
+      "oran_stall": 0.65,
+      "akim_A": 1.86
+     },
+     {
+      "teker": "on sol",
+      "omni": false,
+      "N": 64.5,
+      "T_kgcm": 12.38,
+      "rol": "tutma",
+      "oran_surekli": 1.96,
+      "oran_stall": 0.59,
+      "akim_A": 1.7
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "N": 68.1,
+      "T_kgcm": 15.18,
+      "rol": "surus",
+      "oran_surekli": 2.41,
+      "oran_stall": 0.72,
+      "akim_A": 2.06
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "N": 68.1,
+      "T_kgcm": 13.88,
+      "rol": "tutma",
+      "oran_surekli": 2.2,
+      "oran_stall": 0.66,
+      "akim_A": 1.89
+     }
+    ],
+    "en_cok_kgcm": 15.18,
+    "en_cok_teker": "arka sag",
+    "en_cok_oran_surekli": 2.41,
+    "en_cok_oran_stall": 0.72,
+    "en_cok_akim_A": 2.06,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -18118,56 +19158,56 @@
     "mu": 0.5,
     "k": 0.5,
     "omni": false,
-    "yaricap_mm": 1119.0,
-    "ani_merkez_z_mm": -18.1,
+    "yaricap_mm": 1122.0,
+    "ani_merkez_z_mm": -8.6,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 11.4,
+      "N": 64.5,
+      "T_kgcm": 12.39,
       "rol": "surus",
-      "oran_surekli": 1.81,
-      "oran_stall": 0.54,
-      "akim_A": 1.58
+      "oran_surekli": 1.97,
+      "oran_stall": 0.59,
+      "akim_A": 1.7
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 9.08,
+      "N": 64.5,
+      "T_kgcm": 9.92,
       "rol": "fren",
-      "oran_surekli": 1.44,
-      "oran_stall": 0.43,
-      "akim_A": 1.28
+      "oran_surekli": 1.57,
+      "oran_stall": 0.47,
+      "akim_A": 1.39
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 13.76,
+      "T_kgcm": 13.54,
       "rol": "surus",
-      "oran_surekli": 2.18,
-      "oran_stall": 0.66,
-      "akim_A": 1.88
+      "oran_surekli": 2.15,
+      "oran_stall": 0.64,
+      "akim_A": 1.85
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 11.15,
+      "T_kgcm": 10.94,
       "rol": "fren",
-      "oran_surekli": 1.77,
-      "oran_stall": 0.53,
-      "akim_A": 1.54
+      "oran_surekli": 1.74,
+      "oran_stall": 0.52,
+      "akim_A": 1.52
      }
     ],
-    "en_cok_kgcm": 13.76,
+    "en_cok_kgcm": 13.54,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.18,
-    "en_cok_oran_stall": 0.66,
-    "en_cok_akim_A": 1.88,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.15,
+    "en_cok_oran_stall": 0.64,
+    "en_cok_akim_A": 1.85,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -18177,56 +19217,56 @@
     "mu": 0.6,
     "k": -0.5,
     "omni": false,
-    "yaricap_mm": 124.0,
-    "ani_merkez_z_mm": -24.0,
+    "yaricap_mm": 125.0,
+    "ani_merkez_z_mm": -11.4,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 14.88,
+      "N": 64.5,
+      "T_kgcm": 16.48,
       "rol": "surus",
-      "oran_surekli": 2.36,
-      "oran_stall": 0.71,
-      "akim_A": 2.02
+      "oran_surekli": 2.62,
+      "oran_stall": 0.78,
+      "akim_A": 2.22
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 14.88,
+      "N": 64.5,
+      "T_kgcm": 16.48,
       "rol": "surus",
-      "oran_surekli": 2.36,
-      "oran_stall": 0.71,
-      "akim_A": 2.02
+      "oran_surekli": 2.62,
+      "oran_stall": 0.78,
+      "akim_A": 2.22
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 19.11,
+      "T_kgcm": 18.55,
       "rol": "surus",
-      "oran_surekli": 3.03,
-      "oran_stall": 0.91,
-      "akim_A": 2.56
+      "oran_surekli": 2.94,
+      "oran_stall": 0.88,
+      "akim_A": 2.49
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 19.11,
+      "T_kgcm": 18.55,
       "rol": "surus",
-      "oran_surekli": 3.03,
-      "oran_stall": 0.91,
-      "akim_A": 2.56
+      "oran_surekli": 2.94,
+      "oran_stall": 0.88,
+      "akim_A": 2.49
      }
     ],
-    "en_cok_kgcm": 19.11,
+    "en_cok_kgcm": 18.55,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 3.03,
-    "en_cok_oran_stall": 0.91,
-    "en_cok_akim_A": 2.56,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.94,
+    "en_cok_oran_stall": 0.88,
+    "en_cok_akim_A": 2.49,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -18236,56 +19276,56 @@
     "mu": 0.6,
     "k": 0.0,
     "omni": false,
-    "yaricap_mm": 372.0,
-    "ani_merkez_z_mm": -22.9,
+    "yaricap_mm": 374.0,
+    "ani_merkez_z_mm": -10.9,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 14.73,
+      "N": 64.5,
+      "T_kgcm": 16.26,
       "rol": "surus",
-      "oran_surekli": 2.34,
-      "oran_stall": 0.7,
-      "akim_A": 2.0
+      "oran_surekli": 2.58,
+      "oran_stall": 0.77,
+      "akim_A": 2.19
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 13.57,
+      "N": 64.5,
+      "T_kgcm": 15.02,
       "rol": "tutma",
-      "oran_surekli": 2.15,
-      "oran_stall": 0.65,
-      "akim_A": 1.85
+      "oran_surekli": 2.38,
+      "oran_stall": 0.72,
+      "akim_A": 2.04
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 18.71,
+      "T_kgcm": 18.21,
       "rol": "surus",
-      "oran_surekli": 2.97,
-      "oran_stall": 0.89,
-      "akim_A": 2.51
+      "oran_surekli": 2.89,
+      "oran_stall": 0.87,
+      "akim_A": 2.44
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 17.41,
+      "T_kgcm": 16.91,
       "rol": "tutma",
-      "oran_surekli": 2.76,
-      "oran_stall": 0.83,
-      "akim_A": 2.34
+      "oran_surekli": 2.68,
+      "oran_stall": 0.81,
+      "akim_A": 2.28
      }
     ],
-    "en_cok_kgcm": 18.71,
+    "en_cok_kgcm": 18.21,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.97,
-    "en_cok_oran_stall": 0.89,
-    "en_cok_akim_A": 2.51,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.89,
+    "en_cok_oran_stall": 0.87,
+    "en_cok_akim_A": 2.44,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -18295,56 +19335,56 @@
     "mu": 0.6,
     "k": 0.5,
     "omni": false,
-    "yaricap_mm": 1118.0,
-    "ani_merkez_z_mm": -19.3,
+    "yaricap_mm": 1122.0,
+    "ani_merkez_z_mm": -9.2,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 13.9,
+      "N": 64.5,
+      "T_kgcm": 15.17,
       "rol": "surus",
-      "oran_surekli": 2.21,
-      "oran_stall": 0.66,
-      "akim_A": 1.89
+      "oran_surekli": 2.41,
+      "oran_stall": 0.72,
+      "akim_A": 2.06
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.8,
-      "T_kgcm": 11.58,
+      "N": 64.5,
+      "T_kgcm": 12.7,
       "rol": "fren",
-      "oran_surekli": 1.84,
-      "oran_stall": 0.55,
-      "akim_A": 1.6
+      "oran_surekli": 2.02,
+      "oran_stall": 0.6,
+      "akim_A": 1.74
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 17.02,
+      "T_kgcm": 16.7,
       "rol": "surus",
-      "oran_surekli": 2.7,
-      "oran_stall": 0.81,
-      "akim_A": 2.29
+      "oran_surekli": 2.65,
+      "oran_stall": 0.8,
+      "akim_A": 2.25
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 14.41,
+      "T_kgcm": 14.09,
       "rol": "fren",
-      "oran_surekli": 2.29,
-      "oran_stall": 0.69,
-      "akim_A": 1.96
+      "oran_surekli": 2.24,
+      "oran_stall": 0.67,
+      "akim_A": 1.92
      }
     ],
-    "en_cok_kgcm": 17.02,
+    "en_cok_kgcm": 16.7,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.7,
-    "en_cok_oran_stall": 0.81,
-    "en_cok_akim_A": 2.29,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 2.65,
+    "en_cok_oran_stall": 0.8,
+    "en_cok_akim_A": 2.25,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -18356,8 +19396,8 @@
     "mu": 0.4,
     "R_mm": 0,
     "mu_t": 0.432,
-    "M_Nm": 20.62,
-    "en_cok_kgcm": 17.38,
+    "M_Nm": 21.21,
+    "en_cok_kgcm": 17.37,
     "teker": "arka sol",
     "oran_surekli": 2.76,
     "oran_stall": 0.83,
@@ -18367,8 +19407,8 @@
     "mu": 0.4,
     "R_mm": 500,
     "mu_t": 0.364,
-    "M_Nm": 17.36,
-    "en_cok_kgcm": 14.84,
+    "M_Nm": 17.86,
+    "en_cok_kgcm": 14.83,
     "teker": "arka sol",
     "oran_surekli": 2.35,
     "oran_stall": 0.71,
@@ -18378,7 +19418,7 @@
     "mu": 0.4,
     "R_mm": 1000,
     "mu_t": 0.314,
-    "M_Nm": 14.99,
+    "M_Nm": 15.42,
     "en_cok_kgcm": 12.99,
     "teker": "arka sol",
     "oran_surekli": 2.06,
@@ -18389,7 +19429,7 @@
     "mu": 0.4,
     "R_mm": 2000,
     "mu_t": 0.247,
-    "M_Nm": 11.78,
+    "M_Nm": 12.12,
     "en_cok_kgcm": 10.48,
     "teker": "arka sol",
     "oran_surekli": 1.66,
@@ -18400,7 +19440,7 @@
     "mu": 0.5,
     "R_mm": 0,
     "mu_t": 0.541,
-    "M_Nm": 25.78,
+    "M_Nm": 26.52,
     "en_cok_kgcm": 21.39,
     "teker": "arka sol",
     "oran_surekli": 3.4,
@@ -18411,21 +19451,21 @@
     "mu": 0.5,
     "R_mm": 500,
     "mu_t": 0.455,
-    "M_Nm": 21.7,
-    "en_cok_kgcm": 18.22,
+    "M_Nm": 22.33,
+    "en_cok_kgcm": 18.21,
     "teker": "arka sol",
     "oran_surekli": 2.89,
     "oran_stall": 0.87,
-    "akim_A": 2.45
+    "akim_A": 2.44
    },
    {
     "mu": 0.5,
     "R_mm": 1000,
     "mu_t": 0.393,
-    "M_Nm": 18.74,
+    "M_Nm": 19.28,
     "en_cok_kgcm": 15.91,
     "teker": "arka sol",
-    "oran_surekli": 2.53,
+    "oran_surekli": 2.52,
     "oran_stall": 0.76,
     "akim_A": 2.15
    },
@@ -18433,7 +19473,7 @@
     "mu": 0.5,
     "R_mm": 2000,
     "mu_t": 0.309,
-    "M_Nm": 14.72,
+    "M_Nm": 15.15,
     "en_cok_kgcm": 12.78,
     "teker": "arka sol",
     "oran_surekli": 2.03,
@@ -18444,7 +19484,7 @@
     "mu": 0.6,
     "R_mm": 0,
     "mu_t": 0.649,
-    "M_Nm": 30.93,
+    "M_Nm": 31.82,
     "en_cok_kgcm": 25.41,
     "teker": "arka sol",
     "oran_surekli": 4.03,
@@ -18455,7 +19495,7 @@
     "mu": 0.6,
     "R_mm": 500,
     "mu_t": 0.546,
-    "M_Nm": 26.04,
+    "M_Nm": 26.79,
     "en_cok_kgcm": 21.6,
     "teker": "arka sol",
     "oran_surekli": 3.43,
@@ -18466,7 +19506,7 @@
     "mu": 0.6,
     "R_mm": 1000,
     "mu_t": 0.472,
-    "M_Nm": 22.49,
+    "M_Nm": 23.13,
     "en_cok_kgcm": 18.83,
     "teker": "arka sol",
     "oran_surekli": 2.99,
@@ -18477,7 +19517,7 @@
     "mu": 0.6,
     "R_mm": 2000,
     "mu_t": 0.37,
-    "M_Nm": 17.67,
+    "M_Nm": 18.17,
     "en_cok_kgcm": 15.07,
     "teker": "arka sol",
     "oran_surekli": 2.39,
@@ -18491,58 +19531,58 @@
     "k": -1.0,
     "omni": true,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -182.4,
+    "ani_merkez_z_mm": -182.3,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.06,
+      "N": 64.5,
+      "T_kgcm": 5.22,
       "rol": "surus",
-      "oran_surekli": 0.33,
-      "oran_stall": 0.1,
-      "akim_A": 0.38
+      "oran_surekli": 0.83,
+      "oran_stall": 0.25,
+      "akim_A": 0.79
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.06,
+      "N": 64.5,
+      "T_kgcm": 5.22,
       "rol": "surus",
-      "oran_surekli": 0.33,
-      "oran_stall": 0.1,
-      "akim_A": 0.38
+      "oran_surekli": 0.83,
+      "oran_stall": 0.25,
+      "akim_A": 0.79
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 3.25,
+      "T_kgcm": 0.53,
       "rol": "surus",
-      "oran_surekli": 0.52,
-      "oran_stall": 0.15,
-      "akim_A": 0.53
+      "oran_surekli": 0.08,
+      "oran_stall": 0.03,
+      "akim_A": 0.19
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 3.25,
+      "T_kgcm": 0.53,
       "rol": "surus",
-      "oran_surekli": 0.52,
-      "oran_stall": 0.15,
-      "akim_A": 0.53
+      "oran_surekli": 0.08,
+      "oran_stall": 0.03,
+      "akim_A": 0.19
      }
     ],
-    "en_cok_kgcm": 3.25,
-    "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 0.52,
-    "en_cok_oran_stall": 0.15,
-    "en_cok_akim_A": 0.53,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_kgcm": 5.22,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.83,
+    "en_cok_oran_stall": 0.25,
+    "en_cok_akim_A": 0.79,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
-     "iterasyon": 5
+     "iterasyon": 6
     },
     "etiket": "senaryo"
    },
@@ -18556,50 +19596,50 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.06,
+      "N": 64.5,
+      "T_kgcm": 6.88,
       "rol": "surus",
-      "oran_surekli": 0.33,
-      "oran_stall": 0.1,
-      "akim_A": 0.38
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 1.0
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.06,
+      "N": 64.5,
+      "T_kgcm": 6.88,
       "rol": "surus",
-      "oran_surekli": 0.33,
-      "oran_stall": 0.1,
-      "akim_A": 0.38
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 1.0
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 3.26,
-      "rol": "surus",
-      "oran_surekli": 0.52,
-      "oran_stall": 0.16,
-      "akim_A": 0.54
+      "T_kgcm": 1.04,
+      "rol": "fren",
+      "oran_surekli": 0.17,
+      "oran_stall": 0.05,
+      "akim_A": 0.25
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 3.26,
-      "rol": "surus",
-      "oran_surekli": 0.52,
-      "oran_stall": 0.16,
-      "akim_A": 0.54
+      "T_kgcm": 1.04,
+      "rol": "fren",
+      "oran_surekli": 0.17,
+      "oran_stall": 0.05,
+      "akim_A": 0.25
      }
     ],
-    "en_cok_kgcm": 3.26,
-    "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 0.52,
-    "en_cok_oran_stall": 0.16,
-    "en_cok_akim_A": 0.54,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_kgcm": 6.88,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 1.09,
+    "en_cok_oran_stall": 0.33,
+    "en_cok_akim_A": 1.0,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -18616,54 +19656,472 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.06,
+      "N": 64.5,
+      "T_kgcm": 8.88,
       "rol": "surus",
-      "oran_surekli": 0.33,
-      "oran_stall": 0.1,
-      "akim_A": 0.38
+      "oran_surekli": 1.41,
+      "oran_stall": 0.42,
+      "akim_A": 1.25
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.06,
+      "N": 64.5,
+      "T_kgcm": 8.88,
       "rol": "surus",
-      "oran_surekli": 0.33,
-      "oran_stall": 0.1,
-      "akim_A": 0.38
+      "oran_surekli": 1.41,
+      "oran_stall": 0.42,
+      "akim_A": 1.25
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 3.27,
-      "rol": "surus",
-      "oran_surekli": 0.52,
-      "oran_stall": 0.16,
-      "akim_A": 0.54
+      "T_kgcm": 2.93,
+      "rol": "fren",
+      "oran_surekli": 0.47,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 3.27,
-      "rol": "surus",
-      "oran_surekli": 0.52,
-      "oran_stall": 0.16,
-      "akim_A": 0.54
+      "T_kgcm": 2.93,
+      "rol": "fren",
+      "oran_surekli": 0.47,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
      }
     ],
-    "en_cok_kgcm": 3.27,
-    "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 0.52,
-    "en_cok_oran_stall": 0.16,
-    "en_cok_akim_A": 0.54,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_kgcm": 8.88,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 1.41,
+    "en_cok_oran_stall": 0.42,
+    "en_cok_akim_A": 1.25,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
     },
+    "etiket": "senaryo"
+   }
+  ],
+  "yerinde_omni_motor": [
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.4,
+    "d": 0.6394225256459869,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 201.5,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 201.5,
+      "N": 64.5,
+      "T_kgcm": 3.58,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.187,
+      "oran_surekli": 0.57,
+      "oran_stall": 0.17,
+      "akim_A": 0.58
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -201.5,
+      "N": 64.5,
+      "T_kgcm": 3.58,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.187,
+      "oran_surekli": 0.57,
+      "oran_stall": 0.17,
+      "akim_A": 0.58
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 2.92,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1964,
+      "oran_surekli": 0.46,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 2.92,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1964,
+      "oran_surekli": 0.46,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
+     }
+    ],
+    "en_cok_kgcm": 3.58,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.57,
+    "en_cok_oran_stall": 0.17,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 5
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   },
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.5,
+    "d": 0.6363800863224423,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 201.5,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 201.5,
+      "N": 64.5,
+      "T_kgcm": 3.62,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1851,
+      "oran_surekli": 0.58,
+      "oran_stall": 0.17,
+      "akim_A": 0.58
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -201.5,
+      "N": 64.5,
+      "T_kgcm": 3.62,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1851,
+      "oran_surekli": 0.58,
+      "oran_stall": 0.17,
+      "akim_A": 0.58
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 2.9,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1956,
+      "oran_surekli": 0.46,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 2.9,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1956,
+      "oran_surekli": 0.46,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
+     }
+    ],
+    "en_cok_kgcm": 3.62,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.58,
+    "en_cok_oran_stall": 0.17,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 6
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   },
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.6,
+    "d": 0.6347145126952274,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 201.5,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 201.5,
+      "N": 64.5,
+      "T_kgcm": 3.65,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1839,
+      "oran_surekli": 0.58,
+      "oran_stall": 0.17,
+      "akim_A": 0.59
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -201.5,
+      "N": 64.5,
+      "T_kgcm": 3.65,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1839,
+      "oran_surekli": 0.58,
+      "oran_stall": 0.17,
+      "akim_A": 0.59
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 2.89,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1953,
+      "oran_surekli": 0.46,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 2.89,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1953,
+      "oran_surekli": 0.46,
+      "oran_stall": 0.14,
+      "akim_A": 0.49
+     }
+    ],
+    "en_cok_kgcm": 3.65,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.58,
+    "en_cok_oran_stall": 0.17,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 5
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   }
+  ],
+  "yerinde_omni_motor_216": [
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.4,
+    "d": 0.6516237381795691,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 216.0,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 216.0,
+      "N": 64.5,
+      "T_kgcm": 3.21,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1989,
+      "oran_surekli": 0.51,
+      "oran_stall": 0.15,
+      "akim_A": 0.53
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -216.0,
+      "N": 64.5,
+      "T_kgcm": 3.21,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1989,
+      "oran_surekli": 0.51,
+      "oran_stall": 0.15,
+      "akim_A": 0.53
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 3.16,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1969,
+      "oran_surekli": 0.5,
+      "oran_stall": 0.15,
+      "akim_A": 0.52
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 3.16,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1969,
+      "oran_surekli": 0.5,
+      "oran_stall": 0.15,
+      "akim_A": 0.52
+     }
+    ],
+    "en_cok_kgcm": 3.21,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.51,
+    "en_cok_oran_stall": 0.15,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 5
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   },
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.5,
+    "d": 0.6487362758226665,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 216.0,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 216.0,
+      "N": 64.5,
+      "T_kgcm": 3.24,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1973,
+      "oran_surekli": 0.51,
+      "oran_stall": 0.15,
+      "akim_A": 0.53
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -216.0,
+      "N": 64.5,
+      "T_kgcm": 3.24,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1973,
+      "oran_surekli": 0.51,
+      "oran_stall": 0.15,
+      "akim_A": 0.53
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 3.14,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.196,
+      "oran_surekli": 0.5,
+      "oran_stall": 0.15,
+      "akim_A": 0.52
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 3.14,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.196,
+      "oran_surekli": 0.5,
+      "oran_stall": 0.15,
+      "akim_A": 0.52
+     }
+    ],
+    "en_cok_kgcm": 3.24,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.51,
+    "en_cok_oran_stall": 0.15,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 6
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   },
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.6,
+    "d": 0.6471596569046778,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 216.0,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 216.0,
+      "N": 64.5,
+      "T_kgcm": 3.25,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1965,
+      "oran_surekli": 0.52,
+      "oran_stall": 0.15,
+      "akim_A": 0.53
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -216.0,
+      "N": 64.5,
+      "T_kgcm": 3.25,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1965,
+      "oran_surekli": 0.52,
+      "oran_stall": 0.15,
+      "akim_A": 0.53
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 3.14,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1955,
+      "oran_surekli": 0.5,
+      "oran_stall": 0.15,
+      "akim_A": 0.52
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 3.14,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1955,
+      "oran_surekli": 0.5,
+      "oran_stall": 0.15,
+      "akim_A": 0.52
+     }
+    ],
+    "en_cok_kgcm": 3.25,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 0.52,
+    "en_cok_oran_stall": 0.15,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 5
+    },
+    "doyum": false,
     "etiket": "senaryo"
    }
   ],
@@ -18678,28 +20136,28 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.24,
+      "N": 64.5,
+      "T_kgcm": 2.35,
       "rol": "surus",
-      "oran_surekli": 0.36,
+      "oran_surekli": 0.37,
       "oran_stall": 0.11,
-      "akim_A": 0.41
+      "akim_A": 0.42
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.24,
+      "N": 64.5,
+      "T_kgcm": 2.35,
       "rol": "surus",
-      "oran_surekli": 0.36,
+      "oran_surekli": 0.37,
       "oran_stall": 0.11,
-      "akim_A": 0.41
+      "akim_A": 0.42
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 0.26,
+      "T_kgcm": 0.22,
       "rol": "surus",
       "oran_surekli": 0.04,
       "oran_stall": 0.01,
@@ -18709,19 +20167,19 @@
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 0.26,
+      "T_kgcm": 0.22,
       "rol": "surus",
       "oran_surekli": 0.04,
       "oran_stall": 0.01,
       "akim_A": 0.15
      }
     ],
-    "en_cok_kgcm": 2.24,
+    "en_cok_kgcm": 2.35,
     "en_cok_teker": "on sag",
-    "en_cok_oran_surekli": 0.36,
+    "en_cok_oran_surekli": 0.37,
     "en_cok_oran_stall": 0.11,
-    "en_cok_akim_A": 0.41,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_akim_A": 0.42,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 3
@@ -18738,50 +20196,50 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.84,
+      "N": 64.5,
+      "T_kgcm": 2.96,
       "rol": "surus",
-      "oran_surekli": 0.45,
+      "oran_surekli": 0.47,
       "oran_stall": 0.14,
-      "akim_A": 0.48
+      "akim_A": 0.5
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 2.84,
+      "N": 64.5,
+      "T_kgcm": 2.96,
       "rol": "surus",
-      "oran_surekli": 0.45,
+      "oran_surekli": 0.47,
       "oran_stall": 0.14,
-      "akim_A": 0.48
+      "akim_A": 0.5
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 0.33,
+      "T_kgcm": 0.38,
       "rol": "fren",
-      "oran_surekli": 0.05,
+      "oran_surekli": 0.06,
       "oran_stall": 0.02,
-      "akim_A": 0.16
+      "akim_A": 0.17
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 0.33,
+      "T_kgcm": 0.38,
       "rol": "fren",
-      "oran_surekli": 0.05,
+      "oran_surekli": 0.06,
       "oran_stall": 0.02,
-      "akim_A": 0.16
+      "akim_A": 0.17
      }
     ],
-    "en_cok_kgcm": 2.84,
+    "en_cok_kgcm": 2.96,
     "en_cok_teker": "on sag",
-    "en_cok_oran_surekli": 0.45,
+    "en_cok_oran_surekli": 0.47,
     "en_cok_oran_stall": 0.14,
-    "en_cok_akim_A": 0.48,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_akim_A": 0.5,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 3
@@ -18798,50 +20256,50 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 3.57,
+      "N": 64.5,
+      "T_kgcm": 3.71,
       "rol": "surus",
-      "oran_surekli": 0.57,
-      "oran_stall": 0.17,
-      "akim_A": 0.58
+      "oran_surekli": 0.59,
+      "oran_stall": 0.18,
+      "akim_A": 0.59
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.8,
-      "T_kgcm": 3.57,
+      "N": 64.5,
+      "T_kgcm": 3.71,
       "rol": "surus",
-      "oran_surekli": 0.57,
-      "oran_stall": 0.17,
-      "akim_A": 0.58
+      "oran_surekli": 0.59,
+      "oran_stall": 0.18,
+      "akim_A": 0.59
      },
      {
       "teker": "arka sag",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 1.05,
+      "T_kgcm": 1.12,
       "rol": "fren",
-      "oran_surekli": 0.17,
+      "oran_surekli": 0.18,
       "oran_stall": 0.05,
-      "akim_A": 0.25
+      "akim_A": 0.26
      },
      {
       "teker": "arka sol",
       "omni": false,
       "N": 68.1,
-      "T_kgcm": 1.05,
+      "T_kgcm": 1.12,
       "rol": "fren",
-      "oran_surekli": 0.17,
+      "oran_surekli": 0.18,
       "oran_stall": 0.05,
-      "akim_A": 0.25
+      "akim_A": 0.26
      }
     ],
-    "en_cok_kgcm": 3.57,
+    "en_cok_kgcm": 3.71,
     "en_cok_teker": "on sag",
-    "en_cok_oran_surekli": 0.57,
-    "en_cok_oran_stall": 0.17,
-    "en_cok_akim_A": 0.58,
-    "ivme_payi_kgcm": 0.76,
+    "en_cok_oran_surekli": 0.59,
+    "en_cok_oran_stall": 0.18,
+    "en_cok_akim_A": 0.59,
+    "ivme_payi_kgcm": 0.79,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 3
@@ -18849,25 +20307,242 @@
     "etiket": "senaryo"
    }
   ],
+  "yerinde_omni_motor_9kgcm": [
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.4,
+    "d": 0.828588067772525,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 201.5,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 201.5,
+      "N": 64.5,
+      "T_kgcm": 3.25,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1865,
+      "oran_surekli": 1.2,
+      "oran_stall": 0.36,
+      "akim_A": 1.09
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -201.5,
+      "N": 64.5,
+      "T_kgcm": 3.25,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1865,
+      "oran_surekli": 1.2,
+      "oran_stall": 0.36,
+      "akim_A": 1.09
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 2.94,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1971,
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 1.0
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 2.94,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1971,
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 1.0
+     }
+    ],
+    "en_cok_kgcm": 3.25,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 1.2,
+    "en_cok_oran_stall": 0.36,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 5
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   },
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.5,
+    "d": 0.8258084924809008,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 201.5,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 201.5,
+      "N": 64.5,
+      "T_kgcm": 3.27,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1847,
+      "oran_surekli": 1.21,
+      "oran_stall": 0.36,
+      "akim_A": 1.09
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -201.5,
+      "N": 64.5,
+      "T_kgcm": 3.27,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1847,
+      "oran_surekli": 1.21,
+      "oran_stall": 0.36,
+      "akim_A": 1.09
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 2.94,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1961,
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 1.0
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 2.94,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1961,
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 1.0
+     }
+    ],
+    "en_cok_kgcm": 3.27,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 1.21,
+    "en_cok_oran_stall": 0.36,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 6
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   },
+   {
+    "model": "C (motor egrisi)",
+    "mu": 0.6,
+    "d": 0.8242924571381081,
+    "k": -1.0,
+    "omni": true,
+    "x_omni_mm": 201.5,
+    "w_rad_s": 0.9,
+    "tekerler": [
+     {
+      "teker": "on sag",
+      "omni": true,
+      "x_mm": 201.5,
+      "N": 64.5,
+      "T_kgcm": 3.28,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1837,
+      "oran_surekli": 1.21,
+      "oran_stall": 0.36,
+      "akim_A": 1.1
+     },
+     {
+      "teker": "on sol",
+      "omni": true,
+      "x_mm": -201.5,
+      "N": 64.5,
+      "T_kgcm": 3.28,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1837,
+      "oran_surekli": 1.21,
+      "oran_stall": 0.36,
+      "akim_A": 1.1
+     },
+     {
+      "teker": "arka sag",
+      "omni": false,
+      "x_mm": 216.0,
+      "N": 68.1,
+      "T_kgcm": 2.94,
+      "rol": "surus",
+      "cevre_hizi_m_s": 0.1956,
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 0.99
+     },
+     {
+      "teker": "arka sol",
+      "omni": false,
+      "x_mm": -216.0,
+      "N": 68.1,
+      "T_kgcm": 2.94,
+      "rol": "surus",
+      "cevre_hizi_m_s": -0.1956,
+      "oran_surekli": 1.09,
+      "oran_stall": 0.33,
+      "akim_A": 0.99
+     }
+    ],
+    "en_cok_kgcm": 3.28,
+    "en_cok_teker": "on sag",
+    "en_cok_oran_surekli": 1.21,
+    "en_cok_oran_stall": 0.36,
+    "yakinsama": {
+     "artik": 0.0,
+     "iterasyon": 5
+    },
+    "doyum": false,
+    "etiket": "senaryo"
+   }
+  ],
+  "model_notu": "yerinde_omni (Model A) = UST SINIR: ayni yandaki on ve arka tekere ayni cevre hizi dayatir (sonsuz sert motor); on x 201.5 / arka x 216.0 farki ve cap orani on motoru arkaya karsi calistirir (arka fren). yerinde_omni_motor (Model C) = motor hiz-tork egrisi, yan basina ayni PWM, w 0.90 rad/s'yi veren PWM'de (fizik modeli ONERI-ADAY 0,89-0,93 rad/s ile ayni isletme noktasi); yari statik, gerilim olceklemesi ve dinamik yok -> alt taraf. yerinde_omni_motor_216: ayni model, omni lastikle ayni x'te (ara parca secenegi).",
   "karar": {
    "mu": 0.5,
    "dayanak": "orta senaryo (mu 0,5; olcum yok)",
-   "yerinde_kgcm": 16.19,
-   "yerinde_oran_surekli": 2.57,
-   "yerinde_oran_stall": 0.77,
+   "yerinde_kgcm": 15.72,
+   "yerinde_oran_surekli": 2.49,
+   "yerinde_oran_stall": 0.75,
    "ust_sinir_kgcm": 21.39,
    "ust_sinir_oran_stall": 1.02,
-   "omni_kgcm": 3.18,
-   "omni_oran_surekli": 0.5,
-   "sonuc": "KOTU: yerinde donus surekli degerin 257%'i (ust sinir durmanin 102%'i). K1 (a) on iki teker omni onerilir; omniyle 50%."
+   "omni_kgcm": 8.03,
+   "omni_oran_surekli": 1.27,
+   "omni_kgcm_etiket": "Model A, sert hiz UST SINIRI",
+   "omni_motor_kgcm": 3.62,
+   "omni_motor_oran_surekli": 0.58,
+   "omni_motor_teker": "on sag",
+   "omni_motor_pwm": 0.636,
+   "sonuc": "KOTU: yerinde donus surekli degerin 249%'i (ust sinir durmanin 102%'i). K1 (a) on iki teker omni onerilir; omniyle 127% (sert hiz ust siniri, on motor), motor egrisiyle 58% (on sag)."
   },
   "omni_cad": {
-   "aktif": false,
-   "bayrak": "arayuz.TABAN['omni']['aktif'] ya da TABAN_OMNI=1"
+   "aktif": true,
+   "on_x_mm": 201.5,
+   "arka_x_mm": 216.0,
+   "bayrak": "arayuz.OMNI_AKTIF (arayuz.TABAN['omni']['aktif']; TABAN_OMNI=0 lastik on teker, TABAN_OMNI=1 omni)"
   }
  },
  "kafa_duzeltme": null,
- "omni": false,
+ "omni": true,
  "bom": [
   [
    "Baglanti",
@@ -18883,15 +20558,27 @@
   ],
   [
    "Baglanti",
+   "M3 DIN 125 pul",
+   8,
+   1.0
+  ],
+  [
+   "Baglanti",
    "M3 isil gomme somun",
-   6,
-   1.6
+   14,
+   3.7
   ],
   [
    "Baglanti",
    "M3x10 ISO 7380",
    4,
    3.4
+  ],
+  [
+   "Baglanti",
+   "M3x35 DIN 912",
+   8,
+   19.4
   ],
   [
    "Baglanti",
@@ -19003,6 +20690,18 @@
   ],
   [
    "Baski",
+   "Omni gobek adaptoru (on sag)",
+   1,
+   25.4
+  ],
+  [
+   "Baski",
+   "Omni gobek adaptoru (on sol)",
+   1,
+   25.4
+  ],
+  [
+   "Baski",
    "Sonar tutucu orta",
    1,
    5.6
@@ -19070,8 +20769,8 @@
   [
    "Satin",
    "Arazi tekerlegi 125 x 58",
-   4,
-   560.0
+   2,
+   280.0
   ],
   [
    "Satin",
@@ -19189,6 +20888,12 @@
   ],
   [
    "Satin",
+   "Nexus 14073 omni teker O127 x 29, 22 makara (14075 ayni dis olcu)",
+   2,
+   960.0
+  ],
+  [
+   "Satin",
    "PCA9685 16 kanal (Adafruit 815 delik duzeni)",
    1,
    9.0
@@ -19200,7 +20905,7 @@
    240.0
   ]
  ],
- "step_kati": 414,
+ "step_kati": 440,
  "joints_ok": true,
  "kablo_yolu": [
   {
@@ -20091,5 +21796,5 @@
    ]
   }
  ],
- "sure_s": 82.7
+ "sure_s": 145.7
 }

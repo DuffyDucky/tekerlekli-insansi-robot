@@ -1,0 +1,240 @@
+{
+ "kip": "omni",
+ "once_ref": "4bc73de",
+ "omni": true,
+ "parca": 453,
+ "gercek": 440,
+ "baglanti": 156,
+ "kutle": 9025.78,
+ "once_karsilastirma": {
+  "ayni": 425,
+  "yeni": [
+   "Omni teker 127 x 29 (on sol)",
+   "Omni gobek adaptoru (on sol)",
+   "Isil gomme somun M3 (omni on sol 1)",
+   "Pul M3 (omni on sol 1)",
+   "Civata M3x35 (omni on sol 1)",
+   "Isil gomme somun M3 (omni on sol 2)",
+   "Pul M3 (omni on sol 2)",
+   "Civata M3x35 (omni on sol 2)",
+   "Isil gomme somun M3 (omni on sol 3)",
+   "Pul M3 (omni on sol 3)",
+   "Civata M3x35 (omni on sol 3)",
+   "Isil gomme somun M3 (omni on sol 4)",
+   "Pul M3 (omni on sol 4)",
+   "Civata M3x35 (omni on sol 4)",
+   "Omni teker 127 x 29 (on sag)",
+   "Omni gobek adaptoru (on sag)",
+   "Isil gomme somun M3 (omni on sag 1)",
+   "Pul M3 (omni on sag 1)",
+   "Civata M3x35 (omni on sag 1)",
+   "Isil gomme somun M3 (omni on sag 2)",
+   "Pul M3 (omni on sag 2)",
+   "Civata M3x35 (omni on sag 2)",
+   "Isil gomme somun M3 (omni on sag 3)",
+   "Pul M3 (omni on sag 3)",
+   "Civata M3x35 (omni on sag 3)",
+   "Isil gomme somun M3 (omni on sag 4)",
+   "Pul M3 (omni on sag 4)",
+   "Civata M3x35 (omni on sag 4)"
+  ],
+  "farkli": [],
+  "kalkan": [
+   "Teker 125 x 58 (on sol)",
+   "Teker 125 x 58 (on sag)"
+  ],
+  "once_parca": 427
+ },
+ "x_zinciri": {
+  "braket_x": [
+   139.0,
+   172.5
+  ],
+  "kaplin_x": [
+   174.5,
+   204.5
+  ],
+  "adaptor_x": [
+   179.0,
+   210.5
+  ],
+  "omni_x": [
+   187.0,
+   216.0
+  ],
+  "omni_merkez": 201.5,
+  "omni_cap_y": 126.975,
+  "omni_cap_z": 127.0,
+  "omni_alt_y": -0.987,
+  "arka_merkez": 216.0,
+  "arka_alt_y": -5.15,
+  "arayuz_OMNI_X": 201.5,
+  "ON_IZ": 403.0,
+  "ARKA_IZ": 432.0,
+  "kaplin_adaptor_kavrama": 25.5
+ },
+ "donen": {
+  "+1+1": {
+   "statik_aday": 37,
+   "aci_adim": 15.0,
+   "cakisma": [],
+   "en_yakin": [
+    [
+     "Motor JGB37-520 (on sag)",
+     3.05,
+     240.0
+    ],
+    [
+     "Civata M3x6 (motor on sag 0)",
+     3.5,
+     285.0
+    ],
+    [
+     "Civata M3x6 (motor on sag 2)",
+     3.5,
+     285.0
+    ],
+    [
+     "Civata M3x6 (motor on sag 3)",
+     3.5,
+     285.0
+    ],
+    [
+     "Civata M3x6 (motor on sag 5)",
+     3.5,
+     285.0
+    ],
+    [
+     "Alt plaka",
+     6.083,
+     285.0
+    ],
+    [
+     "Motor braketi L 37 mm (on sag)",
+     6.5,
+     285.0
+    ],
+    [
+     "Pul M4 (braket on sag +1)",
+     21.715,
+     285.0
+    ]
+   ]
+  },
+  "+1-1": {
+   "statik_aday": 31,
+   "aci_adim": 15.0,
+   "cakisma": [],
+   "en_yakin": [
+    [
+     "Motor JGB37-520 (arka sag)",
+     0.05,
+     240.0
+    ],
+    [
+     "Motor braketi L 37 mm (arka sag)",
+     2.0,
+     285.0
+    ],
+    [
+     "Civata M3x6 (motor arka sag 3)",
+     3.788,
+     240.0
+    ],
+    [
+     "Civata M3x6 (motor arka sag 5)",
+     3.788,
+     300.0
+    ],
+    [
+     "Civata M3x6 (motor arka sag 0)",
+     10.277,
+     165.0
+    ],
+    [
+     "Civata M3x6 (motor arka sag 2)",
+     10.277,
+     255.0
+    ],
+    [
+     "Alt plaka",
+     14.0,
+     285.0
+    ],
+    [
+     "Civata M4x16 (braket arka sag -1)",
+     27.135,
+     120.0
+    ]
+   ]
+  }
+ },
+ "omni_baglanti": {
+  "sayi": 10,
+  "adlar": [
+   "Omni adaptoru - kaplin (on sol)",
+   "Omni teker - adaptor (on sol 1)",
+   "Omni teker - adaptor (on sol 2)",
+   "Omni teker - adaptor (on sol 3)",
+   "Omni teker - adaptor (on sol 4)",
+   "Omni adaptoru - kaplin (on sag)",
+   "Omni teker - adaptor (on sag 1)",
+   "Omni teker - adaptor (on sag 2)",
+   "Omni teker - adaptor (on sag 3)",
+   "Omni teker - adaptor (on sag 4)"
+  ]
+ },
+ "teker_donen": {
+  "-1-1": [
+   "Teker 125 x 58 (arka sol)",
+   "Kaplin 12 mm altigen (arka sol)",
+   "Pul M4 (teker arka sol)",
+   "Civata M4x16 (teker arka sol)"
+  ],
+  "-1+1": [
+   "Omni teker 127 x 29 (on sol)",
+   "Kaplin 12 mm altigen (on sol)",
+   "Pul M4 (teker on sol)",
+   "Civata M4x16 (teker on sol)",
+   "Isil gomme somun M3 (omni on sol 1)",
+   "Pul M3 (omni on sol 1)",
+   "Civata M3x35 (omni on sol 1)",
+   "Isil gomme somun M3 (omni on sol 2)",
+   "Pul M3 (omni on sol 2)",
+   "Civata M3x35 (omni on sol 2)",
+   "Isil gomme somun M3 (omni on sol 3)",
+   "Pul M3 (omni on sol 3)",
+   "Civata M3x35 (omni on sol 3)",
+   "Isil gomme somun M3 (omni on sol 4)",
+   "Pul M3 (omni on sol 4)",
+   "Civata M3x35 (omni on sol 4)",
+   "Omni gobek adaptoru (on sol)"
+  ],
+  "+1-1": [
+   "Teker 125 x 58 (arka sag)",
+   "Kaplin 12 mm altigen (arka sag)",
+   "Pul M4 (teker arka sag)",
+   "Civata M4x16 (teker arka sag)"
+  ],
+  "+1+1": [
+   "Omni teker 127 x 29 (on sag)",
+   "Kaplin 12 mm altigen (on sag)",
+   "Pul M4 (teker on sag)",
+   "Civata M4x16 (teker on sag)",
+   "Isil gomme somun M3 (omni on sag 1)",
+   "Pul M3 (omni on sag 1)",
+   "Civata M3x35 (omni on sag 1)",
+   "Isil gomme somun M3 (omni on sag 2)",
+   "Pul M3 (omni on sag 2)",
+   "Civata M3x35 (omni on sag 2)",
+   "Isil gomme somun M3 (omni on sag 3)",
+   "Pul M3 (omni on sag 3)",
+   "Civata M3x35 (omni on sag 3)",
+   "Isil gomme somun M3 (omni on sag 4)",
+   "Pul M3 (omni on sag 4)",
+   "Civata M3x35 (omni on sag 4)",
+   "Omni gobek adaptoru (on sag)"
+  ]
+ },
+ "sure_s": 75.7
+}

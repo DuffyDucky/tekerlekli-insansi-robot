@@ -1,19 +1,54 @@
 {
- "hepsi_ayni": false,
+ "hepsi_ayni": true,
  "satirlar": [
   {
    "olcut": "parca sayisi",
-   "once": 70,
+   "once": 75,
    "sonra": 75,
-   "fark": 5.0,
-   "ayni": false
+   "fark": 0.0,
+   "ayni": true
   },
   {
    "olcut": "parca adlari ve sirasi",
-   "once": 70,
+   "once": 75,
    "sonra": 75,
    "fark": null,
-   "ayni": false
+   "ayni": true
+  },
+  {
+   "olcut": "parca hacmi (en buyuk fark, mm3)",
+   "once": 815066.696,
+   "sonra": 815066.696,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "sinir kutusu (en buyuk fark, mm)",
+   "once": "70 x 6 deger",
+   "sonra": "70 x 6 deger",
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca kutlesi (en buyuk fark, g)",
+   "once": 962.243,
+   "sonra": 962.243,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "agirlik merkezi (en buyuk fark, mm)",
+   "once": "70 x 3",
+   "sonra": "70 x 3",
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "kati sayisi + isValid",
+   "once": "hepsi 1 / gecerli",
+   "sonra": "hepsi 1 / gecerli",
+   "fark": null,
+   "ayni": true
   },
   {
    "olcut": "statik cakisma",
@@ -31,10 +66,10 @@
   },
   {
    "olcut": "bosluk Kol-Govde (mm)",
-   "once": 4.0,
+   "once": 6.293053,
    "sonra": 6.293053,
-   "fark": 2.2930529999999996,
-   "ayni": false
+   "fark": 0.0,
+   "ayni": true
   },
   {
    "olcut": "bosluk Gobek-Govde (mm)",
@@ -45,10 +80,10 @@
   },
   {
    "olcut": "tarama kol_gobek: cakisan poz",
-   "once": 8,
+   "once": 11,
    "sonra": 11,
    "fark": null,
-   "ayni": false
+   "ayni": true
   },
   {
    "olcut": "tarama gobek_govde: cakisan poz",
@@ -62,21 +97,21 @@
    "once": 94,
    "sonra": 94,
    "fark": null,
-   "ayni": false
+   "ayni": true
   },
   {
    "olcut": "tork tablosu (875 poz, en buyuk fark kg*cm)",
-   "once": 5.722398563,
+   "once": 6.116001122,
    "sonra": 6.116001122,
-   "fark": 0.3936025590000005,
-   "ayni": false
+   "fark": 0.0,
+   "ayni": true
   },
   {
    "olcut": "BOM",
    "once": 17,
    "sonra": 17,
    "fark": null,
-   "ayni": false
+   "ayni": true
   }
  ]
 }

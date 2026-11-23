@@ -203,7 +203,7 @@ def obb_genis(bb, m):
 
 yakin = []
 for p in GERCEK:
-    if not any(p["ad"].startswith(k) for k in ("Sonar", "Civata M6x14 ISO 7380", "Acil stop", "Ana anahtar", "Teker")):
+    if not any(p["ad"].startswith(k) for k in ("Sonar", "Civata M6x14 ISO 7380", "Acil stop", "Ana anahtar", "Teker", "Omni")):
         continue
     i = IDX[p["ad"]]
     gb = obb_genis(p["bb"], 30.0)
@@ -351,18 +351,36 @@ def kol_katkisi(poz_sag, poz_sol, yuk=False):
 
 
 m_ev, mom_ev = kol_katkisi((0, 0, 0), (0, 0, 0))
-XC, ZC = A._X_WH, A.L0 / 2 - 65   # teker temas hatti: teker merkez duzlemleri (520 taban x 216; 125 cm 178), z 185
+# Teker temas hatti: teker merkez duzlemleri. On koseler omniyse destek cokgeni yamuk: on x = arayuz.OMNI_X (201,5; on iz 403),
+# arka x = _X_WH (216; arka iz 432); z +-185. XC (eski ad) arka / lastik x'i olarak kalir (125 cm 178).
+XC, ZC = A._X_WH, A.L0 / 2 - 65
+XF, XR = (A.OMNI_X if TP.OMNI else A._X_WH), A._X_WH
+# Zemin (2. asama karari: belgelenir, modellenmez): aks yuksekligi AX 62,5 dort tekerde ortak (ayni motor braketi). O127 omni CAD'de
+# zeminin (OMNI_R - AX) mm altina iner; gercekte robot arka lastiklerle on omnilerin uzerinde durur, on uc bu kadar yukselir ->
+# burun yukari duruse egimi TH0 = atan(dy / 2 ZC). Devrilme hesabinda bu egim geri yonde (en kotu yon) eklenir; ileri yondeki
+# kazanc alinmaz. CAD ve ana montaj zemini arka teker temas duzlemi (y = 0) olarak kalir.
+ZEMIN_DY = (A.TABAN["omni"]["cap"] / 2 - A.AX) if TP.OMNI else 0.0
+TH0 = math.atan2(ZEMIN_DY, 2 * ZC)
+
+
+def yan_kol(cx, cz):
+    """AM izdusumunun (|x|, z) yan devrilme kenarina dik uzakligi: kenar (XF, +ZC) -> (XR, -ZC) dogrusu (lastikte x = XC)."""
+    xe = XF + (XR - XF) * (ZC - cz) / (2 * ZC)
+    return (xe - abs(cx)) * (2 * ZC) / math.hypot(2 * ZC, XR - XF)
 
 
 def denge(M, C, rampa=0.0):
     th = math.radians(rampa)
-    dF, dR, dS = ZC - C.z, ZC + C.z, XC - abs(C.x)
+    dF, dR, dS = ZC - C.z, ZC + C.z, yan_kol(C.x, C.z)
     h = C.y
-    f = lambda d: G * (d * math.cos(th) - h * math.sin(th)) / h
-    return dict(ileri=round(f(dF), 2), geri=round(f(dR), 2), yan=round(f(dS), 2),
-                pay_ileri=round(f(dF) / 1.5, 2), pay_geri=round(f(dR) / 1.5, 2), pay_yan=round(f(dS) / 1.5, 2),
-                statik_egim_ileri=round(math.degrees(math.atan2(dF, h)), 1), statik_egim_geri=round(math.degrees(math.atan2(dR, h)), 1),
-                statik_egim_yan=round(math.degrees(math.atan2(dS, h)), 1), dF=round(dF, 1), dR=round(dR, 1), dS=round(dS, 1), h=round(h, 1))
+    f = lambda d, t=th: G * (d * math.cos(t) - h * math.sin(t)) / h
+    fg = lambda d: f(d, th + TH0)
+    return dict(ileri=round(f(dF), 2), geri=round(fg(dR), 2), yan=round(f(dS), 2),
+                pay_ileri=round(f(dF) / 1.5, 2), pay_geri=round(fg(dR) / 1.5, 2), pay_yan=round(f(dS) / 1.5, 2),
+                statik_egim_ileri=round(math.degrees(math.atan2(dF, h)), 1),
+                statik_egim_geri=round(math.degrees(math.atan2(dR, h) - TH0), 1),
+                statik_egim_yan=round(math.degrees(math.atan2(dS, h)), 1), dF=round(dF, 1), dR=round(dR, 1), dS=round(dS, 1), h=round(h, 1),
+                durus_egimi_derece=round(math.degrees(TH0), 3))
 
 
 POZLAR = [("ev", "Ev pozu (kollar asagida)", (0, 0, 0), (0, 0, 0), False),
@@ -410,7 +428,8 @@ F5 = motor["rampa5"]["F_N"]
 aks["mu_gereken_rampa5"] = round(F5 / (M_kg * G * math.cos(math.radians(5))), 3)
 # E0: yerinde donus ve yay donusu (taban/donus_hesap.py; sabitler arayuz.TABAN['donus'], olcum gelince *_olculen)
 donus = DH.hesapla(M_kg, ROB["am"])
-donus["omni_cad"] = dict(aktif=TP.OMNI, bayrak="arayuz.TABAN['omni']['aktif'] ya da TABAN_OMNI=1")
+donus["omni_cad"] = dict(aktif=TP.OMNI, on_x_mm=XF, arka_x_mm=XR,
+                         bayrak="arayuz.OMNI_AKTIF (arayuz.TABAN['omni']['aktif']; TABAN_OMNI=0 lastik on teker, TABAN_OMNI=1 omni)")
 log("donus (E0): " + donus["karar"]["sonuc"])
 for _a in donus["yerinde"]:
     log("  yerinde mu %.2f: %.2f kg cm (%s) surekli x%.2f durma x%.2f | omni %.2f kg cm" % (
@@ -551,7 +570,13 @@ out = dict(
                       "kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)" % N_r0,
                tabansiz_kutle_g=round(M_r0, 2), tabansiz_am=vl(CG_r0), tabansiz_parca=N_r0,
                hareketli_gruplar={k: dict(kutle_g=round(v[0], 1), am_omuz_yereli=vl(v[1])) for k, v in HAREKETLI.items()},
-               temas="teker merkez duzlemleri x +-%.0f, z +-%.0f (520 taban); fren ivmesi 1,5 m/s2 (acil stop, tahmini)" % (XC, ZC),
+               temas=("teker merkez duzlemleri: on x +-%.1f, arka x +-%.1f, z +-%.0f (520 taban; on omni ise yamuk destek, yan kenar "
+                      "dik uzaklikla); fren ivmesi 1,5 m/s2 (acil stop, tahmini)" % (XF, XR, ZC)),
+               destek=dict(on_x_mm=XF, arka_x_mm=XR, z_mm=ZC, on_iz_mm=2 * XF, arka_iz_mm=2 * XR, omni=TP.OMNI),
+               zemin=dict(on_teker_zemin_alti_mm=round(ZEMIN_DY, 3), durus_egimi_derece=round(math.degrees(TH0), 3),
+                          not_="CAD ve ana montaj zemini arka teker temasi (y = 0); aks 62,5 ortak oldugundan O127 on omni CAD'de zeminin "
+                               "%.1f mm altina iner (gosterim). Gercek durus: on uc %.1f mm yukari, burun yukari %.3f derece; devrilme "
+                               "hesabinda geri yone eklendi (ileri kazanci alinmadi)" % (ZEMIN_DY, ZEMIN_DY, math.degrees(TH0))),
                pozlar=robot),
     motor=motor, aks=aks, aku=aku, donus=donus, kafa_duzeltme=KAFA_DUZ, omni=TP.OMNI,
     bom=[[t, kod, v["adet"], round(v["kutle"], 1)] for (t, kod), v in sorted(bom.items())],

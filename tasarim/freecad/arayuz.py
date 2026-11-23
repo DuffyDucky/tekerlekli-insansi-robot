@@ -704,16 +704,17 @@ TABAN = dict(
     # ON IKI TEKER OMNI (K75 yon karari, Ahmet 23.11.2026: on iki teker omni, arka iki teker lastik kalir). Gecerli tasarim: aktif=True.
     # Geri donus (lastik on teker): aktif=False ya da ortam degiskeni TABAN_OMNI=0 (taban_parcalar). Arka teker, motor, braket, kaplin,
     # enkoder degismez. Teker merkezi tek degerden: OMNI_X (asagida, modul duzeyi); taban_lib / taban_parcalar / donus_hesap bunu okur.
-    # Merkez zinciri (taban_lib olculeri, taban_lib.omni_kontrol() ayni sayilari dogrular): kaplin ucu x = _X_BR 171 + braket 1,5 +
-    # bosluk 2 + kaplin 30 = 204,5 (oturma duzlemi, degismez); adaptor lastik tekerin gobegini taklit eder: altigen yuva kaplina
-    # 17,5 mm kavrar, gogus 6 mm, ayni M4x16 + pul. Adaptorun teker oturma yuzu = kaplin ucu - 17,5 = 187 = lastik tekerin ic yuzu
-    # -> omni merkezi 187 + 29 / 2 = 201,5 (lastik 216: 14,5 mm iceri; on iz 403, arka iz 432).
+    # Merkez zinciri (taban_lib olculeri; taban_lib.omni_olcu() ve omni/omni_kontrol.py ayni sayilari dogrular): kaplin ucu x = _X_BR 171 +
+    # braket 1,5 + bosluk 2 + kaplin 30 = 204,5 (oturma duzlemi, degismez); adaptor lastik tekerin gobegini taklit eder: teker oturma
+    # yuzu kaplin ucundan 17,5 mm iceride (lastik tekerin yuva derinligi), gogus 6 mm, ayni M4x16 + pul. Adaptorun altigen yuvasi
+    # flans dahil kaplini 25,5 mm sarar (flans motor yuzu 179). Teker oturma yuzu = kaplin ucu - 17,5 = 187 = lastik tekerin ic yuzu
+    # -> omni merkezi 187 + 29 / 2 = 201,5 (lastik 216: 14,5 mm iceri; on iz 403, arka iz 432). 2. asama (23.11.2026) bagimsiz olcumu ayni.
     omni=dict(aktif=True, konum="on", cap=127.0, en=29.0, makara_d=19.0, makara=22, makara_boy=22.0, kutle_g=480.0, yuk_kg=30.0,
               urun="Nexus Robot 14073, 127 mm cift sira aluminyum omni, rulmanli makara (14075 'Basic' ayni dis olcu, pirinc boru yatak)",
               kaynak="urun sayfasi (ozrobotics.com 14073 / 14075, 23.11.2026 okundu): O127, eksenel 29 mm, 2 sira x 11 = 22 kaucuk makara "
                      "O19, 480 g, 30 kg. Makara boyu sayfada yok (22, TAHMIN; kod/fizik/omni_teker.json ile ayni)",
               kaplin_ucu_x=_X_BR + 1.5 + 2.0 + 30.0,        # 204,5: taban_lib BRK t + kaplin araligi + KAP L (kaplin teker tarafi ucu)
-              kavrama=17.5,                                 # altigen yuvanin kaplina kavramasi (lastik teker yuva_derin ile ayni)
+              kavrama=17.5,                                 # teker oturma yuzunun kaplin ucuna uzakligi (lastik teker yuva_derin ile ayni; adaptorun kaplini sarmasi 25,5)
               # Gobek adaptoru (PETG baski; 12 mm altigen kaplin -> omni gobek deseni). Teker yuzu (oturma) = kaplin_ucu_x - kavrama.
               adaptor=dict(flans_d=56.0, flans_t=8.0, pilot_bosluk=0.4, altigen_pay=0.1, gogus=6.0, m4_delik=4.5,
                            insert=3, civata=(3, 35), malzeme="PETG", yon="flansin motor tarafi yuzu tablada (pilot yukari)",

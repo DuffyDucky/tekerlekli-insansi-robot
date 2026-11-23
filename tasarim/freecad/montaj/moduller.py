@@ -206,7 +206,8 @@ def yukle_kafa():
 
 
 # taban: govde (plakalar, motorlar, aku, guc, elektronik, sensorler; iskelete sabit) + her kosede teker grubu (teker + kaplin +
-# teker civatasi ve pulu: motor milinde doner). Teker eklemleri: Revolute, sinirsiz (serbest donus), eksen motor mili (+X yonlu:
+# teker civatasi ve pulu; on omni kosede + gobek adaptoru ve 4x M3x35 / pul / isil gomme somun: motor milinde doner; liste
+# taban_parcalar.TEKER_DONEN). Teker eklemleri: Revolute, sinirsiz (serbest donus), eksen motor mili (+X yonlu:
 # pozitif aci = ileri yuvarlanma, tekerin alt noktasi geri gider). Eksen noktasi ve yonu taban_parcalar (X_WH, Z_WH, arayuz.AX)
 # ve kaplin-motor mili baglantisinin eksen kontrolunden; taban-montaj.FCStd'de eklem yok (1. asama statik), burada kurulur.
 TEKER_KOSE = (("on_sag", 1, 1), ("on_sol", -1, 1), ("arka_sag", 1, -1), ("arka_sol", -1, -1))     # (anahtar eki, sx, sz)
@@ -217,23 +218,29 @@ def teker_grup(k):
     return "".join(x.capitalize() for x in k.split("_")) + "Teker"
 
 
+def teker_merkez_x(TP, sz):
+    """Kosenin teker merkez duzlemi (mutlak x): on koseler omniyse arayuz.OMNI_X (201,5), aksi halde X_WH (216). Eksen +X oldugu icin
+    donusu etkilemez; eklem noktasi ve beklenen poz teker merkezinde dursun diye."""
+    return TP.X_OMNI if (TP.OMNI and sz > 0) else TP.X_WH
+
+
 def yukle_taban():
     import taban_parcalar as TP
-    kose_ad = {(sx, sz): "%s %s" % (TP.SZ(sz), TP.SX(sx)) for _, sx, sz in TEKER_KOSE}     # (1, 1) -> "on sag" (parca adlarindaki)
-    grup_on = {}
+    # Teker grubu = taban_parcalar.TEKER_DONEN (motor milinde donen parcalarin indeksleri): lastik kosede teker + kaplin + M4x16 + pul;
+    # omni kosede ayrica gobek adaptoru + 4x (M3x35 + pul + isil gomme somun). Ad listesi yerine indeks: omni / lastik kipinde ayni yol.
+    grup_i = {}
     for k, sx, sz in TEKER_KOSE:
-        ka = kose_ad[(sx, sz)]
-        for on in ("Teker 125 x 58 (%s)" % ka, "Kaplin 12 mm altigen (%s)" % ka, "Pul M4 (teker %s)" % ka, "Civata M4x16 (teker %s)" % ka):
-            grup_on[on] = teker_grup(k)
+        for i in TP.TEKER_DONEN[(sx, sz)]:
+            grup_i[i] = teker_grup(k)
 
-    def grup(p):
+    def grup(p, i):
         if p["grup"] == "Referans":
             return "Referans"
-        return grup_on.get(p["ad"], "Govde")
+        return grup_i.get(i, "Govde")
 
     eklemler = []
     for k, sx, sz in TEKER_KOSE:
-        n = V(sx * TP.X_WH, A.AX, sz * TP.Z_WH)
+        n = V(sx * teker_merkez_x(TP, sz), A.AX, sz * TP.Z_WH)
         eklemler.append(dict(anahtar="teker_" + k, ad="teker %s (JGB37 mili)" % k.replace("_", " "), ebeveyn="Govde",
                              cocuk=teker_grup(k), cerceve=App.Placement(n, App.Rotation(V(0, 0, 1), V(1, 0, 0))), sinir=None,
                              sinir_acik=(False, False),
@@ -244,17 +251,22 @@ def yukle_taban():
         for k, sx, sz in TEKER_KOSE:
             if g == teker_grup(k):
                 return App.Placement(V(0, 0, 0), App.Rotation(V(1, 0, 0), poz.get("teker_" + k, 0.0)),
-                                     V(sx * TP.X_WH, A.AX, sz * TP.Z_WH))
+                                     V(sx * teker_merkez_x(TP, sz), A.AX, sz * TP.Z_WH))
         return App.Placement()
 
     parcalar = []
     for k, p in enumerate(TP.P):
         q = _parca(p, k)
         q["kutle"] = p["kutle"]
-        parcalar.append(dict(q, grup=grup(p), alt_grup=p["grup"]))
+        parcalar.append(dict(q, grup=grup(p, k), alt_grup=p["grup"]))
+
+    def grup_aciklama(k, sz):
+        if TP.OMNI and sz > 0:
+            return "Teker %s (omni + PETG gobek adaptoru + 4x M3x35 + kaplin, motor milinde doner)" % k.replace("_", " ")
+        return "Teker %s (teker + kaplin, motor milinde doner)" % k.replace("_", " ")
     return dict(parcalar=parcalar,
                 gruplar=[("Govde", "Taban govdesi: plakalar + motorlar + aku + guc + elektronik + sensorler (iskelete sabit)")] +
-                        [(teker_grup(k), "Teker %s (teker + kaplin, motor milinde doner)" % k.replace("_", " ")) for k, _, _ in TEKER_KOSE],
+                        [(teker_grup(k), grup_aciklama(k, sz)) for k, _, sz in TEKER_KOSE],
                 baglanti=dict(modul="iskelet", grup="Iskelet", ref="Sase uzun rayi", nokta=(0.0, A.Y_RAIL0, 0.0),
                               aciklama="alt plaka uzun ve ara raylarin alt kanallarina 14x M6 + cekic somun (arayuz.TABAN plaka_ray_z / "
                                        "plaka_ara_x); motor braketleri plakaya M4 + DIN 985 (520 taban: braket ray disinda; Y2a)"),

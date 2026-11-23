@@ -1,7 +1,9 @@
 # On omni teker + gobek adaptoru raporu (rapor.html TASLAGI, gorseller gomulu). Sistem Python'u ile calisir (FreeCAD gerekmez).
 # Girdiler: omni-kontrol.json (omni_kontrol.py), lastik-geri-donus.json (OMNI_KIP=lastik), gorsel/*.png (omni_gorsel.py), ../arayuz.py,
-# ../taban/donus_hesap.py (yari statik donus el hesabi; saf Python). 2. asama bolumu bos (carpisma taramasi, taban / ana montaj regresyonu).
-import os, sys, json, base64, html
+# ../taban/donus_hesap.py (yari statik donus el hesabi; saf Python). 2. asama (kontrol ajani, 23.11.2026): omni-dogrula*.json (omni_dogrula.py),
+# eklem-dogrulama-asama2.json, ../taban/taban-analiz.json, ../montaj/montaj-analiz.json, ../carpisma-sonuc.json, omuz / iskelet regresyon
+# fark.json, fizik olcumu planlama/d158/Y0f-olcum/donus-oneri.json; omni oncesi degerler git ONCE_REF'ten (git show, yalniz okuma).
+import os, sys, json, base64, html, subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 UST = os.path.dirname(HERE)
@@ -72,37 +74,9 @@ def durum(ok):
 TAH = "<span class='tah'>TAHMİN</span>"
 OLC_ET = "<span class='olc'>ölçülen</span>"
 
-# yari statik donus hesabi (donus_hesap.py; ayni yanda on / arka teker farkli x): VARSAYIM, el hesabi
-import donus_hesap as DH
-
-
-def donus_satirlari():
-    """Iki merkez kabulunu karsilastirir: on omni ayni duzlemde (216) ve gecerli tasarim (201,5)."""
-    mkm = None
-    try:
-        tj = json.load(open(os.path.join(UST, "taban", "taban-analiz.json"), encoding="utf-8"))
-        ev = tj["robot"]["pozlar"][0]
-        mkm = (ev["kutle_g"] / 1000.0, ev["am"])
-    except Exception:
-        return []
-    out = []
-    mot = DH.motor_degerleri()
-    for xo, ad in ((A._X_WH, "on omni lastikle ayni düzlemde (216; eski kabul)"), (A.OMNI_X, "on omni 201,5 (bu tasarım)")):
-        DH.X_OMNI = xo / 1000.0
-        for mu in A.TABAN["donus"]["mu_senaryo"]:
-            r = DH.model_a(mkm[0], mkm[1], mu, -1.0, True, mot)
-            on = max(t["T_kgcm"] for t in r["tekerler"] if t["omni"])
-            ar = [t for t in r["tekerler"] if not t["omni"]][0]
-            out.append([esc(ad), sayi(mu, 2), sayi(on, 2), "%s (%s)" % (sayi(ar["T_kgcm"], 2), esc(ar["rol"])), sayi(r["en_cok_oran_surekli"], 2)])
-    DH.X_OMNI = A.OMNI_X / 1000.0
-    return out
-
-
-try:
-    DON = donus_satirlari()
-except Exception as e:      # el hesabi raporu durdurmaz
-    DON = []
-    print("donus hesabi alinamadi:", e)
+sys.path.insert(0, HERE)
+import omni_rapor_asama2 as A2
+HUKUM_HTML, DONUS_HTML, ASAMA2_HTML = A2.uret(d, dict(sayi=sayi, esc=esc, md=md, tablo=tablo, durum=durum, TAH=TAH, OLC_ET=OLC_ET))
 
 H = []
 H.append("""<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -130,9 +104,10 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .karar{border-left:4px solid var(--ok);background:var(--card);padding:10px 14px;border-radius:6px}
 </style></head><body><main>""")
 H.append("<h1>Ön omni teker ve göbek adaptörü</h1>")
-H.append("<div class='sub'><b>TASLAK</b> · 1. aşama (tasarım) · FreeCAD 1.1 · <code>omni_kontrol.py</code> · ön iki teker Nexus 127 mm çift sıra omni, "
-         "arka iki teker lastik · ölçüler <code>arayuz.TABAN['omni']</code> ve <code>arayuz.OMNI_X</code> · 2. aşama (çakışma taraması, "
-         "taban ve ana montaj regresyonu, raporun tamamlanması) aşağıda boş</div>")
+H.append("<div class='sub'>1. aşama (tasarım) + 2. aşama (bağımsız kontrol, resmî tarama, ana montaj, regresyon) · FreeCAD 1.1 · ön iki teker Nexus 127 mm "
+         "çift sıra omni, arka iki teker lastik · ölçüler <code>arayuz.TABAN['omni']</code> ve <code>arayuz.OMNI_X</code> · 2. aşamanın hükmü ve sayıları "
+         "<a href='#asama2'>aşağıda</a></div>")
+H.append(HUKUM_HTML)
 H.append("<div class='karar'><b>Karar (Ahmet, 23.11.2026; K75):</b> ön iki teker omni, arka iki teker, arka motorlar ve arka enkoderler aynen kalır. "
          "Teker: Nexus 14073 (rulmanlı makara; 14075 aynı dış ölçü), Ø127 × 29 mm, 2 sıra × 11 = 22 makara, 480 g, yük 30 kg. Teker merkezi motor mili ve "
          "kaplinin oturma düzleminin geometrik sonucu; Nexus göbeği (6 mm delik) yerine 12 mm altıgen kapline uyan PETG adaptör.</div>")
@@ -245,7 +220,7 @@ H.append("<p class='not'>İmalat seçeneği (karar değil): aynı geometri 6061 
          "PETG'de sürünme ve altıgen ezilmesi ilk denemede gözlenmeli: durma torku 21 kg·cm (2,1 N·m, tahmini) altıgen yüzlerine taşınır.</p>")
 
 # --- bosluklar
-H.append("<h2>Teker çevresi açıklıkları (bu tasarım için; resmî tarama 2. aşamada)</h2>")
+H.append("<h2>Teker çevresi açıklıkları (1. aşama, dönen zarf; 2. aşama ölçümü aşağıda)</h2>")
 H.append("<p>Dönen zarf: her yeni dönen parça (omni, adaptör, M4, M3, pullar, somunlar) eksen etrafında süpürdüğü halka olarak alındı; statik parçalara "
          "uzaklık bu zarftan ölçüldü (dönüş konumundan bağımsız). Kabuk ve iskelet kendi STEP dosyalarından (%s; %s), taban parçaları <code>taban_parcalar</code>'dan.</p>" % (
              esc(B["kaynak"]["kabuk"]), esc(B["kaynak"]["iskelet"])))
@@ -275,17 +250,11 @@ H.append("<ul>" + "".join("<li>%s</li>" % md(s) for s in [
         sayi(-OL["zemin_y"], 1), sayi(B["zemin"]["teker_alt_y"], 2), sayi(-OL["zemin_y"], 1), sayi(__import__("math").degrees(__import__("math").atan(-OL["zemin_y"] / 370.0)), 2)),
     "**Yeni parçalar × kabuk / iskelet çakışma:** %d / %d." % (len(B["kabuk_cakisma"]), len(B["iskelet_cakisma"]))] if s) + "</ul>")
 
-# --- dikkat: donus el hesabi
-H.append("<h2>Dikkat: merkezin içeri alınması dönüş el hesabını değiştiriyor</h2>")
-H.append("<div class='uyari'>Aynı yandaki ön (x 201,5) ve arka (x 216) teker aynı sürücüden aynı hızla dönüyor. Yerinde dönüşte gereken çevre hızları farklı "
-         "(%%%s), fark boyuna kaymayla karşılanır. <code>taban/donus_hesap.py</code>'nin yarı statik modeli (Coulomb, rijit plaka; VARSAYIM) "
-         "<code>arayuz.OMNI_X</code>'e bağlandı; ön motor torku aşağıda. Bu, MuJoCo fizik modelinin (ONERI-ADAY, merkez 14,5 mm içeri: yerinde dönüş 0,89–0,93 rad/s) yerini "
-         "tutmaz; karar değişmedi, yalnız rakam rapora girdi. <code>taban_montaj.py</code> yeniden koşulunca <code>taban-analiz.json</code> → <code>donus</code> aynı değerleri alır (2. aşama).</div>" % sayi(OL["iceri_mm"] / OL["lastik_merkez_x"] * 100, 1))
-if DON:
-    H.append(tablo(["Kabul", "µ", "Ön (omni) motor, kg·cm", "Arka motor, kg·cm (rol)", "En çok / sürekli"], DON))
+# --- donus: el hesabi ve fizik modeli (2. asama, madde 7)
+H.append(DONUS_HTML)
 
 # --- olculecekler
-H.append("<h2>Sipariş öncesi ölçülecekler / sorulacaklar</h2><ol>" + "".join("<li>%s</li>" % esc(s) for s in O["olculecek"]) + "</ol>")
+H.append("<h2 id='olculecek'>Sipariş öncesi ölçülecekler / sorulacaklar</h2><ol>" + "".join("<li>%s</li>" % esc(s) for s in O["olculecek"]) + "</ol>")
 H.append("<p class='not'>Ölçüler gelince yalnız <code>arayuz.TABAN['omni']['tahmin']</code> güncellenir, <code>omni_kontrol.py</code> → <code>omni_gorsel.py</code> → <code>omni_rapor.py</code> "
          "yeniden koşulur. Göbek deliği pilotun alt sınırından (altıgen köşe Ø%s + 2 × 2,5 et ≈ Ø%s) küçük çıkarsa bu yerleşim olmaz: adaptör flanşı tekerin dışına "
          "alınır, merkez dışarı kayar (yeniden tasarım).</p>" % (sayi(2 * (12.1 / 3 ** 0.5), 1), sayi(2 * (12.1 / 3 ** 0.5) + 5, 1)))
@@ -300,30 +269,21 @@ if gd:
 else:
     H.append("<p class='not'>lastik-geri-donus.json yok (OMNI_KIP=lastik koşulmadı).</p>")
 
-# --- tutarsizliklar
-H.append("<h2>Dokunulmadan bildirilen tutarsızlıklar</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in [
-    "**Web demosu teker merkezi:** `tasarim/cad/omni-teker.json` `merkez_notu` ve `yerlesim.merkez` \"lastikle aynı merkez\" (x 216); CAD 201,5: **14,5 mm** fark (ön iz demoda 432, CAD 403). Demo adaptörü Ø40 / delik 14; CAD flanş Ø56, pilot Ø22. Ürün demoda 14075, CAD'de 14073 (aynı dış ölçü).",
-    "**`kod/ortak/robot_parametreleri.json` `iz_genisligi_m` 0,432:** artık yalnız arka iz; ön iz 0,403. Firmware sabiti 0,426 ayrı (değişmedi).",
-    "**`kod/fizik/omni_teker.json`:** merkez kabulü (14,5 içeri) CAD ile aynı; ürün 14075 (pirinç boru yatak) diyor, CAD 14073. `gobek_deligi_mm` 6 (TAHMİN) Nexus göbeği içindi; adaptörle teker göbek deliği ayrı bir ölçü (CAD'de 22,4 TAHMİN).",
-    "**`planlama/maliyet.json` satır 133:** \"Omni teker (K1 seçeneği) … 14075 … 12 mm altıgen göbek adaptörü\", koşullu, toplama girmiyor; ön iki lastik teker hâlâ 4 adet sayılıyor. Adaptör PETG ve 8× M3×35 / pul / ısıl gömme somun listede yok.",
-    "**`tasarim/freecad/rehber/rehber_metin.py` ≈ 172:** \"teker ekseni x ±178\" (125 cm değeri); montaj adımında omni / adaptör yok.",
-    "**`taban/taban_montaj.py` devrilme:** `XC = A._X_WH` (216) dört teker için; ön iz 403 ile yana devrilme payı küçülür (fizik: 25,2° → 23,5°). 2. aşamada destek çokgeni ön iz ile.",
-    "**`montaj/moduller.py` teker grubu:** dönen parça adları sabit (\"Teker 125 x 58\", kaplin, M4); omni, adaptör ve M3'ler gövdeye düşer. `taban_parcalar.TEKER_DONEN` köşe başına dönen parça indekslerini veriyor (2. aşama)."]) + "</ul>")
-
-# --- 2. asama (bos)
-H.append("<h2>2. aşama (doldurulacak)</h2><div class='bos'>Resmî çakışma taraması (<code>carpisma_kos.py taban</code>), <code>taban_montaj.py</code> yeniden üretimi "
-         "(kontroller, devrilme, motor, <code>taban-analiz.json</code>, BOM, görseller, <code>taban/rapor.html</code>), ana montaj (<code>montaj/</code>: teker grubu, eklem doğrulaması) "
-         "ve regresyon, raporun tamamlanması. Bu taslak onları kapatmaz.</div>")
+# --- 2. asama
+H.append(ASAMA2_HTML)
 
 H.append("<h2>Dosyalar</h2><ul>"
          "<li><code>../arayuz.py</code>: <code>TABAN['omni']</code> (aktif, ürün, kaplin_ucu_x, kavrama, adaptor, tahmin, olculecek), <code>OMNI_AKTIF</code>, <code>OMNI_X</code>, <code>ON_IZ</code>, <code>ARKA_IZ</code></li>"
          "<li><code>../taban/taban_lib.py</code>: <code>omni_local()</code> (fıçı makaralı teker), <code>omni_adaptor_local()</code>, <code>omni_olcu()</code>; zincir assert'leri</li>"
          "<li><code>../taban/taban_parcalar.py</code>: ön köşelerde omni + adaptör + 4× M3 + ısıl gömme somun, bağlantılar, baskı listesi, <code>TEKER_DONEN</code>, <code>OMNI_I</code></li>"
-         "<li><code>../taban/donus_hesap.py</code>: <code>X_OMNI = arayuz.OMNI_X</code></li>"
+         "<li><code>../taban/donus_hesap.py</code>: <code>X_OMNI = arayuz.OMNI_X</code>; 2. aşamada Model C (motor hız-tork eğrisi) eklendi</li>"
+         "<li><code>../taban/taban_montaj.py</code>: yamuk destek çokgeni (ön x OMNI_X, arka x 216), duruş eğimi; <code>../montaj/moduller.py</code>: teker grubu <code>TEKER_DONEN</code>'den</li>"
+         "<li><code>omni_dogrula.py</code> (2. aşama bağımsız doğrulama) → <code>omni-dogrula.json</code>, <code>OMNI_KIP=lastik</code> → <code>omni-dogrula-lastik.json</code>; "
+         "<code>eklem-dogrulama-asama2.json</code> (ana montaj eklem doğrulaması, kafa yön denetimi atlanarak; bkz. 2. aşama)</li>"
          "<li><code>omni_kontrol.py</code> → <code>omni-kontrol.json</code>, <code>omni-bom.csv</code>, <code>omni-montaj.FCStd</code>, <code>omni-on-teker.step</code>, <code>stl/</code>; "
          "<code>OMNI_KIP=lastik</code> → <code>lastik-geri-donus.json</code></li>"
          "<li><code>omni_gorsel.py</code> (FreeCAD GUI) → <code>gorsel/</code>; <code>omni_rapor.py</code> → bu sayfa</li></ul>")
-H.append("<p class='not'>Üretildi: omni_rapor.py · kontrol süresi %s s · TASLAK</p>" % sayi(d["sure_s"], 1))
+H.append("<p class='not'>Üretildi: omni_rapor.py · 1. aşama kontrol süresi %s s · 2. aşama 23.11.2026</p>" % sayi(d["sure_s"], 1))
 H.append("</main></body></html>")
 open(os.path.join(HERE, "rapor.html"), "w", encoding="utf-8").write("\n".join(H))
 print("rapor.html", round(os.path.getsize(os.path.join(HERE, "rapor.html")) / 1024), "KB")

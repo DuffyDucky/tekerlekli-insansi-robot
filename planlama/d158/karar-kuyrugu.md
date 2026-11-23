@@ -88,7 +88,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K73 | Engel varken yerinde dönüşte taban köşesi duvara çarpıyor; ≈ 20°'den dar açıyla yaklaşmada ön sonarlar yankı almıyor, köşe sürtünüyor | **açık** (Y0s simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Engel yakınında dönüş ve eğik yaklaşma güvenliği |
 | K74 | Engel bölgesinde (30–35 cm) 0,05 m/s sürünme istenecek mi | **açık** (Y0s simülasyonu, TASLAK; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi | Y3 sonar kuralları (K70 ile birlikte) |
 
-| K75 | Dönüş: firmware 0.5.0'la µ 0,5 ve 0,8'de robot ne yerinde ne hareket hâlinde dönüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı (V1 / V2), mekanik taraf mı (V3 / V4) | **açık** (yön kararı 23.11.2026 01:02, Ahmet: ön iki teker omni + firmware düzeltmesi, sarhoş teker yok; firmware yarısı Efe'de, teker seçilmedi; F5 yazılım hizası tarafı, Ahmet + Efe) | — (yön seçildi) | Dönüş ve engel dolaşma; omni teker siparişi, CAD, `maliyet.json`, rehber |
+| K75 | Dönüş: firmware 0.5.0'la µ 0,5 ve 0,8'de robot ne yerinde ne hareket hâlinde dönüyor; tam PWM'de bile yavaş, 9 kg·cm motorla hiç dönmüyor. Firmware tarafı mı (V1 / V2), mekanik taraf mı (V3 / V4) | **açık** (yön kararı 23.11.2026 01:02, Ahmet: ön iki teker omni + firmware düzeltmesi, sarhoş teker yok; firmware yarısı Efe'de; F5 yazılım hizası tarafı, Ahmet + Efe; 23.11: omni CAD'e işlendi, `omni-gunluk.md`) | — (yön seçildi) | Dönüş ve engel dolaşma; omni teker siparişi, CAD, `maliyet.json`, rehber |
 | K76 | Rampada `dur` sonrası robot tutmuyor, geri kayıyor: tutma döngüsü ya da fren istenecek mi, robot rampada kullanılacak mı | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (kayma hızı dişli sürtünmesi TAHMİN'ine bağlı) | Rampa kullanımı |
 | K77 | Bekçi ani duruşunda arka aks kısa süre boşalıyor (21 / 15 kg·cm): rampalı fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (devrilme ilerlemiyor; aks boşalması durma torku TAHMİN'ine bağlı) | Bekçi duruşu (firmware 0.5.0'da rampasız) |
 | K78 | Acil stopta sürücü kesik, robot boşta kayıyor (0,08–0,29 m): bu mesafe kabul mü, aktif fren istenecek mi | **açık** (Y0f fizik simülasyonu; F5 yazılım hizası tarafı, Ahmet + Efe) | Önerilmedi (aralık yansıyan atalet ve dişli sürtünmesi TAHMİN'ine bağlı) | Acil stop duruş mesafesi |
@@ -1687,6 +1687,13 @@ Efe'nin kararı; sonuç sayfasındaki aciliyet grupları taslak (orkestratör on
   - Uygulaması iş (karar değil): sondaki Y0f bölümünde "Y0f ikinci eki" ve "Y0f üçüncü eki".
   - Kaynak: `kod/SIMULASYON.md` "Öneri firmware + ön omni (ONERI; VARSAYIM)" ve "Karar isteyenler"; `Y0f-olcum/donus-oneri.md`;
     öneri dalında `ONERI-donus.md`.
+- **Güncelleme (23.11, omni CAD'e işlendi; `omni-gunluk.md`, `tasarim/freecad/omni/rapor.html`):** 1. aşama `bc006c9` (tasarım), 2. aşama
+  bağımsız kontrol + resmî tarama + taban / ana montaj regresyonu. Teker Nexus 14073 (Ø127 × 29, 480 g), merkez `arayuz.OMNI_X` 201,5
+  (14,5 mm içeri, ön iz 403, arka iz 432), göbek yerine PETG adaptör (12 mm altıgen kaplin → teker, 4× M3 ısıl gömme somun). Lastik ön tekere
+  dönüş `TABAN_OMNI=0`. Ana montaj 1.277 parça, 26.629,4 g; taban dışı parçalar birebir. Dönüş el hesabı: Model A (sert hız) ÜST SINIR
+  8,03 kg·cm, Model C (motor eğrisi) 3,62 kg·cm, MuJoCo ONERI-ADAY 1,1–1,2× sürekli; merkez kaymasının bedeli küçük, asıl konu motor
+  TAHMİN'i (karar değil, tasarım değişmedi). Açık: sipariş öncesi göbek ölçüleri (delik, PCD, cıvata, kalınlık: TAHMİN), teker ↔ etek
+  önde 11 mm (hedef 12), `maliyet.json` / rehber / web demosu / GLB / `kod/` parametreleri omniye göre güncellenmedi (dokunulmadı).
 - **Durum:** açık (22.11.2026, Y0f kayıt eşitlemesinde açıldı; 23.11 Y0f ekiyle güncellendi; 23.11.2026 01:02 yön kararı Ahmet'in:
   ön omni + firmware düzeltmesi; firmware yarısı Efe'de ve teker seçilmediği için K2 gibi açık kalır, sayaç değişmez; 23.11 Y0f
   üçüncü ekiyle güncellendi: arka enkoder düzeltmesi, makaralı model).
@@ -2380,9 +2387,9 @@ ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
     - Göbek ile tekerin cıvata deseni uyumu (satıcıya sorulacak).
     - Motor mil boyu ve D kesimi (CAD'deki 15 mm tahmin).
     - Standart teker siparişi verildi mi (verildiyse iki teker artar, verilmediyse listeden düşer).
-    - CAD, `maliyet.json` ve rehber omniye göre güncellenmedi.
+    - CAD, `maliyet.json` ve rehber omniye göre güncellenmedi. → **CAD'e işlendi** (23.11, `omni-gunluk.md`); `maliyet.json` ve rehber açık.
     - Depoda iki tutarsızlık: omni merkezinin içeri kayması `arayuz.py` ile `taban_lib.py` arasında farklı; rehberde teker ekseni
-      ±178, CAD'de 216.
+      ±178, CAD'de 216. → ilki kapandı (tek değer `arayuz.OMNI_X`, `bc006c9`); rehber ±178 açık.
     - `enk_ariza` telemetri alanı (protokol önerisi, protokol değiştirilmedi).
     - Katman 1'in 500 ms içindeki çıkış sınırı için test.
     - Enkoder kilidinin kullanıcıya görünmesi.
@@ -2392,8 +2399,10 @@ ve "Yeniden kontrol", `kod/SIMULASYON.md`; karar değil, iş)**
     `Y0f-kontrol.md` § 14):** karar K75'te, rampa sorusu K80'de. İş:
     - İki parametre dosyasının (`kod/fizik/omni_teker.json`, `tasarim/cad/omni-teker.json`) tek kaynakta birleştirilmesi (CAD adımı).
     - Teker merkezi kararı: 14,5 mm içeri mi (fizik modeli), lastikle aynı mı (demo); CAD içinde de `arayuz.py` ile `taban_lib.py` çelişiyor.
+      → CAD 14,5 mm içeri (kaplin oturma düzleminin sonucu, 201,5), çelişki kapandı; demo hâlâ 216 (dokunulmadı).
     - 12 mm altıgen kaplin ile 6 mm delikli göbek uyuşmazlığı (demoda kaplin göbeğe ≈ 1 mm giriyor; adaptör tasarımı yok).
-    - CAD omniye göre güncellenmedi (Ahmet'in onayını bekliyor).
+      → CAD'de PETG adaptör (altıgen yuva kaplini 25,5 mm kavrar); Nexus göbeği alınmaz.
+    - CAD omniye göre güncellenmedi (Ahmet'in onayını bekliyor). → **CAD'e işlendi** (23.11, `omni-gunluk.md`).
     - Efe notundaki (`ONERI-donus.md`) tek teker kilidi sayısı (w 0,97 → 0,73) ön enkoderle ölçüldü, arka enkoderle yeniden
       ölçülmedi (notta işaretli). Notun enkoder cümleleri öneri dalında A'nın yerel commit'i `95b7066` ile arkaya göre güncellendi
       (push yok; bu kapanışta dala dokunulmadı).

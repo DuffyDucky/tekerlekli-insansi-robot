@@ -1,0 +1,69 @@
+{
+ "not_": "carpisma_kos.py tam kosusunun yalniz statik bolumu tamamlandi (23.11.2026 15:41-15:42); omuz bolumu sirasinda kosu, sistem bellegi azaldigi icin durduruldu. carpisma-sonuc.json ve carpisma-bolum/ degistirilmedi (karisik sonuc olmasin). Oncesi = git HEAD carpisma-bolum/statik.json (21.11).",
+ "kosu": "20261123-154102",
+ "sure_s": 18.8,
+ "once_kosu": "20261121-023529",
+ "ev_pozu_cakisma": {
+  "once": 0,
+  "sonra": 0
+ },
+ "ev_pozu_kesisen_cift": {
+  "once": 904,
+  "sonra": 930
+ },
+ "ev_pozu_cakisma_s2_0": {
+  "once": 4,
+  "sonra": 4
+ },
+ "ayrilmis_bolge_ayni": true,
+ "arayuz_uyumu_ayni": true,
+ "ev_pozu_poz_ayni": true,
+ "kutle_g": {
+  "once": {
+   "iskelet": 6410.8,
+   "omuz_sag": 570.0,
+   "omuz_sol": 570.0,
+   "kabuk": 7170.4,
+   "dirsek_sag": 400.5,
+   "dirsek_sol": 400.5,
+   "kafa": 2081.4,
+   "taban": 8272.5
+  },
+  "sonra": {
+   "iskelet": 6410.8,
+   "omuz_sag": 570.0,
+   "omuz_sol": 570.0,
+   "kabuk": 7170.4,
+   "dirsek_sag": 400.5,
+   "dirsek_sol": 400.5,
+   "kafa": 2081.4,
+   "taban": 9025.8
+  }
+ },
+ "kutle_toplam_g": {
+  "once": 25876.1,
+  "sonra": 26629.4
+ },
+ "agirlik_merkezi": {
+  "once": [
+   0.03,
+   526.18,
+   -9.71
+  ],
+  "sonra": [
+   0.03,
+   513.07,
+   -4.2
+  ]
+ },
+ "kosulmayan": [
+  "omuz",
+  "kol_sag",
+  "kol_sol",
+  "kolkol",
+  "kafa_sabit",
+  "kafa_sag",
+  "kafa_sol",
+  "taban"
+ ]
+}
