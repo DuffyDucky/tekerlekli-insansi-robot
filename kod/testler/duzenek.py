@@ -188,6 +188,10 @@ def _fizik_karti(harita, konum):
     if not dunya.FIZIK_VAR:
         raise unittest.SkipTest("fizik bağımlılığı (mujoco) yok: %s" % dunya.FIZIK_HATA)
     from fizik_esp32 import FizikEsp32
+    v = os.environ.get("LALE_VARYANT")                   # yalnız VARSAYIM denemesi (kod/fizik/varyantlar.py); yoksa bugünkü robot
+    if v:
+        import varyantlar
+        return FizikEsp32(harita, konum=konum, varyant=varyantlar.al(v))
     return FizikEsp32(harita, konum=konum)
 
 

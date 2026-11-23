@@ -1,0 +1,30 @@
+{
+  "aciklama": "Ön omni teker adayının (Nexus 14075, SEÇİLMEDİ) makaralı fizik modeli parametreleri. Tek kaynak: kod/fizik/omni_makara.py (ONERI-MAKARA varyantı) bunu okur. Alan adları CAD / web demosu verisiyle birleştirmeye uygun: uzunluk mm, kütle g, açı derece. durum: 'urun_sayfasi' = satıcı sayfası (ozrobotics 14075, 23.11.2026 okundu), 'yapi_geregi' = çift sıra tasarımın gereği (sayfada sayı yok), 'TAHMIN' = sayfada yok, makul değer seçildi, 'modelleme' = fizik modelinin seçimi (gerçek parça özelliği değil).",
+  "kaynak_url": "https://www.ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/",
+  "birlestirme_notu": "BİRLEŞTİRİLMEDİ (CAD adımında). Ürün ve geometri alanları için tek kaynak adayı tasarim/cad/omni-teker.json (web demosu); bu dosya o zaman yalnız modelleme alanlarını tutar. Açık karar: teker merkezi iki dosyada farklı kabul ediliyor (fizik: iç yüz aynı, merkez 14,5 mm içeri, varyantlar.ADAY_TEKER; demo: merkez lastikle aynı + adaptör). Bkz. planlama/d158/Y0f-kontrol.md § 14.7.",
+  "parametreler": {
+    "teker_dis_capi_mm": {"deger": 127.0, "durum": "urun_sayfasi", "kaynak": "Diameter: 5 inches (127mm)"},
+    "teker_eksenel_genislik_mm": {"deger": 29.0, "durum": "urun_sayfasi", "kaynak": "Axial width: 29mm"},
+    "teker_kutlesi_g": {"deger": 480.0, "durum": "urun_sayfasi", "kaynak": "Net weight: 480g (makaralar dahil)"},
+    "yuk_kapasitesi_kg": {"deger": 30.0, "durum": "urun_sayfasi", "kaynak": "Load capacity: 30kg (modelde kullanılmaz)"},
+    "makara_sayisi_toplam": {"deger": 22, "durum": "urun_sayfasi", "kaynak": "Number of rollers: 22"},
+    "sira_sayisi": {"deger": 2, "durum": "urun_sayfasi", "kaynak": "double omni wheel; Number of plates: 2"},
+    "makara_capi_mm": {"deger": 19.0, "durum": "urun_sayfasi", "kaynak": "Roller diameter: 19mm (fıçının en kalın yeri kabul edildi)"},
+    "makara_malzemesi": {"deger": "kauçuk", "durum": "urun_sayfasi", "kaynak": "Roller material: Rubber; gövde alüminyum alaşım"},
+    "makara_yatagi": {"deger": "pirinç boru (kaymalı yatak)", "durum": "urun_sayfasi", "kaynak": "Roller bearing: Brass tube; rulman değil"},
+    "gobek_deligi_mm": {"deger": 6.0, "durum": "TAHMIN", "kaynak": "ürün sayfasında yok; koordinatör notu 6 mm. tasarim/freecad/arayuz.py omni.gobek '12 mm altıgen adaptör (tahmini)' diyor: teyit edilecek. Fizikte kullanılmaz"},
+    "sira_kaydirma_derece": {"deger": 16.3636, "durum": "yapi_geregi", "kaynak": "iki sıra yarım adım kaydırılmış: 360 / 11 / 2 (boşluk öbür sıranın makarasıyla kapanır)"},
+    "makara_boyu_mm": {"deger": 22.0, "durum": "TAHMIN", "kaynak": "sayfada yok. 11 makaralı sırada adım çemberinde komşu makara uçları arası ≈ 30 mm; aradaki göbek tırnağına ≈ 8 mm bırakıldı"},
+    "makara_uc_capi_mm": {"deger": 17.1, "durum": "modelleme", "kaynak": "fıçı yüzeyi teker dış çemberinde: 2 x (sqrt(R^2 - (boy/2)^2) - (R - makara_capi/2)); fiziğe girmez, görsel"},
+    "sira_eksen_araligi_mm": {"deger": 10.0, "durum": "TAHMIN", "kaynak": "genişlik - makara çapı = 29 - 19: iki sıranın makaraları eksenel olarak iç içe (her makara 19 mm genişlikte, toplam 29 mm)"},
+    "makara_kutlesi_g": {"deger": 6.0, "durum": "TAHMIN", "kaynak": "kauçuk fıçı Ø19 x 22 + pirinç boru; 22 x 6 = 132 g, göbek ve plakalar 348 g"},
+    "makara_pim_capi_mm": {"deger": 3.0, "durum": "TAHMIN", "kaynak": "sayfada yok; pirinç boru içinde çelik pim"},
+    "makara_pim_surtunme_katsayisi": {"deger": 0.2, "durum": "TAHMIN", "kaynak": "kuru pirinç / çelik kayma sürtünmesi 0,15-0,25 (yağlanmamış); rulmanlı sürüm ≈ 0,005"},
+    "makara_yatak_surtunmesi_N": {"deger": 2.0, "durum": "TAHMIN", "kaynak": "MAKARA BAŞINA: tek makara temasta iken tekerin yanal direnç kuvveti = pim sürtünmesi x statik teker yükü (≈ 62 N) x pim yarıçapı / makara yarıçapı = 0,2 x 62 x 1,5 / 9,5 ≈ 2 N. Her makara ekleminde sabit Coulomb momenti (kuvvet x makara yarıçapı): yük değişimi izlenmez; iki sıra birden yere değerken model direnci ≈ 2,1 katına çıkar (yerinde dönüşte zamanın ≈ %10'u, düz gidişte ≈ %30'u; Y0f-kontrol § 14.2), gerçekte yük iki makaraya bölünür ve toplam aynı kalır. Masada yükte yana çekme ölçümü tek temas değeriyle karşılaştırılır. Duyarlılık 0-20 N (omni-makara.md)"},
+    "makara_yatak_sonumu_Nms_rad": {"deger": 1e-06, "durum": "TAHMIN", "kaynak": "kauçuk / yağ viskoz kaybı, çok küçük; sayısal sönüm de sağlar"},
+    "makara_armatur_kgm2": {"deger": 0.0, "durum": "modelleme", "kaynak": "makaranın kendi ataleti (m r^2 / 2 ≈ 2,7e-7 kg m^2) yeterli; kararsızlık görülürse eklenecek yapay atalet (ölçümde 0 ile kararlı, MuJoCo uyarısı 0)"},
+    "makara_surtunme_solimp": {"deger": 0.9999, "durum": "modelleme", "kaynak": "makara ekleminin Coulomb sürtünme kısıtının sertliği (MuJoCo solimpfriction). Varsayılan 0,9 ile makaranın küçük ataleti yüzünden kısıt çok yumuşak kalıyor, sürtünme 2 N ile 200 N arasında sonucu değiştirmiyordu (makara serbest dönüyordu); 0,9999 ile sürtünme sınırı tutuyor"},
+    "temas_bicimi": {"deger": "elipsoid", "durum": "modelleme", "kaynak": "fıçı yüzeyi temas bölgesinde elipsoidle (eksen yarı boyu a, kesit yarıçapı makara_capi / 2), a teker çemberine en iyi uyacak biçimde hesaplanır (omni_makara.py elipsoid_a; etkin yarıçap sapması 0,005 mm). Seçenekler: 'kureler' (makara ekseninde 5 küre, dış uçları çemberde; sapma 0,025 mm; MuJoCo'nun kesin küre çarpışması, çapraz denetim), 'kapsul' (aynı çap, makara_boyu uzunluk; sapma 0,36 mm; titreşim / kaba geometri duyarlılığı)"},
+    "ccd_toleransi": {"deger": 1e-09, "durum": "modelleme", "kaynak": "elipsoid-kutu teması MuJoCo'nun genel dışbükey çarpışmasından (nativeccd); varsayılan 1e-6 ile rampada makara temaslarında normal 28°'ye dek sapıyor (ölçüte göre temasların %3-8'i; B, Y0f-kontrol § 14.2), sahte çekiş veriyordu (15° rampada, enkoder önde 0,17 m/s yerine 0,09; enkoder arkada 0,18 yerine 0,12). 1e-9 ile sapma yok; yalnız bu varyantta uygulanır (MuJoCo opt.ccd_tolerance)"}
+  }
+}

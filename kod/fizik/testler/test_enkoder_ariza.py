@@ -47,8 +47,11 @@ class EnkoderArizasi(unittest.TestCase):
         if not D.FIZIK_VAR:
             raise unittest.SkipTest("fizik bağımlılığı (mujoco) yok: atlandı (%s)" % (D.FIZIK_HATA,))
         import varyantlar as VR
-        cls.korumali = VR.al("ONERI")
-        cls.korumasiz = VR.oneri_varyanti(duzeltme_orani=None)
+        ad = os.environ.get("LALE_VARYANT") or "ONERI"     # öbür öneri varyantları için (ör. ONERI-MAKARA); fw_oneri şart
+        cls.korumali = VR.al(ad)
+        if not (cls.korumali and cls.korumali.get("fw_oneri")):
+            raise unittest.SkipTest("%s öneri firmware'li değil" % ad)
+        cls.korumasiz = dict(cls.korumali, fw_oneri=dict(cls.korumali["fw_oneri"], duzeltme_orani=None))
 
     def _ikisi(self, bozuk):
         once, sonra = kos(self.korumasiz, bozuk), kos(self.korumali, bozuk)

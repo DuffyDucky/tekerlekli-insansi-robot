@@ -9,8 +9,11 @@ Anahtarlar:
                     doyumda integral durur (anti-windup). Ölçülen = o yanın enkoderli tekeri. Kazançlar TAHMİN.
                     (main motorlar.cpp'de KP / KI / KD sabitleri var, 0.5.0'da KP = 0: bu varyant onların sıfırdan büyük hâli.)
   on_teker          "omni": ön iki teker yanal serbest (top teker modeli, aşağıda), tahrikli.
+                    "makara": ön iki teker göbek + ayrı makaralı omni (omni_makara.py, ONERI-MAKARA; bu küre modeli değil).
                     "sarhos": ön iki teker yanal ve boyuna serbest, tahriksiz (bilyalı sarhoş teker; dönen çatallı
                     sarhoş tekerin çatal dinamiği yok), tahrik ve enkoder arka tekerlerde.
+  enkoder_teker     "on" / "arka": firmware'in hız ölçtüğü teker (yoksa fizik_parametreleri.json). Öneri varyantlarında
+                    "arka" (pin planı); açık `degis` her zaman önce gelir.
 
 Ön teker modeli (omni / sarhoş): ön teker gövdesi tabana yanal ekseni robotun x'i olan pasif bir menteşeyle ("makara",
 sönüm 0,001 N·m·s/rad) bağlanır; tekerin kendi ekseni (y) bu menteşenin içinde. Temas geometrisi aynı yarıçapta küre (silindir
@@ -54,18 +57,48 @@ ONERI_FW = dict(
 )
 # Not: C++'ta PI ilk yüklemede kapalıdır (ONERI_PI_ACIK 0 -> KP = KI = 0); model ONERI_PI_ACIK 1'i (masada açıldıktan sonrasını) modeller.
 MAKARA_MU_YAN = 0.05      # omni makaralarının eşdeğer yanal sürtünmesi (TAHMİN; duyarlılık 0 / 0,05 / 0,15)
+# Enkoderler arka motorlarda (planlama/adim3/pin-haritasi.md 100-103 ve 398, elektrik.md 488-495, kablolar.md N01 / N02,
+# firmware pinler.h 35-38). Öneri varyantları bunu kullanır; ön enkoder yalnız duyarlılık (degis={"enkoder_teker": "on"}).
+# V0 ve V1-V2+V3 fizik_parametreleri.json değeriyle (ön) kalır: ölçümleri ve sayı özeti yeniden üretilebilsin.
+ENKODER_ONERI = "arka"
 VARYANTLAR["ONERI"] = dict(ad="ONERI firmware oneri + on omni", aciklama="öneri firmware (kapalı çevrim PI, doyum ölçeklemesi) + "
-                           "ön iki teker omni (makara yanal sürtünmesi 0,05, TAHMİN)", fw_oneri=ONERI_FW, on_teker="omni",
-                           makara_mu_yan=MAKARA_MU_YAN)
+                           "ön iki teker omni (makara yanal sürtünmesi 0,05, TAHMİN); enkoder arka", fw_oneri=ONERI_FW,
+                           on_teker="omni", makara_mu_yan=MAKARA_MU_YAN, enkoder_teker=ENKODER_ONERI)
 VARYANTLAR["ONERI-T"] = dict(ad="ONERI-T firmware oneri + bugunku tekerler", aciklama="öneri firmware + dört lastik teker "
-                             "(bugünkü mekanik)", fw_oneri=ONERI_FW)
+                             "(bugünkü mekanik); enkoder arka", fw_oneri=ONERI_FW, enkoder_teker=ENKODER_ONERI)
 # Aday omni teker (SEÇİLMEDİ): Nexus 14075 çift sıra, Ø127 x 29 mm, 22 makara, 480 g (ürün sayfası; tasarim/freecad/arayuz.py
-# TABAN omni). Aks yeri aynı, teker iç yüzü aynı yerde: merkez (58 - 29) / 2 = 14,5 mm içeri. Firmware TEKER_CAPI_M 0,125 kalır
-# (enkoder ön omni tekerde: ölçülen hız ve odometri %1,6 eksik); duyarlılıkta 0,127.
+# TABAN omni). Aks yeri aynı, teker iç yüzü aynı yerde: merkez (58 - 29) / 2 = 14,5 mm içeri. Firmware TEKER_CAPI_M 0,125
+# doğru (enkoder arka Ø125 lastikte; ön omni çapı firmware'e girmez).
 ADAY_TEKER = dict(on_teker_r=0.0635, on_teker_kutle_kg=0.480, on_teker_y_iceri_m=0.0145)
 VARYANTLAR["ONERI-ADAY"] = dict(VARYANTLAR["ONERI"], ad="ONERI-ADAY oneri + aday omni (Nexus 127 mm)",
                                 aciklama="ONERI, ön teker aday ölçüleriyle (Ø127 x 29 mm, 480 g; seçilmedi)", **ADAY_TEKER)
+# Aynı aday teker, GERÇEK makaralı model (omni_makara.py; parametreler omni_teker.json): göbek + 2 x 11 makara, her makara kendi
+# ekseninde pasif menteşe, temas makaralardan. Küre modeli (ONERI / ONERI-ADAY) değişmez; karşılaştırması olcum_makara.py.
+VARYANTLAR["ONERI-MAKARA"] = dict(ad="ONERI-MAKARA oneri + makarali omni (Nexus 127 mm, 22 makara)",
+                                  aciklama="ONERI firmware, ön teker aday omni gerçek makaralarla (2 x 11, pirinç borulu yatak "
+                                  "sürtünmesi TAHMİN; seçilmedi)", fw_oneri=ONERI_FW, on_teker="makara",
+                                  on_teker_y_iceri_m=ADAY_TEKER["on_teker_y_iceri_m"], makara_degis={},
+                                  enkoder_teker=ENKODER_ONERI)
 SIRA = list(VARYANTLAR)
+
+
+def makara_varyanti(**degis):
+    """Duyarlılık için ONERI-MAKARA kopyası: omni_teker.json alanları makara_degis'e, fw_* ONERI_FW'ye, öbürleri varyanta."""
+    import omni_makara
+    v = dict(VARYANTLAR["ONERI-MAKARA"])
+    fw = dict(ONERI_FW)
+    md = {}
+    alanlar = omni_makara.yukle()
+    for k, d in degis.items():
+        if k in alanlar:
+            md[k] = d
+        elif k in fw:
+            fw[k] = d
+        else:
+            v[k] = d
+    v["fw_oneri"] = fw
+    v["makara_degis"] = md
+    return v
 
 
 def oneri_varyanti(**degis):

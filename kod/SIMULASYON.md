@@ -115,8 +115,9 @@ da yok), döngü bekçisi (2 s görev bekçisi), seri hat hızı / bayt kaybı, 
 
 Aynı sahte ESP32'nin (firmware modeli değişmedi) altına ikinci bir dünya: **MuJoCo 4.0.1** fiziği. Pi istemcisi ve protokol
 aynı; istemci karşısında hangi dünyanın olduğunu bilmez. Teker hızı komutu firmware'deki gibi açık çevrim PWM'e
-(`u = rampa_hiz / 0,39`) çevrilir, PWM DC motor modeline (durma torku, boş hız, kısa devre freni / boşta) gider; enkoder ön
-tekerin fizikteki açısından, sonar MuJoCo ışın demetinden (7 x 3 ışın, yankı kuralı 2B ile aynı) gelir. Günlük:
+(`u = rampa_hiz / 0,39`) çevrilir, PWM DC motor modeline (durma torku, boş hız, kısa devre freni / boşta) gider; enkoder V0'da ön
+tekerin fizikteki açısından (pin planında enkoderler arka motorlarda; V0 açık çevrimde enkoder yalnız odometri, öneri
+varyantları arka tekeri kullanır), sonar MuJoCo ışın demetinden (7 x 3 ışın, yankı kuralı 2B ile aynı) gelir. Günlük:
 `planlama/d158/Y0f-gunluk.md`; ölçümler: `planlama/d158/Y0f-olcum/`.
 
 **Kurulum (bir kez).** Sanal ortam depo dışında durur (OneDrive klasörüne girmez); başka yer için `LALE_SIM_VENV`.
@@ -135,6 +136,7 @@ Kurulum yoksa hiçbir şey bozulmaz: `py -3 kod\testler\kos.py` 58 / 58 kalır, 
 | Kol çarpışması (zarf) | `%V% kod\fizik\carpisma_denetim.py` | ≈ 10 s |
 | Hareket hâlinde dönüş / dönüş varyantları | `%V% kod\fizik\olcum_donus_hareket.py` / `%V% kod\fizik\olcum_varyantlar.py` | ≈ 35 s / ≈ 1,5 dk |
 | Öneri firmware + omni (ONERI) | `%V% kod\fizik\olcum_oneri.py` | ≈ 4,5 dk |
+| Makaralı omni (ONERI-MAKARA) / küre modeli karşılaştırması | `%V% kod\fizik\olcum_makara.py` | ≈ 6,5 dk |
 
 **3B pencere tuşları.** Önce **6** (devreye al); devrede değilken sürüş reddedilir, pencerenin üstünde yazar.
 
@@ -145,7 +147,7 @@ Kurulum yoksa hiçbir şey bozulmaz: `py -3 kod\testler\kos.py` 58 / 58 kalır, 
 | 6 / 7 / 8 / 9 | devreye al / dur / ACİL STOP mantarı bas - bırak (fiziksel düğme; sonra yeniden 6) / gücü bırak |
 | Enter | kol pozu (ev, öne, öne-yukarı, yana, dirsek bükük, geri) |
 | Shift+6 / Shift+7 / Shift+8 / Shift+9 | rampa kipi / kafa sola - ortaya - sağa / robotu başa koy / sonraki sahne |
-| Shift+Enter | sonraki dönüş varyantı (V0 -> V1 -> … -> V2+V3 -> ONERI -> ONERI-T -> ONERI-ADAY -> V0; pencere yeni modelle yeniden açılır). V0 dışında üstte kalıcı `VARSAYIM: <ad> (bugunku robot DEGIL)` satırı |
+| Shift+Enter | sonraki dönüş varyantı (V0 -> V1 -> … -> V2+V3 -> ONERI -> ONERI-T -> ONERI-ADAY -> ONERI-MAKARA -> V0; pencere yeni modelle yeniden açılır). V0 dışında üstte kalıcı `VARSAYIM: <ad> (bugunku robot DEGIL)` satırı |
 
 Eski tuşlar da çalışır (Home, End, Delete, Insert, Page Up / Down, F9–F12). Rakamlar seçildi, çünkü MuJoCo görüntüleyicisi
 harflerin hepsini görselleştirme / çizim bayraklarına (`mjVISSTRING`, `mjRNDSTRING`), 0–5'i geom gruplarına, Shift+0–5'i
@@ -160,7 +162,7 @@ Tuşlar yalnız pencere odaktayken gelir (pencereye bir kez tıklayın); B'nin i
 değiştirmenin tuşsuz yolu komut satırı: pencereyi kapat, `kod\simulasyon3b.bat rampa_parkuru` ya da `kod\simulasyon3b.bat
 oda_rampa` ile yeniden aç (ilk argüman sahne adı; `kod\fizik\sahneler\` altındaki dosya adı uzantısız). İkinci argüman `-`
 ile başlamıyorsa dönüş varyantıdır: `kod\simulasyon3b.bat oda_rampa V3` (yoksa V0, bugünkü robot; aşağıda "Dönüş
-varyantları"). Öneri firmware + ön omni tek tıkla: `kod\simulasyon3b-omni.bat` (= `simulasyon3b.bat oda_rampa ONERI`).
+varyantları"). Öneri firmware + makaralı ön omni tek tıkla: `kod\simulasyon3b-omni.bat` (= `simulasyon3b.bat oda_rampa ONERI-MAKARA`).
 Reddedilen `sur` (acil stop basılı, devrede değil) durum kutusunda 1,5 s görünür: "acil stop: komut reddedildi" ya da
 "komut reddedildi (<hata>)". MuJoCo'nun kendi Backspace tuşu simülasyonu sıfırlar (`mj_resetData`: robot oda dışında modelin
 sıfır pozuna ışınlanıp devrilirdi, firmware modeli sürerdi); pencere bunu zamanın geri gitmesinden algılar ve "başa koy"a
@@ -361,50 +363,115 @@ yerinde dönüşte 0,3 ile 0,30–0,36, 0,6 ile 0,46–0,49 rad/s), iki tekerin 
 doyumda hız oranı tam korunmaz: v 0,3 / w 5'te enkoder oranı 0,214, beklenen 0,170, açık çevrim omni 0,295), doyumda integral
 geri alma, hızlanma rampasında integral durur, w için ayrı `W_GIRIS_SINIRI` (1,0, protokol değişmedi) ve **enkoder arızası
 koruması**. Bekçi, acil stop, güç durumları ve `dur` aynı ve PI durumunu sıfırlıyor; yeni risk enkoder arızası: korumasız PI
-çalışırken takılan / ters enkoderde tam güce çıkar (v 0,10 komutu 0,42 m/s; tek yan takılı 3 s'de −84°). Koruma: PI
+çalışırken takılan / ters enkoderde tam güce çıkar (v 0,10 komutu 0,42 m/s; tek yan takılı 3 s'de −78°, enkoder önde olsaydı −84°). Koruma: PI
 düzeltmesi en çok |ileri besleme| + 0,3; düzeltme bu payın sonundayken hız < 0,02 m/s ya da ters işaretli ve 500 ms sürerse o
 teker açık çevrime düşer (yeniden başlatmaya dek; sıkışmış teker de aynı davranışı alır; durum protokolde yok, notta öneri).
-Korumalı: iki yan takılı / ters 0,36 m yol, son 1 s 0,08 m/s, tespit 510–550 ms; tek yan −6,3° (`kod/fizik/testler/test_enkoder_ariza.py`,
-korumasız / korumalı). Koruma yalnız takılı / ters enkoderi yakalar: yarı sayan enkoder (v 0,2 komutunda 3 s'de −48° ve 0,26 m/s) ve aralıklı kopma (100 / 100 ms: kaçma yok, tespit de yok) yakalanmaz; asıl güvence Pi'nin yön denetimi, `dur`, bekçi ve acil stop. Simülasyonda `ONERI` (öneri, PI açık + ön omni, makara yanal sürtünmesi 0,05 TAHMİN), `ONERI-T` (öneri +
+Korumalı (enkoder arka): iki yan takılı / ters 0,36–0,37 m yol, son 1 s 0,08 m/s, tespit 510–550 ms; tek yan −5,8° (ön enkoderle
+−6,3°; tespit süreleri aynı) (`kod/fizik/testler/test_enkoder_ariza.py`, korumasız / korumalı). Koruma yalnız takılı / ters enkoderi yakalar: yarı sayan enkoder (v 0,2 komutunda 3 s'de −48° ve 0,26 m/s) ve aralıklı kopma (100 / 100 ms: kaçma yok, tespit de yok) yakalanmaz; asıl güvence Pi'nin yön denetimi, `dur`, bekçi ve acil stop. Simülasyonda `ONERI` (öneri, PI açık + ön omni, makara yanal sürtünmesi 0,05 TAHMİN), `ONERI-T` (öneri +
 bugünkü lastikler), `ONERI-ADAY` (öneri + aday omni Nexus 14075 ölçüleri: Ø127 × 29 mm, 480 g, merkez 14,5 mm içeri; teker
 SEÇİLMEDİ). Model sabitleri `varyantlar.py` `ONERI_FW` = C++ (satır eşlemesi dal notunda); farklar: rampa modelde 10 ms
-dilimle, PI 20 ms'de bir ve PWM arada tutulur, tamsayı tik farkından hız (1980 tik / tur). Ölçüm
-`planlama/d158/Y0f-olcum/donus-oneri.md` / `.json` (≈ 5 dk, iki koşu md5 aynı).
+dilimle, PI 20 ms'de bir ve PWM arada tutulur, tamsayı tik farkından hız (1980 tik / tur). **Enkoder arka (lastik) tekerde**:
+depoda enkoderler arka motorlarda (`planlama/adim3/pin-haritasi.md` 100–103 ve 398, `elektrik.md` 488–495, `kablolar.md`
+N01 / N02, firmware `pinler.h` 35–38); öneri varyantları bunu kullanır (`varyantlar.py` `ENKODER_ONERI`). 23.11 03:00'e dek
+tablo ön enkoder kabulüyle alınmıştı ("kaynakta yok", TAHMİN); o sayılar aşağıda yalnız duyarlılık. V0 ve V1–V2+V3
+`fizik_parametreleri.json` değeriyle (ön) kalır, sonuçları ve sayı özeti değişmedi. Ölçüm
+`planlama/d158/Y0f-olcum/donus-oneri.md` / `.json` (≈ 6 dk).
 
 | | V0 | ONERI-T | ONERI | ONERI-ADAY |
 | --- | --- | --- | --- | --- |
-| yerinde w, komut 1; 21 / 9 kg·cm (µ 0,5–0,8) | 0,001 / 0,001 | 0,08–0,09 / 0,001 | 0,97–0,98 / 0,72–0,86 | 1,05–1,06 / 0,69–0,84 |
-| 90°: s / `dur` sonrası aşma ° | - | 18–20 / < 1 | 1,9–2,6 / 4–6 | 1,8–2,8 / 5–6 |
-| kolon (oda_engelli) | başarısız | 46–60 s / başarısız | 11–13 s | 11–14 s |
-| tork / sürekli (yerinde) 21 / 9 kg·cm | 2,0 / 2,0 | 2,0–2,2 / 3,6 | 1,0–1,1 / 2,1–2,4 | 1,1–1,3 / 2,3–2,5 |
-| `dur` / acil stop m | 0,070 / 0,228 | 0,046 / 0,222 | 0,046 / 0,223 | 0,047 / 0,227 |
-| 5° yan eğim, 5 s düz: m / ° | 0 | 0 | 0,05 / 2,2 | 0,05 / 2,3 |
+| yerinde w, komut 1; 21 / 9 kg·cm (µ 0,5–0,8) | 0,001 / 0,001 | 0,085–0,095 / 0,001 | 0,89–0,92 / 0,74–0,88 | 0,89–0,93 / 0,71–0,86 |
+| duyarlılık: enkoder önde olsaydı, aynı satır | - | 0,08–0,09 / 0,001 | 0,97–0,98 / 0,72–0,86 | 1,05–1,06 / 0,69–0,84 |
+| 90°: s / `dur` sonrası aşma ° | - | 18–19 / < 1 | 2,0–2,6 / 5–6 | 2,0–2,8 / 5–7 |
+| kolon (oda_engelli) | başarısız | 44–57 s / başarısız | 11–13 s | 11–14 s |
+| tork / sürekli (yerinde) 21 / 9 kg·cm | 2,0 / 2,0 | 2,0–2,3 / 2,0 | 1,0–1,1 / 2,1–2,4 | 1,1–1,2 / 2,3–2,5 |
+| `dur` / acil stop m | 0,070 / 0,228 | 0,046 / 0,222 | 0,046 / 0,222 | 0,046 / 0,221 |
+| 5° yan eğim, 5 s düz: m / ° | 0 | 0 | 0,05 / 2,1 | 0,05 / 2,1 |
 | rampa tutma 5° / 10° (5 s geri) | 0,17 / 0,49 | aynı | aynı | 0,18 / 0,51 |
 | eşik 0,2 m/s, 21 kg·cm | 5 mm | 15 mm | 15 mm (omniyle modellenmedi) | 15 mm (omniyle modellenmedi) |
 | statik devrilme yana ° (geometri) | 25,2 | 25,2 | 23,9 | 23,5 |
 
+Arka enkoderle 21 kg·cm'de yerinde w ≈ 0,89–0,93 (ön enkoderle 0,97–1,06): PI arka lastiğin çevre hızını hedefte tutuyor,
+yerinde dönüşte yanal sürtünen arka lastik zemine göre kaydığı için gövde komutun ≈ %10 altında dönüyor; ön enkoderle PI
+az kayan ön omninin hızını tutuyordu. 9 kg·cm'de fark küçük ve ters yönde (ONERI µ 0,8: arka 0,742, ön 0,720).
+
 90° aşması ≈ 5° `dur` sonrası frenden (yön 10 ms'de bir denetlenir; ilk sürümdeki 8–15° ölçümün 200 ms denetim aralığıydı).
 Eşik kazancı PI'dan (lastikli ONERI-T de 15 mm geçiyor); ön omni modelde sürekli çember, makaraların eşik kenarına çarpması
-yok: omniyle eşik masada denenmeli. Koruma bütün ölçümlerde izlendi: tetiklenme yalnız gerçek durmada (eşiği geçemeyen 9
-kg·cm koşuları, lastikle yerinde dönemeyen ONERI-T); kalkış, omni dönüş, 9 kg·cm doyum, rampa, yan eğim ve geçilen eşikte 0.
+yok: omniyle eşik masada denenmeli. Koruma bütün ölçümlerde izlendi (arka enkoderle 54 tetiklenme): yalnız gerçek durmada
+(eşiği geçemeyen 9 kg·cm koşuları, lastikle yerinde dönemeyen ONERI-T); kalkış, omni dönüş, 9 kg·cm doyum, rampa, yan eğim ve
+geçilen eşikte 0.
 
-Güvenlik: Y0s 58 testi fizikte öneriyle 57 / 58 (üç varyantta da). Kalan `test_cok_buyuk_w_kirpilir_donus_orani_korunur`
+Güvenlik: Y0s 58 testi fizikte öneriyle 57 / 58 (arka enkoderle ONERI ve ONERI-MAKARA'da yeniden koşuldu; aynı kalan). Kalan `test_cok_buyuk_w_kirpilir_donus_orani_korunur`
 sürücüye giden PWM oranını hedef oranına eşit bekliyor: açık çevrime özgü beklenti; aynı testin hedef kırpma ve oran
 denetimleri geçiyor; test gevşetilmedi. Önerinin ilk sürümü (integral rampada da birikiyordu) Y1 ivme testlerini de
 düşürüyordu (0,575 > 0,56 m/s², rampa kipi 0,159 > 0,15): gerçek gerileme, firmware'de düzeltildi. 2B çekirdekte PWM /
 enkoder yok, w sınırı aynı: 2B koşusu aynı kod yolu, 58 / 58.
 
-Duyarlılık (ONERI, µ 0,8, 21 kg·cm, yerinde w): KP 2–8 / KI 10–40 0,968 (değişmez); yalnız P 0,81; enkoder arka tekerde 0,89;
-koruma yok / integral sınırı 0,3 aynı (bu koşulda); yarı enkoder çözünürlüğü, dt 0,5 ms, koni, noslip, impratio ±%1; temas
-sertliği 0,93–0,98. Makara yanal sürtünmesi (ONERI-ADAY; üretici değeri yok; model yükten bağımsız sabit Coulomb): 21 kg·cm'de
-teker başına ≈ 13 N'a dek w 0,93–1,0, 20 N'da 0,70–0,80 (tork 2,2–2,4 × sürekli); 9 kg·cm'de geçiş 3–7 N arasında. **Mertebe,
-karar sınırı değil**; masada gerçek yükte, gerçek zeminde, yavaş sabit hızla yana çekerken sürekli kuvvet (birkaç makara
-geçişi, iki yön, iki yük) ölçülüp karşılaştırılır. Aday çap farkı (ön Ø127 / arka Ø125, aynı PWM): düz gidişte yön sapması 0
-(simetrik), ön aks torku 0,186 / arka 0,165 N·m; firmware `TEKER_CAPI_M` enkoderli tekerin çapı olmalı (0,125 kalırsa hız /
-odometri %1,6 sapar).
+Duyarlılık (ONERI, µ 0,8, 21 kg·cm, yerinde w; enkoder arka): KP 2–8 / KI 10–40 0,890–0,894 (değişmez); yalnız P 0,77;
+enkoder önde olsaydı 0,968; koruma yok / integral sınırı 0,3 aynı (bu koşulda); yarı enkoder çözünürlüğü, dt 0,5 ms, koni,
+noslip, impratio 0,88–0,91; temas sertliği 0,87–0,92. Makara yanal sürtünmesi (ONERI-ADAY küre modeli; üretici değeri yok;
+model yükten bağımsız sabit Coulomb): 21 kg·cm'de teker başına ≈ 13 N'da w 0,80–0,85, 20 N'da 0,68–0,79 (tork 2,2–2,4 ×
+sürekli); 9 kg·cm'de 3 N 0,71–0,86, 7 N 0,40–0,53, ≥ 10 N 0,17–0,21. **Mertebe, karar sınırı değil**; masada gerçek yükte,
+gerçek zeminde, yavaş sabit hızla yana çekerken sürekli kuvvet (birkaç makara geçişi, iki yön, iki yük) ölçülüp
+karşılaştırılır. Aday çap farkı (ön Ø127 / arka Ø125, aynı PWM): düz gidişte yön sapması 0 (simetrik), ön aks torku 0,185 /
+arka 0,165 N·m. Enkoder arka Ø125 lastikte olduğundan firmware `TEKER_CAPI_M` 0,125 doğru; ön omni çapı firmware'e girmez
+(0,127 yazılırsa w 0,893 yerine 0,879).
 
-Modellenmeyen: gerçek omni makaraları (titreşim, eşik / halı / kablo, boyuna tutuş), makara sürtünmesinin yükle değişimi,
+Modellenmeyen (bu üç varyantta; makaralı model aşağıda): gerçek omni makaraları (titreşim, eşik / halı / kablo, boyuna tutuş), makara sürtünmesinin yükle değişimi,
 enkoder gürültüsü ve PCNT süzgeci, döngü titremesi, motor akım sınırı, KD.
+
+### Makaralı omni (ONERI-MAKARA; VARSAYIM)
+
+ONERI-ADAY ile aynı öneri firmware ve aday ölçüler; tek fark ön teker: tek küre yerine göbek + 2 × 11 makara (Nexus 14075
+düzeni: Ø127 × 29 mm, 22 makara Ø19 mm, 480 g, kauçuk makara, pirinç boru yatak, iki sıra yarım adım kaydırılmış). Her makara
+ayrı gövde, kendi ekseninde pasif menteşe; temas yalnız makaralardan, motor eklemi ve enkoder göbekte. Parametreler tek
+dosyada: `kod/fizik/omni_teker.json` (her alan `deger` / `durum` / `kaynak`; `urun_sayfasi`, `yapi_geregi`, `TAHMIN`,
+`modelleme`; uzunluk mm, kütle g). Birleştirilmedi: ürün / geometri alanlarının tek kaynak adayı `tasarim/cad/omni-teker.json`
+(CAD adımında); teker merkezi iki dosyada farklı kabul (fizik 14,5 mm içeri, demo lastikle aynı), karar açık. TAHMİN: makara
+boyu 22 mm, sıra eksen aralığı 10 mm, makara 6 g, yatak sürtünmesi (makara başına 2 N). Enkoder arka (pin planı). Kod
+`kod/fizik/omni_makara.py`; ölçüm `%V% kod\fizik\olcum_makara.py` (≈ 7 dk) -> `planlama/d158/Y0f-olcum/omni-makara.md` /
+`.json`. `kod\simulasyon3b-omni.bat` artık bu varyantı açar; başsız ölçümde 9–16 × gerçek zaman, uyarı 0; pencere gerçek
+zamanda koşar (B: 37 s'de sanal = duvar, en uzun döngü 168 ms; ONERI'de 95 ms). Küre modeli `kod\simulasyon3b.bat oda_rampa
+ONERI-ADAY`. Pencerede **1** tuşu gövde ağını gizler, makaralı tekerler görünür kalır.
+
+**Temas biçimi.** Fıçı makara temas bölgesinde elipsoid (kesit Ø19, eksen yarı boyu teker çemberine en iyi uyacak biçimde
+24,9 mm): etkin yarıçap sapması 0,005 mm. Doğru yaptığı: temas makaradan geçer, makara ekseni boyunca serbest yuvarlanır,
+yatak sürtünmesi eklemde, makara-makara geçişi gerçek açılarda. Kaba: fıçı biçimi değil elipsoid (uç çapı ve gerçek profil
+yok; makaralar arası boşluk ve göbek tırnağı modelde yok, eşikte tırnak çarpması görünmez); kauçuk esnekliği yalnız temas
+yumuşaklığıyla; yatak sürtünmesi yükten bağımsız sabit moment. Çapraz denetim: 5 küre (sapma 0,025 mm) ve kapsül (0,36 mm).
+İki sayısal ayar zorunlu: ccd toleransı 1e-9 (varsayılan 1e-6 ile rampada makara temaslarında normal 28°'ye dek sapıyor:
+temasların %3'ü, 2° eşiğiyle bütün kutu temaslarında B'nin ölçütüyle %8; 15° rampada sahte çekiş, enkoder arkada 0,18 m/s
+yerine 0,12, önde 0,17 yerine 0,09) ve makara sürtünme kısıtı `solimpfriction` 0,9999 (varsayılan 0,9 ile küçük atalet yüzünden
+kısıt yumuşak kalıyor, 2 N ile 200 N aynı sonucu veriyordu). Zaman adımı / çözücü: dt 0,5 / 1 / 2 ms, piramit koni, impratio,
+yineleme, temas solref'te yerinde w 0,86–0,92; dt 1 ms'de başsız RTF düz 13–16 / yerinde 9–12 (dört koşu, bu makine; küre 29–31 / 20).
+
+| µ 0,5–0,8, enkoder arka | ONERI-ADAY (küre) | ONERI-MAKARA |
+| --- | --- | --- |
+| yerinde w komut 1, 21 / 9 kg·cm | 0,89–0,93 / 0,71–0,86 | 0,90–0,93 / 0,81–0,92 |
+| duyarlılık: enkoder önde olsaydı, aynı satır (µ 0,8) | 1,048 / 0,689 | 1,062 / 0,776 |
+| yay v 0,25 + w 1, 9 kg·cm: w | 0,17–0,30 | 0,21–0,35 |
+| 90°: s / aşma ° | 2,0–2,8 / 5–7 | 2,0–2,5 / 5–7 |
+| 5° yan eğim 5 s düz: yan m | 0,05 | 0,03 |
+| 15° rampa, 21 kg·cm: v m/s (enkoder önde olsaydı) | 0,12 (0,10) | 0,12 (0,09) |
+| titreşim, 1,58 m noktası ileri t-t (v 0,1–0,39) | 0,08–0,11 mm | 0,10–0,15 mm (makara geçişi 5,5–22 Hz) |
+| kolon; `dur` / acil stop; rampa 5° / 10° tutma; eşik 5–15 mm | aynı | aynı |
+
+Eşik (v 0,2, sonar kapalı): modelde 21 kg·cm motorla 25 mm'ye dek geçiyor, 30 mm'de ön teker çıkıp arka takılıyor (arka
+enkoderle küre modeli de 25 mm; ön enkoderle küre 20 mm, makara 25 mm); 9 kg·cm motorla yalnız 5 mm. Bu teker çapı ve TAHMİN
+tork / µ'nün sonucu, kazanç makaradan gelmiyor; makara-tırnak-kenar etkileşimi (göbek tırnağı, makara arası boşluk, makara
+ucunun kenara takılması, kauçuğun ezilmesi) modellenmedi, eşik masada denenmeli. Titreşim model kabulüne bağlı: elipsoidle
+0,10–0,15 mm, kaba kapsülle 0,75–1,65 mm ileri ve en çok 1,8 mm yan (1,58 m noktası, t-t); bunlar iki model kabulünün sonucu,
+gerçek değerin sınırı değil; masada ölçülmeli. Baskın frekans makara geçişi (v 0,25'te ≈ 14 Hz).
+
+Yatak sürtünmesi makara başına: parametre tek makara temasta iken tekerin yanal direnci; iki sıra birden yere değerken model
+direnci ≈ 2,1 katına çıkar (yerinde dönüşte zamanın ≈ %10'u, düz gidişte ≈ %30'u; B, `Y0f-kontrol.md` § 14.2); gerçekte yük
+iki makaraya bölünür, toplam aynı kalır. **Teker seçimi ölçütü:** masada teker gerçek yükte (≈ 62 N) yavaşça yana çekilirken
+ölçülen sürekli kuvvet modelin tek temas değeriyle doğrudan karşılaştırılır. Modelde (enkoder arka, yerinde w komutu 1)
+9 kg·cm motorla ≈ 2 N rahat (w 0,81–0,92), 5 N yarı (0,37–0,53), ≥ 7 N yerinde dönmüyor (µ 0,8; µ 0,5'te 0,24); 21 kg·cm
+motorla 7 N'a dek küçük etki (0,94–0,96'dan 0,83–0,87'ye), 13 N 0,77–0,83, 20 N 0,38–0,70. **TAHMİN'e bağlı, mertebe, sınır
+değil** (sabit Coulomb, yükten bağımsız; 2 N, pim µ 0,2 TAHMİN'inden). Yan eğimde sürtünme kaymayı azaltıyor (0 N 0,06 m,
+≥ 5 N 0,016 m). Bu varyantta da (arka enkoder): enkoder arızası testleri 4 / 4 (tek yan takılı korumalı −6,5°, tespit 510–550 ms),
+Y0s fizikte 57 / 58 (ONERI ile aynı kalan). Makaralı modelde de modellenmeyen: göbek tırnağı ve makara arası boşluk, makara
+aşınması / kauçuk sertliği, halı ve kablo, sürtünmenin yükle değişimi.
 
 ### Karar isteyenler (Efe / Ahmet)
 
@@ -413,7 +480,7 @@ yazılı). Sınıflama B'nin bağımsız kontrolüyle (`planlama/d158/Y0f-kontro
 
 | Konu | Etiket | Ne gerekiyor |
 | --- | --- | --- |
-| Yerinde dönüş (firmware mi mekanik mi) | Geometri ve mekanizma sağlam; sayılar TAHMİN (durma torku, µ, makara sürtünmesi), masada doğrulanmadı | **Karar (Ahmet, 23.11.2026 01:02): ön iki teker omni + firmware düzeltmesi**; sarhoş tekerli düzen istenmiyor, modellenmeyecek. Firmware Efe'nin: öneri dalı `oneri/donus-omni` yerel, push edilmedi, Efe ile konuşulacak. Simülasyon (VARSAYIM): öneri firmware + ön omni yerinde 0,97–0,98 rad/s (21 kg·cm), 0,72–0,86 (9 kg·cm; makara sürtünmesine duyarlı); aynı firmware bugünkü lastikle 0,08 / 0,001 (lastikle kapalı çevrim de dönmüyor: sağlam); 90° 2,1–2,8 s, aşma ≈ 5°; 5° yan eğimde 5 s'de 0,05 m; `dur` mesafesi 0,046 m; rampada tutma değişmedi (K76 ayrı); 15 mm eşik kazancı PI'dan, omni makarayla eşik geçişi modellenmedi. Teker seçilmedi (aday Nexus 127 mm çift sıra omni, doğrulanmadı); makara yanal sürtünmesi masada ölçülmeli (`planlama/d158/Y0f-kontrol.md` § 12) |
+| Yerinde dönüş (firmware mi mekanik mi) | Geometri ve mekanizma sağlam; sayılar TAHMİN (durma torku, µ, makara sürtünmesi), masada doğrulanmadı | **Karar (Ahmet, 23.11.2026 01:02): ön iki teker omni + firmware düzeltmesi**; sarhoş tekerli düzen istenmiyor, modellenmeyecek. Firmware Efe'nin: öneri dalı `oneri/donus-omni` yerel, push edilmedi, Efe ile konuşulacak. Simülasyon (VARSAYIM; enkoder pin planındaki gibi arka tekerde): öneri firmware + ön omni yerinde 0,89–0,92 rad/s (21 kg·cm), 0,74–0,88 (9 kg·cm; makara sürtünmesine duyarlı); makaralı omniyle 0,90–0,93 / 0,81–0,92 (aşağıda); enkoder önde olsaydı 0,97–0,98 / 0,72–0,86 (bugünkü pin planında geçerli değil); aynı firmware bugünkü lastikle 0,085–0,095 / 0,001 (lastikle kapalı çevrim de dönmüyor: sağlam); 90° 2,0–2,6 s, aşma ≈ 5°; 5° yan eğimde 5 s'de 0,05 m; `dur` mesafesi 0,046 m; rampada tutma değişmedi (K76 ayrı); 15 mm eşik kazancı PI'dan, omni makarayla eşik geçişi modellenmedi. Teker seçilmedi (aday Nexus 127 mm çift sıra omni, doğrulanmadı); makara yanal sürtünmesi masada ölçülmeli (`planlama/d158/Y0f-kontrol.md` § 12) |
 | Rampada `dur` sonrası tutma | Mekanizma sağlam; hız TAHMİN (dişli geri sürülme sürtünmesi) | Kısa devre freni tutmaz; 3° / 5° / 10°'de geri kayar (tablo yukarıda). Tutma ya ölçülmüş yüksek dişli sürtünmesinden (5°'de ≥ 0,23 N·m) ya da firmware'den (enkoderle konum tutma, fren / kilit) gelir |
 | Bekçi duruşunun sertliği | Devrilmeme sağlam (kendini sınırlar); aks boşalması TAHMİN (durma torku) | Tam hızda ani durma arka tekerleri kısa süre kaldırır; istenmiyorsa bekçiye de fren rampası (firmware 0.5.0'da rampasız) |
 | Sonar kuralı rampa ve eşiği engel sayıyor | TASLAK firmware kuralı; fizik bulgusu bağımsız kontrol edilmedi | 15° / 20° rampa ve 40 mm eşik önünde 30 cm'de durur; rampa kipinde sonar kuralı ne olacak |

@@ -772,3 +772,261 @@ olduğu için sonraki döngüde sürüş yeniden başlar (basılı tut mantığ�
 PI kapalı ikilisinin 0.5.0 ikilisiyle bayt karşılaştırması (yalnız koddan); başka aralıklı kopma desenleri (ör. 400 / 100 ms) ve
 gürültülü (rastgele) enkoder; ONERI-ADAY ve ONERI-T'de arıza senaryoları; `donus-oneri.json` yeniden üretimi (A'nın md5'i
 okunmadı); kolonun tuşlarla dolaşılması; karta yükleme ve gerçek enkoder (yapılamaz).
+
+## 14. Ek kontrol 4: makaralı omni ve web demosu
+
+B ajanı, 23.11 (03:00 – 04:20). Depo `lale-duzeltme` = uzak = `ff2e4a2`; iki iş commit edilmemiş. İş 1: makaralı omni
+(`Y0f-gunluk.md` § 18). İş 2: web demosu (`tasarim/Robot-Tasarim-Demosu.html`). İddialar doğru sayılmadı. Denemelerin hepsi
+geçici dizinde yapıldı: demo sayfası geçici dizine yeniden üretildi, tarayıcı profilleri geçici. Paket dosyalarına yazılmadı.
+
+**Hüküm.**
+- İş 1 (makaralı omni): **KOŞULLU GEÇER.** Kodda ve sayılarda engel yok; V0 yolu değişmedi; iki sayısal ayar savunulabilir ve
+  yeniden üretildi. Koşul: 14.5'teki S1–S6 belge cümleleri düzeltilmeli.
+- İş 2 (web demosu): **GEÇER.** Bir koşulla: "merkez lastikle aynı" cümlesi hüküm gibi duruyor, fizik modeli farklı bir kabul
+  yapıyor (D1).
+- **Enkoder konumu bulgusu doğru**, sonuçları K75'e ve Efe notuna girmeli (14.4).
+
+### 14.1 V0 ve ONERI yolu
+
+- `dunya.py`: makaralı dal yalnız `on_teker == "makara"` iken çalışıyor. Teker geom kümeleri lastik ve küre tekerde tek geom
+  döndürüyor. `ccd_tolerance` yalnız makaralı dalda değişiyor. Küre ve sarhoş dalı `in ("omni", "sarhos")` ile daraltıldı; bu,
+  ONERI ve ONERI-ADAY'ın `on_teker` değerleriyle aynı sonuç veriyor.
+- `kod/testler/duzenek.py` (+4 satır): yalnız `_fizik_karti` içinde `LALE_VARYANT` ortam değişkeni varsa varyantlı fizik kartı
+  kuruluyor. `FIZIK_FARKLARI` ve 2B yolu değişmedi; muafiyet gevşemedi. Risk: değişken ortamda unutulursa Y0s bugünkü robotu
+  değil varyantı sınar. Koşucu bunu çıktıda göstermiyor (küçük).
+- `test_enkoder_ariza.py`: varsayılan yine ONERI; korumasız kopya artık seçilen varyanttan türetiliyor.
+- Sonuçlar:
+  - 2B 58 / 58; fizik testleri 10 / 10; Y0s fizikte V0 58 / 58.
+  - V0 sayı özeti `f3507f3911bd53da` (geçici dizine).
+  - `Y0f-olcum` altında yalnız yeni `omni-makara.*` dosyaları; `donus-*` ve `olcum.*` farkı boş.
+  - 21 eski dosya md5 aynı.
+  - ONERI-MAKARA ile: Y0s 57 / 58 (aynı test, aynı biçim); arıza testi 4 / 4. Değerler: 0,37 / 0,36 m; −7,1°; 510–550 ms.
+
+### 14.2 İki sayısal ayar
+
+**Sürtünme kısıtı sertliği (`solimpfriction`).** Tek teker düzeneği kuruldu: kilitli makaralı teker (`omni_makara.teker_xml`),
+62 N yük, 0,8 µ. Kızak yana 0,01 m/s ile çekildi.
+
+| `solimpfriction` | yatak 0 N | 2 N | 5 N | 13 N | 200 N |
+| --- | --- | --- | --- | --- | --- |
+| 0,9 (varsayılan) | 0,00 | 0,03 | 0,03 | 0,03 | 0,03 |
+| 0,9999 | 0,00 | **2,00** | **5,01** | **13,02** | 16,98 (temas kayıyor) |
+
+Tablodaki değerler yanal çekme kuvveti (N), tek makara temasta.
+
+- Varsayılanla eklem sürtünmesi yok hükmünde. Gerekçe: küçük atalette düzenleme terimi büyüyor. 0,9999 ile ölçülen kuvvet
+  beklenen değerle birebir: sürtünme momenti / makara yarıçapı = parametre.
+- Yönden bağımsız; 0,1 m/s'de 2,00 N. Yalnız 0,001 m/s'de 1,70 N, çünkü temasın kendi kayması devreye giriyor. 200 N'da
+  yumuşak temas sürünüyor: 0,001 / 0,01 / 0,1 m/s'de 1,7 / 17 / 49,6 N; µN = 49,6.
+- Robotta: 9 kg·cm, µ 0,8, yerinde w komutu 1.
+  - `solimpfriction` 0,9: 2 N ile 0,884, 200 N ile 0,882 (A'nın "aynı sonuç" gözlemi yeniden üretildi).
+  - 0,9999: 2 N ile 0,776, 200 N ile 0,004.
+- Ayar sonucu bir yöne çekmek için seçilmiş değil: modele, parametrenin anlamını veren tek değer bu.
+- **İki satır birden temasta iken direnç ikiye katlanıyor.** Faz 8,2°'de 2 N için 4,28 N, 5 N için 10,69 N. Sürüşte iki satır
+  birden temasta: düz gidişte zamanın %30'u, yerinde dönüşte %10'u.
+- Gerçekte pim sürtünmesi yükle bölünür; iki makaraya bölünen yükte toplam aynı kalır. Model ise makara başına sabit moment
+  veriyor. Yani modeldeki "2 N", tek temas fazında tekerin yanal direnci; iki temas fazında ≈ 4,3 N. Yerinde dönüşte etkin
+  ortalama ≈ 2,2 N, düz gidişte ≈ 2,7 N. Belgede "eşdeğer yanal kuvvet teker başına" diye geçiyor (S4).
+
+**ccd toleransı.** Senaryo: 15° rampa, 21 kg·cm, v 0,25, ön enkoder. Ön makaralar ile kutu (rampa ve zemin) arasındaki her
+temasın normali kutu yüzlerine göre ölçüldü.
+
+| durum | normal > 2° sapan | en büyük | 14,4 m'ye varış |
+| --- | --- | --- | --- |
+| elipsoid, 1e-6 (varsayılan) | **%8,2** | 28,2° | **22,1 s** |
+| elipsoid, 1e-7 / 1e-8 | %1,9 / %1,0 | 28,2° | 29,1 / 29,8 s |
+| elipsoid, 1e-9 (seçilen) | %1,3 | 16,2° | 30,6 s |
+| 5 küre (kesin küre çarpışması; 1e-6 ve 1e-9 aynı) | %1,1 | 16,3–18,3° | 31,0 / 31,5 s |
+| küre modeli ONERI-ADAY | %1,4 | 15,4° | 28,9 s |
+
+- Kalan ≈ %1, kenar temasları (rampa başı ve sonu); her biçimde var.
+- 1e-9, ccd'ye bağlı olmayan kesin çarpışmalı iki modelle aynı sonucu veriyor; 1e-6 tek başına sapıyor. Seçim
+  savunulabilir.
+- "Sahte çekiş" yeniden üretildi: 1e-6 ile rampa 8 s erken çıkılıyor.
+- Sayı farkı: A "%3, 28°" diyor, ben %8,2 ölçtüm (ölçüt farklı: ben bütün kutu temaslarını, 2° eşiğiyle saydım). Nitel hüküm
+  aynı. `omni_teker.json` `ccd_toleransi.kaynak` "0,16 m/s yerine 0,10" diyor; ölçüm dosyası ve SIM 0,166 / 0,088 diyor (S6).
+
+### 14.3 Makaralı modelin fiziği (yeniden üretilenler)
+
+| Ölçüm | B | A | Sınıf |
+| --- | --- | --- | --- |
+| dururken 10 s (güç kapalı) | kayma 0,17 mm, makara hızı 1e-4 rad/s | - | model ürünü (yumuşak temas sürünmesi); enerji üretimi yok |
+| boş yanal yuvarlanma direnci (yatak 0 N) | 0,00 N | - | sağlam (model kurgusu) |
+| düz v 0,25: ön çevre / gövde hızı; makara hızı | 1,0002; ort. 0,00, en çok 0,02 rad/s | - | sağlam: eksen boyunca kayma yok, makara düz gidişte dönmüyor |
+| yük paylaşımı, düz (ön sol) | satır a / b 32,2 / 31,1 N; iki satır temasta %30 | - | geometri (sıra aralığı 10 mm TAHMİN) |
+| yerinde w 1: makara hızı | ort. 41 rad/s (≈ 0,39 m/s yanal) | - | geometri |
+| yerinde w 1, 21 kg·cm, µ 0,5 / 0,8 | 1,066 / 1,062 | 1,066 / 1,062 | TAHMİN'e bağlı (tork, µ, yatak) |
+| yerinde w 1, 9 kg·cm, µ 0,5 / 0,8 | 0,928 / 0,776 | 0,928 / 0,776 | TAHMİN'e bağlı; yatak sürtünmesine çok duyarlı |
+| yatak 2 / 5 N, 9 kg·cm µ 0,8 | 0,776 / 0,403 | 0,776 / 0,403 | TAHMİN'e bağlı |
+| yatak 2 / 5 N, 21 kg·cm µ 0,8 | 1,062 / 1,058 | 1,062 / 1,058 | TAHMİN'e bağlı |
+| eşik v 0,2, 21 kg·cm: 15 / 20 / 25 mm | geçti / geçti / **geçti** | md: geçti / geçti / geçti | model ürünü + TAHMİN |
+| eşik, küre modeli (ONERI-ADAY): 15 / 20 / 25 mm | geçti / geçti / **ön çıktı, geçmedi** | aynı | |
+| eşik 9 kg·cm: 15 / 20 / 25 mm | geçmedi ×3 | 10 mm'den itibaren geçmedi | TAHMİN'e bağlı |
+
+Sayıların hepsi A'nınkiyle birebir çıktı.
+
+**Eşik hükmü nasıl yazılmalı.** "21 kg·cm'de 20 mm eşik çıkıyor" hüküm olarak yazılamaz:
+- Küre modeli de 20 mm'yi geçiyor; sonuç teker yarıçapı (63,5 mm), motor torku (TAHMİN) ve kenar sürtünmesinden (µ 0,8,
+  TAHMİN) geliyor.
+- Makaraya özgü üç şey modelde yok: göbek tırnağı ve makara arası boşluk, makara ucunun kenara takılması, kauçuğun ezilmesi.
+- Elipsoid temas fiziksel makara boyunu aşıyor (a 24,9 mm, makara yarı boyu 11 mm). Fazlası teker çemberinin içinde kalıyor ama
+  sivri kenarda boşluk yerine yüzey veriyor.
+
+Önerilen cümle: "Modelde 21 kg·cm motorla v 0,2'de 25 mm'ye dek geçiyor (küre modeli 20 mm); 9 kg·cm motorla yalnız 5 mm. Bu
+teker çapı ve TAHMİN tork / µ'nün sonucu; makara-tırnak-kenar etkileşimi modellenmedi, eşik masada denenmeli."
+
+**Titreşim nasıl sunulmalı.** 0,09–0,15 mm (elipsoid) ile 1,6–2,5 mm (kapsül) iki model kabulünün sonucu, gerçek değerin
+sınırları değil. Gerçek tekerde makara arası boşluk, kauçuk esnekliği ve imalat salgısı var; ikisinde de yok. Önerilen cümle:
+"Model kabulüne bağlı: elipsoidle 0,09–0,15 mm, kaba kapsülle 1,6–2,5 mm (1,58 m noktası, ileri t-t); gerçek değer bilinmiyor,
+masada ölçülecek. Baskın frekans makara geçişi (v 0,25'te ≈ 14 Hz)."
+
+### 14.4 Enkoder konumu
+
+**Depoda enkoderler arka motorlarda.** Dayanaklar:
+- `planlama/adim3/pin-haritasi.md` 100–103: GPIO 18 / 17 "sol arka JGB37 Hall A / B", 16 / 15 "sağ arka JGB37"; 398: "Ön
+  enkoderler: bağlanmadı (pin yok)".
+- `planlama/adim3/elektrik.md` 488–489 (aynı pinler, "Enkoder sol arka / sağ arka") ve 495 ("Ön motorların enkoderleri
+  bağlanmadı").
+- `planlama/adim3/kablolar.md` N01 / N02 (908–945: "JGB37 arka sol / arka sağ → GPIO18 / 17, 16 / 15").
+- Firmware `origin/main` `kod/esp32/include/pinler.h` 35–38: `PIN_SOL_ENK_A 18` … `PIN_SAG_ENK_B 15`; tekerin adı yok, pinler
+  pin planıyla aynı.
+- Tutarsızlık: `elektrik.md` 204 "ön enkoderler kayma tespiti içindir" (eski cümle, 495 ile çelişiyor).
+
+**Sonuç.** Simülasyon varsayılanı (`fizik_parametreleri.json` 18 `enkoder_teker: on`, kaynak "kaynakta yok") pin planıyla
+çelişiyor. Kendi koşum (µ 0,8, yerinde w komutu 1, arka / ön enkoder):
+
+| | 21 kg·cm | 9 kg·cm |
+| --- | --- | --- |
+| ONERI (bu gecenin `donus-oneri`'si) | 0,892 / 0,968 | 0,742 / 0,720 |
+| ONERI-MAKARA | 0,904 / 1,062 | 0,805 / 0,776 |
+
+`donus-oneri` sayıları (ONERI 21 kg·cm 0,97–0,98) yalnız ön, yani omni tekerde enkoder olsaydı geçerli. Pin planıyla
+21 kg·cm'de ≈ 0,89–0,90: ön omni kayması enkoderde görünmüyor, PI arka lastiğin hızını tutuyor. 9 kg·cm'de fark küçük ve ters
+yönde. 15° rampada arka enkoder daha iyi: 0,12 m/s, ön enkoderle 0,09 (A'nın ölçümü). V0 sonuçları etkilenmiyor: açık
+çevrimde enkoder yalnız odometri.
+
+Olumlu yan sonuç: enkoderli teker arka Ø125 lastik olduğundan `TEKER_CAPI_M` 0,125 doğru kalıyor. Aday omninin Ø127'si
+firmware'e girmiyor; Efe notundaki "%1,6 sapar" riski ortadan kalkıyor.
+
+**Düzeltilecek cümleler** (öneri ağacına yazmadım; metin önerisi):
+- **Efe notu** (`ONERI-donus.md`, öneri dalı `fc940a0`) 89–92: "enkoderin hangi tekerde olduğu kaynakta yazmıyor (simülasyon
+  önde kabul etti) … Kural: `TEKER_CAPI_M` = enkoderli tekerin çapı. Yanlış kalırsa … %1,6" ->
+  "Enkoderler pin planına göre arka motorlarda (`planlama/adim3/pin-haritasi.md` 100–103; ön motorlarda enkoder yok). Arka teker
+  Ø125 lastik kaldığı için `TEKER_CAPI_M` 0,125 doğru, ön omni çapı firmware'e girmez. Simülasyon tablosu ön enkoderle alındı;
+  arka enkoderle yerinde w (komut 1) 21 kg·cm'de 0,89–0,90, 9 kg·cm'de 0,74–0,81."
+- Notun yerinde dönüş satırı ve masa sırası 98'deki "enkoderin hangi tekerde olduğunu belirle" -> "arka enkoderin yönünü
+  doğrula".
+- **SIM 376** (ONERI tablosu) ve 357–372 paragrafı: "enkoder ön (TAHMİN); pin planında arka: arka enkoderle 0,89 (21 kg·cm)"
+  notu. SIM 398'de zaten "enkoder arka tekerde 0,89" var, tabloya taşınmalı.
+- **`fizik_parametreleri.json` 18** `kaynak`: "kaynakta yok" yanlış -> "pin planı arka (pin-haritasi.md 100–103); simülasyon ön
+  seçti (TAHMİN, karşılaştırma için)". Varsayılanı "arka" yapmak ayrı bir paket işi; V0 özeti değişmeyebilir ama `donus-*` ve
+  `donus-oneri` yeniden üretilir.
+- **K75'e madde:** "Enkoderler arka (lastik) motorlarda (pin planı). Simülasyonda öneri + ön omni, arka enkoderle yerinde w
+  (komut 1) 21 kg·cm 0,89–0,90 rad/s, 9 kg·cm 0,74–0,81 rad/s; ön enkoderli sayılar (0,97–1,06) bugünkü pin planında geçerli
+  değil. Sayılar TAHMİN parametrelere (durma torku, µ, makara yatak sürtünmesi) bağlı, masada doğrulanmadı."
+
+### 14.5 Belgeler: `SIMULASYON.md` "Makaralı omni" ve `omni-makara.md`
+
+- **S1, SIM 418:** "pencerede 12–16 × gerçek zaman" -> "başsız ölçümde 12–16 × gerçek zaman. Pencere gerçek zamanda koşar (B:
+  37 s'de sanal = duvar, en uzun döngü 168 ms; ONERI'de 95 ms)."
+- **S2, SIM 442–443:** "20 mm'ye dek geçer, 25–30 mm'de ön teker çıkıp arka takılır … (küre modeliyle aynı)" yanlış. Ölçüm
+  dosyası ve B: makarayla 25 mm geçiyor, 30 mm'de ön çıkıyor; küre modelinde 25 mm'de ön çıkıyor. 14.3'teki cümleyle
+  değiştirilmeli. Günlük § 18 394 ("eşik aynı") da.
+- **S3, SIM 443–444:** "gerçek değer bu ikisinin arasında" TAHMİN'i hüküm gibi yazıyor -> 14.3'teki titreşim cümlesi.
+- **S4, SIM 444–446 ve `omni-makara.md` "Makara yatağı sürtünmesi":** "eşdeğer yanal kuvvet" -> "makara başına; iki satır birden
+  temasta iken model direnci ≈ 2,1 katına çıkıyor (yerinde dönüşte zamanın %10'u, düz gidişte %30'u)".
+- **Teker seçimi ölçütü** şöyle aktarılmalı: "Masada ölçülen, teker gerçek yükte (≈ 62 N) yavaşça yana çekilirken sürekli
+  kuvvet, modeldeki parametreyle doğrudan karşılaştırılır (tek temas fazı). Modelde 9 kg·cm motorla 2 N'da w 0,78–0,93, 5 N'da
+  0,40–0,53, 7 N'da dönmüyor; 21 kg·cm ile 7 N'a dek etkisiz. Mertebe, sınır değil (sabit Coulomb, yükten bağımsız; 2 N değeri
+  pim µ 0,2 TAHMİN'inden)."
+- **S5, `omni_teker.json` `makara_yatak_surtunmesi_N.kaynak`:** yukarıdaki "makara başına" bilgisi eklenmeli.
+- **S6, `omni_teker.json` `ccd_toleransi.kaynak`:** "0,16 m/s yerine 0,10" -> "0,17 yerine 0,09" (ölçüm dosyasıyla aynı).
+- SIM 427: "%3" ölçütü yazılmalı (14.2).
+
+### 14.6 Pencere (`simulasyon3b-omni.bat`, gerçek tuşlar, şimdiki hâli)
+
+Pencere temiz açıldı: "ONERI-MAKARA (VARSAYIM)", hata akışı boş.
+
+- **Sürüş:** 6 -> arm ok. Sağ 1,5 s -> −70° dönüş. Yukarı 2 s ve Yukarı+Sol yay çalıştı.
+- **Görünüm:** 1 tuşu gövde ağını gizledi; yakın kırpımda ön tekerler makaralı (turuncu makara çizgileri), arka tekerler
+  lastik.
+- **Odak:** Yukarı basılıyken odak başka pencereye alındı -> "odak kayboldu … dur".
+- **Acil stop:** 8 + Yukarı -> "ariza ACIL STOP", "acil stop: komut reddedildi", gerçek hız 0.
+- **Backspace:** "MuJoCo sifirlandi … basa kondu, dur". Sonra Yukarı ile 1,50 -> 1,81 m sürüldü.
+- **Hız:** sanal 37,0 s = duvar 37,0 s, en uzun döngü 168 ms.
+- **Kusur (küçük):** makaralıda üstte eklenen "1 tusu …" satırıyla tuş ipucunun son satırı kesiliyor ("Shift+8 basa koy  Shi").
+  Shift+9 / Shift+Enter / fare ipucu görünmüyor; acil stop sırasında Enter'dan sonrası da. MuJoCo katman metni sınırı;
+  ipucu kısaltılmalı.
+- Varsayılan kamerada tekerler küçük; makaralar ancak yakın bakışta seçiliyor.
+
+### 14.7 İş 2: web demosu
+
+- **Yeniden üretim:** `demo_uret.build` çıktıyı geçici dizine yazacak biçimde koşuldu. Sonuç paketteki sayfayla bayt bayt
+  aynı (198 031 B, md5 `31fb8345…`). Elle düzenleme yok.
+- **Doğrulayıcı:** `F9b-dogrula.py` (tarayıcılı, `--goruntu`suz, yazma yok) **GEÇER**, hata 0. 1400 ve 360 px'te taşma yok,
+  konsol hatası 0.
+- **Başsız Chrome:** varsayılan, yan, ön ve izometrik görünümler; `?teker=lastik`; 360 px.
+  - Omni ön tekerler makaralı, yere değiyor.
+  - Ön görünümde göbek adaptörü görünüyor (omni lastiğin merkezinde, dışa doğru).
+  - Opak kabukta etek tekerleri örtüyor; eteğe ya da gövdeye girme görmedim.
+  - `?teker=lastik` eski görünümü veriyor (iki görüntü yan yana karşılaştırıldı; KPI'daki omni kütle cümlesi kayboluyor).
+- **Sayılar:**
+  - Kütle: omni 480 − lastik 140 = +340 g / teker; +680 g; 25,88 -> 26,56 kg. Kaynak anahtarlarından (`omni_kutle`,
+    `lastik_kutle`, `kutle_g`) JS ile hesaplanıyor, tutuyor.
+  - "ön uç ≈ 1 mm yükselir" = (127 − 125) / 2.
+  - Kaplinin göbeğe ≈ 1 mm girmesi bilinen kusur olarak yazılmış; görsel olarak ayrıca ölçmedim.
+- **Kaynaklar:**
+  - three.js aynı kaynaktan: `cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js` (fark yok).
+  - `rehber/`, GLB ve kök `index.html` değişmemiş (`git status`).
+- **Pages:** `gh api repos/…/pages`: `source.branch = main`, path `/`, legacy build. **`lale-duzeltme`'nin push'u yayını
+  değiştirmez**; yayın ancak `main`'e birleştirilince değişir. Ama depo **public**: push edilen dalın içeriği yayında olmasa da
+  herkese açık.
+- **D1:** Sayfa notu "Merkez lastikle aynı (aks, iz ve aks aralığı değişmez)" diyor. Bu bir demo kabulü (`taban_lib.py`
+  `omni_local`), karar değil:
+  - CAD içinde çelişki var (`arayuz.py` "içeri kayar").
+  - Fizik modeli öbür kabulü kullanıyor: `varyantlar.ADAY_TEKER` `on_teker_y_iceri_m` 14,5 mm, iç yüz aynı, ön iz 29 mm dar.
+  - Cümle "demo kabulü; fizik modeli iç yüzü aynı tutuyor (merkez 14,5 mm içeri); karar açık" olmalı.
+
+**İki parametre dosyası** (`tasarim/cad/omni-teker.json` ve `kod/fizik/omni_teker.json`):
+- **Aynı:** Ø127, 29 mm, 2 sıra, 22 makara, 480 g, makara Ø19 × 22 (boy TAHMİN), göbek deliği 6 mm (TAHMİN; CAD 12 mm altıgen
+  adaptör diyor, teyit), sıra ofseti ±5 mm (fizik "aralık 10").
+- **Çelişen:**
+  1. Teker merkezi: CAD aynı merkez + adaptör; fizik 14,5 mm içeri.
+  2. Göbek Ø57 × 25 yalnız CAD'de; kaynağı "brief'te ürün sayfası değeri olarak verildi", fizik ürün sayfasında bulamamış.
+  3. Ürün sayfası adresi `ozrobotics.com` ile `www.ozrobotics.com` (aynı sayfa).
+- **Birleştirme önerisi:**
+  - Tek kaynak `tasarim/cad/omni-teker.json`: ürün ve geometri alanları, alan başına `durum` / `kaynak` (fizik dosyasının
+    biçimi), merkez kararı tek alan. CAD de buradan beslenmeli; model `lale.xml` CAD'den üretildiği gibi.
+  - `kod/fizik/omni_teker.json` yalnız modelleme alanlarını tutmalı (makara kütlesi, pim µ, yatak sürtünmesi, sönüm,
+    `solimpfriction`, ccd, temas biçimi) ve geometriyi CAD dosyasından okumalı.
+  - CAD adımında `arayuz.py` `TABAN['omni']` aynı dosyayı okumalı; merkez çelişkisi o adımda karara bağlanmalı.
+  - Birleştirmeyi yapmadım.
+
+### 14.8 Commit hazırlığı
+
+- Kanca kalıpları, iki işin 19 dosyasının tamamında: 0 bulgu.
+- Satır başı süsleyici:
+  - `@echo off` (iki `.bat`) noktasız.
+  - Demo ve şablondaki `@media(…)` satırları: `@`'den sonra nokta değil parantez geliyor; e-posta kalıbına takılmaz.
+- 1 MB üstü dosya yok (en büyük: demo sayfası 198 KB, `omni-makara.json` 131 KB). 21 eski dosya md5 aynı.
+- **Commit 1, makaralı omni (15):**
+  - `kod/SIMULASYON.md`, `kod/fizik/dunya.py`, `gorunum3b.py`, `varyantlar.py`, `testler/test_enkoder_ariza.py`
+  - `kod/simulasyon3b.bat`, `kod/simulasyon3b-omni.bat`, `kod/testler/duzenek.py`
+  - yeni: `kod/fizik/omni_makara.py`, `omni_teker.json`, `olcum_makara.py`
+  - yeni: `planlama/d158/Y0f-olcum/omni-makara.json|md`
+  - `planlama/d158/Y0f-gunluk.md`, `planlama/d158/Y0f-kontrol.md`
+- **Commit 2, web demosu (4):** `tasarim/Robot-Tasarim-Demosu.html`, `tasarim/cad/demo_uret.py`, `viewer-template.html`, yeni
+  `tasarim/cad/omni-teker.json`.
+- **Girmeyecek:**
+  - 21 eski dosya: 13 `kabuk/gorsel/*.png`, `montaj/yerlesim-kontrol.json`, `geometri*_*.py` (3), `gez.js`, `uc.js`, `P108d*`
+    (2).
+  - `__pycache__/`.
+
+### 14.9 Bakılmayanlar
+
+- Demoda parça tıklama (bilgi kutusu ve omni notu) ve `?teker=lastik` konsolu (F9b yalnız varsayılanı denetliyor).
+- Kaplinin göbeğe girme ölçüsü.
+- Makara çapı (Ø15 / 23) ve kapsül eşik taraması; titreşim ve hız tablosu (RTF) yeniden üretilmedi.
+- 9 kg·cm 15° rampa kilitleri.
+- `omni-makara.json` yeniden üretimi (≈ 6,5 dk).
+- Gerçek teker, karta yükleme.

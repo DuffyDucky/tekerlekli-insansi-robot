@@ -160,7 +160,10 @@ def model_kur(harita=None, sahne=None, p=None, varyant=None):
         raise RuntimeError("fizik bağımlılığı yok (mujoco): %s" % FIZIK_HATA)
     with open(MODEL_XML, encoding="utf-8") as f:
         x = f.read()
-    if varyant and varyant.get("on_teker"):              # VARSAYIM (varyantlar.py); V0'da bu dal yok
+    if varyant and varyant.get("on_teker") == "makara":  # VARSAYIM: makaralı omni (omni_makara.py); V0'da bu dal yok
+        import omni_makara
+        x = omni_makara.makara_xml(x, omni_makara.yukle(varyant.get("makara_degis")), y_iceri_m=varyant.get("on_teker_y_iceri_m", 0.0))
+    elif varyant and varyant.get("on_teker"):            # VARSAYIM (varyantlar.py); V0'da bu dal yok
         import varyantlar
         x = varyantlar.on_teker_xml(x, varyant["on_teker"], r=varyant.get("on_teker_r", 0.0625),
                                     kutle_kg=varyant.get("on_teker_kutle_kg"), y_iceri_m=varyant.get("on_teker_y_iceri_m", 0.0))
@@ -175,6 +178,9 @@ class FizikDunya:
 
     def __init__(self, harita=None, sahne=None, konum=(0.0, 0.0, 0.0), degis=None, varyant=None):
         self.p = parametreler(degis)
+        # Varyantın enkoder tekeri (öneri varyantları: "arka", pin planı); açık `degis` (duyarlılık) her zaman önce gelir.
+        if varyant and varyant.get("enkoder_teker") and "enkoder_teker" not in (degis or {}):
+            self.p["enkoder_teker"] = varyant["enkoder_teker"]
         self.harita = harita
         self.sahne = sahne
         self.varyant = varyant
@@ -187,7 +193,14 @@ class FizikDunya:
         self.taban = ad(B, "taban")
         self.teker_dof = [m.jnt_dofadr[ad(J, t)] for t in TEKERLER]
         self.teker_qpos = [m.jnt_qposadr[ad(J, t)] for t in TEKERLER]
-        self.teker_geom = [ad(G, "c_" + t) for t in TEKERLER]
+        self.makarali = bool(varyant and varyant.get("on_teker") == "makara")
+        # teker başına temas geom kümesi: lastik / küre tekerde tek geom; makaralı omnide makaraların hepsi (c_<teker>_mk_*)
+        adlar = [mujoco.mj_id2name(m, G, g) or "" for g in range(m.ngeom)]
+        self.teker_geom_kume = [frozenset(g for g in range(m.ngeom) if adlar[g] == "c_" + t or adlar[g].startswith("c_" + t + "_mk_"))
+                                for t in TEKERLER]
+        self.teker_geom = [ad(G, "c_" + t) if ad(G, "c_" + t) >= 0 else min(self.teker_geom_kume[k])
+                           for k, t in enumerate(TEKERLER)]
+        self.tum_teker_geom = frozenset().union(*self.teker_geom_kume)
         self.motor = [ad(A, "motor_" + t) for t in TEKERLER]
         self.servo_act = {s: ad(A, "servo_" + s) for s in SERVOLAR}
         self.servo_jnt = {s: ad(J, s) for s in SERVOLAR}
@@ -207,13 +220,20 @@ class FizikDunya:
                 self.engel_geom.add(g)
         self.robot_geom = {g for g in range(m.ngeom) if m.geom_bodyid[g] != 0 and m.geom_contype[g] == 2}
         # parametre uygulaması (derlenmiş modele; yeniden derleme gerekmez)
-        for g in self.teker_geom:
+        for g in self.tum_teker_geom:
             m.geom_friction[g, 0] = self.p["teker_zemin_surtunme"]
-        for g in self.robot_geom - set(self.teker_geom):
+        for g in self.robot_geom - self.tum_teker_geom:
             m.geom_friction[g, 0] = self.p["govde_zemin_surtunme"]
         # teker ekleminde Coulomb sürtünmesi = dişli sürtünmesi + yuvarlanma direnci (crr x statik teker yükü x r; yük
         # değişimi izlenmez: TAHMİN). Yuvarlanma direnci MuJoCo temasında yok (condim 3), bu yüzden eklemde.
-        r_teker = float(m.geom_size[self.teker_geom[0], 0])
+        if self.makarali:
+            import omni_makara
+            op = omni_makara.yukle(varyant.get("makara_degis"))
+            r_teker = omni_makara.geometri(op)["R"]
+            m.opt.ccd_tolerance = op["ccd_toleransi"]   # elipsoid-kutu normali (omni_teker.json); V0'da değişmez
+        else:
+            r_teker = float(m.geom_size[self.teker_geom[0], 0])
+        self.teker_r = [r_teker if (self.makarali and k in (0, 2)) else float(m.geom_size[self.teker_geom[k], 0]) for k in range(4)]
         n_teker = float(sum(m.body_mass)) * 9.81 / 4.0
         self.teker_surtunme = self.p["motor_disli_surtunme_Nm"] + self.p["yuvarlanma_direnci_katsayisi"] * n_teker * r_teker
         for dof in self.teker_dof:
@@ -224,7 +244,7 @@ class FizikDunya:
         # VARSAYIM V3 / V4: ön "makara" menteşeleri; açısı her adımda 0'a döner (küre kendi merkezi çevresinde simetrik,
         # temas geometrisi değişmez; teker ekseni yatay kalır = hep alttaki makara, hızı korunur). V0'da liste boş.
         self.makara_qpos = []
-        if varyant and varyant.get("on_teker"):
+        if varyant and varyant.get("on_teker") in ("omni", "sarhos"):
             self.makara_qpos = [m.jnt_qposadr[ad(J, "makara_on_" + y)] for y in ("sol", "sag")]
             # gerçek omni ideal değil: makara yuvarlanma / yatak direnci, eşdeğer yanal sürtünme katsayısı x statik teker
             # yükü x yarıçap (TAHMİN; 0 = ideal, üst sınır)
@@ -348,8 +368,8 @@ class FizikDunya:
         f6 = np.zeros(6)
         for i in range(self.d.ncon):
             c = self.d.contact[i]
-            for k, g in enumerate(self.teker_geom):
-                if (c.geom1 == g or c.geom2 == g):
+            for k, kume in enumerate(self.teker_geom_kume):
+                if (c.geom1 in kume or c.geom2 in kume):
                     mujoco.mj_contactForce(self.m, self.d, i, f6)
                     F[k] += float(f6[0])
         return F
@@ -365,7 +385,7 @@ class FizikDunya:
 
     def govde_zemine_degiyor(self):
         """Tekerler dışında robotun bir parçası zemine / rampaya / eşiğe değiyor mu (takılma, devrilme)."""
-        tk = set(self.teker_geom)
+        tk = self.tum_teker_geom
         for i in range(self.d.ncon):
             c = self.d.contact[i]
             a, b = c.geom1, c.geom2

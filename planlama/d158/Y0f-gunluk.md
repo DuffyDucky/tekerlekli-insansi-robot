@@ -370,3 +370,70 @@ A ajanı, 23.11 (saat okundu: bölüm yazılırken 02:12). B'nin hükmü: `lale-
   (takma ad, ekip soyadları, e-posta, yerel yol) 0.
 - K75: dosyanın kuralına göre Ahmet'in kararı yazıldı; firmware yarısı Efe'de ve teker seçilmediği için K2 gibi açık kalır, sayaç
   değişmez (açık 40, toplam 80). İlk sürümde durum hücresinden "F5 yazılım hizası" düşmüş, F9c faz hatası verdi; geri eklendi.
+
+## 18. Makaralı omni teker modeli: ONERI-MAKARA (A, commit yok)
+
+A ajanı, 23.11 (saat okundu: bölüm yazılırken 03:42). Ahmet'in isteği: omni teker simülasyonda gerçek teker olarak
+modellensin (CAD sonra; bu işte CAD, rehber, web demosu dokunulmadı).
+
+- **Model.** `kod/fizik/omni_makara.py` + tek parametre dosyası `kod/fizik/omni_teker.json` (alan başına `deger` / `durum` /
+  `kaynak`). Ürün sayfası (ozrobotics 14075): Ø127, 29 mm, 22 makara Ø19, 480 g, kauçuk, pirinç boru yatak. TAHMİN: makara boyu
+  22 mm, sıra aralığı 10 mm, makara 6 g, yatak sürtünmesi 2 N eşdeğer yanal, göbek deliği 6 mm (`arayuz.py` 12 mm altıgen
+  adaptör diyor: teyit). Göbek motor eklemi ve enkoderle; 22 makara ayrı gövde + pasif menteşe; temas elipsoid (sapma 0,005 mm),
+  seçenek 5 küre / kapsül. `varyantlar.py` `ONERI-MAKARA` + `makara_varyanti()`; `dunya.py` teker geom kümeleri (V0 yolu aynı);
+  `duzenek.py` ve `test_enkoder_ariza.py` `LALE_VARYANT` ortam değişkeni (varsayılan yol aynı); `gorunum3b.py` 1 tuşu ipucu ve
+  makaralıda ikinci ekran görüntüsü (gövdesiz). `simulasyon3b-omni.bat` -> ONERI-MAKARA (gerekçe: 12–16 × gerçek zaman, uyarı 0,
+  gerçek tekere en yakın; küre modeli ONERI-ADAY ile açılır).
+- **Bulunan iki sayısal tuzak.** (1) Elipsoid-kutu teması nativeccd, varsayılan ccd toleransı 1e-6'da rampa temaslarının ≈ %3'ünde
+  normal 28° sapıyor: 15° rampada sahte çekiş 0,17 m/s (doğrusu 0,09). 1e-9 yalnız bu varyantta. (2) Makara ekleminin Coulomb
+  sürtünmesi varsayılan `solimpfriction` 0,9 ile etkisiz: 2 N ile 200 N aynı sonuç, makaralar 36 rad/s dönmeye devam; 0,9999
+  ile sınır tutuyor (dof_solimp okunarak doğrulandı). İkincisi bulunmadan önceki ilk ölçüm koşusu atıldı, ölçüm yeniden üretildi.
+- **Ölçüm** `planlama/d158/Y0f-olcum/omni-makara.md` / `.json` (`kod/fizik/olcum_makara.py`, ≈ 6,5 dk, çıkış 0; iki koşu RTF süreleri dışında aynı, md5 RTF yüzünden farklı). Değişen:
+  9 kg·cm yerinde w 0,78–0,93 (küre 0,69–0,84), yay daha iyi, 5° yan eğim kayması 0,03 m (küre 0,05), 15° rampa 0,09 m/s (küre
+  0,10), titreşim 1,58 m'de 0,09–0,15 mm (kapsülle 1,6–2,5 mm; makara geçiş frekansı ölçülen baskın frekansla aynı). Aynı: 21 kg·cm
+  dönüş, kolon, `dur` / acil stop, rampa tutma (tutmuyor), eşik 5–15 mm (düzeltme § 19: eşik duyarlılığında makara 25 mm'yi
+  geçiyordu, ön enkoderli küre modeli geçemiyordu; "aynı" yanlıştı). Yatak sürtünmesi 9 kg·cm'de
+  belirleyici (5 N'da w 0,40–0,53, 7 N'da duruyor). Koruma tetiklenmeleri: geçilemeyen eşikler, 7 N üstü sürtünmeyle duran yerinde
+  dönüş ve 9 kg·cm 15° rampa (arka enkoder): hepsi gerçek durma.
+- **Enkoder yeri.** Pin planı (`planlama/adim3/pin-haritasi.md`) ve `elektrik.md` enkoderleri arka motorlara koyuyor; simülasyon
+  varsayılanı ön (TAHMİN). Arka enkoderle 21 kg·cm yerinde w 0,90 (ön 1,06), 15° rampa 0,12 m/s (ön 0,09); 10° aynı.
+- **Doğrulama.** 2B 58 / 58; fizik koşusu çıkış 0, 10 / 10, Y0s fizikte 58 / 58, özet `f3507f3911bd53da` (`olcum.json`
+  yalnız süreler, geri alındı); `donus-varyantlar`, `donus-hareket`, `donus-oneri` yeniden üretildi, md5 aynı. ONERI-MAKARA ile:
+  enkoder arızası 4 / 4, Y0s fizikte 57 / 58 (ONERI ile aynı kalan `test_cok_buyuk_w_kirpilir_donus_orani_korunur`). Pencere
+  gerçek tuşla (6, Yukarı, Sol, 1, Yukarı+Sağ): robot dik, gövde gizlenince makaralı ön tekerler ve arka lastikler görünüyor.
+
+## 19. Düzeltme turu: B § 14 (A, commit yok; öneri dalında yerel commit)
+
+A ajanı, 23.11 (saat okundu: bölüm yazılırken 04:23). B'nin hükmü: makaralı omni KOŞULLU GEÇER (S1–S6), enkoder bulgusu doğru.
+
+- **Enkoder arka.** Öneri varyantları (ONERI, ONERI-T, ONERI-ADAY, ONERI-MAKARA) `varyantlar.py` `ENKODER_ONERI = "arka"`;
+  `dunya.py` varyantın `enkoder_teker`'ini uygular, açık `degis` önce gelir (ön enkoder = `degis={"enkoder_teker": "on"}`
+  duyarlılığı). `fizik_parametreleri.json` `enkoder_teker` notu "depoya göre ARKA" (pin-haritasi 100–103 / 398, elektrik
+  488–495, kablolar N01 / N02, pinler.h 35–38); değer ön kaldı: yalnız V0 ve V1–V2+V3'ün yeniden üretilebilirliği için. V0
+  etkilenmedi: fizik koşusu çıkış 0, özet `f3507f3911bd53da`; `donus-varyantlar` / `donus-hareket` md5 aynı (`03D05734` /
+  `62C21162`, `C8CAA97B` / `105E9DF4`). Y0s fizikte V0'da bir kez `test_yalniz_ayni_koken` kaldı, yeniden koşuda geçti (§ 6).
+- **Yeniden üretim** (arka enkoder). `donus-oneri`: yerinde w komut 1, 21 / 9 kg·cm: ONERI 0,892–0,923 / 0,742–0,880, ONERI-T
+  0,085–0,095 / 0,001, ONERI-ADAY 0,893–0,926 / 0,706–0,861; `omni-makara`: ONERI-MAKARA 0,904–0,933 / 0,805–0,916. B'nin
+  değerleri (ONERI 0,892, ONERI-MAKARA 0,904, 9 kg·cm µ 0,8 0,742 / 0,805) birebir. Ön enkoderli sayılar iki dosyada
+  "enkoder önde olsaydı" tablosunda. Arka enkoderle değişen öbürleri: 15° rampa 0,12 m/s (ön 0,09–0,10; kapsül de çıkıyor),
+  eşik duyarlılığında küre modeli de 25 mm geçiyor, kapsül titreşimi 0,75–1,65 mm ileri (ön enkoderle 1,6–2,5), yatak
+  sürtünmesi 21 kg·cm'de artık etkisiz değil (7 N'da 0,83–0,87). `omni-makara` iki koşu RTF dışında aynı.
+- **Koruma.** Arıza testleri arka enkoderle ONERI ve ONERI-MAKARA'da 4 / 4: tespit 510–550 ms ve iki yan 0,36–0,37 m aynı; tek yan
+  takılı korumasız −78° / −80° (ön −84° / −89°), korumalı −5,8° / −6,5° (ön −6,3° / −7,1°). Y0s fizikte iki varyantta 57 / 58
+  (bilinen kalan). Ölçümdeki 10 tetiklenme ön ölçümün etiketiyle görünüyordu: kasıtlı arıza denemeleriymiş, etiket düzeltildi
+  ("KASITLI ..."); öbürleri gerçek durma (geçilemeyen eşik, ≥ 7 N sürtünme, 9 kg·cm 15° rampa).
+- **Belgeler.** `SIMULASYON.md`: ONERI tablosu arka enkoderle + ön duyarlılık satırı, duyarlılık paragrafı, `TEKER_CAPI_M` 0,125
+  doğru (%1,6 riski kalktı), K75 satırı (0,97–0,98 yerine 0,89–0,92 / 0,74–0,88; `karar-kuyrugu.md`'ye dokunulmadı, C'nin);
+  makaralı bölüm S1 (pencere gerçek zamanda, 9–16 × başsız), S2 eşik cümlesi, S3 titreşim cümlesi, S4 / yatak ölçütü (makara
+  başına, iki temasta ≈ 2,1 kat), % ölçütü. `omni_teker.json`: S5, S6 ("enkoder önde 0,17 yerine 0,09; arkada 0,18 yerine
+  0,12"), birleştirme notu (tek kaynak adayı `tasarim/cad/omni-teker.json`, merkez kabulü farklı, karar açık).
+- **Efe notu** öneri dalında yerel commit `95b7066` (push yok; yalnız `ONERI-donus.md`, C++ değişmedi): enkoder arkada,
+  `TEKER_CAPI_M`, tablo arka enkoderle + ön duyarlılık, makaralı sütun, masa sırası "arka enkoderin yönünü doğrula", yana çekme
+  ölçütü. Tek teker kilidi sayısı (0,97 -> 0,73) ön enkoderle ölçülmüştü, notta öyle yazıldı.
+- **Pencere.** MuJoCo katman metni 500 karakterde kesiliyor (ölçüldü: 555 karakterlik ipucunun 500. karakteri "Shi"). İpucu
+  kısaltıldı, `ust_metin` sınırı aşınca önce açıklama satırlarını düşürür (her varyantta en kötü durum ≤ 495). Pencere açılınca
+  çalışma alanına sığdırılır (`pencereyi_sigdir`, Windows). Önceki "durum kutusu kesik" görüntüleri DPI'sız ekran yakalamanın
+  kırpmasıydı (125 % ölçekte sol üst 1536 × 864 fiziksel piksel); DPI'lı yakalamayla gerçek tuş (6, Yukarı, 1, 8 + Yukarı):
+  üst ipucu "Shift+ ... Enter varyant  fare: kamera" dahil tam, ACIL STOP satırıyla tam, sol alt kutu "son" satırına dek
+  görev çubuğunun üstünde.
+- **Doğrulama.** 2B 58 / 58.

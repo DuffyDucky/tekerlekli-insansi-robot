@@ -20,7 +20,8 @@ harfler görselleştirme / çizim bayrakları, Space, + -, [ ], Tab, Esc, F1-F5 
   Shift+6 rampa kipi aç / kapa   Shift+7 kafa sola / ortaya / sağa   Shift+8 robotu başa koy   Shift+9 sonraki sahne
 Eski tuşlar da çalışır: Home arm, End dur, Delete mantar, Insert birak, Page Up / Down kol pozu, F9 rampa, F10 kafa,
 F11 başa koy, F12 sonraki sahne.
-Shift+Enter  sonraki dönüş varyantı (V0 bugünkü robot; V1..V2+V3, ONERI, ONERI-T, ONERI-ADAY VARSAYIM; `varyantlar.py`). Varyant V0 değilse üstte kalıcı
+Shift+Enter  sonraki dönüş varyantı (V0 bugünkü robot; V1..V2+V3, ONERI, ONERI-T, ONERI-ADAY, ONERI-MAKARA VARSAYIM; `varyantlar.py`;
+ONERI-MAKARA'da ön tekerler göbek + 22 makara, `omni_makara.py`; etek tekerleri örttüğü için 1 tuşu gövde ağını gizler). Varyant V0 değilse üstte kalıcı
 "VARSAYIM: <ad> (bugunku robot DEGIL)" satırı. Komut satırından: `kod\\simulasyon3b.bat <sahne> <varyant>` ya da `--varyant`.
 
     "%LALE_SIM_VENV%\\Scripts\\python.exe" kod/fizik/gorunum3b.py --sahne oda_rampa
@@ -73,10 +74,27 @@ KOL_POZLARI = [   # (ad, eklem derecesi: omuz, omuz_yan, dirsek); servo = eklem 
 KAFA = [0, 45, 0, -45]
 PNG_IMZA = bytes([137, 80, 78, 71, 13, 10, 26, 10])
 
-IPUCU = ("oklar basili tut: Yukari/Asagi ileri/geri, Sol/Sag don (ikisi birlikte: yay), Shift: hizli; birakinca durur\n"
-         "geri giderken araba gibi: Asagi+Sag = arka saga (yalniz pencerenin komut isareti)\n"
-         "6 devreye al   7 dur   8 ACIL STOP   9 gucu birak   Enter kol pozu\n"
-         "Shift+6 rampa kipi   Shift+7 kafa   Shift+8 basa koy   Shift+9 sonraki sahne   Shift+Enter varyant   fare: kamera")
+# MuJoCo katman metni tek parça en çok 500 karakter çizer (fazlası sessizce kesilir; B § 14.6'da son satır kesiliyordu).
+# Üst metin bu sınırın altında tutulur: ipucu kısa, sınır aşılırsa önce ikinci, sonra birinci ipucu satırı düşer.
+KATMAN_SINIRI = 499
+IPUCU_SATIRLARI = (
+    "oklar (basili): Yukari/Asagi ileri/geri, Sol/Sag don, ikisi yay, Shift hizli; birakinca durur",
+    "geri giderken araba gibi: Asagi+Sag = arka saga",
+    "6 devreye al   7 dur   8 ACIL STOP   9 gucu birak   Enter kol pozu",
+    "Shift+ 6 rampa  7 kafa  8 basa koy  9 sonraki sahne  Enter varyant   fare: kamera")
+IPUCU = "\n".join(IPUCU_SATIRLARI)
+
+
+def ust_metin(bas):
+    """Durum satırları (bas) + ipucu; KATMAN_SINIRI'nı aşmaz. Son ipucu satırları (Shift ve 6-9 tuşları) her zaman kalır."""
+    satirlar = list(IPUCU_SATIRLARI)
+    metin = bas + "\n".join(satirlar)
+    for at in (1, 0):
+        if len(ascii_tr(metin)) <= KATMAN_SINIRI:
+            break
+        satirlar.pop(at)
+        metin = bas + "\n".join(satirlar)
+    return metin[:KATMAN_SINIRI]
 
 
 def ascii_tr(s):
@@ -296,13 +314,15 @@ class Pencere:
         ust = ""
         if self.varyant is not None:
             ust = "VARSAYIM: %s (bugunku robot DEGIL)\n" % VR.VARYANTLAR[self.varyant_ad]["ad"]
+            if self.w.makarali:
+                ust += "1: govde agini gizle / goster (omni tekerler etegin altinda)\n"
         if self.c.mantar:
-            ust += "ACIL STOP BASILI: once 8 ile mantari birak, sonra 6 ile devreye al\n"
+            ust += "ACIL STOP BASILI: once 8 ile mantari birak, sonra 6\n"
         elif h["guc"] != "devrede":
             ust += "ONCE 6'YA BAS: devreye al (guc %s; devrede degilken surulmez)\n" % h["guc"]
         if not self.odakta:
             ust += "pencere odakta degil: tiklayin (odak yokken robot durur)\n"
-        ust += IPUCU
+        ust = ust_metin(ust)
         sol = "guc\n            komut / gercek\nileri v m/s\ndonus w rad/s\negim / kol\nteker yuku N"
         sag = ("%s%s  [%s, %s]\n\n%+.2f / %+.2f\n%+.2f / %+.2f\npitch %.1f  roll %.1f   rampa %s   kol %s\n%s"
                % (h["guc"], " ACIL STOP" if self.c.mantar else "", self.sahne_ad, self.varyant_ad, self.v, h["v"], self.w_cmd, h["w"],
@@ -318,6 +338,37 @@ class Pencere:
             sol += "\nson"
             sag += "\n" + self.gunluk[-1].strip()
         return ascii_tr(ust), ascii_tr(sol), ascii_tr(sag)
+
+
+def pencereyi_sigdir():
+    """Windows: bu sürecin görüntüleyici penceresini çalışma alanına (görev çubuğu hariç) sığdırır. Görüntüleyici pencereyi
+    ekrandan büyük açınca alt kenar (sol alttaki durum kutusu) görev çubuğunun altında kalıyordu. Döner: sığdırıldı mı."""
+    if sys.platform != "win32":
+        return True
+    import ctypes
+    from ctypes import wintypes
+    u = ctypes.windll.user32
+    bulunan = []
+
+    @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+    def gez(h, _):
+        pid = wintypes.DWORD(0)
+        u.GetWindowThreadProcessId(h, ctypes.byref(pid))
+        if pid.value == os.getpid() and u.IsWindowVisible(h):
+            n = u.GetWindowTextLengthW(h)
+            b = ctypes.create_unicode_buffer(n + 1)
+            u.GetWindowTextW(h, b, n + 1)
+            if b.value.startswith("MuJoCo"):
+                bulunan.append(h)
+        return True
+    u.EnumWindows(gez, 0)
+    if not bulunan:
+        return False
+    alan = wintypes.RECT()
+    u.SystemParametersInfoW(0x0030, 0, ctypes.byref(alan), 0)     # SPI_GETWORKAREA
+    u.ShowWindow(bulunan[0], 1)                                    # SW_SHOWNORMAL (büyütülmüşse normale)
+    u.MoveWindow(bulunan[0], alan.left, alan.top, alan.right - alan.left, alan.bottom - alan.top, True)
+    return True
 
 
 def kamera_kur(cam, w, taban):
@@ -360,8 +411,15 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
         t0 = time.perf_counter()
         sanal0 = p.e.zaman_ms
         en_uzun = 0.0
+        sigdi, sig_deneme = False, 0
         while v.is_running() and not p.sahne_degis and p.varyant_degis is None:
             dongu = time.perf_counter()
+            if not sigdi and sig_deneme < 100:            # pencere birkaç döngü sonra görünür; bir kez çalışma alanına sığdır
+                sig_deneme += 1
+                try:
+                    sigdi = pencereyi_sigdir()
+                except Exception:                         # sığdırma yalnız görünüm; başarısızsa pencere olduğu gibi kalır
+                    sigdi = True
             while not p.olay.empty():
                 p.tus_olayi(p.olay.get())
             t_s = (p.e.zaman_ms - sanal0) / 1000.0
@@ -380,6 +438,13 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
                         rend.update_scene(p.w.d, cam)
                         rgb = rend.render()
                     png_yaz(os.path.join(ekran, foto + ".png"), rgb)
+                    if p.w.makarali:              # makaralı omni: gövde ağı (grup 1) gizli ikinci görüntü, tekerler görünsün
+                        sec = mujoco.MjvOption()
+                        sec.geomgroup[1] = 0
+                        with v.lock():
+                            rend.update_scene(p.w.d, cam, scene_option=sec)
+                            rgb = rend.render()
+                        png_yaz(os.path.join(ekran, foto + "-tekerler.png"), rgb)
                     p._yaz("ekran goruntusu %s.png" % foto)
             with v.lock():
                 if p.son_t is not None and p.w.d.time < p.son_t - 1e-9:

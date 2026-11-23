@@ -12,6 +12,7 @@ lastikler). µ 0,5 / 0,8 x 21 / 9 kg·cm:
 Yan etkiler, rampa (5° / 10° tutma, rampa kipi), eşik (5 / 10 / 15 mm, v 0,2 ve 0,39) µ 0,8, 21 kg·cm (eşik ayrıca 9 kg·cm).
 Duyarlılık (ONERI, yerinde w 1 ve 5° yan eğimde düz gidiş, µ 0,8, 21 kg·cm): makara yanal sürtünmesi 0 / 0,05 / 0,15, kazançlar,
 integral sınırı, enkoder tekeri ve çözünürlüğü, temas / çözücü ayarları (B'nin § 11 yöntemi).
+Enkoder: öneri varyantlarında arka teker (pin planı, varyantlar.ENKODER_ONERI); "enkoder önde olsaydı" ayrı duyarlılık tablosu.
 """
 
 import json
@@ -48,6 +49,7 @@ def _oneri_adim_izle(self):
 FE.FizikEsp32._oneri_adim = _oneri_adim_izle
 ACIK_ADAY = dict(VR.VARYANTLAR["V3"], **VR.ADAY_TEKER)     # bugünkü açık çevrim firmware + aday omni (karşılaştırma)
 MAKARA_TARAMA = (0.0, 0.05, 0.10, 0.15, 0.20, 0.30, 0.40, 0.60)
+ENK_ON = {"enkoder_teker": "on"}   # duyarlılık: enkoder ön (omni) tekerde olsaydı; öneri varyantlarında asıl değer arka (pin planı)
 
 
 def duz_kos(var, mu=0.8, durma=2.059):
@@ -134,8 +136,8 @@ def yerinde(var, mu, durma, v, w, degis=None, ayar=None):
                 tork_surekli_orani=tork / (0.3 * durma), yaricap_m=(v_ort / w_ort) if abs(w_ort) >= 0.01 else None)
 
 
-def doksan(var, mu, durma):
-    dn = OV.deney(var, mu, durma)
+def doksan(var, mu, durma, degis=None):
+    dn = OV.deney(var, mu, durma, degis=degis)
     dn.devreye_al()
     yaw0 = dn.w.poz()[3]
     dn.kayit_ac()
@@ -204,7 +206,7 @@ def duyarlilik():
     ekle("kp 4, ki 0 (yalnız P)", VR.oneri_varyanti(ki=0.0))
     ekle("integral sınırı 0,3 (0.5.0 değeri)", VR.oneri_varyanti(integral_siniri=0.3))
     ekle("enkoder arızası koruması yok", VR.oneri_varyanti(duzeltme_orani=None))
-    ekle("enkoder arka tekerde", "ONERI", degis={"enkoder_teker": "arka"})
+    ekle("enkoder önde olsaydı (omni teker)", "ONERI", degis=ENK_ON)
 
     def yari_tik(dn):
         dn.c.tik_tur = 990
@@ -229,7 +231,21 @@ def duyarlilik():
         dn.c.teker_capi = 0.127
     ekle("ADAY, firmware TEKER_CAPI_M 0,125 (ana)", "ONERI-ADAY")
     ekle("ADAY, firmware TEKER_CAPI_M 0,127", "ONERI-ADAY", ayar=cap127)
-    ekle("ADAY, enkoder arka (lastik) tekerde", "ONERI-ADAY", degis={"enkoder_teker": "arka"})
+    ekle("ADAY, enkoder önde olsaydı (omni teker)", "ONERI-ADAY", degis=ENK_ON)
+    return r
+
+
+def on_enkoder():
+    """Duyarlılık: enkoder ön (omni) tekerde olsaydı. Önceki ölçümlerin (enkoder ön kabulüyle) dönüş sayıları."""
+    r = []
+    for var in ("ONERI", "ONERI-T", "ONERI-ADAY"):
+        for dad, durma in DURMA.items():
+            for mu in (0.5, 0.8):
+                y = yerinde(var, mu, durma, 0.0, 1.0, degis=ENK_ON)
+                d = doksan(var, mu, durma, degis=ENK_ON)
+                r.append(dict(varyant=var, durma=dad, mu=mu, yerinde_w=y["w_gercek"], tork_surekli_orani=y["tork_surekli_orani"],
+                              sure_90_s=d["sure_90_s"] if d["ulasti"] else None, asma_derece=d["asma_derece"] if d["ulasti"] else None))
+                print("on enkoder %-10s %s mu %.1f w %.3f" % (var, dad, mu, y["w_gercek"]), flush=True)
     return r
 
 
@@ -266,6 +282,8 @@ def main():
         print("%-8s yan etki / rampa / esik bitti" % var, flush=True)
     AKTIF[0] = "duyarlılık"
     o["duyarlilik"] = duyarlilik()
+    AKTIF[0] = "duyarlılık: enkoder önde olsaydı"
+    o["on_enkoder"] = on_enkoder()
     AKTIF[0] = "düz gidiş / devrilme"
     o["duz"] = {ad: duz_kos(v) for ad, v in (("V0", "V0"), ("ONERI", "ONERI"), ("ONERI-ADAY", "ONERI-ADAY"),
                                               ("acik cevrim + aday omni", ACIK_ADAY))}
@@ -294,7 +312,8 @@ def md(o):
          "integral sınırı %s, w girişi %s, 20 ms döngü, enkoder tik farkından hız, enkoder arızası koruması; masada PI açıldıktan "
          "sonraki durum: dalda PI ilk yüklemede kapalı) + ön iki teker omni (makara yanal sürtünmesi %s, "
          "TAHMİN). ONERI-T = öneri firmware + bugünkü lastikler. ONERI-ADAY = ONERI, ön teker aday omni ölçüleriyle (Ø127 x 29, "
-         "480 g; seçilmedi). Başsız, protokol üzerinden; 3 s sonra 1,5 s ortalaması. Tork / "
+         "480 g; seçilmedi). Öneri varyantlarında enkoder arka (lastik) tekerde (pin planı); ön enkoder en altta duyarlılık. "
+         "Başsız, protokol üzerinden; 3 s sonra 1,5 s ortalaması. Tork / "
          "sürekli: en yüklü tekerin ortalama torku / (durma x 0,3, TAHMİN)." % (
              s(fw["kp"], "%.0f"), s(fw["ki"], "%.0f"), s(fw["integral_siniri"], "%.1f"), s(fw["w_giris"], "%.1f"),
              s(o["makara_mu_yan"])), "",
@@ -381,6 +400,15 @@ def md(o):
                                                 s(r["tork_surekli_orani"], "%.1f"),
                                                 "-" if r["yan_egim_kayma_m"] is None else "%s / %s" % (
                                                     s(r["yan_egim_kayma_m"], "%.3f"), s(r["yan_egim_yon_derece"], "%.1f"))))
+    L += ["", "## Duyarlılık: enkoder önde olsaydı (yerinde w komutu 1, 90°)", "",
+          "Bu dosyanın öbür bütün sayıları öneri varyantlarında enkoder ARKA (lastik) tekerde (pin planı: "
+          "`planlama/adim3/pin-haritasi.md` 100–103; ön motorlarda enkoder yok). Ön (omni) enkoder bugünkü pin planında geçerli "
+          "değil; 23.11'e dek bu dosyanın ana tablosu bu kabulle alınmıştı.", "",
+          "| varyant | durma | µ | yerinde w (enkoder ön) | tork / sürekli | 90°: s / aşma ° |", "| --- | --- | --- | --- | --- | --- |"]
+    for r in o["on_enkoder"]:
+        L.append("| %s | %s | %s | %s | %s | %s |" % (r["varyant"], r["durma"], s(r["mu"], "%.1f"), s(r["yerinde_w"], "%.3f"),
+                                                    s(r["tork_surekli_orani"], "%.1f"),
+                                                    "-" if r["sure_90_s"] is None else "%s / %s" % (s(r["sure_90_s"], "%.1f"), s(r["asma_derece"], "%.1f"))))
     return "\n".join(L) + "\n"
 
 
