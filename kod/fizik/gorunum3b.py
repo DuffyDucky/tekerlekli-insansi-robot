@@ -49,7 +49,7 @@ import varyantlar as VR  # noqa: E402
 # GLFW tuş kodları
 T_SAG, T_SOL, T_ASAGI, T_YUKARI = 262, 263, 264, 265
 T_PGUP, T_PGDN, T_HOME, T_END, T_INS, T_DEL = 266, 267, 268, 269, 260, 261
-T_F8, T_F9, T_F10, T_F11, T_F12 = 297, 298, 299, 300, 301
+T_F6, T_F7, T_F8, T_F9, T_F10, T_F11, T_F12 = 295, 296, 297, 298, 299, 300, 301
 T_ENTER, T_KP_ENTER = 257, 335
 T_6, T_7, T_8, T_9 = 54, 55, 56, 57
 OKLAR = (T_SAG, T_SOL, T_ASAGI, T_YUKARI)
@@ -65,12 +65,17 @@ ISLER = {(T_6, False): "arm", (T_HOME, False): "arm", (T_7, False): "dur", (T_EN
          (T_6, True): "rampa", (T_F9, False): "rampa", (T_7, True): "kafa", (T_F10, False): "kafa",
          (T_8, True): "basa", (T_F11, False): "basa", (T_9, True): "sahne", (T_F12, False): "sahne",
          (T_ENTER, True): "varyant",
-         (T_F8, False): "lidar"}   # F8: görüntüleyicinin kısayol tablosunda yok (F1-F5 #290-294, Backspace #259)
+         (T_F8, False): "lidar",
+         (T_F6, False): "hedef+", (T_F7, False): "bastan", (T_F7, True): "birak_rastgele"}   # gezinme katmanı   # F8: görüntüleyicinin kısayol tablosunda yok (F1-F5 #290-294, Backspace #259)
 
 V_SURUS, V_AZAMI, W_SURUS = 0.25, 0.39, 1.0      # m/s, m/s (teker azamisi, firmware kırpar), rad/s (firmware tavanı)
 SUR_ARALIK_MS = 200                               # basılıyken sur tekrarı (bekçi 500 ms)
 
-SAHNELER = ["oda_rampa", "rampa_parkuru", "koridor_1", "koridor_2", "koridor_3", "koridor_4", "koridor_5", "koridor_6"]
+SAHNELER = ["oda_rampa", "rampa_parkuru", "koridor_1", "koridor_2", "koridor_3", "koridor_4", "koridor_5", "koridor_6",
+            # labirent dünyası (kod/fizik/labirent/; robot START pozunda, `labirent.start.poz`)
+            "labirent_5x5_t1", "labirent_7x7_t1", "labirent_9x9_t1", "labirent_9x9_t2", "labirent_9x9_t3",
+            "labirent_13x13_t1", "labirent_13x13_t2", "labirent_13x13_t3",
+            "labirent_17x17_t1", "labirent_17x17_t2", "labirent_17x17_t3"]
 KOL_POZLARI = [   # (ad, eklem derecesi: omuz, omuz_yan, dirsek); servo = eklem + ofset (protokol servo çerçevesi)
     ("ev", 0, 5, 0), ("one", 90, 5, 0), ("one-yukari", 135, 5, 0), ("yana", 0, 90, 0),
     ("dirsek bukuk", 60, 20, 90), ("geri", -45, 5, 0)]
@@ -173,6 +178,9 @@ class Pencere:
         self.harita = Harita.dosyadan(os.path.join(KOD, "araclar", "haritalar", self.sahne["harita"] + ".json"))
         b = self.sahne.get("baslangic", self.harita.veri.get("baslangic"))
         self.bas = (float(b["x"]), float(b["y"]), math.radians(float(b.get("aci_derece", 0))))
+        lab_poz = ((self.sahne.get("labirent") or {}).get("start") or {}).get("poz")
+        if lab_poz:                               # labirent: robot START pozunda (x, y, yön rad)
+            self.bas = (float(lab_poz[0]), float(lab_poz[1]), float(lab_poz[2]))
         self.varyant_ad = varyant_ad or "V0"
         self.varyant = VR.al(self.varyant_ad)        # None = bugünkü robot
         self.w_surus = float(self.varyant["fw_w_giris"]) if self.varyant and self.varyant.get("fw_w_giris") else W_SURUS
@@ -198,6 +206,7 @@ class Pencere:
         self.sifir_ms = None
         self.lidar = None                         # sanal LiDAR (F8); kapalıyken hiç kurulmaz
         self._lidar_cizilen = -1
+        self.gezinme = None                       # canlı gezinme katmanı (gezinme/canli.py; --senaryo ab|kayip, --beyin)
 
     def lidar_ac(self, acik):
         """Sanal LiDAR'ı kur ve fizik adımına bağla (acik) ya da ayır. Ayarlar lidar_ozellik.json + varsayılanlar."""
@@ -265,6 +274,13 @@ class Pencere:
             if k in DEGISTIRICI:
                 return
             print("tus %s: atanmamis (MuJoCo'nun kendi tusu olabilir)" % k, flush=True)
+            return
+        if self.gezinme is not None and ad in ("hedef+", "bastan", "birak_rastgele", "dur", "lidar", "basa"):
+            self.gezinme.is_yap({"hedef+": "hedef+", "bastan": "bastan", "birak_rastgele": "birak", "dur": "duraklat",
+                                 "basa": "bastan", "lidar": "lidar"}[ad])
+            return
+        if ad in ("hedef+", "bastan", "birak_rastgele"):
+            print("tus: yalniz gezinme katmaninda (--senaryo ab|kayip ya da --beyin)", flush=True)
             return
         if ad in ("arm", "dur", "birak", "mantar", "basa"):
             self.v = self.w_cmd = 0.0
@@ -351,6 +367,11 @@ class Pencere:
         self._yaz("MuJoCo sifirlandi (Backspace): robot basa kondu, dur")
 
     def adim(self, ms):
+        if self.gezinme is not None:
+            self.gezinme.adim()                   # Beyin sürer (oklar devre dışı)
+            self.e.kalp_atisi()
+            self.e.bekle(ms)
+            return
         self._surus_guncelle()
         self.e.kalp_atisi()
         self.e.bekle(ms)
@@ -370,6 +391,8 @@ class Pencere:
             ust += "ONCE 6'YA BAS: devreye al (guc %s; devrede degilken surulmez)\n" % h["guc"]
         if not self.odakta:
             ust += "pencere odakta degil: tiklayin (odak yokken robot durur)\n"
+        if self.gezinme is not None:
+            ust += self.gezinme.metin()
         if self.lidar is not None and self.lidar.son_tarama is not None:
             n_ok = sum(1 for d in self.lidar.son_tarama["mesafeler"] if not math.isnan(d))
             ust += "LiDAR (F8): %d / %d isin olcum, kirmizi noktalar\n" % (n_ok, self.lidar.N)
@@ -445,13 +468,35 @@ SENARYOLAR = {
 }
 
 
-def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
+def varsayilan_varyant(sahne_ad):
+    """Varyant verilmeyince: koridor_* / labirent_* sahnelerinde ONERI (öneri firmware + ön omni; koridor deneyi bununla
+    koştu, V0 modelde dönemiyor), öbür sahnelerde V0 (bugünkü robot). Tek kaynak: gezinme/duzenek.py."""
+    from gezinme.duzenek import varsayilan_varyant as vv
+    return vv(sahne_ad)
+
+
+def gezinme_kur(p, gezinme):
+    """gezinme: None ya da {"tur": "ab" | "kayip" | "beyin", "hedef", "beyin", "beyin_arg", "tohum"}."""
+    if not gezinme:
+        return
+    from gezinme.canli import CanliGezinme
+    p.gezinme = CanliGezinme(p, gezinme["tur"], hedef=gezinme.get("hedef"), beyin_yolu=gezinme.get("beyin"),
+                             beyin_arg=gezinme.get("beyin_arg"), tohum=gezinme.get("tohum", 0),
+                             cerceve=gezinme.get("cerceve"))
+
+
+GEZINME_EKRAN_S = (5.0, 15.0, 30.0, 60.0, 120.0)   # gezinmede --ekran ile bu sanal saniyelerde görüntü
+
+
+def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0", gezinme=None):
     """Bir sahne + varyant penceresi. Döner: None (kapandı) ya da (sonraki sahne mi, sonraki varyant ya da None)."""
     import mujoco
     import mujoco.viewer
     p = Pencere(sahne_ad, klavye=Klavye(), varyant_ad=varyant_ad)
     if LIDAR_DURUM["acik"]:
         p.lidar_ac(True)
+    gezinme_kur(p, gezinme)
+    gez_ekran = [t for t in GEZINME_EKRAN_S if sure is None or t <= sure] if (gezinme and ekran) else []
     senaryo = list(SENARYOLAR.get(sahne_ad, [])) if senaryo_var else []
     if senaryo_var:
         p.yapay = (set(), False)               # senaryoda gerçek klavye sürüşe karışmaz
@@ -499,12 +544,27 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
                             rgb = rend.render()
                         png_yaz(os.path.join(ekran, foto + "-tekerler.png"), rgb)
                     p._yaz("ekran goruntusu %s.png" % foto)
+            if gez_ekran and t_s >= gez_ekran[0] and rend is not None:
+                ad = "gezinme-%s-%s-%03ds" % (gezinme["tur"], sahne_ad, int(gez_ekran.pop(0)))
+                cam = mujoco.MjvCamera()
+                with v.lock():
+                    kamera_kur(cam, p.w, p.w.taban)
+                    cam.distance, cam.elevation = 6.0, -55.0
+                    rend.update_scene(p.w.d, cam)
+                    p.gezinme.ciz(rend.scene, bas=rend.scene.ngeom)
+                    if p.lidar is not None:
+                        p.lidar_ciz(rend.scene, bas=rend.scene.ngeom, zorla=True)
+                    rgb = rend.render()
+                png_yaz(os.path.join(ekran, ad + ".png"), rgb)
+                p._yaz("ekran goruntusu %s.png" % ad)
             with v.lock():
                 if p.son_t is not None and p.w.d.time < p.son_t - 1e-9:
                     p.mujoco_sifirlandi()         # zaman geri gitti: görüntüleyici sıfırladı
                 p.adim(20)
                 p.son_t = p.w.d.time
-                if p.lidar is not None or p._lidar_cizilen != -1:
+                if p.gezinme is not None:
+                    p.gezinme.ciz_pencere(v.user_scn)
+                elif p.lidar is not None or p._lidar_cizilen != -1:
                     p.lidar_ciz(v.user_scn)
             ust, sol, sag = p.metin()
             # set_texts kendi kilidini alır; v.lock() içinde çağrılırsa görüntüleyici kilitlenir ("Yanıt Vermiyor")
@@ -526,10 +586,20 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sahne", default="oda_rampa")
-    ap.add_argument("--senaryo", action="store_true", help="tuşlara kendi basar (doğrulama); Shift+9 ile sonraki sahneye geçer")
+    ap.add_argument("--senaryo", nargs="?", const="tus", default=None, choices=["tus", "ab", "kayip"],
+                    help="değersiz ya da 'tus': tuşlara kendi basar (doğrulama; Shift+9 ile sonraki sahne). 'ab': A'dan B'ye "
+                         "(bilinen koridor + başlangıç), 'kayip': kayıp robot (6 koridor aday); gezinme/canli.py")
+    ap.add_argument("--beyin", default=None, help="gezinme beyni modul:Sinif (kod/fizik altından, ör. kesif.beyin:Beyin)")
+    ap.add_argument("--beyin-arg", action="append", default=[], help="beyin kurucusuna anahtar=değer (tekrarlanır)")
+    ap.add_argument("--hedef", default=None, help="gezinme hedef durağı (k5_kapi_3 ya da kapi_3)")
+    ap.add_argument("--tohum", type=int, default=0, help="gezinme tohumu (konumlayıcı, rastgele bırakma)")
+    ap.add_argument("--cerceve", default=None, choices=["harita", "baslangic"],
+                    help="Beyin poz / harita çerçevesi (durum()['ek']['cerceve'] yoksa); varsayılan labirentte baslangic, öbürlerinde harita")
     ap.add_argument("--ekran", default=None, help="senaryoda ekran görüntülerinin yazılacağı klasör")
     ap.add_argument("--sure", type=float, default=None, help="her sahneyi bu kadar sanal saniye sonra kapat")
-    ap.add_argument("--varyant", default="V0", choices=VR.SIRA, help="dönüş varyantı (V0 bugünkü robot; öbürleri VARSAYIM)")
+    ap.add_argument("--varyant", default=None, choices=VR.SIRA,
+                    help="dönüş varyantı (V0 bugünkü robot; öbürleri VARSAYIM). Verilmezse koridor_* / labirent_* "
+                         "sahnelerinde ONERI (koridor deneyinin robotu), öbürlerinde V0")
     ap.add_argument("--lidar", action="store_true", help="sanal LiDAR katmanı açık başlasın (pencerede F8 aç / kapa)")
     a = ap.parse_args()
     LIDAR_DURUM["acik"] = a.lidar
@@ -544,14 +614,36 @@ def main():
     if a.ekran:
         os.makedirs(a.ekran, exist_ok=True)
     sahne, varyant = a.sahne, a.varyant
+    gezinme = None
+    if a.senaryo in ("ab", "kayip") or a.beyin:
+        def _deger(v):
+            for tur in (int, float):
+                try:
+                    return tur(v)
+                except ValueError:
+                    pass
+            return v
+        gezinme = dict(tur="beyin" if a.beyin else a.senaryo, beyin=a.beyin, hedef=a.hedef, tohum=a.tohum, cerceve=a.cerceve,
+                       beyin_arg={k: _deger(v) for k, v in (x.split("=", 1) for x in a.beyin_arg)})
+        if gezinme["tur"] in ("ab", "kayip") and not sahne.startswith("koridor_"):
+            print("--senaryo %s yalniz koridor sahnelerinde; koridor_1 aciliyor" % gezinme["tur"], flush=True)
+            sahne = "koridor_1"
+    senaryo_tus = a.senaryo == "tus"
+    acik_varyant = varyant is not None             # elle seçilen varyant sahne değişince korunur
     while True:
-        sonraki = calistir(sahne, a.senaryo, a.ekran, a.sure, varyant)
+        if not acik_varyant:
+            varyant = varsayilan_varyant(sahne)
+        sonraki = calistir(sahne, senaryo_tus, a.ekran, a.sure, varyant, gezinme)
         if sonraki is None:
             break
         if sonraki[0]:
-            sahne = SAHNELER[(SAHNELER.index(sahne) + 1) % len(SAHNELER)] if sahne in SAHNELER else SAHNELER[0]
+            liste = SAHNELER
+            if gezinme and gezinme["tur"] in ("ab", "kayip"):
+                liste = [x for x in SAHNELER if x.startswith("koridor_")]   # A-B / kayıp yalnız koridorlarda
+            sahne = liste[(liste.index(sahne) + 1) % len(liste)] if sahne in liste else liste[0]
         if sonraki[1]:
             varyant = sonraki[1]
+            acik_varyant = True
     return 0
 
 

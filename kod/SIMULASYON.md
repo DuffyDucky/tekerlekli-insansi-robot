@@ -531,7 +531,7 @@ yerel çerçevesinden harita çerçevesine kaydırma.
 
 | Ne | Komut |
 | --- | --- |
-| 3B pencere | `kod\simulasyon3b.bat koridor_1` (… `koridor_6`); pencerede Shift+9 sahneleri sırayla gezer |
+| 3B pencere | `kod\simulasyon3b.bat koridor_1` (… `koridor_6`); pencerede Shift+9 sahneleri sırayla gezer. Koridor ve labirent sahneleri varsayılan **ONERI** varyantıyla açılır (dönebilen robot, VARSAYIM; koridor deneyinin robotu); öbür sahneler V0. Bat'ın 2. argümanı ya da `--varyant` bunu ezer |
 | 2B görünüm | `kod\simulasyon.bat --harita koridor_1` |
 | JSON'ları yeniden üret / üstten görünüm PNG'leri | `py -3 kod\fizik\koridor_sahneleri.py uret` / `py -3 kod\fizik\koridor_sahneleri.py ciz` (matplotlib) -> `kod\fizik\sahneler\gorsel\` |
 | Başsız doğrulama | `%V% kod\fizik\koridor_sahneleri.py dogrula [sahne ...]`: 3B pencerenin kurulumu (`gorunum3b.Pencere`), başlangıçta ve 5 s sonra temas yok, kayma < 5 mm, orta hat boyunca her 0,5 m'de 360 ışın x z 0,10 / 0,20 / 0,30 m hepsi duvara çarpar (3B ve 2B) |
@@ -612,3 +612,51 @@ yüzeyde 6 m, `menzil_maks_siyah_m`) ve doğruluk düşüşü, geliş açısına
 çoklu yansıma / kenarda karışık piksel, ışın demeti genişliği (ışın sonsuz ince), açısal titreşim ve tur hızı oynaması
 (8–12 Hz), gerçek 0° yönü ve dönüş yönü (TAHMİN), gecikme / USB aktarımı, güneş ışığı, insanlar ve hareketli engeller, tarama
 düzleminin titremesi, LiDAR'ın kendi kütlesi (110 g modele eklenmedi).
+
+## Labirent sahneleri: keşif deneyi (START → FINISH, ön bilgisiz, 15 dk)
+
+Tek kaynak `kod/fizik/labirent/uretici.py`; hücre 1,30 m, duvar 2 mm × 1,0 m, mükemmel labirent (geri izleme). Kurallar
+`hakem.py`, puan `puan.py`, sahne ve fizibilite tabloları `kod/fizik/labirent/BENIOKU.md`. 3B pencere:
+`kod\simulasyon3b.bat labirent_9x9_t1`. Keşif beyni sahne JSON'undaki `labirent` alanını okumamalı (ön bilgi).
+
+Sahneler (pencerede Shift+9 sırası): `labirent_5x5_t1`, `labirent_7x7_t1`, `labirent_9x9_t1`..`t3`, `labirent_13x13_t1`..`t3`,
+`labirent_17x17_t1`..`t3`. Varyant varsayılan ONERI; robot START pozunda açılır (`labirent.start.poz`, START çizgisinin
+0,45 m içinde, içeri bakar). Başsız düzenek (`gezinme/duzenek.py`) de aynı pozla başlar ve labirent hakemini doğrudan
+takar: `Duzenek("labirent_9x9_t1").kos(beyin, 900, hakem=Hakem("labirent_9x9_t1", sure_siniri_s=900.0))`. Keşif beynini
+pencerede izlemek: `kod\simulasyon3b.bat labirent_9x9_t1 --beyin kesif.<modul>:<Sinif>` (aşağıda "Gezinme").
+
+## Gezinme (rota izleme, A'dan B'ye, kayıp robot)
+
+`kod/fizik/gezinme/` (ayrıntı, arayüzler, kayıt biçimi: `gezinme/BENIOKU.md`; ölçüm: `gezinme/sonuc/SONUC.md`). Robot
+gerçek sürüş yolundan sürülür (Pi istemcisi `sur` → sahte ESP32 → MuJoCo); Beyin yalnız LiDAR taramasını ve enkoder
+odometrisini görür, yer gerçeğini görmez. Varyant ONERI (VARSAYIM: öneri firmware + ön omni; bugünkü robot DEĞİL).
+
+| Parça | Ne |
+| --- | --- |
+| `izleyici.py` | rota izleyici: arka dingilde saf takip, 60°'den keskin köşede yerinde dönüş, ivme sınırı, yumuşak varış, LiDAR ön şeridiyle dur / bekle / yavaşla |
+| `duzenek.py` | başsız düzenek: `Duzenek(sahne).kos(beyin, sure_s, hakem, kayit)`; temas sayar, `.npz` kayıt |
+| `beyinler.py` | `AbBeyni` (bilinen koridor, tek harita MCL), `KayipBeyni` (6 harita MCL, karar p ≥ 0,90; kararsızken tepkisel keşif) |
+| `rota.py` | koridor çizgesi ve duraklar (`k5_kapi_3`, `k5_son` ...) |
+
+**Ölçüm (2026-11-25).** A→B 36/36 (6 koridor × 3 hedef × 2 tohum), varış hatası ≈ 0,05 m; kayıp robot 30/30
+(6 × 5 rastgele bırakma), yanlış koridor kararı yok; 66 koşuda temas 0. Zayıf: koridor_5'te karar 26 m'ye dek sürebiliyor;
+konum hatası iyimser (sahne ve konumlayıcı haritası aynı). Tablolar `gezinme/sonuc/SONUC.md`.
+
+**3B pencere.** `kod\gezinme-ab.bat koridor_3` (A'dan B'ye) ve `kod\gezinme-kayip.bat koridor_5` (rastgele bırakılır);
+ek argümanlar `--hedef kapi_3 --tohum 2`. Dış beyin: `kod\simulasyon3b.bat <sahne> --beyin modul:Sinif [--beyin-arg k=v]`
+(modül `kod/fizik` altından; örnek `gezinme.ornek_beyin:OrnekHaritaBeyni`, keşif `kesif.beyin:KesifBeyni`). Beyin
+`durum()["ek"]["cerceve"]` vermezse labirentte kendi START çerçevesi ("baslangic"), öbür sahnelerde dünya ("harita")
+varsayılır; `--cerceve` ezer. Labirentte Beyin'e `labirent` alanı ve dünya başlangıç pozu verilmez. Çizim: tahmini poz (mavi yarı saydam
+hayalet + ok), rota (sarı), hedef (yeşil), Beyin `durum()["harita"]` doluluk ızgarası (koyu kutular, 2 s'de bir), LiDAR
+noktaları (kırmızı); üstte mod, süre, temas, koridor olasılığı, tahmin hatası.
+
+| Tuş (gezinme katmanında) | İş |
+| --- | --- |
+| F6 | sonraki durak (hedef kapı) |
+| F7 / Shift+F7 | baştan başlat / rastgele yere bırak (kayıp robot) |
+| 7 | duraklat / sürdür |
+| F8 | LiDAR noktalarını göster / gizle (LiDAR gezinmede hep açık) |
+| Shift+8 | başa koy (baştan başlatır) |
+
+`--senaryo` değersiz (ya da `tus`) eskisi gibi tuşlara kendi basar; `--senaryo ab|kayip` yalnız koridor sahnelerinde.
+`--ekran <klasör>` gezinmede 5 / 15 / 30 / 60 / 120. sanal saniyede görüntü alır.
