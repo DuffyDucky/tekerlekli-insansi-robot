@@ -1,0 +1,110 @@
+{
+  "ad": "koridor_2",
+  "aciklama": "Koridor sahnesi (LiDAR ayirt etme deneyi): koridor_2 haritasi. Rampa / esik yok. Orta hat ve ozellikler harita cercevesinde (m); s_m = orta hat boyunca baslangictan uzaklik.",
+  "harita": "koridor_2",
+  "baslangic": {
+    "x": 1.8,
+    "y": 6.75,
+    "aci_derece": 0.0
+  },
+  "rampalar": [],
+  "esikler": [],
+  "kaydirma_m": [1, 5],
+  "orta_hat": [
+    [1.8, 6.75],
+    [12.2, 6.75]
+  ],
+  "ozellikler": [
+    {
+      "id": "uc_duvar_1",
+      "tur": "uc_duvar",
+      "aciklama": "kapali uc; orta hat ucu duvardan 0,8 m",
+      "merkez": [1.8, 6.75],
+      "hat": "orta_hat",
+      "s_m": 0.0
+    },
+    {
+      "id": "alt_kapi_kapali_1",
+      "tur": "kapi_kapali",
+      "duvar": "alt",
+      "duvar_cizgisi": [2.8, 5.0, 3.75, 5.0],
+      "merkez": [3.275, 5.0],
+      "genislik_m": 0.95,
+      "derinlik_m": 0.09,
+      "yon": "girinti",
+      "hat": "orta_hat",
+      "s_m": 1.475
+    },
+    {
+      "id": "ust_kolon_1",
+      "tur": "kolon",
+      "duvar": "ust",
+      "duvar_cizgisi": [5.2, 8.5, 4.8, 8.5],
+      "merkez": [5.0, 8.5],
+      "genislik_m": 0.4,
+      "derinlik_m": 0.3,
+      "yon": "cikinti",
+      "hat": "orta_hat",
+      "s_m": 3.2
+    },
+    {
+      "id": "dolap",
+      "tur": "dolap",
+      "kutu": [4.2, 5.03, 1.8, 0.45],
+      "merkez": [5.1, 5.255],
+      "genislik_m": 1.8,
+      "derinlik_m": 0.45,
+      "hat": "orta_hat",
+      "s_m": 3.3
+    },
+    {
+      "id": "alt_kapi_acik_1",
+      "tur": "kapi_acik",
+      "duvar": "alt",
+      "duvar_cizgisi": [8.0, 5.0, 8.95, 5.0],
+      "merkez": [8.475, 5.0],
+      "genislik_m": 0.95,
+      "derinlik_m": 0.15,
+      "oda": {
+        "x0": 7.5,
+        "y0": 0.85,
+        "x1": 10.5,
+        "y1": 4.85
+      },
+      "hat": "orta_hat",
+      "s_m": 6.675
+    },
+    {
+      "id": "ust_kolon_2",
+      "tur": "kolon",
+      "duvar": "ust",
+      "duvar_cizgisi": [9.2, 8.5, 8.8, 8.5],
+      "merkez": [9.0, 8.5],
+      "genislik_m": 0.4,
+      "derinlik_m": 0.3,
+      "yon": "cikinti",
+      "hat": "orta_hat",
+      "s_m": 7.2
+    },
+    {
+      "id": "ust_kapi_kapali_1",
+      "tur": "kapi_kapali",
+      "duvar": "ust",
+      "duvar_cizgisi": [11.55, 8.5, 10.6, 8.5],
+      "merkez": [11.075, 8.5],
+      "genislik_m": 0.95,
+      "derinlik_m": 0.09,
+      "yon": "girinti",
+      "hat": "orta_hat",
+      "s_m": 9.275
+    },
+    {
+      "id": "uc_duvar_2",
+      "tur": "uc_duvar",
+      "aciklama": "kapali uc; orta hat ucu duvardan 0,8 m",
+      "merkez": [12.2, 6.75],
+      "hat": "orta_hat",
+      "s_m": 10.4
+    }
+  ]
+}
