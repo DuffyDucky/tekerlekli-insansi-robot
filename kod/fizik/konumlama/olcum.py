@@ -45,8 +45,14 @@ class OlcumParametreleri:
     alan_tavan: float = 2.0        # m; ızgara dışı / uzak uçlar bu uzaklıkta sayılır
 
 
-def log_olasilik(harita, x, y, th, hazir, p):
-    """Parçacıkların (x, y, th dizileri; tek harita) taramaya log-olasılığı (tavlanmış), (P,)."""
+def log_olasilik(harita, x, y, th, hazir, p, surekli=False):
+    """Parçacıkların (x, y, th dizileri; tek harita) taramaya log-olasılığı (tavlanmış), (P,).
+
+    surekli=True ("alan" modeli): uç noktaların yüzeye uzaklığı en yakın hücreden değil, uzaklık ızgarasının çift
+    doğrusal ara değerinden (Harita2B.alan_uzakligi_surekli) gelir. (Analitik geometri de denendi: aynı sonuç,
+    6 koridorda adım 18 -> 51 ms.) Tablo hücre başına sabit olduğundan poza göre basamaklıdır; harita kanıtının
+    en iyi uyum araması (mcl._en_iyi_uyum) bu basamakta farklı plato yakalayıp her adım ±0,03 nat gürültü üretiyordu.
+    Yalnız az sayıda poz için (desen araması) kullanılır; parçacık ağırlıkları tablodan hesaplanmaya devam eder."""
     ox, oy = sensor_kokeni(x, y, th, hazir.montaj)
     isabet = hazir.isabet
     zmax = hazir.menzil_maks
@@ -62,8 +68,12 @@ def log_olasilik(harita, x, y, th, hazir, p):
             c, s = np.cos(th)[:, None], np.sin(th)[:, None]
             ux = ox[:, None] + c * bx[None, :] - s * by[None, :]
             uy = oy[:, None] + s * bx[None, :] + c * by[None, :]
-            tablo = harita.alan_log_tablosu(p.sigma_isabet, p.z_isabet, p.z_rastgele, zmax, p.alan_tavan)
-            toplam += tablo[harita.alan_indeksi(ux, uy)].sum(axis=1, dtype=np.float64)
+            if surekli:
+                d = harita.alan_uzakligi_surekli(ux, uy, p.alan_tavan)
+                toplam += np.log(norm * np.exp(-0.5 * (d / p.sigma_isabet) ** 2) + taban).sum(axis=1)
+            else:
+                tablo = harita.alan_log_tablosu(p.sigma_isabet, p.z_isabet, p.z_rastgele, zmax, p.alan_tavan)
+                toplam += tablo[harita.alan_indeksi(ux, uy)].sum(axis=1, dtype=np.float64)
         bos = np.flatnonzero(~isabet)
         if p.bos_isin_sayisi and bos.size:
             if bos.size > p.bos_isin_sayisi:

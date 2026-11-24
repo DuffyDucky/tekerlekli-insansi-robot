@@ -224,6 +224,20 @@ class Harita2B:
         d[icinde] = np.minimum(g["uzaklik"][i[icinde], j[icinde]], tavan)
         return d
 
+    def alan_uzakligi_surekli(self, px, py, tavan=2.0):
+        """Uzaklık ızgarasının çift doğrusal ara değeri (hücre merkezleri arasında): poza göre sürekli; ızgara dışı = `tavan`."""
+        g = self.izgara
+        uz = g["uzaklik"]
+        fx = (np.asarray(px, dtype=float) - g["x0"]) / g["cozunurluk"] - 0.5
+        fy = (np.asarray(py, dtype=float) - g["y0"]) / g["cozunurluk"] - 0.5
+        icinde = (fx >= 0) & (fx <= g["nx"] - 1) & (fy >= 0) & (fy <= g["ny"] - 1)
+        i = np.clip(np.floor(fx).astype(np.int64), 0, g["nx"] - 2)
+        j = np.clip(np.floor(fy).astype(np.int64), 0, g["ny"] - 2)
+        tx, ty = np.clip(fx - i, 0.0, 1.0), np.clip(fy - j, 0.0, 1.0)
+        d = ((1 - tx) * ((1 - ty) * uz[i, j] + ty * uz[i, j + 1])
+             + tx * ((1 - ty) * uz[i + 1, j] + ty * uz[i + 1, j + 1]))
+        return np.where(icinde, np.minimum(d, tavan), tavan)
+
     def alan_log_tablosu(self, sigma, z_isabet, z_rastgele, menzil_maks, tavan):
         """Hücre başına log p(z) = log(z_isabet N(d; 0, sigma) + z_rastgele / menzil_maks) (önbellekli).
 

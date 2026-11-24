@@ -1,6 +1,7 @@
 """konumlama testlerini tek komutla koşturur: `py -3 kod\\fizik\\konumlama\\kos.py` (numpy gerekir).
 
-Seçenekler: -k METIN (yalnız adında geçenler), -v (ayrıntılı). Sonda testlerin kaydettiği ölçümler (konum hatası,
+Seçenekler: -k METIN (yalnız adında geçenler), -v (ayrıntılı), --uzun (20 tohumlu benzer çift + MuJoCo kaydı
+testleri; MuJoCo sanal ortamı ve kod/fizik/deneyler/koridor_karisiklik gerekir, yoksa atlanır). Sonda testlerin kaydettiği ölçümler (konum hatası,
 yakınsama yolu, süre) tablo olarak yazılır. Çıkış kodu: 0 hepsi geçti, 1 kalan / hata.
 """
 
@@ -19,7 +20,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-k", default=None)
     ap.add_argument("-v", action="store_true")
+    ap.add_argument("--uzun", action="store_true",
+                    help="20 tohumlu benzer çift ve MuJoCo kaydı testleri (≈ 10 dk; MuJoCo + deney klasörü gerekir)")
     a = ap.parse_args()
+    if a.uzun:
+        os.environ["LALE_KONUM_UZUN"] = "1"
     for akis in (sys.stdout, sys.stderr):
         try:
             akis.reconfigure(errors="replace")

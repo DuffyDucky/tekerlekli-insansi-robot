@@ -30,6 +30,9 @@ class LidarOzellik:
     montaj_y_m: float = 0.0
     montaj_yaw: float = 0.0                 # rad
     kor_sektorler_derece: list = field(default_factory=list)   # [[bas, bit], ...] saat yönü tersi, bas -> bit
+    kor_pay_derece: float = 5.0             # maske her yana bu kadar genişler: sanal LiDAR (kod/fizik/lidar.py
+                                            #   LidarAyar.kor_pay_derece = 5,0; dosyanın "önerilen yazılım maskesi"
+                                            #   [134, 226]) ile aynı. Dosyada sayı olarak varsa o okunur.
     acilar_cerceve: str = "govde"           # "govde" | "sensor"
     kaynak: str = "gecici"
 
@@ -55,6 +58,7 @@ class LidarOzellik:
                    montaj_y_m=float(m.get("y_m", m.get("y", 0.0))),
                    montaj_yaw=float(yaw or 0.0),
                    kor_sektorler_derece=[list(map(float, s)) for s in (v.get("kor_sektorler_derece") or [])],
+                   kor_pay_derece=float(v.get("kor_pay_derece", 5.0)),
                    acilar_cerceve=str(v.get("acilar_cerceve", "govde")),
                    kaynak=kaynak)
 
@@ -74,11 +78,12 @@ class LidarOzellik:
         return -math.pi + np.arange(n) * (2 * math.pi / n)
 
     def kor_mu(self, acilar):
-        """Açı (tarama çerçevesinde) kör sektörde mi?"""
+        """Açı (tarama çerçevesinde) kör sektörde mi? Sektör her yana `kor_pay_derece` genişletilir."""
         acilar = np.asarray(acilar, dtype=float)
         kor = np.zeros(acilar.shape, dtype=bool)
         d = np.degrees(acilar)
         for bas, bit in self.kor_sektorler_derece:
+            bas, bit = bas - self.kor_pay_derece, bit + self.kor_pay_derece
             genis = (bit - bas) % 360.0
             kor |= ((d - bas) % 360.0) <= genis
         return kor

@@ -1,0 +1,4 @@
+# ajan ilerleme dosyası ve geçici koşu çıktıları depoya girmez
+.durum
+*.log
+*.out
