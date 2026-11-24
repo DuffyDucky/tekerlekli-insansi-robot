@@ -39,6 +39,11 @@ def goreli(a, b):
     return c * dx + s * dy, -s * dx + c * dy, _sar(b[2] - a[2])
 
 
+def odometri_noktasi(poz, px):
+    """Gövde merkezi pozundan odometrinin izlediği noktanın pozu (gövde ekseninde px kadar ileride / geride)."""
+    return poz[0] + px * math.cos(poz[2]), poz[1] + px * math.sin(poz[2]), poz[2]
+
+
 def odometri_boz(artim, rng, olcek_hata=0.0, donus_hata=0.0, std_ileri=0.0, std_donus=0.0):
     """Enkoder kayması benzetimi: sistematik ölçek / dönüş hatası + Gauss gürültü."""
     dx, dy, dth = artim
@@ -50,13 +55,16 @@ def odometri_boz(artim, rng, olcek_hata=0.0, donus_hata=0.0, std_ileri=0.0, std_
 
 def yol_boyunca(mcl, harita, pozlar, ozellik, rng, tarama_her=1, olcek_hata=0.03, donus_hata=-0.014,
                 std_ileri=0.02, std_donus=0.05, kayip_orani=0.0, ek_engeller=None, dt=0.1):
-    """MCL'yi gerçek poz dizisi boyunca koştur. -> [(gercek_poz, Tahmin)] (yalnız tarama alınan adımlar)."""
+    """MCL'yi gerçek poz dizisi boyunca koştur. -> [(gercek_poz, Tahmin)] (yalnız tarama alınan adımlar).
+    Odometri, gerçek robottaki gibi `mcl.ayar.odometri_noktasi_x` noktasının artımıdır (pozlar gövde merkezi)."""
     sonuc = []
     t = 0.0
     birikmis = (0.0, 0.0, 0.0)
+    px = mcl.ayar.odometri_noktasi_x
     for i, poz in enumerate(pozlar):
         if i > 0:
-            a = odometri_boz(goreli(pozlar[i - 1], poz), rng, olcek_hata, donus_hata, std_ileri, std_donus)
+            a = odometri_boz(goreli(odometri_noktasi(pozlar[i - 1], px), odometri_noktasi(poz, px)), rng,
+                             olcek_hata, donus_hata, std_ileri, std_donus)
             birikmis = artim_birlestir(birikmis, a)
             t += dt
         if i % tarama_her:

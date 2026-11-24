@@ -155,7 +155,7 @@ class IleriTasima(unittest.TestCase):
         biriken odometriyle ileri taşınır; işlenen adımla süreklilik bozulmaz."""
         from konumlama import sentetik_tarama
         h = harita_yukle("oda_engelli")
-        mcl = CokHaritaliMCL([h], ozellik=OZ, tohum=1)
+        mcl = CokHaritaliMCL([h], ozellik=OZ, tohum=1, odometri_noktasi_x=0.0)   # artım = gövde merkezi
         mcl.baslat_poz("oda_engelli", 2.0, 2.8, 0.0, std_xy=0.01, std_theta=0.005)
         t0 = mcl.guncelle(sentetik_tarama(h, (2.0, 2.8, 0.0), OZ))          # ilk tarama işlenir
         self.assertTrue(t0.olcum_islendi)
@@ -168,6 +168,22 @@ class IleriTasima(unittest.TestCase):
         self.assertFalse(t2.olcum_islendi)
         self.assertAlmostEqual(math.hypot(t2.x - t0.x, t2.y - t0.y), 2 * dx, delta=1e-9)
         self.assertAlmostEqual(t2.theta - t0.theta, 0.05, delta=1e-9)
+
+    def test_odometri_noktasi_govdeye_cevrilir(self):
+        """Dayanak: U dönüşü bulgusu — odometri çeker dingilin ortasını izler (varsayılan 0,185 m geride); yerinde
+        dönüşte gövde merkezi o noktanın çevresinde döner. Saf dönüş artımı dθ gövdeyi 2 r sin(dθ/2) taşımalı."""
+        from konumlama import sentetik_tarama
+        h = harita_yukle("oda_engelli")
+        mcl = CokHaritaliMCL([h], ozellik=OZ, tohum=1)
+        r = -mcl.ayar.odometri_noktasi_x
+        self.assertAlmostEqual(r, 0.185)
+        mcl.baslat_poz("oda_engelli", 2.0, 2.8, 0.0, std_xy=0.01, std_theta=0.005)
+        t0 = mcl.guncelle(sentetik_tarama(h, (2.0, 2.8, 0.0), OZ))
+        bos = {"t": 0.1, "acilar": [0.0], "mesafeler": [None]}
+        t1 = mcl.guncelle(bos, artim=(0.0, 0.0, 0.08))                      # 0,1 rad eşiğinin altında: ileri taşıma
+        self.assertFalse(t1.olcum_islendi)
+        self.assertAlmostEqual(math.hypot(t1.x - t0.x, t1.y - t0.y), 2 * r * math.sin(0.04), delta=1e-9)
+        self.assertAlmostEqual(t1.theta - t0.theta, 0.08, delta=1e-9)
 
 
 class KorSektor(unittest.TestCase):

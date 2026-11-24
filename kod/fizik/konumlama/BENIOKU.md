@@ -4,7 +4,7 @@
 kısmı: 6 koridor haritası arasında LiDAR'ın ne zaman, ne kadar yanıldığını ölçmek için. Yalnız **numpy + standart
 kitaplık**; MuJoCo'ya bağlı değil (Pi'de de koşar). numpy 2.5.5 (sanal ortam) ve 2.3.5 (sistem `py -3`) ile sınandı.
 
-    py -3 kod\fizik\konumlama\kos.py            # testler (≈ 5 dk), sonda ölçüm tablosu
+    py -3 kod\fizik\konumlama\kos.py            # testler (≈ 8 dk; U dönüşü kaydı önbellekteyse), sonda ölçüm tablosu
     py -3 kod\fizik\konumlama\kos.py --uzun     # + 20 tohumlu benzer çift ve MuJoCo kaydı testleri (≈ 40 dk)
     cd kod\fizik && py -3 -m konumlama.testler  # aynısı
 
@@ -18,8 +18,8 @@ kitaplık**; MuJoCo'ya bağlı değil (Pi'de de koşar). numpy 2.5.5 (sanal orta
 | `hareket.py` | `HareketGurultusu`, `hizdan_artim(v, w, dt)`, `artim_birlestir`, gürültülü örnekleme |
 | `mcl.py` | `CokHaritaliMCL`, `MCLAyarlari`, `Tahmin`, `karar_ani(gecmis)` |
 | `sinifla.py` | `tek_taramadan_sinifla` (hareketsiz, tek tarama), `kafes_puanla` |
-| `benzet.py` | `yol_uret`, `goreli`, `odometri_boz`, `yol_boyunca`, `konum_hatasi` (test + deney yardımcıları) |
-| `testler/`, `kos.py` | 30 test (ışın, uçtan uca, simetri, harita kanıtı, süre, gerçek dosyalarla duman); 2'si yalnız `--uzun` ile (MuJoCo kaydı) |
+| `benzet.py` | `yol_uret`, `goreli`, `odometri_noktasi`, `odometri_boz`, `yol_boyunca`, `konum_hatasi` (test + deney yardımcıları) |
+| `testler/`, `kos.py` | 33 test (ışın, uçtan uca, simetri, harita kanıtı, U dönüşü, süre, gerçek dosyalarla duman); 2'si yalnız `--uzun` ile (MuJoCo kaydı); `test_mujoco_u_donusu` U dönüşü kaydını `%TEMP%\lale_konumlama_akis` önbelleğinden ya da MuJoCo + deney klasöründen alır, ikisi de yoksa atlanır |
 
 ## Arayüz
 
@@ -54,7 +54,11 @@ tek_taramadan_sinifla(haritalar, tarama, ozellik=oz)  # {olasiliklar, en_olasi, 
    çekilir. Rastgele saçma (`baslangic="rastgele"`) da var ama açısal havza ~0,03 rad olduğu için 3 oda testinde
    yanlış haritaya kesin karar verdi; kafes bu yüzden varsayılan.
 2. **Hareket.** Odometri artımları biriktirilir, ölçümden hemen önce gürültüyle uygulanır. Ölçüm, son ölçümden beri
-   ≥ 5 cm ya da ≥ 0,1 rad hareket varsa işlenir (durağan robot aynı kanıtı tekrar tekrar saymasın).
+   ≥ 5 cm ya da ≥ 0,1 rad hareket varsa işlenir (durağan robot aynı kanıtı tekrar tekrar saymasın). Artım
+   odometrinin izlediği noktanındır (`odometri_noktasi_x`, varsayılan −0,185 m: arka çeker dingilin ortası) ve gövde
+   merkezine çevrilir (a_gövde = T(p) ∘ a ∘ T(−p)); yerinde 180° dönüşte gövde merkezi 0,37 m yer değiştirir.
+   Artımı zaten gövde merkezi için veren kaynak `odometri_noktasi_x=0` vermeli. `benzet.yol_boyunca` odometriyi bu
+   noktadan üretir.
 3. **Ölçüm.** 60 eşit aralıklı ışın; "alan" modeli (aşağıda). Uyarlamalı tavlama: tarama harita içi N_etkin/n'i
    0,10'un altına düşürecekse log-olasılık β < 1 ile çarpılır (`Tahmin.tavlama`).
 4. **Harita olasılığı ölçüm kanıtından.** Her harita kendi bulutuyla ayrı filtre gibi yürür; harita olasılığı
@@ -63,9 +67,8 @@ tek_taramadan_sinifla(haritalar, tarama, ozellik=oz)  # {olasiliklar, en_olasi, 
    0,02 rad'dan yarılayarak) bulunan en büyük log-olasılık; uzaklık ızgarası çift doğrusal ara değerle okunur (poza
    göre sürekli). Arama haritanın kendi en iyi parçacığından *ve* öteki haritaların en iyi pozlarından (bu haritanın
    serbest alanındaysa, `capraz_tohum`) başlar: en büyük değer aday eklemekle bozulmaz, ama doğru poz kendi bulutunda
-   ölmüşse de bulunur. Kazanan yabancı tohumun 0,1 m / 0,1 rad çevresinde haritanın parçacığı yoksa en düşük
-   ağırlıklı %5'i oraya taşınır (karışım MCL'deki ikili öneri gibi; ağırlık = en iyi parçacığın önseli × kendi
-   olasılıkları). Tek haritada ya da haritalar farklı çerçevedeyse etkisiz kalır.
+   ölmüşse de bulunur. Arama yalnız kanıtı belirler, parçacıklara dokunmaz (eski çapraz enjeksiyon kaldırıldı:
+   "U dönüşünde ters poz"). Tek haritada ya da haritalar farklı çerçevedeyse çapraz tohum etkisiz kalır.
    Yeniden örnekleme harita içindedir ve kanıtı değiştirmez; parçacık sayısı olasılığa göre, en az N/K × 0,10.
    Harita olasılığı en iyinin 1e-6 katının altına inmez (geri dönüş olanağı). Eski tahminci `harita_kaniti="ortalama"`
    ile seçilebilir (yalnız karşılaştırma için).
@@ -99,10 +102,38 @@ Kök neden ölçüldü (koridor_5 MuJoCo kaydı, [koridor_5, kopya], 3 tohum):
   (koridor başı çok modlu); koridor_6'da bu küme rastgele söndü (12 parçacık 19. adımda, 0 parçacık 61. adımda),
   koridor_5'te büyüdü. Sonra koridor_6 yalnız takma pozla ölçüldü, 6 m'den önce yanlış koridora kesin karar verdi
   (912 adımın 846'sı yanlış kesin, sonda da yanlış). Çapraz tohum + enjeksiyonla aynı tohum: eşin en büyük p 0,51,
-  karar 6,67 m, sonda doğru.
+  karar 6,67 m, sonda doğru. (Enjeksiyon sonradan kaldırıldı; çapraz tohum kanıtta kaldı, aynı ölçütler aşağıda.)
 En iyi uyum bulutun yayılımına ve mod paylarına bağlı değil; iki harita taramayı eşit iyi açıklıyorsa artımlar
 eşittir. Bedeli: yalnız en iyi pozun uyumu sayılır; harita içinde kaç pozun uyduğu (hacim / Occam terimi) yalnız
 ilk taramanın kafes marjinalinde var.
+
+## U dönüşünde ters poz: neden değişti (24.11.2026, deney v2 bulgusu)
+
+Deney v2'de U dönüşlü 36 koşunun 6'sında poz dönüş sırasında ya da hemen sonra koridorun uçtan uca (nokta simetrik)
+eşine çevrildi (yön hatası > 150°; v1'de 0). Deneyin `tani_donus`'u (bir kayıt, 5 tohum): varsayılan 3 / 5,
+`capraz_tohum=False` 1 / 5, `harita_kaniti="ortalama"` 0 / 5. Ölçüt aşağıda deneyinki (`karsilastir.olaylar`): ilk
+kötü adım (yanlış harita kesin ya da doğru haritada konum kesin ve hata > 0,5 m) yön hatası > 150° ve dönüş
+sırasında / sonraki 3 m içinde ise çevrilme. Kayıtlar deneyin akışıyla yeniden üretildi (aynı LiDAR / insan tohumu,
+v2 maskesi; ham_v2'deki çevrilmeyle aynı adımda, aynı yerde).
+
+İki neden, biri ötekini tetikliyor (B_koridor_5_orta_t1, tohum 501042, 498. adım, gerçek yön −136°):
+- **Odometri noktası.** ONERI robotu (arka çeker + ön omni) yerinde dönerken gövde merkezi ≈ 0,18 m arkadaki
+  noktanın çevresinde döner: kayıtta gövde merkezi dönüş boyunca 0,30–0,47 m yer değiştiriyor; odometri saf dönüş
+  bildiriyor (ve %14 fazla: −154,7° / −136°). Hareket modeli dönüşten ötelemeye yalnız 0,01 m/rad gürültü veriyordu:
+  bulut 10–22 cm geride kalıyor, doğru mod taramayı olduğundan kötü açıklıyor (dönen tarama da dönüşte bozuk: gerçek
+  pozda L = 11,46, en iyi yakın poz 12,83).
+- **Çapraz enjeksiyon (asıl tetikleyici).** Öteki haritaların (koridor_6 / 1 / 4) en iyi pozu aynada (2,06, 6,31,
+  46°). Uyum araması o tohumdan 12,93 buldu (kendi geride kalmış bulutundan ≈ 12,1; tarama orada gerçekten simetrik:
+  gerçeğin yakınında en iyi 12,83, aynada ≥ 12,41). Kazanan yabancı tohum olduğundan parçacıkların %5'i aynaya
+  taşındı, ağırlıkları en iyi parçacığın önseli × kendi olasılıkları: önsel desteği olmayan bölgeye, yerel aramayla
+  iyileştirilmiş poza, aynı tarama ikinci kez sayılarak. Ters yön payı tek adımda 0,02 -> 0,77; yeniden örnekleme
+  kilitledi. Önseli −log n yapmak (55 koşu: 4 çevrilme) yetmedi: iyileştirilmiş poza konan parçacık geride kalmış
+  doğru moddan her zaman iyi uyar.
+Düzeltme: (1) enjeksiyon kaldırıldı; çapraz tohum yalnız harita kanıtında (harita olasılığı ölçütleri aynı kaldı,
+aşağıda). (2) Odometri artımı çeker dingilden gövde merkezine çevriliyor (`odometri_noktasi_x`). Yalnız (1): 108
+koşuda 2 çevrilme kaldı (B_koridor_1_orta_t1 501009, B_koridor_5_orta_t4 504042); izde enjeksiyon yok, dönüşten
+sonra doğru bulut x'te 0,22 m geride, ayna modun uyumu 13,05 / doğrunun ≈ 12,8, ters pay geri sürerken 0,03 -> 0,98.
+(1) + (2): 0.
 
 ## Ölçüm modeli (`OlcumParametreleri`, varsayılanlar)
 
@@ -162,7 +193,13 @@ birinde koridor_5 ve koridor_6 izi > 5 cm farklı (menzil içinde); c34618b'nin 
 | gerçek `koridor_5` testi (6 koridor, 1 tohum) | karar 6,40 m; kendinden emin yanlış harita / konum adımı 0 / 0 |
 | işlenmeyen taramada poz (MuJoCo koridor_6, tohum 901, 300. adımdan sonra) | ileri hata ort −0,001 m, en geride −0,005 m (397 tarama). c34618b: ort −0,039 m, en geride −0,062 m |
 | `baslat_poz` çok haritada (3 harita) | çökmüyor; her adımda doğru harita kesin, son hata 0,014 m |
-| süre, 6 koridor (359 m², tek süreç, 3 tekrar) | ilk tarama (kafes) ≈ 2,5 s; adım: 1500 p 15,8–18,8 ms, **3000 p 24,0–28,0 ms** (p95 28–36), 6000 p 45–46 ms. c34618b aynı ölçümde: 9,0–9,4 / 15,5–17,4 / 31,5–35,7 ms. Fark harita başına uyum araması (≈ 108–190 poz) |
+| süre, 6 koridor (359 m², tek süreç, 3 tekrar) | ilk tarama (kafes) ≈ 2,5 s; adım: 1500 p 15,8–18,8 ms, **3000 p 24,0–28,0 ms** (p95 28–36), 6000 p 45–46 ms. c34618b aynı ölçümde: 9,0–9,4 / 15,5–17,4 / 31,5–35,7 ms. Fark harita başına uyum araması (≈ 108–190 poz). Enjeksiyon kaldırıldıktan sonra (aynı ölçüm): 3000 p 23,6–29,2 ms (p95 28–58, tek tekrar 58), önceki sürüm aynı oturumda 25,6–26,9 ms |
+| U dönüşü, deney B (5 tohum × 6 koridor, orta başlangıç) + C orta (insanlı, 6 koridor): 36 kayıt × 3 MCL tohumu (500000 + LiDAR tohumu + 7k) | çevrilme 0 / 108; B'de kendinden emin yanlış 0 / 90, sonda yanlış 0. Enjeksiyonlu sürüm: çevrilme 21 / 108 (14 kayıt), kendinden emin yanlış 24, sonda yanlış 4. Yalnız enjeksiyon kaldırılınca 2 / 108 |
+| C orta, `C_koridor_4_orta_t101` (insanlı) | 3 / 3 tohumda 20 adım `koridor_6` kesin (15,0 m, dönüşten 4,2 m sonra, yön hatası yok; önce 43–46 adım). Çevrilme değil: robot (17,8, 5,35)'teki insanın yanından geçerken koridor_6 aynı pozda taramayı daha iyi açıklıyor (uyum 6,7 / 5,4); insanı geçince düzeliyor, sonda doğru |
+| C baş / son, 12 insanlı kayıt × 3 tohum | `C_koridor_2_bas_t101`: önce 74–77 adım konum kesin-yanlış (8,6 m'den, hata 10,4 m'ye dek); şimdi 0 (enjeksiyonun etkisi: yalnız kaldırınca da 0). `C_koridor_5_bas_t101`: iki sürümde de 557 adım `koridor_6` kesin, 0,14 m'den (başlangıçtan 2 m ötedeki insan (3,8, 7,05); deney v1'de de 117 adım); düzeltme bunu çözmüyor, ölçüm modeli insanı harita farkından ayıramıyor |
+| enjeksiyon kaldırılıp odometri noktası eklendikten sonra, yukarıdaki MuJoCo ölçütleri yeniden (20 tohum, 901–920) | ikiz: kesin adım 0 / 18240, en büyük p en çok 0,509. benzer çift `koridor_6`: yanlış kesin 0 / 20, eşin p en çok 0,53, karar 6,66 m, sonda doğru 20 / 20; `koridor_5`: yanlış kesin 0 / 20, eşin p en çok 0,49, karar medyan 9,84 m [6,44, 9,84], sonda doğru 20 / 20. 6 koridor × 5 tohum karar yolları öncekiyle aynı (koridor_1 / 2 0 m, 3 1,64–1,75, 4 0,10–0,11, 5 12,1, 6 10,1 m; yanlış kesin 0) |
+| bilinen başlangıç, deney D (18 kayıt × 3 tohum, `baslat_poz`) | ileri hata en çok 11,7 cm (önce 11,5, aynı kayıt), yan en çok 2,9 cm (önce 8,2), ortalama 0,40 cm (önce 0,50) |
+| sentetik U dönüşü (`test_u_donusu`, koridor_5, dönme noktası 0,185 m geride, odometri %14 fazla dönüş) | konum kesin-yanlış adım 0, son hata ≤ 0,012 m (4 tohum). Enjeksiyonlu sürüm (dönme noktası 0,18 m): 12 tohumun 5'inde 12–319 adım konum kesin-yanlış, 3'ünde sonda 2,9–12,0 m hata |
 | tek tarama sınıflaması | 4 harita ≈ 2 s; farklı odalar p ≥ 0,82, benzer koridor 0,50 / 0,50 (kararsız) |
 
 ## Sınırlar / bilinen zayıflıklar
@@ -173,8 +210,15 @@ birinde koridor_5 ve koridor_6 izi > 5 cm farklı (menzil içinde); c34618b'nin 
   doğru ama 6 koridorda adım başı ~230 ms.
 - Harita kanıtı ("uyum") bulutun yoğunluğuna bağlı değil ama doğru pozun *yakınında* en az bir aday olmasına bağlı
   (haritanın kendi en iyi parçacığı ya da öteki haritaların en iyi pozu, ±7,5 cm / ±0,04 rad yerel arama). Haritalar
-  farklı çerçevedeyse çapraz tohum işe yaramaz; kendi bulutunda doğru modu yitiren haritayı yalnız rastgele saçma
-  kurtarır. Kafes başlangıcı ilk taramada bütün haritaları kaplıyor.
+  farklı çerçevedeyse çapraz tohum işe yaramaz. Kendi bulutunda doğru modu yitiren haritanın *kanıtı* çapraz tohumla
+  doğru kalır, ama *pozunu* yalnız rastgele saçma kurtarır (enjeksiyon kaldırıldı). Kafes başlangıcı ilk taramada
+  bütün haritaları kaplıyor.
+- **Odometri noktası robota bağlı.** `odometri_noktasi_x = −0,185` arka çeker + ön omni (23.11 kararı) içindir;
+  dört tekerli kızak yönlendirmede (V0) dönme merkezi gövde merkezine yakın, 0 verilmeli. Dönüşteki %14 fazla
+  dönüş (kayma) modellenmedi, `a_donus` 0,10 rad/rad gürültüsüyle örtülüyor; daha büyük kaymada ya da daha simetrik
+  koridorda ters mod yeniden güçlenebilir.
+- İnsan haritadaki bir farkı taklit ederse (C_koridor_5_bas) yanlış koridora kesin karar verilebilir; ölçüm modeli
+  bunu ayırmıyor (z_rastgele yalnız kısmen örtüyor).
 - "Uyum" adım başına en iyi pozun olabilirliği (profil olabilirlik), tam Bayes marjinali değil: harita içinde kaç
   pozun uyduğu (hacim) yalnız kafes başlangıcında sayılır, yerel arama odometriden küçük sapmaları (≤ 7,5 cm) affeder.
   Ölçülen durumlarda (aşağıdaki tablo) bu yanlış karara yol açmadı; geniş simetrik haritalarda sınanmadı.

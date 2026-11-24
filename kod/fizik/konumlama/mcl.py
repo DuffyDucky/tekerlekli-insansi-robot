@@ -11,6 +11,11 @@ Neden: eski tahminci (artım = log sum_i w_i L_i, "ortalama") bulutun içindeki 
 parçacıklara düşen payla cezalanıyordu; o pay iki filtrede rastgele ve kalıcı biçimde farklı olduğundan iki birebir
 aynı haritanın olasılığı ölçümden bağımsız olarak 0,95'e dek kayıyordu (BENIOKU "Harita kanıtı"). En iyi uyum bulutun
 kalitesinden bağımsızdır: iki harita taramaları eşit iyi açıklıyorsa artımlar eşit kalır.
+
+Uyum araması (öteki haritaların tohumları dahil) YALNIZ harita kanıtını belirler; parçacıklara dokunmaz. Bulunan iyi
+poza parçacık taşımak (eski "çapraz enjeksiyon") kaldırıldı: yerel aramayla iyileştirilmiş poza konan parçacık, odometriyle
+taşınıp geride kalmış doğru moddan her zaman daha iyi uyar ve aynı taramayla ikinci kez ödüllendirilir. Yerinde U
+dönüşünde bu, pozu koridorun uçtan uca eşine çeviriyordu (BENIOKU "U dönüşünde ters poz").
 """
 
 import math
@@ -41,8 +46,13 @@ class MCLAyarlari:
     uyum_adim_aci: float = 0.02            # rad
     uyum_tur: int = 4                      # 3 x 3 x 3 desen araması tur sayısı (harita başına 108 poz)
     capraz_tohum: bool = True              # uyum araması öteki haritaların en iyi pozlarından da başlar (serbest
-                                           #   alandaysa); kazanan yabancı tohumun çevresinde parçacık yoksa oraya
-    capraz_enjekte_oran: float = 0.05      #   haritanın parçacıklarının bu oranı taşınır (karışım MCL, ikili öneri)
+                                           #   alandaysa); yalnız harita kanıtı, parçacıklar taşınmaz
+    odometri_noktasi_x: float = -0.185     # m; odometrinin izlediği noktanın (diferansiyel sürüşte çeker dingilin
+                                           #   ortası) gövde merkezine göre x'i; 0 = gövde merkezi. Artımlar gövde
+                                           #   merkezine çevrilir: yerinde dönüşte gövde merkezi bu noktanın çevresinde
+                                           #   döner. -0,185: arka çeker + ön omni (23.11.2026 kararı; dingil z -185 mm,
+                                           #   kod/ortak/robot_parametreleri.json dingil_yari_m). MuJoCo kaydında ölçülen
+                                           #   dönme noktası ≈ 0,18 m geride (BENIOKU "U dönüşünde ters poz")
     harita_kotasi: str = "olasilik"        # "olasilik": parçacık sayısı harita olasılığıyla (en az sınırıyla) |
                                            #   "sabit": her haritaya N / K
     harita_basina_en_az: float = 0.10      # her haritada en az (bu oran x N / harita sayısı) parçacık
@@ -265,7 +275,15 @@ class CokHaritaliMCL:
     # ------------------------------------------------------------ hareket
 
     def hareket(self, dx, dy, dtheta):
-        """Gövde çerçevesinde artımlı odometri. Biriktirilir; gürültüyle bir sonraki ölçümde uygulanır."""
+        """Gövde çerçevesinde artımlı odometri. Biriktirilir; gürültüyle bir sonraki ölçümde uygulanır.
+
+        `odometri_noktasi_x` != 0 ise artım o noktanın artımıdır ve gövde merkezine çevrilir:
+        a_govde = T(p) o a_nokta o T(-p), p = (odometri_noktasi_x, 0). Örnek: p = -0,185 m, yerinde 180° dönüş ->
+        gövde merkezi 0,37 m geri gider."""
+        px = self.ayar.odometri_noktasi_x
+        if px:
+            dx, dy, dtheta = _hareket.artim_birlestir(_hareket.artim_birlestir((px, 0.0, 0.0), (dx, dy, dtheta)),
+                                                      (-px, 0.0, 0.0))
         self._birikmis = _hareket.artim_birlestir(self._birikmis, (dx, dy, dtheta))
         d = math.hypot(dx, dy)
         self._son_olcumden_d += d
@@ -356,10 +374,8 @@ class CokHaritaliMCL:
             if a.harita_kaniti == "ortalama":
                 artim = _lse(yeni)                       # log sum_i w_i L_i^beta (harita içi w)
             else:
-                uyum, poz, yabanci = self._en_iyi_uyum(h, hazir, tohumlar, k)
+                uyum, _, _ = self._en_iyi_uyum(h, hazir, tohumlar, k)
                 artim = beta * uyum
-                if yabanci:
-                    yeni = self._capraz_enjekte(h, hazir, si, yeni, poz, en_iyi[k], beta)
             self.lz[k] += artim
             ic[si] = yeni - _lse(yeni)
         self.lz -= self.lz.max()                         # sayısal: yalnız farklar anlamlı
@@ -422,31 +438,6 @@ class CokHaritaliMCL:
                     kazanan = j // ox.size
             sx, sa = sx / 2, sa / 2
         return en, (cx, cy, ct), kazanan != 0
-
-    def _capraz_enjekte(self, h, hazir, si, yeni, poz, en_iyi_k, beta):
-        """Yabancı tohumdan bulunan iyi pozun çevresinde haritanın hiç parçacığı yoksa (doğru mod bu bulutta ölmüş),
-        en düşük ağırlıklı `capraz_enjekte_oran` kadar parçacığı oraya taşı. Ağırlıkları: en iyi parçacığın önseli x
-        kendi olasılıkları (karışım MCL'nin ikili önerisi gibi). `yeni`: harita içi log ağırlık (si sırasıyla)."""
-        px, py, pt = poz
-        yakin = ((np.hypot(self.x[si] - px, self.y[si] - py) < 0.1)
-                 & (np.abs(_sar(self.th[si] - pt)) < 0.1))
-        if yakin.any():
-            return yeni
-        r = min(max(1, int(self.ayar.capraz_enjekte_oran * si.size)), si.size // 2)
-        if r < 1:
-            return yeni
-        b = int(np.searchsorted(si, en_iyi_k[0]))
-        sira = np.argsort(yeni)
-        dus = sira[sira != b][:r]
-        X = px + self.rng.normal(0.0, 0.02, r)
-        Y = py + self.rng.normal(0.0, 0.02, r)
-        T = _sar(pt + self.rng.normal(0.0, 0.01, r))
-        L = log_olasilik(h, X, Y, T, hazir, self.olcum_p) + self.ayar.duvar_ici_log * ~h.serbest_mi(X, Y)
-        yeni = yeni.copy()
-        yeni[dus] = yeni[b] - beta * en_iyi_k[1] + beta * L
-        g = si[dus]
-        self.x[g], self.y[g], self.th[g] = X, Y, T
-        return yeni
 
     def _harita_log(self):
         """Harita başına normalize log olasılık (kanıttan)."""
