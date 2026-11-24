@@ -145,6 +145,7 @@ Kurulum yoksa hiçbir şey bozulmaz: `py -3 kod\testler\kos.py` 58 / 58 kalır, 
 | Yukarı / Aşağı (basılı tut) | ileri / geri 0,25 m/s; Shift ile 0,39 m/s (teker azamisi). Bırakınca `dur` (firmware fren sınırı) |
 | Sol / Sağ (basılı tut) | dönüş 1 rad/s (firmware giriş tavanı; V1 varyantında 3); Yukarı / Aşağı ile birlikte yay. Geri giderken araba direksiyonu gibi: Aşağı+Sağ = arka sağa gider (w +). Bu yalnız pencerenin komut işaretidir, robotun davranışı değil |
 | 6 / 7 / 8 / 9 | devreye al / dur / ACİL STOP mantarı bas - bırak (fiziksel düğme; sonra yeniden 6) / gücü bırak |
+| F8 | sanal LiDAR katmanı aç / kapa (varsayılan kapalı; aşağıda "Sanal LiDAR") |
 | Enter | kol pozu (ev, öne, öne-yukarı, yana, dirsek bükük, geri) |
 | Shift+6 / Shift+7 / Shift+8 / Shift+9 | rampa kipi / kafa sola - ortaya - sağa / robotu başa koy / sonraki sahne |
 | Shift+Enter | sonraki dönüş varyantı (V0 -> V1 -> … -> V2+V3 -> ONERI -> ONERI-T -> ONERI-ADAY -> ONERI-MAKARA -> V0; pencere yeni modelle yeniden açılır). V0 dışında üstte kalıcı `VARSAYIM: <ad> (bugunku robot DEGIL)` satırı |
@@ -495,3 +496,119 @@ Coulomb), motor endüktansı / akım sınırı / sürücü ısınması, akü ger
 dinamiği (konum eyleyicisi kp / kv TAHMİN; güçsüzken sabit sürtünme), kablo ve esnek parçalar (gövdeler katı), sarhoş teker
 yok (güncel montajda yok), sensör gürültüsü, IMU (firmware'de yok). Çarpışma ilkel şekillerle (etek, gövde, kafa kutuları,
 kol kapsülleri, teker silindirleri); görsel ağ CAD'den 5 mm seyreltilmiş.
+
+## Koridor sahneleri
+
+2B LiDAR'ın koridorları birbirinden ne ölçüde ayırt ettiğini, özellikle birbirine benzeyen iki koridorda ne kadar yanıldığını
+ölçmek için altı okul koridoru. Tek kaynak `kod/fizik/koridor_sahneleri.py` (`KORIDORLAR`); JSON'lar oradan üretilir, elle
+düzeltilmez. Rampa, eşik, merdiven yok.
+
+| Sahne | Biçim | Ölçü (iç) | Kapılar (kapalı / açık + oda) | Öbür özellikler |
+| --- | --- | --- | --- | --- |
+| `koridor_1` | düz | 2,0 x 30 m | 16 / 2; iki yanda 3 m adım, yanlar 1,5 m kaydırılı | - |
+| `koridor_2` | düz | 3,5 x 12 m | 2 / 1 | üst duvarda 2 kolon çıkıntısı 0,40 x 0,30 m; alt duvar önünde dolap 1,80 x 0,45 m |
+| `koridor_3` | L | 2,4 m; kollar 16 m (x) + 10 m (y), dış kenardan | 7 / 1 (düzensiz aralık) | sola 90° dönüş |
+| `koridor_4` | T | ana hat 2,6 x 22 m; yan kol 2,6 x 8 m (x 10,0-12,6) | 10 / 1 | T kavşağı ortaya yakın |
+| `koridor_5` | düz | 2,4 x 24 m | 9 / 1; her duvarda 4 m adım, yanlar 2 m kaydırılı | benzer çiftin A'sı |
+| `koridor_6` | düz | 2,4 x 24 m | 9 / 1; aynı ritim | benzer çiftin B'si: 2 yerel fark |
+
+**Benzer çift (harita çerçevesi, m).** `koridor_5` ile `koridor_6` dış ölçü, kapı ritmi, açık kapı + oda ve başlangıç olarak
+aynı; yalnız `koridor_6`'da: (1) üst duvarın 4. kapısı 0,60 m ileride (x 17,50-18,45 yerine 18,10-19,05; y 7,40); (2) alt
+duvarda yangın dolabı, x 17,60-18,40, duvardan (y 5,00) 0,18 m içe çıkıntı. Fark bölgesi orta hat boyunca s 15,70-17,25 m
+(koridor boyunun %6,5'i); dışında iki geometri birebir aynı. Görsel: `kod/fizik/sahneler/gorsel/koridor_5_6_karsilastirma.png`.
+
+**Gerçekçilik.** Kapalı kapı: duvarda 0,95 m x 0,09 m kasa girintisi. Açık kapı: 0,95 m açıklık, 0,15 m duvar, arkasında kapalı
+3 x 4 m oda (ışın boşluğa kaçmaz). Uçlar kapalı; `cevre_duvari` kapalı, sahnenin çevresi koridorun kendi çokgeni. Duvarlar 3B'de
+`sahne_xml` iç duvar levhası (2 mm, yükseklik `duvar_yuksekligi_m` 1,0 m; LiDAR düzlemi 0,10-0,30 m içinde). Başlangıç bir uçta,
+uç duvardan 0,8 m, orta hatta, koridor boyunca (+x) bakar.
+
+**Deney verisi (3B sahne JSON'unda, yükleyiciler bilinmeyen anahtara bakmaz).** `kod/fizik/sahneler/koridor_N.json`:
+`orta_hat` robotun yolu, köşe noktaları `[[x, y], ...]` (T'de ek `orta_hat_yan_kol`); `ozellikler` listesi (her biri `id`, `tur`
+= `kapi_kapali` / `kapi_acik` / `kolon` / `dolap` / `yangin_dolabi` / `kavsak` / `kose` / `uc_duvar`, `duvar`, `duvar_cizgisi`
+[x1, y1, x2, y2], `merkez`, `genislik_m`, `derinlik_m`, açık kapıda `oda` kutusu, `hat` + `s_m` = orta hat boyunca başlangıçtan
+uzaklık); `koridor_5` / `koridor_6`'da `benzer_cift` (farkların konumu, boyu, `fark_bolgesi_s_m`). `kaydirma_m`: üretici
+yerel çerçevesinden harita çerçevesine kaydırma.
+
+| Ne | Komut |
+| --- | --- |
+| 3B pencere | `kod\simulasyon3b.bat koridor_1` (… `koridor_6`); pencerede Shift+9 sahneleri sırayla gezer |
+| 2B görünüm | `kod\simulasyon.bat --harita koridor_1` |
+| JSON'ları yeniden üret / üstten görünüm PNG'leri | `py -3 kod\fizik\koridor_sahneleri.py uret` / `py -3 kod\fizik\koridor_sahneleri.py ciz` (matplotlib) -> `kod\fizik\sahneler\gorsel\` |
+| Başsız doğrulama | `%V% kod\fizik\koridor_sahneleri.py dogrula [sahne ...]`: 3B pencerenin kurulumu (`gorunum3b.Pencere`), başlangıçta ve 5 s sonra temas yok, kayma < 5 mm, orta hat boyunca her 0,5 m'de 360 ışın x z 0,10 / 0,20 / 0,30 m hepsi duvara çarpar (3B ve 2B) |
+
+## Sanal LiDAR
+
+Önerilen 2B LiDAR'ın (Slamtec RPLIDAR C1; seçim `planlama/lidar-secimi.md`) fizik dünyasındaki taklidi: `kod/fizik/lidar.py`.
+Sensör sayılarının hepsi `kod/fizik/lidar_ozellik.json`'dan okunur (menzil 0,05–12 m, 360° / 0,72° = 500 ışın, 10 Hz, 15 mm
+çözünürlük, montaj x 0,190 / y 0 / z 0,295 m, kör sektör [139,2°, 220,8°]); koddaki sayı yalnız aşağıdaki VARSAYIM'lar. Gerçek
+robotta LiDAR Pi'ye USB'den bağlanır: sahte ESP32 protokolüne mesaj **eklenmedi**, sensör yalnız fizik dünyasına bakar. Robot
+modeli (`lale.xml`) değişmedi; LiDAR'ın yeri her ışında taban gövdesinin anlık konum / yöneliminden + montaj ofsetiyle
+hesaplanır (site eklemek modeli değiştirirdi; bu yolla model, kütle ve sayı özetleri aynı kalır, montaj JSON'dan değişince
+yeniden derleme gerekmez). Işınlar sonarla aynı altyapı (`mujoco.mj_multiRay`, sahne grubu 0). LiDAR fiziğe dokunmaz: bağlı /
+bağsız koşuda robotun yolu bit düzeyinde aynı (test).
+
+**Çıktı (konumlama modülüyle ortak sözleşme).** `{"t": s, "acilar": [rad ...], "mesafeler": [m ...]}`. Açı robot gövde
+çerçevesinde (0 ileri, saat yönü tersi +), `-pi`'den artan 500 açı (konumlama `LidarOzellik.isin_acilari()` ile bit düzeyinde
+aynı); mesafe LiDAR merkezinden; ölçüm yoksa (menzil dışı, kör sektör, geçersiz) `NaN`. `t` turun **ilk** ışınının zamanı
+(`dunya.zaman_s`); dönen taramada ışın i'nin zamanı `t + zaman_ofseti[i]`. Montaj ofseti `SanalLidar.montaj` (x, y, z m, yaw rad).
+
+| Nasıl | Komut / kod |
+| --- | --- |
+| 3B pencere | **F8** aç / kapa (varsayılan kapalı; kapalıyken LiDAR hiç kurulmaz) ya da `kod\simulasyon3b.bat koridor_1 --lidar`. Son tam turun noktaları kırmızı küre, LiDAR merkezi mavi; üstte "LiDAR (F8): n / 500". F8 görüntüleyicinin kısayol tablosunda yok (F1–F5 = #290–294, Backspace #259); fiziksel tuşla denenmedi, HP dizüstünde F tuşu Fn isteyebilir |
+| Başsız deney | `dn = lidar.LidarDeneyi("koridor_5", tohum=3)` (sahne + sahte ESP32 + Pi istemcisi + LiDAR + kayıt; pencerenin kurulumu); `dn.devreye_al(); dn.e.sur_tut(0.25, 0, 10000); dn.kayit.kaydet("x.npz")`. Tek tur: `dn.lidar.son_tarama`; her tur: `dn.lidar.dinleyiciler.append(f)` |
+| Kendi dünyana bağla | `lid = lidar.SanalLidar(dunya, **ayar); lid.bagla()` (`dunya.adim_kaydi` zincirine; başka kancadan **sonra** bağla) ya da `lid.anlik_tarama()` |
+| Doğrulama / gövde / görsel / örnek kayıt | `%V% kod\fizik\lidar.py dogrula` (≈ 4 s) / `govde` / `gorsel` (-> `sahneler\gorsel\lidar_koridor_N.png`; çizim `py -3` matplotlib) / `kayit --sahne koridor_5 --sure 20 --cikti x.npz` |
+| Testler | `kod/fizik/testler/test_lidar.py` (13 test; `kos_fizik.py` koşar) |
+
+**Parametreler** (`LidarAyar`; hepsi anahtar sözcükle değişir, her etki ayrı kapanır):
+
+| Ad | Varsayılan | Kaynak |
+| --- | --- | --- |
+| `menzil_min_m` / `menzil_maks_m` | 0,05 / 12 m (gerçek mesafe dışındaysa NaN) | dosya |
+| `isin_sayisi`, `tarama_hz` | 500, 10 Hz (ışın arası 0,2 ms = 5 kHz) | dosya |
+| `donen` | True: ışınlar tur boyunca (100 ms) sırayla, her fizik adımında (1 ms) o adıma düşen 5 ışın o anki pozdan; False: tur başında 500 ışın birden ("anlık") | brief |
+| `gurultu_sigma_m` | 0,010 (Gauss) | **VARSAYIM**: veri sayfası yalnız ±30 mm sınır veriyor, dağılım yok; 3σ = 30 mm |
+| `cozunurluk_m` | 0,015 (çıktı 15 mm'ye yuvarlanır) | dosya; yuvarlama olarak okunması **VARSAYIM** |
+| `gecersiz_oran` | 0 (her ışın bu olasılıkla NaN) | dosyada null (ölçülmedi) |
+| `kor_maske`, `kor_pay_derece` | True, 5° -> [134°, 226°] (127 ışın; pay 0'da 113) | dosya + açıklamasındaki yazılım maskesi önerisi |
+| `donus_yonu`, `tur_baslangic_derece` | "saat" (ışınlar saat yönünde sıralı), 0 (tur sensörün 0°'sinde başlar) | **TAHMİN** (dosya `aci_yonu_notu`; gerçek 0 yönü ölçülmedi) |
+| `duzlem_egimi_derece` | 0 (+ = ön aşağı) | **VARSAYIM**; dosya aralığı [0, 1,5]. 1,5°'de öne ışın zemine 11,3 m'de çarpar |
+| `oz_govde` | False (True: ışınlar robotun CAD görsel ağına da çarpar; maskesiz denemede gövde 0,108 m'de görünür; tarama 0,2 yerine 2,8 ms) | - |
+| `tohum` | None (numpy Generator; aynı tohum aynı dizi) | - |
+
+**Kayıt dosyası (`.npz`, `DeneyKaydi`; `lidar.kayit_oku(yol)` -> (meta, diziler), `lidar.taramalar(diziler)` sözleşme sözlükleri).**
+10 ms satırlar: `t`, `ms` (kart saati), `gercek` (x, y, yaw; taban, yer gerçeği), `odo` (x, y, yaw; enkoder tiklerinden Pi'nin
+yapacağı gibi: tik yolu π × 0,125 / tik_tur, iz **0,426** firmware / Pi sabiti, CAD 0,432; başlangıç yer gerçeği), `tik` (sol,
+sağ), `hiz` (v, w). Tur başına: `tarama_t`, `mesafeler` (tur × 500), `tarama_gercek` / `tarama_gercek_son` (ilk / son ışındaki
+taban pozu), `tarama_odo`. Sabitler: `acilar`, `zaman_ofseti`, `montaj`; `meta` (JSON: sahne, bütün LiDAR ayarları ve tohum,
+odometri sabitleri, çerçeve ve zaman tanımları). 20 s kayıt ≈ 0,2 MB. Kayıt sırasında `odo_sifirla` gönderme (atlanır ama
+odometri o dilimi kaçırır). Protokolün `odo` mesajı 10 Hz; burada 100 Hz yazılır.
+
+**Doğrulama** (`lidar.py dogrula`, belirlenimci):
+- Analitik, `koridor_1` orta hat (y 6,0), gürültü ve yuvarlama kapalı: sol / sağ duvar yüzüne 0,9990 m ölçüldü, beklenen 0,9990
+  (duvar çizgisi 1,0 m, levha yarı kalınlığı 1 mm): hata 0,000 mm. Yuvarlama açık: 1,005 (+6,0 mm, sınır ±7,5).
+- Gürültü (sol duvar, 2000 tekrar): σ 10 mm -> ortalama hata −0,39 mm, std 10,15 mm; 15 mm yuvarlamayla std 10,95 mm
+  (√(10² + 15²/12) = 10,9). σ 20 mm'de std ölçekleniyor (test).
+- Kör sektör: 127 ışın maskeli, hepsi NaN. Menzil: maske dışındaki NaN ışınların gerçek mesafesi en az 12,11 m; uzak uç duvar
+  (29,0 m) NaN; duvar 0,040 m önde NaN, 0,060 m'de ölçüm.
+- Dönen / anlık (`koridor_1`, protokolle 0,39 m/s komut, ölçülen 0,396 m/s; iki koşu, aynı tur): tur boyunca 39,2 mm yol. Yan
+  duvara düşen 311 ışının 308'inde mesafe farkı 0,000 mm, isabet noktası x'te en çok 38,8 mm kayık ve v × τ'dan sapma 0,000 mm;
+  3'ü kapı kasası kenarını geçti (40 mm). Arka uç duvarda (maskesiz deneme) dönen tarama en çok 26,4 mm uzun ölçüyor, v × τ /
+  |cos| beklentisinden sapma 0,000 mm.
+- Süre (`koridor_4`, 86 geom): anlık tarama 0,20 ms (`oz_govde` 2,4–2,8 ms). Başsız sürüşte simülasyon gerçek zamanın 22–23
+  katı LiDAR'sız, 12–13 katı dönen LiDAR'la (×1,8–1,9 yavaşlama; adım başına Python çağrısı); pencere gerçek zamanda kalır.
+- Depo testleri: `kos.py` 58 / 58; `kos_fizik.py` fizik testleri 23 (13'ü LiDAR) 21 geçti, kalan 2 LiDAR'dan önce de kalan
+  `test_kutle_ve_am_cad_ile_ayni` / `test_statik_aks_yukleri_el_hesabi`; Y0s fizikte 58 / 58.
+- Üstten görünüm: `kod/fizik/sahneler/gorsel/lidar_koridor_1..6.png` (başlangıçta bir dönen tur: 356–373 / 500 ışın ölçüm).
+
+**Robotun kendi gövdesi.** LiDAR merkezinden robotun CAD görsel ağlarına (ev pozu, 0,1° adım) ışın: yalnız gövde kabuğu
+(`govde`), **139,8°–220,2°** (80,4°), en yakın 0,108 m; düzlem ±1,5° eğikken 139,7–220,3 / 139,9–220,1. Özellik dosyasının
+kör sektörü [139,2, 220,8] her yanda **0,6° geniş** (≈ 1 ışın); ölçülen aralık onun içinde, öneri maskesi [134, 226] her yanda
+≈ 5,8° pay bırakıyor. Etek, tekerler, kollar, kafa düzlemde değil. Çarpışma kutusu `c_govde` LiDAR'ı içine aldığı için kullanılmadı.
+Dosya değiştirilmedi. Gerçek sensörde gövde 0,108 m'de ölçüm verir (> 0,05 m): maske şart.
+
+**Modellenmeyenler.** Cam / ayna (ışın geçer ya da yansır; MuJoCo'da her yüzey ölçülür), yansıtıcılığa bağlı menzil (siyah
+yüzeyde 6 m, `menzil_maks_siyah_m`) ve doğruluk düşüşü, geliş açısına bağlı yankı kaybı (sıyırarak gelen ışın hep ölçülür),
+çoklu yansıma / kenarda karışık piksel, ışın demeti genişliği (ışın sonsuz ince), açısal titreşim ve tur hızı oynaması
+(8–12 Hz), gerçek 0° yönü ve dönüş yönü (TAHMİN), gecikme / USB aktarımı, güneş ışığı, insanlar ve hareketli engeller, tarama
+düzleminin titremesi, LiDAR'ın kendi kütlesi (110 g modele eklenmedi).

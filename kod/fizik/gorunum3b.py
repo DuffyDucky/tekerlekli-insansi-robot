@@ -18,6 +18,8 @@ harfler görselleştirme / çizim bayrakları, Space, + -, [ ], Tab, Esc, F1-F5 
   6  devreye al (arm)            7  dur                   8  ACİL STOP mantarı bas / bırak     9  gücü bırak (birak)
   Enter  kol pozu (ev, öne, öne-yukarı, yana, dirsek bükük, geri)
   Shift+6 rampa kipi aç / kapa   Shift+7 kafa sola / ortaya / sağa   Shift+8 robotu başa koy   Shift+9 sonraki sahne
+  F8  sanal LiDAR katmanı aç / kapa (`lidar.py`; varsayılan kapalı, `--lidar` ile açık başlar; kapalıyken LiDAR hiç
+      kurulmaz, fizik ve pencere eskisi gibi). Son tam taramanın noktaları kırmızı küre; sahne değişince açık kalır.
 Eski tuşlar da çalışır: Home arm, End dur, Delete mantar, Insert birak, Page Up / Down kol pozu, F9 rampa, F10 kafa,
 F11 başa koy, F12 sonraki sahne.
 Shift+Enter  sonraki dönüş varyantı (V0 bugünkü robot; V1..V2+V3, ONERI, ONERI-T, ONERI-ADAY, ONERI-MAKARA VARSAYIM; `varyantlar.py`;
@@ -47,7 +49,7 @@ import varyantlar as VR  # noqa: E402
 # GLFW tuş kodları
 T_SAG, T_SOL, T_ASAGI, T_YUKARI = 262, 263, 264, 265
 T_PGUP, T_PGDN, T_HOME, T_END, T_INS, T_DEL = 266, 267, 268, 269, 260, 261
-T_F9, T_F10, T_F11, T_F12 = 298, 299, 300, 301
+T_F8, T_F9, T_F10, T_F11, T_F12 = 297, 298, 299, 300, 301
 T_ENTER, T_KP_ENTER = 257, 335
 T_6, T_7, T_8, T_9 = 54, 55, 56, 57
 OKLAR = (T_SAG, T_SOL, T_ASAGI, T_YUKARI)
@@ -62,12 +64,13 @@ ISLER = {(T_6, False): "arm", (T_HOME, False): "arm", (T_7, False): "dur", (T_EN
          (T_ENTER, False): "kol+", (T_PGUP, False): "kol+", (T_PGDN, False): "kol-",
          (T_6, True): "rampa", (T_F9, False): "rampa", (T_7, True): "kafa", (T_F10, False): "kafa",
          (T_8, True): "basa", (T_F11, False): "basa", (T_9, True): "sahne", (T_F12, False): "sahne",
-         (T_ENTER, True): "varyant"}
+         (T_ENTER, True): "varyant",
+         (T_F8, False): "lidar"}   # F8: görüntüleyicinin kısayol tablosunda yok (F1-F5 #290-294, Backspace #259)
 
 V_SURUS, V_AZAMI, W_SURUS = 0.25, 0.39, 1.0      # m/s, m/s (teker azamisi, firmware kırpar), rad/s (firmware tavanı)
 SUR_ARALIK_MS = 200                               # basılıyken sur tekrarı (bekçi 500 ms)
 
-SAHNELER = ["oda_rampa", "rampa_parkuru"]
+SAHNELER = ["oda_rampa", "rampa_parkuru", "koridor_1", "koridor_2", "koridor_3", "koridor_4", "koridor_5", "koridor_6"]
 KOL_POZLARI = [   # (ad, eklem derecesi: omuz, omuz_yan, dirsek); servo = eklem + ofset (protokol servo çerçevesi)
     ("ev", 0, 5, 0), ("one", 90, 5, 0), ("one-yukari", 135, 5, 0), ("yana", 0, 90, 0),
     ("dirsek bukuk", 60, 20, 90), ("geri", -45, 5, 0)]
@@ -81,8 +84,9 @@ IPUCU_SATIRLARI = (
     "oklar (basili): Yukari/Asagi ileri/geri, Sol/Sag don, ikisi yay, Shift hizli; birakinca durur",
     "geri giderken araba gibi: Asagi+Sag = arka saga",
     "6 devreye al   7 dur   8 ACIL STOP   9 gucu birak   Enter kol pozu",
-    "Shift+ 6 rampa  7 kafa  8 basa koy  9 sonraki sahne  Enter varyant   fare: kamera")
+    "Shift+ 6 rampa  7 kafa  8 basa koy  9 sonraki sahne  Enter varyant   F8 lidar   fare: kamera")
 IPUCU = "\n".join(IPUCU_SATIRLARI)
+LIDAR_DURUM = {"acik": False}       # sahne / varyant değişince yeni pencere aynı durumla açılır
 
 
 def ust_metin(bas):
@@ -192,6 +196,48 @@ class Pencere:
         self.red = None                           # son reddedilen sur: (hata, sanal ms)
         self.son_t = None                         # MuJoCo d.time (Backspace sıfırlamasını algılamak için)
         self.sifir_ms = None
+        self.lidar = None                         # sanal LiDAR (F8); kapalıyken hiç kurulmaz
+        self._lidar_cizilen = -1
+
+    def lidar_ac(self, acik):
+        """Sanal LiDAR'ı kur ve fizik adımına bağla (acik) ya da ayır. Ayarlar lidar_ozellik.json + varsayılanlar."""
+        LIDAR_DURUM["acik"] = bool(acik)
+        if acik and self.lidar is None:
+            import lidar as L
+            self.lidar = L.SanalLidar(self.w)
+            self.lidar.bagla()
+            self._yaz("LiDAR acik (F8 kapatir): %d isin / tur, %.0f Hz" % (self.lidar.N, self.lidar.ayar.tarama_hz))
+        elif not acik and self.lidar is not None:
+            self.lidar.ayir()
+            self.lidar = None
+            self._yaz("LiDAR kapali")
+
+    def lidar_ciz(self, scn, bas=0, zorla=False):
+        """Son tam taramanın isabet noktalarını scn'ye küre olarak koy (görüntüleyicinin user_scn'i: bas 0; ekran
+        görüntüsü için Renderer.scene: bas = scn.ngeom, zorla). Yeni tur yoksa dokunmaz. Döner: nokta sayısı."""
+        import mujoco
+        import numpy as np
+        if self.lidar is None or self.lidar.son_ek is None:
+            if self._lidar_cizilen != -1 or zorla:
+                scn.ngeom = bas
+                self._lidar_cizilen = -1
+            return 0
+        if self._lidar_cizilen == self.lidar.tarama_sayisi and not zorla:
+            return scn.ngeom - bas - 1
+        P = self.lidar.son_ek.noktalar()
+        P = P[np.isfinite(P[:, 0])]
+        n = max(0, min(len(P), scn.maxgeom - bas - 1))
+        es = np.eye(3).ravel()
+        for i in range(n):
+            mujoco.mjv_initGeom(scn.geoms[bas + i], mujoco.mjtGeom.mjGEOM_SPHERE, np.array([0.025, 0, 0]), P[i], es,
+                                np.array([0.95, 0.1, 0.1, 1.0], dtype=np.float32))
+        koken = self.lidar.koken_ve_eksen()[0]
+        mujoco.mjv_initGeom(scn.geoms[bas + n], mujoco.mjtGeom.mjGEOM_CYLINDER, np.array([0.028, 0.021, 0]), koken, es,
+                            np.array([0.1, 0.3, 0.9, 1.0], dtype=np.float32))
+        scn.ngeom = bas + n + 1
+        if not zorla:
+            self._lidar_cizilen = self.lidar.tarama_sayisi
+        return n
 
     def _yaz(self, s):
         self.gunluk.append("%7.2f s  %s" % (self.e.zaman_ms / 1000.0, s))
@@ -253,6 +299,8 @@ class Pencere:
             self.sahne_degis = True
         elif ad == "varyant":
             self.varyant_degis = VR.SIRA[(VR.SIRA.index(self.varyant_ad) + 1) % len(VR.SIRA)]
+        elif ad == "lidar":
+            self.lidar_ac(self.lidar is None)
 
     def _surus_guncelle(self):
         if self.yapay is not None:
@@ -322,6 +370,9 @@ class Pencere:
             ust += "ONCE 6'YA BAS: devreye al (guc %s; devrede degilken surulmez)\n" % h["guc"]
         if not self.odakta:
             ust += "pencere odakta degil: tiklayin (odak yokken robot durur)\n"
+        if self.lidar is not None and self.lidar.son_tarama is not None:
+            n_ok = sum(1 for d in self.lidar.son_tarama["mesafeler"] if not math.isnan(d))
+            ust += "LiDAR (F8): %d / %d isin olcum, kirmizi noktalar\n" % (n_ok, self.lidar.N)
         ust = ust_metin(ust)
         sol = "guc\n            komut / gercek\nileri v m/s\ndonus w rad/s\negim / kol\nteker yuku N"
         sag = ("%s%s  [%s, %s]\n\n%+.2f / %+.2f\n%+.2f / %+.2f\npitch %.1f  roll %.1f   rampa %s   kol %s\n%s"
@@ -399,6 +450,8 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
     import mujoco
     import mujoco.viewer
     p = Pencere(sahne_ad, klavye=Klavye(), varyant_ad=varyant_ad)
+    if LIDAR_DURUM["acik"]:
+        p.lidar_ac(True)
     senaryo = list(SENARYOLAR.get(sahne_ad, [])) if senaryo_var else []
     if senaryo_var:
         p.yapay = (set(), False)               # senaryoda gerçek klavye sürüşe karışmaz
@@ -451,6 +504,8 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0"):
                     p.mujoco_sifirlandi()         # zaman geri gitti: görüntüleyici sıfırladı
                 p.adim(20)
                 p.son_t = p.w.d.time
+                if p.lidar is not None or p._lidar_cizilen != -1:
+                    p.lidar_ciz(v.user_scn)
             ust, sol, sag = p.metin()
             # set_texts kendi kilidini alır; v.lock() içinde çağrılırsa görüntüleyici kilitlenir ("Yanıt Vermiyor")
             v.set_texts([(mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_TOPLEFT, ust, None),
@@ -475,7 +530,9 @@ def main():
     ap.add_argument("--ekran", default=None, help="senaryoda ekran görüntülerinin yazılacağı klasör")
     ap.add_argument("--sure", type=float, default=None, help="her sahneyi bu kadar sanal saniye sonra kapat")
     ap.add_argument("--varyant", default="V0", choices=VR.SIRA, help="dönüş varyantı (V0 bugünkü robot; öbürleri VARSAYIM)")
+    ap.add_argument("--lidar", action="store_true", help="sanal LiDAR katmanı açık başlasın (pencerede F8 aç / kapa)")
     a = ap.parse_args()
+    LIDAR_DURUM["acik"] = a.lidar
     for akis in (sys.stdout, sys.stderr):
         try:
             akis.reconfigure(errors="replace")
