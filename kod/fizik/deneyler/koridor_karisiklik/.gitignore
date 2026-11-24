@@ -1,0 +1,3 @@
+# ham sonuçlar (≈ 18 MB JSON) ve ilerleme dosyası depoya girmez; kos.py aynı tohumlarla yeniden üretir
+ham/
+.durum
