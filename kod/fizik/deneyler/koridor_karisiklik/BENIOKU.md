@@ -43,7 +43,7 @@ Son koşu (24.11.2026): 152 görev, 3 işçiyle ≈ 26 dk; tanı ≈ 4 dk. `ham/
 | C | B + haritada olmayan 3 duran insan (silindir Ø0,4 m, duvar tarafında) | 6 × 3 × 1 = 18 |
 | D | bilinen başlangıç (park noktası, `baslat_poz`), başlangıç ucundan sona | 6 × 3 tohum = 18 |
 
-Tohumlar (hepsi sonuç dosyasında): A pozu `70000 + 1000·k + j` (yoğun `90000 + ...`), LiDAR gürültüsü pozun tohumu; B/C/D
+Tohumlar (hepsi sonuç dosyasında): A poz üreteci `7000 + k` (k = koridor sırası; poz tohumu `70000 + 1000·k + j`, yoğun set `90000 + ...`), LiDAR gürültüsü pozun tohumu; B/C/D
 LiDAR `1000·tohum + 10·k + başlangıç`, MCL `500000 + LiDAR tohumu`, başlangıç sapması (yan ±0,10 m, yön ±3°)
 `10000 + 31·tohum + 7·k + başlangıç`, insan yerleri `50000 + ...`.
 

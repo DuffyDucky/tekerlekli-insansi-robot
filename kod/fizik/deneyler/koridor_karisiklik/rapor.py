@@ -30,7 +30,7 @@ h3{font-size:16px;margin:20px 0 8px}.sub{color:var(--mut);margin-bottom:18px}
 .tw{overflow-x:auto;margin:8px 0 6px;-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;background:var(--card);border-radius:10px;overflow:hidden;font-size:14px}
 td,th{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}th{background:rgba(47,134,212,.12)}
-table.say td:not(:first-child){text-align:right;white-space:nowrap}
+table.say td:not(:first-child),table.say th:not(:first-child){text-align:right}table.say td:not(:first-child){white-space:nowrap}
 .k{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:14px 0}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .kpi b{display:block;font-size:20px;line-height:1.25}.kpi span{color:var(--mut);font-size:13px}
@@ -113,6 +113,22 @@ def p(*parcalar):
     return "".join(parcalar)
 
 
+def son_hucre(v):
+    """Sonda doğru = son adımda doğru koridor VE kararlı; kararsız / yanlış biten ayrı yazılır."""
+    s = "%d / %d" % (v["son_dogru"], v["n"])
+    if v.get("son_kararsiz"):
+        s += ' <span class="uy">(%d kararsız)</span>' % v["son_kararsiz"]
+    if v.get("son_yanlis"):
+        s += ' <span class="no">(%d yanlış)</span>' % v["son_yanlis"]
+    return s
+
+
+NOT_YOL = ('<p class="not">"D / K / Y" = o yol noktasındaki doğru / kararsız / yanlış koşu sayısı. Bir koşu o yola '
+           'ulaşmadan bittiyse o noktada sayılmaz: payda yalnız o mesafeye ulaşan koşulardır. <b>*</b> = bazı koşular bu '
+           'mesafeye ulaşmadı (ör. K2 12 m\'lik koridor: baştan ve sondan başlayan koşular 15 m\'ye ulaşmaz); hiçbiri '
+           'ulaşmadıysa "–". "Sonda doğru" = son adımda doğru koridor ve kararlı; kararsız ya da yanlış biten ayrıca yazılır.</p>')
+
+
 def bolum_hareket(b):
     """B / C için koridor tablosu."""
     E = OZ[b]
@@ -128,13 +144,15 @@ def bolum_hareket(b):
             n = v["n"] - x["yok"]
             if n == 0:
                 return "–"
-            return "%d / %d / %d" % (x["dogru"], x["kararsiz"], x["yanlis"])
+            s = "%d / %d / %d" % (x["dogru"], x["kararsiz"], x["yanlis"])
+            return s if n == v["n"] else s + " *"
+
         sat.append(["<b>%s</b> %s" % (KS[k], e(BICIM[k])), v["n"],
                     "%s (%s–%s)" % (tr(v["karar_med"]), tr(v["karar_min"]), tr(v["karar_max"])) + (
                         " · %d koşuda yok" % v["karar_yok"] if v["karar_yok"] else ""),
                     ydh("2"), ydh("5"), ydh("10"), ydh("15"),
                     "%d koşu / %d adım" % (v["yanlis_kosu"], v["yanlis_adim"]) if v["yanlis_adim"] else '<span class="ok">0</span>',
-                    "%d / %d" % (v["son_dogru"], v["n"])])
+                    son_hucre(v)])
     return tablo(["Koridor", "koşu", "doğru karara kadar yol, m: ortanca (en az–en çok)", "2 m: D / K / Y",
                   "5 m", "10 m", "15 m", "kendinden emin yanlış", "sonda doğru"], sat, min_w=980)
 
@@ -217,8 +235,8 @@ def main():
     h.append(img("B_karisiklik.png", "B: adımların karışıklık tablosu (yüzde)"))
     h.append("<h3>Koridor başına: karar yolu, 2 / 5 / 10 / 15 m'de durum</h3>")
     h.append(bolum_hareket("B"))
-    h.append('<p class="not">"D / K / Y" = o yol noktasındaki doğru / kararsız / yanlış koşu sayısı (koşu o kadar uzun değilse '
-             '"–"; K2 12 m). "Doğru karara kadar yol": doğru koridorun kararsız olmadan seçildiği ve koşu sonuna dek bozulmadığı '
+    h.append(NOT_YOL)
+    h.append('<p class="not">"Doğru karara kadar yol": doğru koridorun kararsız olmadan seçildiği ve koşu sonuna dek bozulmadığı '
              'ilk an (<code>karar_ani</code>).</p>')
     h.append(img("B_karar_yolu.png", "B: doğru karara kadar gidilen yol, koridor ve başlangıç başına"))
     h.append("<h3>Konum hatası (doğru koridorda)</h3>")
@@ -267,6 +285,7 @@ def main():
         h.append("<h2>5. C: haritada olmayan 3 duran insan</h2>")
         h.append(M["C_giris"])
         h.append(bolum_hareket("C"))
+        h.append(NOT_YOL)
         h.append(bolum_konum("C"))
         h.append(img("C_karisiklik.png", "C: adımların karışıklık tablosu (yüzde)"))
         h.append(img("C_benzer_cift.png", "C: benzer çift, insanlı, p(K5) ve p(K6) – gidilen yol"))
@@ -289,7 +308,7 @@ def main():
                         "%s / %s / %s" % (tr(v["kk_yan_ort"], 3), tr(v["kk_yan_p95"], 3), tr(v["kk_yan_max"], 2)),
                         "%%%s" % tr(100 * v["konum_kararsiz_oran"], 1),
                         '<span class="ok">0</span>' if not v["yanlis_adim"] else '<span class="no">%d</span>' % v["yanlis_adim"],
-                        "%d / %d" % (v["son_dogru"], v["n"])])
+                        son_hucre(v)])
         h.append(tablo(["Koridor", "koşu", "yol, m", "ileri-geri hata, m: ort / p95 / en çok", "yan hata, m: ort / p95 / en çok",
                         "konum kararsız adım", "yanlış koridor kesin (adım)", "sonda doğru"], sat, min_w=900))
         h.append('<div class="bulgu"><b>Bulgu.</b> %s</div>' % M["D_bulgu"])

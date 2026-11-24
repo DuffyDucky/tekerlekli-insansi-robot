@@ -362,7 +362,9 @@ def ozet_kosular(runs):
                      yan_max=float(np.max([x["en_cok"] for x in yan])) if yan else None,
                      konum_yanlis_kosu=sum(1 for r in rs if r["olcutler"]["konum_yanlis_adim"] > 0),
                      konum_yanlis_adim=sum(r["olcutler"]["konum_yanlis_adim"] for r in rs),
-                     son_dogru=sum(1 for r in rs if r["olcutler"]["son_dogru"]),
+                     # doğru = son adımda doğru harita VE kararlı (ham olcutler.son_dogru kararsızı da sayar)
+                     son_dogru=sum(1 for r in rs if r["olcutler"]["son_durum"] == "dogru"),
+                     son_yanlis=sum(1 for r in rs if r["olcutler"]["son_durum"] == "yanlis"),
                      son_kararsiz=sum(1 for r in rs if r["olcutler"]["son_durum"] == "kararsiz"),
                      temas=sum(1 for r in rs if r["surus"]["temas"]), bitmedi=sum(1 for r in rs if not r["surus"]["bitti"]),
                      yol_ort=float(np.mean([r["olcutler"]["toplam_yol_m"] for r in rs])))
@@ -560,7 +562,7 @@ def ustten_ciz(plt, baslik, gercek_kor, gercek_poz, tahmin_kor, tahmin_poz, mesa
 
 
 # ------------------------------------------------------------------ D
-def d_ciz(plt, runs, yol):
+def d_ciz(plt, runs, yol, geride_cm):
     fig, axs = plt.subplots(2, 3, figsize=(13, 6.2), sharey=True)
     for i, k in enumerate(K):
         ax = axs.flat[i]
@@ -582,8 +584,8 @@ def d_ciz(plt, runs, yol):
     axs[1, 0].set_ylabel("konum hatası (m)")
     axs[0, 2].legend(loc="upper right", fontsize=8)
     fig.suptitle("D. Bilinen başlangıç (park noktası): yol boyunca konum hatası, robot çerçevesinde (her çizgi bir tohum;\n"
-                 "yalnız taramanın işlendiği adımlar: arada konumlayıcı eski pozu bildirir, hareket hâlinde ≈ 3,6 cm geride)",
-                 fontsize=10.5, fontweight="bold")
+                 "yalnız taramanın işlendiği adımlar: arada konumlayıcı eski pozu bildirir, hareket hâlinde ort. %s cm geride)"
+                 % ("%.1f" % geride_cm).replace(".", ","), fontsize=10.5, fontweight="bold")
     fig.tight_layout()
     fig.savefig(yol)
     plt.close(fig)
@@ -675,7 +677,7 @@ def main():
                        o["mesafeler"], os.path.join(GORSEL, "ornek_%s_konum.png" % bol))
             ornekler.append("ornek_%s_konum.png" % bol)
         if bol == "D":
-            d_ciz(plt, ok, os.path.join(GORSEL, "D_hata_yol.png"))
+            d_ciz(plt, ok, os.path.join(GORSEL, "D_hata_yol.png"), -100 * e["islenen"]["yok_ort"])
             e["yanlis_koridor_adim"] = sum(1 for r in ok for en, ky in zip(r["adimlar"]["en"], r["adimlar"]["kararsiz"])
                                            if en != r["gorev"]["kor"])
             e["konum_kararsiz_adim"] = sum(sum(r["adimlar"]["konum_kararsiz"]) for r in ok)
