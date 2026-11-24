@@ -1,0 +1,146 @@
+{
+ "kayit": "B_koridor_5_orta_t1",
+ "denemeler": {
+  "varsayilan": [
+   {
+    "tohum": 501042,
+    "kotu_adim": 516,
+    "ilk_kotu_yol": 11.64,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501049,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501056,
+    "kotu_adim": 443,
+    "ilk_kotu_yol": 11.41,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501063,
+    "kotu_adim": 574,
+    "ilk_kotu_yol": 11.39,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501070,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   }
+  ],
+  "capraz_tohum=False": [
+   {
+    "tohum": 501042,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501049,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501056,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501063,
+    "kotu_adim": 52,
+    "ilk_kotu_yol": 11.97,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501070,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   }
+  ],
+  "harita_kaniti=ortalama": [
+   {
+    "tohum": 501042,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501049,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501056,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501063,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   },
+   {
+    "tohum": 501070,
+    "kotu_adim": 0,
+    "ilk_kotu_yol": null,
+    "yanlis_harita_adim": 6,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0
+   }
+  ]
+ }
+}

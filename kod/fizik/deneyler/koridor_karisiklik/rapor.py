@@ -7,6 +7,7 @@ import base64
 import html
 import json
 import os
+import sys
 
 BURASI = os.path.dirname(os.path.abspath(__file__))
 K = ["koridor_%d" % i for i in range(1, 7)]
@@ -72,7 +73,7 @@ def yuzde(a, n):
 
 
 def img(ad, alt):
-    yol = os.path.join(BURASI, "gorsel", ad)
+    yol = os.path.join(BURASI, ad if "/" in ad else os.path.join("gorsel", ad))
     if not os.path.exists(yol):
         return ""
     with open(yol, "rb") as f:
@@ -196,12 +197,19 @@ def main():
     h.append("<h1>Koridor karışıklık deneyi: LiDAR hangi koridorda olduğunu ne ölçüde karıştırıyor?</h1>")
     h.append('<div class="sub">%s · Lale, MuJoCo simülasyonu · sanal RPLIDAR C1 + çok haritalı konumlayıcı (MCL) · '
              'betikler ve ham veri: <code>kod/fizik/deneyler/koridor_karisiklik/</code></div>' % e(M["tarih"]))
+    sys.path.insert(0, BURASI)
+    import rapor_v2 as R2
+    S = R2.yukle()
+    if S:
+        h.extend(R2.html(S, img))
+        h.append('<h2 id="tarihce">Tarihçe: v1 bulguları (düzeltme öncesi konumlayıcı, c34618b)</h2>')
+        h.append(R2.TARIHCE_NOTU)
     # KPI
     h.append('<div class="k">')
     for kp in M["kpi"]:
         h.append('<div class="kpi"><span>%s</span><b>%s</b><span>%s</span></div>' % (e(kp[0]), e(kp[1]), e(kp[2])))
     h.append("</div>")
-    h.append("<h2>Kısa sonuç</h2><ul>%s</ul>" % "".join("<li>%s</li>" % x for x in M["sonuc"]))
+    h.append("<h2>%s</h2><ul>%s</ul>" % ("v1 kısa sonuç" if S else "Kısa sonuç", "".join("<li>%s</li>" % x for x in M["sonuc"])))
     h.append('<div class="env"><b>Okurken:</b> %s</div>' % M["okuma"])
     # kurulum
     h.append("<h2>1. Deney nasıl kuruldu</h2>")
@@ -324,8 +332,11 @@ def main():
     h.append(M["garip"])
     h.append("<h2>11. Koşu sayıları, süre, yeniden üretme</h2>")
     h.append(M["kosu"])
-    h.append("<h2>Açık işler</h2>")
-    h.append("<ul>%s</ul>" % "".join("<li>%s</li>" % x for x in M["acik"]))
+    if S:
+        h.append(R2.acik(S))
+    else:
+        h.append("<h2>Açık işler</h2>")
+        h.append("<ul>%s</ul>" % "".join("<li>%s</li>" % x for x in M["acik"]))
     h.append("<h2>Dosyalar</h2>")
     h.append(tablo(["Dosya", "İçerik"], M["dosyalar"], sinif=""))
     h.append("</main></body></html>")

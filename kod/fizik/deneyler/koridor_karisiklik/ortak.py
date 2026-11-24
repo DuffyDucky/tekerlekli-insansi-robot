@@ -6,10 +6,17 @@ Mevcut modüller DEĞİŞTİRİLMEDİ; yalnız kullanıldı:
   - kod/fizik/konumlama/        CokHaritaliMCL (varsayılan ayarlar), tek_taramadan_sinifla, karar_ani, goreli
   - kod/fizik/varyantlar.py     sürüş varyantı (aşağıda SURUS_VARYANTI)
 
-Deneyin kendi eki (modülde değil): `baslat_poz_cok_harita` (D bölümü). Gerekçe: `CokHaritaliMCL.baslat_poz` bütün
-parçacıkları tek haritaya koyuyor; öbür haritalar parçacıksız kalınca ilk yeniden örneklemede `_yeniden_ornekle`
-IndexError veriyor (mcl.py 326: boş `sec` dizisinde sec[-1]). Ek, modülün kendi kuralını (her haritada en az
-harita_basina_en_az x N / K parçacık, harita olasılığı tabanı 1e-6) baslat_poz'dan hemen sonra uygular.
+Sürümler (etiket): v1 = konumlayıcı c34618b (sonuçlar `ham/`, `sonuc/`, `gorsel/`; commit b2bcbfd / 72002ec, artık
+yeniden üretilmez); v2 = düzeltilmiş konumlayıcı, aynı tasarım ve tohumlar (`ham_v2/`, `sonuc_v2/`, `gorsel_v2/`);
+v2_360 = v2 + kör sektör yok (sanal LiDAR `kor_maske=False`, konumlayıcıda kör sektör listesi boş; robot gövdesi
+ışını kesmez, `oz_govde=False` varsayılanı: VARSAYIM, taban ile gövde arasında açık LiDAR boşluğunun üst sınırı).
+v2 ve v2_360 aynı fizik koşusundan çıkar: LiDAR 360° kaydedilir, v2 taraması sanal LiDAR'ın kendi maskesi
+(`lidar.kor_mu`, dosyanın sektörü + 5° pay) sonradan uygulanarak elde edilir. Sanal LiDAR gürültü RNG'sini maske ne
+olursa olsun her turda aynı sayıda çektiği için bu, maskeli taramayla birebir aynıdır (kos.py v1 ile karşılaştırır).
+
+Tarihçe: v1'de D bölümü için deneyin kendi eki `baslat_poz_cok_harita` vardı; c34618b'de `baslat_poz` çok haritada
+IndexError veriyordu (mcl.py 326, boş `sec` dizisinde sec[-1]). v2'de modülün kendi `baslat_poz(...,
+diger_haritalar=True)`'su kullanılıyor; ek kaldırıldı.
 """
 
 import json
@@ -26,7 +33,11 @@ KOD = os.path.dirname(FIZIK)
 if FIZIK not in sys.path:
     sys.path.insert(0, FIZIK)
 
-HAM = os.path.join(BURASI, "ham")
+HAM = os.path.join(BURASI, "ham")          # v1
+
+
+def ham_dizini(etiket):
+    return os.path.join(BURASI, "ham" if etiket == "v1" else "ham_" + etiket)
 KORIDORLAR = ["koridor_%d" % i for i in range(1, 7)]
 KISA = {k: "K%d" % (i + 1) for i, k in enumerate(KORIDORLAR)}
 HIZ = 0.25                      # m/s, sürüş hızı
@@ -163,7 +174,7 @@ class Duzenek:
     """lidar.LidarDeneyi'nin kurulumu (sahne + sahte ESP32 fizik + Pi istemcisi + LiDAR + kayıt), tek farkla:
     `ek_engeller` (haritada olmayan insanlar) fizik dünyasının haritasına BELLEKTE eklenir. Konumlayıcı özgün haritayı görür."""
 
-    def __init__(self, kor, konum, lidar_tohum, ek_engeller=(), varyant=SURUS_VARYANTI):
+    def __init__(self, kor, konum, lidar_tohum, ek_engeller=(), varyant=SURUS_VARYANTI, kor_maske=True):
         import lidar as L                      # yol eklemeleri (ortak, pi, araclar) lidar.py'de
         import varyantlar as VR
         from fizik_esp32 import FizikEsp32
@@ -181,7 +192,7 @@ class Duzenek:
         self.w = self.c.dunya
         self.e = Esp32Istemci(BellekTasima(self.c))
         self.e.baglan()
-        self.lidar = L.SanalLidar(self.w, tohum=lidar_tohum)
+        self.lidar = L.SanalLidar(self.w, tohum=lidar_tohum, kor_maske=kor_maske)
         self.lidar.bagla()
         self.kayit = L.DeneyKaydi(self.c, self.lidar, sahne=kor)
         o = self.e.devreye_al_ve_bekle()
@@ -304,44 +315,42 @@ def haritalar():
     return _HARITALAR
 
 
-def ozellik():
+def ozellik(kor=True):
+    """Konumlayıcının LiDAR özelliği; kor=False: kör sektör listesi boş (v2_360)."""
+    import dataclasses
     from konumlama import LidarOzellik
-    return LidarOzellik.varsa_dosyadan()
+    oz = LidarOzellik.varsa_dosyadan()
+    return oz if kor else dataclasses.replace(oz, kor_sektorler_derece=[])
 
 
-def baslat_poz_cok_harita(mcl, harita, x, y, th):
-    """Deneyin eki (modülde değil): bilinen başlangıç, öbür haritalar en az parçacıkla ve olasılık tabanında yaşar.
-
-    mcl.baslat_poz(...) çağrılır (varsayılan std 0,2 m / 0,2 rad); sonra her öbür haritaya
-    max(1, harita_basina_en_az x N / K) parçacık serbest alanda düzgün saçılır, haritanın toplam ağırlığı
-    harita_olasilik_tabani (1e-6). Bu, modülün yeniden örneklemede uyguladığı kuralın aynısıdır; eksik olan yalnız
-    baslat_poz'dan hemen sonra uygulanmasıydı (yoksa IndexError)."""
-    mcl.baslat_poz(harita, x, y, th)
-    a = mcl.ayar
-    K = len(mcl.haritalar)
-    n = max(1, int(a.harita_basina_en_az * a.parcacik_sayisi / K))
-    taban = math.log(a.harita_olasilik_tabani)
-    ms, xs, ys, ts, lws = [mcl.m], [mcl.x], [mcl.y], [mcl.th], [mcl.lw]
-    for k, h in enumerate(mcl.haritalar):
-        if mcl.adlar[k] == harita:
-            continue
-        px, py, pt = h.rastgele_serbest(n, mcl.rng)
-        ms.append(np.full(n, k, dtype=np.int64)); xs.append(px); ys.append(py); ts.append(pt)
-        lws.append(np.full(n, taban - math.log(n)))
-    mcl.m = np.concatenate(ms).astype(np.int64)
-    mcl.x, mcl.y, mcl.th = np.concatenate(xs), np.concatenate(ys), np.concatenate(ts)
-    lw = np.concatenate(lws)
-    mx = lw.max()
-    mcl.lw = lw - (mx + math.log(np.exp(lw - mx).sum()))
+def lidar_kor_maskesi(acilar):
+    """Sanal LiDAR'ın varsayılan kör maskesi (LidarAyar: dosyanın sektörü + kor_pay_derece), açılar gövde çerçevesi rad."""
+    global _KOR_AYAR
+    import lidar as L
+    if _KOR_AYAR is None:
+        a = L.LidarAyar.dosyadan()
+        _KOR_AYAR = (a.kor_sektorler_derece, a.kor_pay_derece)
+    return L.kor_mu(np.asarray(acilar, dtype=float), *_KOR_AYAR)
 
 
-def mcl_kos(akis, dogru, tohum, bilinen_bas=None):
-    """Konumlayıcıyı akış boyunca koştur (yalnız odometri artımı + tarama). -> adım kayıtları listesi."""
+_KOR_AYAR = None
+
+
+def maskele(tarama):
+    """360° taramaya sanal LiDAR'ın kör maskesini sonradan uygula (kör ışın -> NaN, sanal LiDAR'ın kendisi gibi)."""
+    kor = lidar_kor_maskesi(tarama["acilar"])
+    m = [float("nan") if k else v for v, k in zip(tarama["mesafeler"], kor)]
+    return dict(tarama, mesafeler=m)
+
+
+def mcl_kos(akis, dogru, tohum, bilinen_bas=None, kor=True):
+    """Konumlayıcıyı akış boyunca koştur (yalnız odometri artımı + tarama). -> adım kayıtları listesi.
+    kor=False: konumlayıcıda kör sektör yok (v2_360). Bilinen başlangıç: modülün baslat_poz(..., diger_haritalar=True)."""
     from konumlama import CokHaritaliMCL
     from konumlama.benzet import goreli
-    mcl = CokHaritaliMCL(haritalar(), ozellik=ozellik(), tohum=tohum)
+    mcl = CokHaritaliMCL(haritalar(), ozellik=ozellik(kor), tohum=tohum)
     if bilinen_bas is not None:
-        baslat_poz_cok_harita(mcl, dogru, *bilinen_bas)
+        mcl.baslat_poz(dogru, *bilinen_bas, diger_haritalar=True)
     adimlar = []
     onceki = None
     sure = 0.0

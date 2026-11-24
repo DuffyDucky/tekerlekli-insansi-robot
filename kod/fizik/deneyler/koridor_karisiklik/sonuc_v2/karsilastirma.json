@@ -1,0 +1,4588 @@
+{
+ "v1": {
+  "A": {
+   "toplam": {
+    "n": 216,
+    "dogru": 98,
+    "kararsiz": 118,
+    "yanlis": 0
+   },
+   "oranlar": {
+    "koridor_1": {
+     "n": 36,
+     "dogru": 36,
+     "kararsiz": 0,
+     "yanlis": 0
+    },
+    "koridor_2": {
+     "n": 36,
+     "dogru": 36,
+     "kararsiz": 0,
+     "yanlis": 0
+    },
+    "koridor_3": {
+     "n": 36,
+     "dogru": 13,
+     "kararsiz": 23,
+     "yanlis": 0
+    },
+    "koridor_4": {
+     "n": 36,
+     "dogru": 13,
+     "kararsiz": 23,
+     "yanlis": 0
+    },
+    "koridor_5": {
+     "n": 36,
+     "dogru": 0,
+     "kararsiz": 36,
+     "yanlis": 0
+    },
+    "koridor_6": {
+     "n": 36,
+     "dogru": 0,
+     "kararsiz": 36,
+     "yanlis": 0
+    }
+   },
+   "ikili": {
+    "koridor_3": {
+     "K5-K6": 13,
+     "K3-K6": 4,
+     "K3-K5": 6
+    },
+    "koridor_4": {
+     "K5-K6": 3,
+     "K3-K4": 4,
+     "K4-K5": 11,
+     "K4-K6": 5
+    },
+    "koridor_5": {
+     "K5-K6": 35,
+     "K3-K5": 1
+    },
+    "koridor_6": {
+     "K5-K6": 35,
+     "K3-K6": 1
+    }
+   },
+   "yanlislar": [],
+   "yogun": {
+    "koridor_5": {
+     "n": 46,
+     "dogru": 0,
+     "kararsiz": 46,
+     "yanlis": 0
+    },
+    "koridor_6": {
+     "n": 46,
+     "dogru": 0,
+     "kararsiz": 46,
+     "yanlis": 0
+    }
+   },
+   "konum_hata_05": {
+    "koridor_1": 17,
+    "koridor_2": 4,
+    "koridor_3": 0,
+    "koridor_4": 1,
+    "koridor_5": 12,
+    "koridor_6": 6
+   },
+   "sure_ort": 3.2917207792207797
+  },
+  "B": {
+   "n": 90,
+   "yanlislar": [
+    {
+     "id": "B_koridor_6_bas_t2",
+     "kor": "koridor_6",
+     "baslangic": "bas",
+     "tohum": 2,
+     "harita": "koridor_5",
+     "adim": 258,
+     "sure_s": 25.8,
+     "ilk_yol": 0.416,
+     "son_yol": 6.84,
+     "en_buyuk_p": 0.889
+    },
+    {
+     "id": "B_koridor_6_bas_t4",
+     "kor": "koridor_6",
+     "baslangic": "bas",
+     "tohum": 4,
+     "harita": "koridor_5",
+     "adim": 218,
+     "sure_s": 21.8,
+     "ilk_yol": 0.99,
+     "son_yol": 6.415,
+     "en_buyuk_p": 0.852
+    }
+   ],
+   "konum_yanlislar": [],
+   "koridor": {
+    "koridor_1": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 20307,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 1.79,
+     "konum_karar_max": 14.657,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.06466729870447853,
+     "kk_ileri_ort": 0.032613124864747885,
+     "kk_ileri_max": 0.333,
+     "kk_yan_ort": 0.0023201146937892234,
+     "kk_yan_max": 0.168,
+     "kk_xy_max": 0.3360476156737316,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 7695,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.066,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.010208816705336425,
+     "kk_ileri_ort": 0.02867780836282606,
+     "kk_ileri_max": 0.251,
+     "kk_yan_ort": 0.005043649233189147,
+     "kk_yan_max": 0.119,
+     "kk_xy_max": 0.2603113520382851,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 326,
+     "adim": 15629,
+     "karar_med": 0.066,
+     "karar_min": 0.0,
+     "karar_max": 1.74,
+     "karar_yok": 0,
+     "konum_karar_med": 0.066,
+     "konum_karar_max": 1.74,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.01557562076749436,
+     "kk_ileri_ort": 0.0371716656864667,
+     "kk_ileri_max": 0.251,
+     "kk_yan_ort": 0.008210350911585965,
+     "kk_yan_max": 0.119,
+     "kk_xy_max": 0.25807169546465186,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 116,
+     "adim": 14207,
+     "karar_med": 0.066,
+     "karar_min": 0.0,
+     "karar_max": 0.14,
+     "karar_yok": 0,
+     "konum_karar_med": 0.066,
+     "konum_karar_max": 0.216,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.007969904755546495,
+     "kk_ileri_ort": 0.03131578199388901,
+     "kk_ileri_max": 0.263,
+     "kk_yan_ort": 0.00702863639593548,
+     "kk_yan_max": 0.126,
+     "kk_xy_max": 0.2776508598942204,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 1539,
+     "adim": 16112,
+     "karar_med": 1.341,
+     "karar_min": 0.565,
+     "karar_max": 7.29,
+     "karar_yok": 0,
+     "konum_karar_med": 1.341,
+     "konum_karar_max": 7.29,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.044103354812674786,
+     "kk_ileri_ort": 0.03828919141914191,
+     "kk_ileri_max": 0.314,
+     "kk_yan_ort": 0.002877887788778878,
+     "kk_yan_max": 0.146,
+     "kk_xy_max": 0.31468237955119127,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 15,
+     "yanlis_kosu": 2,
+     "yanlis_adim": 476,
+     "kararsiz_adim": 1200,
+     "adim": 16103,
+     "karar_med": 0.941,
+     "karar_min": 0.266,
+     "karar_max": 7.765,
+     "karar_yok": 0,
+     "konum_karar_med": 0.941,
+     "konum_karar_max": 7.765,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.03324948649207019,
+     "kk_ileri_ort": 0.033714751595892316,
+     "kk_ileri_max": 0.301,
+     "kk_yan_ort": 0.002998612267554816,
+     "kk_yan_max": 0.174,
+     "kk_xy_max": 0.3075223569108431,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "benzer_cift": {
+    "koridor_5_bas": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 4.5451999999999995,
+      "med": 6.54,
+      "min": 0.565,
+      "max": 7.29
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 6.025,
+      "med": 6.015,
+      "min": 6.015,
+      "max": 6.04
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 3.675,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.69
+     },
+     "once_karar": 2,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.64257,
+     "karar_yok": 0
+    },
+    "koridor_5_son": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 1.4404,
+      "med": 1.416,
+      "min": 1.165,
+      "max": 1.815
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.23240000000000002,
+      "med": 0.165,
+      "min": 0.0,
+      "max": 0.466
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.5297,
+     "karar_yok": 0
+    },
+    "koridor_5_orta": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 1.1102,
+      "med": 1.065,
+      "min": 0.865,
+      "max": 1.341
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.62004,
+     "karar_yok": 0
+    },
+    "koridor_6_bas": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 6.2402,
+      "med": 6.565,
+      "min": 2.716,
+      "max": 7.765
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 6.029999999999999,
+      "med": 6.04,
+      "min": 5.99,
+      "max": 6.065
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 3.675,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.69
+     },
+     "once_karar": 1,
+     "yanlis_kosu": 2,
+     "yanlis_adim": 476,
+     "p_es_max": 0.88925,
+     "karar_yok": 0
+    },
+    "koridor_6_son": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 1.1008,
+      "med": 0.941,
+      "min": 0.566,
+      "max": 1.84
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.1346,
+      "med": 0.191,
+      "min": 0.0,
+      "max": 0.291
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.60498,
+     "karar_yok": 0
+    },
+    "koridor_6_orta": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 0.4406,
+      "med": 0.366,
+      "min": 0.266,
+      "max": 0.666
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.40295,
+     "karar_yok": 0
+    }
+   },
+   "islenen": {
+    "n_isl": 29250,
+    "n_yok": 52701,
+    "isl_ort": -0.008050393162393164,
+    "isl_mutlak": 0.012391452991452993,
+    "yok_ort": -0.043814272973947375,
+    "yok_mutlak": 0.04453638450883285
+   },
+   "sure_top_s": 2494.8,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 15,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 15,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 15,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 15,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 15,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 15,
+     "kararsiz": 0
+    }
+   }
+  },
+  "C": {
+   "n": 18,
+   "yanlislar": [
+    {
+     "id": "C_koridor_5_bas_t101",
+     "kor": "koridor_5",
+     "baslangic": "bas",
+     "tohum": 101,
+     "harita": "koridor_6",
+     "adim": 117,
+     "sure_s": 11.7,
+     "ilk_yol": 0.14,
+     "son_yol": 3.04,
+     "en_buyuk_p": 1.0
+    }
+   ],
+   "konum_yanlislar": [],
+   "koridor": {
+    "koridor_1": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 4062,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 1.64,
+     "konum_karar_max": 2.865,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.05804417899127796,
+     "kk_ileri_ort": 0.033994239329667456,
+     "kk_ileri_max": 0.298,
+     "kk_yan_ort": 0.012242995548572925,
+     "kk_yan_max": 0.13,
+     "kk_xy_max": 0.3032160945596391,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 1539,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.066,
+     "konum_karar_max": 0.066,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.017014694508894045,
+     "kk_ileri_ort": 0.035273566249176005,
+     "kk_ileri_max": 0.216,
+     "kk_yan_ort": 0.013199077125906395,
+     "kk_yan_max": 0.116,
+     "kk_xy_max": 0.221054291973714,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 71,
+     "adim": 3125,
+     "karar_med": 0.065,
+     "karar_min": 0.0,
+     "karar_max": 1.29,
+     "karar_yok": 0,
+     "konum_karar_med": 0.065,
+     "konum_karar_max": 1.29,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.02144469525959368,
+     "kk_ileri_ort": 0.04437590045841519,
+     "kk_ileri_max": 0.274,
+     "kk_yan_ort": 0.01655304518664047,
+     "kk_yan_max": 0.128,
+     "kk_xy_max": 0.28183683222744327,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 25,
+     "adim": 2843,
+     "karar_med": 0.066,
+     "karar_min": 0.0,
+     "karar_max": 0.14,
+     "karar_yok": 0,
+     "konum_karar_med": 0.14,
+     "konum_karar_max": 0.141,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.010304556081837328,
+     "kk_ileri_ort": 0.03362486678507993,
+     "kk_ileri_max": 0.27,
+     "kk_yan_ort": 0.01732575488454707,
+     "kk_yan_max": 0.131,
+     "kk_xy_max": 0.282177249260106,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 3,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 117,
+     "kararsiz_adim": 150,
+     "adim": 3223,
+     "karar_med": 1.816,
+     "karar_min": 1.115,
+     "karar_max": 3.115,
+     "karar_yok": 0,
+     "konum_karar_med": 1.816,
+     "konum_karar_max": 3.115,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.03161771775161038,
+     "kk_ileri_ort": 0.038636302065695904,
+     "kk_ileri_max": 0.277,
+     "kk_yan_ort": 0.0123785980358957,
+     "kk_yan_max": 0.142,
+     "kk_xy_max": 0.2784115658517082,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 803,
+     "adim": 3220,
+     "karar_med": 3.8775,
+     "karar_min": 1.09,
+     "karar_max": 6.665,
+     "karar_yok": 1,
+     "konum_karar_med": 3.8775,
+     "konum_karar_max": 6.665,
+     "konum_karar_yok": 1,
+     "konum_kararsiz_oran": 0.050857504314750585,
+     "kk_ileri_ort": 0.02140814963259853,
+     "kk_ileri_max": 0.06,
+     "kk_yan_ort": 0.01060320641282565,
+     "kk_yan_max": 0.03,
+     "kk_xy_max": 0.06293647591023825,
+     "son_dogru": 2,
+     "son_kararsiz": 1,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "benzer_cift": {
+    "koridor_5_bas": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 3.115,
+      "med": 3.115,
+      "min": 3.115,
+      "max": 3.115
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 6.065,
+      "med": 6.065,
+      "min": 6.065,
+      "max": 6.065
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 3.69,
+      "med": 3.69,
+      "min": 3.69,
+      "max": 3.69
+     },
+     "once_karar": 1,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 117,
+     "p_es_max": 1.0,
+     "karar_yok": 0
+    },
+    "koridor_5_son": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 1.816,
+      "med": 1.816,
+      "min": 1.816,
+      "max": 1.816
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.316,
+      "med": 0.316,
+      "min": 0.316,
+      "max": 0.316
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.67132,
+     "karar_yok": 0
+    },
+    "koridor_5_orta": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 1.115,
+      "med": 1.115,
+      "min": 1.115,
+      "max": 1.115
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.41167,
+     "karar_yok": 0
+    },
+    "koridor_6_bas": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 6.665,
+      "med": 6.665,
+      "min": 6.665,
+      "max": 6.665
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 6.04,
+      "med": 6.04,
+      "min": 6.04,
+      "max": 6.04
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 3.665,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.665
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.63728,
+     "karar_yok": 0
+    },
+    "koridor_6_son": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 1.09,
+      "med": 1.09,
+      "min": 1.09,
+      "max": 1.09
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.46017,
+     "karar_yok": 0
+    },
+    "koridor_6_orta": {
+     "n": 1,
+     "karar": null,
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.53776,
+     "karar_yok": 1
+    }
+   },
+   "islenen": {
+    "n_isl": 5409,
+    "n_yok": 9806,
+    "isl_ort": -0.006574228138288039,
+    "isl_mutlak": 0.017762987613237198,
+    "yok_ort": -0.04255017336324699,
+    "yok_mutlak": 0.044217519885784214
+   },
+   "sure_top_s": 541.4000000000001,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 3,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 3,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 3,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 3,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 3,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 2,
+     "kararsiz": 1
+    }
+   }
+  },
+  "D": {
+   "n": 18,
+   "yanlislar": [],
+   "konum_yanlislar": [],
+   "koridor": {
+    "koridor_1": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 3456,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.0242265625,
+     "kk_ileri_max": 0.069,
+     "kk_yan_ort": 0.0010031828703703704,
+     "kk_yan_max": 0.008,
+     "kk_xy_max": 0.06900724599634447,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 1293,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.022861562258313997,
+     "kk_ileri_max": 0.065,
+     "kk_yan_ort": 0.0013348801237432328,
+     "kk_yan_max": 0.007,
+     "kk_xy_max": 0.06506919393998976,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2658,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.028472911963882623,
+     "kk_ileri_max": 0.123,
+     "kk_yan_ort": 0.005504138449962378,
+     "kk_yan_max": 0.082,
+     "kk_xy_max": 0.13771347065556078,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2495,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.022718637274549102,
+     "kk_ileri_max": 0.066,
+     "kk_yan_ort": 0.0011450901803607215,
+     "kk_yan_max": 0.008,
+     "kk_xy_max": 0.066007575322837,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2736,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.02604751461988304,
+     "kk_ileri_max": 0.079,
+     "kk_yan_ort": 0.0012229532163742691,
+     "kk_yan_max": 0.01,
+     "kk_xy_max": 0.0791580697086532,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2736,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.025168859649122806,
+     "kk_ileri_max": 0.067,
+     "kk_yan_ort": 0.0012320906432748539,
+     "kk_yan_max": 0.007,
+     "kk_xy_max": 0.06711929677819935,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "yanlis_koridor_adim": 0,
+   "konum_kararsiz_adim": 0,
+   "adim_top": 15374,
+   "en_kucuk_p_dogru": 0.99999,
+   "islenen": {
+    "n_isl": 5370,
+    "n_yok": 9686,
+    "isl_ort": -0.0005439478584729981,
+    "isl_mutlak": 0.004214338919925512,
+    "yok_ort": -0.036666632252735906,
+    "yok_mutlak": 0.036874974189551935
+   },
+   "sure_top_s": 436.1,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 3,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 3,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 3,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 3,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 3,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 3,
+     "kararsiz": 0
+    }
+   }
+  },
+  "tani": {
+   "koridor_5": {
+    "n": 10,
+    "yanlis_tohum": 4,
+    "yanlis_adim": 1386,
+    "es_max": 0.991,
+    "ilk_kesin": {
+     "n": 10,
+     "ort": 6.495220605337916,
+     "med": 6.377749883630161,
+     "min": 0.6404629340353971,
+     "max": 12.639966587868988
+    }
+   },
+   "koridor_6": {
+    "n": 10,
+    "yanlis_tohum": 3,
+    "yanlis_adim": 466,
+    "es_max": 0.992,
+    "ilk_kesin": {
+     "n": 10,
+     "ort": 5.977847058993831,
+     "med": 6.965314826029048,
+     "min": 1.7405151124776859,
+     "max": 10.46513235785293
+    }
+   },
+   "ikiz": {
+    "n": 10,
+    "kesin_tohum": 5,
+    "kesin_adim": 3022,
+    "adim": 9120,
+    "p_max": 0.95
+   }
+  },
+  "olaylar": [
+   {
+    "id": "B_koridor_6_bas_t2",
+    "bolum": "B",
+    "kor": "koridor_6",
+    "baslangic": "bas",
+    "tohum": 2,
+    "insan": 0,
+    "koridor_adim": 258,
+    "konum_adim": 0,
+    "haritalar": [
+     "koridor_5"
+    ],
+    "koridor_yol": [
+     0.42,
+     6.84
+    ],
+    "konum_yol": null,
+    "ilk_yol": 0.42,
+    "ilk_hata_m": 0.05,
+    "ilk_yon_farki_derece": 0.1,
+    "u_donusu": "yok",
+    "u_sonrasi_yol_m": null,
+    "fark_60_yol": 6.04,
+    "son_harita": "koridor_6",
+    "son_kararsiz": false,
+    "son_hata_m": 0.04,
+    "neden": "benzer çift: fark ışınlarda görünmeden eşine kesin"
+   },
+   {
+    "id": "B_koridor_6_bas_t4",
+    "bolum": "B",
+    "kor": "koridor_6",
+    "baslangic": "bas",
+    "tohum": 4,
+    "insan": 0,
+    "koridor_adim": 218,
+    "konum_adim": 0,
+    "haritalar": [
+     "koridor_5"
+    ],
+    "koridor_yol": [
+     0.99,
+     6.42
+    ],
+    "konum_yol": null,
+    "ilk_yol": 0.99,
+    "ilk_hata_m": 0.01,
+    "ilk_yon_farki_derece": 0.0,
+    "u_donusu": "yok",
+    "u_sonrasi_yol_m": null,
+    "fark_60_yol": 6.065,
+    "son_harita": "koridor_6",
+    "son_kararsiz": false,
+    "son_hata_m": 0.04,
+    "neden": "benzer çift: fark ışınlarda görünmeden eşine kesin"
+   },
+   {
+    "id": "C_koridor_5_bas_t101",
+    "bolum": "C",
+    "kor": "koridor_5",
+    "baslangic": "bas",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 117,
+    "konum_adim": 0,
+    "haritalar": [
+     "koridor_6"
+    ],
+    "koridor_yol": [
+     0.14,
+     3.04
+    ],
+    "konum_yol": null,
+    "ilk_yol": 0.14,
+    "ilk_hata_m": 18.05,
+    "ilk_yon_farki_derece": 179.3,
+    "u_donusu": "yok",
+    "u_sonrasi_yol_m": null,
+    "fark_60_yol": 6.065,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.04,
+    "neden": "poz 180° ters (koridorun uçtan uca eşi); insanlar var"
+   }
+  ],
+  "u_donuslu_kosu": {
+   "B": 30,
+   "C": 6
+  }
+ },
+ "v2": {
+  "A": {
+   "toplam": {
+    "n": 216,
+    "dogru": 99,
+    "kararsiz": 117,
+    "yanlis": 0
+   },
+   "oranlar": {
+    "koridor_1": {
+     "n": 36,
+     "dogru": 36,
+     "kararsiz": 0,
+     "yanlis": 0
+    },
+    "koridor_2": {
+     "n": 36,
+     "dogru": 36,
+     "kararsiz": 0,
+     "yanlis": 0
+    },
+    "koridor_3": {
+     "n": 36,
+     "dogru": 14,
+     "kararsiz": 22,
+     "yanlis": 0
+    },
+    "koridor_4": {
+     "n": 36,
+     "dogru": 13,
+     "kararsiz": 23,
+     "yanlis": 0
+    },
+    "koridor_5": {
+     "n": 36,
+     "dogru": 0,
+     "kararsiz": 36,
+     "yanlis": 0
+    },
+    "koridor_6": {
+     "n": 36,
+     "dogru": 0,
+     "kararsiz": 36,
+     "yanlis": 0
+    }
+   },
+   "ikili": {
+    "koridor_3": {
+     "K5-K6": 15,
+     "K3-K5": 4,
+     "K3-K6": 3
+    },
+    "koridor_4": {
+     "K5-K6": 2,
+     "K3-K4": 6,
+     "K4-K5": 10,
+     "K4-K6": 5
+    },
+    "koridor_5": {
+     "K5-K6": 35,
+     "K3-K5": 1
+    },
+    "koridor_6": {
+     "K5-K6": 34,
+     "K3-K6": 2
+    }
+   },
+   "yanlislar": [],
+   "yogun": {
+    "koridor_5": {
+     "n": 46,
+     "dogru": 0,
+     "kararsiz": 46,
+     "yanlis": 0
+    },
+    "koridor_6": {
+     "n": 46,
+     "dogru": 0,
+     "kararsiz": 46,
+     "yanlis": 0
+    }
+   },
+   "konum_hata_05": {
+    "koridor_1": 21,
+    "koridor_2": 4,
+    "koridor_3": 1,
+    "koridor_4": 2,
+    "koridor_5": 15,
+    "koridor_6": 4
+   },
+   "sure_ort": 3.7928896103896106
+  },
+  "B": {
+   "n": 90,
+   "yanlislar": [
+    {
+     "id": "B_koridor_5_orta_t2",
+     "kor": "koridor_5",
+     "baslangic": "orta",
+     "tohum": 2,
+     "harita": "koridor_4",
+     "adim": 225,
+     "sure_s": 22.5,
+     "ilk_yol": 28.35,
+     "son_yol": 33.778,
+     "en_buyuk_p": 1.0
+    },
+    {
+     "id": "B_koridor_6_orta_t2",
+     "kor": "koridor_6",
+     "baslangic": "orta",
+     "tohum": 2,
+     "harita": "koridor_5",
+     "adim": 477,
+     "sure_s": 47.7,
+     "ilk_yol": 22.003,
+     "son_yol": 33.751,
+     "en_buyuk_p": 1.0
+    }
+   ],
+   "konum_yanlislar": [
+    {
+     "id": "B_koridor_1_orta_t3",
+     "kor": "koridor_1",
+     "adim": 949,
+     "ilk_yol": 16.387,
+     "son_yol": 42.783,
+     "en_cok_m": 28.38,
+     "ileri": -28.38,
+     "yan": 0.009,
+     "gx": 1.803,
+     "gy": 6.0,
+     "x": 30.182,
+     "y": 5.992
+    },
+    {
+     "id": "B_koridor_5_orta_t1",
+     "kor": "koridor_5",
+     "adim": 576,
+     "ilk_yol": 11.645,
+     "son_yol": 26.525,
+     "en_cok_m": 21.78,
+     "ileri": 21.764,
+     "yan": 0.922,
+     "gx": 23.814,
+     "gy": 6.187,
+     "x": 2.03,
+     "y": 6.244
+    },
+    {
+     "id": "B_koridor_5_orta_t2",
+     "kor": "koridor_5",
+     "adim": 515,
+     "ilk_yol": 11.414,
+     "son_yol": 28.25,
+     "en_cok_m": 22.17,
+     "ileri": -7.488,
+     "yan": -20.867,
+     "gx": 24.073,
+     "gy": 6.023,
+     "x": 1.906,
+     "y": 6.38
+    },
+    {
+     "id": "B_koridor_5_orta_t5",
+     "kor": "koridor_5",
+     "adim": 565,
+     "ilk_yol": 11.39,
+     "son_yol": 26.5,
+     "en_cok_m": 22.21,
+     "ileri": -10.153,
+     "yan": -19.753,
+     "gx": 24.096,
+     "gy": 6.033,
+     "x": 1.889,
+     "y": 6.36
+    },
+    {
+     "id": "B_koridor_6_orta_t2",
+     "kor": "koridor_6",
+     "adim": 378,
+     "ilk_yol": 11.927,
+     "son_yol": 21.753,
+     "en_cok_m": 21.36,
+     "ileri": 21.33,
+     "yan": 1.21,
+     "gx": 23.651,
+     "gy": 6.196,
+     "x": 2.287,
+     "y": 6.201
+    }
+   ],
+   "koridor": {
+    "koridor_1": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 20307,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 1.64,
+     "konum_karar_max": 41.536,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.06459994786387684,
+     "kk_ileri_ort": 0.09886145648312611,
+     "kk_ileri_max": 28.38,
+     "kk_yan_ort": 0.002285165874061766,
+     "kk_yan_max": 0.16,
+     "kk_xy_max": 28.380001427061273,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 949,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 7695,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.066,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.008507347254447021,
+     "kk_ileri_ort": 0.005311125654450262,
+     "kk_ileri_max": 0.206,
+     "kk_yan_ort": 0.004747774869109948,
+     "kk_yan_max": 0.124,
+     "kk_xy_max": 0.21898401768165637,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 591,
+     "adim": 15629,
+     "karar_med": 0.14,
+     "karar_min": 0.0,
+     "karar_max": 5.09,
+     "karar_yok": 0,
+     "konum_karar_med": 0.14,
+     "konum_karar_max": 5.09,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.022121896162528208,
+     "kk_ileri_ort": 0.016030994346524777,
+     "kk_ileri_max": 0.22,
+     "kk_yan_ort": 0.008394413036248754,
+     "kk_yan_max": 0.129,
+     "kk_xy_max": 0.2354909764725604,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 110,
+     "adim": 14207,
+     "karar_med": 0.066,
+     "karar_min": 0.0,
+     "karar_max": 0.066,
+     "karar_yok": 0,
+     "konum_karar_med": 0.066,
+     "konum_karar_max": 0.216,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.007031849073135647,
+     "kk_ileri_ort": 0.010104290991759022,
+     "kk_ileri_max": 0.222,
+     "kk_yan_ort": 0.007096902529127594,
+     "kk_yan_max": 0.152,
+     "kk_xy_max": 0.24226638231500466,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 15,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 225,
+     "kararsiz_adim": 2638,
+     "adim": 16112,
+     "karar_med": 3.0525,
+     "karar_min": 1.115,
+     "karar_max": 9.865,
+     "karar_yok": 1,
+     "konum_karar_med": 4.6899999999999995,
+     "konum_karar_max": 26.625,
+     "konum_karar_yok": 1,
+     "konum_kararsiz_oran": 0.05738455607047382,
+     "kk_ileri_ort": 0.01150838876203713,
+     "kk_ileri_max": 4.876,
+     "kk_yan_ort": 0.0022204904199344786,
+     "kk_yan_max": 0.153,
+     "kk_xy_max": 4.876002563576029,
+     "son_dogru": 14,
+     "son_kararsiz": 0,
+     "son_yanlis": 1,
+     "konum_yanlis_adim": 1656,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 15,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 477,
+     "kararsiz_adim": 1725,
+     "adim": 16103,
+     "karar_med": 0.841,
+     "karar_min": 0.34,
+     "karar_max": 6.74,
+     "karar_yok": 1,
+     "konum_karar_med": 0.8654999999999999,
+     "konum_karar_max": 6.74,
+     "konum_karar_yok": 1,
+     "konum_kararsiz_oran": 0.03840759628822396,
+     "kk_ileri_ort": 0.012801567181378195,
+     "kk_ileri_max": 0.255,
+     "kk_yan_ort": 0.002807789813321042,
+     "kk_yan_max": 0.152,
+     "kk_xy_max": 0.2681566706237232,
+     "son_dogru": 14,
+     "son_kararsiz": 0,
+     "son_yanlis": 1,
+     "konum_yanlis_adim": 378,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "benzer_cift": {
+    "koridor_5_bas": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 8.325,
+      "med": 9.64,
+      "min": 5.915,
+      "max": 9.865
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 4.91,
+      "med": 4.915,
+      "min": 4.84,
+      "max": 5.015
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 3.675,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.69
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.49759,
+     "karar_yok": 0
+    },
+    "koridor_5_son": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 2.7702,
+      "med": 2.715,
+      "min": 1.74,
+      "max": 3.465
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.1824,
+      "med": 0.165,
+      "min": 0.0,
+      "max": 0.341
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.48147,
+     "karar_yok": 0
+    },
+    "koridor_5_orta": {
+     "n": 5,
+     "karar": {
+      "n": 4,
+      "ort": 1.4589999999999999,
+      "med": 1.5154999999999998,
+      "min": 1.115,
+      "max": 1.69
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.46481,
+     "karar_yok": 1
+    },
+    "koridor_6_bas": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 6.695,
+      "med": 6.715,
+      "min": 6.64,
+      "max": 6.74
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 4.94,
+      "med": 4.94,
+      "min": 4.865,
+      "max": 5.015
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 3.675,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.69
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.53231,
+     "karar_yok": 0
+    },
+    "koridor_6_son": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 0.7959999999999999,
+      "med": 0.716,
+      "min": 0.566,
+      "max": 1.041
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.1346,
+      "med": 0.191,
+      "min": 0.0,
+      "max": 0.291
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.48902,
+     "karar_yok": 0
+    },
+    "koridor_6_orta": {
+     "n": 5,
+     "karar": {
+      "n": 4,
+      "ort": 0.44650000000000006,
+      "med": 0.403,
+      "min": 0.34,
+      "max": 0.64
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 477,
+     "p_es_max": 1.0,
+     "karar_yok": 1
+    }
+   },
+   "islenen": {
+    "n_isl": 26781,
+    "n_yok": 48261,
+    "isl_ort": -0.022818602740749035,
+    "isl_mutlak": 0.028643702624995337,
+    "yok_ort": -0.02243314477528439,
+    "yok_mutlak": 0.027987028863885953
+   },
+   "sure_top_s": 3909.2999999999997,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 15,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 15,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 15,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 15,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 1,
+     "koridor_5": 14,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 1,
+     "koridor_6": 14,
+     "kararsiz": 0
+    }
+   }
+  },
+  "C": {
+   "n": 18,
+   "yanlislar": [
+    {
+     "id": "C_koridor_4_orta_t101",
+     "kor": "koridor_4",
+     "baslangic": "orta",
+     "tohum": 101,
+     "harita": "koridor_6",
+     "adim": 46,
+     "sure_s": 4.6,
+     "ilk_yol": 14.501,
+     "son_yol": 15.626,
+     "en_buyuk_p": 1.0
+    },
+    {
+     "id": "C_koridor_5_bas_t101",
+     "kor": "koridor_5",
+     "baslangic": "bas",
+     "tohum": 101,
+     "harita": "koridor_6",
+     "adim": 555,
+     "sure_s": 55.5,
+     "ilk_yol": 0.14,
+     "son_yol": 13.99,
+     "en_buyuk_p": 1.0
+    }
+   ],
+   "konum_yanlislar": [
+    {
+     "id": "C_koridor_2_bas_t101",
+     "kor": "koridor_2",
+     "adim": 74,
+     "ilk_yol": 8.715,
+     "son_yol": 10.384,
+     "en_cok_m": 10.37,
+     "ileri": -10.367,
+     "yan": 0.004,
+     "gx": 12.184,
+     "gy": 6.75,
+     "x": 1.817,
+     "y": 6.754
+    },
+    {
+     "id": "C_koridor_5_orta_t101",
+     "kor": "koridor_5",
+     "adim": 276,
+     "ilk_yol": 11.414,
+     "son_yol": 17.925,
+     "en_cok_m": 22.19,
+     "ileri": -7.543,
+     "yan": 20.864,
+     "gx": 24.076,
+     "gy": 6.378,
+     "x": 1.893,
+     "y": 6.04
+    }
+   ],
+   "koridor": {
+    "koridor_1": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 4062,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 1.415,
+     "konum_karar_max": 2.865,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.052257141954240936,
+     "kk_ileri_ort": 0.015749413909872362,
+     "kk_ileri_max": 0.238,
+     "kk_yan_ort": 0.012087783276895026,
+     "kk_yan_max": 0.123,
+     "kk_xy_max": 0.2477761086142084,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 1539,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.066,
+     "konum_karar_max": 8.715,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.02165506573859242,
+     "kk_ileri_ort": 0.5780298889837746,
+     "kk_ileri_max": 10.367,
+     "kk_yan_ort": 0.014348420153714774,
+     "kk_yan_max": 0.11,
+     "kk_xy_max": 10.36700077167934,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 74,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 79,
+     "adim": 3125,
+     "karar_med": 0.065,
+     "karar_min": 0.0,
+     "karar_max": 1.49,
+     "karar_yok": 0,
+     "konum_karar_med": 0.065,
+     "konum_karar_max": 1.49,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.01542513167795335,
+     "kk_ileri_ort": 0.020764937623112278,
+     "kk_ileri_max": 0.222,
+     "kk_yan_ort": 0.01648161523309258,
+     "kk_yan_max": 0.132,
+     "kk_xy_max": 0.2373604853382298,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 3,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 46,
+     "kararsiz_adim": 26,
+     "adim": 2843,
+     "karar_med": 0.066,
+     "karar_min": 0.065,
+     "karar_max": 15.701,
+     "karar_yok": 0,
+     "konum_karar_med": 0.215,
+     "konum_karar_max": 15.701,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.011507925516253695,
+     "kk_ileri_ort": 0.014546809501630183,
+     "kk_ileri_max": 0.091,
+     "kk_yan_ort": 0.015416394969725196,
+     "kk_yan_max": 0.1,
+     "kk_xy_max": 0.10412012293500235,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 3,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 555,
+     "kararsiz_adim": 230,
+     "adim": 3223,
+     "karar_med": 2.666,
+     "karar_min": 2.04,
+     "karar_max": 14.29,
+     "karar_yok": 0,
+     "konum_karar_med": 14.29,
+     "konum_karar_max": 18.525,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.05916872536356379,
+     "kk_ileri_ort": 0.018595878649112767,
+     "kk_ileri_max": 0.133,
+     "kk_yan_ort": 0.010812821980538066,
+     "kk_yan_max": 0.031,
+     "kk_xy_max": 0.13384319183283103,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 276,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 374,
+     "adim": 3220,
+     "karar_med": 1.24,
+     "karar_min": 0.74,
+     "karar_max": 6.74,
+     "karar_yok": 0,
+     "konum_karar_med": 1.24,
+     "konum_karar_max": 6.74,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.048055010975384976,
+     "kk_ileri_ort": 0.021405832747716094,
+     "kk_ileri_max": 0.263,
+     "kk_yan_ort": 0.012630358397751229,
+     "kk_yan_max": 0.121,
+     "kk_xy_max": 0.26409278672466613,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "benzer_cift": {
+    "koridor_5_bas": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 14.29,
+      "med": 14.29,
+      "min": 14.29,
+      "max": 14.29
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 4.815,
+      "med": 4.815,
+      "min": 4.815,
+      "max": 4.815
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 3.69,
+      "med": 3.69,
+      "min": 3.69,
+      "max": 3.69
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 555,
+     "p_es_max": 1.0,
+     "karar_yok": 0
+    },
+    "koridor_5_son": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 2.666,
+      "med": 2.666,
+      "min": 2.666,
+      "max": 2.666
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.316,
+      "med": 0.316,
+      "min": 0.316,
+      "max": 0.316
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.48939,
+     "karar_yok": 0
+    },
+    "koridor_5_orta": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 2.04,
+      "med": 2.04,
+      "min": 2.04,
+      "max": 2.04
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.47122,
+     "karar_yok": 0
+    },
+    "koridor_6_bas": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 6.74,
+      "med": 6.74,
+      "min": 6.74,
+      "max": 6.74
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 4.99,
+      "med": 4.99,
+      "min": 4.99,
+      "max": 4.99
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 3.665,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.665
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.49635,
+     "karar_yok": 0
+    },
+    "koridor_6_son": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 0.74,
+      "med": 0.74,
+      "min": 0.74,
+      "max": 0.74
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.42587,
+     "karar_yok": 0
+    },
+    "koridor_6_orta": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 1.24,
+      "med": 1.24,
+      "min": 1.24,
+      "max": 1.24
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.49438,
+     "karar_yok": 0
+    }
+   },
+   "islenen": {
+    "n_isl": 5123,
+    "n_yok": 9295,
+    "isl_ort": -0.045123365215693934,
+    "isl_mutlak": 0.058325785672457546,
+    "yok_ort": -0.04448133405056482,
+    "yok_mutlak": 0.05756299085529855
+   },
+   "sure_top_s": 674.7,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 3,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 3,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 3,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 3,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 3,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 3,
+     "kararsiz": 0
+    }
+   }
+  },
+  "D": {
+   "n": 18,
+   "yanlislar": [],
+   "konum_yanlislar": [],
+   "koridor": {
+    "koridor_1": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 3456,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.002971064814814815,
+     "kk_ileri_max": 0.025,
+     "kk_yan_ort": 0.0011012731481481483,
+     "kk_yan_max": 0.011,
+     "kk_xy_max": 0.02501999200639361,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 1293,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.001725444702242846,
+     "kk_ileri_max": 0.016,
+     "kk_yan_ort": 0.0017385924207269916,
+     "kk_yan_max": 0.018,
+     "kk_xy_max": 0.021095023109728987,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2658,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.007712189616252823,
+     "kk_ileri_max": 0.077,
+     "kk_yan_ort": 0.005733634311512416,
+     "kk_yan_max": 0.08,
+     "kk_xy_max": 0.09621330469326994,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2495,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.004029659318637275,
+     "kk_ileri_max": 0.037,
+     "kk_yan_ort": 0.0011627254509018036,
+     "kk_yan_max": 0.008,
+     "kk_xy_max": 0.037656340767525456,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2736,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.005610380116959065,
+     "kk_ileri_max": 0.115,
+     "kk_yan_ort": 0.0012781432748538012,
+     "kk_yan_max": 0.012,
+     "kk_xy_max": 0.11515641536623134,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2736,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.004035818713450292,
+     "kk_ileri_max": 0.039,
+     "kk_yan_ort": 0.001046418128654971,
+     "kk_yan_max": 0.007,
+     "kk_xy_max": 0.03905124837953328,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "yanlis_koridor_adim": 0,
+   "konum_kararsiz_adim": 0,
+   "adim_top": 15374,
+   "en_kucuk_p_dogru": 0.99999,
+   "islenen": {
+    "n_isl": 5370,
+    "n_yok": 9686,
+    "isl_ort": 0.0002651769087523276,
+    "isl_mutlak": 0.004292737430167598,
+    "yok_ort": 0.00025449101796407193,
+    "yok_mutlak": 0.004379000619450755
+   },
+   "sure_top_s": 442.9,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 3,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 3,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 3,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 3,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 3,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 3,
+     "kararsiz": 0
+    }
+   }
+  },
+  "tani": {
+   "koridor_5": {
+    "n": 10,
+    "yanlis_tohum": 0,
+    "yanlis_adim": 0,
+    "es_max": 0.495,
+    "ilk_kesin": {
+     "n": 10,
+     "ort": 8.795110339048845,
+     "med": 9.840044894219748,
+     "min": 6.390246199158862,
+     "max": 9.840044894219748
+    }
+   },
+   "koridor_6": {
+    "n": 10,
+    "yanlis_tohum": 0,
+    "yanlis_adim": 0,
+    "es_max": 0.529,
+    "ilk_kesin": {
+     "n": 10,
+     "ort": 6.665326507696133,
+     "med": 6.6653265076961326,
+     "min": 6.6653265076961326,
+     "max": 6.6653265076961326
+    }
+   },
+   "ikiz": {
+    "n": 10,
+    "kesin_tohum": 0,
+    "kesin_adim": 0,
+    "adim": 9120,
+    "p_max": 0.504
+   }
+  },
+  "olaylar": [
+   {
+    "id": "B_koridor_1_orta_t3",
+    "bolum": "B",
+    "kor": "koridor_1",
+    "baslangic": "orta",
+    "tohum": 3,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 949,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     16.39,
+     42.78
+    ],
+    "ilk_yol": 16.39,
+    "ilk_hata_m": 24.75,
+    "ilk_yon_farki_derece": 179.9,
+    "u_donusu": "sonra",
+    "u_sonrasi_yol_m": 1.61,
+    "fark_60_yol": null,
+    "son_harita": "koridor_1",
+    "son_kararsiz": false,
+    "son_hata_m": 28.38,
+    "neden": "U dönüşünden 1,6 m sonra poz 180° ters (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_5_orta_t1",
+    "bolum": "B",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 1,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 576,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.64,
+     26.52
+    ],
+    "ilk_yol": 11.64,
+    "ilk_hata_m": 21.74,
+    "ilk_yon_farki_derece": 179.0,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_5_orta_t2",
+    "bolum": "B",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 2,
+    "insan": 0,
+    "koridor_adim": 225,
+    "konum_adim": 515,
+    "haritalar": [
+     "koridor_4"
+    ],
+    "koridor_yol": [
+     28.35,
+     33.78
+    ],
+    "konum_yol": [
+     11.41,
+     28.25
+    ],
+    "ilk_yol": 11.41,
+    "ilk_hata_m": 22.17,
+    "ilk_yon_farki_derece": 179.8,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_4",
+    "son_kararsiz": false,
+    "son_hata_m": null,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi); yanlış koridor, yer kaymasından sonra"
+   },
+   {
+    "id": "B_koridor_5_orta_t5",
+    "bolum": "B",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 5,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 565,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.39,
+     26.5
+    ],
+    "ilk_yol": 11.39,
+    "ilk_hata_m": 22.21,
+    "ilk_yon_farki_derece": 179.9,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_6_orta_t2",
+    "bolum": "B",
+    "kor": "koridor_6",
+    "baslangic": "orta",
+    "tohum": 2,
+    "insan": 0,
+    "koridor_adim": 477,
+    "konum_adim": 378,
+    "haritalar": [
+     "koridor_5"
+    ],
+    "koridor_yol": [
+     22.0,
+     33.75
+    ],
+    "konum_yol": [
+     11.93,
+     21.75
+    ],
+    "ilk_yol": 11.93,
+    "ilk_hata_m": 21.36,
+    "ilk_yon_farki_derece": 179.7,
+    "u_donusu": "sonra",
+    "u_sonrasi_yol_m": 0.16,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": null,
+    "neden": "U dönüşünden 0,2 m sonra poz 180° ters (koridorun uçtan uca eşi); yanlış koridor, yer kaymasından sonra"
+   },
+   {
+    "id": "C_koridor_2_bas_t101",
+    "bolum": "C",
+    "kor": "koridor_2",
+    "baslangic": "bas",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 0,
+    "konum_adim": 74,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     8.71,
+     10.38
+    ],
+    "ilk_yol": 8.71,
+    "ilk_hata_m": 7.02,
+    "ilk_yon_farki_derece": 178.4,
+    "u_donusu": "yok",
+    "u_sonrasi_yol_m": null,
+    "fark_60_yol": null,
+    "son_harita": "koridor_2",
+    "son_kararsiz": false,
+    "son_hata_m": 10.37,
+    "neden": "poz 180° ters (koridorun uçtan uca eşi); insanlar var"
+   },
+   {
+    "id": "C_koridor_4_orta_t101",
+    "bolum": "C",
+    "kor": "koridor_4",
+    "baslangic": "orta",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 46,
+    "konum_adim": 0,
+    "haritalar": [
+     "koridor_6"
+    ],
+    "koridor_yol": [
+     14.5,
+     15.63
+    ],
+    "konum_yol": null,
+    "ilk_yol": 14.5,
+    "ilk_hata_m": 0.35,
+    "ilk_yon_farki_derece": 0.1,
+    "u_donusu": "sonra",
+    "u_sonrasi_yol_m": 3.71,
+    "fark_60_yol": null,
+    "son_harita": "koridor_4",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "yanlış koridora kesin; insanlar var"
+   },
+   {
+    "id": "C_koridor_5_bas_t101",
+    "bolum": "C",
+    "kor": "koridor_5",
+    "baslangic": "bas",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 555,
+    "konum_adim": 0,
+    "haritalar": [
+     "koridor_6"
+    ],
+    "koridor_yol": [
+     0.14,
+     13.99
+    ],
+    "konum_yol": null,
+    "ilk_yol": 0.14,
+    "ilk_hata_m": 18.02,
+    "ilk_yon_farki_derece": 179.4,
+    "u_donusu": "yok",
+    "u_sonrasi_yol_m": null,
+    "fark_60_yol": 4.815,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "poz 180° ters (koridorun uçtan uca eşi); insanlar var"
+   },
+   {
+    "id": "C_koridor_5_orta_t101",
+    "bolum": "C",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 0,
+    "konum_adim": 276,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.41,
+     17.93
+    ],
+    "ilk_yol": 11.41,
+    "ilk_hata_m": 22.19,
+    "ilk_yon_farki_derece": 179.0,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi); insanlar var"
+   }
+  ],
+  "u_donuslu_kosu": {
+   "B": 30,
+   "C": 6
+  }
+ },
+ "v2_360": {
+  "A": {
+   "toplam": {
+    "n": 216,
+    "dogru": 119,
+    "kararsiz": 97,
+    "yanlis": 0
+   },
+   "oranlar": {
+    "koridor_1": {
+     "n": 36,
+     "dogru": 36,
+     "kararsiz": 0,
+     "yanlis": 0
+    },
+    "koridor_2": {
+     "n": 36,
+     "dogru": 36,
+     "kararsiz": 0,
+     "yanlis": 0
+    },
+    "koridor_3": {
+     "n": 36,
+     "dogru": 22,
+     "kararsiz": 14,
+     "yanlis": 0
+    },
+    "koridor_4": {
+     "n": 36,
+     "dogru": 25,
+     "kararsiz": 11,
+     "yanlis": 0
+    },
+    "koridor_5": {
+     "n": 36,
+     "dogru": 0,
+     "kararsiz": 36,
+     "yanlis": 0
+    },
+    "koridor_6": {
+     "n": 36,
+     "dogru": 0,
+     "kararsiz": 36,
+     "yanlis": 0
+    }
+   },
+   "ikili": {
+    "koridor_3": {
+     "K5-K6": 6,
+     "K3-K5": 6,
+     "K3-K6": 2
+    },
+    "koridor_4": {
+     "K4-K6": 4,
+     "K4-K5": 7
+    },
+    "koridor_5": {
+     "K5-K6": 36
+    },
+    "koridor_6": {
+     "K5-K6": 35,
+     "K3-K6": 1
+    }
+   },
+   "yanlislar": [],
+   "yogun": {
+    "koridor_5": {
+     "n": 46,
+     "dogru": 0,
+     "kararsiz": 46,
+     "yanlis": 0
+    },
+    "koridor_6": {
+     "n": 46,
+     "dogru": 0,
+     "kararsiz": 46,
+     "yanlis": 0
+    }
+   },
+   "konum_hata_05": {
+    "koridor_1": 4,
+    "koridor_2": 0,
+    "koridor_3": 0,
+    "koridor_4": 0,
+    "koridor_5": 6,
+    "koridor_6": 0
+   },
+   "sure_ort": 3.757922077922078
+  },
+  "B": {
+   "n": 90,
+   "yanlislar": [
+    {
+     "id": "B_koridor_6_orta_t3",
+     "kor": "koridor_6",
+     "baslangic": "orta",
+     "tohum": 3,
+     "harita": "koridor_5",
+     "adim": 285,
+     "sure_s": 28.5,
+     "ilk_yol": 26.85,
+     "son_yol": 33.779,
+     "en_buyuk_p": 1.0
+    }
+   ],
+   "konum_yanlislar": [
+    {
+     "id": "B_koridor_1_orta_t1",
+     "kor": "koridor_1",
+     "adim": 637,
+     "ilk_yol": 14.502,
+     "son_yol": 30.285,
+     "en_cok_m": 27.89,
+     "ileri": 4.39,
+     "yan": -27.54,
+     "gx": 29.983,
+     "gy": 5.81,
+     "x": 2.099,
+     "y": 6.175
+    },
+    {
+     "id": "B_koridor_1_orta_t2",
+     "kor": "koridor_1",
+     "adim": 292,
+     "ilk_yol": 14.657,
+     "son_yol": 21.812,
+     "en_cok_m": 27.75,
+     "ileri": 23.621,
+     "yan": 14.571,
+     "gx": 29.853,
+     "gy": 6.113,
+     "x": 2.101,
+     "y": 5.882
+    },
+    {
+     "id": "B_koridor_1_orta_t4",
+     "kor": "koridor_1",
+     "adim": 297,
+     "ilk_yol": 14.657,
+     "son_yol": 21.936,
+     "en_cok_m": 27.8,
+     "ileri": 23.62,
+     "yan": 14.654,
+     "gx": 29.856,
+     "gy": 6.114,
+     "x": 2.061,
+     "y": 5.884
+    },
+    {
+     "id": "B_koridor_5_orta_t1",
+     "kor": "koridor_5",
+     "adim": 866,
+     "ilk_yol": 11.829,
+     "son_yol": 33.778,
+     "en_cok_m": 22.37,
+     "ileri": -22.371,
+     "yan": 0.009,
+     "gx": 1.814,
+     "gy": 6.2,
+     "x": 24.185,
+     "y": 6.192
+    },
+    {
+     "id": "B_koridor_5_orta_t2",
+     "kor": "koridor_5",
+     "adim": 630,
+     "ilk_yol": 11.414,
+     "son_yol": 27.3,
+     "en_cok_m": 22.17,
+     "ileri": -7.482,
+     "yan": -20.865,
+     "gx": 24.073,
+     "gy": 6.023,
+     "x": 1.91,
+     "y": 6.375
+    },
+    {
+     "id": "B_koridor_5_orta_t4",
+     "kor": "koridor_5",
+     "adim": 624,
+     "ilk_yol": 11.389,
+     "son_yol": 27.775,
+     "en_cok_m": 22.25,
+     "ileri": -10.31,
+     "yan": 19.722,
+     "gx": 24.096,
+     "gy": 6.366,
+     "x": 1.843,
+     "y": 6.11
+    },
+    {
+     "id": "B_koridor_6_orta_t3",
+     "kor": "koridor_6",
+     "adim": 599,
+     "ilk_yol": 11.466,
+     "son_yol": 26.6,
+     "en_cok_m": 22.08,
+     "ileri": -1.368,
+     "yan": -22.034,
+     "gx": 24.027,
+     "gy": 6.01,
+     "x": 1.955,
+     "y": 6.397
+    },
+    {
+     "id": "B_koridor_6_orta_t4",
+     "kor": "koridor_6",
+     "adim": 588,
+     "ilk_yol": 11.518,
+     "son_yol": 26.453,
+     "en_cok_m": 21.98,
+     "ileri": 4.999,
+     "yan": 21.406,
+     "gx": 23.972,
+     "gy": 6.388,
+     "x": 1.994,
+     "y": 6.018
+    }
+   ],
+   "koridor": {
+    "koridor_1": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 20307,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.365,
+     "konum_karar_max": 29.435,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.01585889088370078,
+     "kk_ileri_ort": 0.006386650985004411,
+     "kk_ileri_max": 0.568,
+     "kk_yan_ort": 0.0018873860629226701,
+     "kk_yan_max": 0.143,
+     "kk_xy_max": 0.5685499098584046,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 1226,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 7695,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.066,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.006805877803557617,
+     "kk_ileri_ort": 0.004326362566984708,
+     "kk_ileri_max": 0.18,
+     "kk_yan_ort": 0.005652594432100379,
+     "kk_yan_max": 0.145,
+     "kk_xy_max": 0.19906029237394382,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 310,
+     "adim": 15629,
+     "karar_med": 0.066,
+     "karar_min": 0.0,
+     "karar_max": 1.34,
+     "karar_yok": 0,
+     "konum_karar_med": 0.066,
+     "konum_karar_max": 1.34,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.008276899924755455,
+     "kk_ileri_ort": 0.008353286768065802,
+     "kk_ileri_max": 0.185,
+     "kk_yan_ort": 0.008595600235002285,
+     "kk_yan_max": 0.129,
+     "kk_xy_max": 0.20437710243566914,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 88,
+     "adim": 14207,
+     "karar_med": 0.065,
+     "karar_min": 0.0,
+     "karar_max": 0.066,
+     "karar_yok": 0,
+     "konum_karar_med": 0.065,
+     "konum_karar_max": 0.066,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.004410233268536517,
+     "kk_ileri_ort": 0.005329414264466322,
+     "kk_ileri_max": 0.208,
+     "kk_yan_ort": 0.007110772717614562,
+     "kk_yan_max": 0.138,
+     "kk_xy_max": 0.2348297255459794,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 15,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 3153,
+     "adim": 16112,
+     "karar_med": 2.715,
+     "karar_min": 1.065,
+     "karar_max": 11.29,
+     "karar_yok": 0,
+     "konum_karar_med": 11.165,
+     "konum_karar_max": 11.829,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.05017753681864403,
+     "kk_ileri_ort": 1.841749122656852,
+     "kk_ileri_max": 22.371,
+     "kk_yan_ort": 0.058963707951724724,
+     "kk_yan_max": 22.095,
+     "kk_xy_max": 22.371001810379436,
+     "son_dogru": 15,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 2120,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 15,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 285,
+     "kararsiz_adim": 2577,
+     "adim": 16103,
+     "karar_med": 1.903,
+     "karar_min": 0.49,
+     "karar_max": 9.54,
+     "karar_yok": 1,
+     "konum_karar_med": 1.9155,
+     "konum_karar_max": 26.553,
+     "konum_karar_yok": 1,
+     "konum_kararsiz_oran": 0.043323628415836986,
+     "kk_ileri_ort": 0.003911764705882353,
+     "kk_ileri_max": 0.208,
+     "kk_yan_ort": 0.002606853750674582,
+     "kk_yan_max": 0.141,
+     "kk_xy_max": 0.22983907413666635,
+     "son_dogru": 14,
+     "son_kararsiz": 0,
+     "son_yanlis": 1,
+     "konum_yanlis_adim": 1187,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "benzer_cift": {
+    "koridor_5_bas": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 11.209999999999999,
+      "med": 11.19,
+      "min": 11.165,
+      "max": 11.29
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 7.63,
+      "med": 7.64,
+      "min": 7.615,
+      "max": 7.64
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 3.675,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.69
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.50658,
+     "karar_yok": 0
+    },
+    "koridor_5_son": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 2.3703999999999996,
+      "med": 2.715,
+      "min": 1.716,
+      "max": 2.865
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.46849,
+     "karar_yok": 0
+    },
+    "koridor_5_orta": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 1.5552,
+      "med": 1.54,
+      "min": 1.065,
+      "max": 2.365
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.008400000000000001,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.042
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.49628,
+     "karar_yok": 0
+    },
+    "koridor_6_bas": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 9.474999999999998,
+      "med": 9.465,
+      "min": 9.44,
+      "max": 9.54
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 7.63,
+      "med": 7.64,
+      "min": 7.615,
+      "max": 7.64
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 3.675,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.69
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.50737,
+     "karar_yok": 0
+    },
+    "koridor_6_son": {
+     "n": 5,
+     "karar": {
+      "n": 5,
+      "ort": 1.7606000000000002,
+      "med": 1.891,
+      "min": 1.54,
+      "max": 1.916
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.1032,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.516
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.47979,
+     "karar_yok": 0
+    },
+    "koridor_6_orta": {
+     "n": 5,
+     "karar": {
+      "n": 4,
+      "ort": 0.928,
+      "med": 0.9410000000000001,
+      "min": 0.49,
+      "max": 1.34
+     },
+     "fark_60": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 5,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 285,
+     "p_es_max": 1.0,
+     "karar_yok": 1
+    }
+   },
+   "islenen": {
+    "n_isl": 26662,
+    "n_yok": 48061,
+    "isl_ort": 0.09397524566799188,
+    "isl_mutlak": 0.28447265771510016,
+    "yok_ort": 0.09180942968311105,
+    "yok_mutlak": 0.2839109673123739
+   },
+   "sure_top_s": 3911.4,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 15,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 15,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 15,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 15,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 15,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 1,
+     "koridor_6": 14,
+     "kararsiz": 0
+    }
+   }
+  },
+  "C": {
+   "n": 18,
+   "yanlislar": [
+    {
+     "id": "C_koridor_6_bas_t101",
+     "kor": "koridor_6",
+     "baslangic": "bas",
+     "tohum": 101,
+     "harita": "koridor_3",
+     "adim": 55,
+     "sure_s": 5.5,
+     "ilk_yol": 0.765,
+     "son_yol": 2.115,
+     "en_buyuk_p": 0.899
+    }
+   ],
+   "konum_yanlislar": [
+    {
+     "id": "C_koridor_5_orta_t101",
+     "kor": "koridor_5",
+     "adim": 631,
+     "ilk_yol": 11.618,
+     "son_yol": 27.724,
+     "en_cok_m": 21.8,
+     "ileri": 15.357,
+     "yan": 15.467,
+     "gx": 23.885,
+     "gy": 6.345,
+     "x": 2.091,
+     "y": 6.057
+    }
+   ],
+   "koridor": {
+    "koridor_1": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 4062,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.54,
+     "konum_karar_max": 0.565,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.021442651055492354,
+     "kk_ileri_ort": 0.009104245164531524,
+     "kk_ileri_max": 0.199,
+     "kk_yan_ort": 0.01392715398141171,
+     "kk_yan_max": 0.13,
+     "kk_xy_max": 0.2200363606316011,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 1539,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.215,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.013147718484145398,
+     "kk_ileri_ort": 0.013204336399474376,
+     "kk_ileri_max": 0.169,
+     "kk_yan_ort": 0.011516425755584758,
+     "kk_yan_max": 0.123,
+     "kk_xy_max": 0.1869786084021378,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 38,
+     "adim": 3125,
+     "karar_med": 0.065,
+     "karar_min": 0.0,
+     "karar_max": 0.465,
+     "karar_yok": 0,
+     "konum_karar_med": 0.065,
+     "konum_karar_max": 0.465,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.00526711813393529,
+     "kk_ileri_ort": 0.009537414965986396,
+     "kk_ileri_max": 0.197,
+     "kk_yan_ort": 0.017435050210560417,
+     "kk_yan_max": 0.123,
+     "kk_xy_max": 0.2153555200128383,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 22,
+     "adim": 2843,
+     "karar_med": 0.065,
+     "karar_min": 0.0,
+     "karar_max": 0.066,
+     "karar_yok": 0,
+     "konum_karar_med": 0.065,
+     "konum_karar_max": 0.066,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.004412354592860008,
+     "kk_ileri_ort": 0.006757178305565403,
+     "kk_ileri_max": 0.174,
+     "kk_yan_ort": 0.014651187522155265,
+     "kk_yan_max": 0.12,
+     "kk_xy_max": 0.20374493858744072,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 512,
+     "adim": 3223,
+     "karar_med": 2.016,
+     "karar_min": 1.84,
+     "karar_max": 8.315,
+     "karar_yok": 0,
+     "konum_karar_med": 8.315,
+     "konum_karar_max": 27.799,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.04939984282841964,
+     "kk_ileri_ort": 0.003939670932358318,
+     "kk_ileri_max": 0.017,
+     "kk_yan_ort": 0.00928031687995125,
+     "kk_yan_max": 0.025,
+     "kk_xy_max": 0.025,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 631,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 3,
+     "yanlis_kosu": 1,
+     "yanlis_adim": 55,
+     "kararsiz_adim": 429,
+     "adim": 3220,
+     "karar_med": 1.415,
+     "karar_min": 0.815,
+     "karar_max": 9.365,
+     "karar_yok": 0,
+     "konum_karar_med": 1.415,
+     "konum_karar_max": 9.365,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.028654342398498633,
+     "kk_ileri_ort": 0.01751702673013548,
+     "kk_ileri_max": 0.188,
+     "kk_yan_ort": 0.013441596484804101,
+     "kk_yan_max": 0.143,
+     "kk_xy_max": 0.20977368757782755,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "benzer_cift": {
+    "koridor_5_bas": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 8.315,
+      "med": 8.315,
+      "min": 8.315,
+      "max": 8.315
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 7.64,
+      "med": 7.64,
+      "min": 7.64,
+      "max": 7.64
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 3.69,
+      "med": 3.69,
+      "min": 3.69,
+      "max": 3.69
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.53728,
+     "karar_yok": 0
+    },
+    "koridor_5_son": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 2.016,
+      "med": 2.016,
+      "min": 2.016,
+      "max": 2.016
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.48658,
+     "karar_yok": 0
+    },
+    "koridor_5_orta": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 1.84,
+      "med": 1.84,
+      "min": 1.84,
+      "max": 1.84
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.50455,
+     "karar_yok": 0
+    },
+    "koridor_6_bas": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 9.365,
+      "med": 9.365,
+      "min": 9.365,
+      "max": 9.365
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 7.615,
+      "med": 7.615,
+      "min": 7.615,
+      "max": 7.615
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 3.665,
+      "med": 3.665,
+      "min": 3.665,
+      "max": 3.665
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.5156,
+     "karar_yok": 0
+    },
+    "koridor_6_son": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 0.815,
+      "med": 0.815,
+      "min": 0.815,
+      "max": 0.815
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.41013,
+     "karar_yok": 0
+    },
+    "koridor_6_orta": {
+     "n": 1,
+     "karar": {
+      "n": 1,
+      "ort": 1.415,
+      "med": 1.415,
+      "min": 1.415,
+      "max": 1.415
+     },
+     "fark_60": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "fark_500": {
+      "n": 1,
+      "ort": 0.0,
+      "med": 0.0,
+      "min": 0.0,
+      "max": 0.0
+     },
+     "once_karar": 0,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "p_es_max": 0.49312,
+     "karar_yok": 0
+    }
+   },
+   "islenen": {
+    "n_isl": 5448,
+    "n_yok": 9880,
+    "isl_ort": -0.0016457415565345082,
+    "isl_mutlak": 0.00901064610866373,
+    "yok_ort": -0.00155748987854251,
+    "yok_mutlak": 0.008903846153846155
+   },
+   "sure_top_s": 675.2,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 3,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 3,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 3,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 3,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 3,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 3,
+     "kararsiz": 0
+    }
+   }
+  },
+  "D": {
+   "n": 18,
+   "yanlislar": [],
+   "konum_yanlislar": [],
+   "koridor": {
+    "koridor_1": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 3456,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.0018666087962962965,
+     "kk_ileri_max": 0.008,
+     "kk_yan_ort": 0.0008524305555555557,
+     "kk_yan_max": 0.013,
+     "kk_xy_max": 0.013601470508735444,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_2": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 1293,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.0013464810518174785,
+     "kk_ileri_max": 0.014,
+     "kk_yan_ort": 0.0018468677494199535,
+     "kk_yan_max": 0.024,
+     "kk_xy_max": 0.025,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_3": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2658,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.00425206922498119,
+     "kk_ileri_max": 0.058,
+     "kk_yan_ort": 0.005653875094055682,
+     "kk_yan_max": 0.079,
+     "kk_xy_max": 0.09569221493935648,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_4": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2495,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.0021723446893787573,
+     "kk_ileri_max": 0.011,
+     "kk_yan_ort": 0.0014380761523046092,
+     "kk_yan_max": 0.01,
+     "kk_xy_max": 0.012529964086141668,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_5": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2736,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.001963815789473684,
+     "kk_ileri_max": 0.027,
+     "kk_yan_ort": 0.0014203216374269005,
+     "kk_yan_max": 0.011,
+     "kk_xy_max": 0.028231188426986208,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    },
+    "koridor_6": {
+     "n": 3,
+     "yanlis_kosu": 0,
+     "yanlis_adim": 0,
+     "kararsiz_adim": 0,
+     "adim": 2736,
+     "karar_med": 0.0,
+     "karar_min": 0.0,
+     "karar_max": 0.0,
+     "karar_yok": 0,
+     "konum_karar_med": 0.0,
+     "konum_karar_max": 0.0,
+     "konum_karar_yok": 0,
+     "konum_kararsiz_oran": 0.0,
+     "kk_ileri_ort": 0.0014389619883040936,
+     "kk_ileri_max": 0.007,
+     "kk_yan_ort": 0.001251827485380117,
+     "kk_yan_max": 0.012,
+     "kk_xy_max": 0.012369316876852983,
+     "son_dogru": 3,
+     "son_kararsiz": 0,
+     "son_yanlis": 0,
+     "konum_yanlis_adim": 0,
+     "temas": 0,
+     "bitmedi": 0
+    }
+   },
+   "yanlis_koridor_adim": 0,
+   "konum_kararsiz_adim": 0,
+   "adim_top": 15374,
+   "en_kucuk_p_dogru": 0.99999,
+   "islenen": {
+    "n_isl": 5370,
+    "n_yok": 9686,
+    "isl_ort": -0.0005884543761638735,
+    "isl_mutlak": 0.002169087523277468,
+    "yok_ort": -0.0006268841627090647,
+    "yok_mutlak": 0.0022312616147016316
+   },
+   "sure_top_s": 443.50000000000006,
+   "son_tablo": {
+    "koridor_1": {
+     "koridor_1": 3,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_2": {
+     "koridor_1": 0,
+     "koridor_2": 3,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_3": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 3,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_4": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 3,
+     "koridor_5": 0,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_5": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 3,
+     "koridor_6": 0,
+     "kararsiz": 0
+    },
+    "koridor_6": {
+     "koridor_1": 0,
+     "koridor_2": 0,
+     "koridor_3": 0,
+     "koridor_4": 0,
+     "koridor_5": 0,
+     "koridor_6": 3,
+     "kararsiz": 0
+    }
+   }
+  },
+  "tani": null,
+  "olaylar": [
+   {
+    "id": "B_koridor_1_orta_t1",
+    "bolum": "B",
+    "kor": "koridor_1",
+    "baslangic": "orta",
+    "tohum": 1,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 637,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     14.5,
+     30.29
+    ],
+    "ilk_yol": 14.5,
+    "ilk_hata_m": 27.89,
+    "ilk_yon_farki_derece": 179.4,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": null,
+    "son_harita": "koridor_1",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_1_orta_t2",
+    "bolum": "B",
+    "kor": "koridor_1",
+    "baslangic": "orta",
+    "tohum": 2,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 292,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     14.66,
+     21.81
+    ],
+    "ilk_yol": 14.66,
+    "ilk_hata_m": 27.75,
+    "ilk_yon_farki_derece": 178.1,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": null,
+    "son_harita": "koridor_1",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_1_orta_t4",
+    "bolum": "B",
+    "kor": "koridor_1",
+    "baslangic": "orta",
+    "tohum": 4,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 297,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     14.66,
+     21.94
+    ],
+    "ilk_yol": 14.66,
+    "ilk_hata_m": 27.8,
+    "ilk_yon_farki_derece": 178.1,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": null,
+    "son_harita": "koridor_1",
+    "son_kararsiz": false,
+    "son_hata_m": 0.0,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_5_orta_t1",
+    "bolum": "B",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 1,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 866,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.83,
+     33.78
+    ],
+    "ilk_yol": 11.83,
+    "ilk_hata_m": 21.53,
+    "ilk_yon_farki_derece": 180.0,
+    "u_donusu": "sonra",
+    "u_sonrasi_yol_m": 0.04,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 22.37,
+    "neden": "U dönüşünden 0,0 m sonra poz 180° ters (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_5_orta_t2",
+    "bolum": "B",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 2,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 630,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.41,
+     27.3
+    ],
+    "ilk_yol": 11.41,
+    "ilk_hata_m": 22.17,
+    "ilk_yon_farki_derece": 179.9,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.01,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_5_orta_t4",
+    "bolum": "B",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 4,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 624,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.39,
+     27.77
+    ],
+    "ilk_yol": 11.39,
+    "ilk_hata_m": 22.25,
+    "ilk_yon_farki_derece": 179.5,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.042,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.01,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "B_koridor_6_orta_t3",
+    "bolum": "B",
+    "kor": "koridor_6",
+    "baslangic": "orta",
+    "tohum": 3,
+    "insan": 0,
+    "koridor_adim": 285,
+    "konum_adim": 599,
+    "haritalar": [
+     "koridor_5"
+    ],
+    "koridor_yol": [
+     26.85,
+     33.78
+    ],
+    "konum_yol": [
+     11.47,
+     26.6
+    ],
+    "ilk_yol": 11.47,
+    "ilk_hata_m": 22.08,
+    "ilk_yon_farki_derece": 179.3,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": null,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi); yanlış koridor, yer kaymasından sonra"
+   },
+   {
+    "id": "B_koridor_6_orta_t4",
+    "bolum": "B",
+    "kor": "koridor_6",
+    "baslangic": "orta",
+    "tohum": 4,
+    "insan": 0,
+    "koridor_adim": 0,
+    "konum_adim": 588,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.52,
+     26.45
+    ],
+    "ilk_yol": 11.52,
+    "ilk_hata_m": 21.98,
+    "ilk_yon_farki_derece": 178.7,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_6",
+    "son_kararsiz": false,
+    "son_hata_m": 0.01,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi)"
+   },
+   {
+    "id": "C_koridor_5_orta_t101",
+    "bolum": "C",
+    "kor": "koridor_5",
+    "baslangic": "orta",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 0,
+    "konum_adim": 631,
+    "haritalar": [],
+    "koridor_yol": null,
+    "konum_yol": [
+     11.62,
+     27.72
+    ],
+    "ilk_yol": 11.62,
+    "ilk_hata_m": 21.8,
+    "ilk_yon_farki_derece": 178.3,
+    "u_donusu": "sirasinda",
+    "u_sonrasi_yol_m": 0.0,
+    "fark_60_yol": 0.0,
+    "son_harita": "koridor_5",
+    "son_kararsiz": false,
+    "son_hata_m": 0.01,
+    "neden": "U dönüşü sırasında poz 180° ters döndü (koridorun uçtan uca eşi); insanlar var"
+   },
+   {
+    "id": "C_koridor_6_bas_t101",
+    "bolum": "C",
+    "kor": "koridor_6",
+    "baslangic": "bas",
+    "tohum": 101,
+    "insan": 3,
+    "koridor_adim": 55,
+    "konum_adim": 0,
+    "haritalar": [
+     "koridor_3"
+    ],
+    "koridor_yol": [
+     0.77,
+     2.12
+    ],
+    "konum_yol": null,
+    "ilk_yol": 0.77,
+    "ilk_hata_m": 4.0,
+    "ilk_yon_farki_derece": 0.7,
+    "u_donusu": "yok",
+    "u_sonrasi_yol_m": null,
+    "fark_60_yol": 7.615,
+    "son_harita": "koridor_6",
+    "son_kararsiz": false,
+    "son_hata_m": 0.02,
+    "neden": "yanlış koridora kesin; insanlar var"
+   }
+  ],
+  "u_donuslu_kosu": {
+   "B": 30,
+   "C": 6
+  }
+ },
+ "v1_esitlik": {
+  "hareket_kosu": 126,
+  "adim_sayisi_esit": 126,
+  "en_buyuk_yol_farki_m": 0.0,
+  "saklanan_tarama": 3,
+  "farkli_isin": 0,
+  "a_poz": 308,
+  "a_farkli_isin": 0
+ },
+ "kor": {
+  "sektorler": [
+   [
+    139.2,
+    220.8
+   ]
+  ],
+  "pay": 5.0,
+  "genislik": 81.60000000000002,
+  "isin_mcl": 60
+ },
+ "tani_donus": {
+  "kayit": "B_koridor_5_orta_t1",
+  "denemeler": {
+   "varsayilan": [
+    {
+     "tohum": 501042,
+     "kotu_adim": 516,
+     "ilk_kotu_yol": 11.64,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501049,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501056,
+     "kotu_adim": 443,
+     "ilk_kotu_yol": 11.41,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501063,
+     "kotu_adim": 574,
+     "ilk_kotu_yol": 11.39,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501070,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    }
+   ],
+   "capraz_tohum=False": [
+    {
+     "tohum": 501042,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501049,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501056,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501063,
+     "kotu_adim": 52,
+     "ilk_kotu_yol": 11.97,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501070,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    }
+   ],
+   "harita_kaniti=ortalama": [
+    {
+     "tohum": 501042,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501049,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501056,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501063,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 0,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    },
+    {
+     "tohum": 501070,
+     "kotu_adim": 0,
+     "ilk_kotu_yol": null,
+     "yanlis_harita_adim": 6,
+     "son_harita": "koridor_5",
+     "son_kararsiz": false,
+     "son_hata_m": 0.0
+    }
+   ]
+  }
+ }
+}

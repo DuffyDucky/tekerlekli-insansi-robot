@@ -4,8 +4,12 @@
     %V% ...\\kos.py --bolum A,B --isci 2 --sure-dk 9                    # 9 dk sonra yeni görev almaz, çıkar
     %V% ...\\kos.py --liste                                             # görevler ve durumları
 
-Görev sonucu: ham/<bolum>/<id>.json. İlerleme: .durum (10 s'de bir). Kilit: ham/<bolum>/<id>.kilit (işçi görevi
-aldığını böyle bildirir; yeni koşucu açılırken eski kilitler silinir). Öncelik: A, B, D, C.
+Etiket (--etiket, varsayılan ve tek seçenek v2): her görev bir fizik koşusu yapar (LiDAR 360°) ve iki sonuç yazar:
+ham_v2/<bolum>/<id>.json (sanal LiDAR'ın kör maskesi sonradan uygulanmış tarama, konumlayıcıda kör sektör var) ve
+ham_v2_360/<bolum>/<id>.json (maske yok, konumlayıcıda kör sektör yok). v1 sonuçları (ham/, c34618b konumlayıcısı)
+yeniden üretilmez; v2 sonucu v1'in yer gerçeği yolu ve saklanan taramalarıyla karşılaştırılır ("v1_esitlik" alanı).
+İlerleme: .durum (10 s'de bir). Kilit: ham_v2/<bolum>/<id>.kilit (yeni koşucu açılırken eski kilitler silinir).
+Öncelik: A, B, D, C.
 """
 
 import argparse
@@ -62,16 +66,32 @@ def gorevler(bolumler):
     return g
 
 
-def sonuc_yolu(g):
-    return os.path.join(O.HAM, g["bolum"], g["id"] + ".json")
+ETIKETLER = ("v2", "v2_360")                    # bir görev ikisini birden üretir
+ANA = O.ham_dizini("v2")                        # kilit, işçi günlüğü
+
+
+def sonuc_yolu(g, et="v2"):
+    return os.path.join(O.ham_dizini(et), g["bolum"], g["id"] + ".json")
+
+
+def v1_yolu(g):
+    return os.path.join(O.ham_dizini("v1"), g["bolum"], g["id"] + ".json")
 
 
 def kilit_yolu(g):
-    return os.path.join(O.HAM, g["bolum"], g["id"] + ".kilit")
+    return os.path.join(ANA, g["bolum"], g["id"] + ".kilit")
 
 
 def bitti_mi(g):
-    return os.path.exists(sonuc_yolu(g))
+    return all(os.path.exists(sonuc_yolu(g, et)) for et in ETIKETLER)
+
+
+def _mes(v):
+    return None if v is None or not np.isfinite(v) else round(float(v), 3)
+
+
+def _farkli(a1, a2):
+    return sum(1 for u, v in zip(a1, a2) if (u is None) != (v is None) or (u is not None and abs(u - v) > 1e-3))
 
 
 # ------------------------------------------------------------------ A: durağan tek tarama
@@ -138,6 +158,7 @@ def a_yogun_pozlar(kor):
 
 
 def kos_a(g):
+    """Her poz: 360° anlık tarama; v2 = sanal LiDAR maskesi sonradan uygulanmış, v2_360 = maskesiz. İkisi de sınıflanır."""
     import lidar as L
     import dunya as D
     from konumlama import tek_taramadan_sinifla
@@ -147,28 +168,37 @@ def kos_a(g):
     s = O.sahne(kor)
     h = Harita(O.harita_veri(s["harita"]), ad=kor)
     w = D.FizikDunya(h, s, (pozlar[0]["x"], pozlar[0]["y"], pozlar[0]["th"]))
-    H, oz = O.haritalar(), O.ozellik()
-    sonuc = []
+    H = O.haritalar()
+    oz = {"v2": O.ozellik(True), "v2_360": O.ozellik(False)}
+    v1 = {}
+    if os.path.exists(v1_yolu(g)):
+        with open(v1_yolu(g), encoding="utf-8") as f:
+            v1 = {p["j"]: p["mesafeler"] for p in json.load(f)["pozlar"]}
+    sonuc = {et: [] for et in ETIKETLER}
     for p in pozlar:
         w.konum_ayarla(p["x"], p["y"], p["th"])
         w.adim(0.05)                                     # oturt (tekerler zemine)
         x, y, _, yaw, _, _ = w.poz()
-        lid = L.SanalLidar(w, tohum=p["tohum"])          # varsayılan ayarlar (gürültü 10 mm, 15 mm çözünürlük, kör maske)
-        tar = lid.anlik_tarama()
-        t0 = time.perf_counter()
-        r = tek_taramadan_sinifla(H, tar, ozellik=oz)
-        sure = time.perf_counter() - t0
-        en = r["pozlar"][r["en_olasi"]]
-        dg = r["pozlar"][kor]
-        sonuc.append(dict(
-            p, gercek=[round(x, 4), round(y, 4), round(yaw, 4)],
-            olasiliklar={k: round(v, 5) for k, v in r["olasiliklar"].items()}, en_olasi=r["en_olasi"],
-            kararsiz=r["kararsiz"], fark=round(r["fark"], 4),
-            en_poz=[round(v, 4) for v in en], dogru_poz=[round(v, 4) for v in dg],
-            dogru_poz_hata_m=round(math.hypot(dg[0] - x, dg[1] - y), 3),
-            puanlar={k: round(v, 3) for k, v in r["puanlar"].items()}, sure_s=round(sure, 2),
-            mesafeler=[None if not np.isfinite(v) else round(v, 3) for v in tar["mesafeler"]]))
-    return dict(gorev=g, pozlar=sonuc)
+        lid = L.SanalLidar(w, tohum=p["tohum"], kor_maske=False)   # gürültü 10 mm, 15 mm çözünürlük, maske yok
+        t360 = lid.anlik_tarama()
+        tar = {"v2": O.maskele(t360), "v2_360": t360}
+        es = _farkli(v1[p["j"]], [_mes(v) for v in tar["v2"]["mesafeler"]]) if p["j"] in v1 else None
+        for et in ETIKETLER:
+            t0 = time.perf_counter()
+            r = tek_taramadan_sinifla(H, tar[et], ozellik=oz[et])
+            sure = time.perf_counter() - t0
+            en = r["pozlar"][r["en_olasi"]]
+            dg = r["pozlar"][kor]
+            sonuc[et].append(dict(
+                p, gercek=[round(x, 4), round(y, 4), round(yaw, 4)],
+                olasiliklar={k: round(v, 5) for k, v in r["olasiliklar"].items()}, en_olasi=r["en_olasi"],
+                kararsiz=r["kararsiz"], fark=round(r["fark"], 4),
+                en_poz=[round(v, 4) for v in en], dogru_poz=[round(v, 4) for v in dg],
+                dogru_poz_hata_m=round(math.hypot(dg[0] - x, dg[1] - y), 3),
+                puanlar={k: round(v, 3) for k, v in r["puanlar"].items()}, sure_s=round(sure, 2),
+                v1_farkli_isin=(es if et == "v2" else None),
+                mesafeler=[_mes(v) for v in tar[et]["mesafeler"]]))
+    return {et: dict(gorev=g, etiket=et, pozlar=sonuc[et]) for et in ETIKETLER}
 
 
 # ------------------------------------------------------------------ B / C / D: hareket hâlinde
@@ -187,36 +217,58 @@ def kos_hareket(g):
     lidar_tohum = 1000 * tohum + 10 * ki + si
     mcl_tohum = 500000 + lidar_tohum
     t0 = time.perf_counter()
-    dz = O.Duzenek(kor, bas, lidar_tohum=lidar_tohum, ek_engeller=insanlar)
+    dz = O.Duzenek(kor, bas, lidar_tohum=lidar_tohum, ek_engeller=insanlar, kor_maske=False)
     surus = O.sur(dz, yol)
     t_fizik = time.perf_counter() - t0
-    akis = O.kayittan_akis(dz)
-    bilinen = akis[0][2] if g.get("bilinen") else None
-    adimlar, gecmis, t_mcl = O.mcl_kos(akis, kor, mcl_tohum, bilinen_bas=bilinen)
-    olc = O.olcutler(adimlar, gecmis, kor)
-    # kendinden emin yanlış örnekleri: her yanlış dilimin ilk adımının taraması (en çok 3)
-    ornekler = []
-    for d in olc["yanlis_dilimler"][:3]:
-        a = adimlar[d["ilk_i"]]
-        tar = akis[d["ilk_i"]][0]
-        ornekler.append(dict(adim=a, mesafeler=[None if not np.isfinite(v) else round(v, 3) for v in tar["mesafeler"]]))
-    # konumu kesin ama yanlış (doğru harita) ilk örnek
-    ky = next((a for a in adimlar if a["en"] == kor and not a["kararsiz"] and not a["konum_kararsiz"]
-               and math.hypot(a["ileri"], a["yan"]) > O.ESIK_KONUM_YANLIS), None)
-    if ky is not None:
-        tar = akis[ky["i"]][0]
-        ornekler.append(dict(adim=ky, konum=True,
-                             mesafeler=[None if not np.isfinite(v) else round(v, 3) for v in tar["mesafeler"]]))
-    sutun = {k: [a[k] for a in adimlar] for k in adimlar[0]}
-    return dict(gorev=g, yol=yol, bas_poz=[round(v, 4) for v in bas], insanlar=insanlar, lidar_tohum=lidar_tohum,
-                mcl_tohum=mcl_tohum, varyant=O.SURUS_VARYANTI, surus=surus, olcutler=olc, ornekler=ornekler,
-                sure_fizik_s=round(t_fizik, 1), sure_mcl_s=round(t_mcl, 1), adimlar=sutun)
+    akis360 = O.kayittan_akis(dz)
+    akislar = {"v2": [(O.maskele(tar), o, gg, yl) for tar, o, gg, yl in akis360], "v2_360": akis360}
+    bilinen = akis360[0][2] if g.get("bilinen") else None
+    esit = v1_esitlik(g, akislar["v2"])
+    cikti = {}
+    for et in ETIKETLER:
+        akis = akislar[et]
+        adimlar, gecmis, t_mcl = O.mcl_kos(akis, kor, mcl_tohum, bilinen_bas=bilinen, kor=(et == "v2"))
+        olc = O.olcutler(adimlar, gecmis, kor)
+        # kendinden emin yanlış örnekleri: her yanlış dilimin ilk adımının taraması (en çok 3)
+        ornekler = []
+        for d in olc["yanlis_dilimler"][:3]:
+            a = adimlar[d["ilk_i"]]
+            ornekler.append(dict(adim=a, mesafeler=[_mes(v) for v in akis[d["ilk_i"]][0]["mesafeler"]]))
+        # konumu kesin ama yanlış (doğru harita) ilk örnek
+        ky = next((a for a in adimlar if a["en"] == kor and not a["kararsiz"] and not a["konum_kararsiz"]
+                   and math.hypot(a["ileri"], a["yan"]) > O.ESIK_KONUM_YANLIS), None)
+        if ky is not None:
+            ornekler.append(dict(adim=ky, konum=True, mesafeler=[_mes(v) for v in akis[ky["i"]][0]["mesafeler"]]))
+        sutun = {k: [a[k] for a in adimlar] for k in adimlar[0]}
+        cikti[et] = dict(gorev=g, etiket=et, yol=yol, bas_poz=[round(v, 4) for v in bas], insanlar=insanlar,
+                         lidar_tohum=lidar_tohum, mcl_tohum=mcl_tohum, varyant=O.SURUS_VARYANTI, surus=surus,
+                         olcutler=olc, ornekler=ornekler, v1_esitlik=esit, sure_fizik_s=round(t_fizik, 1),
+                         sure_mcl_s=round(t_mcl, 1), adimlar=sutun)
+    return cikti
+
+
+def v1_esitlik(g, akis):
+    """v1 ham kaydıyla aynı veri mi: tarama sayısı, yer gerçeği yolu (gx, gy) farkı, v1'in sakladığı taramalar."""
+    if not os.path.exists(v1_yolu(g)):
+        return None
+    with open(v1_yolu(g), encoding="utf-8") as f:
+        r1 = json.load(f)
+    a1 = r1["adimlar"]
+    n = min(len(a1["gx"]), len(akis))
+    dxy = max(math.hypot(a1["gx"][i] - round(akis[i][2][0], 3), a1["gy"][i] - round(akis[i][2][1], 3)) for i in range(n))
+    tar_fark = []
+    for o in r1.get("ornekler", []):
+        i = o["adim"]["i"]
+        if i < len(akis):
+            tar_fark.append(_farkli(o["mesafeler"], [_mes(v) for v in akis[i][0]["mesafeler"]]))
+    return dict(adim_v1=len(a1["gx"]), adim_v2=len(akis), en_buyuk_yol_farki_m=round(dxy, 4),
+                saklanan_tarama=len(tar_fark), farkli_isin=tar_fark)
 
 
 # ------------------------------------------------------------------ işçi
 def isci(no, bolumler, bitis):
     gl = gorevler(bolumler)
-    log = open(os.path.join(O.HAM, "isci_%d.log" % no), "a", encoding="utf-8")
+    log = open(os.path.join(ANA, "isci_%d.log" % no), "a", encoding="utf-8")
 
     def yaz(s):
         log.write("%s %s\n" % (time.strftime("%H:%M:%S"), s))
@@ -228,7 +280,9 @@ def isci(no, bolumler, bitis):
             break
         if bitti_mi(g):
             continue
-        os.makedirs(os.path.dirname(sonuc_yolu(g)), exist_ok=True)
+        for et in ETIKETLER:
+            os.makedirs(os.path.dirname(sonuc_yolu(g, et)), exist_ok=True)
+        os.makedirs(os.path.dirname(kilit_yolu(g)), exist_ok=True)
         try:
             fd = os.open(kilit_yolu(g), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
             os.write(fd, str(os.getpid()).encode())
@@ -240,16 +294,19 @@ def isci(no, bolumler, bitis):
             continue
         t0 = time.time()
         try:
-            r = kos_a(g) if g["bolum"] == "A" else kos_hareket(g)
+            rr = kos_a(g) if g["bolum"] == "A" else kos_hareket(g)
         except Exception:
-            r = dict(gorev=g, hata=traceback.format_exc())
-            yaz("HATA %s\n%s" % (g["id"], r["hata"]))
-        r["sure_duvar_s"] = round(time.time() - t0, 1)
-        r["isci"] = no
-        gecici = sonuc_yolu(g) + ".tmp"
-        with open(gecici, "w", encoding="utf-8") as f:
-            json.dump(r, f, ensure_ascii=False, separators=(",", ":"), allow_nan=False, default=_json)
-        os.replace(gecici, sonuc_yolu(g))
+            h = traceback.format_exc()
+            rr = {et: dict(gorev=g, etiket=et, hata=h) for et in ETIKETLER}
+            yaz("HATA %s\n%s" % (g["id"], h))
+        for et in ETIKETLER:
+            r = rr[et]
+            r["sure_duvar_s"] = round(time.time() - t0, 1)          # iki etiketin toplamı (tek fizik koşusu)
+            r["isci"] = no
+            gecici = sonuc_yolu(g, et) + ".tmp"
+            with open(gecici, "w", encoding="utf-8") as f:
+                json.dump(r, f, ensure_ascii=False, separators=(",", ":"), allow_nan=False, default=_json)
+            os.replace(gecici, sonuc_yolu(g, et))
         os.remove(kilit_yolu(g))
         yaz("bitti %s %.1f s" % (g["id"], time.time() - t0))
     yaz("cikti")
@@ -293,9 +350,11 @@ def main():
     ap.add_argument("--isci-no", type=int, default=None)
     ap.add_argument("--bitis", type=float, default=None)
     ap.add_argument("--liste", action="store_true")
+    ap.add_argument("--etiket", default="v2", choices=["v2"], help="v2: ham_v2 + ham_v2_360 (v1 yeniden üretilmez)")
     a = ap.parse_args()
     bolumler = [b.strip() for b in a.bolum.split(",") if b.strip()]
-    os.makedirs(O.HAM, exist_ok=True)
+    for et in ETIKETLER:
+        os.makedirs(O.ham_dizini(et), exist_ok=True)
     if a.isci_no is not None:
         isci(a.isci_no, bolumler, a.bitis or 1e18)
         return

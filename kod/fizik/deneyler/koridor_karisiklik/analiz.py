@@ -20,6 +20,9 @@ sys.path.insert(0, FIZIK)
 HAM = os.path.join(BURASI, "ham")
 GORSEL = os.path.join(BURASI, "gorsel")
 SONUC = os.path.join(BURASI, "sonuc")
+# v1: c34618b konumlayıcısı (ham/, sonuc/, gorsel/; yeniden koşulmaz, `--etiket v1` bugünkü modülle 60 ışını farklı seçer)
+ETIKET = "v1"
+ETIKET_AD = {"v1": "v1 (düzeltme öncesi)", "v2": "v2 (düzeltilmiş konumlayıcı)", "v2_360": "v2-360 (kör sektör yok)"}
 K = ["koridor_%d" % i for i in range(1, 7)]
 KS = {k: "K%d" % (i + 1) for i, k in enumerate(K)}
 BICIM = {"koridor_1": "düz 2,0×30", "koridor_2": "düz 3,5×12", "koridor_3": "L 2,4", "koridor_4": "T 2,6",
@@ -441,6 +444,8 @@ def fark_gorunur(adimlar, oz, H5, H6):
     # sanal LiDAR kör maskesi (pay 5°) ve konumlayıcının 60 ışını
     d = np.degrees(acilar)
     kor_lidar = ((d - 134.2) % 360.0) <= ((225.8 - 134.2) % 360.0)
+    if ETIKET != "v1":                     # v2: konumlayıcının maskesi = sanal LiDAR'ınki; v2_360: maske yok
+        kor_lidar = oz.kor_mu(acilar)
     hz = tarama_hazirla({"t": 0, "acilar": acilar.tolist(), "mesafeler": [1.0] * n}, oz, 60)
     sec = np.searchsorted(acilar, hz.acilar - 1e-9)
     gx = np.array(adimlar["gx"]); gy = np.array(adimlar["gy"]); gth = np.array(adimlar["gth"])
@@ -563,13 +568,14 @@ def ustten_ciz(plt, baslik, gercek_kor, gercek_poz, tahmin_kor, tahmin_poz, mesa
 
 # ------------------------------------------------------------------ D
 def d_ciz(plt, runs, yol, geride_cm):
+    v1 = ETIKET == "v1"
     fig, axs = plt.subplots(2, 3, figsize=(13, 6.2), sharey=True)
     for i, k in enumerate(K):
         ax = axs.flat[i]
         for j, r in enumerate(sorted([r for r in runs if r["gorev"]["kor"] == k], key=lambda r: r["gorev"]["tohum"])):
             a = r["adimlar"]
             yl = np.array(a["yol"])
-            sec = np.array([e == k for e in a["en"]]) & np.array(a["isl"], dtype=bool)
+            sec = np.array([e == k for e in a["en"]]) & (np.array(a["isl"], dtype=bool) if v1 else True)
             ax.plot(yl[sec], np.abs(np.array(a["ileri"]))[sec], color=SERI[0], lw=1.2, alpha=0.9,
                     label="|ileri-geri hata|" if j == 0 else None)
             ax.plot(yl[sec], np.abs(np.array(a["yan"]))[sec], color=SERI[1], lw=1.2, alpha=0.9,
@@ -583,8 +589,11 @@ def d_ciz(plt, runs, yol, geride_cm):
     axs[0, 0].set_ylabel("konum hatası (m)")
     axs[1, 0].set_ylabel("konum hatası (m)")
     axs[0, 2].legend(loc="upper right", fontsize=8)
-    fig.suptitle("D. Bilinen başlangıç (park noktası): yol boyunca konum hatası, robot çerçevesinde (her çizgi bir tohum;\n"
-                 "yalnız taramanın işlendiği adımlar: arada konumlayıcı eski pozu bildirir, hareket hâlinde ort. %s cm geride)"
+    fig.suptitle(("D. Bilinen başlangıç (park noktası): yol boyunca konum hatası, robot çerçevesinde (her çizgi bir tohum;\n"
+                  "yalnız taramanın işlendiği adımlar: arada konumlayıcı eski pozu bildirir, hareket hâlinde ort. %s cm geride)"
+                  if v1 else
+                  "D. Bilinen başlangıç (park noktası), " + ETIKET_AD[ETIKET] + ": yol boyunca konum hatası, robot çerçevesinde\n"
+                  "(her çizgi bir tohum; bütün adımlar; işlenmeyen taramada poz odometriyle ilerletiliyor; o adımlarda ileri-geri ort. %s cm)")
                  % ("%.1f" % geride_cm).replace(".", ","), fontsize=10.5, fontweight="bold")
     fig.tight_layout()
     fig.savefig(yol)
@@ -593,10 +602,29 @@ def d_ciz(plt, runs, yol, geride_cm):
 
 # ------------------------------------------------------------------ ana
 def main():
-    plt = plt_kur()
+    global ETIKET, HAM, GORSEL, SONUC
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--etiket", default="v1", choices=["v1", "v2", "v2_360"])
+    ETIKET = ap.parse_args().etiket
+    if ETIKET != "v1":
+        HAM, GORSEL, SONUC = (os.path.join(BURASI, d + "_" + ETIKET) for d in ("ham", "gorsel", "sonuc"))
     os.makedirs(GORSEL, exist_ok=True)
+    os.makedirs(SONUC, exist_ok=True)
+    plt = plt_kur()
+    if ETIKET != "v1":                     # her görselin sağ üst köşesine sürüm etiketi
+        from matplotlib.figure import Figure
+        _kaydet = Figure.savefig
+
+        def _etiketli(self, *a, **k):
+            self.text(0.995, 0.995, ETIKET_AD[ETIKET], ha="right", va="top", fontsize=9, color="#555555")
+            return _kaydet(self, *a, **k)
+        Figure.savefig = _etiketli
+    import dataclasses
     from konumlama import LidarOzellik
     oz = LidarOzellik.varsa_dosyadan()
+    if ETIKET == "v2_360":
+        oz = dataclasses.replace(oz, kor_sektorler_derece=[])
     ozet = {}
     a, a_yanlis = analiz_a(plt, oz)
     ozet["A"] = a

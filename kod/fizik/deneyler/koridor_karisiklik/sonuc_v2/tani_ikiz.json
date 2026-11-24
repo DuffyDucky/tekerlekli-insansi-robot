@@ -1,0 +1,238 @@
+{
+ "koridor_6": [
+  {
+   "tohum": 901,
+   "es_max_6m_once": 0.508,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 902,
+   "es_max_6m_once": 0.51,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 903,
+   "es_max_6m_once": 0.507,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 904,
+   "es_max_6m_once": 0.529,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 905,
+   "es_max_6m_once": 0.51,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 906,
+   "es_max_6m_once": 0.507,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 907,
+   "es_max_6m_once": 0.506,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 908,
+   "es_max_6m_once": 0.507,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 909,
+   "es_max_6m_once": 0.508,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  },
+  {
+   "tohum": 910,
+   "es_max_6m_once": 0.506,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.6653265076961326
+  }
+ ],
+ "koridor_5": [
+  {
+   "tohum": 901,
+   "es_max_6m_once": 0.493,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.840044894219748
+  },
+  {
+   "tohum": 902,
+   "es_max_6m_once": 0.495,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.840044894219748
+  },
+  {
+   "tohum": 903,
+   "es_max_6m_once": 0.491,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.840044894219748
+  },
+  {
+   "tohum": 904,
+   "es_max_6m_once": 0.483,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.690101359313243
+  },
+  {
+   "tohum": 905,
+   "es_max_6m_once": 0.471,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.390246199158862
+  },
+  {
+   "tohum": 906,
+   "es_max_6m_once": 0.482,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.440240267539001
+  },
+  {
+   "tohum": 907,
+   "es_max_6m_once": 0.492,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.840044894219748
+  },
+  {
+   "tohum": 908,
+   "es_max_6m_once": 0.491,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.840044894219748
+  },
+  {
+   "tohum": 909,
+   "es_max_6m_once": 0.493,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 9.840044894219748
+  },
+  {
+   "tohum": 910,
+   "es_max_6m_once": 0.47,
+   "yanlis_kesin_adim": 0,
+   "son_p_dogru": 1.0,
+   "son_kararsiz": false,
+   "ilk_kesin_dogru_yol": 6.390246199158862
+  }
+ ],
+ "ikiz": [
+  {
+   "tohum": 901,
+   "en_buyuk_p": 0.501,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.501
+  },
+  {
+   "tohum": 902,
+   "en_buyuk_p": 0.502,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.501
+  },
+  {
+   "tohum": 903,
+   "en_buyuk_p": 0.502,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.5
+  },
+  {
+   "tohum": 904,
+   "en_buyuk_p": 0.504,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.498
+  },
+  {
+   "tohum": 905,
+   "en_buyuk_p": 0.503,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.503
+  },
+  {
+   "tohum": 906,
+   "en_buyuk_p": 0.502,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.499
+  },
+  {
+   "tohum": 907,
+   "en_buyuk_p": 0.503,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.499
+  },
+  {
+   "tohum": 908,
+   "en_buyuk_p": 0.504,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.496
+  },
+  {
+   "tohum": 909,
+   "en_buyuk_p": 0.502,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.498
+  },
+  {
+   "tohum": 910,
+   "en_buyuk_p": 0.504,
+   "kesin_adim": 0,
+   "adim": 912,
+   "son_p_ikiz": 0.497
+  }
+ ]
+}

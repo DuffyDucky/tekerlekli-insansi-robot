@@ -6,7 +6,8 @@ farklı MCL tohumlarıyla geçirilir:
   2) ikiz: yalnız [koridor_5, koridor_5'in birebir kopyası] (ad "ikiz"); geometri aynı, doğru cevap 0,5 / 0,5
 Konumlayıcı ayarları varsayılan.
 
-    %V% kod\\fizik\\deneyler\\koridor_karisiklik\\tani_ikiz.py      -> sonuc/tani_ikiz.json  (≈ 4 dk)
+    %V% kod\\fizik\\deneyler\\koridor_karisiklik\\tani_ikiz.py      -> sonuc_v2/tani_ikiz.json  (bugünkü konumlayıcı)
+`sonuc/tani_ikiz.json` v1'dir (c34618b konumlayıcısı, yeniden üretilmez).
 """
 
 import json
@@ -61,6 +62,10 @@ def kos(akis, haritalar, dogru, es, tohum):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--etiket", default="v2", choices=["v2"])
+    etiket = ap.parse_args().etiket
     from konumlama.harita2b import Harita2B
     sonuc = {}
     for kor, es in (("koridor_6", "koridor_5"), ("koridor_5", "koridor_6")):
@@ -90,8 +95,9 @@ def main():
                        son_p_ikiz=round(tah.olasiliklar["ikiz"], 3)))
         print("ikiz", iz[-1], flush=True)
     sonuc["ikiz"] = iz
-    os.makedirs(os.path.join(BURASI, "sonuc"), exist_ok=True)
-    with open(os.path.join(BURASI, "sonuc", "tani_ikiz.json"), "w", encoding="utf-8") as f:
+    hedef = os.path.join(BURASI, "sonuc_" + etiket)
+    os.makedirs(hedef, exist_ok=True)
+    with open(os.path.join(hedef, "tani_ikiz.json"), "w", encoding="utf-8") as f:
         json.dump(sonuc, f, ensure_ascii=False, indent=1)
 
 
