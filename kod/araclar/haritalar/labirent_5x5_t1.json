@@ -1,0 +1,28 @@
+{
+  "ad": "labirent_5x5_t1",
+  "aciklama": "Mukemmel labirent 5 x 5 hucre, hucre 1.30 m (dis olcu 6.50 x 6.50 m), tohum 1, geri_izleme. START ust kenari (0, 0), FINISH alt kenari (4, 4). Uretici: kod/fizik/labirent/uretici.py.",
+  "boyut_m": [12.5, 12.5],
+  "cevre_duvari": false,
+  "duvarlar": [
+    [4.3, 9.5, 9.5, 9.5],
+    [3.0, 8.2, 4.3, 8.2],
+    [4.3, 6.9, 8.2, 6.9],
+    [3.0, 5.6, 6.9, 5.6],
+    [4.3, 4.3, 5.6, 4.3],
+    [6.9, 4.3, 8.2, 4.3],
+    [3.0, 3.0, 8.2, 3.0],
+    [3.0, 3.0, 3.0, 9.5],
+    [5.6, 6.9, 5.6, 9.5],
+    [5.6, 3.0, 5.6, 4.3],
+    [6.9, 8.2, 6.9, 9.5],
+    [6.9, 4.3, 6.9, 5.6],
+    [8.2, 5.6, 8.2, 8.2],
+    [9.5, 3.0, 9.5, 9.5]
+  ],
+  "engeller": [],
+  "baslangic": {
+    "x": 3.65,
+    "y": 9.05,
+    "aci_derece": -90.0
+  }
+}
