@@ -1,0 +1,61 @@
+{
+  "aciklama": "Önerilen 2B LiDAR'ın simülasyon özellikleri (araştırma notu: planlama/lidar-secimi.md, 24.11.2026). Satın alınmadı; montaj CAD'e İŞLENMEDİ, öneridir. Birimler alan adında: m, derece, Hz. Robot çerçevesi kod/ortak/robot_parametreleri.json ile aynı: +x ileri (CAD +Z), +y robotun kendi solu (CAD +X; K65), +z yukarı (CAD +Y), açı 0 ileri, saat yönünün tersi +. Veri sayfasında olmayan sayı null; notlarda yazılı.",
+  "tarih": "2026-11-24",
+  "model": "RPLIDAR C1 (C1M1)",
+  "uretici": "Slamtec",
+  "olcum_ilkesi": "DTOF",
+  "menzil_min_m": 0.05,
+  "menzil_maks_m": 12.0,
+  "menzil_maks_siyah_m": 6.0,
+  "gorus_acisi_derece": 360.0,
+  "acisal_cozunurluk_derece": 0.72,
+  "tarama_hz": 10.0,
+  "tarama_hz_aralik": [8.0, 12.0],
+  "ornek_hz": 5000,
+  "mesafe_gurultu": {
+    "sabit_m": 0.03,
+    "oransal": 0.0,
+    "cozunurluk_m": 0.015,
+    "aciklama": "Veri sayfası (v1.1): doğruluk ±30 mm (sabit_m = 0,03 m sınır), mesafe çözünürlüğü 15 mm. Mesafeye bağlı (oransal) terim veri sayfasında yok: 0,0. Dağılım türü (normal / düzgün) ve standart sapma verilmemiş; ±30 mm'yi sigma olarak kullanmak kötümser. Doğruluk %10-90 yansıtıcılıkta sınanmış, dışında 'biraz düşebilir'."
+  },
+  "gecersiz_olcum_orani": null,
+  "gecersiz_olcum_aciklama": "Veri sayfasında geçersiz / kayıp ölçüm oranı yok. Bilinen: 0,05-12 m dışındaki noktalar da çıkar ama 'yalnız referans'; siyah (%10) hedefte menzil 6 m. Değer ölçümle belirlenecek.",
+  "tarama_duzlemi_egimi_derece": [0.0, 1.5],
+  "lazer_yuksekligi_tabandan_m": 0.0298,
+  "montaj": {
+    "x_m": 0.19,
+    "y_m": 0.0,
+    "z_m": 0.295,
+    "yaw_derece": 0.0,
+    "aciklama": "ÖNERİ, CAD'de yok. Etek üst plakası (CAD y 262) üstünde, gövdenin önünde, simetri ekseninde. z = plaka 0,262 + takoz 0,003 (TAHMİN) + lazer yüksekliği 0,0298. Hesap: planlama/lidar-secimi.md § 4.3."
+  },
+  "kor_sektorler_derece": [[139.2, 220.8]],
+  "kor_sektor_aciklama": "Geometrik: z 0,295 m düzleminde gövde kabuğu kesiti (yarı genişlik 114,0, ön yarı derinlik 82,5, köşe r 39,7 mm; tasarim/freecad/arayuz.py:381-416), LiDAR x 0,190'dan teğet. Başlangıç < bitiş, sektör 180° çevresinde. Montaj toleransı için önerilen yazılım maskesi her yana +5°: [134, 226]. Etek, teker, sonar düzlemin altında; kollar (el >= 0,86 m) üstünde; acil stop mantarı (163°) sektörün içinde.",
+  "arayuz": "3,3 V TTL UART 460800 8N1 (XH2.54-5P); tabanda USB-UART kartı, USB ile gövdedeki hub'a (öneri)",
+  "besleme": {
+    "gerilim_v": [4.8, 5.2],
+    "calisma_akimi_a": 0.23,
+    "calisma_akimi_maks_a": 0.26,
+    "kalkis_akimi_a": 0.8,
+    "aciklama": "Veri sayfası v1.1. Motor ve çekirdek tek 5 V; motor yalnız tarama komutuyla döner."
+  },
+  "olcu_mm": [55.6, 55.6, 41.3],
+  "kutle_kg": 0.11,
+  "aci_yonu_notu": "RPLIDAR ham açısı saat yönünde artar (TAHMİN, C1 protokol belgesinde doğrulanacak): theta_robot = yaw - theta_lidar.",
+  "kaynaklar": [
+    "https://cdn.shopify.com/s/files/1/0058/3145/8904/files/SLAMTEC_rplidar_datasheet_C1_v1.1_en.pdf",
+    "https://www.slamtec.com/en/C1/Spec",
+    "https://www.robotistan.com/slamtec-c1-lazer-tarayici",
+    "tasarim/freecad/arayuz.py",
+    "tasarim/freecad/montaj/montaj-analiz.json",
+    "planlama/lidar-secimi.md"
+  ],
+  "notlar": [
+    "Seçim: Robotistan (onaylı satıcı) 3.992,85 TL, stokta, 24.11.2026. Yedek aday RPLIDAR A1M8 (Direnc.net 8.482,32 TL, stokta): üçgenleme, 0,15-12 m, 1 derece, 5,5 Hz, 8 kHz, 115200 baud, ayrı motor beslemesi.",
+    "menzil_maks_m beyaz (%70) hedef içindir; siyah (%10) hedefte menzil_maks_siyah_m = 6 m. Yansıtıcılığa bağlı menzil modeli istenirse bu iki nokta arasında enterpolasyon TAHMİN olur.",
+    "acisal_cozunurluk_derece 10 Hz'te geçerli; tarama hızı değişirse ornek_hz / tarama_hz ile yeniden hesaplanır (5000 / 10 = 500 nokta/tur ≈ 0,72 derece).",
+    "Yalnız tarama düzlemi z 0,295 m modellenir: daha alçak engeller (eşik, çanta) LiDAR'da görünmez, sonarlar (z 0,11 m) görür.",
+    "Gövde kör sektörde 0,107 m'den itibaren ölçülür (en kısa menzil 0,05 m): gerçek sensörde öz-yansıma maskelenmeli.",
+    "Ölçülmedi: geçersiz ölçüm oranı, gürültü dağılımı, gerçek 0 derece yönü, montaj takozu kalınlığı."
+  ]
+}
