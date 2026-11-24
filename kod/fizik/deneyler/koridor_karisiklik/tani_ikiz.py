@@ -64,7 +64,7 @@ def kos(akis, haritalar, dogru, es, tohum):
 def main():
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--etiket", default="v2", choices=["v2"])
+    ap.add_argument("--etiket", default="v2", choices=["v2", "v3"])
     etiket = ap.parse_args().etiket
     from konumlama.harita2b import Harita2B
     sonuc = {}

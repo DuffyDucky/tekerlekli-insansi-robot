@@ -3,3 +3,7 @@ ham/
 .durum
 ham_v2/
 ham_v2_360/
+ham_v3/
+ham_v3_360/
+# tam kayıt (360° taramalar + odometri + yer gerçeği; yeniden besleme için)
+akis/

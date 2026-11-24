@@ -1,0 +1,873 @@
+{
+ "kayit_sayisi": 36,
+ "kosu": 108,
+ "cevrilen": 0,
+ "yanlis_koridor_kosu": 3,
+ "son_dogru": 108,
+ "kosular": [
+  {
+   "id": "B_koridor_1_orta_t1",
+   "tohum": 501002,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t1",
+   "tohum": 501003,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t1",
+   "tohum": 501004,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t1",
+   "tohum": 501012,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t1",
+   "tohum": 501013,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t1",
+   "tohum": 501014,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t1",
+   "tohum": 501022,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t1",
+   "tohum": 501023,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t1",
+   "tohum": 501024,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t1",
+   "tohum": 501032,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t1",
+   "tohum": 501033,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t1",
+   "tohum": 501034,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t1",
+   "tohum": 501042,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t1",
+   "tohum": 501043,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t1",
+   "tohum": 501044,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t1",
+   "tohum": 501052,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t1",
+   "tohum": 501053,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t1",
+   "tohum": 501054,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t2",
+   "tohum": 502002,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t2",
+   "tohum": 502003,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t2",
+   "tohum": 502004,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t2",
+   "tohum": 502012,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t2",
+   "tohum": 502013,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t2",
+   "tohum": 502014,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t2",
+   "tohum": 502022,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t2",
+   "tohum": 502023,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t2",
+   "tohum": 502024,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t2",
+   "tohum": 502032,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t2",
+   "tohum": 502033,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t2",
+   "tohum": 502034,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t2",
+   "tohum": 502042,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t2",
+   "tohum": 502043,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t2",
+   "tohum": 502044,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t2",
+   "tohum": 502052,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t2",
+   "tohum": 502053,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t2",
+   "tohum": 502054,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t3",
+   "tohum": 503002,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t3",
+   "tohum": 503003,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t3",
+   "tohum": 503004,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t3",
+   "tohum": 503012,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t3",
+   "tohum": 503013,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t3",
+   "tohum": 503014,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t3",
+   "tohum": 503022,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t3",
+   "tohum": 503023,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t3",
+   "tohum": 503024,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t3",
+   "tohum": 503032,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t3",
+   "tohum": 503033,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t3",
+   "tohum": 503034,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t3",
+   "tohum": 503042,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t3",
+   "tohum": 503043,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t3",
+   "tohum": 503044,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t3",
+   "tohum": 503052,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t3",
+   "tohum": 503053,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t3",
+   "tohum": 503054,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t4",
+   "tohum": 504002,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t4",
+   "tohum": 504003,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t4",
+   "tohum": 504004,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t4",
+   "tohum": 504012,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t4",
+   "tohum": 504013,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t4",
+   "tohum": 504014,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t4",
+   "tohum": 504022,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t4",
+   "tohum": 504023,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t4",
+   "tohum": 504024,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t4",
+   "tohum": 504032,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t4",
+   "tohum": 504033,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t4",
+   "tohum": 504034,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t4",
+   "tohum": 504042,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t4",
+   "tohum": 504043,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t4",
+   "tohum": 504044,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t4",
+   "tohum": 504052,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t4",
+   "tohum": 504053,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t4",
+   "tohum": 504054,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t5",
+   "tohum": 505002,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t5",
+   "tohum": 505003,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_1_orta_t5",
+   "tohum": 505004,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t5",
+   "tohum": 505012,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t5",
+   "tohum": 505013,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_2_orta_t5",
+   "tohum": 505014,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t5",
+   "tohum": 505022,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t5",
+   "tohum": 505023,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_3_orta_t5",
+   "tohum": 505024,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t5",
+   "tohum": 505032,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t5",
+   "tohum": 505033,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_4_orta_t5",
+   "tohum": 505034,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t5",
+   "tohum": 505042,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t5",
+   "tohum": 505043,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_5_orta_t5",
+   "tohum": 505044,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t5",
+   "tohum": 505052,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t5",
+   "tohum": 505053,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "B_koridor_6_orta_t5",
+   "tohum": 505054,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_1_orta_t101",
+   "tohum": 601002,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_1_orta_t101",
+   "tohum": 601003,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_1_orta_t101",
+   "tohum": 601004,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_2_orta_t101",
+   "tohum": 601012,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_2_orta_t101",
+   "tohum": 601013,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_2_orta_t101",
+   "tohum": 601014,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_3_orta_t101",
+   "tohum": 601022,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_3_orta_t101",
+   "tohum": 601023,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_3_orta_t101",
+   "tohum": 601024,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_4_orta_t101",
+   "tohum": 601032,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 20,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_4_orta_t101",
+   "tohum": 601033,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 20,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_4_orta_t101",
+   "tohum": 601034,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 20,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_5_orta_t101",
+   "tohum": 601042,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_5_orta_t101",
+   "tohum": 601043,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_5_orta_t101",
+   "tohum": 601044,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_6_orta_t101",
+   "tohum": 601052,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_6_orta_t101",
+   "tohum": 601053,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  },
+  {
+   "id": "C_koridor_6_orta_t101",
+   "tohum": 601054,
+   "cevrilme_adim": 0,
+   "ilk_yol": null,
+   "yanlis_koridor_adim": 0,
+   "son_dogru": true
+  }
+ ]
+}

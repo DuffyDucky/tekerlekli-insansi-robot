@@ -61,16 +61,17 @@
  "Ham sonuçlar (<code>ham/</code>, yaklaşık 18 MB JSON) OneDrive'da olduğu gibi duruyor. Commit edilirken boyut göz önüne alınmalı (sıkıştırma ya da dışarıda tutma)."
 ],
 "dosyalar": [
- ["<code>kos.py</code>", "görev listesi, A / B / C / D koşuları, 3 işçili koşucu, <code>.durum</code>; <code>--etiket v2</code> tek fizik koşusundan v2 ve v2-360 sonuçlarını yazar"],
- ["<code>ortak.py</code>", "yollar, insan yerleştirme, düzenek, saf izleme sürücüsü, konumlayıcı koşusu, ölçütler, 360° taramaya kör sektör maskesi (<code>maskele</code>); v1'deki <code>baslat_poz_cok_harita</code> eki kaldırıldı"],
- ["<code>analiz.py</code>", "<code>sonuc_&lt;etiket&gt;/*.csv</code>, <code>ozet.json</code>, <code>gorsel_&lt;etiket&gt;/*.png</code> (<code>--etiket v2</code> / <code>v2_360</code>; v1 çıktıları tarihçe, yeniden üretilmez)"],
- ["<code>karsilastir.py</code>", "v1 / v2 / v2-360 karşılaştırması, kendinden emin yanlış koşuların listesi: <code>sonuc_v2/karsilastirma.json</code>, <code>gorsel_v2/karsilastirma_*.png</code>"],
- ["<code>tani_ikiz.py</code>", "tanı: aynı kayıt farklı konumlayıcı tohumu + ikiz harita; <code>sonuc/tani_ikiz.json</code> (v1), <code>sonuc_v2/tani_ikiz.json</code> (v2)"],
- ["<code>tani_donus.py</code>", "tanı: U dönüşü atlaması, aynı kayıt 5 tohum × 3 konumlayıcı seçeneği, <code>sonuc_v2/tani_donus.json</code>"],
- ["<code>rapor.py</code>, <code>rapor_v2.py</code>, <code>metin.json</code>", "bu rapor: en baştaki v2 bölümü <code>rapor_v2.py</code> (sayılar karsilastirma.json'dan), v1 tarihçesi <code>metin.json</code> + <code>sonuc/ozet.json</code>"],
- ["<code>ham/</code>, <code>ham_v2/</code>, <code>ham_v2_360/</code>", "görev başına ham sonuç (JSON; adım adım olasılık, tahmin ve gerçek poz); depoya girmez (<code>.gitignore</code>), <code>kos.py</code> aynı tohumlarla yeniden üretir"],
- ["<code>sonuc/</code>, <code>sonuc_v2/</code>, <code>sonuc_v2_360/</code>", "A_karisiklik.csv, A_pozlar.csv, B_kosular.csv, C_kosular.csv, D_kosular.csv, ozet.json (+ tanılar, karşılaştırma)"],
- ["<code>gorsel/</code>, <code>gorsel_v2/</code>, <code>gorsel_v2_360/</code>", "karışıklık tabloları, karar yolu, benzer çift eğrileri, yanlış örneklerinin üstten görünümü, D hata eğrisi; <code>gorsel_v2/karsilastirma_*.png</code>"],
+ ["<code>kos.py</code>", "görev listesi, A / B / C / D koşuları, 8 işçili koşucu, <code>.durum</code>; <code>--etiket v3</code> tek fizik koşusundan (ya da <code>akis/</code>'taki tam kayıttan) v3 ve v3-360 sonuçlarını yazar"],
+ ["<code>ortak.py</code>", "yollar, insan yerleştirme, düzenek, saf izleme sürücüsü, konumlayıcı koşusu, ölçütler, 360° taramaya kör sektör maskesi (<code>maskele</code>)"],
+ ["<code>analiz.py</code>", "<code>sonuc_&lt;etiket&gt;/*.csv</code>, <code>ozet.json</code>, <code>gorsel_&lt;etiket&gt;/*.png</code> (v1 çıktıları tarihçe, yeniden üretilmez)"],
+ ["<code>karsilastir.py</code>", "v1 / v2 / v2-360 / v3 / v3-360 karşılaştırması, iki hata türü ayrı, kesin yanlış koşuların listesi: <code>sonuc_v3/karsilastirma.json</code>, <code>gorsel_v3/karsilastirma_*.png</code>"],
+ ["<code>tani_ikiz.py</code>, <code>tani_donus.py</code>, <code>tani_donus_v3.py</code>", "tanılar: aynı kayıt farklı konumlayıcı tohumu + ikiz harita (<code>sonuc*/tani_ikiz.json</code>); v2'de U dönüşü atlaması (<code>sonuc_v2/tani_donus.json</code>); v3'te U dönüşlü 36 kayıt × 3 tohum (<code>sonuc_v3/tani_donus_v3.json</code>)"],
+ ["<code>odometri_noktasi.py</code>", "denetim: deney odometrisi hangi noktanın artımı (<code>sonuc_v3/odometri_noktasi.json</code>)"],
+ ["<code>rapor.py</code>, <code>rapor_v3.py</code>, <code>metin.json</code>", "bu rapor: en baştaki güncel durum <code>rapor_v3.py</code> (sayılar karsilastirma.json'dan), v1 tarihçesi <code>metin.json</code> + <code>sonuc/ozet.json</code>"],
+ ["<code>ham/</code>, <code>ham_v2*/</code>, <code>ham_v3*/</code>", "görev başına ham sonuç (JSON; adım adım olasılık, tahmin ve gerçek poz); depoya girmez (<code>.gitignore</code>), <code>kos.py</code> aynı tohumlarla yeniden üretir"],
+ ["<code>akis/</code>", "tam kayıt (v3'ten beri): 360° taramalar, enkoder odometrisi, yer gerçeği; yeniden besleme için, depoya girmez"],
+ ["<code>sonuc/</code>, <code>sonuc_v2*/</code>, <code>sonuc_v3*/</code>", "A_karisiklik.csv, A_pozlar.csv, B_kosular.csv, C_kosular.csv, D_kosular.csv, ozet.json (+ tanılar, karşılaştırma)"],
+ ["<code>gorsel/</code>, <code>gorsel_v2*/</code>, <code>gorsel_v3*/</code>", "karışıklık tabloları, karar yolu, benzer çift eğrileri, yanlış örneklerinin üstten görünümü, D hata eğrisi; <code>gorsel_v3/karsilastirma_*.png</code>"],
  ["<code>BENIOKU.md</code>", "nasıl koşulur, sürümler, tohumlar, tasarım"]
 ]
 }

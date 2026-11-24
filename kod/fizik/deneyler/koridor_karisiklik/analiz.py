@@ -22,7 +22,8 @@ GORSEL = os.path.join(BURASI, "gorsel")
 SONUC = os.path.join(BURASI, "sonuc")
 # v1: c34618b konumlayıcısı (ham/, sonuc/, gorsel/; yeniden koşulmaz, `--etiket v1` bugünkü modülle 60 ışını farklı seçer)
 ETIKET = "v1"
-ETIKET_AD = {"v1": "v1 (düzeltme öncesi)", "v2": "v2 (düzeltilmiş konumlayıcı)", "v2_360": "v2-360 (kör sektör yok)"}
+ETIKET_AD = {"v1": "v1 (düzeltme öncesi)", "v2": "v2 (düzeltilmiş konumlayıcı)", "v2_360": "v2-360 (kör sektör yok)",
+             "v3": "v3 (U dönüşü düzeltmesi)", "v3_360": "v3-360 (kör sektör yok)"}
 K = ["koridor_%d" % i for i in range(1, 7)]
 KS = {k: "K%d" % (i + 1) for i, k in enumerate(K)}
 BICIM = {"koridor_1": "düz 2,0×30", "koridor_2": "düz 3,5×12", "koridor_3": "L 2,4", "koridor_4": "T 2,6",
@@ -605,7 +606,7 @@ def main():
     global ETIKET, HAM, GORSEL, SONUC
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--etiket", default="v1", choices=["v1", "v2", "v2_360"])
+    ap.add_argument("--etiket", default="v1", choices=["v1", "v2", "v2_360", "v3", "v3_360"])
     ETIKET = ap.parse_args().etiket
     if ETIKET != "v1":
         HAM, GORSEL, SONUC = (os.path.join(BURASI, d + "_" + ETIKET) for d in ("ham", "gorsel", "sonuc"))
@@ -623,7 +624,7 @@ def main():
     import dataclasses
     from konumlama import LidarOzellik
     oz = LidarOzellik.varsa_dosyadan()
-    if ETIKET == "v2_360":
+    if ETIKET.endswith("_360"):
         oz = dataclasses.replace(oz, kor_sektorler_derece=[])
     ozet = {}
     a, a_yanlis = analiz_a(plt, oz)

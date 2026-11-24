@@ -4,12 +4,16 @@
     %V% ...\\kos.py --bolum A,B --isci 2 --sure-dk 9                    # 9 dk sonra yeni görev almaz, çıkar
     %V% ...\\kos.py --liste                                             # görevler ve durumları
 
-Etiket (--etiket, varsayılan ve tek seçenek v2): her görev bir fizik koşusu yapar (LiDAR 360°) ve iki sonuç yazar:
-ham_v2/<bolum>/<id>.json (sanal LiDAR'ın kör maskesi sonradan uygulanmış tarama, konumlayıcıda kör sektör var) ve
-ham_v2_360/<bolum>/<id>.json (maske yok, konumlayıcıda kör sektör yok). v1 sonuçları (ham/, c34618b konumlayıcısı)
-yeniden üretilmez; v2 sonucu v1'in yer gerçeği yolu ve saklanan taramalarıyla karşılaştırılır ("v1_esitlik" alanı).
-İlerleme: .durum (10 s'de bir). Kilit: ham_v2/<bolum>/<id>.kilit (yeni koşucu açılırken eski kilitler silinir).
-Öncelik: A, B, D, C.
+Etiket (--etiket v2 | v3): her görev bir fizik koşusu yapar (LiDAR 360°) ve iki sonuç yazar:
+ham_<et>/<bolum>/<id>.json (sanal LiDAR'ın kör maskesi sonradan uygulanmış tarama, konumlayıcıda kör sektör var) ve
+ham_<et>_360/<bolum>/<id>.json (maske yok, konumlayıcıda kör sektör yok). v1 sonuçları (ham/, c34618b konumlayıcısı)
+yeniden üretilmez; sonuç v1'in yer gerçeği yolu ve saklanan taramalarıyla karşılaştırılır ("v1_esitlik" alanı).
+
+Tam kayıt (v3'ten beri): her görevin 360° taramaları, enkoder odometrisi ve yer gerçeği akis/<bolum>/<id>.npz'ye yazılır
+(depoya girmez). Dosya varsa fizik koşulmaz, kayıt yeniden beslenir: sonraki konumlayıcı sürümleri aynı veriyle sınanır.
+Mesafeler 15 mm çözünürlüğün tam katı olduğundan tamsayı olarak saklanır (birebir geri döner; yazarken denetlenir).
+İlerleme: .durum (10 s'de bir). Kilit: ham_<et>/<bolum>/<id>.kilit (yeni koşucu açılırken eski kilitler silinir).
+Öncelik: A, B, D, C. İşçi başına OMP / OpenBLAS / MKL iş parçacığı 1.
 """
 
 import argparse
@@ -66,12 +70,62 @@ def gorevler(bolumler):
     return g
 
 
-ETIKETLER = ("v2", "v2_360")                    # bir görev ikisini birden üretir
+ETIKETLER = ("v2", "v2_360")                    # bir görev ikisini birden üretir (etiket_kur ile değişir)
 ANA = O.ham_dizini("v2")                        # kilit, işçi günlüğü
+AKIS = os.path.join(BURASI, "akis")             # tam kayıt (v3'ten beri; depoya girmez)
+COZ = 0.015                                     # sanal LiDAR çıktı çözünürlüğü (lidar.LidarAyar.cozunurluk_m)
+BOS = 65535
 
 
-def sonuc_yolu(g, et="v2"):
-    return os.path.join(O.ham_dizini(et), g["bolum"], g["id"] + ".json")
+def etiket_kur(et):
+    global ETIKETLER, ANA
+    ETIKETLER = (et, et + "_360")
+    ANA = O.ham_dizini(et)
+
+
+def sonuc_yolu(g, et=None):
+    return os.path.join(O.ham_dizini(et or ETIKETLER[0]), g["bolum"], g["id"] + ".json")
+
+
+def akis_yolu(g):
+    return os.path.join(AKIS, g["bolum"], g["id"] + ".npz")
+
+
+def _mes_kodla(m):
+    """Mesafe dizisi -> uint16 (15 mm adım sayısı; BOS = dönüş yok). Birebir geri dönmezse ValueError."""
+    m = np.asarray(m, dtype=float)
+    ok = np.isfinite(m)
+    k = np.full(m.shape, BOS, dtype=np.int64)
+    k[ok] = np.round(m[ok] / COZ).astype(np.int64)
+    if (k[ok] >= BOS).any() or (k[ok] < 0).any() or not np.array_equal(k[ok] * COZ, m[ok]):
+        raise ValueError("mesafeler 15 mm katı değil")
+    return k.astype(np.uint16)
+
+
+def _mes_coz(k):
+    m = k.astype(float) * COZ
+    m[k == BOS] = np.nan
+    return m
+
+
+def akis_yaz(g, akis, ek):
+    """akis: [(tarama{t, acilar, mesafeler}, odo, gercek, yol)], ek: json'lanabilir sözlük (sürüş, insanlar, ...)."""
+    os.makedirs(os.path.dirname(akis_yolu(g)), exist_ok=True)
+    gecici = akis_yolu(g) + ".tmp.npz"
+    np.savez_compressed(gecici, t=np.array([a[0]["t"] for a in akis]), acilar=np.array(akis[0][0]["acilar"]),
+                        mes=np.stack([_mes_kodla(a[0]["mesafeler"]) for a in akis]),
+                        odo=np.array([a[1] for a in akis], dtype=float), ger=np.array([a[2] for a in akis], dtype=float),
+                        yol=np.array([a[3] for a in akis]), ek=np.array(json.dumps(ek, default=_json)))
+    os.replace(gecici, akis_yolu(g))
+
+
+def akis_oku(g):
+    z = np.load(akis_yolu(g))
+    acilar = z["acilar"].tolist()
+    mes = z["mes"]
+    akis = [({"t": float(t), "acilar": acilar, "mesafeler": _mes_coz(m)}, tuple(map(float, o)), tuple(map(float, gg)),
+             float(y)) for t, m, o, gg, y in zip(z["t"], mes, z["odo"], z["ger"], z["yol"])]
+    return akis, json.loads(str(z["ek"]))
 
 
 def v1_yolu(g):
@@ -169,7 +223,8 @@ def kos_a(g):
     h = Harita(O.harita_veri(s["harita"]), ad=kor)
     w = D.FizikDunya(h, s, (pozlar[0]["x"], pozlar[0]["y"], pozlar[0]["th"]))
     H = O.haritalar()
-    oz = {"v2": O.ozellik(True), "v2_360": O.ozellik(False)}
+    oz = {ETIKETLER[0]: O.ozellik(True), ETIKETLER[1]: O.ozellik(False)}
+    kayit = []
     v1 = {}
     if os.path.exists(v1_yolu(g)):
         with open(v1_yolu(g), encoding="utf-8") as f:
@@ -181,8 +236,10 @@ def kos_a(g):
         x, y, _, yaw, _, _ = w.poz()
         lid = L.SanalLidar(w, tohum=p["tohum"], kor_maske=False)   # gürültü 10 mm, 15 mm çözünürlük, maske yok
         t360 = lid.anlik_tarama()
-        tar = {"v2": O.maskele(t360), "v2_360": t360}
-        es = _farkli(v1[p["j"]], [_mes(v) for v in tar["v2"]["mesafeler"]]) if p["j"] in v1 else None
+        kayit.append((t360, (x, y, yaw)))
+        et0, et1 = ETIKETLER
+        tar = {et0: O.maskele(t360), et1: t360}
+        es = _farkli(v1[p["j"]], [_mes(v) for v in tar[et0]["mesafeler"]]) if p["j"] in v1 else None
         for et in ETIKETLER:
             t0 = time.perf_counter()
             r = tek_taramadan_sinifla(H, tar[et], ozellik=oz[et])
@@ -196,8 +253,14 @@ def kos_a(g):
                 en_poz=[round(v, 4) for v in en], dogru_poz=[round(v, 4) for v in dg],
                 dogru_poz_hata_m=round(math.hypot(dg[0] - x, dg[1] - y), 3),
                 puanlar={k: round(v, 3) for k, v in r["puanlar"].items()}, sure_s=round(sure, 2),
-                v1_farkli_isin=(es if et == "v2" else None),
+                v1_farkli_isin=(es if et == ETIKETLER[0] else None),
                 mesafeler=[_mes(v) for v in tar[et]["mesafeler"]]))
+    # tam kayıt: pozlar sırasıyla 360° tarama + gerçek poz (A'da odometri yok)
+    os.makedirs(os.path.dirname(akis_yolu(g)), exist_ok=True)
+    np.savez_compressed(akis_yolu(g) + ".tmp.npz", acilar=np.array(kayit[0][0]["acilar"]),
+                        mes=np.stack([_mes_kodla(t["mesafeler"]) for t, _ in kayit]),
+                        ger=np.array([gg for _, gg in kayit]), j=np.array([p["j"] for p in pozlar]))
+    os.replace(akis_yolu(g) + ".tmp.npz", akis_yolu(g))
     return {et: dict(gorev=g, etiket=et, pozlar=sonuc[et]) for et in ETIKETLER}
 
 
@@ -217,17 +280,32 @@ def kos_hareket(g):
     lidar_tohum = 1000 * tohum + 10 * ki + si
     mcl_tohum = 500000 + lidar_tohum
     t0 = time.perf_counter()
-    dz = O.Duzenek(kor, bas, lidar_tohum=lidar_tohum, ek_engeller=insanlar, kor_maske=False)
-    surus = O.sur(dz, yol)
-    t_fizik = time.perf_counter() - t0
-    akis360 = O.kayittan_akis(dz)
-    akislar = {"v2": [(O.maskele(tar), o, gg, yl) for tar, o, gg, yl in akis360], "v2_360": akis360}
+    if os.path.exists(akis_yolu(g)):                 # tam kayıt var: fizik koşmadan yeniden besle
+        akis360, ek = akis_oku(g)
+        surus, t_fizik, kaynak = ek["surus"], ek["sure_fizik_s"], "yeniden_besleme"
+        if ek["insanlar"] != json.loads(json.dumps(insanlar, default=_json)) or ek["lidar_tohum"] != lidar_tohum:
+            raise RuntimeError("tam kayıt görevle uyuşmuyor: " + akis_yolu(g))
+    else:
+        dz = O.Duzenek(kor, bas, lidar_tohum=lidar_tohum, ek_engeller=insanlar, kor_maske=False)
+        surus = O.sur(dz, yol)
+        t_fizik = time.perf_counter() - t0
+        bellek = O.kayittan_akis(dz)
+        akis_yaz(g, bellek, dict(gorev=g, surus=surus, insanlar=insanlar, bas_poz=bas, lidar_tohum=lidar_tohum,
+                                 sure_fizik_s=round(t_fizik, 1)))
+        akis360, _ = akis_oku(g)                     # konumlayıcı diskten geri okunanı görür (yeniden beslemeyle aynı)
+        for (a, oa, ga, ya), (b, ob, gb, yb) in zip(bellek, akis360):
+            if not (np.array_equal(np.asarray(a["mesafeler"], float), b["mesafeler"], equal_nan=True)
+                    and tuple(oa) == ob and tuple(ga) == gb and ya == yb and a["t"] == b["t"]):
+                raise RuntimeError("tam kayıt birebir geri dönmedi")
+        kaynak = "fizik"
+    et0, et1 = ETIKETLER
+    akislar = {et0: [(O.maskele(tar), o, gg, yl) for tar, o, gg, yl in akis360], et1: akis360}
     bilinen = akis360[0][2] if g.get("bilinen") else None
-    esit = v1_esitlik(g, akislar["v2"])
+    esit = v1_esitlik(g, akislar[et0])
     cikti = {}
     for et in ETIKETLER:
         akis = akislar[et]
-        adimlar, gecmis, t_mcl = O.mcl_kos(akis, kor, mcl_tohum, bilinen_bas=bilinen, kor=(et == "v2"))
+        adimlar, gecmis, t_mcl = O.mcl_kos(akis, kor, mcl_tohum, bilinen_bas=bilinen, kor=(et == et0))
         olc = O.olcutler(adimlar, gecmis, kor)
         # kendinden emin yanlış örnekleri: her yanlış dilimin ilk adımının taraması (en çok 3)
         ornekler = []
@@ -243,6 +321,7 @@ def kos_hareket(g):
         cikti[et] = dict(gorev=g, etiket=et, yol=yol, bas_poz=[round(v, 4) for v in bas], insanlar=insanlar,
                          lidar_tohum=lidar_tohum, mcl_tohum=mcl_tohum, varyant=O.SURUS_VARYANTI, surus=surus,
                          olcutler=olc, ornekler=ornekler, v1_esitlik=esit, sure_fizik_s=round(t_fizik, 1),
+                         veri_kaynagi=kaynak,
                          sure_mcl_s=round(t_mcl, 1), adimlar=sutun)
     return cikti
 
@@ -345,13 +424,15 @@ def durum_yaz(gl, t_bas, isciler, not_=""):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--bolum", default="A,B,D,C")
-    ap.add_argument("--isci", type=int, default=3)
+    ap.add_argument("--isci", type=int, default=8)
     ap.add_argument("--sure-dk", type=float, default=0.0, help="0 = sınırsız; dolunca yeni görev alınmaz")
     ap.add_argument("--isci-no", type=int, default=None)
     ap.add_argument("--bitis", type=float, default=None)
     ap.add_argument("--liste", action="store_true")
-    ap.add_argument("--etiket", default="v2", choices=["v2"], help="v2: ham_v2 + ham_v2_360 (v1 yeniden üretilmez)")
+    ap.add_argument("--etiket", default="v3", choices=["v2", "v3"],
+                    help="v2 / v3: ham_<et> + ham_<et>_360 (v1 yeniden üretilmez)")
     a = ap.parse_args()
+    etiket_kur(a.etiket)
     bolumler = [b.strip() for b in a.bolum.split(",") if b.strip()]
     for et in ETIKETLER:
         os.makedirs(O.ham_dizini(et), exist_ok=True)
@@ -370,9 +451,10 @@ def main():
     t_bas = time.time()
     bitis = t_bas + a.sure_dk * 60 if a.sure_dk > 0 else 1e18
     isciler = []
-    for i in range(min(a.isci, 3)):                # bellek dar: en çok 3 süreç
+    ortam = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")
+    for i in range(min(a.isci, 8)):                # 16 mantıksal işlemci; işçi başına ≈ 150 MB
         isciler.append(subprocess.Popen([sys.executable, os.path.abspath(__file__), "--isci-no", str(i),
-                                         "--bitis", repr(bitis), "--bolum", a.bolum]))
+                                         "--bitis", repr(bitis), "--bolum", a.bolum, "--etiket", a.etiket], env=ortam))
         time.sleep(2)
     while any(p.poll() is None for p in isciler):
         durum_yaz(gl, t_bas, isciler)

@@ -1,6 +1,7 @@
-"""rapor.html: sonuc/ozet.json + gorsel/*.png -> tek dosya (görseller base64 gömülü).
+"""rapor.html -> tek dosya (görseller base64 gömülü). En başta güncel durum ve dört sürümün karşılaştırması
+(rapor_v3.py, sayılar sonuc_v3/karsilastirma.json'dan), ardından v1 tarihçesi (sonuc/ozet.json + gorsel/*.png + metin.json).
 
-    py -3 kod\\fizik\\deneyler\\koridor_karisiklik\\rapor.py      (önce analiz.py)
+    py -3 kod\\fizik\\deneyler\\koridor_karisiklik\\rapor.py      (önce analiz.py ve karsilastir.py)
 """
 
 import base64
@@ -198,7 +199,7 @@ def main():
     h.append('<div class="sub">%s · Lale, MuJoCo simülasyonu · sanal RPLIDAR C1 + çok haritalı konumlayıcı (MCL) · '
              'betikler ve ham veri: <code>kod/fizik/deneyler/koridor_karisiklik/</code></div>' % e(M["tarih"]))
     sys.path.insert(0, BURASI)
-    import rapor_v2 as R2
+    import rapor_v3 as R2
     S = R2.yukle()
     if S:
         h.extend(R2.html(S, img))
