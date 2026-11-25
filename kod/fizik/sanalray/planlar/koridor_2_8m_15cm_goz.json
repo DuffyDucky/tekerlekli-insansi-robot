@@ -1,0 +1,45 @@
+{
+ "koridor": "koridor_2",
+ "aralik": 8,
+ "boy_m": 0.15,
+ "yukseklik": "goz",
+ "z_m": 1.55,
+ "sozluk": "DICT_APRILTAG_36h11",
+ "etiketler": [
+  {
+   "tur": "uc",
+   "x": 1.004,
+   "y": 6.75,
+   "z": 1.55,
+   "yaw": -0.0,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 0.0,
+   "id": 50
+  },
+  {
+   "tur": "yan",
+   "x": 7.0,
+   "y": 8.496,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 5.2,
+   "id": 51
+  },
+  {
+   "tur": "uc",
+   "x": 12.996,
+   "y": 6.75,
+   "z": 1.55,
+   "yaw": -3.14159,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 10.4,
+   "id": 52
+  }
+ ],
+ "sayi": 3,
+ "aciklama": "x, y etiket yüzünün merkezi (harita çerçevesi); yaw yüz normalinin yönü (koridora bakar); boy_m siyah karenin kenarı; kimlik koridorlar arasında tekil"
+}

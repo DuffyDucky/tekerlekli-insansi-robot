@@ -1,0 +1,122 @@
+{
+ "koridor": "koridor_3",
+ "aralik": 3,
+ "boy_m": 0.15,
+ "yukseklik": "goz",
+ "z_m": 1.55,
+ "sozluk": "DICT_APRILTAG_36h11",
+ "etiketler": [
+  {
+   "tur": "uc",
+   "x": 1.004,
+   "y": 2.2,
+   "z": 1.55,
+   "yaw": -0.0,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 0.0,
+   "id": 100
+  },
+  {
+   "tur": "yan",
+   "x": 3.8,
+   "y": 3.396,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 2.0,
+   "id": 101
+  },
+  {
+   "tur": "yan",
+   "x": 6.8,
+   "y": 1.004,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 5.0,
+   "id": 102
+  },
+  {
+   "tur": "yan",
+   "x": 9.5,
+   "y": 3.396,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 7.7,
+   "id": 103
+  },
+  {
+   "tur": "yan",
+   "x": 12.5,
+   "y": 0.914,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 10.7,
+   "id": 104
+  },
+  {
+   "tur": "kose",
+   "x": 16.996,
+   "y": 2.2,
+   "z": 1.55,
+   "yaw": -3.14159,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 14.0,
+   "id": 105
+  },
+  {
+   "tur": "kose",
+   "x": 15.8,
+   "y": 1.004,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 14.0,
+   "id": 106
+  },
+  {
+   "tur": "yan",
+   "x": 16.996,
+   "y": 5.2,
+   "z": 1.55,
+   "yaw": -3.14159,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 17.0,
+   "id": 107
+  },
+  {
+   "tur": "yan",
+   "x": 14.514,
+   "y": 7.9,
+   "z": 1.55,
+   "yaw": -0.0,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 19.7,
+   "id": 108
+  },
+  {
+   "tur": "uc",
+   "x": 15.8,
+   "y": 10.996,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 22.0,
+   "id": 109
+  }
+ ],
+ "sayi": 10,
+ "aciklama": "x, y etiket yüzünün merkezi (harita çerçevesi); yaw yüz normalinin yönü (koridora bakar); boy_m siyah karenin kenarı; kimlik koridorlar arasında tekil"
+}

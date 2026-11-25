@@ -1,0 +1,9 @@
+id,kume,koridor,birak,kafa,aralik,donus_fazlasi,mercek,cozunurluk,boy_m,basari,neden,sure_s,yol_m,ilk_etiket_s,lokalize_s,lokalize_yol_m,karar_koridor,varis_hatasi_m,en_yanal_sapma_m,temas_olay,konum_hata_en_m,etiket_olcum,etiket_ret,bas_x,bas_y,bas_yon_derece,bitis,rtf,duvar_s
+kayip_gel_koridor_1_b0_a5_sabit,gelistirme,koridor_1,0,sabit,5,0.14,std,1152x648,0.15,True,,8.06,1.282,0.05,0.1,0.0,koridor_1,0.0673,0.1034,0,0.0203,88,0,7.4143,6.1243,166.9,beyin,1.95,6.1
+kayip_gel_koridor_1_b0_a5_tarayan,gelistirme,koridor_1,0,tarayan,5,0.14,std,1152x648,0.15,True,,10.51,1.292,2.35,2.4,0.0,koridor_1,0.0593,0.1094,0,0.0184,59,0,7.4143,6.1243,166.9,beyin,2.15,6.8
+kayip_gel_koridor_1_b1_a5_sabit,gelistirme,koridor_1,1,sabit,5,0.14,std,1152x648,0.15,True,,104.91,23.27,5.35,5.4,0.364,koridor_1,0.1472,0.1522,0,0.1382,526,0,28.5559,5.5744,-134.5,beyin,2.04,51.8
+kayip_gel_koridor_1_b1_a5_tarayan,gelistirme,koridor_1,1,tarayan,5,0.14,std,1152x648,0.15,True,,97.06,22.586,1.25,1.3,0.0,koridor_1,0.0633,0.1127,0,0.0727,616,0,28.5559,5.5744,-134.5,beyin,2.12,45.9
+kayip_gel_koridor_3_b0_a5_sabit,gelistirme,koridor_3,0,sabit,5,0.14,std,1152x648,0.15,True,,25.26,5.565,0.05,0.1,0.0,koridor_3,0.1239,0.1399,0,0.0768,174,0,14.513,2.149,133.0,beyin,2.22,11.9
+kayip_gel_koridor_3_b0_a5_tarayan,gelistirme,koridor_3,0,tarayan,5,0.14,std,1152x648,0.15,True,,27.66,5.594,1.25,2.4,0.0,koridor_3,0.0941,0.1361,0,0.0461,185,0,14.513,2.149,133.0,beyin,2.34,12.4
+kayip_gel_koridor_3_b1_a5_sabit,gelistirme,koridor_3,1,sabit,5,0.14,std,1152x648,0.15,True,,37.36,7.202,0.15,3.4,0.221,koridor_3,0.1198,0.1104,0,0.0748,370,0,10.4368,1.7665,161.5,beyin,2.22,17.0
+kayip_gel_koridor_3_b1_a5_tarayan,gelistirme,koridor_3,1,tarayan,5,0.14,std,1152x648,0.15,True,,35.76,6.779,3.55,5.7,0.0,koridor_3,0.0968,0.115,0,0.0595,297,0,10.4368,1.7665,161.5,beyin,2.37,15.3

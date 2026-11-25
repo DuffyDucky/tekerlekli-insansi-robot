@@ -125,6 +125,8 @@ varyantları arka tekeri kullanır), sonar MuJoCo ışın demetinden (7 x 3 ış
     py -3.14 -m venv "%LOCALAPPDATA%\lale-sim-venv"
     "%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe" -m pip install -r kod\fizik\gereksinimler.txt
 
+Ek paket (yalnız `kod\fizik\sanalray\`, kamera + AprilTag): `opencv-python-headless` (5.1.0.95; `"%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe" -m pip install opencv-python-headless`).
+
 Kurulum yoksa hiçbir şey bozulmaz: `py -3 kod\testler\kos.py` 58 / 58 kalır, fizik koşucusu "atlandı" der.
 
 | Ne | Komut (`%V%` = `%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe`) | Süre |

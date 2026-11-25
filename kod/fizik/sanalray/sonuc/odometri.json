@@ -1,0 +1,17 @@
+{
+ "donus_orani": 1.1242,
+ "donus": {
+  "odometri_rad": 12.5639,
+  "gercek_rad": 11.1755,
+  "komut_w": 0.8,
+  "sure_s": 16
+ },
+ "oteleme_orani": 0.9955,
+ "oteleme": {
+  "odometri_m": 7.4157,
+  "gercek_m": 7.4491,
+  "komut_v": 0.25,
+  "sure_s": 30
+ },
+ "aciklama": "ONERI robotu, enkoder arka tekerde, iz 0,426 (firmware / Pi sabiti). Oran = odometri / gerçek. Algılayıcı katmanı odometriyi bu orana bölüp istenen fazlalıkla çarpar."
+}

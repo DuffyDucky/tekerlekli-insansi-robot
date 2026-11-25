@@ -1,0 +1,144 @@
+{
+ "koridor": "koridor_4",
+ "aralik": 3,
+ "boy_m": 0.15,
+ "yukseklik": "goz",
+ "z_m": 1.55,
+ "sozluk": "DICT_APRILTAG_36h11",
+ "etiketler": [
+  {
+   "tur": "uc",
+   "x": 1.004,
+   "y": 6.3,
+   "z": 1.55,
+   "yaw": -0.0,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 0.0,
+   "id": 150
+  },
+  {
+   "tur": "yan",
+   "x": 4.8,
+   "y": 7.686,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 3.0,
+   "id": 151
+  },
+  {
+   "tur": "yan",
+   "x": 7.8,
+   "y": 5.004,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 6.0,
+   "id": 152
+  },
+  {
+   "tur": "yan",
+   "x": 9.6,
+   "y": 7.596,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 7.8,
+   "id": 153
+  },
+  {
+   "tur": "yan",
+   "x": 13.5,
+   "y": 5.004,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 11.7,
+   "id": 154
+  },
+  {
+   "tur": "yan",
+   "x": 16.5,
+   "y": 7.596,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 14.7,
+   "id": 155
+  },
+  {
+   "tur": "yan",
+   "x": 19.5,
+   "y": 5.004,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 17.7,
+   "id": 156
+  },
+  {
+   "tur": "uc",
+   "x": 22.996,
+   "y": 6.3,
+   "z": 1.55,
+   "yaw": -3.14159,
+   "boy_m": 0.15,
+   "hat": "orta_hat",
+   "s_m": 20.4,
+   "id": 157
+  },
+  {
+   "tur": "kavsak",
+   "x": 11.3,
+   "y": 4.914,
+   "z": 1.55,
+   "yaw": 1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat_yan_kol",
+   "s_m": 0.0,
+   "id": 158
+  },
+  {
+   "tur": "yan",
+   "x": 10.004,
+   "y": 9.05,
+   "z": 1.55,
+   "yaw": -0.0,
+   "boy_m": 0.15,
+   "hat": "orta_hat_yan_kol",
+   "s_m": 2.75,
+   "id": 159
+  },
+  {
+   "tur": "yan",
+   "x": 12.596,
+   "y": 12.35,
+   "z": 1.55,
+   "yaw": -3.14159,
+   "boy_m": 0.15,
+   "hat": "orta_hat_yan_kol",
+   "s_m": 6.05,
+   "id": 160
+  },
+  {
+   "tur": "uc",
+   "x": 11.3,
+   "y": 15.596,
+   "z": 1.55,
+   "yaw": -1.5708,
+   "boy_m": 0.15,
+   "hat": "orta_hat_yan_kol",
+   "s_m": 8.5,
+   "id": 161
+  }
+ ],
+ "sayi": 12,
+ "aciklama": "x, y etiket yüzünün merkezi (harita çerçevesi); yaw yüz normalinin yönü (koridora bakar); boy_m siyah karenin kenarı; kimlik koridorlar arasında tekil"
+}
