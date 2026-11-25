@@ -68,6 +68,28 @@ ISLER = {(T_6, False): "arm", (T_HOME, False): "arm", (T_7, False): "dur", (T_EN
          (T_F8, False): "lidar",
          (T_F6, False): "hedef+", (T_F7, False): "bastan", (T_F7, True): "birak_rastgele"}   # gezinme katmanı   # F8: görüntüleyicinin kısayol tablosunda yok (F1-F5 #290-294, Backspace #259)
 
+# Labirent gösterimi (`--hakem labirent`, kod\labirent.bat): rakam tuşları demo işlerine geçer (elle sürüş yok);
+# F tuşları HP dizüstünde Fn isteyebilir, o yüzden her işin bir rakam / Enter karşılığı var.
+T_KP_EKSI, T_KP_ARTI = 333, 334
+DEMO_ISLER = {(T_6, False): "hiz-", (T_9, False): "hiz+", (T_KP_EKSI, False): "hiz-", (T_KP_ARTI, False): "hiz+",
+              (T_7, False): "duraklat", (T_8, False): "kamera", (T_F9, False): "kamera",
+              (T_8, True): "bastan", (T_F7, False): "bastan", (T_F11, False): "bastan",
+              (T_9, True): "sonraki", (T_F12, False): "sonraki", (T_7, True): "onceki", (T_F10, False): "onceki",
+              (T_ENTER, False): "hafiza", (T_6, True): "hafiza", (T_F6, False): "hafiza",
+              (T_F8, False): "lidar", (T_ENTER, True): "varyant"}
+DEMO_IPUCU = (
+    "6 / 9 hiz - / +   7 duraklat   8 kamera ust / izle",
+    "Shift+8 bastan   Shift+7 / Shift+9 onceki / sonraki labirent",
+    "Enter 2. tur (kendi haritasiyla)   F8 lidar noktalari",
+    "turuncu START  mor FINISH  camgobegi: robotun haritasi",
+    "mavi: tahmini poz  sari: yol  yesil: hedef")
+HIZLAR = (0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0)
+DEMO = {"hiz": 1.0, "kamera": "ust"}            # sahne değişince korunur
+LABIRENTLER = [x for x in [
+    "labirent_5x5_t1", "labirent_7x7_t1", "labirent_9x9_t1", "labirent_9x9_t2", "labirent_9x9_t3",
+    "labirent_13x13_t1", "labirent_13x13_t2", "labirent_13x13_t3",
+    "labirent_17x17_t1", "labirent_17x17_t2", "labirent_17x17_t3"]]
+
 V_SURUS, V_AZAMI, W_SURUS = 0.25, 0.39, 1.0      # m/s, m/s (teker azamisi, firmware kırpar), rad/s (firmware tavanı)
 SUR_ARALIK_MS = 200                               # basılıyken sur tekrarı (bekçi 500 ms)
 
@@ -94,9 +116,9 @@ IPUCU = "\n".join(IPUCU_SATIRLARI)
 LIDAR_DURUM = {"acik": False}       # sahne / varyant değişince yeni pencere aynı durumla açılır
 
 
-def ust_metin(bas):
+def ust_metin(bas, ipucu=IPUCU_SATIRLARI):
     """Durum satırları (bas) + ipucu; KATMAN_SINIRI'nı aşmaz. Son ipucu satırları (Shift ve 6-9 tuşları) her zaman kalır."""
-    satirlar = list(IPUCU_SATIRLARI)
+    satirlar = list(ipucu)
     metin = bas + "\n".join(satirlar)
     for at in (1, 0):
         if len(ascii_tr(metin)) <= KATMAN_SINIRI:
@@ -207,6 +229,11 @@ class Pencere:
         self.lidar = None                         # sanal LiDAR (F8); kapalıyken hiç kurulmaz
         self._lidar_cizilen = -1
         self.gezinme = None                       # canlı gezinme katmanı (gezinme/canli.py; --senaryo ab|kayip, --beyin)
+        self.demo = False                         # labirent gösterimi (gezinme + hakem): tuşlar DEMO_ISLER
+        self.donuk = False                        # duraklat: fizik adımı atılmaz (hakem saati de durur)
+        self.sahne_yon = 1                        # sonraki (+1) / önceki (-1) sahne
+        self.kamera_degis = False
+        self.gercek_hiz = None                    # ulaşılan sanal / gerçek süre oranı (son 2 s)
 
     def lidar_ac(self, acik):
         """Sanal LiDAR'ı kur ve fizik adımına bağla (acik) ya da ayır. Ayarlar lidar_ozellik.json + varsayılanlar."""
@@ -267,7 +294,38 @@ class Pencere:
         if k in OKLAR:
             return                                # sürüş basılı tutma yoklamasıyla (adim)
         shift = self.klavye.shift() if self.klavye is not None else False
+        if self.demo:
+            ad = DEMO_ISLER.get((k, shift)) or (None if shift and k in (T_6, T_7, T_8, T_9) else DEMO_ISLER.get((k, False)))
+            if ad is not None:
+                self.demo_is(ad)
+                return
         self.is_yap(ISLER.get((k, shift)) or ISLER.get((k, False)), k)
+
+    def demo_is(self, ad):
+        if ad in ("hiz-", "hiz+"):
+            i = min(range(len(HIZLAR)), key=lambda j: abs(HIZLAR[j] - DEMO["hiz"]))
+            DEMO["hiz"] = HIZLAR[max(0, min(len(HIZLAR) - 1, i + (1 if ad == "hiz+" else -1)))]
+            self._yaz("hiz %gx" % DEMO["hiz"])
+        elif ad == "duraklat":
+            self.donuk = not self.donuk
+            self._yaz("DURAKLATILDI (7 devam)" if self.donuk else "devam")
+        elif ad == "kamera":
+            DEMO["kamera"] = "izle" if DEMO["kamera"] == "ust" else "ust"
+            self.kamera_degis = True
+            self._yaz("kamera: %s" % ("ustten" if DEMO["kamera"] == "ust" else "robotu izle"))
+        elif ad == "bastan":
+            self.donuk = False
+            self.gezinme.is_yap("bastan")
+        elif ad in ("sonraki", "onceki"):
+            self.sahne_yon = 1 if ad == "sonraki" else -1
+            self.sahne_degis = True
+        elif ad == "hafiza":
+            self.donuk = False
+            self.gezinme.is_yap("hafiza")
+        elif ad == "lidar":
+            self.gezinme.is_yap("lidar")
+        elif ad == "varyant":
+            self.is_yap("varyant")
 
     def is_yap(self, ad, k=None):
         if ad is None:
@@ -391,6 +449,8 @@ class Pencere:
             ust += "ONCE 6'YA BAS: devreye al (guc %s; devrede degilken surulmez)\n" % h["guc"]
         if not self.odakta:
             ust += "pencere odakta degil: tiklayin (odak yokken robot durur)\n"
+        if self.demo:
+            return self.demo_metin(ust)
         if self.gezinme is not None:
             ust += self.gezinme.metin()
         if self.lidar is not None and self.lidar.son_tarama is not None:
@@ -412,6 +472,186 @@ class Pencere:
             sol += "\nson"
             sag += "\n" + self.gunluk[-1].strip()
         return ascii_tr(ust), ascii_tr(sol), ascii_tr(sag)
+
+
+def _dk(s):
+    s = max(0.0, float(s))
+    return "%02d:%02d" % (int(s // 60), int(s % 60))
+
+
+def _demo_metin(self, ust):
+    """Labirent gösterimi: (üst, alt sol, alt sağ). Sonuç ve puan dökümü ayrı (demo_sonuc_metni)."""
+    g = self.gezinme
+    o = g.ozet() or {}
+    ad = self.sahne_ad.replace("labirent_", "")
+    ust += "LABIRENT %s   beyin %s   %s. tur%s\n" % (
+        ad, g.beyin_yolu or g.tur, o.get("tur_no", 1), " (kendi haritasiyla)" if o.get("tur_no") == 2 else "")
+    ust = ust_metin(ust, DEMO_IPUCU)
+    hiz = "%gx" % DEMO["hiz"]
+    if self.donuk:
+        hiz += "  DURAKLATILDI"
+    elif self.gercek_hiz is not None and self.gercek_hiz < 0.9 * DEMO["hiz"]:
+        hiz += "  (gercek %.1fx, bilgisayar yetismiyor)" % self.gercek_hiz
+    elif self.gercek_hiz is not None:
+        hiz += "  (gercek %.1fx)" % self.gercek_hiz
+    sol = "sure\nyol\ncarpma\nmod\nhucre\nhiz"
+    sag = "%s / %s\n%.1f m\n%d  (temas %.1f s)\n%s\n%d / %d   ilerleme %%%d\n%s" % (
+        _dk(o.get("sure_s", 0)), _dk(o.get("sinir_s", 900)), o.get("yol_m", 0), o.get("carpma", 0),
+        o.get("carpma_s", 0), o.get("mod", "-"), o.get("hucre", 0), o.get("toplam_hucre", 0),
+        int(round(100 * o.get("p_en", 0))), hiz)
+    if self.gunluk:
+        sol += "\nson"
+        sag += "\n" + self.gunluk[-1].strip()
+    return ascii_tr(ust), ascii_tr(sol), ascii_tr(sag)
+
+
+def _demo_sonuc_metni(self):
+    """Koşu bitince: (büyük başlık, döküm sol, döküm sağ) ya da None."""
+    o = self.gezinme.ozet() if self.gezinme is not None else None
+    if not o or not o.get("bitti"):
+        return None
+    baslik = ("2. TUR: " if o["tur_no"] == 2 else "") + o["ad"] + "   %.0f puan" % o["puan"]
+    sol, sag = ["puan", "sure"], ["%.1f" % o["puan"], "%.1f s" % o["sure_s"]]
+    for k, v in o["dokum"].items():
+        sol.append("  " + k)
+        sag.append("%+.1f" % v)
+    if o["tur_no"] == 2 and "ek_tur_puani" in o:
+        sol.append("ek tur puani")
+        sag.append("%.1f" % o["ek_tur_puani"])
+        for k, v in o["ek_tur_dokum"].items():
+            sol.append("  " + k)
+            sag.append("%+.1f" % v)
+        if o.get("tur1"):
+            sol.append("1. tur")
+            sag.append("%.1f s, puan %.1f" % (o["tur1"]["sure_s"], o["tur1"]["puan"]))
+    if o.get("hafiza_olur") and o["tur_no"] == 1:
+        sol.append("Enter")
+        sag.append("ayni labirente kendi haritasiyla gir")
+    sol.append("Shift+8")
+    sag.append("bastan   Shift+9 sonraki labirent")
+    return ascii_tr(baslik), ascii_tr("\n".join(sol)), ascii_tr("\n".join(sag))
+
+
+Pencere.demo_metin = _demo_metin
+Pencere.demo_sonuc_metni = _demo_sonuc_metni
+
+
+def ust_kamera(cam, p):
+    """Labirentin tamamı üstten (labirent.sinir; yoksa robot çevresi 8 m)."""
+    import mujoco
+    lab = p.sahne.get("labirent") or {}
+    if lab.get("sinir"):
+        x0, y0, x1, y1 = lab["sinir"]
+    else:
+        x, y = p.w.poz()[:2]
+        x0, y0, x1, y1 = x - 4, y - 4, x + 4, y + 4
+    cam.type = mujoco.mjtCamera.mjCAMERA_FREE
+    gor = max(x1 - x0, y1 - y0) / 0.62               # labirent ekran yüksekliğinin %62'si
+    cam.lookat[:] = ((x0 + x1) / 2 - 0.13 * gor, (y0 + y1) / 2, 0.0)   # biraz sağda: soldaki metin kutularından uzak
+    cam.distance = gor / (2 * math.tan(math.radians(22.5)))
+    cam.elevation, cam.azimuth = -89.0, 90.0
+
+
+def kamera_sec(cam, p):
+    if p.demo and p.gezinme is not None:          # robotun haritası: üstten bakışta duvar tepesinde, izlerken zeminde
+        z = 1.03 if DEMO["kamera"] == "ust" else 0.006
+        if p.gezinme.harita_z != z:
+            p.gezinme.harita_z = z
+            p.gezinme._harita_duvar = p.gezinme._harita_t = -1e9
+        p.gezinme.harita_renk = (0.0, 0.75, 0.8, 0.8)
+    if p.demo and DEMO["kamera"] == "ust":
+        ust_kamera(cam, p)
+    else:
+        kamera_kur(cam, p.w, p.w.taban)
+        if p.demo:
+            cam.distance, cam.elevation = 5.0, -50.0
+
+
+def yazili_goruntu(rend, metinler):
+    """Renderer sahnesi + görüntüleyicinin katman metinleri (aynı mjr_overlay) -> rgb. Pencerenin ekran görüntüsünün eşi."""
+    import mujoco
+    import numpy as np
+    rend._gl_context.make_current()
+    ctx = rend._mjr_context
+    mujoco.mjr_setBuffer(mujoco.mjtFramebuffer.mjFB_OFFSCREEN, ctx)
+    mujoco.mjr_render(rend._rect, rend._scene, ctx)
+    for font, yer, a, b in metinler:
+        mujoco.mjr_overlay(int(font), int(yer), rend._rect, a or "", b or "", ctx)
+    rgb = np.empty((rend.height, rend.width, 3), dtype=np.uint8)
+    mujoco.mjr_readPixels(rgb, None, rend._rect, ctx)
+    return np.ascontiguousarray(np.flipud(rgb))
+
+
+def pencere_yakala(yol):
+    """Windows: görüntüleyici penceresinin ekrandaki halini (BitBlt) PNG'ye yazar. Döner: yazıldı mı (ekran kilitliyse
+    ya da pencere örtülüyse siyah / yanlış olur; o zaman False)."""
+    if sys.platform != "win32":
+        return False
+    import ctypes
+    from ctypes import wintypes
+    import numpy as np
+    u, g = ctypes.windll.user32, ctypes.windll.gdi32
+    bulunan = []
+
+    @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+    def gez(h, _):
+        pid = wintypes.DWORD(0)
+        u.GetWindowThreadProcessId(h, ctypes.byref(pid))
+        if pid.value == os.getpid() and u.IsWindowVisible(h):
+            n = u.GetWindowTextLengthW(h)
+            b = ctypes.create_unicode_buffer(n + 1)
+            u.GetWindowTextW(h, b, n + 1)
+            if b.value.startswith("MuJoCo"):
+                bulunan.append(h)
+        return True
+    u.EnumWindows(gez, 0)
+    if not bulunan:
+        return False
+    h = bulunan[0]
+    u.GetDC.restype = ctypes.c_void_p
+    g.CreateCompatibleDC.restype = ctypes.c_void_p
+    g.CreateCompatibleBitmap.restype = ctypes.c_void_p
+    g.SelectObject.restype = ctypes.c_void_p
+    for f in (g.CreateCompatibleDC, g.DeleteDC):
+        f.argtypes = [ctypes.c_void_p]
+    g.CreateCompatibleBitmap.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int]
+    g.SelectObject.argtypes = [ctypes.c_void_p, ctypes.c_void_p]
+    g.BitBlt.argtypes = [ctypes.c_void_p] + [ctypes.c_int] * 4 + [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_uint32]
+    g.GetDIBits.argtypes = [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_uint, ctypes.c_uint, ctypes.c_void_p,
+                            ctypes.c_void_p, ctypes.c_uint]
+    g.DeleteObject.argtypes = [ctypes.c_void_p]
+    u.ReleaseDC.argtypes = [ctypes.c_void_p, ctypes.c_void_p]
+    u.GetDC.argtypes = [ctypes.c_void_p]
+    r = wintypes.RECT()
+    u.GetClientRect(h, ctypes.byref(r))
+    pt = wintypes.POINT(0, 0)
+    u.ClientToScreen(h, ctypes.byref(pt))
+    W, H = r.right - r.left, r.bottom - r.top
+    if W <= 0 or H <= 0:
+        return False
+    ekran = u.GetDC(None)
+    dc = g.CreateCompatibleDC(ekran)
+    bmp = g.CreateCompatibleBitmap(ekran, W, H)
+    eski = g.SelectObject(dc, bmp)
+    g.BitBlt(dc, 0, 0, W, H, ekran, pt.x, pt.y, 0x00CC0020)       # SRCCOPY
+
+    class BIH(ctypes.Structure):
+        _fields_ = [("biSize", ctypes.c_uint32), ("biWidth", ctypes.c_int32), ("biHeight", ctypes.c_int32),
+                    ("biPlanes", ctypes.c_uint16), ("biBitCount", ctypes.c_uint16), ("biCompression", ctypes.c_uint32),
+                    ("biSizeImage", ctypes.c_uint32), ("biXPelsPerMeter", ctypes.c_int32),
+                    ("biYPelsPerMeter", ctypes.c_int32), ("biClrUsed", ctypes.c_uint32), ("biClrImportant", ctypes.c_uint32)]
+    bi = BIH(ctypes.sizeof(BIH), W, -H, 1, 32, 0, 0, 0, 0, 0, 0)
+    buf = (ctypes.c_ubyte * (W * H * 4))()
+    g.SelectObject(dc, eski)
+    g.GetDIBits(dc, bmp, 0, H, buf, ctypes.byref(bi), 0)
+    g.DeleteObject(bmp)
+    g.DeleteDC(dc)
+    u.ReleaseDC(None, ekran)
+    a = np.frombuffer(buf, dtype=np.uint8).reshape(H, W, 4)[:, :, 2::-1]
+    if a.max() < 10:
+        return False
+    png_yaz(yol, np.ascontiguousarray(a))
+    return True
 
 
 def pencereyi_sigdir():
@@ -476,16 +716,33 @@ def varsayilan_varyant(sahne_ad):
 
 
 def gezinme_kur(p, gezinme):
-    """gezinme: None ya da {"tur": "ab" | "kayip" | "beyin", "hedef", "beyin", "beyin_arg", "tohum"}."""
+    """gezinme: None ya da {"tur": "ab" | "kayip" | "beyin", "hedef", "beyin", "beyin_arg", "tohum", "cerceve", "hakem"}."""
     if not gezinme:
         return
     from gezinme.canli import CanliGezinme
+    hakem = gezinme.get("hakem") if p.sahne_ad.startswith("labirent_") else None
     p.gezinme = CanliGezinme(p, gezinme["tur"], hedef=gezinme.get("hedef"), beyin_yolu=gezinme.get("beyin"),
                              beyin_arg=gezinme.get("beyin_arg"), tohum=gezinme.get("tohum", 0),
-                             cerceve=gezinme.get("cerceve"))
+                             cerceve=gezinme.get("cerceve"), hakem=hakem,
+                             sure_siniri_s=gezinme.get("sure_siniri_s", 900.0))
+    p.demo = hakem is not None
 
 
 GEZINME_EKRAN_S = (5.0, 15.0, 30.0, 60.0, 120.0)   # gezinmede --ekran ile bu sanal saniyelerde görüntü
+
+
+def metin_listesi(p):
+    """Görüntüleyici katman metinleri: [(yazı tipi, yer, sol, sağ)]. Demo bitince büyük sonuç + puan dökümü."""
+    import mujoco
+    ust, sol, sag = p.metin()
+    L = [(mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_TOPLEFT, ust, None),
+         (mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_BOTTOMLEFT, sol, sag)]
+    if p.demo:
+        r = p.demo_sonuc_metni()
+        if r is not None:
+            L.append((mujoco.mjtFont.mjFONT_BIG, mujoco.mjtGridPos.mjGRID_TOPRIGHT, r[0], None))
+            L.append((mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_BOTTOMRIGHT, r[1], r[2]))
+    return L
 
 
 def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0", gezinme=None):
@@ -505,11 +762,15 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0", gezinme=None):
     with mujoco.viewer.launch_passive(p.w.m, p.w.d, key_callback=p.olay.put, show_left_ui=False,
                                       show_right_ui=False) as v:
         with v.lock():
-            kamera_kur(v.cam, p.w, p.w.taban)
+            kamera_sec(v.cam, p)
         t0 = time.perf_counter()
         sanal0 = p.e.zaman_ms
         en_uzun = 0.0
         sigdi, sig_deneme = False, 0
+        butce = 0.0                                       # sanal s: gerçek süre x hız kadar ileri gidilebilir
+        son_duvar = time.perf_counter()
+        hiz_iz = []                                       # (gerçek s, sanal s): ulaşılan hız çarpanı
+        sonuc_foto = None                                 # demo: koşu bitince ekran görüntüsü (bir kez)
         while v.is_running() and not p.sahne_degis and p.varyant_degis is None:
             dongu = time.perf_counter()
             if not sigdi and sig_deneme < 100:            # pencere birkaç döngü sonra görünür; bir kez çalışma alanına sığdır
@@ -544,40 +805,74 @@ def calistir(sahne_ad, senaryo_var, ekran, sure, varyant_ad="V0", gezinme=None):
                             rgb = rend.render()
                         png_yaz(os.path.join(ekran, foto + "-tekerler.png"), rgb)
                     p._yaz("ekran goruntusu %s.png" % foto)
-            if gez_ekran and t_s >= gez_ekran[0] and rend is not None:
+            ad = None
+            if gez_ekran and t_s >= gez_ekran[0]:
                 ad = "gezinme-%s-%s-%03ds" % (gezinme["tur"], sahne_ad, int(gez_ekran.pop(0)))
+            if p.demo and ekran and p.gezinme.hakem is not None and p.gezinme.hakem.bitti:
+                bt = p.gezinme.hakem.t_bitis
+                if sonuc_foto != (p.gezinme.tur_no, bt) and p.w.zaman_s - bt >= 1.0:
+                    sonuc_foto = (p.gezinme.tur_no, bt)
+                    ad = "labirent-%s-tur%d-sonuc" % (sahne_ad, p.gezinme.tur_no)
+            if ad and rend is not None:
                 cam = mujoco.MjvCamera()
                 with v.lock():
-                    kamera_kur(cam, p.w, p.w.taban)
-                    cam.distance, cam.elevation = 6.0, -55.0
+                    if p.demo:
+                        kamera_sec(cam, p)
+                    else:
+                        kamera_kur(cam, p.w, p.w.taban)
+                        cam.distance, cam.elevation = 6.0, -55.0
                     rend.update_scene(p.w.d, cam)
                     p.gezinme.ciz(rend.scene, bas=rend.scene.ngeom)
                     if p.lidar is not None:
                         p.lidar_ciz(rend.scene, bas=rend.scene.ngeom, zorla=True)
-                    rgb = rend.render()
+                    rgb = yazili_goruntu(rend, metin_listesi(p)) if p.demo else rend.render()
                 png_yaz(os.path.join(ekran, ad + ".png"), rgb)
-                p._yaz("ekran goruntusu %s.png" % ad)
+                if p.demo and pencere_yakala(os.path.join(ekran, ad + "-pencere.png")):
+                    p._yaz("ekran goruntusu %s.png (+ pencere)" % ad)
+                else:
+                    p._yaz("ekran goruntusu %s.png" % ad)
+            if p.kamera_degis:
+                p.kamera_degis = False
+                with v.lock():
+                    kamera_sec(v.cam, p)
+            simdi = time.perf_counter()
+            hiz = DEMO["hiz"] if p.demo else 1.0
+            if p.donuk:
+                butce = 0.0
+            else:
+                butce = min(butce + (simdi - son_duvar) * hiz, max(0.1, 0.25 * hiz))
+            son_duvar = simdi
+            adim_n = 0
+            while not p.donuk and butce >= 0.02 - 1e-9 and (adim_n == 0 or time.perf_counter() - simdi < 0.05):
+                z0 = p.e.zaman_ms
+                with v.lock():
+                    if p.son_t is not None and p.w.d.time < p.son_t - 1e-9:
+                        p.mujoco_sifirlandi()     # zaman geri gitti: görüntüleyici sıfırladı
+                    p.adim(20)
+                    p.son_t = p.w.d.time
+                butce -= max(0.02, (p.e.zaman_ms - z0) / 1000.0)    # istekler de birkaç sanal ms sürer
+                adim_n += 1
+            hiz_iz.append((time.perf_counter(), p.w.zaman_s))
+            while len(hiz_iz) > 2 and hiz_iz[-1][0] - hiz_iz[0][0] > 2.0:
+                hiz_iz.pop(0)
+            if p.donuk:
+                p.gercek_hiz = None
+            elif hiz_iz[-1][0] - hiz_iz[0][0] > 0.5:
+                p.gercek_hiz = (hiz_iz[-1][1] - hiz_iz[0][1]) / (hiz_iz[-1][0] - hiz_iz[0][0])
             with v.lock():
-                if p.son_t is not None and p.w.d.time < p.son_t - 1e-9:
-                    p.mujoco_sifirlandi()         # zaman geri gitti: görüntüleyici sıfırladı
-                p.adim(20)
-                p.son_t = p.w.d.time
                 if p.gezinme is not None:
                     p.gezinme.ciz_pencere(v.user_scn)
                 elif p.lidar is not None or p._lidar_cizilen != -1:
                     p.lidar_ciz(v.user_scn)
-            ust, sol, sag = p.metin()
             # set_texts kendi kilidini alır; v.lock() içinde çağrılırsa görüntüleyici kilitlenir ("Yanıt Vermiyor")
-            v.set_texts([(mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_TOPLEFT, ust, None),
-                         (mujoco.mjtFontScale.mjFONTSCALE_50, mujoco.mjtGridPos.mjGRID_BOTTOMLEFT, sol, sag)])
+            v.set_texts(metin_listesi(p))
             v.sync()
             en_uzun = max(en_uzun, time.perf_counter() - dongu)
-            ileri = (p.e.zaman_ms - sanal0) / 1000.0 - (time.perf_counter() - t0)
-            if ileri > 0:
-                time.sleep(ileri)
+            if butce < 0.02 or p.donuk:                       # yetişildi: bir sonraki 20 ms'lik dilime dek bekle
+                time.sleep(min(0.02, (0.02 - max(0.0, butce)) / max(hiz, 1e-3)))
             if sure is not None and t_s >= sure:
                 break
-        sonraki = (p.sahne_degis, p.varyant_degis) if (p.sahne_degis or p.varyant_degis) else None
+        sonraki = ((p.sahne_yon if p.sahne_degis else False), p.varyant_degis) if (p.sahne_degis or p.varyant_degis) else None
     print("sahne %s kapandi: sanal %.1f s, duvar %.1f s, en uzun dongu %.0f ms"
           % (sahne_ad, (p.e.zaman_ms - sanal0) / 1000.0, time.perf_counter() - t0, en_uzun * 1000), flush=True)
     return sonraki
@@ -595,6 +890,10 @@ def main():
     ap.add_argument("--tohum", type=int, default=0, help="gezinme tohumu (konumlayıcı, rastgele bırakma)")
     ap.add_argument("--cerceve", default=None, choices=["harita", "baslangic"],
                     help="Beyin poz / harita çerçevesi (durum()['ek']['cerceve'] yoksa); varsayılan labirentte baslangic, öbürlerinde harita")
+    ap.add_argument("--hakem", default=None, choices=["labirent"],
+                    help="labirent: kod/fizik/labirent/hakem.py (900 s) koşuyu yönetir, sonuç + puan ekranda; tuşlar demo")
+    ap.add_argument("--hiz", type=float, default=1.0, help="labirent gösteriminde sanal / gerçek süre (1, 2, 4, 8 ...)")
+    ap.add_argument("--kamera", default="ust", choices=["ust", "izle"], help="labirent gösteriminde başlangıç kamerası")
     ap.add_argument("--ekran", default=None, help="senaryoda ekran görüntülerinin yazılacağı klasör")
     ap.add_argument("--sure", type=float, default=None, help="her sahneyi bu kadar sanal saniye sonra kapat")
     ap.add_argument("--varyant", default=None, choices=VR.SIRA,
@@ -624,11 +923,13 @@ def main():
                     pass
             return v
         gezinme = dict(tur="beyin" if a.beyin else a.senaryo, beyin=a.beyin, hedef=a.hedef, tohum=a.tohum, cerceve=a.cerceve,
+                       hakem=a.hakem,
                        beyin_arg={k: _deger(v) for k, v in (x.split("=", 1) for x in a.beyin_arg)})
         if gezinme["tur"] in ("ab", "kayip") and not sahne.startswith("koridor_"):
             print("--senaryo %s yalniz koridor sahnelerinde; koridor_1 aciliyor" % gezinme["tur"], flush=True)
             sahne = "koridor_1"
     senaryo_tus = a.senaryo == "tus"
+    DEMO["hiz"], DEMO["kamera"] = max(0.05, a.hiz), a.kamera
     acik_varyant = varyant is not None             # elle seçilen varyant sahne değişince korunur
     while True:
         if not acik_varyant:
@@ -640,7 +941,10 @@ def main():
             liste = SAHNELER
             if gezinme and gezinme["tur"] in ("ab", "kayip"):
                 liste = [x for x in SAHNELER if x.startswith("koridor_")]   # A-B / kayıp yalnız koridorlarda
-            sahne = liste[(liste.index(sahne) + 1) % len(liste)] if sahne in liste else liste[0]
+            elif gezinme and gezinme.get("hakem") == "labirent":
+                liste = LABIRENTLER                                          # kolaydan zora
+            yon = sonraki[0] if isinstance(sonraki[0], int) and not isinstance(sonraki[0], bool) else 1
+            sahne = liste[(liste.index(sahne) + yon) % len(liste)] if sahne in liste else liste[0]
         if sonraki[1]:
             varyant = sonraki[1]
             acik_varyant = True

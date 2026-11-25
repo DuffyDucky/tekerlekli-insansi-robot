@@ -125,6 +125,45 @@ class Duzenek(unittest.TestCase):
         self.assertGreaterEqual(s["temas_olay"], 1)             # START'tan ileri: duvara dayanır
         self.assertEqual(s["temas_olay"], h.sonuc["carpma_sayisi"])
 
+    @unittest.skipUnless(os.path.exists(os.path.join(_yol.FIZIK, "sahneler", "labirent_5x5_t1.json")) and
+                         os.path.exists(os.path.join(_yol.FIZIK, "labirent", "hakem.py")), "labirent yok")
+    def test_kayit_zaman_tabani_hakem_sonucu_olaylar(self):
+        """Süre sınırında biten koşuda hakem sonucu (durum + döküm) kayda girer; t0_dunya_s iki saati bağlar; Beyin
+        olaylarının hepsi (en çok BEYIN_OLAY_EN_COK) meta'da."""
+        from gezinme.duzenek import Duzenek, kayit_oku
+        sys.path.insert(0, os.path.join(_yol.FIZIK, "labirent"))
+        from hakem import Hakem
+
+        class Bekle:
+            def __init__(self):
+                self.olaylar = []
+
+            def adim(self, t, tarama, artim):
+                self.olaylar.append((round(t, 2), "adim", ""))
+                return 0.0, 0.0
+
+            def durum(self):
+                return {"poz": None, "mod": "bekle", "yol": [], "hedef": None, "harita": None, "ek": {}}
+        dz = Duzenek("labirent_5x5_t1")
+        dz.e.bekle(600)                                         # dünya saati koşu başından ileride olsun
+        h = Hakem("labirent_5x5_t1", sure_siniri_s=4.0)
+        b = Bekle()
+        yol = os.path.join(tempfile.mkdtemp(), "l.npz")
+        s = dz.kos(b, 4.0, hakem=h, kayit=yol)
+        self.assertEqual(s["bitis"], "hakem")
+        meta, dzl = kayit_oku(yol)
+        self.assertEqual(meta["hakem"]["durum"], "fail_sure")
+        self.assertIn("puan_dokumu", meta["hakem"])
+        self.assertEqual(meta["sonuc"]["hakem"]["durum"], "fail_sure")
+        t0 = meta["t0_dunya_s"]
+        self.assertGreater(t0, 0.4)
+        # ilk tarama, satır saatine t0 eklenince aynı tabanda: koşu içinde
+        self.assertGreaterEqual(float(dzl["tarama_t"][0]), t0 - 0.11)
+        self.assertLessEqual(float(dzl["tarama_t"][-1]), t0 + float(dzl["t"][-1]) + 1e-6)
+        self.assertGreater(len(b.olaylar), 8)
+        self.assertEqual(len(meta["beyin_olaylari"]), len(b.olaylar))
+        self.assertEqual(meta["beyin_olay_sayisi"], len(b.olaylar))
+
 
 if __name__ == "__main__":
     unittest.main()

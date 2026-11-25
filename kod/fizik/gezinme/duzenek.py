@@ -41,6 +41,7 @@ import numpy as np  # noqa: E402
 
 KAYIT_SURUMU = 1
 TEMAS_BIRLESTIR_S = 1.0
+BEYIN_OLAY_EN_COK = 2000                 # kayıt meta'sına Beyin'in `olaylar` listesinden en çok bu kadar (sondan)
 VARSAYILAN_GEZINME_VARYANTI = "ONERI"   # koridor deneyinin robotu (deneyler/koridor_karisiklik/ortak.py SURUS_VARYANTI)
 
 
@@ -357,7 +358,13 @@ class Duzenek:
         adim = 0
         reddedilen = 0
         durum = {}
-        while w.zaman_s - t0 < sure_s:
+        sinir_s = sure_s
+        hakem_T = getattr(hakem, "T", None)
+        if hakem_T is not None and float(hakem_T) <= sure_s + 1e-6:
+            # hakemin süre sınırı koşu süresine eşitse hakem kendi saatiyle (ilk çağrıdan T sonra) bitirsin: sonuç
+            # durumu None kalmasın (fail_sure + puan dökümü kayda girer)
+            sinir_s = sure_s + 2.0
+        while w.zaman_s - t0 < sinir_s:
             t = w.zaman_s
             tarama = None
             if self._bekleyen:
@@ -416,9 +423,15 @@ class Duzenek:
                      son_tahmin=([round(z, 4) for z in durum["poz"]] if durum.get("poz") is not None else None),
                      son_mod=durum.get("mod"), hakem=(getattr(hakem, "sonuc", None) if hakem is not None else None))
         if kayit is not None:
+            b_olay = getattr(beyin, "olaylar", None)
             kayit.kaydet(meta=dict(sahne=self.sahne_ad, varyant=self.varyant_ad, tohum=self.tohum,
                                    baslangic=list(self.baslangic), denetim_hz=denetim_hz, sonuc=sonuc,
-                                   ek_engeller=self.ek_engeller),
+                                   ek_engeller=self.ek_engeller,
+                                   # zaman tabanı: satır t = dünya saati - t0_dunya_s; tarama_t ve beyin t'si dünya saati
+                                   t0_dunya_s=round(t0, 6), zaman_tabani="t = dunya - t0_dunya_s; tarama_t dunya saati",
+                                   hakem=sonuc["hakem"],
+                                   beyin_olaylari=(list(b_olay)[-BEYIN_OLAY_EN_COK:] if isinstance(b_olay, list) else None),
+                                   beyin_olay_sayisi=(len(b_olay) if isinstance(b_olay, list) else None)),
                          acilar=self.lidar.acilar, montaj=self.lidar.montaj)
             sonuc["kayit"] = kayit.yol
         return sonuc

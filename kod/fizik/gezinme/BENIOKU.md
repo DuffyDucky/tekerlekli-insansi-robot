@@ -35,10 +35,10 @@ Gövde orta hatta ve koridor boyunca bakarken arka dingil de orta hattadır: en 
 | `beyinler.py` | `OdometriBeyni` (yalnız odometri), `AbBeyni` (tek harita MCL), `KayipBeyni` (6 harita MCL + keşif), `Kesif` |
 | `rota.py` | koridor çizgesi (`Cizge`), duraklar (`k5_kapi_3`, `k5_bas`, `k5_son` ...), `rota()` |
 | `senaryo_ab.py`, `senaryo_kayip.py`, `senaryo_ortak.py` | senaryo koşucuları; ölçüm sonucu `sonuc/SONUC.md` |
-| `canli.py` | 3B pencere katmanı (`gorunum3b.py --senaryo ab|kayip`, `--beyin modul:Sinif`) |
+| `canli.py` | 3B pencere katmanı (`gorunum3b.py --senaryo ab|kayip`, `--beyin modul:Sinif`, `--hakem labirent` gösterimi: `kod\labirent.bat`) |
 | `ornek_beyin.py` | `--beyin` kancası + harita katmanı örneği (odometri ızgarası; SLAM değil) |
 | `olcum_robot.py` | yukarıdaki robot ölçüleri |
-| `testler/` | `test_izleyici` (13, saf), `test_duzenek` (5, MuJoCo; yoksa atlanır) |
+| `testler/` | `test_izleyici` (13, saf), `test_duzenek` (6, MuJoCo; yoksa atlanır) |
 
 ## Arayüzler
 
@@ -80,6 +80,13 @@ v, w, `dunya.hiz()` yer gerçeği), `temas` (uint8), `mod` (int16; ad listesi `m
 `tarama_mm` (uint16 mm, 0 = ölçüm yok), `acilar`. Haritalar: `harita_<i>` (2 s'de bir), `meta["haritalar"]` zaman,
 çözünürlük, orijin. Meta (npz içinde `meta` JSON): surum, sahne, varyant, tohum, baslangic, denetim_hz, montaj, yollar
 (her değişen rota [t, noktalar]), ek_engeller, sonuc.
+
+Eklenen alanlar (2026-11-25; eski kayıtlarda yok, okuyucu `meta.get` ile bakmalı, öbür alanlar değişmedi):
+`t0_dunya_s` koşu başının dünya saati: satır `t` = dünya saati − `t0_dunya_s`; `tarama_t` ve Beyin'e giden `t`
+dünya saatidir (aynı tabana: `tarama_t − t0_dunya_s`); `zaman_tabani` bunu düz yazıyla söyler. `hakem` koşu sonundaki
+`hakem.sonuc` (durum, puan, `puan_dokumu`, hakem olaylarının hepsi; `sonuc["hakem"]` ile aynı). Hakemin `T`'si koşu
+süresine eşit ya da kısaysa `kos` hakem bitene dek en çok 2 s uzar: süre sınırında biten koşunun durumu artık `None`
+değil `fail_sure`. `beyin_olaylari`: Beyin'in `olaylar` listesi (varsa) sondan en çok 2000, `beyin_olay_sayisi` toplam.
 
 ## Komutlar (`cd kod\fizik`, `%V%` = `%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe`)
 

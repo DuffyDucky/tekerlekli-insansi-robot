@@ -625,6 +625,29 @@ Sahneler (pencerede Shift+9 sırası): `labirent_5x5_t1`, `labirent_7x7_t1`, `la
 takar: `Duzenek("labirent_9x9_t1").kos(beyin, 900, hakem=Hakem("labirent_9x9_t1", sure_siniri_s=900.0))`. Keşif beynini
 pencerede izlemek: `kod\simulasyon3b.bat labirent_9x9_t1 --beyin kesif.<modul>:<Sinif>` (aşağıda "Gezinme").
 
+**Labirent gösterimi (tek tık): `kod\labirent.bat [sahne] [hız]`** (varsayılan `labirent_9x9_t1`, hız 4; ör.
+`kod\labirent.bat labirent_5x5_t1 2`). Keşif beyni (`kesif.beyin:KesifBeyni`, ön bilgisiz) + labirent hakemi (900 s).
+Ekranda: süre / 15:00, kat edilen yol, çarpma sayısı ve temas süresi, beynin modu, ziyaret edilen hücre ve ilerleme, hız
+("4x (gercek 3.9x)"; bilgisayar yetişemezse "bilgisayar yetismiyor"). Koşu bitince sağ üstte büyük sonuç (BASARI /
+START'TAN CIKTI / SURE DOLDU / SIKISTI + puan), sağ altta puan dökümü (`puan.py`). Zeminde turuncu START ve mor FINISH
+şeridi (yalnız izleyici için, beyne verilmez), robotun kendi haritası camgöbeği (üstten bakışta duvar tepesinde), mavi
+yarı saydam tahmini poz, sarı yol, yeşil hedef, kırmızı LiDAR noktaları. Komut satırından: `gorunum3b.py --sahne <ad>
+--beyin kesif.beyin:KesifBeyni --hakem labirent --hiz 4 [--kamera ust|izle]`.
+
+| Tuş | İş |
+| --- | --- |
+| 6 / 9 (sayısal takımda − / +) | hız yarıya / iki katına (0,25x … 16x) |
+| 7 | duraklat / sürdür (fizik ve hakem saati durur) |
+| 8 (F9) | kamera: labirentin tamamı üstten / robotu izle |
+| Shift+8 (F7, F11) | baştan başlat (yeni beyin, yeni hakem) |
+| Shift+7 / Shift+9 (F10 / F12) | önceki / sonraki labirent (5x5 → 7x7 → 9x9 t1..t3 → 13x13 → 17x17) |
+| Enter (Shift+6, F6) | BAŞARI'dan sonra 2. tur: aynı labirente START'tan, robotun kendi haritasıyla (`hafiza_ver()` → `KesifBeyni(hafiza=…)`, `kesif/kos.py hafiza` ile aynı); bitince ek tur puanı (`puan.ek_tur_puani`) |
+| F8 | LiDAR noktalarını göster / gizle |
+
+Bu modda rakam tuşları elle sürüş işlerinin (6 devreye al, 8 acil stop ...) yerine geçer; F tuşları HP dizüstünde Fn
+isteyebilir. Ölçülen hız (2026-11-25, bu PC): 5x5 ve 7x7'de 4x tam (gerçek 4,0x); 9x9'da 8x istenince gerçek 4,4–5,1x.
+Harita katmanı en sık 2 sanal / 1 gerçek saniyede bir yenilenir.
+
 ## Gezinme (rota izleme, A'dan B'ye, kayıp robot)
 
 `kod/fizik/gezinme/` (ayrıntı, arayüzler, kayıt biçimi: `gezinme/BENIOKU.md`; ölçüm: `gezinme/sonuc/SONUC.md`). Robot

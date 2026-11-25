@@ -9,17 +9,21 @@ Beyin çerçevesi: `durum()["ek"]["cerceve"]` "harita" (varsayılan; harita = d�
 """
 
 import importlib
+import importlib.util
 import inspect
 import math
 import os
 import random
 import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from gezinme.duzenek import goreli, sar  # noqa: E402
 
 DENETIM_MS = 50
-HARITA_ARALIK_S = 2.0
+HARITA_ARALIK_S = 2.0          # harita katmanı en sık: 2 sanal s ...
+HARITA_DUVAR_S = 1.0           # ... ve 1 gerçek s (hızlandırmada çizim fiziği yavaşlatmasın)
+SONUC_ADI = {"basari": "BASARI", "fail_start": "START'TAN CIKTI", "fail_sure": "SURE DOLDU", "fail_sikisma": "SIKISTI"}
 HARITA_EN_COK_HUCRE = 3000
 YOL_EN_COK_PARCA = 200
 
@@ -52,8 +56,22 @@ def beyin_kur(sinif, **aday):
 class CanliGezinme:
     """Pencereye bağlı Beyin sürücüsü. tur: "ab" | "kayip" | "beyin" (dış sınıf)."""
 
-    def __init__(self, p, tur, hedef=None, beyin_yolu=None, beyin_arg=None, tohum=0, cerceve=None):
+    def __init__(self, p, tur, hedef=None, beyin_yolu=None, beyin_arg=None, tohum=0, cerceve=None, hakem=None,
+                 sure_siniri_s=900.0):
         self.p, self.tur, self.tohum = p, tur, tohum
+        # hakem "labirent": kod/fizik/labirent/hakem.py her denetim adımında yer gerçeğiyle; bitince robot durur
+        self.hakem_tur, self.sure_siniri_s = hakem, float(sure_siniri_s)
+        self.hakem = None
+        self.tur_no = 1                          # 2: hafızalı ikinci tur (aynı labirent, Beyin'in kendi haritası)
+        self.tur1 = None                         # birinci turun hakem sonucu (ikinci turda)
+        self.bitis_islendi = False
+        self.cizgiler = []                       # START / FINISH şeritleri (yalnız izleyici için; Beyin'e verilmez)
+        lab = p.sahne.get("labirent") if hakem == "labirent" else None
+        for k, renk in (("start", (1.0, 0.35, 0.0, 0.95)), ("finish", (0.8, 0.2, 0.9, 0.9))):
+            if lab and lab.get(k, {}).get("cizgi"):
+                (ax, ay), (bx, by) = lab[k]["cizgi"]
+                self.cizgiler.append(((ax + bx) / 2, (ay + by) / 2, math.hypot(bx - ax, by - ay) / 2,
+                                      math.atan2(by - ay, bx - ax), renk))
         self.beyin_yolu, self.beyin_arg = beyin_yolu, dict(beyin_arg or {})
         self.sahne = p.sahne_ad
         self.kapilar = []
@@ -87,6 +105,9 @@ class CanliGezinme:
         self.kur(self.bas, yeni_beyin=True)
         self._harita_cache = None               # (t, geom listesi)
         self._harita_t = -1e9
+        self._harita_duvar = -1e9
+        self.harita_z = 0.006                    # üstten bakışta duvar üstüne (1,03 m) alınır: duvarla çakışma görünsün
+        self.harita_renk = (0.15, 0.15, 0.2, 0.55)
         self.harita_hucre = 0
 
     # ------------------------------------------------------------ odometri (Duzenek ile aynı formül)
@@ -138,7 +159,7 @@ class CanliGezinme:
         return G[0][1:]
 
     # ------------------------------------------------------------ kurulum / tuşlar
-    def _beyin_yap(self, bas):
+    def _beyin_yap(self, bas, hafiza=None):
         if self.tur == "ab":
             from gezinme.beyinler import AbBeyni
             return AbBeyni(self.sahne, bas, self.kapilar[self.hedef_i], tohum=self.tohum)
@@ -154,9 +175,44 @@ class CanliGezinme:
             aday["sahne"] = {k: v for k, v in self.p.sahne.items() if k != "labirent"}
             aday.pop("baslangic")
         aday.update(self.beyin_arg)
+        if hafiza is not None:
+            aday["hafiza"] = hafiza
         return beyin_kur(sinif, **aday)
 
-    def kur(self, bas, yeni_beyin=True):
+    def hafiza_turu(self):
+        """Başarılı turdan sonra: aynı labirente START'tan, Beyin'in kendi haritasıyla (`hafiza_ver()` ->
+        kurucu `hafiza=`) yeniden gir. kesif/kos.py'deki hafızalı koşunun aynısı."""
+        h = self.hakem
+        if h is None or not h.bitti or h.sonuc["durum"] != "basari":
+            self.p._yaz("ikinci tur: once bir tur BASARI ile bitmeli")
+            return False
+        sinif = type(self.beyin)
+        try:
+            kabul = "hafiza" in inspect.signature(sinif).parameters
+        except (TypeError, ValueError):
+            kabul = False
+        if not hasattr(self.beyin, "hafiza_ver") or not kabul:
+            self.p._yaz("ikinci tur: bu Beyin hafiza_ver() / hafiza= desteklemiyor")
+            return False
+        hz = self.beyin.hafiza_ver()
+        self.tur1 = h.sonuc if self.tur_no == 1 else self.tur1
+        self.tur_no = 2
+        self.kur(self.bas, yeni_beyin=True, hafiza=hz)
+        self.p._yaz("2. tur: ayni labirent, robotun kendi haritasiyla")
+        return True
+
+    def _hakem_yap(self):
+        if self.hakem_tur != "labirent":
+            return None
+        if not hasattr(CanliGezinme, "_H"):
+            yol = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "labirent", "hakem.py")
+            spec = importlib.util.spec_from_file_location("lale_labirent_hakem_canli", yol)
+            m = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(m)
+            CanliGezinme._H = m
+        return CanliGezinme._H.Hakem(self.p.sahne, sure_siniri_s=self.sure_siniri_s)
+
+    def kur(self, bas, yeni_beyin=True, hafiza=None):
         """Robotu bas'a koy, odometriyi oraya kur, Beyin'i yeniden kur, devreye al."""
         p = self.p
         p.c.konum_ayarla(*bas)
@@ -176,8 +232,12 @@ class CanliGezinme:
         self._sonraki_ms = p.e.zaman_ms
         self.v = self.w = 0.0
         self.durum = {}
+        self.hakem = self._hakem_yap()
+        self.bitis_islendi = False
+        self._harita_t = self._harita_duvar = -1e9
+        self._harita_cache = None
         if yeni_beyin:
-            self.beyin = self._beyin_yap(bas)
+            self.beyin = self._beyin_yap(bas, hafiza)
         c = p.e.istek({"k": "arm"}, denetle=False)
         p._yaz("gezinme %s: robot (%.2f, %.2f, %.0f der), arm %s" % (self.tur, bas[0], bas[1], math.degrees(bas[2]),
                                                                    "ok" if c.get("ok") else c.get("hata")))
@@ -192,7 +252,10 @@ class CanliGezinme:
                 self.beyin.hedef_degistir(yeni if self.tur == "ab" else yeni.split("_", 1)[1])
             self.p._yaz("hedef: %s" % yeni)
         elif ad == "bastan":
+            self.tur_no, self.tur1 = 1, None
             self.kur(self.bas, yeni_beyin=True)
+        elif ad == "hafiza":
+            self.hafiza_turu()
         elif ad == "birak":
             from gezinme.senaryo_ortak import rastgele_birak
             if self.sahne.startswith("koridor_"):
@@ -216,6 +279,20 @@ class CanliGezinme:
             return
         self._sonraki_ms = p.e.zaman_ms + DENETIM_MS
         t = p.w.zaman_s
+        if self.hakem is not None:
+            if not self.hakem.bitti:
+                g = p.w.poz()
+                self.hakem.guncelle(t, (g[0], g[1], g[3]), p.w.temas_engel())
+            if self.hakem.bitti:
+                if not self.bitis_islendi:
+                    self.bitis_islendi = True
+                    self.v = self.w = 0.0
+                    p.v = p.w_cmd = 0.0
+                    p.e.gonder({"k": "dur"}, denetle=False)
+                    r = self.hakem.sonuc
+                    p._yaz("%s. tur bitti: %s  sure %.1f s  puan %.1f  carpma %d" % (
+                        self.tur_no, SONUC_ADI.get(r["durum"], r["durum"]), r["sure_s"], r["puan"], r["carpma_sayisi"]))
+                return
         tarama = None
         self._bekleyen = [x for x in self._bekleyen if x["t"] >= self._gecerli_t - 1e-9]
         if self._bekleyen:
@@ -232,6 +309,26 @@ class CanliGezinme:
         p.e.istek({"k": "sur", "v": round(self.v, 4), "w": round(self.w, 4)}, denetle=False)
         p.v, p.w_cmd = self.v, self.w
         self.durum = self.beyin.durum() or {}
+
+    def ozet(self):
+        """Pencere metni için: hakem ara / son durumu (+ ikinci turda ek tur puanı)."""
+        h = self.hakem
+        if h is None:
+            return None
+        o = dict(tur_no=self.tur_no, sure_s=h.sure_s, sinir_s=h.T, yol_m=h.yol_m, carpma=h.carpma_sayisi,
+                 carpma_s=h.carpma_suresi_s, hucre=len(h.ziyaret), toplam_hucre=h.toplam_hucre, p_en=h.p_en,
+                 bitti=h.bitti, mod=self.durum.get("mod", "-"))
+        if h.bitti:
+            r = h.sonuc
+            o.update(durum=r["durum"], ad=SONUC_ADI.get(r["durum"], r["durum"]), puan=r["puan"], dokum=r["puan_dokumu"],
+                     hafiza_olur=(r["durum"] == "basari" and hasattr(self.beyin, "hafiza_ver")))
+            if self.tur_no == 2:
+                s2, d2 = CanliGezinme._H.P.ek_tur_puani(r["durum"] == "basari", r["sure_s"], r["carpma_sayisi"],
+                                                         h.cozum_m)
+                o.update(ek_tur_puani=s2, ek_tur_dokum=d2)
+        if self.tur1 is not None:
+            o["tur1"] = self.tur1
+        return o
 
     # ------------------------------------------------------------ çerçeve
     def _dunyaya(self, x, y, th=0.0):
@@ -287,12 +384,17 @@ class CanliGezinme:
         n = bas
         son = bas + en_cok
         G = mujoco.mjtGeom
+        for (cx, cy, yari, aci, renk) in self.cizgiler:      # START / FINISH şeritleri (zemin)
+            c, s_ = math.cos(aci), math.sin(aci)
+            R = np.array([[c, -s_, 0], [s_, c, 0], [0, 0, 1.0]]).ravel()
+            self._yaz(scn, n, G.mjGEOM_BOX, (yari, 0.07, 0.004), (cx, cy, 0.009), renk, R)
+            n += 1
         yol = [self._dunyaya(*q)[:2] for q in (d.get("yol") or [])]
         if len(yol) > YOL_EN_COK_PARCA:
             k = int(math.ceil(len(yol) / YOL_EN_COK_PARCA))
             yol = yol[::k] + [yol[-1]]
         for a, b in zip(yol, yol[1:]):
-            if n >= son - 6:
+            if n >= son - 8:
                 break
             g = self._yaz(scn, n, G.mjGEOM_CAPSULE, (0.025, 0.025, 0.025), (a[0], a[1], 0.03), (1.0, 0.8, 0.1, 0.8))
             mujoco.mjv_connector(g, G.mjGEOM_CAPSULE, 0.025, np.array([a[0], a[1], 0.03]), np.array([b[0], b[1], 0.03]))
@@ -319,7 +421,7 @@ class CanliGezinme:
         import mujoco
         n = 0
         for (x, y, yari, renk) in (self._harita_cache or [])[:en_cok]:
-            self._yaz(scn, bas + n, mujoco.mjtGeom.mjGEOM_BOX, (yari, yari, 0.004), (x, y, 0.006), renk)
+            self._yaz(scn, bas + n, mujoco.mjtGeom.mjGEOM_BOX, (yari, yari, 0.004), (x, y, self.harita_z), renk)
             n += 1
         return n
 
@@ -344,9 +446,11 @@ class CanliGezinme:
             self._yaz(scn, i, mujoco.mjtGeom.mjGEOM_SPHERE, (0.001, 0, 0), (0, 0, -10), (0, 0, 0, 0))
         hr = self.durum.get("harita")
         zorla = False
-        if hr is not None and self.p.w.zaman_s - self._harita_t >= HARITA_ARALIK_S:
+        if (hr is not None and self.p.w.zaman_s - self._harita_t >= HARITA_ARALIK_S
+                and time.perf_counter() - self._harita_duvar >= HARITA_DUVAR_S):
             self._harita_cache = self._harita_hucreleri(hr)
             self._harita_t = self.p.w.zaman_s
+            self._harita_duvar = time.perf_counter()
             self._H = self._harita_yaz(scn, D, min(HARITA_EN_COK_HUCRE, scn.maxgeom - D - 1200))
             zorla = True
         H = getattr(self, "_H", 0)
@@ -384,6 +488,6 @@ class CanliGezinme:
         out = []
         for i, j in zip(ii[:HARITA_EN_COK_HUCRE], jj[:HARITA_EN_COK_HUCRE]):
             x, y, _ = self._dunyaya(x0 + (j + 0.5) * hucre, y0 + (i + 0.5) * hucre)
-            out.append((x, y, hucre / 2 * 0.95, (0.15, 0.15, 0.2, 0.55)))
+            out.append((x, y, hucre / 2 * 0.95, self.harita_renk))
         self.harita_hucre = len(out)
         return out
