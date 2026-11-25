@@ -153,8 +153,16 @@ footer{margin:48px 0 40px;font-size:13px;color:var(--soluk)}
 .hukum .kpiler{margin:10px 0 6px}
 .oran.buyuk{font-size:28px;padding:2px 10px;border-radius:8px}
 .neden-ayri{margin-top:10px}
-.gelistirme{margin:14px 0}
+.gelistirme,.ilk-sinama{margin:14px 0}
 .gelistirme .tablo-sar{margin-bottom:0}
+.ilk-sinama p{margin:6px 0 0}
+.v3-not{margin:8px 0 4px;padding:8px 12px;border-radius:8px;background:var(--panel2)}
+.e-ilk{color:var(--soluk)}
+ul.sik{margin:4px 0 10px;padding-left:20px}
+ul.sik li{margin:2px 0}
+.t3 .tablo-sar{margin-bottom:6px}
+.atla{display:flex;flex-wrap:wrap;gap:6px 14px}
+.surum-dugmeler{display:contents}
 tr.toplam th,tr.toplam td{background:var(--panel2)}
 .e-sin{color:var(--plan)}
 .e-gel{color:var(--soluk)}
@@ -222,13 +230,18 @@ h4{font-size:15px;margin:18px 0 4px}
 </section>
 
 <section id="neden">
-  <h2>Neden 17×17'de takılıyor</h2>
-  <!--NEDEN-->
+  <h2>Robot neden dolanıyordu</h2>
+  <!--DOLANMA-->
+</section>
+
+<section id="kalan">
+  <h2>Kalan başarısızlıklar: hız mı, keşif mi</h2>
+  <!--KALAN-->
 </section>
 
 <section id="kiyas">
-  <h2>v1 / v2, stratejiler, hafıza</h2>
-  <h3>Beyin sürümü: v1 ile v2</h3>
+  <h2>v1 / v2 / v3, stratejiler, hafıza</h2>
+  <h3>Beyin sürümleri: v1, v2, v3</h3>
   <!--KARSILASTIRMA-->
   <h3><span class="etiket e-mj">MuJoCo</span> Hafızalı ikinci koşu</h3>
   <!--HAFIZA_MJ-->
@@ -303,12 +316,19 @@ h4{font-size:15px;margin:18px 0 4px}
         <li><b>Robot modeli öneri sürümü</b> (öneri firmware ve ön omni teker). Bugünkü robot (V0) modelde yerinde
         dönemiyor; sayılar bu öneri için geçerli.</li>
         <li><b>Dünya ideal:</b> 2 mm kalınlık, 1 m yükseklikte düz duvarlar, düz zemin. Cam, siyah yüzey, yansıma, insan,
-        eşik ya da rampa yok. Labirentler mükemmel (döngüsüz): 11 geliştirme, 10 sınama labirenti.</li>
+        eşik ya da rampa yok. Labirentler mükemmel (döngüsüz): 11 geliştirme (t1–t3), 10 ilk sınama (t4–t8), 10 sınama2
+        (t9–t13) labirenti.</li>
         <li><b>Tohum yalnız LiDAR gürültüsünü değiştirir.</b> Aynı labirentin koşuları birbirine yakındır; bağımsız denemeler
-        gibi okunmamalı. Sınama kümesi 10 labirent × 2 tohum: istatistik için az.</li>
-        <li><b>Sınama kümesi tam kör değil:</b> beyin ayarı sınama labirentlerinde yapılmadı, ama v2'yi varsayılan yapma kararı
-        sınama sonucuna bakılarak verildi. Aynı labirent üreticisi aynı tohumla START çevresini aynı oyar; 13×13_tN ile
+        gibi okunmamalı. Sınama2 kümesi 10 labirent × 2 tohum: istatistik için az.</li>
+        <li><b>Küme değişti:</b> ilk sınama labirentleri (t4–t8) v1/v2 kararında kullanıldı; sonra 30 dakikalık ölçümde ve
+        dolanma tanısında incelendi. Artık kör değiller, geliştirme tarafında sayılıyorlar; v3 döneminde 17×17_t4 ve t5
+        geliştirme kümesine girdi. Asıl hüküm yeni sınama2 kümesinden. v2'nin ilk sınamadaki sonucu (14/20) silinmedi,
+        ayrı ve küçük duruyor.</li>
+        <li><b>Sınama2 de tam kör değil:</b> v3'ün kuralı sınama2 sonuçları gelmeden yazıldı, ama v3'ü varsayılan yapma kararı
+        sınama2 sonucuna bakılarak verildi. Aynı labirent üreticisi aynı tohumla START çevresini aynı oyar; 13×13_tN ile
         17×17_tN'nin START çevresi ortaktır.</li>
+        <li><b>v3'ün kazancı tek labirentten:</b> geliştirme kümesindeki 27 → 30 farkı düzeltmenin üzerinde tasarlandığı
+        17×17_t3'ten geliyor; sınama2'de v2 ile v3 aynı. Genel bir iyileşme kanıtı sayılmaz.</li>
         <li><b>Uzatılmış ölçüm kural dışı:</b> 30 dakikalık koşular yalnız "süre yetse çözer mi" sorusu için; 15 dakikalık
         sayılara, puana ve başarı oranlarına girmez.</li>
         <li><b>Beyin ön bilgisiz:</b> sahnedeki labirent bilgisini okumaz, yalnız kuralı bilir (START çizgisinin 0,45 m
@@ -345,7 +365,7 @@ const VERI = JSON.parse(document.getElementById("veri").textContent);
 const T_MAX = VERI.T || 900;
 const PARAM = new URLSearchParams(location.search);
 const HATALAR = [];
-window.addEventListener("error", e => HATALAR.push(String(e.message || e)));
+window.addEventListener("error", e => { const m = String(e.message || e); if (!/ResizeObserver loop/.test(m)) HATALAR.push(m); }); // ResizeObserver döngü bildirimi zararsız (boyut değişiminde)
 window.addEventListener("unhandledrejection", e => HATALAR.push("söz: " + String(e.reason && e.reason.message || e.reason)));
 
 // ---------------------------------------------------------------- biçim
@@ -355,7 +375,7 @@ const fs1 = s => { if (s == null || !isFinite(s)) return "-"; s = Math.max(0, s)
 const kisa = ad => (ad || "").replace("labirent_", "").replace("x", "×");
 const boyutOf = ad => { const m = /(\d+)x(\d+)/.exec(ad || ""); return m ? +m[1] : 0; };
 const DURUM_AD = VERI.durum_ad || {};
-const KUME_AD = VERI.kume_ad || {}, KOS_AD = VERI.kos_ad || {}, KSIRA = { sinama: 0, gelistirme: 1, uzatilmis: 2 };
+const KUME_AD = VERI.kume_ad || {}, KOS_AD = VERI.kos_ad || {}, KSIRA = { sinama2: 0, sinama: 1, gelistirme: 2, uzatilmis: 3 };
 const etiketK = k => k.tur !== "labirent" ? (k.ad_goster || k.dosya) : (KUME_AD[k.kume] || k.kume || "") + " · " + (k.surum || "") + (k.kos === "hafiza" ? " · hafızalı" : "") + " · " + kisa(k.sahne) + " · tohum " + k.tohum;
 const el = (tag, attrs = {}, html) => { const e = document.createElement(tag); for (const k in attrs) { if (k === "class") e.className = attrs[k]; else if (k.startsWith("on")) e.addEventListener(k.slice(2), attrs[k]); else e.setAttribute(k, attrs[k]); } if (html != null) e.innerHTML = html; return e; };
 
@@ -424,7 +444,7 @@ const KATMANLAR = [
   ["iz", "Gerçek iz", true, "iz"],
   ["hayalet", "Tahmini poz (hayalet)", true, "hayalet"],
   ["plan", "Planlanan yol ve hedef", true, "plan"],
-  ["sinir", "Keşif sınırları <small>(beynin adayları, v2 kayıtları)</small>", true, "sinir"],
+  ["sinir", "Keşif sınırları <small>(beynin adayları, v2/v3 kayıtları; v3'ün dışa açık saydığı çift halkalı)</small>", true, "sinir"],
   ["lidar", "LiDAR noktaları", true, "lidar"],
   ["isin", "LiDAR ışınları", false, "lidar"],
   ["cozum", "Çözüm yolu <small>(robot bilmiyor)</small>", false, "cozum"],
@@ -478,8 +498,7 @@ class Oynatici {
     this.r_durum = el("span", { class: "rozet" }); this.r_kural = el("span", { class: "etiket e-uza" }, "kural dışı: 30 dk"); this.r_kural.hidden = true;
     this.b_es = el("button", { class: "dugme", type: "button" }); this.b_es.hidden = true;
     this.b_es.addEventListener("click", () => { if (this.k && this.k.es_kos) this.yukle(this.k.es_kos, this.t); });
-    this.b_sur = el("button", { class: "dugme", type: "button" }); this.b_sur.hidden = true;
-    this.b_sur.addEventListener("click", () => { if (this.k && this.k.es_surum) this.yukle(this.k.es_surum, this.t); });
+    this.b_sur = el("span", { class: "surum-dugmeler" }); // aynı koşu öbür sürümlerle: her sürüme bir düğme
     rz.append(this.r_durum, this.r_kural, this.b_es, this.b_sur);
     kap.append(rz);
     if (labMi) {
@@ -511,7 +530,7 @@ class Oynatici {
         const ks = el("div", { class: "kisayollar" });
         for (const i of VERI.ilginc) {
           const b = el("button", { class: "dugme", type: "button" }, i.ad + "<small>" + i.not + "</small>");
-          if (!i.id) b.disabled = true; else b.addEventListener("click", () => { this.yukle(i.id, i.t || 0, true); });
+          if (!i.id) b.disabled = true; else b.addEventListener("click", () => { if (i.katman) this.katmanAc(i.katman); this.yukle(i.id, i.t || 0, !i.katman); });
           ks.append(b);
         }
         kap.append(ks);
@@ -629,9 +648,15 @@ class Oynatici {
     const es = k.es_kos && this.kosular.find(x => x.id === k.es_kos);
     this.b_es.hidden = !es;
     if (es) this.b_es.textContent = "↔ " + (k.kos === "ilk" ? "Hafızalı koşuya geç" : "İlk koşuya geç") + " (" + (es.durum === "basari" ? "✓ " : "✗ ") + fs(es.sure_s) + ")";
-    const esv = k.es_surum && this.kosular.find(x => x.id === k.es_surum);
-    this.b_sur.hidden = !esv;
-    if (esv) this.b_sur.textContent = "↔ Aynı koşu " + esv.surum + " ile (" + (esv.durum === "basari" ? "✓ " : "✗ ") + fs(esv.sure_s) + ")";
+    this.b_sur.innerHTML = "";
+    for (const [sv, eid] of (k.es_surumler || [])) {
+      const esv = this.kosular.find(x => x.id === eid);
+      if (!esv) continue;
+      const b = el("button", { class: "dugme", type: "button", "data-surum": sv, title: "Aynı labirent ve tohum, aynı an, " + sv + " beyni" + (esv.kume !== k.kume ? " (" + (KUME_AD[esv.kume] || esv.kume) + " dosyasından)" : "") },
+        "↔ " + sv + " ile aynı an (" + (esv.durum === "basari" ? "✓ " : "✗ ") + fs(esv.sure_s) + ")");
+      b.addEventListener("click", () => this.yukle(eid, this.t));
+      this.b_sur.append(b);
+    }
     try {
       this.d = await kosuAc(k);
     } catch (e) {
@@ -720,6 +745,10 @@ class Oynatici {
       p.push("bu senaryoda robotun haritası kayıtta yok (harita robota verilir)");
     }
     this.olayNot.innerHTML = p.join(" · ");
+  }
+  katmanAc(s) { // "+sinir,-isin" biçimi
+    for (const p of String(s || "").split(",")) { const ad = p.trim().replace(/^[+-]/, ""); if (ad in this.katman) { this.katman[ad] = !p.trim().startsWith("-"); if (this.katKutu[ad]) this.katKutu[ad].checked = this.katman[ad]; } }
+    this.kirli = true;
   }
   hizAyarla(h) { this.hiz = h; for (const x in this.hizDugme) this.hizDugme[x].setAttribute("aria-pressed", +x === h ? "true" : "false"); }
   oynatDurdur(zorla) {
@@ -836,7 +865,7 @@ class Oynatici {
       c.strokeStyle = R.iz; c.lineWidth = 3; c.stroke();
     }
     // keşif sınırları (beynin aday listesi, 2 s'de bir)
-    this.sinirCizilen = 0;
+    this.sinirCizilen = 0; this.disaCizilen = 0;
     if (this.katman.sinir && d.s_t) {
       const si = sonIndeks(d.s_t, this.t);
       if (si >= 0) {
@@ -847,7 +876,11 @@ class Oynatici {
           c.beginPath(); c.moveTo(x, y); c.lineTo(bx, by); c.globalAlpha = .8; c.lineWidth = 1.5; c.setLineDash([3, 3]); c.stroke(); c.setLineDash([]);
           c.beginPath(); c.arc(x, y, r, 0, 7); c.globalAlpha = secili ? .4 : .15; c.fill(); c.globalAlpha = 1; c.lineWidth = secili ? 3 : 1.5; c.stroke();
           c.beginPath(); c.arc(bx, by, 3, 0, 7); c.fill();
-          if (secili) { c.fillStyle = R.ink; c.font = "12px system-ui"; c.fillText("seçilen sınır (maliyet " + fn(d.s_mal[q], 1) + ")", x + r + 4, y - 4); }
+          const da = d.s_da && d.s_da[q];
+          if (da) { c.beginPath(); c.arc(x, y, r + 5, 0, 7); c.lineWidth = 2; c.setLineDash([2, 3]); c.stroke(); c.setLineDash([]); this.disaCizilen++; }
+          c.fillStyle = R.ink; c.font = "12px system-ui";
+          if (secili) c.fillText((da ? "seçilen, dışa açık sınır" : "seçilen sınır") + " (maliyet " + fn(d.s_mal[q], 1) + ")", x + r + 7, y - 4);
+          else if (da) c.fillText("dışa açık", x + r + 7, y + 12);
           this.sinirCizilen++;
         }
       }
@@ -1042,6 +1075,7 @@ document.addEventListener("click", ev => {
   const id = a.getAttribute("data-kosu");
   if (!LAB.some(k => k.id === id)) return;
   ev.preventDefault();
+  if (a.getAttribute("data-katman")) ana.katmanAc(a.getAttribute("data-katman"));
   ana.yukle(id, +(a.getAttribute("data-t") || 0));
   document.getElementById("oynatici").scrollIntoView({ behavior: "smooth" });
 });
@@ -1050,7 +1084,7 @@ document.addEventListener("click", ev => {
   const g = VERI.gomulu || [], n = document.getElementById("gomulu-not");
   if (!g.length || !n) return;
   n.innerHTML = "Sayfadaki kayıtlar (gömülü / sonuç dosyasındaki koşu): " + g.map(x => (KUME_AD[x.kume] || x.kume) + " " + x.surum + (x.kos === "hafiza" ? " hafızalı" : "") + " <b>" + x.gomulu + "/" + x.csv + "</b>").join(", ")
-    + ". " + ((VERI.disarida || []).length ? "Dışarıda kalanlar sayfa boyutu (≤ 20 MB) yüzünden; listesi dürüstlük notlarında. Seçim: sınama v2'nin tamamı, tüm başarısızlar, hafızalı çiftler, uzatılmışların tamamı, her boyuttan başarı, v1'den v2 ile sonucu farklı olanlar ve örnekler." : "Tüm kayıtlar gömülü.")
+    + ". " + ((VERI.disarida || []).length ? "Dışarıda kalanlar sayfa boyutu (≤ 20 MB) yüzünden; listesi dürüstlük notlarında. Seçim sırası: sınama2 v3'ün tamamı; sınama2 v2'nin başarısızları ve v3'ten farklı çıkanları; 17×17_t3 v2 ve v3 (üç tohum); uzatılmış v3'ün tamamı ve v2'de farklı çıkanlar; geliştirme v3'ten boyut başına örnek ve tüm başarısızlar; birkaç hafızalı çift; birkaç v1 örneği; yer kalırsa geri kalanlar." : "Tüm kayıtlar gömülü.")
     + (VERI.uz_basladi && !VERI.uz_bitti ? " Uzatılmış ölçüm rapor üretilirken bitmemişti." : "");
 })();
 
@@ -1089,7 +1123,7 @@ document.addEventListener("click", ev => {
   p.push("Beynin haritası ve tahmini pozu başlangıç çerçevesinde; START pozuyla dünya çerçevesine çevrildi. İlk karede robot ile hayalet arasındaki en büyük fark " + fn(T.ilk_kare_fark_maks_cm, 2) + " cm (tüm kayıtlar).");
   p.push("Anlık puan ve ilerleme, hakem kayıttaki yer gerçeğiyle yeniden koşturularak hesaplandı; son değer " + T.hakem_tutan + "/" + T.hakem_toplam + " kayıtta kaydın kendi hakem sonucuyla tutuyor.");
   p.push("Oynatılabilen tek strateji keşif: sağ duvar ve rastgele tabanlar yalnız 2B'de koşuldu ve kaydedilmedi.");
-  if (T.sinir_kayit != null) p.push("Keşif sınırları (beynin aday listesi) " + T.sinir_kayit + " kayıtta var (v2 dönemi kayıtları); 2 s'de bir yazıldığı için aradaki karelerde en yakın önceki liste gösterilir.");
+  if (T.sinir_kayit != null) p.push("Keşif sınırları (beynin aday listesi) " + T.sinir_kayit + " kayıtta var (v2 ve v3 kayıtları); v3'te beynin dışa açık diye hatırladığı yerin 1,5 m içindeki sınırlar çift halkalı. Liste 2 s'de bir yazıldığı için aradaki karelerde en yakın önceki liste gösterilir.");
   if ((VERI.disarida || []).length) p.push("Boyut sınırı yüzünden " + VERI.disarida.length + " koşunun kaydı sayfaya gömülmedi (sayıları tablolarda var): " + VERI.disarida.map(etiketK).join("; ") + ".");
   if ((T.atlanan || []).length) p.push("Atlanan kayıtlar: " + T.atlanan.map(a => a[0] + " (" + a[1] + ")").join(", ") + ".");
   if ((T.uyumsuz || []).length) p.push("Uyumsuzluklar: " + T.uyumsuz.map(a => a[0] + ": " + a[1]).join("; ") + ".");
@@ -1105,7 +1139,7 @@ document.addEventListener("click", ev => {
   if (!ana) return testYaz(null);
   const h = +PARAM.get("hiz"); if ([1, 4, 16, 64].includes(h)) ana.hizAyarla(h);
   const kt = PARAM.get("katman");
-  if (kt) for (const p of kt.split(",")) { const ad = p.replace(/^[+-]/, ""); if (ad in ana.katman) { ana.katman[ad] = !p.startsWith("-"); if (ana.katKutu[ad]) ana.katKutu[ad].checked = ana.katman[ad]; } }
+  if (kt) ana.katmanAc(kt);
   if (PARAM.get("yakin") === "1") { ana.yakin = true; ana.b_yakin.setAttribute("aria-pressed", "true"); }
   const id = PARAM.get("kosu"), ilk = (VERI.ilginc || []).find(i => i.id) || {};
   const hedef = LAB.find(k => k.id === id) ? id : (LAB.find(k => k.id === VERI.varsayilan) || LAB[0]).id;
@@ -1137,6 +1171,7 @@ function testYaz(o) {
     r.robot_hayalet_cm = +(100 * Math.hypot(f.gx - f.tx, f.gy - f.ty)).toFixed(1);
     r.harita_goruntu = o.hk; r.mod = o.h_mod.textContent; r.sure = o.h_sure.textContent; r.puan = o.puanSatir.textContent;
     r.kosu_sayisi = LAB.length; r.koridor = KOR.length; r.sinir_cizilen = o.sinirCizilen; r.T = o.k.T; r.es_kos = o.k.es_kos || null; r.es_surum = o.k.es_surum || null;
+    r.es_surumler = o.k.es_surumler || null; r.disa_cizilen = o.disaCizilen; r.katman_sinir = o.katman.sinir;
     r.suzgec = o.suzSay ? o.suzSay.textContent : null;
   }
   const pre = document.getElementById("test-cikti"); pre.textContent = JSON.stringify(r); pre.hidden = false;

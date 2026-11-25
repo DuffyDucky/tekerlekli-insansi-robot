@@ -1,14 +1,15 @@
 # tekrar: labirent koşularını tarayıcıda yeniden oynatan rapor
 
-`labirent-rapor.html` tek dosyadır, çevrimdışı açılır (CDN yok, veri gömülü). Sıra: hüküm (sınama kümesi), "neden
-17×17'de takılıyor" (zaman dökümü + grafik), v1/v2 ve strateji ve hafıza kıyası, oynatıcı, kural dışı 30 dakikalık
-ölçüm, başarısızlıklar, koridor senaryosu, dürüstlük notları.
+`labirent-rapor.html` tek dosyadır, çevrimdışı açılır (CDN yok, veri gömülü). Sıra: hüküm (sınama2 kümesi, v3; ilk
+sınama ve geliştirme ayrı kartlarda), "robot neden dolanıyordu" (`kesif/sonuc/tani_dolanma.md` + 17×17_t3 v2/v3 kıyası),
+kalan başarısızlıklar (hız / keşif + grafik), v1/v2/v3 ve strateji ve hafıza kıyası, oynatıcı, kural dışı 30 dakikalık
+ölçüm (v2 ve v3), başarısızlıklar, koridor senaryosu, dürüstlük notları.
 
 Rapor yerelde üretilir, depoda yok (`.gitignore`); üretim için `kesif/sonuc/ham/` kayıtları gerekir, onlar da git dışıdır.
 
 ## Yeniden üretme
 
-    py -3 kod\fizik\tekrar\uret.py                  # depo kökünden; ≈ 4–5 dk, tek süreç, tek iş parçacığı, düşük öncelik
+    py -3 kod\fizik\tekrar\uret.py                  # depo kökünden; ≈ 8–10 dk (≈ 235 kayıt), tek süreç, tek iş parçacığı, düşük öncelik
     py -3 kod\fizik\tekrar\uret.py --butce-mb 15    # daha küçük sayfa: daha az koşu gömülür
     py -3 kod\fizik\tekrar\uret.py --lidar-hz 2     # LiDAR'ı seyrelt (koşu başına boyut düşer)
 
@@ -20,12 +21,13 @@ der. İlerleme `.durum` dosyasına yazılır.
 
 | Dosya | Ne için |
 | --- | --- |
-| `kesif/sonuc/mujoco*.csv` | MuJoCo sonuçları: `mujoco.csv` (v1, geliştirme, eski biçim), `mujoco_v2.csv`, `mujoco_sinama_v1/v2.csv`, `mujoco_uzatilmis_v2.csv`. Hüküm kutusu, tablolar, başarısızlık nedenleri |
-| `kesif/sonuc/tani_*.csv` | Zaman dökümü (düz sürüş payı, ölçülen hız, çözüm yolu): "neden 17×17" bölümü |
-| `kesif/sonuc/ilk.csv`, `v2_2b.csv` | 2B benzetici: strateji kıyası (v1), 2B v1/v2 satırı |
+| `kesif/sonuc/mujoco*.csv` | MuJoCo sonuçları: `mujoco.csv` (v1, geliştirme, eski biçim), `mujoco_v2.csv`, `mujoco_v3.csv` (geliştirme), `mujoco_sinama_v1/v2.csv` (ilk sınama), `mujoco_sinama2_v2/v3.csv`, `mujoco_uzatilmis_v2/v3.csv`. Hüküm kutusu, tablolar, başarısızlık nedenleri |
+| `kesif/sonuc/tani_*.csv` | Zaman dökümü (ölçülen hız, çözüm yolu, yürünen / çözüm): "kalan başarısızlıklar" bölümü |
+| `kesif/sonuc/ilk.csv`, `v2_2b.csv`, `v3_2b.csv` | 2B benzetici: strateji kıyası (v1), 2B v1/v2 ve v2/v3 (`ayar` sütunu) satırları |
 | `kesif/sonuc/odometri.csv`, `hafiza.csv` | 2B odometri duyarlılığı ve 2B hafızalı tur |
 | `kesif/sonuc/ham/**/*.npz` (yolunda `mujoco` geçenler) | Oynatılan kayıtlar (`gezinme.duzenek.Kayit` biçimi) |
-| `kesif/.durum` | Yalnız "uzatilmis bitti" satırı: uzatılmış ölçüm bitti mi |
+| `kesif/.durum` | Yalnız "mujoco bitti (vN -> mujoco_uzatilmis_vN.csv)" / "uzatilmis bitti" satırları: uzatılmış ölçüm bitti mi |
+| `kesif/sonuc/tani_dolanma.md` | "Robot neden dolanıyordu" metninin kaynağı (sayılar oradan, elle aktarıldı) |
 | `sahneler/labirent_*.json` (`labirent` alanı), `../araclar/haritalar/*.json` | Gerçek duvarlar, START/FINISH, çözüm yolu (yalnız izleyici için) |
 | `labirent/hakem.py` | Kayıttaki yer gerçeğiyle yeniden koşturulur: anlık ilerleme (p_en), çarpma, gezilen hücre, puan |
 | `gezinme/kayit/*.npz`, `gezinme/sonuc/ham/<ad>.json` | Koridor senaryosu kayıtları (varsa) |
@@ -35,20 +37,25 @@ sayılır. CSV'deki `kayit` yolu rapora girmez; kayıtlar `ham/` altına göreli
 
 ## Sürüm, küme, koş
 
-- **Sürüm** (v1, v2): CSV `surum` sütunu > kayıt meta'sı `beyin_surum` > dosya/klasör adındaki `_v2` > v1.
+- **Sürüm** (v1, v2, v3): CSV `surum` sütunu > kayıt meta'sı `beyin_surum` > dosya/klasör adındaki `_v2` > v1.
   Meta'daki `surum` kayıt biçiminin sürümüdür, beyin sürümü sayılmaz.
-- **Küme**: `kume` alanı (`gelistirme` / `sinama` / `uzatilmis`) > yoldaki ad > labirent tohumu (t1–t3 geliştirme,
-  t4+ sınama).
+- **Küme**: `kume` alanı (`gelistirme` / `sinama` / `sinama2` / `uzatilmis`) > yoldaki ad (`sinama2` önce) > adında
+  küme geçmeyen dosya geliştirme (`mujoco_v3.csv`, `tani_v3.csv`) > labirent tohumu (t1–t3 geliştirme, t4–t8 ilk sınama,
+  t9+ sınama2). Ekranda `sinama` = "ilk sınama (v1/v2 kararında kullanıldı; sonradan bakıldı)", `sinama2` = "sınama2".
 - **Koş**: `kos` alanı (`ilk` / `hafiza`) > dosya adındaki `_hafiza`.
-- Hüküm kutusu yalnız **sınama, v2, ilk koşu** satırlarından. Geliştirme kümesi ayrı kartta. Uzatılmış (30 dk)
+- Hüküm kutusu yalnız **sınama2, v3, ilk koşu** satırlarından (v2 aynı koşularda yanında). İlk sınama (t4–t8; v2
+  orada 14/20) küçük ayrı kartta. Geliştirme kartı v3 dönemindeki 37 koşu: eski 33 + 17x17_t4, t5 × 2; v1 ve v2'nin
+  bu dört koşusu ilk sınama dosyasından tamamlanır. Uzatılmış (30 dk)
   koşular hiçbir 15 dakikalık sayıya girmez; kendi bölümü ve "kural dışı: 30 dk" rozeti var, oynatıcıda süre
   "/ 30:00" ve 15:00 anı işaretli.
 
 ## Hangi kayıtlar gömülür (boyut ≤ `--butce-mb`, varsayılan 19 MB)
 
-Öncelik: (0) sınama v2'nin tamamı (ilk + hafızalı), tüm başarısızlar, tüm uzatılmışlar, her boyuttan bir v2
-geliştirme başarısı (ortanca süreli); (1) v1'in v2'den farklı sonuç verdiği koşular ve eşleri; (2) bu temsilcilerin
-v1 eşleri; (3) kalan v2; (4) kalan v1. Zorunlular sığmazsa LiDAR sıklığı yarıya iner; sonra öncelik sırasıyla,
+Öncelik (`oncelikler`): (0, zorunlu) sınama2 v3'ün tamamı; sınama2 v2'nin başarısızları ve v3'ten farklı
+çıkanları; 17x17_t3 geliştirme v2 ve v3 (üç tohum). (1) uzatılmış v3'ün tamamı ve v2'de v3'ten farklı çıkanlar.
+(2) geliştirme v3: boyut başına en hızlı ve ortanca başarı + tüm başarısızlar. (3) boyut başına en büyük kazançlı
+hafızalı çift (ilk koşusuyla). (4) birkaç v1 örneği (v2 ile sonucu farklı olanlar). (5–8) yer kalırsa kalan v3,
+kalan sınama2/uzatılmış v2, kalan v2, kalan v1. Zorunlular sığmazsa LiDAR sıklığı yarıya iner; sonra öncelik sırasıyla,
 aynı labirentten az olan önce, bütçe dolana dek eklenir. Dışarıda kalanlar sayfada listelenir; sayıları tablolarda.
 
 ## Çizim ve sıkıştırma
@@ -57,8 +64,11 @@ aynı labirentten az olan önce, bütçe dolana dek eklenir. Dışarıda kalanla
 - Robotun haritası (5 cm log-odds, 2 s'de bir) ortak bir çerçevede 10 cm'ye havuzlanır (2×2 blokta bir dolu varsa
   dolu, yoksa bir boş varsa boş), ardışık görüntülerin XOR farkı saklanır. Tarayıcı farkları iki yöne de uygular;
   arada en yakın önceki görüntü gösterilir, ara görüntü üretilmez.
-- Keşif sınırları (v2 kayıtları, `ek.sinirlar` = [merkez_x, merkez_y, boy_m, bakış_x, bakış_y, maliyet] ve
-  `ek.secilen_sinir`, 2 s'de bir): daire (çap = sınır boyu), kesikli çizgi bakış noktasına; seçilen kalın.
+- Keşif sınırları (v2/v3 kayıtları, `ek.sinirlar` = [merkez_x, merkez_y, boy_m, bakış_x, bakış_y, maliyet] ve
+  `ek.secilen_sinir`, 2 s'de bir): daire (çap = sınır boyu), kesikli çizgi bakış noktasına; seçilen kalın. v3'te
+  `ek.disa_acik` (beynin dışa açık diye hatırladığı yerler) 1,5 m içindeki sınır çift halkalı (`s_da`).
+- 17x17_t3 "buraya atla" anı üretimde iki kayıttan hesaplanır (`ayrilma_ani`): v3'te ilk dışa açık sınırın görüldüğü
+  an ve v2'nin seçiminin v3'ten ayrıldığı ilk an.
 - LiDAR 2,5 Hz'e (varsayılan; zorunlu koşular sığmazsa daha da) ve her 2. ışına seyreltilir, mesafe 5 cm adımla `uint8`. Tarama ortasındaki gerçek pozdan çizilir.
 - Her koşu ayrı bir base64 + zlib bloğudur; seçilince tarayıcının `DecompressionStream`'i ile açılır.
 - Beynin haritası, tahmini pozu, hedefi, planı ve sınırları başlangıç çerçevesindedir (`ek.cerceve == "baslangic"`);
@@ -74,14 +84,16 @@ aynı labirentten az olan önce, bütçe dolana dek eklenir. Dışarıda kalanla
 
 ## Tarayıcıda deneme
 
-Koşu kimliği `<sürüm>-<küme ilk 3 harf>-<labirent>_t<tohum>[-h]`, örnek `v2-sin-17x17_t6_t0`, hafızalı
-`v2-sin-17x17_t6_t0-h`, uzatılmış `v2-uza-17x17_t1_t0`.
-URL parametreleri: `?kosu=v2-sin-13x13_t4_t0&t=150&hiz=64&oynat=1&tema=koyu&katman=-lidar,+cozum&yakin=1`.
+Koşu kimliği `<sürüm>-<küme kısa>-<labirent>_t<tohum>[-h]`; küme kısa: `s2` sınama2, `sin` ilk sınama, `gel`
+geliştirme, `uza` uzatılmış. Örnek `v3-s2-17x17_t10_t0`, `v2-gel-17x17_t3_t0`, hafızalı `v2-sin-17x17_t6_t0-h`,
+uzatılmış `v3-uza-17x17_t1_t0`. Oynatıcıda "↔ vN ile aynı an" düğmeleri aynı labirent, tohum ve süre kuralındaki öbür
+sürümü açar (küme farklı olabilir: v3 geliştirmedeki 17x17_t4 ↔ v2 ilk sınama).
+URL parametreleri: `?kosu=v3-s2-13x13_t9_t0&t=150&hiz=64&oynat=1&tema=koyu&katman=-lidar,%2Bcozum&yakin=1`.
 `yalniz=oynatici` yalnız o bölümü gösterir (ekran görüntüsü için). `test=1` konsol hatalarını ve çizim ölçümlerini
 `<pre id="test-cikti">` içine yazar:
 
-    chrome --headless --dump-dom "file:///.../labirent-rapor.html?test=1&kosu=v2-sin-13x13_t4_t0&t=0"
-    chrome --headless --window-size=1280,1500 --screenshot=x.png "file:///...?kosu=v2-sin-13x13_t4_t0&t=150&yalniz=oynatici"
+    chrome --headless --dump-dom "file:///.../labirent-rapor.html?test=1&kosu=v3-s2-13x13_t9_t0&t=0"
+    chrome --headless --window-size=1280,1500 --screenshot=x.png "file:///...?kosu=v3-s2-13x13_t9_t0&t=150&yalniz=oynatici"
 
 Klavye: boşluk oynat/duraklat, ← → 5 s (Shift ile 30 s), Home/End.
 

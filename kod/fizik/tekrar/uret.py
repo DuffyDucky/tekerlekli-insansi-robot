@@ -95,7 +95,7 @@ def fnum(x, nd=1):
 def fsure(s):
     if s is None or not math.isfinite(s):
         return "-"
-    s = int(round(s))
+    s = int(math.floor(max(0.0, s) + 0.5))      # yarım yukarı: oynatıcıdaki Math.round ile aynı (668,5 s → 11:09)
     return "%d:%02d" % (s // 60, s % 60)
 
 
@@ -178,30 +178,36 @@ def surum_bul(satir=None, meta=None, yol=None):
     return (surum_yoldan(yol) if yol else None) or "v1"
 
 
-KUME_AD = {"sinama": "sınama", "gelistirme": "geliştirme", "uzatilmis": "uzatılmış"}
-KUME_SIRA = {"sinama": 0, "gelistirme": 1, "uzatilmis": 2}
+KUME_AD = {"sinama2": "sınama2", "sinama": "ilk sınama", "gelistirme": "geliştirme", "uzatilmis": "uzatılmış"}
+KUME_SIRA = {"sinama2": 0, "sinama": 1, "gelistirme": 2, "uzatilmis": 3}
+KUME_KISA = {"sinama2": "s2", "sinama": "sin", "gelistirme": "gel", "uzatilmis": "uza"}
 KOS_AD = {"ilk": "ilk koşu", "hafiza": "hafızalı koşu"}
+ILK_SINAMA_NOT = "v1/v2 kararında kullanıldı; sonradan bakıldı"
 
 
 def kume_bul(sahne, satir=None, meta=None, yol=None):
-    """Küme anahtarı (sinama / gelistirme / uzatilmis): açık 'kume' alanı > yoldaki ad > labirent tohumu (t1–t3
-    geliştirme, beyin bunlarla ayarlandı; t4+ sınama)."""
+    """Küme anahtarı: açık 'kume' alanı > yoldaki ad > labirent tohumu.
+    sinama2 = t9–t13 (asıl sınama); sinama = t4–t8 ("ilk sınama": v1/v2 kararında kullanıldı, uzatılmış ölçüm ve dolanma
+    tanısında bakıldı); gelistirme = t1–t3 (+ v3 döneminde 17x17_t4, t5); uzatilmis = kural dışı 30 dk."""
     for src in (satir or {}, meta or {}):
         v = str(src.get("kume") or src.get("küme") or "").strip().lower()
         if v:
             if v.startswith(("sin", "sın", "test")):
-                return "sinama"
+                return "sinama2" if v.endswith("2") else "sinama"
             if v.startswith(("gel", "dev")):
                 return "gelistirme"
             if v.startswith("uza"):
                 return "uzatilmis"
             return v
     y = (yol or "").replace("\\", "/").lower()
-    for k in ("uzatilmis", "sinama"):
+    for k in ("uzatilmis", "sinama2", "sinama"):
         if k in y:
             return k
+    if yol:                                   # küme adı geçmeyen dosya (mujoco_v3.csv, tani_v3.csv …): geliştirme
+        return "gelistirme"
     m = re.search(r"_t(\d+)$", sahne or "")
-    return "sinama" if (m and int(m.group(1)) >= 4) else "gelistirme"
+    n = int(m.group(1)) if m else 0
+    return "sinama2" if n >= 9 else ("sinama" if n >= 4 else "gelistirme")
 
 
 def kos_bul(satir=None, meta=None, yol=None):
@@ -532,14 +538,20 @@ def kayit_isle(yol, tur, csv_tablo, lidar_adim_s, isin_adim, tani):
             if not cikis or abs(cikis[-1][1] - float(cx)) + abs(cikis[-1][2] - float(cy)) > 1e-6:
                 cikis.append([round(float(e["t"]), 2), round(float(cx), 2), round(float(cy), 2)])
     # sınırlar (v2 kayıtları): ekler 2 s'de bir, [merkez_x, merkez_y, boy_m, bakış_x, bakış_y, maliyet], başlangıç çerçevesi
-    st, sn, sx, sy, sbx, sby, sboy, smal, ssec = [], [], [], [], [], [], [], [], []
-    sinir_var = False
+    st, sn, sx, sy, sbx, sby, sboy, smal, ssec, sda = [], [], [], [], [], [], [], [], [], []
+    sinir_var = da_var = False
     for e in meta.get("ekler") or []:
         ekk = e.get("ek") or {}
         if "sinirlar" not in ekk:
             continue
         sinir_var = True
         L_ = [v for v in (ekk.get("sinirlar") or []) if v is not None and len(v) >= 6]
+        # v3: beynin "dışa açık" diye hatırladığı yerler (başlangıç çerçevesi, 1,5 m yarıçap); sınır o yarıçaptaysa işaretli
+        DA = [p for p in (ekk.get("disa_acik") or []) if p is not None and len(p) >= 2]
+        if "disa_acik" in ekk:
+            da_var = True
+        for v in L_:
+            sda.append(1 if any(math.hypot(v[0] - p[0], v[1] - p[1]) <= 1.5 for p in DA) else 0)
         sec_ = ekk.get("secilen_sinir")
         si = -1
         if sec_ is not None and len(sec_) >= 2 and L_:
@@ -567,6 +579,8 @@ def kayit_isle(yol, tur, csv_tablo, lidar_adim_s, isin_adim, tani):
         P.ekle("s_by", q(sby, 100).astype(np.int32), fark=True, olcek=0.01)
         P.ekle("s_boy", q(sboy, 100).astype(np.int32), olcek=0.01)
         P.ekle("s_mal", q(smal, 100).astype(np.int32), olcek=0.01)
+        if da_var:
+            P.ekle("s_da", np.array(sda, np.uint8))
     # harita
     hbilgi = None
     if cerceve_bas or tur == "labirent":
@@ -775,6 +789,14 @@ def ozetler():
     kesif2b = [r for r in ilk if r.get("strateji") == "kesif"]
     out["b2_kesif"] = grup_ozet(kesif2b, boyut_anahtari) if kesif2b else None
     out["b2_v1"], out["b2_v2"] = kesif2b, [r for r in v22 if r.get("strateji", "kesif") == "kesif"]
+    # v3_2b.csv: v2 ve v3 aynı 21 labirent × 2 tohumda; sürüm 'ayar' sütununda
+    v32, v3t = csv_oku("v3_2b.csv")
+    _kaynak(kaynak, "v3_2b.csv", v32, v3t)
+    v32 = tekille([r for r in v32 or [] if r.get("strateji", "kesif") == "kesif"], ("ayar", "sahne", "tohum", "donus_hata"))
+    cift = {}
+    for r in v32:
+        cift.setdefault(surum_norm(r.get("ayar")) or "?", []).append(r)
+    out["b2_v3cift"] = {k: cift[k] for k in sorted(cift)} if len(cift) >= 2 else None
     out["strateji"] = grup_ozet(ilk, lambda r: (r.get("strateji"), boyut_of(r.get("sahne")))) if ilk else None
     odo_tum = list(odo or []) + kesif2b
     out["odometri"] = grup_ozet(odo_tum, lambda r: (ffloat(r.get("donus_hata")) or 0.0, boyut_of(r.get("sahne")))) if odo else None
@@ -1022,12 +1044,13 @@ def neden_2b(r):
 
 
 # ------------------------------------------------------------------ üst bölüm (v2 dönemi)
-def oyna_link(emb, anahtar, yazi, t=0.0, baslik=None):
+def oyna_link(emb, anahtar, yazi, t=0.0, baslik=None, katman=None):
     kid = emb.get(anahtar)
     if not kid:
         return '<span class="soluk" title="Bu koşunun kaydı sayfaya gömülmedi">%s</span>' % yazi
-    return '<a class="oyna" href="?kosu=%s&amp;t=%.1f#oynatici" data-kosu="%s" data-t="%.1f"%s>%s</a>' % (
-        kid, t, kid, t, (' title="%s"' % esc(baslik)) if baslik else "", yazi)
+    return '<a class="oyna" href="?kosu=%s&amp;t=%.1f%s#oynatici" data-kosu="%s" data-t="%.1f"%s%s>%s</a>' % (
+        kid, t, ("&amp;katman=" + katman.replace("+", "%2B")) if katman else "", kid, t,
+        (' data-katman="%s"' % esc(katman)) if katman else "", (' title="%s"' % esc(baslik)) if baslik else "", yazi)
 
 
 def anahtar_r(r):
@@ -1041,63 +1064,132 @@ def oran_span(b, n, ek_sinif=""):
     return '<span class="oran %s%s">%d/%d</span>' % (sinif, ek_sinif, b, n)
 
 
-def hukum_html(oz):
-    sv = "v2" if mj_sec(oz, "v2", "sinama") else (oz["surumler"][-1] if oz["surumler"] else "v2")
-    rows = mj_sec(oz, sv, "sinama")
-    if not rows:
-        return ('<div class="hukum kart"><h3 class="hukum-baslik">Hiç görmediği labirentlerde 15 dakikada</h3>'
-                '<p class="yok">Henüz yok: sınama kümesi sonuç dosyası (<code>mujoco_sinama_*.csv</code>) bulunamadı.</p></div>')
-    boy = sorted({boyut_of(r["sahne"]) for r in rows})
-    kp = []
-    for b in boy:
-        rb = [r for r in rows if boyut_of(r["sahne"]) == b]
-        o = basari_ozet(rb)
-        nl = len({r["sahne"] for r in rb})
-        kp.append('<div class="kpi"><div class="kpi-d">%s</div><div class="kpi-a">%s: FINISH\'ten çıkan koşu (%d labirent × %d tohum)</div></div>' % (
-            oran_span(o["basari"], o["n"], " buyuk"), boyut_ad(b), nl, max(1, o["n"] // max(1, nl))))
-    o = basari_ozet(rows)
-    kp.append('<div class="kpi"><div class="kpi-d">%s</div><div class="kpi-a">ortanca süre, çıkan %d koşu (15:00\'a oranla %%%s)</div></div>' % (
-        fsure(o["sure"]), o["basari"], fnum(100 * o["sure"] / T_SINIR, 0) if o["sure"] else "-"))
-    kp.append('<div class="kpi"><div class="kpi-d">%d</div><div class="kpi-a">çarpma, %d koşunun toplamı</div></div>' % (o["carpma"], o["n"]))
-    diger = []
-    for s2 in oz["surumler"]:
-        if s2 == sv:
-            continue
-        r2 = mj_sec(oz, s2, "sinama")
-        if r2:
-            diger.append("%s beyni aynı koşularda: %s, çarpma %d" % (s2, ", ".join(
-                "%s %d/%d" % (boyut_ad(b), basari_ozet([r for r in r2 if boyut_of(r["sahne"]) == b])["basari"],
-                              basari_ozet([r for r in r2 if boyut_of(r["sahne"]) == b])["n"]) for b in boy), basari_ozet(r2)["carpma"]))
-    kaynak = ", ".join(sorted({"<code>%s</code>" % r["_dosya"] for r in rows}))
-    s = ['<div class="hukum kart">',
-         '<div class="hukum-ust"><span class="etiket e-sin">sınama kümesi</span> <span class="etiket e-mj">MuJoCo · %s beyni (varsayılan)</span></div>' % sv,
-         '<h3 class="hukum-baslik">Hiç görmediği labirentlerde 15 dakikada</h3>',
-         '<div class="kpiler">%s</div>' % "".join(kp),
-         '<p class="not">%s. Kaynak: %s. Tohum yalnız LiDAR gürültüsünü değiştirir; aynı labirentin iki koşusu bağımsız iki deneme sayılmamalı.</p>' % (
-             "; ".join(diger) if diger else "Başka sürüm yok", kaynak),
-         '<p class="neden-ayri"><b>Neden ayrı tutuluyor:</b> beyin geliştirme labirentlerinde ayıklandı ve ayarlandı, orada iyi '
-         'çıkması kısmen ezber olabilir. Sınama labirentleri (13×13 ve 17×17, t4–t8) ayar sırasında hiç koşulmadı; asıl hüküm '
-         'bu yüzden onlardan.</p>', '</div>']
-    gr = {s2: mj_sec(oz, s2, "gelistirme") for s2 in oz["surumler"]}
-    gr = {k: v for k, v in gr.items() if v}
-    if gr:
-        boyg = sorted({boyut_of(r["sahne"]) for v in gr.values() for r in v})
+def gel37(oz):
+    """Geliştirme kümesi v3 dönemindeki hâliyle (eski 33 + 17x17_t4, t5 × 2). Bir sürümde geliştirme satırı olmayan koşu
+    ilk sınama dosyasından tamamlanır (aynı labirent, tohum ve 15 dk kuralı). Dönüş: {sürüm: satırlar}, koşu sayısı,
+    tamamlanan (sahne, tohum) kümesi."""
+    ref = mj_sec(oz, "v3", "gelistirme") or max((mj_sec(oz, s, "gelistirme") for s in oz["surumler"]), key=len, default=[])
+    K = [(r["sahne"], str(r["tohum"])) for r in ref]
+    out, eklenen = {}, set()
+    for sv in oz["surumler"]:
+        rows = []
+        for sh, th in K:
+            r = oz["mj_satir"].get((sv, "gelistirme", "ilk", sh, th))
+            if r is None:
+                r = oz["mj_satir"].get((sv, "sinama", "ilk", sh, th))
+                if r is not None:
+                    eklenen.add((sh, th))
+            if r is not None:
+                rows.append(r)
+        if rows:
+            out[sv] = rows
+    return out, len(K), eklenen
+
+
+def _boy_ozet(rows, boy):
+    return ", ".join("%s %d/%d" % (boyut_ad(b), basari_ozet([r for r in rows if boyut_of(r["sahne"]) == b])["basari"],
+                                   basari_ozet([r for r in rows if boyut_of(r["sahne"]) == b])["n"]) for b in boy)
+
+
+T3 = "labirent_17x17_t3"
+
+
+def hukum_html(oz, emb):
+    sv = next((x for x in ("v3", "v2", "v1") if mj_sec(oz, x, "sinama2")), None)
+    s = []
+    if not sv:
+        s.append('<div class="hukum kart"><h3 class="hukum-baslik">Hiç görmediği labirentlerde 15 dakikada</h3>'
+                 '<p class="yok">Henüz yok: ikinci sınama kümesi sonuç dosyası (<code>mujoco_sinama2_*.csv</code>) bulunamadı.</p></div>')
+    else:
+        rows = mj_sec(oz, sv, "sinama2")
+        boy = sorted({boyut_of(r["sahne"]) for r in rows})
+        kp = []
+        for b in boy:
+            rb = [r for r in rows if boyut_of(r["sahne"]) == b]
+            o = basari_ozet(rb)
+            nl = len({r["sahne"] for r in rb})
+            kp.append('<div class="kpi"><div class="kpi-d">%s</div><div class="kpi-a">%s: FINISH\'ten çıkan koşu (%d labirent × %d tohum)</div></div>' % (
+                oran_span(o["basari"], o["n"], " buyuk"), boyut_ad(b), nl, max(1, o["n"] // max(1, nl))))
+        o = basari_ozet(rows)
+        kp.append('<div class="kpi"><div class="kpi-d">%s</div><div class="kpi-a">ortanca süre, çıkan %d koşu (15:00\'a oranla %%%s)</div></div>' % (
+            fsure(o["sure"]), o["basari"], fnum(100 * o["sure"] / T_SINIR, 0) if o["sure"] else "-"))
+        kp.append('<div class="kpi"><div class="kpi-d">%d</div><div class="kpi-a">çarpma, %d koşunun toplamı</div></div>' % (o["carpma"], o["n"]))
+        diger = []
+        for s2 in reversed(oz["surumler"]):
+            r2 = mj_sec(oz, s2, "sinama2") if s2 != sv else None
+            if r2:
+                diger.append("%s beyni aynı koşularda: %s, çarpma %d" % (s2, _boy_ozet(r2, boy), basari_ozet(r2)["carpma"]))
+        cumle = ""
+        r2 = mj_sec(oz, "v2", "sinama2")
+        if sv == "v3" and r2:
+            o2 = basari_ozet(r2)
+            d2 = {(r["sahne"], str(r["tohum"])): r.get("durum") for r in r2}
+            degisen = [r for r in rows if d2.get((r["sahne"], str(r["tohum"]))) not in (None, r.get("durum"))]
+            G, nK, _ = gel37(oz)
+            g2, g3 = basari_ozet(G.get("v2", [])), basari_ozet(G.get("v3", []))
+            t2 = [r for r in G.get("v2", []) if r["sahne"] == T3]
+            t3 = [r for r in G.get("v3", []) if r["sahne"] == T3]
+            b3 = [ffloat(r.get("sure_s")) for r in t3 if r.get("durum") == "basari"]
+            if o["basari"] == o2["basari"]:
+                bas = "v3 sınama kümesinde v2'den iyi değil, aynı"
+            elif o["basari"] < o2["basari"]:
+                bas = "v3 sınama kümesinde v2'den kötü"
+            else:
+                bas = "v3 sınama kümesinde v2'den iyi"
+            t3y = ("üç tohumda da çözüldü (%s)" % _orta_aralik_sure(b3)) if t3 and len(b3) == len(t3) == 3 else (
+                "%d/%d" % (len(b3), len(t3)))
+            cumle = ('<p class="v3-not"><b>%s:</b> aynı %d koşuda v2 %d/%d, v3 %d/%d%s. Kazancı geliştirme kümesinde '
+                     '(%d/%d → %d/%d) ve düzeltmenin üzerinde tasarlandığı labirentte: 17×17_t3 v2\'de %d/%d, v3\'te %s. '
+                     '<a href="#neden">Neden</a>.</p>') % (
+                bas, o["n"], o2["basari"], o2["n"], o["basari"], o["n"],
+                ", sonucu değişen koşu yok" if not degisen else ", sonucu değişen %d koşu" % len(degisen),
+                g2["basari"], g2["n"], g3["basari"], g3["n"], len([r for r in t2 if r.get("durum") == "basari"]), len(t2), t3y)
+        kaynak = ", ".join(sorted({"<code>%s</code>" % r["_dosya"] for r in rows}))
+        s += ['<div class="hukum kart">',
+              '<div class="hukum-ust"><span class="etiket e-sin">sınama2 kümesi</span> <span class="etiket e-mj">MuJoCo · %s beyni (varsayılan)</span></div>' % sv,
+              '<h3 class="hukum-baslik">Hiç görmediği labirentlerde 15 dakikada</h3>',
+              '<div class="kpiler">%s</div>' % "".join(kp), cumle,
+              '<p class="not">%s. Kaynak: %s. Tohum yalnız LiDAR gürültüsünü değiştirir; aynı labirentin iki koşusu bağımsız iki deneme sayılmamalı.</p>' % (
+                  "; ".join(diger) if diger else "Başka sürüm yok", kaynak),
+              '<p class="neden-ayri"><b>Neden bu küme:</b> beyin geliştirme labirentlerinde ayıklandı ve ayarlandı, orada iyi çıkması kısmen '
+              'ezber olabilir. İlk sınama labirentleri (t4–t8) v1/v2 kararında kullanıldı, sonra 30 dakikalık ölçümde ve dolanma tanısında '
+              'incelendi; artık kör değiller. Asıl hüküm bu yüzden ikinci sınama kümesinden (13×13 ve 17×17, t9–t13): v3\'ün kuralı bu '
+              'labirentlerin sonuçları gelmeden yazıldı, v2 ve v3 burada yalnız karar için koşuldu.</p>', '</div>']
+    # ilk sınama: küçük ve ayrı
+    ri = {x: mj_sec(oz, x, "sinama") for x in oz["surumler"]}
+    ri = {k: v for k, v in ri.items() if v}
+    if ri:
+        boy = sorted({boyut_of(r["sahne"]) for v in ri.values() for r in v})
+        parca = ["%s %s (%s), çarpma %d" % (x, oran_span(basari_ozet(v)["basari"], basari_ozet(v)["n"]), _boy_ozet(v, boy),
+                                            basari_ozet(v)["carpma"]) for x, v in ri.items()]
+        s.append('<div class="kart ilk-sinama"><div class="hukum-ust"><span class="etiket e-ilk">ilk sınama</span> '
+                 '<small>(%s)</small></div><p>İlk sınama kümesi (13×13 ve 17×17, t4–t8, 2 tohum): %s. v2\'yi varsayılan yapma kararı bu '
+                 'sonuca bakılarak verildi; sonra aynı labirentler 30 dakikalık ölçümde ve dolanma tanısında incelendi. Bu yüzden artık '
+                 'geliştirme tarafında sayılıyor. v3 bunlardan 15 dakikalık kuralla yalnız 17×17_t4 ve t5\'te koşuldu; o dört koşu '
+                 'aşağıdaki geliştirme tablosunda.</p></div>' % (ILK_SINAMA_NOT, "; ".join(parca)))
+    # geliştirme (37)
+    G, nK, eklenen = gel37(oz)
+    if G:
+        sv_l = [x for x in oz["surumler"] if x in G]
+        boyg = sorted({boyut_of(r["sahne"]) for v in G.values() for r in v})
         s.append('<div class="kart gelistirme"><div class="hukum-ust"><span class="etiket e-gel">geliştirme kümesi</span></div>'
-                 '<h3 style="margin-top:6px">Geliştirme sırasında kullanılan labirentler</h3>'
-                 '<p class="not">11 labirent (5×5 … 17×17, t1–t3) × 3 tohum. Beyin bunlarla geliştirildi; sayılar iyimser okunmalı.</p>'
-                 '<div class="tablo-sar"><table><thead><tr><th>Boyut</th>')
-        for s2 in gr:
-            s.append('<th class="sag">%s başarı</th><th class="sag">%s ortanca süre</th>' % (s2, s2))
+                 '<h3 style="margin-top:6px">Geliştirme sırasında kullanılan labirentler (%d koşu)</h3>'
+                 '<p class="not">11 labirent (5×5 … 17×17, t1–t3) × 3 tohum%s. Beyin bunlarla geliştirildi; sayılar iyimser okunmalı.%s</p>'
+                 '<div class="tablo-sar"><table><thead><tr><th>Boyut</th>' % (
+                     nK, " + v3 döneminde eklenen %s × 2 tohum" % ", ".join(sorted({kisa_sahne(a) for a, b in eklenen})) if eklenen else "",
+                     " v1 ve v2'nin bu %d koşusu ilk sınama dosyasından." % len(eklenen) if eklenen else ""))
+        for x in sv_l:
+            s.append('<th class="sag">%s başarı</th><th class="sag">%s ortanca süre</th>' % (x, x))
         s.append('</tr></thead><tbody>')
         for b in boyg:
             s.append('<tr><th scope="row">%s</th>' % boyut_ad(b))
-            for s2, rs in gr.items():
-                o2 = basari_ozet([r for r in rs if boyut_of(r["sahne"]) == b])
+            for x in sv_l:
+                o2 = basari_ozet([r for r in G[x] if boyut_of(r["sahne"]) == b])
                 s.append('<td class="sag">%s</td><td class="sag">%s</td>' % (oran_span(o2["basari"], o2["n"]), fsure(o2["sure"])))
             s.append('</tr>')
         s.append('<tr class="toplam"><th scope="row">Toplam</th>')
-        for s2, rs in gr.items():
-            o2 = basari_ozet(rs)
+        for x in sv_l:
+            o2 = basari_ozet(G[x])
             s.append('<td class="sag"><b>%d/%d</b></td><td class="sag">%s</td>' % (o2["basari"], o2["n"], fsure(o2["sure"])))
         s.append('</tr></tbody></table></div></div>')
     return "".join(s)
@@ -1111,60 +1203,149 @@ def _orta_aralik(xs, nd=1, carp=1.0):
     return fnum(a, nd) if abs(a - b) < 10 ** -nd else "%s–%s" % (fnum(a, nd), fnum(b, nd))
 
 
-def neden_html(oz, emb, uz):
-    T_ = oz["tani"]
-    if not T_:
-        return '<p class="yok">Henüz yok: zaman dökümü (<code>tani_*.csv</code>) bulunamadı.</p>'
-    v2 = [r for r in T_ if r["_surum"] == "v2"] or T_
+def _orta_aralik_sure(xs):
+    xs = [x for x in xs if x is not None]
+    if not xs:
+        return "-"
+    return fsure(min(xs)) if abs(max(xs) - min(xs)) < 1 else "%s–%s" % (fsure(min(xs)), fsure(max(xs)))
 
-    def pay(R, alan):
-        top = sum(ffloat(r.get("sure_s")) or 0 for r in R)
-        return 100 * sum(ffloat(r.get(alan)) or 0 for r in R) / top if top else None
-    v_or = {sv: ortanca([ffloat(r.get("v_duz_ort")) for r in T_ if r["_surum"] == sv]) for sv in sorted({r["_surum"] for r in T_})}
-    F = [r for r in v2 if r["_kume"] == "sinama" and r.get("durum") != "basari" and boyut_of(r["sahne"])[0] >= 17]
-    cz = [ffloat(r.get("cozum_m")) for r in F]
-    yal = [ffloat(r.get("cozum_m")) / ffloat(r.get("v_duz_ort")) / 60 for r in F if ffloat(r.get("v_duz_ort"))]
-    sv_ad = v2[0]["_surum"]
-    yol_or = ortanca([ffloat(r.get("yol_orani")) for r in F])
+
+def ayrilma_ani(y2, y3):
+    """17x17_t3: v3 kaydında ilk 'dışa açık' sınırın görüldüğü an ve v2'nin seçiminin v3'ten ayrıldığı ilk an (iki kayıt
+    o ana dek aynı yolu izliyor). Maliyetler v2 kaydından: seçtiği sınır ve v3'ün dışa açık saydığı sınır."""
+    def ekler(y):
+        with np.load(y, allow_pickle=False) as z:
+            m = json.loads(str(z["meta"]))
+        return [(float(e["t"]), e.get("ek") or {}) for e in m.get("ekler") or [] if "sinirlar" in (e.get("ek") or {})]
+    E2, E3 = ekler(y2), ekler(y3)
+    gor = next(((t, ek) for t, ek in E3 if ek.get("disa_acik")), None)
+    if gor is None:
+        return None
+    d3 = {round(t, 1): ek for t, ek in E3}
+    DA = [p for p in gor[1]["disa_acik"] if p and len(p) >= 2]
+
+    def mal(ek, xy):
+        L = [v for v in ek.get("sinirlar") or [] if v and len(v) >= 6]
+        if not L or not xy:
+            return None
+        v = min(L, key=lambda v: math.hypot(v[0] - xy[0], v[1] - xy[1]))
+        return v[5] if math.hypot(v[0] - xy[0], v[1] - xy[1]) < 1.5 else None
+    for t, ek in E2:
+        e3 = d3.get(round(t, 1))
+        if e3 is None or t < gor[0] - 0.05:
+            continue
+        a, b = ek.get("secilen_sinir"), e3.get("secilen_sinir")
+        if a and b and math.hypot(a[0] - b[0], a[1] - b[1]) > 0.5:
+            fin = [mal(ek, p) for p in DA]
+            fin = [x for x in fin if x is not None]
+            return {"gorulme": gor[0], "ayrilma": t, "mal_sec": mal(ek, a), "mal_fin": min(fin) if fin else None}
+    return {"gorulme": gor[0], "ayrilma": None, "mal_sec": None, "mal_fin": None}
+
+
+def dolanma_html(oz, emb, an):
     s = ['<div class="iki neden"><div>',
-         '<p>Zaman dökümü (%s beyni, %d MuJoCo koşusu): sürenin <b>%%%s</b> kadarı düz sürüş, %%%s kadarı yerinde dönüş, %%%s kadarı kurtarma. '
-         'Ölçülen düz sürüş hızı ortanca <b>%s m/s</b>%s; komut 0,25 m/s.</p>' % (
-             sv_ad, len(v2), fnum(pay(v2, "duz_s"), 0), fnum(pay(v2, "donus_s"), 0), fnum(pay(v2, "kurtarma_s"), 0),
-             fnum(v_or.get(sv_ad), 3), (" (v1: %s m/s)" % fnum(v_or["v1"], 3)) if "v1" in v_or and sv_ad != "v1" else "")]
-    if F:
-        s.append('<p>Sınamada çıkamayan %d koşunun hepsi 17×17. Bu labirentlerin çözüm yolu <b>%s m</b>; o hızla '
-                 '<b>yalnız çözüm yolunu sürmek %s dakika</b> tutar, yanlış kollara hiç girmeden bile. Yürünen yol / çözüm yolu ortanca %s: '
-                 'keşif israf etmiyor, hız yetmiyor.</p>' % (len(F), _orta_aralik(cz, 0), _orta_aralik(yal, 1), fnum(yol_or, 2)))
-    if uz["satirlar"]:
-        R = uz["satirlar"]
-        b = [r for r in R if r.get("durum") == "basari"]
-        on = {}
-        for r in R:
-            for km in ("sinama", "gelistirme"):
-                x = oz["mj_satir"].get((r["_surum"], km, "ilk", r["sahne"], str(r["tohum"])))
-                if x:
-                    on[id(r)] = x
-                    break
-        kurtulan = [r for r in b if on.get(id(r)) is not None and on[id(r)].get("durum") != "basari"]
-        kalan = [r for r in R if r.get("durum") != "basari"]
-        s.append('<p><span class="etiket e-uza">kural dışı: 30 dk</span> Aynı beyne 30 dakika verildi (%d koşu, tohum 0). '
-                 '15 dakikada çıkamayanlardan <b>%d koşu</b> 30 dakikada çıktı%s.%s%s <a href="#uzatilmis">Ayrıntı</a>.</p>' % (
-                     len(R), len(kurtulan),
-                     (" (%s)" % ", ".join("%s %s" % (kisa_sahne(r["sahne"]), fsure(ffloat(r.get("sure_s")))) for r in kurtulan)) if kurtulan else "",
-                     (" <b>Ama hız tek neden değil:</b> %d koşu 30 dakikada da çıkamadı (%s)." % (len(kalan), ", ".join(
-                         "%s %s %s" % (kisa_sahne(r["sahne"]), DURUM_AD.get(r.get("durum"), r.get("durum")), fsure(ffloat(r.get("sure_s"))))
-                         for r in kalan))) if kalan else "",
-                     "" if uz["bitti"] else " <b>Ölçüm rapor üretilirken bitmemişti</b>; sayılar o anki dosyadan."))
-    else:
-        s.append('<p class="not"><span class="etiket e-uza">kural dışı: 30 dk</span> Uzatılmış süre ölçümü %s.</p>' % (
-            "henüz yok" if not uz["basladi"] else "rapor üretilirken bitmemişti, satır yok"))
-    s.append('</div><div>%s</div></div>' % grafik_svg(oz, emb, uz, v_or.get(sv_ad)))
+         '<p>Tanı v2\'nin 30 dakikalık kayıtlarında yapıldı: dolanan dört koşu (17×17_t3, t4, t5 ve 13×13_t2), her birinde yeni '
+         'hücreye girilmeyen en uzun aralık. <b>Beş şüpheliden hiçbiri veride çıkmadı:</b></p>'
+         '<ul class="sik"><li>gidip gelme yok: aralık başına 1 hedef değişimi;</li>'
+         '<li>ulaşılamayan sınır yok: plansız an 0, <code>yol_yok</code> 0, kara liste 0–1;</li>'
+         '<li>sahte sınır yok: 1538 sınır örneğinin 0\'ı;</li>'
+         '<li>sınır tükenmesi yok: her an 2–5 sınır vardı;</li>'
+         '<li>START kesmesi yok: 0.</li></ul>'
+         '<p><b>Asıl neden: kalan sınırlar arasındaki uzun yol.</b> Seçilen hedef ortalama 36–85 m (en çok 101 m) uzaktaydı. Robot '
+         '≈ 0,2 m/s ile 300 s\'de 48–60 m yürüyor; yeni hücreye girmeden hedefe varamıyor, hakemin "300 s yeni hücresiz" kuralı doluyor.</p>'
+         '<p><b>Kökü:</b> çıkış ağzındaki sınır erken görüldü, daha yakın bir sınır için bırakıldı. 17×17_t3\'te 651. saniyede robot '
+         'FINISH\'e 3 hücre uzaktaydı; çıkış sınırının maliyeti 3,1, seçilenin 0,3. Robot 800 s başka dallarda dolaştı, bırakılan '
+         'sınırın maliyeti sonra 40–105 m\'ye büyüdü.</p>'
+         '<p><b>v3 kuralı:</b> ışınlarının en az %30\'u geri dönmeyen (önü sensör menzili ötesine açık) sınır öncelik alır: maliyeti '
+         '25 m düşer, yeri 1,5 m yarıçapla hatırlanır. Böyle bir sınır beynin izinli alanında yalnız FINISH ağzında görüldü (2B\'de '
+         '2198 FINISH dışı örnekte 0). Izgara, hücre boyu ya da labirent bilgisi kullanılmaz; START koruması aynen kalır.</p>'
+         '<p class="not">Düzeltmediği tip: 13×13_t2 ve 17×17_t5\'te çıkış ağzı dar açıyla, yakından görülüyor; dönüşsüz ışın oranı 0 '
+         'kalıyor ve kural tetiklenmiyor. Kaynak: <code>kesif/sonuc/tani_dolanma.md</code>.</p>',
+         '</div><div>']
+    G, _, _ = gel37(oz)
+    t2 = {str(r["tohum"]): r for r in G.get("v2", []) if r["sahne"] == T3}
+    t3 = {str(r["tohum"]): r for r in G.get("v3", []) if r["sahne"] == T3}
+    if t2 or t3:
+        s.append('<div class="kart t3"><h3 style="margin-top:0">17×17_t3: aynı koşu v2 ve v3 ile</h3>'
+                 '<div class="tablo-sar"><table><thead><tr><th>Tohum</th><th>v2</th><th>v3</th></tr></thead><tbody>')
+        for th in sorted(set(t2) | set(t3), key=int):
+            hc = []
+            for x, D in (("v2", t2), ("v3", t3)):
+                r = D.get(th)
+                hc.append('<td>%s %s %s</td>' % (rozet(r.get("durum")), fsure(ffloat(r.get("sure_s"))), oyna_link(emb, anahtar_r(r), "▶"))
+                          if r else '<td><span class="soluk">yok</span></td>')
+            s.append('<tr><th scope="row">%s</th>%s</tr>' % (th, "".join(hc)))
+        s.append('</tbody></table></div>')
+        r2, r3 = t2.get("0"), t3.get("0")
+        if an and r2 and r3:
+            ta = an["ayrilma"] or an["gorulme"]
+            s.append('<p>Tohum 0\'da iki kayıt ayrılma anına dek aynı yolu izliyor. Çıkış ağzındaki sınır %s anında görünüyor. %s anında '
+                     'v2 onu bırakıp yakındaki sınıra dönüyor%s; v3 dışa açık sınırda kalıyor ve %s anında çıkıyor.</p>' % (
+                         fsure(an["gorulme"]), fsure(ta),
+                         (" (maliyet %s, çıkış sınırınınki %s)" % (fnum(an["mal_sec"], 1), fnum(an["mal_fin"], 1)))
+                         if an.get("mal_sec") is not None and an.get("mal_fin") is not None else "", fsure(ffloat(r3.get("sure_s")))))
+            s.append('<p class="atla">%s %s %s</p>' % (
+                oyna_link(emb, anahtar_r(r2), "▶ buraya atla: v2, %s" % fsure(an["gorulme"]), t=an["gorulme"], katman="+sinir",
+                          baslik="Keşif sınırları açık; boşlukla oynat"),
+                oyna_link(emb, anahtar_r(r2), "▶ v2, %s (bıraktığı an)" % fsure(ta), t=ta + 0.1, katman="+sinir"),
+                oyna_link(emb, anahtar_r(r3), "▶ v3, aynı an", t=ta + 0.1, katman="+sinir")))
+            s.append('<p class="not">Oynatıcıda sınırlar daire, seçilen kalın; v3\'ün dışa açık saydığı sınır çift halkalı. Koşu '
+                     'açıkken "↔ v2 / v3" düğmesi aynı anı öbür sürümde açar.</p>')
+        s.append('</div>')
+    s.append('</div></div>')
     return "".join(s)
 
 
-def grafik_svg(oz, emb, uz, v_duz):
+def kalan_html(oz, emb, uz):
+    T_ = oz["tani"]
+    sv = "v3" if mj_sec(oz, "v3", "sinama2") else "v2"
+    F = [r for r in mj_sec(oz, sv, "sinama2") if r.get("durum") != "basari"]
+    tn = {(r["sahne"], str(r["tohum"])): r for r in T_ if r["_surum"] == sv and r["_kume"] == "sinama2"}
+
+    def oran(r):
+        x = tn.get((r["sahne"], str(r["tohum"])))
+        if x and ffloat(x.get("yol_orani")) is not None:
+            return ffloat(x.get("yol_orani"))
+        c = cozum_m(r["sahne"])
+        return ffloat(r.get("yol_m")) / c if c else None
+    hiz = [r for r in F if (oran(r) or 0) <= 1.2]
+    kes = [r for r in F if (oran(r) or 0) > 1.2]
+    v_or = ortanca([ffloat(r.get("v_duz_ort")) for r in T_ if r["_surum"] == sv and r["_kume"] in ("sinama2", "gelistirme")])
+
+    def lnk(r):
+        return oyna_link(emb, anahtar_r(r), "%s t%s" % (kisa_sahne(r["sahne"]), r["tohum"]))
+    s = ['<div class="iki neden"><div>']
+    if not F:
+        s.append('<p>Sınama2\'de %s beyninin çıkamadığı koşu yok.</p>' % sv)
+    else:
+        s.append('<p>Sınama2\'de %s beyninin çıkamadığı %d koşu iki sınıfa ayrılıyor (ölçüt: yürünen yol / çözüm yolu).</p>' % (sv, len(F)))
+    if hiz:
+        cz = [cozum_m(r["sahne"]) for r in hiz]
+        yal = [c / v_or / 60 for c in cz if c and v_or]
+        s.append('<p><b>Hız:</b> %s. Çözüm yolu %s m, yürünen / çözüm %s: yanlış kola az girdi, süre yetmedi. Ölçülen düz sürüş hızı '
+                 'ortanca %s m/s; bu hızla yalnız çözüm yolunu sürmek %s dakika tutar.</p>' % (
+                     ", ".join(lnk(r) for r in hiz), _orta_aralik(cz, 0), _orta_aralik([oran(r) for r in hiz], 2), fnum(v_or, 2),
+                     _orta_aralik(yal, 1)))
+    if kes:
+        s.append('<p><b>Keşif:</b> %s. Yürünen / çözüm %s: robot fazladan dal gezdi.</p>' % (
+            ", ".join("%s (%s×)" % (lnk(r), fnum(oran(r), 1)) for r in kes), _orta_aralik([oran(r) for r in kes], 1)))
+    U = [r for r in uz["satirlar"] if r["_surum"] == sv and r.get("durum") != "basari"]
+    if U:
+        s.append('<p><b>Keşif, 30 dakikada da:</b> %s %s beyniyle 30 dakikada da çıkamadı (%s). Çıkış ağzı dar açıyla görüldüğü için '
+                 'dönüşsüz ışın oranı 0 kalıyor; v3\'ün kuralı tetiklenmiyor. <a href="#uzatilmis">Ayrıntı</a>.</p>' % (
+                     ", ".join(oyna_link(emb, anahtar_r(r), kisa_sahne(r["sahne"])) for r in U), sv,
+                     ", ".join(sorted({DURUM_AD.get(r.get("durum"), r.get("durum")) for r in U}))))
+    gf = [r for r in mj_sec(oz, sv, "gelistirme") if r.get("durum") != "basari"]
+    if gf:
+        s.append('<p class="not">Geliştirme kümesinde %s beyninin çıkamadığı %d koşu: %s.</p>' % (
+            sv, len(gf), ", ".join("%s (yürünen / çözüm %s)" % (lnk(r), fnum(oran(r), 2)) for r in gf)))
+    s.append('</div><div>%s</div></div>' % grafik_svg(oz, emb, uz, v_or, sv))
+    return "".join(s)
+
+
+def grafik_svg(oz, emb, uz, v_duz, sv="v3"):
     N = []
-    for r in mj_sec(oz, "v2", None, "ilk") or mj_sec(oz, None, None, "ilk"):
+    for r in mj_sec(oz, sv, None, "ilk") or mj_sec(oz, None, None, "ilk"):
         c = cozum_m(r["sahne"])
         if c is None:
             continue
@@ -1209,7 +1390,7 @@ def grafik_svg(oz, emb, uz, v_duz):
                                                      (" " + fsure(ffloat(r.get("sure_s")))) if n["ok"] else "")
         if not n["ok"]:
             sek = '<path class="g-kotu" d="M%.1f %.1fl8 8m0 -8l-8 8"/>' % (x - 4, y - 4)
-        elif n["kume"] == "sinama":
+        elif n["kume"] in ("sinama2", "sinama"):
             sek = '<circle class="g-iyi" cx="%.1f" cy="%.1f" r="4.6"/>' % (x, y)
         elif n["kume"] == "uzatilmis":
             sek = '<path class="g-uza" d="M%.1f %.1fl5.5 5.5l-5.5 5.5l-5.5 -5.5z"/>' % (x, y - 5.5)
@@ -1221,68 +1402,84 @@ def grafik_svg(oz, emb, uz, v_duz):
         else:
             s.append('<g><title>%s</title>%s</g>' % (esc(bas), sek))
     uzv = any(n["kume"] == "uzatilmis" for n in N)
-    s.append('</svg><figcaption class="not"><span class="lj"><svg width="12" height="12"><circle class="g-iyi" cx="6" cy="6" r="4.6"/></svg> sınama, çıktı</span> '
+    s.append('</svg><figcaption class="not"><span class="lj"><svg width="12" height="12"><circle class="g-iyi" cx="6" cy="6" r="4.6"/></svg> sınama2, çıktı</span> '
              '<span class="lj"><svg width="12" height="12"><rect class="g-gel" x="2" y="2" width="8" height="8"/></svg> geliştirme, çıktı</span> '
              '%s<span class="lj"><svg width="12" height="12"><path class="g-kotu" d="M2 2l8 8m0 -8l-8 8"/></svg> çıkamadı (bitiş anında)</span> '
              '<span class="lj"><svg width="22" height="12"><line class="g-ref" x1="1" y1="11" x2="21" y2="1"/></svg> yalnız çözüm yolu</span><br>'
-             'v2 beyni, ilk koşular; her nokta bir koşu, aynı labirentin tohumları yan yana. Uzatılmışta yalnız 15 dakikayı aşanlar çizildi. Noktaya tıklayınca oynatıcıda açılır.</figcaption></figure>' % (
+             '%s beyni, ilk koşular; her nokta bir koşu, aynı labirentin tohumları yan yana. Uzatılmışta yalnız 15 dakikayı aşanlar çizildi. '
+             'Noktaya tıklayınca oynatıcıda açılır (kaydı gömülüyse).</figcaption></figure>' % (
                  '<span class="lj"><svg width="12" height="12"><path class="g-uza" d="M6 0.5l5.5 5.5l-5.5 5.5l-5.5 -5.5z"/></svg> uzatılmış (30 dk), çıktı</span> '
-                 if uzv else ""))
+                 if uzv else "", sv))
     return "".join(s)
 
 
+def _cift_fark(a_rows, b_rows):
+    da = {(r["sahne"], str(r["tohum"])): r for r in a_rows}
+    cift = [(da[(r["sahne"], str(r["tohum"]))], r) for r in b_rows if (r["sahne"], str(r["tohum"])) in da]
+    ora = [ffloat(y.get("sure_s")) / ffloat(x.get("sure_s")) for x, y in cift
+           if x.get("durum") == "basari" and y.get("durum") == "basari" and ffloat(x.get("sure_s"))]
+    return ora, [(x, y) for x, y in cift if x.get("durum") != y.get("durum")]
+
+
 def karsilastirma_html(oz, emb):
-    s = []
-    satir = []
-    for km in ("sinama", "gelistirme"):
-        a, b = mj_sec(oz, "v1", km), mj_sec(oz, "v2", km)
-        if not a and not b:
-            continue
-        oa, ob = basari_ozet(a), basari_ozet(b)
-        da = {(r["sahne"], str(r["tohum"])): r for r in a}
-        cift = [(da[(r["sahne"], str(r["tohum"]))], r) for r in b if (r["sahne"], str(r["tohum"])) in da]
-        ora = [ffloat(y.get("sure_s")) / ffloat(x.get("sure_s")) for x, y in cift
-               if x.get("durum") == "basari" and y.get("durum") == "basari" and ffloat(x.get("sure_s"))]
-        fark = [(x, y) for x, y in cift if x.get("durum") != y.get("durum")]
-        satir.append((km, oa, ob, ora, fark))
-    if not satir:
-        return '<p class="yok">Henüz yok: v1 / v2 sonuç dosyaları bulunamadı.</p>'
-    s.append('<div class="tablo-sar"><table><thead><tr><th>Küme</th><th class="sag">v1 başarı</th><th class="sag">v2 başarı</th>'
-             '<th class="sag">Çarpma<br><small>v1 / v2</small></th><th class="sag">Ortalama puan<br><small>v1 / v2</small></th>'
-             '<th class="sag">Süre v2 / v1<br><small>ikisi de çıktı: ortalama · ortanca</small></th><th>Sonucu değişen koşular</th></tr></thead><tbody>')
-    for km, oa, ob, ora, fark in satir:
-        fl = []
-        for x, y in fark:
-            fl.append("%s t%s: v1 %s → v2 %s" % (kisa_sahne(x["sahne"]), x["tohum"],
-                                                 oyna_link(emb, anahtar_r(x), DURUM_AD.get(x["durum"], x["durum"])),
-                                                 oyna_link(emb, anahtar_r(y), DURUM_AD.get(y["durum"], y["durum"]))))
-        s.append('<tr><th scope="row"><span class="etiket e-mj">MuJoCo</span> %s</th><td class="sag">%s</td><td class="sag">%s</td><td class="sag">%d / %d</td>'
-                 '<td class="sag">%s / %s</td><td class="sag">%s · %s <small>(%d çift)</small></td><td>%s</td></tr>' % (
-                     KUME_AD[km], oran_span(oa["basari"], oa["n"]), oran_span(ob["basari"], ob["n"]), oa["carpma"], ob["carpma"],
-                     fnum(oa["puan_ort"], 0), fnum(ob["puan_ort"], 0),
-                     fnum(sum(ora) / len(ora), 2) if ora else "-", fnum(ortanca(ora), 2) if ora else "-", len(ora),
-                     "; ".join(fl) if fl else '<span class="soluk">yok</span>'))
+    SV = [x for x in ("v1", "v2", "v3") if x in oz["surumler"]]
+    G, nK, _ = gel37(oz)
+    satirlar = []
+    for ad, et, D in (("sınama2", "e-mj", {x: mj_sec(oz, x, "sinama2") for x in SV}),
+                      ("geliştirme (%d)" % nK, "e-mj", G),
+                      ("ilk sınama", "e-mj", {x: mj_sec(oz, x, "sinama") for x in SV})):
+        D = {x: v for x, v in D.items() if v}
+        if D:
+            satirlar.append((ad, et, D, True))
     if oz.get("b2_v1") and oz.get("b2_v2"):
-        a, b = basari_ozet(oz["b2_v1"]), basari_ozet(oz["b2_v2"])
-        da = {(r["sahne"], str(r["tohum"])): r for r in oz["b2_v1"]}
-        ora = [ffloat(r["sure_s"]) / ffloat(da[(r["sahne"], str(r["tohum"]))]["sure_s"]) for r in oz["b2_v2"]
-               if (r["sahne"], str(r["tohum"])) in da and r.get("durum") == "basari" and da[(r["sahne"], str(r["tohum"]))].get("durum") == "basari"]
-        s.append('<tr><th scope="row"><span class="etiket e-2b">2B</span> geliştirme</th><td class="sag">%s</td><td class="sag">%s</td>'
-                 '<td class="sag">%d / %d</td><td class="sag">%s / %s</td><td class="sag">%s · %s <small>(%d çift)</small></td>'
-                 '<td><span class="soluk">2B kaydı yok</span></td></tr>' % (
-                     oran_span(a["basari"], a["n"]), oran_span(b["basari"], b["n"]), a["carpma"], b["carpma"],
-                     fnum(a["puan_ort"], 0), fnum(b["puan_ort"], 0), fnum(sum(ora) / len(ora), 2) if ora else "-",
-                     fnum(ortanca(ora), 2) if ora else "-", len(ora)))
+        satirlar.append(("2B geliştirme (11 labirent × 5 tohum)", "e-2b", {"v1": oz["b2_v1"], "v2": oz["b2_v2"]}, False))
+    if oz.get("b2_v3cift"):
+        satirlar.append(("2B 21 labirent × 2 tohum", "e-2b", oz["b2_v3cift"], False))
+    if not satirlar:
+        return '<p class="yok">Henüz yok: sürüm sonuç dosyaları bulunamadı.</p>'
+    s = ['<div class="tablo-sar"><table><thead><tr><th>Küme</th>']
+    for x in SV:
+        s.append('<th class="sag">%s<br><small>başarı · çarpma · puan</small></th>' % x)
+    s.append('<th class="sag">Süre, yeni / eski<br><small>ikisi de çıktı, ortanca</small></th><th>Sonucu değişen koşular</th></tr></thead><tbody>')
+    for ad, et, D, mj in satirlar:
+        s.append('<tr><th scope="row"><span class="etiket %s">%s</span> %s</th>' % (et, "MuJoCo" if mj else "2B", esc(ad)))
+        for x in SV:
+            if x in D:
+                o = basari_ozet(D[x])
+                s.append('<td class="sag">%s · %d · %s</td>' % (oran_span(o["basari"], o["n"]), o["carpma"], fnum(o["puan_ort"], 0)))
+            else:
+                s.append('<td class="sag"><span class="soluk">-</span></td>')
+        var = [x for x in SV if x in D]
+        if len(var) >= 2:
+            a, b = var[-2], var[-1]
+            ora, fark = _cift_fark(D[a], D[b])
+            fl = ["%s t%s: %s %s → %s %s" % (kisa_sahne(x["sahne"]), x["tohum"], a,
+                                             oyna_link(emb, anahtar_r(x), DURUM_AD.get(x["durum"], x["durum"])) if mj else DURUM_AD.get(x["durum"], x["durum"]),
+                                             b, oyna_link(emb, anahtar_r(y), DURUM_AD.get(y["durum"], y["durum"])) if mj else DURUM_AD.get(y["durum"], y["durum"]))
+                  for x, y in fark]
+            s.append('<td class="sag">%s/%s: %s <small>(%d çift)</small></td><td>%s</td></tr>' % (
+                b, a, fnum(ortanca(ora), 2) if ora else "-", len(ora), "; ".join(fl) if fl else '<span class="soluk">yok</span>'))
+        else:
+            s.append('<td class="sag">-</td><td><span class="soluk">tek sürüm</span></td></tr>')
     s.append('</tbody></table></div>')
-    sn = [x for x in satir if x[0] == "sinama"]
-    if sn:
-        km, oa, ob, ora, fark = sn[0]
-        kazanc = (1 - ortanca(ora)) * 100 if ora else None
-        s.append('<p><b>Kazanç küçük.</b> v2 yalnız hız profilini değiştirir: önü 1 m ve yanları açık, dönüşten 1,5 s geçmişse '
-                 '0,39 m/s, değilse v1 gibi 0,25 m/s. Sınamada başarı %d/%d → %d/%d, iki sürümde de çıkan koşularda süre ortanca '
-                 '%%%s kısa; çarpma artmadı. Geliştirme kümesinde v2 bir koşu az çıktı. v2\'yi varsayılan yapma kararı sınama '
-                 'sonucuna bakılarak verildi (kural: sınamada başarı azalmasın, çarpma artmasın); ayar sınama labirentlerinde yapılmadı.</p>' % (
-                     oa["basari"], oa["n"], ob["basari"], ob["n"], fnum(kazanc, 0) if kazanc is not None else "-"))
+    # metin
+    s2 = mj_sec(oz, "v2", "sinama2")
+    s3 = mj_sec(oz, "v3", "sinama2")
+    i1, i2 = mj_sec(oz, "v1", "sinama"), mj_sec(oz, "v2", "sinama")
+    ora12, _ = _cift_fark(i1, i2)
+    p = ['<p><b>v2</b> = v1 + hız profili: önü 1 m ve yanları açık, dönüşten 1,5 s geçmişse 0,39 m/s, değilse 0,25 m/s. '
+         '<b>v3</b> = v2 + dışa açık sınır önceliği (maliyet 25 m düşer).']
+    if i1 and i2:
+        p.append(' v1 → v2 kazancı küçüktü: ilk sınamada başarı %d/%d → %d/%d, ikisinde de çıkan koşularda süre ortanca %%%s kısa.' % (
+            basari_ozet(i1)["basari"], basari_ozet(i1)["n"], basari_ozet(i2)["basari"], basari_ozet(i2)["n"],
+            fnum((1 - ortanca(ora12)) * 100, 0) if ora12 else "-"))
+    if s2 and s3:
+        o2, o3 = basari_ozet(s2), basari_ozet(s3)
+        p.append(' v2 → v3: sınama2\'de %d/%d → %d/%d, çarpma %d → %d; v3\'ün kazancı geliştirme kümesinde ve neredeyse tamamı '
+                 '17×17_t3\'ten. Bu yüzden genel bir iyileşme kanıtı sayılmaz. v3\'ü varsayılan yapma kuralı: sınama2\'de başarı azalmasın, '
+                 'çarpma artmasın; sağlandı.' % (o2["basari"], o2["n"], o3["basari"], o3["n"], o2["carpma"], o3["carpma"]))
+    p.append('</p>')
+    s.append("".join(p))
     return "".join(s)
 
 
@@ -1309,10 +1506,12 @@ def hafiza_mj_html(oz, emb):
                      oyna_link(emb, (a[0], a[1], "ilk", a[3], a[4]), "▶ ilk"), oyna_link(emb, a, "▶ hafızalı")))
     s.append('</tbody></table></div>')
     b = basari_ozet(H)
+    kume = sorted({KUME_AD.get(r["_kume"], r["_kume"]) for r in H})
+    sv = sorted({r["_surum"] for r in H})
     s.insert(0, '<p>Robot aynı labirente, ilk koşuda çıkardığı harita ve bulduğu çıkışla yeniden girer (yalnız ilk koşusu '
-                'başarılı olanlar; v2, sınama kümesi). <b>%d/%d çıktı</b>, çarpma %d; süre kazancı ortalama <b>%%%s</b> (%s). '
-                'Oynatıcıda iki koşu arasında tek tıkla geçebilirsin.</p>' % (
-                    b["basari"], b["n"], b["carpma"], fnum(100 * sum(kz) / len(kz), 0) if kz else "-",
+                'başarılı olanlar; %s, %s kümesi). <b>%d/%d çıktı</b>, çarpma %d; süre kazancı ortalama <b>%%%s</b> (%s). '
+                'Sayfada birkaç çiftin kaydı var; oynatıcıda iki koşu arasında tek tıkla geçebilirsin.</p>' % (
+                    "/".join(sv), "/".join(kume), b["basari"], b["n"], b["carpma"], fnum(100 * sum(kz) / len(kz), 0) if kz else "-",
                     ("%%%s … %%%s" % (fnum(100 * min(kz), 0), fnum(100 * max(kz), 0))).replace("%-", "−%") if kz else "-"))
     return "".join(s)
 
@@ -1321,48 +1520,57 @@ def uzatilmis_html(oz, emb, uz):
     R = uz["satirlar"]
     if not R:
         return '<p class="yok">%s</p>' % ("Henüz yok: ölçüm rapor üretilirken bitmemişti." if uz["basladi"] else "Henüz yok.")
-    s = ['<div class="tablo-sar"><table><thead><tr><th>Labirent</th><th class="sag">Tohum</th><th class="sag">Çözüm yolu</th>'
-         '<th>15 dakikalık kuralla</th><th>30 dakika verilince</th><th class="sag">FINISH\'e en çok</th><th>İzle</th></tr></thead><tbody>']
-    for r in sorted(R, key=lambda r: (boyut_of(r["sahne"]), r["sahne"], str(r["tohum"]))):
-        a = anahtar_r(r)
-        on = None
-        for km in ("sinama", "gelistirme"):
-            on = oz["mj_satir"].get((a[0], km, "ilk", a[3], a[4]))
-            if on:
-                break
-        s.append('<tr><th scope="row">%s</th><td class="sag">%s</td><td class="sag">%s m</td><td>%s</td><td>%s</td><td class="sag">%%%s</td><td>%s</td></tr>' % (
-            esc(kisa_sahne(r["sahne"])), esc(r["tohum"]), fnum(cozum_m(r["sahne"]), 0),
-            (rozet(on.get("durum")) + " " + fsure(ffloat(on.get("sure_s"))) + " " + oyna_link(emb, anahtar_r(on), "▶")) if on else '<span class="soluk">eşi yok</span>',
-            rozet(r.get("durum")) + " " + fsure(ffloat(r.get("sure_s"))) + (
-                (' <small>%s</small>' % esc({"ilerlemesiz": "300 s yeni hücreye girmedi", "hareketsiz": "60 s yerinden ayrılmadı"}.get(
-                    r.get("sikisma_sebebi"), r.get("sikisma_sebebi")))) if r.get("sikisma_sebebi") else ""),
-            fnum(100 * (ffloat(r.get("p_en")) or 0), 0),
-            oyna_link(emb, a, "▶ 30 dk koşusu")))
-    s.append('</tbody></table></div>')
-    b = [r for r in R if r.get("durum") == "basari"]
-    on_kotu = []
-    for r in R:
-        for km in ("sinama", "gelistirme"):
-            x = oz["mj_satir"].get((r["_surum"], km, "ilk", r["sahne"], str(r["tohum"])))
+    SV = [x for x in ("v2", "v3") if any(r["_surum"] == x for r in R)] or sorted({r["_surum"] for r in R})
+    D = {(r["_surum"], r["sahne"], str(r["tohum"])): r for r in R}
+    keys = sorted({(r["sahne"], str(r["tohum"])) for r in R}, key=lambda k: (boyut_of(k[0]), k[0], k[1]))
+    son = SV[-1]
+
+    def on15(sv, sh, th):
+        for km in ("gelistirme", "sinama", "sinama2"):
+            x = oz["mj_satir"].get((sv, km, "ilk", sh, th))
             if x:
-                if x.get("durum") != "basari":
-                    on_kotu.append(r)
-                break
-    s.insert(0, '<p>v2 beyni, tohum 0, süre sınırı 30:00. 30 dakikada çıkan: <b>%d/%d</b>.%s Bu koşular kuralın dışında: üstteki 15 dakikalık sayılara, '
-                'puana ve başarı oranlarına <b>karışmaz</b>. Sorulan yalnız şu: süre yetse bu beyin bu labirentleri çözer mi? '
-                '%s</p>' % (
-                    len(b), len(R), "" if uz["bitti"] else " <b>Ölçüm rapor üretilirken bitmemişti</b>; tablo o anki dosyadan.",
-                    "Yanıt: 15 dakikada çıkamayan %d koşudan %d tanesinde evet; %d tanesinde hayır (%s)." % (
-                        len(on_kotu), len([r for r in on_kotu if r.get("durum") == "basari"]),
+                return x
+        return None
+    s = ['<div class="tablo-sar"><table><thead><tr><th>Labirent</th><th class="sag">Tohum</th><th class="sag">Çözüm yolu</th>'
+         '<th>15 dakikalık kuralla (%s)</th>' % son]
+    for x in SV:
+        s.append('<th>30 dakika, %s</th>' % x)
+    s.append('<th class="sag">FINISH\'e en çok (%s)</th></tr></thead><tbody>' % son)
+    for sh, th in keys:
+        on = on15(son, sh, th)
+        s.append('<tr><th scope="row">%s</th><td class="sag">%s</td><td class="sag">%s m</td><td>%s</td>' % (
+            esc(kisa_sahne(sh)), esc(th), fnum(cozum_m(sh), 0),
+            (rozet(on.get("durum")) + " " + fsure(ffloat(on.get("sure_s"))) + " " + oyna_link(emb, anahtar_r(on), "▶")) if on else '<span class="soluk">eşi yok</span>'))
+        for x in SV:
+            r = D.get((x, sh, th))
+            s.append('<td>%s</td>' % ((rozet(r.get("durum")) + " " + fsure(ffloat(r.get("sure_s"))) + (
+                (' <small>%s</small>' % esc({"ilerlemesiz": "300 s yeni hücreye girmedi", "hareketsiz": "60 s yerinden ayrılmadı"}.get(
+                    r.get("sikisma_sebebi"), r.get("sikisma_sebebi")))) if r.get("sikisma_sebebi") else "") + " " + oyna_link(emb, anahtar_r(r), "▶"))
+                if r else '<span class="soluk">-</span>'))
+        r = D.get((son, sh, th))
+        s.append('<td class="sag">%s</td></tr>' % (("%%%s" % fnum(100 * (ffloat(r.get("p_en")) or 0), 0)) if r else "-"))
+    s.append('</tbody></table></div>')
+    ozet = []
+    for x in SV:
+        Rx = [r for r in R if r["_surum"] == x]
+        b = [r for r in Rx if r.get("durum") == "basari"]
+        sk = [r for r in Rx if r.get("durum") == "fail_sikisma"]
+        ozet.append("%s <b>%d/%d</b>%s" % (x, len(b), len(Rx), (" (%d sıkıştı)" % len(sk)) if sk else ""))
+    Rs = [r for r in R if r["_surum"] == son]
+    on_kotu = [r for r in Rs if (lambda o: o is not None and o.get("durum") != "basari")(on15(son, r["sahne"], str(r["tohum"])))]
+    s.insert(0, '<p>Tohum 0, süre sınırı 30:00. 30 dakikada çıkan: %s.%s Bu koşular kuralın dışında: üstteki 15 dakikalık sayılara, '
+                'puana ve başarı oranlarına <b>karışmaz</b>. Sorulan yalnız şu: süre yetse bu beyin bu labirentleri çözer mi? %s</p>' % (
+                    ", ".join(ozet), "" if uz["bitti"] else " <b>Ölçüm rapor üretilirken bitmemişti</b>; tablo o anki dosyadan.",
+                    ("Yanıt (%s): 15 dakikada çıkamayan %d koşudan %d tanesinde evet; %d tanesinde hayır (%s)." % (
+                        son, len(on_kotu), len([r for r in on_kotu if r.get("durum") == "basari"]),
                         len([r for r in on_kotu if r.get("durum") != "basari"]),
-                        ", ".join(sorted({DURUM_AD.get(r.get("durum"), r.get("durum")) for r in on_kotu if r.get("durum") != "basari"})) or "-")
-                    if on_kotu else ""))
+                        ", ".join(sorted({kisa_sahne(r["sahne"]) for r in on_kotu if r.get("durum") != "basari"})) or "-")) if on_kotu else ""))
     return "".join(s)
 
 
 def ayrinti_html(oz):
     s = []
-    for km in ("sinama", "gelistirme"):
+    for km in ("sinama2", "sinama", "gelistirme"):
         for sv in oz["surumler"]:
             rs = mj_sec(oz, sv, km)
             if rs:
@@ -1376,7 +1584,8 @@ def ayrinti_html(oz):
 # ------------------------------------------------------------------ ana
 def uzatilmis_durum(oz):
     satirlar = [r for r in oz["mj"] if r["_kume"] == "uzatilmis"]
-    bitti, basladi = False, bool(satirlar) or any(a.startswith("mujoco_uzatilmis") for a in oz["kaynak"])
+    basladi = bool(satirlar) or any(a.startswith("mujoco_uzatilmis") for a in oz["kaynak"])
+    biten = set()
     try:
         with open(os.path.join(KESIF, ".durum"), encoding="utf-8", errors="replace") as f:
             for satir in f:
@@ -1384,17 +1593,22 @@ def uzatilmis_durum(oz):
                 if "uzatilmis" in s:
                     basladi = True
                     if "uzatilmis bitti" in s:
-                        bitti = True
+                        biten.add("*")
+                    m = re.search(r"bitti \((v\d+) -> mujoco_uzatilmis", s)
+                    if m:
+                        biten.add(m.group(1))
     except OSError:
         pass
+    sv = {r["_surum"] for r in satirlar}
+    bitti = bool(sv) and all(x in biten or "*" in biten for x in sv)
     return {"satirlar": satirlar, "bitti": bitti, "basladi": basladi}
 
 
 def kosu_kimligi(b, ad):
     if b["tur"] != "labirent":
         return "kr-" + re.sub(r"[^A-Za-z0-9_\-]", "_", ad)
-    return "%s-%s-%s_t%s%s" % (b["surum"], b["kume"][:3], b["sahne"].replace("labirent_", ""), b["tohum"],
-                               "-h" if b["kos"] == "hafiza" else "")
+    return "%s-%s-%s_t%s%s" % (b["surum"], KUME_KISA.get(b["kume"], re.sub(r"[^a-z0-9]", "", b["kume"] or "")[:4]),
+                               b["sahne"].replace("labirent_", ""), b["tohum"], "-h" if b["kos"] == "hafiza" else "")
 
 
 def anahtar_k(k):
@@ -1402,33 +1616,70 @@ def anahtar_k(k):
 
 
 def oncelikler(lab):
-    """0 zorunlu, 1 v1/v2 farkı, 2 v1 örnekleri, 3 kalan v2, 4 kalan v1."""
-    P = {}
+    """Gömme önceliği (küçük önce; 0 zorunlu). 5. tur sırası:
+    0: sınama2 v3 hepsi; sınama2 v2'de v3'ten farklı çıkanlar ve v2 başarısızları; 17x17_t3 geliştirme v2 ve v3 (üç tohum).
+    1: uzatılmış v3 hepsi + uzatılmış v2'de v3'ten farklı çıkanlar.
+    2: geliştirme v3: boyut başına ortanca ve en hızlı başarı + tüm başarısızlar.
+    3: birkaç hafızalı çift (boyut başına en büyük kazanç, ilk koşusuyla).
+    4: birkaç v1 örneği (v2 ile sonucu farklı olanlar).
+    5–8: yer kalırsa: kalan v3, kalan sınama2/uzatılmış v2, kalan v2, kalan v1."""
     d = {anahtar_k(k): k for k in lab}
+    P = {k["id"]: 9 for k in lab}
+
+    def ata(k, p):
+        P[k["id"]] = min(P[k["id"]], p)
+
+    def es(k, sv):
+        return d.get((sv,) + anahtar_k(k)[1:])
     for k in lab:
-        if k["kume"] == "uzatilmis" or (k["kume"] == "sinama" and k["surum"] == "v2") or k.get("durum") != "basari":
-            P[k["id"]] = 0
-        else:
-            P[k["id"]] = 3 if k["surum"] != "v1" else 4
-    son = "v2" if any(k["surum"] == "v2" for k in lab) else "v1"
-    temsil = []
-    for b in sorted({boyut_of(k["sahne"]) for k in lab}):
-        L = sorted([k for k in lab if k["surum"] == son and k["kume"] == "gelistirme" and k["kos"] == "ilk"
+        km, sv, ok = k["kume"], k["surum"], k.get("durum") == "basari"
+        if km == "sinama2" and sv == "v3":
+            ata(k, 0)
+        elif km == "sinama2" and sv == "v2":
+            e = es(k, "v3")
+            if not ok or (e is not None and e.get("durum") != k.get("durum")):
+                ata(k, 0)
+        if km == "gelistirme" and k["sahne"] == T3 and sv in ("v2", "v3") and k["kos"] == "ilk":
+            ata(k, 0)
+        if km == "uzatilmis":
+            e = es(k, "v3")
+            if sv == "v3" or (e is not None and e.get("durum") != k.get("durum")):
+                ata(k, 1)
+        if km == "gelistirme" and sv == "v3" and not ok:
+            ata(k, 2)
+    boylar = sorted({boyut_of(k["sahne"]) for k in lab})
+    for b in boylar:
+        L = sorted([k for k in lab if k["surum"] == "v3" and k["kume"] == "gelistirme" and k["kos"] == "ilk"
                     and k.get("durum") == "basari" and boyut_of(k["sahne"]) == b], key=lambda k: k["sure_s"] or 0)
-        if L:
-            k = L[len(L) // 2]
-            P[k["id"]] = 0
-            temsil.append(k)
+        for k in (L[:1] + L[len(L) // 2:len(L) // 2 + 1]) if L else []:
+            ata(k, 2)
+    H = []
     for k in lab:
-        if k["surum"] == "v1":
-            e = d.get(("v2",) + anahtar_k(k)[1:])
-            if e and e.get("durum") != k.get("durum"):
-                P[k["id"]] = min(P[k["id"]], 1)
-                P[e["id"]] = min(P[e["id"]], 1)
-    for k in temsil:
-        e = d.get(("v1",) + anahtar_k(k)[1:])
-        if e:
-            P[e["id"]] = min(P[e["id"]], 2)
+        if k["kos"] == "hafiza" and k.get("durum") == "basari":
+            i = d.get((k["surum"], k["kume"], "ilk", k["sahne"], str(k["tohum"])))
+            if i is not None and i.get("durum") == "basari" and i.get("sure_s"):
+                H.append((1 - k["sure_s"] / i["sure_s"], k, i))
+    for b in boylar:
+        Hb = [h for h in H if boyut_of(h[1]["sahne"]) == b]
+        if Hb:
+            g, k, i = max(Hb, key=lambda h: h[0])
+            ata(k, 3)
+            ata(i, 3)
+    V1 = sorted([k for k in lab if k["surum"] == "v1" and k["kos"] == "ilk"], key=lambda k: (-boyut_of(k["sahne"])[0], k["sahne"], str(k["tohum"])))
+    fark = [k for k in V1 if es(k, "v2") is not None and es(k, "v2").get("durum") != k.get("durum")]
+    for k in (fark[:4] or V1[:2]):
+        ata(k, 4)
+    for k in lab:
+        if P[k["id"]] < 9:
+            continue
+        if k["surum"] == "v3":
+            P[k["id"]] = 5
+        elif k["surum"] == "v2" and k["kume"] in ("sinama2", "uzatilmis"):
+            P[k["id"]] = 6
+        elif k["surum"] == "v2":
+            P[k["id"]] = 7
+        else:
+            P[k["id"]] = 8
     return P
 
 
@@ -1520,7 +1771,7 @@ def main(argv=None):
     secili = list(zorunlu)
     kullan = sum(boyut(k) for k in secili)
     disarida = []
-    for p in (1, 2, 3, 4):
+    for p in (1, 2, 3, 4, 5, 6, 7, 8):
         aday = [k for k in lab if P[k["id"]] == p]
         while aday:
             say = {}
@@ -1536,6 +1787,16 @@ def main(argv=None):
     sec_id = {k["id"] for k in secili}
     kosular = [k for k in kosular if k["id"] in sec_id]
     bloblar = {i: b for i, b in bloblar.items() if i in sec_id}
+    # 17x17_t3: v2 ile v3'ün ayrıldığı an (kayıt yolu gerekiyor; _yol aşağıda siliniyor)
+    an = None
+    _y = {(k["surum"], k["kume"], k["kos"], k["sahne"], str(k["tohum"])): k.get("_yol") for k in kosular if k["tur"] == "labirent"}
+    y2, y3 = _y.get(("v2", "gelistirme", "ilk", T3, "0")), _y.get(("v3", "gelistirme", "ilk", T3, "0"))
+    if y2 and y3:
+        try:
+            an = ayrilma_ani(y2, y3)
+        except Exception as e:
+            durum_yaz("ayrilma ani okunamadi: %s" % e)
+    durum_yaz("17x17_t3 ayrilma: %s" % an)
     for k in kosular:
         k.pop("_yol", None)
     dis_ozet = [{"id": k["id"], "surum": k["surum"], "kume": k["kume"], "kos": k["kos"], "sahne": k["sahne"], "tohum": k["tohum"],
@@ -1554,34 +1815,46 @@ def main(argv=None):
     lab = [k for k in kosular if k["tur"] == "labirent"]
     emb = {anahtar_k(k): k["id"] for k in lab}
     es2b = {(m["sahne"], str(m["tohum"])): b for m, b in oz["eslesik"]}
+    # sürüm eşleri: aynı koş, labirent, tohum ve süre kuralı; küme farklı olabilir (v3 geliştirmedeki 17x17_t4 ↔ v2 ilk sınama)
+    es_dizin = {}
+    for k in sorted(lab, key=lambda k: KUME_SIRA.get(k["kume"], 9), reverse=True):
+        es_dizin[(k["surum"], k["kos"], k["sahne"], str(k["tohum"]), k["kume"] == "uzatilmis")] = k["id"]
+    tercih = {"v3": ("v2", "v1"), "v2": ("v3", "v1"), "v1": ("v2", "v3")}
     for k in lab:
         k["neden"] = neden_mj(k, es2b.get((k["sahne"], str(k["tohum"]))) if (k["surum"], k["kume"]) == ("v1", "gelistirme") else None)
         e = emb.get((k["surum"], k["kume"], "hafiza" if k["kos"] == "ilk" else "ilk", k["sahne"], str(k["tohum"])))
         if e:
             k["es_kos"] = e
-        for s2 in ("v1", "v2"):
-            if s2 != k["surum"]:
-                e = emb.get((s2,) + anahtar_k(k)[1:])
-                if e:
-                    k["es_surum"] = e
-    # ---- varsayılan koşu ve kısayollar (v2)
-    son = "v2" if any(k["surum"] == "v2" for k in lab) else "v1"
-    v2l = [k for k in lab if k["surum"] == son and k["kume"] != "uzatilmis"]
-    v2i = [k for k in v2l if k["kos"] == "ilk"]
-    bas = [k for k in v2i if k.get("durum") == "basari"]
-    sin_bas = [k for k in bas if k["kume"] == "sinama"] or bas
+        L = []
+        for s2 in tercih.get(k["surum"], ("v3", "v2", "v1")):
+            e = es_dizin.get((s2, k["kos"], k["sahne"], str(k["tohum"]), k["kume"] == "uzatilmis"))
+            if e:
+                L.append([s2, e])
+        if L:
+            k["es_surumler"] = L
+            k["es_surum"] = L[0][1]
+    # ---- varsayılan koşu ve kısayollar (en yeni sürüm)
+    son = next((x for x in ("v3", "v2", "v1") if any(k["surum"] == x for k in lab)), "v1")
+    vl = [k for k in lab if k["surum"] == son and k["kume"] != "uzatilmis"]
+    vi = [k for k in vl if k["kos"] == "ilk"]
+    bas = [k for k in vi if k.get("durum") == "basari"]
+    sin_bas = [k for k in bas if k["kume"] == "sinama2"] or [k for k in bas if k["kume"] == "sinama"] or bas
     varsayilan = None
     ilginc = []
     if sin_bas:
         k = max(sin_bas, key=lambda k: (boyut_of(k["sahne"]), sahneler[k["sahne"]].get("cozum_m") or 0, -(k["sure_s"] or 0)))
         varsayilan = k["id"]
-        ilginc.append({"id": k["id"], "t": 0, "ad": "Hiç görmediği %s'de çıkış" % boyut_ad(boyut_of(k["sahne"])),
-                       "not": "%s, çözüm %s m, %s" % (kisa_sahne(k["sahne"]), fnum(sahneler[k["sahne"]].get("cozum_m"), 0), fsure(k["sure_s"]))})
+        ilginc.append({"id": k["id"], "t": 0, "ad": "Hiç görmediği %s labirentinde çıkış" % boyut_ad(boyut_of(k["sahne"])),
+                       "not": "%s, %s, çözüm %s m, %s" % (son, kisa_sahne(k["sahne"]), fnum(sahneler[k["sahne"]].get("cozum_m"), 0), fsure(k["sure_s"]))})
+    e2 = emb.get(("v2", "gelistirme", "ilk", T3, "0"))
+    if e2 and an:
+        ilginc.append({"id": e2, "t": an["gorulme"], "ad": "v2 çıkışı bırakıyor (17×17_t3)", "katman": "+sinir",
+                       "not": "%s: çıkış ağzı görünüyor; düğmeyle v3'e geç" % fsure(an["gorulme"])})
     if bas:
         k = min(bas, key=lambda k: k["sure_s"])
-        ilginc.append({"id": k["id"], "t": 0, "ad": "En hızlı başarı", "not": "%s, %s" % (kisa_sahne(k["sahne"]), fsure(k["sure_s"]))})
+        ilginc.append({"id": k["id"], "t": 0, "ad": "En hızlı başarı", "not": "%s, %s, %s" % (son, kisa_sahne(k["sahne"]), fsure(k["sure_s"]))})
     hz = []
-    for k in v2l:
+    for k in lab:
         if k["kos"] == "hafiza" and k.get("durum") == "basari" and k.get("es_kos"):
             i = next((x for x in lab if x["id"] == k["es_kos"]), None)
             if i and i.get("durum") == "basari" and i.get("sure_s"):
@@ -1591,21 +1864,17 @@ def main(argv=None):
         ilginc.append({"id": k["id"], "t": 0, "ad": "Hafızalı koşu, en büyük kazanç",
                        "not": "%s: %s → %s (%%%s)" % (kisa_sahne(k["sahne"]), fsure(i["sure_s"]), fsure(k["sure_s"]), fnum(100 * g, 0))})
     for d in ("fail_sure", "fail_sikisma", "fail_start"):
-        L = [k for k in v2i if k.get("durum") == d]
+        L = [k for k in vi if k.get("durum") == d and k["kume"] == "sinama2"] or [k for k in vi if k.get("durum") == d]
         if L:
             k = max(L, key=lambda k: k.get("p_en") or 0)
             ilginc.append({"id": k["id"], "t": max(0, (k.get("p_en_an") or 0) - 20), "ad": "Çıkamadı: " + DURUM_AD[d],
-                           "not": "%s, FINISH'e %%%s yaklaştı" % (kisa_sahne(k["sahne"]), fnum(100 * (k.get("p_en") or 0), 0))})
-    v1v2 = [k for k in lab if k["surum"] == "v1" and k.get("durum") == "basari" and k.get("es_surum")
-            and next((x for x in lab if x["id"] == k["es_surum"]), {}).get("durum") != "basari"]
-    if v1v2:
-        k = v1v2[0]
-        ilginc.append({"id": k["id"], "t": 0, "ad": "v1 çıktı, v2 çıkamadı", "not": "%s t%s, %s" % (kisa_sahne(k["sahne"]), k["tohum"], KUME_AD[k["kume"]])})
-    uzb = [k for k in lab if k["kume"] == "uzatilmis" and k.get("durum") == "basari"]
+                           "not": "%s, %s, FINISH'e %%%s yaklaştı" % (KUME_AD.get(k["kume"], k["kume"]), kisa_sahne(k["sahne"]),
+                                                                    fnum(100 * (k.get("p_en") or 0), 0))})
+    uzb = [k for k in lab if k["kume"] == "uzatilmis" and k.get("durum") == "basari" and k["surum"] == son]
     if uzb:
         k = max(uzb, key=lambda k: k["sure_s"] or 0)
         ilginc.append({"id": k["id"], "t": max(0, T_SINIR - 30), "ad": "30 dakikada çıktı (kural dışı)",
-                       "not": "%s, %s; 15:00'tan 30 s önceden" % (kisa_sahne(k["sahne"]), fsure(k["sure_s"]))})
+                       "not": "%s, %s, %s; 15:00 öncesinden" % (son, kisa_sahne(k["sahne"]), fsure(k["sure_s"]))})
     # ---- tanılar
     ilk_fark = [k["ilk_kare_hayalet_fark_m"] for k in lab if k.get("ilk_kare_hayalet_fark_m") is not None]
     uyumsuz = [(k["id"], u) for k in lab for u in k.get("uyumsuz", [])]
@@ -1646,8 +1915,9 @@ def main(argv=None):
     parcalar = {
         "URETIM": veri["uretim"],
         "KAYNAKLAR": kaynak_html,
-        "HUKUM": hukum_html(oz),
-        "NEDEN": neden_html(oz, emb, uz),
+        "HUKUM": hukum_html(oz, emb),
+        "DOLANMA": dolanma_html(oz, emb, an),
+        "KALAN": kalan_html(oz, emb, uz),
         "KARSILASTIRMA": karsilastirma_html(oz, emb),
         "HAFIZA_MJ": hafiza_mj_html(oz, emb),
         "UZATILMIS": uzatilmis_html(oz, emb, uz),
