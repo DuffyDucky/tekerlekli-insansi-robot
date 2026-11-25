@@ -154,7 +154,7 @@ def calistir(gorevler, csv_yolu, is_sayisi=2):
         if yeni:
             w.writeheader()
         ctx = mp.get_context("spawn")
-        with ctx.Pool(processes=max(1, min(2, is_sayisi)), initializer=_baslat, maxtasksperchild=4) as havuz:
+        with ctx.Pool(processes=max(1, min(4, is_sayisi)), initializer=_baslat, maxtasksperchild=4) as havuz:
             for k, s in enumerate(havuz.imap_unordered(_guvenli, gorevler)):
                 w.writerow(s)
                 f.flush()
@@ -190,6 +190,15 @@ def gorev_listesi(deney):
             for t in TOHUMLAR:
                 G.append({"deney": "v2_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
                           "ayar": surum_ayari("v2"), "ayar_ad": "v2", "hafiza": True})
+    elif deney == "v3_2b":
+        # v2 / v3 2B: 21 geliştirme labirenti (eski 11 + görülmüş 13x13_t4..t8, 17x17_t4..t8) x tohum {0, 1}
+        from .beyin import surum_ayari
+        labs = LABIRENTLER + ["labirent_%dx%d_t%d" % (n, n, t) for n in (13, 17) for t in range(4, 9)]
+        for sur in ("v2", "v3"):
+            for lab in labs:
+                for t in (0, 1):
+                    G.append({"deney": "v3_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
+                              "ayar": surum_ayari(sur), "ayar_ad": sur})
     elif deney == "kose_2b":
         # v2 kısa 2B denemesi: 4 geliştirme labirenti x tohum {0, 1} (sonuç sonuc/v2_2b.csv'ye taşındı; v2k = akıcı
         # köşe ilk denemede 8 koşuda 9 çarpma verdi, sonuc/ham/kose_2b_v2_ilk_v2k.csv)
@@ -208,7 +217,7 @@ def gorev_listesi(deney):
 
 def main(argv=None):
     p = argparse.ArgumentParser()
-    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "rapor"])
+    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "v3_2b", "rapor"])
     p.add_argument("--is", dest="is_sayisi", type=int, default=2)
     p.add_argument("--sahne", default=None, help="virgüllü süzgeç (alt dize)")
     p.add_argument("--strateji", default=None)

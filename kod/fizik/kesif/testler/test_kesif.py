@@ -166,6 +166,24 @@ class SurumSinama(unittest.TestCase):
         self.assertEqual(int(r.get("carpma_sayisi") or 0), 0, r)
         self.assertGreater(b.sayac.get("hizli", 0), 0)
 
+    def test_v3_disa_acik_sinir_oncelikli_ve_hatirlanir(self):
+        from kesif.beyin import KesifBeyni, surum_ayari
+        from kesif.sinir import Sinir
+        self.assertEqual(surum_ayari("v2").disa_acik_bonus_m, 0.0)
+
+        def sn(x, y, dis, m):
+            return Sinir(hucreler=np.zeros((1, 2), int), merkez=(x, y), boy_m=1.0, dis=dis, bakis=(0, 0),
+                         bakis_xy=(x, y), d_yol_m=m, maliyet=m)
+        b = KesifBeyni(ayar=surum_ayari("v3"))
+        yakin, acik = sn(1.0, 0.0, 0.0, 0.3), sn(5.0, 5.0, 1.0, 3.1)
+        b._disa_acik_uygula([yakin, acik], {})
+        self.assertLess(acik.maliyet, yakin.maliyet)       # 17x17_t3 durumu: açık sınır yakın sınırı geçer
+        self.assertEqual(yakin.maliyet, 0.3)
+        # dis titrese de (0) hatırlanan yerdeki sınır önceliğini korur
+        tekrar = sn(5.5, 5.2, 0.0, 10.0)
+        b._disa_acik_uygula([tekrar], {})
+        self.assertAlmostEqual(tekrar.maliyet, 10.0 - b.ayar.disa_acik_bonus_m)
+
 
 if __name__ == "__main__":
     unittest.main()

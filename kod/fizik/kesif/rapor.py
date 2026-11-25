@@ -221,6 +221,71 @@ def uzatilmis_bolumu():
     return md
 
 
+def v3_bolumu(S):
+    """v2 / v3: geliştirme (eski 33 + 17x17_t4, t5 x tohum {0, 1}), sınama2 (13x13_t9..t13, 17x17_t9..t13 x 2),
+    uzatılmış (kural dışı 1800 s)."""
+    d3 = [r for r in _csv("mujoco_v3.csv") if r.get("kos", "ilk") == "ilk"]
+    if not d3:
+        return []
+    ek = {(r["sahne"], r["tohum"]) for r in d3}
+    d2 = [r for r in _csv("mujoco_v2.csv") if r.get("kos", "ilk") == "ilk"]
+    d2 += [r for r in _csv("mujoco_sinama_v2.csv") if r.get("kos", "ilk") == "ilk" and (r["sahne"], r["tohum"]) in ek]
+    s2 = [r for r in _csv("mujoco_sinama2_v2.csv") if r.get("kos", "ilk") == "ilk"]
+    s3 = [r for r in _csv("mujoco_sinama2_v3.csv") if r.get("kos", "ilk") == "ilk"]
+    md = ["## v2 / v3 (MuJoCo): dışa açık sınır önceliği", "",
+          "Tanı: `sonuc/tani_dolanma.md`. v3 = v2 + dışa açık sınırın (dönüşsüz ışın oranı >= 0,3) maliyeti 25 m "
+          "düşük, yeri hatırlanır. Geliştirme: eski 11 labirent x 3 tohum + görülmüş 17x17_t4, t5 x 2 tohum. "
+          "Sınama2: `labirent_13x13_t9..t13`, `labirent_17x17_t9..t13` x tohum {0, 1}.", "",
+          surum_tablo([(("v2", "gelistirme"), d2), (("v3", "gelistirme"), d3), (("v2", "sinama2"), s2),
+                       (("v3", "sinama2"), s3)]), ""]
+    if s2 and s3:
+        b2 = sum(r.get("durum") == "basari" for r in s2)
+        b3 = sum(r.get("durum") == "basari" for r in s3)
+        c2 = sum(int(_f(r.get("carpma_sayisi")) or 0) for r in s2)
+        c3 = sum(int(_f(r.get("carpma_sayisi")) or 0) for r in s3)
+        md += ["Sınama2 kararı: v2 başarı %d/%d, çarpma %d; v3 başarı %d/%d, çarpma %d -> varsayılan **%s**." % (
+            b2, len(s2), c2, b3, len(s3), c3, "v3" if (b3 >= b2 and c3 <= c2) else "v2"), ""]
+        es = {(r["sahne"], r["tohum"]): r for r in s2}
+        md += ["| sınama2 sahnesi | tohum | v2 durum | v2 süre | v3 durum | v3 süre |",
+               "| --- | --- | --- | --- | --- | --- |"]
+        for r in sorted(s3, key=lambda r: (r["sahne"], r["tohum"])):
+            a = es.get((r["sahne"], r["tohum"]), {})
+            md.append("| %s | %s | %s | %s | %s | %s |" % (r["sahne"], r["tohum"], a.get("durum", "-"),
+                                                          a.get("sure_s", "-"), r.get("durum"), r.get("sure_s")))
+        md.append("")
+    es = {(r["sahne"], r["tohum"]): r for r in d2}
+    md += ["| geliştirme sahnesi | tohum | v2 durum | v2 süre | v3 durum | v3 süre |", "| --- | --- | --- | --- | --- | --- |"]
+    for r in sorted(d3, key=lambda r: (r["sahne"], r["tohum"])):
+        a = es.get((r["sahne"], r["tohum"]), {})
+        if a.get("durum") != r.get("durum") or abs((_f(a.get("sure_s")) or 0) - (_f(r.get("sure_s")) or 0)) > 1:
+            md.append("| %s | %s | %s | %s | %s | %s |" % (r["sahne"], r["tohum"], a.get("durum", "-"),
+                                                          a.get("sure_s", "-"), r.get("durum"), r.get("sure_s")))
+    md += ["", "(yalnız farklı sonuçlanan geliştirme koşuları)", ""]
+    import json
+    from ._yol import SAHNELER
+    U = [("v2", _csv("mujoco_uzatilmis_v2.csv")), ("v3", _csv("mujoco_uzatilmis_v3.csv"))]
+    if U[1][1]:
+        md += ["### Uzatılmış (KURAL DIŞI 1800 s, tohum 0): dolanma kayboldu mu", "",
+               "| sürüm | başarı | fail_sikisma | ort yol / çözüm | süre (başarılı, s) |", "| --- | --- | --- | --- | --- |"]
+        for et, M in U:
+            oranlar, sure = [], []
+            for r in M:
+                with open(os.path.join(SAHNELER, r["sahne"] + ".json"), encoding="utf-8") as f:
+                    coz = float(json.load(f)["labirent"]["cozum_uzunlugu_m"])
+                oranlar.append((_f(r.get("yol_m")) or 0) / coz)
+                if r.get("durum") == "basari":
+                    sure.append("%s %.0f" % (r["sahne"][9:], _f(r["sure_s"])))
+            md.append("| %s | %d/%d | %d | %.2f | %s |" % (et, sum(r.get("durum") == "basari" for r in M), len(M),
+                                                         sum(r.get("durum") == "fail_sikisma" for r in M),
+                                                         st.mean(oranlar) if oranlar else 0, ", ".join(sure)))
+        md.append("")
+    v3_2b = [r for r in S if r.get("_dosya") == "v3_2b.csv"]
+    if v3_2b:
+        md += ["### 2B v2 / v3 (21 geliştirme labirenti x tohum {0, 1}, `sonuc/v3_2b.csv`)", "",
+               ozet_tablo(v3_2b, lambda r: (r.get("ayar"), _boy(r["sahne"]))), ""]
+    return md
+
+
 def rapor_yaz():
     S = _oku()
     if not S:
@@ -320,6 +385,7 @@ def rapor_yaz():
             _ort(tm), _ort([_f(r.get("rtf")) for r in M], "%.1f"), "3 MuJoCo + 2 benzetici süreci"), ""]
     md += surum_bolumu(ilk, [r for r in S if r.get("_dosya") == "v2_2b.csv"])
     md += uzatilmis_bolumu()
+    md += v3_bolumu(S)
     fail = [r for r in S if r.get("durum") != "basari"]
     md += ["## Başarısızlıklar (%d)" % len(fail), "",
            "| dosya | strateji | sahne | tohum | odo | durum | süre | sebep / son mod | son olaylar |",

@@ -336,7 +336,92 @@ Soru: 15 dk sınırı olmasaydı çözer miydi, ne kadar sürerdi. Bu satırlar 
 | labirent_17x17_t8 | basari | 750.0 | 162.5 | 146.0 | 0.90 | 0 | 0.621 | 0.167 / 0.271 / 0.621 | 0.218 | 0.162 | 0.42 |
 **Hüküm** (17x17, tohum 0): 30 dakikada 6/8 çözülüyor (15 dakikada 4). 900 s'yi aşanların 17x17_t7 yürünen yol / çözüm < 1,3 ile yalnız hızdan aşıyor; 17x17_t4, 17x17_t3, 17x17_t5 yol / çözüm >= 1,5 ile keşif dolaşıyor (hakemin 300 s yeni hücresiz kuralına takılan ya da geç biten). Harita kayması süreyle büyüyor ama kaçmıyor: en büyük poz hatası 0.40–0.92 m, çarpma toplam 0.
 
-## Başarısızlıklar (116)
+## v2 / v3 (MuJoCo): dışa açık sınır önceliği
+
+Tanı: `sonuc/tani_dolanma.md`. v3 = v2 + dışa açık sınırın (dönüşsüz ışın oranı >= 0,3) maliyeti 25 m düşük, yeri hatırlanır. Geliştirme: eski 11 labirent x 3 tohum + görülmüş 17x17_t4, t5 x 2 tohum. Sınama2: `labirent_13x13_t9..t13`, `labirent_17x17_t9..t13` x tohum {0, 1}.
+
+| sürüm | küme | boy | n | başarı | ortanca süre (s, başarılı) | çarpma (toplam) | puan ort | en büyük poz hatası (m) | poz hatası maks ort (m) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| v2 | gelistirme | 5x5 | 3 | 3/3 | 63 | 0 | 1465 | 0.13 | 0.09 |
+| v2 | gelistirme | 7x7 | 3 | 3/3 | 222 | 0 | 1377 | 0.09 | 0.09 |
+| v2 | gelistirme | 9x9 | 9 | 9/9 | 268 | 0 | 1358 | 0.34 | 0.22 |
+| v2 | gelistirme | 13x13 | 9 | 7/9 | 346 | 0 | 1018 | 0.75 | 0.44 |
+| v2 | gelistirme | 17x17 | 13 | 5/13 | 401 | 0 | 669 | 1.02 | 0.60 |
+| v2 | gelistirme | toplam | 37 | 27/37 | 309 | 0 | 1044 | 1.02 | 0.39 |
+| v3 | gelistirme | 5x5 | 3 | 3/3 | 62 | 0 | 1466 | 0.12 | 0.08 |
+| v3 | gelistirme | 7x7 | 3 | 3/3 | 222 | 0 | 1377 | 0.09 | 0.09 |
+| v3 | gelistirme | 9x9 | 9 | 9/9 | 268 | 0 | 1358 | 0.34 | 0.22 |
+| v3 | gelistirme | 13x13 | 9 | 7/9 | 346 | 0 | 1018 | 0.75 | 0.44 |
+| v3 | gelistirme | 17x17 | 13 | 8/13 | 519 | 0 | 846 | 1.10 | 0.64 |
+| v3 | gelistirme | toplam | 37 | 30/37 | 327 | 0 | 1105 | 1.10 | 0.40 |
+| v2 | sinama2 | 13x13 | 10 | 10/10 | 724 | 0 | 1181 | 0.62 | 0.38 |
+| v2 | sinama2 | 17x17 | 10 | 5/10 | 797 | 0 | 736 | 0.68 | 0.40 |
+| v2 | sinama2 | toplam | 20 | 15/20 | 731 | 0 | 958 | 0.68 | 0.39 |
+| v3 | sinama2 | 13x13 | 10 | 10/10 | 724 | 0 | 1181 | 0.62 | 0.38 |
+| v3 | sinama2 | 17x17 | 10 | 5/10 | 797 | 0 | 735 | 0.69 | 0.40 |
+| v3 | sinama2 | toplam | 20 | 15/20 | 731 | 0 | 958 | 0.69 | 0.39 |
+
+Sınama2 kararı: v2 başarı 15/20, çarpma 0; v3 başarı 15/20, çarpma 0 -> varsayılan **v3**.
+
+Not: v3 sınama2'de kazanç getirmedi (15/20 = 15/20). Geliştirmedeki kazanç (27 → 30 / 37) düzeltmenin üzerinde tasarlandığı labirentten, 17x17_t3'ten geliyor; genel iyileşme kanıtı sayılmaz.
+
+| sınama2 sahnesi | tohum | v2 durum | v2 süre | v3 durum | v3 süre |
+| --- | --- | --- | --- | --- | --- |
+| labirent_13x13_t10 | 0 | basari | 202.25 | basari | 199.45 |
+| labirent_13x13_t10 | 1 | basari | 208.8 | basari | 208.8 |
+| labirent_13x13_t11 | 0 | basari | 731.15 | basari | 731.15 |
+| labirent_13x13_t11 | 1 | basari | 717.7 | basari | 717.7 |
+| labirent_13x13_t12 | 0 | basari | 867.95 | basari | 867.95 |
+| labirent_13x13_t12 | 1 | basari | 736.85 | basari | 736.85 |
+| labirent_13x13_t13 | 0 | basari | 869.4 | basari | 869.4 |
+| labirent_13x13_t13 | 1 | basari | 743.05 | basari | 743.05 |
+| labirent_13x13_t9 | 0 | basari | 328.1 | basari | 328.1 |
+| labirent_13x13_t9 | 1 | basari | 336.55 | basari | 336.55 |
+| labirent_17x17_t10 | 0 | basari | 305.7 | basari | 305.7 |
+| labirent_17x17_t10 | 1 | basari | 318.4 | basari | 318.4 |
+| labirent_17x17_t11 | 0 | fail_sure | 900.05 | fail_sure | 900.05 |
+| labirent_17x17_t11 | 1 | fail_sure | 900.05 | fail_sure | 900.05 |
+| labirent_17x17_t12 | 0 | fail_sure | 900.05 | fail_sure | 900.05 |
+| labirent_17x17_t12 | 1 | fail_sure | 900.05 | fail_sure | 900.05 |
+| labirent_17x17_t13 | 0 | basari | 864.1 | basari | 861.25 |
+| labirent_17x17_t13 | 1 | basari | 797.35 | basari | 797.4 |
+| labirent_17x17_t9 | 0 | basari | 885.55 | basari | 894.55 |
+| labirent_17x17_t9 | 1 | fail_sure | 900.05 | fail_sure | 900.05 |
+
+| geliştirme sahnesi | tohum | v2 durum | v2 süre | v3 durum | v3 süre |
+| --- | --- | --- | --- | --- | --- |
+| labirent_17x17_t2 | 0 | basari | 614.9 | basari | 533.5 |
+| labirent_17x17_t2 | 2 | basari | 583.5 | basari | 504.7 |
+| labirent_17x17_t3 | 0 | fail_sure | 900.05 | basari | 668.5 |
+| labirent_17x17_t3 | 1 | fail_sure | 900.05 | basari | 710.35 |
+| labirent_17x17_t3 | 2 | fail_sure | 900.05 | basari | 677.7 |
+| labirent_5x5_t1 | 2 | basari | 63.9 | basari | 62.4 |
+
+(yalnız farklı sonuçlanan geliştirme koşuları)
+
+### Uzatılmış (KURAL DIŞI 1800 s, tohum 0): dolanma kayboldu mu
+
+| sürüm | başarı | fail_sikisma | ort yol / çözüm | süre (başarılı, s) |
+| --- | --- | --- | --- | --- |
+| v2 | 6/9 | 3 | 1.61 | 17x17_t1 401, 17x17_t2 615, 17x17_t6 697, 17x17_t4 1690, 17x17_t7 930, 17x17_t8 750 |
+| v3 | 7/9 | 2 | 1.43 | 17x17_t1 401, 17x17_t2 534, 17x17_t3 668, 17x17_t6 697, 17x17_t7 930, 17x17_t4 1690, 17x17_t8 747 |
+
+### 2B v2 / v3 (21 geliştirme labirenti x tohum {0, 1}, `sonuc/v3_2b.csv`)
+
+| grup | n | başarı | süre ort (s, başarılı) | süre maks | yol (m) | çarpma ort | puan ort | poz hata maks ort (m) | doğru duvar ort |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| v2 13x13 | 16 | 15/16 | 441.6 | 698 | 108.2 | 0.06 | 1194 | 0.37 | 0.64 |
+| v2 17x17 | 16 | 13/16 | 607.2 | 853 | 151.8 | 0.06 | 992 | 0.59 | 0.49 |
+| v2 5x5 | 2 | 2/2 | 60.5 | 64 | 12.2 | 0.00 | 1466 | 0.06 | 1.00 |
+| v2 7x7 | 2 | 2/2 | 167.2 | 205 | 36.2 | 0.00 | 1407 | 0.10 | 0.99 |
+| v2 9x9 | 6 | 6/6 | 227.9 | 276 | 54.5 | 0.00 | 1373 | 0.22 | 0.82 |
+| v3 13x13 | 16 | 15/16 | 405.2 | 698 | 99.9 | 0.06 | 1213 | 0.37 | 0.64 |
+| v3 17x17 | 16 | 13/16 | 597.0 | 853 | 150.0 | 0.06 | 997 | 0.59 | 0.49 |
+| v3 5x5 | 2 | 2/2 | 55.4 | 56 | 12.0 | 0.00 | 1469 | 0.06 | 1.00 |
+| v3 7x7 | 2 | 2/2 | 167.2 | 205 | 36.2 | 0.00 | 1407 | 0.10 | 0.99 |
+| v3 9x9 | 6 | 6/6 | 227.9 | 276 | 54.5 | 0.00 | 1373 | 0.22 | 0.82 |
+
+## Başarısızlıklar (124)
 
 | dosya | strateji | sahne | tohum | odo | durum | süre | sebep / son mod | son olaylar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -456,3 +541,11 @@ Soru: 15 dk sınırı olmasaydı çözer miydi, ne kadar sürerdi. Bu satırlar 
 | v2_2b.csv | kesif | labirent_17x17_t3 | 3 | 0.14 | fail_sure | 900.0 | - / kesif | 863.2:kurtarma/on_engel |
 | v2_2b.csv | kesif | labirent_17x17_t3 | 4 | 0.14 | fail_sure | 900.0 | - / kesif | 639.8:kurtarma/on_engel |
 | v2_2b.csv | kesif | labirent_13x13_t2 | 1 | 0.14 | fail_sure | 900.0 | - / kesif | 206.2:kurtarma/on_engel |
+| v3_2b.csv | kesif | labirent_17x17_t4 | 0 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v3_2b.csv | kesif | labirent_17x17_t4 | 1 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v3_2b.csv | kesif | labirent_17x17_t5 | 1 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v3_2b.csv | kesif | labirent_17x17_t4 | 0 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v3_2b.csv | kesif | labirent_17x17_t4 | 1 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v3_2b.csv | kesif | labirent_17x17_t5 | 1 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v3_2b.csv | kesif | labirent_13x13_t2 | 1 | 0.14 | fail_sure | 900.0 | - / kesif | 206.2:kurtarma/on_engel |
+| v3_2b.csv | kesif | labirent_13x13_t2 | 1 | 0.14 | fail_sure | 900.0 | - / kesif | 206.2:kurtarma/on_engel |

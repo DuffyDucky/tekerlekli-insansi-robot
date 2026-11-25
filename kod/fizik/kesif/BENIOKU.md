@@ -5,7 +5,7 @@ Beyin ızgara varsaymaz. Hücre boyunu ve FINISH'in yerini bilmez. Bildiği yaln
 START çizgisinin 0,45 m içindedir ve içeri bakar.
 
     from kesif.beyin import KesifBeyni, olustur, surum_ayari
-    b = KesifBeyni()                       # ön bilgisiz, varsayılan sürüm (v2; MuJoCo labirent koşuları böyle)
+    b = KesifBeyni()                       # ön bilgisiz, varsayılan sürüm (v3; MuJoCo labirent koşuları böyle)
     b = KesifBeyni(ayar=surum_ayari("v1")) # ilk teslim davranışı
     b = olustur("labirent_9x9_t1")         # sahneden YALNIZ START çizgisi (ön bilgisiz kurulumla aynı çizgi çıkar)
 
@@ -44,7 +44,7 @@ biçiminde, temas kuvveti yok. Işınlar 2B parçalara çizilir (yükseklik, eğ
 ## Çalıştırma
 
     cd kod/fizik
-    py -3 -m unittest kesif.testler.test_kesif -v      # 9 sınama (birim + 5x5 uçtan uca, v1 ve v2)
+    py -3 -m unittest kesif.testler.test_kesif -v      # 10 sınama (birim + 5x5 uçtan uca, v1, v2, v3)
     py -3 -m kesif.kos ilk | odometri | hafiza          # deney matrisi -> sonuc/*.csv (en çok 2 süreç)
     py -3 -m kesif.kos rapor                            # -> sonuc/SONUC.md
     py -3 -m kesif.ayar ara --n 16 ; py -3 -m kesif.ayar sina
@@ -167,6 +167,52 @@ kapı birlikte 0 çarpma ve ~%8 kısa süre. **Akıcı köşe** (izleyicinin kö
 
 **Sıradaki en büyük kaldıraç** (ölçülmedi): köşelerde dur–dön–kalk yerine güvenli yay ya da daha hızlı yerinde dönüş.
 Akıcı köşenin ilk biçimi çarptı; yay sığma denetimi (süpürme haritaya karşı) eklenmeden açılmamalı.
+
+## v3 (2026-11-25 öğle): dolanma tanısı ve dışa açık sınır önceliği
+
+**Tanı** (`sonuc/tani_dolanma.md`, `kesif.tani_dolanma`; v2'nin kural dışı 1800 s kayıtları). Dolanan dört koşunun
+(17x17_t3, t4, t5, 13x13_t2) en uzun "yeni hücresiz" aralığında aday nedenlerin dördü yok:
+- gidip gelme yok: aralık başına 1 hedef değişimi;
+- ulaşılamayan sınır yok: plan sınırsız 0, `yol_yok` 0, kara liste 0–1;
+- sahte sınır yok: 1538 sınır örneğinin 0'ı;
+- sınır tükenmesi yok: her an 2–5 sınır;
+- START kesmesi yok: 0.
+
+Baskın neden kalan sınırlar arasında uzun yol. Hedefin yol uzaklığı ortalama 36–85 m, en çok 101 m; 0,2 m/s ile
+300 s'de varılamıyor. Kökü: FINISH ağzındaki sınır çok önce görülmüştü (17x17_t3: 651 s, robot 3 hücre ötede,
+maliyet 3,1). Daha yakın sınır seçildi (0,3), robot 800 s başka dallarda kaldı.
+
+Dönüşsüz ışın oranı ≥ 0,3 olan sınır, beynin izinli alanında yalnız FINISH ağzında görüldü:
+- 2B: 2198 FINISH dışı örnekte 0.
+- MuJoCo yeniden oynatma: yalnız START ötesinde, orası yasak bölge.
+
+**Değişiklik** (`surum_ayari("v3")` = v2 + `disa_acik_bonus_m = 25`): böyle bir sınırın maliyeti 25 m düşer, yeri
+1,5 m yarıçapla hatırlanır (`dis` görüş açısıyla titriyor). `durum()["ek"]["disa_acik"]` listesi eklendi. v1 / v2
+birebir aynı: bonus 0, testle denetleniyor. Izgara, dik açı, hücre boyu ya da labirent bilgisi kullanılmaz; START
+koruması aynen kalır.
+
+**Sonuçlar** (MuJoCo, 900 s; tablo `sonuc/SONUC.md` "v2 / v3"):
+
+| küme | v2 | v3 | çarpma v2 / v3 |
+| --- | --- | --- | --- |
+| geliştirme (eski 33 + 17x17_t4, t5 x 2) | 27/37 | 30/37 | 0 / 0 |
+| sınama2 (13x13_t9..t13, 17x17_t9..t13 x 2) | 15/20 | 15/20 | 0 / 0 |
+| uzatılmış (kural dışı 1800 s, 9 koşu) | 6/9, fail_sikisma 3 | 7/9, fail_sikisma 2 | 0 / 0 |
+
+- Geliştirme: 17x17_t3 üç tohumda da çözüldü (900 s → 668–710 s; yol / çözüm 1,39 → 1,07). 17x17_t2 %13 kısa.
+  Başka hiçbir koşu değişmedi.
+- Sınama2'de fark yok: başarılar aynı, ortanca süre aynı (731 s), puan ortalaması 958 / 958.
+- 2B (21 labirent x 2 tohum): ikisi de 38/42, çarpma aynı. 13x13_t4 %43, 17x17_t2 %13 kısa.
+- **Karar:** kural (sınama2'de başarı az değil, çarpma artmadı) sağlandı, `VARSAYILAN_SURUM = "v3"`.
+  Sınama2 kazanç göstermedi; kazanç yalnız geliştirme kümesinde. O kazanç da (27 → 30) düzeltmenin üzerinde
+  tasarlandığı labirentten, 17x17_t3'ten geliyor; bu yüzden genel bir iyileşme kanıtı sayılmaz.
+
+**Kalan başarısızlıklar:**
+- **sınama2 hız sınıfı** (17x17_t11 x 2, t12 x 2): çözüm 165–207 m, yol / çözüm 0,85–1,03; ~0,22 m/s ile
+  sığmıyor.
+- **sınama2 keşif sınıfı** (17x17_t9 t1): yol / çözüm 2,3.
+- **1800 s'de hâlâ dolanan** (13x13_t2, 17x17_t5): FINISH sınırı dar açıyla görüldüğü için `dis` 0 kalıyor; v3 bunu
+  yakalamaz.
 
 ## Araştırma notuyla ayrılıklar (`planlama/labirent-kesif-arastirmasi.md`)
 

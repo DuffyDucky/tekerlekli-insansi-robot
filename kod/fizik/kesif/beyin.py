@@ -67,6 +67,13 @@ class BeyinAyari:
     # akıcı köşe (deneysel, varsayılan kapalı): izleyicinin "köşede dur, yerinde dön" eşiği büyütülür; 90 derecelik
     # köşe saf takip yayıyla dönülür (yerinde dönüş yalnız yön hatası donus_gir_rad'ı aşınca)
     akici_kose: bool = False
+    # v3 dışa açık sınır önceliği (v1 / v2'de 0 = kapalı). Tanı (sonuc/tani_dolanma.md): dolanan koşularda FINISH
+    # yanındaki sınır yüzlerce saniye önce görülmüş, daha yakın sınır seçilip bırakılmıştı; dönüşsüz ışın oranı (dis)
+    # >= 0,3 olan sınır, beynin izinli alanında yalnız FINISH ağzında görüldü (2B 2200 örnek, MuJoCo yeniden oynatma).
+    # Bu sınırın maliyeti disa_acik_bonus_m kadar düşer; dis titrediği için görülen yer hatırlanır.
+    disa_acik_bonus_m: float = 0.0
+    disa_acik_esik: float = 0.3
+    disa_acik_hafiza_m: float = 1.5
     kose_esigi_der: float = 100.0
     donus_gir_rad: float = 1.3
     # izleyici: köşede dönme merkezi hücre ortasına gelince ön yüz önündeki duvara ≈ 0,20 m kalır (1,3 m hücre);
@@ -86,6 +93,10 @@ def surum_ayari(surum="v1"):
     if surum == "v2":
         a.hiz_profili = True
         return a
+    if surum == "v3":                  # v2 + dışa açık sınır önceliği
+        a.hiz_profili = True
+        a.disa_acik_bonus_m = 25.0
+        return a
     if surum == "v2k":                 # v2 + akıcı köşe (deneysel)
         a.hiz_profili = True
         a.akici_kose = True
@@ -96,7 +107,9 @@ def surum_ayari(surum="v1"):
 # Karar (2026-11-25, MuJoCo sınama kümesi 13x13_t4..t8 + 17x17_t4..t8 x 2 tohum): v1 14/20, v2 14/20, çarpma 0 / 0;
 # kural "v2 başarısı az değil ve çarpma artmadı" -> v2. Kazanç küçük (süre ~%5 kısa); geliştirme kümesinde v2 27/33,
 # v1 28/33. Ayrıntı: BENIOKU.md "v2", sonuc/SONUC.md.
-VARSAYILAN_SURUM = "v2"
+# Karar 2 (2026-11-25 öğle, MuJoCo sınama2 13x13_t9..t13 + 17x17_t9..t13 x 2 tohum): v2 15/20, v3 15/20, çarpma
+# 0 / 0 -> kural gereği v3. Sınama2'de fark yok; geliştirmede v3 30/37, v2 27/37 (17x17_t3 üç tohumda çözüldü).
+VARSAYILAN_SURUM = "v3"
 
 
 def _sar(a):
@@ -153,6 +166,7 @@ class KesifBeyni:
         self.son_plan = {}
         self.son_sinirlar = []
         self._son_donus_t = -1e9          # v2: son yerinde dönüş / kurtarma / konumlanma anı
+        self.disa_acik = []               # v3: dışa açık görülmüş sınır merkezleri (beyin çerçevesi)
         self.son_komut = (0.0, 0.0)
 
     # ------------------------------------------------------------ START koruması
@@ -371,7 +385,9 @@ class KesifBeyni:
                        "sinirlar_dizin": "[merkez_x, merkez_y, boy_m, bakis_x, bakis_y, maliyet] (son plan)",
                        "secilen_sinir": None if self.hedef_sinir is None else
                        [round(self.hedef_sinir.merkez[0], 2), round(self.hedef_sinir.merkez[1], 2)],
-                       "surum": "v2" if self.ayar.hiz_profili else "v1"}}
+                       "disa_acik": list(self.disa_acik),
+                       "surum": ("v3" if self.ayar.disa_acik_bonus_m > 0 else "v2") if self.ayar.hiz_profili
+                       else "v1"}}
 
     def hafiza_ver(self):
         """Ek tur için: harita + son poz (benzetici koşu FINISH'te bitince çağırır)."""
@@ -432,6 +448,8 @@ class KesifBeyni:
             sinirlar = [s for s in sinirlar if not any(math.hypot(s.merkez[0] - kx, s.merkez[1] - ky) < 1.0
                                                        for kx, ky, _ in self.kara_liste)]
             bilgi["sinir"] = len(sinirlar)
+            if a.disa_acik_bonus_m > 0:
+                self._disa_acik_uygula(sinirlar, bilgi)
             # oynatıcı için (seyrek; kayıt 2 s aralıkla alır): sınır merkezi, boyu, bakış noktası, maliyeti
             self.son_sinirlar = [[round(s.merkez[0], 2), round(s.merkez[1], 2), round(float(s.boy_m), 2),
                                   round(float(s.bakis_xy[0]), 2), round(float(s.bakis_xy[1]), 2),
@@ -458,6 +476,22 @@ class KesifBeyni:
         bilgi["kaba"] = (kh.ni, kh.nj)
         self.son_plan = bilgi
         self.zaman["plan_ms"].append(bilgi["ms"])
+
+    def _disa_acik_uygula(self, sinirlar, bilgi):
+        """v3: dönüşsüz ışın oranı yüksek (önü sensör menzili ötesine açık) sınırı ve hatırlanan yerini öne al."""
+        a = self.ayar
+        for s in sinirlar:
+            if s.dis >= a.disa_acik_esik and not any(math.hypot(s.merkez[0] - x, s.merkez[1] - y) < 1.0
+                                                     for x, y in self.disa_acik):
+                self.disa_acik.append((round(s.merkez[0], 2), round(s.merkez[1], 2)))
+                self.olaylar.append((round(self.t, 1), "disa_acik_sinir", self.disa_acik[-1]))
+        n = 0
+        for s in sinirlar:
+            if s.dis >= a.disa_acik_esik or any(math.hypot(s.merkez[0] - x, s.merkez[1] - y) < a.disa_acik_hafiza_m
+                                                for x, y in self.disa_acik):
+                s.maliyet -= a.disa_acik_bonus_m
+                n += 1
+        bilgi["disa_acik"] = n
 
     def _en_yakin_ulasilan(self, kh, dist, i, j, yaricap_m):
         r = int(math.ceil(yaricap_m / kh.coz))
