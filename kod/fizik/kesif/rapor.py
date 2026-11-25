@@ -14,7 +14,7 @@ SONUC = os.path.join(KESIF, "sonuc")
 def _oku():
     S = []
     for yol in sorted(glob.glob(os.path.join(SONUC, "*.csv"))):
-        if os.path.basename(yol).startswith("mujoco"):
+        if os.path.basename(yol).startswith(("mujoco", "tani")):
             continue
         with open(yol, encoding="utf-8") as f:
             for r in csv.DictReader(f):
@@ -60,6 +60,165 @@ def ozet_tablo(S, anahtar):
             _ort([_f(r.get("poz_hata_maks_m")) for r in R], "%.2f"),
             _ort([_f(r.get("dogru_duvar_orani")) for r in R], "%.2f")))
     return "\n".join(satirlar)
+
+
+def _csv(ad):
+    yol = os.path.join(SONUC, ad)
+    if not os.path.exists(yol):
+        return []
+    with open(yol, encoding="utf-8") as f:
+        M = list(csv.DictReader(f))
+    for r in M:
+        if not r.get("durum") and (_f(r.get("sure_s")) or 0) >= 899.8:
+            r["durum"] = "fail_sure"
+    return M
+
+
+def surum_tablo(gruplar):
+    """gruplar: [(etiket, satırlar)] -> boyuta göre v1 / v2 tablosu."""
+    md = ["| sürüm | küme | boy | n | başarı | ortanca süre (s, başarılı) | çarpma (toplam) | puan ort | "
+          "en büyük poz hatası (m) | poz hatası maks ort (m) |",
+          "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+    for (surum, kume), R in gruplar:
+        G = defaultdict(list)
+        for r in R:
+            G[_boy(r["sahne"])].append(r)
+        for b in sorted(G, key=lambda x: int(x.split("x")[0])) + ["toplam"]:
+            X = R if b == "toplam" else G[b]
+            ok = [_f(r["sure_s"]) for r in X if r.get("durum") == "basari"]
+            pz = [_f(r.get("poz_hata_maks_m")) for r in X if _f(r.get("poz_hata_maks_m")) is not None]
+            md.append("| %s | %s | %s | %d | %d/%d | %s | %d | %s | %s | %s |" % (
+                surum, kume, b, len(X), len(ok), len(X), "%.0f" % st.median(ok) if ok else "-",
+                sum(int(_f(r.get("carpma_sayisi")) or 0) for r in X), _ort([_f(r.get("puan")) for r in X], "%.0f"),
+                "%.2f" % max(pz) if pz else "-", _ort(pz, "%.2f")))
+    return "\n".join(md)
+
+
+def surum_bolumu(ilk2b, v2_2b):
+    """v1 / v2 karşılaştırması: MuJoCo geliştirme (11 labirent x 3 tohum) ve sınama (10 yeni labirent x 2 tohum)."""
+    d1 = [r for r in _csv("mujoco.csv")]
+    d2 = [r for r in _csv("mujoco_v2.csv") if r.get("kos", "ilk") == "ilk"]
+    s1 = [r for r in _csv("mujoco_sinama_v1.csv") if r.get("kos", "ilk") == "ilk"]
+    s2a = _csv("mujoco_sinama_v2.csv")
+    s2 = [r for r in s2a if r.get("kos", "ilk") == "ilk"]
+    if not (d2 or s1 or s2):
+        return []
+    md = ["## v1 / v2 (MuJoCo)", "",
+          "v1 = ilk teslim (commit 461216f davranışı, `surum_ayari(\"v1\")`), v2 = `surum_ayari(\"v2\")`. Geliştirme "
+          "kümesi: 11 labirent x tohum {0, 1, 2}; sınama kümesi: `labirent_13x13_t4..t8`, `labirent_17x17_t4..t8` x "
+          "tohum {0, 1} (geliştirme boyunca bakılmadı). Karar kuralı: v2 sınama başarısı v1'den az değilse ve çarpma "
+          "artmadıysa varsayılan olur.", "",
+          surum_tablo([(("v1", "gelistirme"), d1), (("v2", "gelistirme"), d2), (("v1", "sinama"), s1),
+                       (("v2", "sinama"), s2)]), ""]
+    if s1 and s2:
+        b1 = sum(r.get("durum") == "basari" for r in s1)
+        b2 = sum(r.get("durum") == "basari" for r in s2)
+        c1 = sum(int(_f(r.get("carpma_sayisi")) or 0) for r in s1)
+        c2 = sum(int(_f(r.get("carpma_sayisi")) or 0) for r in s2)
+        md += ["Sınama kararı: v1 başarı %d/%d, çarpma %d; v2 başarı %d/%d, çarpma %d -> varsayılan **%s**." % (
+            b1, len(s1), c1, b2, len(s2), c2, "v2" if (b2 >= b1 and c2 <= c1) else "v1"), ""]
+        es = {(r["sahne"], r["tohum"]): r for r in s1}
+        md += ["| sınama sahnesi | tohum | v1 durum | v1 süre | v2 durum | v2 süre |", "| --- | --- | --- | --- | --- | --- |"]
+        for r in sorted(s2, key=lambda r: (r["sahne"], r["tohum"])):
+            a = es.get((r["sahne"], r["tohum"]), {})
+            md.append("| %s | %s | %s | %s | %s | %s |" % (r["sahne"], r["tohum"], a.get("durum", "-"),
+                                                          a.get("sure_s", "-"), r.get("durum"), r.get("sure_s")))
+        md.append("")
+    hz = [r for r in s2a if r.get("kos") == "hafiza"]
+    if hz:
+        ilk = {(r["sahne"], r["tohum"]): r for r in s2}
+        md += ["### Hafızalı ek tur (v2, sınama kümesi, ilk koşu başarılıysa aynı tohum)", "",
+               "| sahne | tohum | ilk süre | hafızalı durum | hafızalı süre | kazanç | çarpma |",
+               "| --- | --- | --- | --- | --- | --- | --- |"]
+        for r in sorted(hz, key=lambda r: (r["sahne"], r["tohum"])):
+            a = _f(ilk.get((r["sahne"], r["tohum"]), {}).get("sure_s"))
+            b = _f(r.get("sure_s"))
+            md.append("| %s | %s | %s | %s | %s | %s | %s |" % (
+                r["sahne"], r["tohum"], a, r.get("durum"), b,
+                "%.0f%%" % (100 * (1 - b / a)) if a and b and r.get("durum") == "basari" else "-", r.get("carpma_sayisi")))
+        md.append("")
+    if v2_2b:
+        ciftler = {(r["sahne"], str(r["tohum"])) for r in v2_2b}
+        k1 = [r for r in ilk2b if r.get("strateji") == "kesif" and (r["sahne"], str(r["tohum"])) in ciftler]
+        md += ["### 2B benzetici: v1 (ilk.csv) / v2 (v2_2b.csv), aynı labirent ve tohumlar", "",
+               ozet_tablo(k1, lambda r: ("v1", _boy(r["sahne"]))), "", ozet_tablo(v2_2b, lambda r: ("v2", _boy(r["sahne"]))),
+               ""]
+    T = []
+    for ad, et in (("tani_v1.csv", "v1"), ("tani_v2.csv", "v2")):
+        T += [dict(r, surum=et) for r in _csv(ad)]
+    if T:
+        md += ["### Zaman dökümü (`kesif.tani`, MuJoCo geliştirme kayıtları; kesişen kalemler: tekrar, çıkmaz)", "",
+               "| sürüm | sahne | tohum | durum | süre | düz | dönüş | bekle | kurtarma | tekrar | çözüm dışı | "
+               "yol / çözüm | çıkmaz kol girilen / uzaktan görülmüş | düz hız ort | poz hata %50 / son |",
+               "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+        for r in sorted(T, key=lambda r: (r["surum"], r["sahne"], r["tohum"])):
+            md.append("| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s / %s | %s | %s / %s |" % (
+                r["surum"], r["sahne"], r["tohum"], r.get("durum"), r["sure_s"], r["duz_s"], r["donus_s"],
+                r["bekle_s"], r["kurtarma_s"], r["tekrar_s"], r["cikmaz_s"], r["yol_orani"], r["cikmaz_gir"],
+                r["cikmaz_gorulmus"], r["v_duz_ort"], r["poz_h_50"], r["poz_h_son"]))
+        for et in ("v1", "v2"):
+            X = [r for r in T if r["surum"] == et]
+            if X:
+                top = sum(_f(r["sure_s"]) for r in X)
+                md.append("\n%s toplam süre payı: düz %.0f%%, dönüş %.0f%%, bekle %.0f%%, kurtarma %.0f%%; tekrar %.0f%%, "
+                          "çözüm dışı %.0f%%; düz hız ort %.3f m/s." % (
+                              et, *(100 * sum(_f(r[k]) for r in X) / top for k in
+                                    ("duz_s", "donus_s", "bekle_s", "kurtarma_s", "tekrar_s", "cikmaz_s")),
+                              st.mean(_f(r["v_duz_ort"]) for r in X)))
+        md.append("")
+    return md
+
+
+def uzatilmis_bolumu():
+    """Kural DIŞI 1800 s koşular (sonuc/mujoco_uzatilmis_v2.csv): süre olsaydı çözer miydi. 15 dk tablolarına girmez."""
+    M = _csv("mujoco_uzatilmis_v2.csv")
+    if not M:
+        return []
+    import json
+    from ._yol import SAHNELER
+    T = {(r["sahne"], r["tohum"]): r for r in _csv("tani_uzatilmis_v2.csv")}
+    md = ["## Uzatılmış süre (KURAL DIŞI: hakem süre sınırı 1800 s; v2, MuJoCo, tohum 0)", "",
+          "Soru: 15 dk sınırı olmasaydı çözer miydi, ne kadar sürerdi. Bu satırlar yukarıdaki 15 dakikalık tabloların "
+          "hiçbirinde yok. Gereken hız = yürünen yol / 900 s (aynı yolu 900 s'de bitirmek için ortalama hız).", "",
+          "| sahne | durum | süre (s) | çözüm (m) | yürünen (m) | yol / çözüm | çarpma | poz hatası maks (m) | "
+          "poz hatası %25 / %50 / son (m) | düz hız ort (m/s) | gereken hız (m/s) | gereken / 0,39 |",
+          "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+    for r in sorted(M, key=lambda r: (int(_boy(r["sahne"]).split("x")[0]), r["sahne"])):
+        try:
+            with open(os.path.join(SAHNELER, r["sahne"] + ".json"), encoding="utf-8") as f:
+                coz = float(json.load(f)["labirent"]["cozum_uzunlugu_m"])
+        except (OSError, KeyError, ValueError):
+            coz = None
+        y = _f(r.get("yol_m"))
+        t = T.get((r["sahne"], r["tohum"]), {})
+        g = y / 900.0 if y else None
+        md.append("| %s | %s | %s | %s | %s | %s | %s | %s | %s / %s / %s | %s | %s | %s |" % (
+            r["sahne"], r.get("durum"), r.get("sure_s"), "%.1f" % coz if coz else "-", "%.1f" % y if y else "-",
+            "%.2f" % (y / coz) if y and coz else "-", r.get("carpma_sayisi"), r.get("poz_hata_maks_m"),
+            t.get("poz_h_25", "-"), t.get("poz_h_50", "-"), t.get("poz_h_son", "-"), t.get("v_duz_ort", "-"),
+            "%.3f" % g if g else "-", "%.2f" % (g / 0.39) if g else "-"))
+    # hüküm: sınıflar verilerden (yol / çözüm < 1,3 = keşif verimli, > 1,5 = keşif dolaşıyor)
+    k17 = [r for r in M if _boy(r["sahne"]) == "17x17"]
+    cozulen = [r for r in k17 if r.get("durum") == "basari"]
+    dk15 = [r for r in cozulen if (_f(r["sure_s"]) or 0) <= 900]
+    coz = {}
+    for r in M:
+        try:
+            with open(os.path.join(SAHNELER, r["sahne"] + ".json"), encoding="utf-8") as f:
+                coz[r["sahne"]] = float(json.load(f)["labirent"]["cozum_uzunlugu_m"])
+        except (OSError, KeyError, ValueError):
+            pass
+    oran = lambda r: (_f(r.get("yol_m")) or 0) / coz.get(r["sahne"], 1e9)
+    hiz = [r["sahne"][9:] for r in k17 if r not in dk15 and oran(r) < 1.3]
+    kesif = [r["sahne"][9:] for r in k17 if r not in dk15 and oran(r) >= 1.5]
+    pz = [_f(r.get("poz_hata_maks_m")) for r in k17 if _f(r.get("poz_hata_maks_m")) is not None]
+    md += ["**Hüküm** (17x17, tohum 0): 30 dakikada %d/%d çözülüyor (15 dakikada %d). 900 s'yi aşanların %s yürünen "
+           "yol / çözüm < 1,3 ile yalnız hızdan aşıyor; %s yol / çözüm >= 1,5 ile keşif dolaşıyor (hakemin 300 s yeni "
+           "hücresiz kuralına takılan ya da geç biten). Harita kayması süreyle büyüyor ama kaçmıyor: en büyük poz "
+           "hatası %.2f–%.2f m, çarpma toplam %d." % (
+               len(cozulen), len(k17), len(dk15), ", ".join(hiz) or "hiçbiri", ", ".join(kesif) or "hiçbiri",
+               min(pz) if pz else 0, max(pz) if pz else 0, sum(int(_f(r.get("carpma_sayisi")) or 0) for r in M)), ""]
+    return md
 
 
 def rapor_yaz():
@@ -159,6 +318,8 @@ def rapor_yaz():
         tm = [_f(r.get("tarama_ms_ort")) for r in M]
         md += ["MuJoCo tarama işleme ort %s ms; gerçek zaman oranı ort %s (aynı anda %s)." % (
             _ort(tm), _ort([_f(r.get("rtf")) for r in M], "%.1f"), "3 MuJoCo + 2 benzetici süreci"), ""]
+    md += surum_bolumu(ilk, [r for r in S if r.get("_dosya") == "v2_2b.csv"])
+    md += uzatilmis_bolumu()
     fail = [r for r in S if r.get("durum") != "basari"]
     md += ["## Başarısızlıklar (%d)" % len(fail), "",
            "| dosya | strateji | sahne | tohum | odo | durum | süre | sebep / son mod | son olaylar |",

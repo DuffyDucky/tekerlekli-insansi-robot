@@ -147,5 +147,25 @@ class UctanUcaSinama(unittest.TestCase):
         self.assertLess(r["tarama_ms_ort"], 50.0)
 
 
+class SurumSinama(unittest.TestCase):
+    def test_v1_varsayilan_v2_hiz_profili(self):
+        from kesif.beyin import BeyinAyari, surum_ayari
+        self.assertEqual(surum_ayari("v1"), BeyinAyari())
+        self.assertTrue(surum_ayari("v2").hiz_profili)
+        with self.assertRaises(ValueError):
+            surum_ayari("v9")
+
+    def test_v2_5x5_basari_carpmasiz(self):
+        from kesif.benzet2b import Benzetici, BenzetimAyari
+        from kesif.beyin import olustur, surum_ayari
+        from kesif.sahne import sahne_yukle
+        s = sahne_yukle("labirent_5x5_t1")
+        b = olustur("labirent_5x5_t1", ayar=surum_ayari("v2"))
+        r = Benzetici(s, b, BenzetimAyari(sure_siniri_s=300.0, tohum=0)).kos()
+        self.assertEqual(r["durum"], "basari", r)
+        self.assertEqual(int(r.get("carpma_sayisi") or 0), 0, r)
+        self.assertGreater(b.sayac.get("hizli", 0), 0)
+
+
 if __name__ == "__main__":
     unittest.main()

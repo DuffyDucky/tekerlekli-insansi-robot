@@ -4,8 +4,9 @@
 Beyin ızgara varsaymaz. Hücre boyunu ve FINISH'in yerini bilmez. Bildiği yalnızca kurallar ve kendi başlangıcıdır:
 START çizgisinin 0,45 m içindedir ve içeri bakar.
 
-    from kesif.beyin import KesifBeyni, olustur
-    b = KesifBeyni()                       # ön bilgisiz (MuJoCo labirent koşuları böyle)
+    from kesif.beyin import KesifBeyni, olustur, surum_ayari
+    b = KesifBeyni()                       # ön bilgisiz, varsayılan sürüm (v2; MuJoCo labirent koşuları böyle)
+    b = KesifBeyni(ayar=surum_ayari("v1")) # ilk teslim davranışı
     b = olustur("labirent_9x9_t1")         # sahneden YALNIZ START çizgisi (ön bilgisiz kurulumla aynı çizgi çıkar)
 
 Çerçeve: başlangıç gövde merkezi (`durum()["ek"]["cerceve"] = "baslangic"`). `harita.izgara[satır = y, sütun = x]`
@@ -43,11 +44,21 @@ biçiminde, temas kuvveti yok. Işınlar 2B parçalara çizilir (yükseklik, eğ
 ## Çalıştırma
 
     cd kod/fizik
-    py -3 -m unittest kesif.testler.test_kesif -v      # 7 sınama (birim + 5x5 uçtan uca)
+    py -3 -m unittest kesif.testler.test_kesif -v      # 9 sınama (birim + 5x5 uçtan uca, v1 ve v2)
     py -3 -m kesif.kos ilk | odometri | hafiza          # deney matrisi -> sonuc/*.csv (en çok 2 süreç)
     py -3 -m kesif.kos rapor                            # -> sonuc/SONUC.md
     py -3 -m kesif.ayar ara --n 16 ; py -3 -m kesif.ayar sina
-    %LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe -m kesif.kos_mujoco --is 3   # MuJoCo, kayıtlar sonuc/ham/mujoco
+    py -3 -m kesif.tani --csv sonuc/mujoco.csv --surum v1 --cikti sonuc/tani_v1.csv   # MuJoCo kaydı zaman dökümü
+    set PY=%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe
+    %PY% -m kesif.kos_mujoco --is 2 --surum v2 --cikti mujoco_v2.csv --kayit-dizin mujoco_v2      # geliştirme
+    %PY% -m kesif.kos_mujoco --is 2 --surum v2 --kume sinama --tam labirent_13x13_t4,... --tohum 0,1 ^
+        --cikti mujoco_sinama_v2.csv --kayit-dizin mujoco_sinama_v2 --hafiza                     # sınama + hafızalı
+
+MuJoCo çıktıları: CSV koşu başına tek satır (dosya her koşuda yeniden yazılır; `--ekle` ile eklenir), sütunlar
+`surum`, `kume`, `kos` (ilk / hafiza), `zaman`; `kayit` sütunu `kesif/` klasörüne göreli yol. `.npz` meta'sında
+`beyin_surum`, `kume`, `kos`. `sonuc/mujoco.csv` ve `sonuc/ham/mujoco/` v1 geliştirme kaydıdır, üzerine yazılmaz.
+`durum()["ek"]` v2'den beri `sinirlar` ([merkez_x, merkez_y, boy_m, bakış_x, bakış_y, maliyet], son plan),
+`secilen_sinir` ve `surum` alanlarını da taşır.
 
 ## Ölçülen sonuçlar (2026-11-25)
 
@@ -95,6 +106,68 @@ kayıtları, hata görselleri ve loglar.
   - Rastgele taban START'tan çıkıyordu; ona da START süzgeci eklendi.
   - Benzeticinin anlık tarama kipinde yanlış poz kullanılıyordu.
 
+## v2 (2026-11-25 gece): tanı, değişiklik, sınama
+
+**Tanı** (`kesif.tani`, v1 MuJoCo geliştirme kayıtları, 33 koşu; `sonuc/tani_v1.csv`). Kalemler ayrık; "tekrar"
+ve "çözüm dışı" kesişen kalemler:
+
+| kalem | toplam sürenin payı |
+| --- | --- |
+| düz sürüş (ölçülen ort hız 0,21 m/s, komut 0,25) | %83 |
+| yerinde dönüş | %11 |
+| kurtarma (geri çekil, konumlan, duvar izle) | %5 |
+| durup bekleme / plan | %1 |
+| tekrar (önceden girilip çıkılmış hücrede) | %9 |
+| çözüm yolu dışı hücrelerde | %23 |
+
+- Başarılı koşularda yürünen yol / çözüm yolu 0,87–1,16; girilen çıkmaz kollarının hiçbiri girişten önce haritada
+  tamamen görülmüş değildi ("uzaktan elenebilirdi" = 0). Sınır seçimi israf etmiyor.
+- 17x17_t3 (3 başarısızlık): 900 s'nin ~767'si düz sürüş, yol/çözüm 1,33, 150 hücre gezilmiş; çözüm 131 m ve 0,21 m/s'de
+  yalnız çözüm yolu 625 s. 15 dakikada darboğaz hız görünüyordu; uzatılmış ölçümde yol/çözüm 2,55 (keşif). 13x13_t2 (2 başarısızlık): yol/çözüm 2,3, tekrar 165 s, çözüm dışı 570 s;
+  2B görselde FINISH bölgesi en son keşfedilen köşede kalmış (keşif sırası şansı).
+- Poz hatası süreyle büyüyor (17x17_t3 t0: sürenin %25'inde en çok 0,32 m, %50'sinde 0,56 m, sonda 0,78 m).
+
+**v2 değişikliği: hız profili** (`BeyinAyari.hiz_profili`, `surum_ayari("v2")`). Önceki 0,39 m/s denemesi (hafızalı
+koşu, 7x7) neden çarptı: 2B'de çarpma anlarına bakıldı (`sonuc/ham/carpma_bak.py`). Önü 1,07 m açıkken 0,39 m/s'de
+yay çizerken (w ≈ −0,13…−0,43) gövde duvar ucuna yandan sürtünüyordu; ikinci tip yerinde dönüşten ~1 s sonra, yön
+oturmadan hızlanınca. Fren mesafesi (0,39²/2 = 0,08 m) sorun değildi. Bu yüzden v_hizli = 0,39 yalnız şu üçü birlikte
+sağlanınca: son taramada gövde önünde 1,0 m ve gövde şeridinin her yanına +0,15 m genişlikte boşluk (gövde
+çerçevesi, SLAM hatasından bağımsız); son açısal komut ≤ 0,12 rad/s; son yerinde dönüş / kurtarmadan beri ≥ 1,5 s.
+Hızlıyken izleyicinin engel yavaşlama rampası 0,70 m'den başlar. Aksi hâlde v1 gibi 0,25.
+
+2B denemeler (4 geliştirme labirenti x 2 tohum): kapısız hız profili 1 çarpma; yalnız şerit kapısı 4 çarpma; üç
+kapı birlikte 0 çarpma ve ~%8 kısa süre. **Akıcı köşe** (izleyicinin köşe eşiği 100°, `surum_ayari("v2k")`, deneysel)
+%15–25 kısa süre ama 8 koşuda 9 çarpma verdi; varsayılan yapılmadı. Dik açı / ızgara varsayımı hiçbir sürümde yok.
+
+**MuJoCo sonuçları** (ön bilgisiz `KesifBeyni`, aynı tohumlar; tablolar `sonuc/SONUC.md` "v1 / v2"):
+
+| küme | v1 başarı | v2 başarı | çarpma v1 / v2 | puan ort v1 / v2 | süre v2 / v1 (ikisi de başarılı) |
+| --- | --- | --- | --- | --- | --- |
+| geliştirme (11 labirent x 3 tohum) | 28/33 | 27/33 | 0 / 0 | 1152 / 1137 | ort 0,96, ortanca 0,93 (26 çift) |
+| sınama (13x13_t4..t8, 17x17_t4..t8 x 2 tohum) | 14/20 | 14/20 | 0 / 0 | 909 / 921 | ort 0,95, ortanca 0,94 (14 çift) |
+
+- Ölçülen düz sürüş hızı 0,209 → 0,228 m/s (+%9); hızlı kip sürenin yalnız ~%17'sinde açık. Kısa koridor
+  bacaklarında (1,3 m hücre) önü 1 m açık ve dönüşten 1,5 s geçmiş an az.
+- **Karar:** kural (sınamada başarı az değil, çarpma artmadı) sağlandı, `VARSAYILAN_SURUM = "v2"`. Kazanç küçük;
+  geliştirme kümesinde v2 bir koşu az (17x17_t2 t1 süre doldu, 13x13_t2 t1 bu kez başarısız, t2 başarılı).
+  `KesifBeyni()` artık v2 kurar; v1 `KesifBeyni(ayar=surum_ayari("v1"))`.
+- **Kalan başarısızlıklar** (sınama, iki sürümde aynı 6 koşu: 17x17_t4, t5, t7 x 2 tohum): çözüm yolu 152–183 m.
+  0,21–0,23 m/s düz hızla yalnız çözüm yolu 660–870 s. Yürünen yol / çözüm 0,92–1,22, poz hatası sonda ≤ 0,58 m;
+  ama bu oran 15 dakikada KESİLEN koşulardan. **Düzeltme:** uzatılmış ölçümde (1800 s, `sonuc/SONUC.md`) 17x17_t3,
+  t4, t5'te robot çözümün 1,9–2,6 katını yürüyüp bilinen bölgede dolanıyor: sorun çoğunlukla keşif, yalnız t7'de hız.
+- **Hafızalı ek tur** (v2, sınama, ilk koşusu başarılı 14 koşu): 14/14 başarı, çarpma 0, kazanç ort %16
+  (−%3 … %57). Uzun çözümlü labirentte ikinci koşu da hız sınırında (17x17_t8: 702 s).
+- 2B (11 geliştirme labirenti x 5 tohum, `sonuc/v2_2b.csv`): v1 ve v2 52/55, çarpan koşu 2 / 2; başarılı koşu
+  süresi ortalaması 13x13 480 → 439 s, 17x17 514 → 469 s, 7x7 214 → 176 s. Sınama kümesi zaman dökümü
+  `sonuc/tani_sinama_v1.csv`, `tani_sinama_v2.csv`.
+- Üretici gözlemi: aynı tohumla üretilen farklı boyutlu labirentlerin START çevresi aynı (geri izleme aynı sırayla
+  oyar). Rastgele ve sağ el tabanlarının `t1` labirentlerinde boyuttan bağımsız birebir aynı sonuç vermesi bundan:
+  erken takılan koşu yalnız ortak bölgeyi görüyor. Hata değil; sınama kümesinde 13x13_tN ile 17x17_tN de START
+  çevresini paylaşır.
+
+**Sıradaki en büyük kaldıraç** (ölçülmedi): köşelerde dur–dön–kalk yerine güvenli yay ya da daha hızlı yerinde dönüş.
+Akıcı köşenin ilk biçimi çarptı; yay sığma denetimi (süpürme haritaya karşı) eklenmeden açılmamalı.
+
 ## Araştırma notuyla ayrılıklar (`planlama/labirent-kesif-arastirmasi.md`)
 
 1. **A* + yumuşak maliyet yerine iki katmanlı BFS + DP.** Numpy'de eş maliyetli dalga cephesi, Python A* yığınından
@@ -112,6 +185,8 @@ kayıtları, hata görselleri ve loglar.
 
 ## Zayıflıklar
 
+- 15 dk sınırında 17x17 kaybı çoğunlukla keşif: uzatılmış ölçümde t3, t4, t5 yol / çözüm 1,9–2,6, robot bilinen
+  bölgede dolanıyor (`fail_sikisma`); yalnız t7'de darboğaz hız (~0,22 m/s düz hız, çözüm 183 m).
 - Döngü kapatma yok. Uzun koşuda yön yanlılığı birikir; mükemmel (döngüsüz) labirentte kabul edilebilir, döngülü
   labirentte değil.
 - Çıkış tanıma "dışarısı geniş" varsayımına dayanır. FINISH dar bir koridora açılırsa beyin çıkışı tanımaz; sınır

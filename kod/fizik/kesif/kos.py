@@ -183,6 +183,22 @@ def gorev_listesi(deney):
             for t in TOHUMLAR[:3]:
                 G.append({"deney": "hafiza", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
                           "hafiza": True})
+    elif deney == "v2_2b":
+        # v2 (beyin.surum_ayari) geliştirme kümesinde; v1 karşılığı ilk.csv (aynı tohumlar)
+        from .beyin import surum_ayari
+        for lab in LABIRENTLER:
+            for t in TOHUMLAR:
+                G.append({"deney": "v2_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
+                          "ayar": surum_ayari("v2"), "ayar_ad": "v2", "hafiza": True})
+    elif deney == "kose_2b":
+        # v2 kısa 2B denemesi: 4 geliştirme labirenti x tohum {0, 1} (sonuç sonuc/v2_2b.csv'ye taşındı; v2k = akıcı
+        # köşe ilk denemede 8 koşuda 9 çarpma verdi, sonuc/ham/kose_2b_v2_ilk_v2k.csv)
+        from .beyin import surum_ayari
+        for sur in ("v2",):
+            for lab in ("labirent_9x9_t1", "labirent_13x13_t1", "labirent_13x13_t3", "labirent_17x17_t1"):
+                for t in (0, 1):
+                    G.append({"deney": "kose_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
+                              "ayar": surum_ayari(sur), "ayar_ad": sur})
     else:
         raise ValueError(deney)
     # uzun koşular önce (havuz dengesi)
@@ -192,7 +208,7 @@ def gorev_listesi(deney):
 
 def main(argv=None):
     p = argparse.ArgumentParser()
-    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "rapor"])
+    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "rapor"])
     p.add_argument("--is", dest="is_sayisi", type=int, default=2)
     p.add_argument("--sahne", default=None, help="virgüllü süzgeç (alt dize)")
     p.add_argument("--strateji", default=None)

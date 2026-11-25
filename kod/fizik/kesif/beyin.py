@@ -50,6 +50,25 @@ class BeyinAyari:
     on_serit_m: float = 0.56         # öndeki engel şeridi genişliği (ayak izi 0,523 + pay)
     engel_bekle_s: float = 1.5
     duvar_izle_s: float = 20.0       # sınır kalmayınca duvar izleme bu kadar sürer, sonra yeniden sınır aranır
+    # v2 hız profili (v1'de kapalı). Tanı (sonuc/tani_v1.csv, MuJoCo 33 koşu): sürenin %83'ü düz sürüş, ölçülen düz
+    # hız ortalaması 0,21 m/s; 15 dk'yı aşan 17x17_t3'te çözüm 131 m. Önü açıkken ve tarama haritaya iyi oturuyorken
+    # v_hizli; engel / köşe yaklaşınca izleyicinin yumuşak varışı ve engel rampası (yavas_hizli_m) yavaşlatır.
+    hiz_profili: bool = False
+    v_hizli: float = 0.39            # teker azamisi
+    hizli_on_m: float = 1.0          # önde bu kadar boşluk yoksa v_seyir
+    hizli_yan_pay_m: float = 0.15    # ...ve bu boşluk gövde şeridinin her yanına bu kadar geniş şeritte aranır
+                                     # (son tarama, gövde çerçevesi: SLAM poz hatasından bağımsız). İlk denemede
+                                     # tek çarpma 0,39 m/s'de yay çizerken duvar ucuna yandan sürtünmeydi (önü 1,07 m açık)
+    yavas_hizli_m: float = 0.70      # hızlıyken engel yavaşlama rampasının başı (fren mesafesi 0,39²/2 = 0,08 m)
+    hizli_kalite: float = 0.0        # son eşleşme kalitesi bunun altındaysa v_seyir (0: denetim yok)
+    hizli_w_maks: float = 0.12       # son açısal komut bundan büyükse (yay / düzeltme) v_seyir
+    hizli_donus_sonra_s: float = 1.5  # yerinde dönüş / kurtarma / konumlanmadan sonra bu kadar v_seyir
+                                     # (2B denemede çarpmalar dönüşten ~1 s sonra 0,39 m/s yayda: yön henüz oturmamış)
+    # akıcı köşe (deneysel, varsayılan kapalı): izleyicinin "köşede dur, yerinde dön" eşiği büyütülür; 90 derecelik
+    # köşe saf takip yayıyla dönülür (yerinde dönüş yalnız yön hatası donus_gir_rad'ı aşınca)
+    akici_kose: bool = False
+    kose_esigi_der: float = 100.0
+    donus_gir_rad: float = 1.3
     # izleyici: köşede dönme merkezi hücre ortasına gelince ön yüz önündeki duvara ≈ 0,20 m kalır (1,3 m hücre);
     # gezinmenin varsayılan 0,30 m dur eşiği köşeye varmayı engelliyor, bu yüzden 0,12 / 0,18 / 0,50
     izleyici: dict = field(default_factory=lambda: {"dur_mesafe_m": 0.12, "kalk_mesafe_m": 0.18,
@@ -59,13 +78,35 @@ class BeyinAyari:
     slam: SlamAyari = field(default_factory=SlamAyari)
 
 
+def surum_ayari(surum="v1"):
+    """Sürüm adı -> BeyinAyari. v1: ilk teslim (commit 461216f) davranışı; v2: hız profili."""
+    a = BeyinAyari()
+    if surum in (None, "", "v1"):
+        return a
+    if surum == "v2":
+        a.hiz_profili = True
+        return a
+    if surum == "v2k":                 # v2 + akıcı köşe (deneysel)
+        a.hiz_profili = True
+        a.akici_kose = True
+        return a
+    raise ValueError("bilinmeyen sürüm %r" % surum)
+
+
+# Karar (2026-11-25, MuJoCo sınama kümesi 13x13_t4..t8 + 17x17_t4..t8 x 2 tohum): v1 14/20, v2 14/20, çarpma 0 / 0;
+# kural "v2 başarısı az değil ve çarpma artmadı" -> v2. Kazanç küçük (süre ~%5 kısa); geliştirme kümesinde v2 27/33,
+# v1 28/33. Ayrıntı: BENIOKU.md "v2", sonuc/SONUC.md.
+VARSAYILAN_SURUM = "v2"
+
+
 def _sar(a):
     return (a + math.pi) % (2 * math.pi) - math.pi
 
 
 class KesifBeyni:
     def __init__(self, ayar=None, start_cizgisi=None, hafiza=None, robot=None, ozellik=None):
-        self.ayar = a = copy.deepcopy(ayar) if ayar is not None else BeyinAyari()
+        # ayar verilmezse varsayılan sürüm (VARSAYILAN_SURUM; canli.py / kos_mujoco ayarsız kurar)
+        self.ayar = a = copy.deepcopy(ayar) if ayar is not None else surum_ayari(VARSAYILAN_SURUM)
         self.robot = robot or gezinmeden_oku(VARSAYILAN)
         izg = None
         if hafiza is not None:
@@ -74,6 +115,8 @@ class KesifBeyni:
         self.slam = HafifSLAM(a.slam, self.robot, ozellik, izgara=izg)
         iz_ayar = dict(v_max=a.v_seyir)
         iz_ayar.update(a.izleyici)
+        if a.akici_kose:
+            iz_ayar.update(kose_esigi_rad=math.radians(a.kose_esigi_der), donus_gir_rad=a.donus_gir_rad)
         self.izleyici = YolIzleyici(IzleyiciAyar(**iz_ayar))
         if start_cizgisi is None:
             start_cizgisi = ((-0.45, 0.65), (-0.45, -0.65))
@@ -108,6 +151,8 @@ class KesifBeyni:
                       "donus_kay": 0, "donus_sigmaz": 0}
         self.zaman = {"plan_ms": [], "adim_ms": []}
         self.son_plan = {}
+        self.son_sinirlar = []
+        self._son_donus_t = -1e9          # v2: son yerinde dönüş / kurtarma / konumlanma anı
         self.son_komut = (0.0, 0.0)
 
     # ------------------------------------------------------------ START koruması
@@ -202,6 +247,17 @@ class KesifBeyni:
             return math.inf
         return float(max(0.0, (x[m] - on).min()))
 
+    def _hizli_serit_acik(self):
+        """Son taramada gövde önünde (ön yüzden hizli_on_m) ve yanlarda hizli_yan_pay_m genişletilmiş şerit boş mu."""
+        nok = getattr(self.slam, "son_noktalar", None)
+        if nok is None:
+            return False
+        x, y = nok
+        on = self.robot.on_x
+        yari = self.ayar.on_serit_m / 2 + self.ayar.hizli_yan_pay_m
+        m = (np.abs(y) <= yari) & (x > on - 0.02) & (x < on + self.ayar.hizli_on_m)
+        return not bool(m.any())
+
     # ------------------------------------------------------------ protokol
     def adim(self, t, tarama, artim):
         t_a = time.perf_counter()
@@ -251,8 +307,12 @@ class KesifBeyni:
             self._planla(t, poz)
         # hafızalı koşuda yol bilinen haritada: tavan hıza kadar (keşifte v_seyir)
         self.izleyici.ayar.v_max = self.ayar.v_hafiza if self.mod == "hafiza" else self.ayar.v_seyir
+        if self.ayar.hiz_profili:
+            self._hiz_ayarla()
         k = self.izleyici.komut(poz, on_mesafe=self.on_mesafe)
         v, w = k.v, k.w
+        if k.mod == "yerinde":
+            self._son_donus_t = t
         if k.mod == "yerinde" and not self._donus_onay and k.hedef is not None:
             if self._donus_karar(poz, k) is not None:
                 return self._cik(0.0, 0.0, t_a)
@@ -272,7 +332,24 @@ class KesifBeyni:
             self._kurtarma_baslat(t, "sikisma")
         return self._cik(v, w, t_a)
 
+    def _hiz_ayarla(self):
+        """v2: önü açık ve eşleşme iyiyse v_hizli, değilse v_seyir; hızlıyken engel rampası erken başlar."""
+        a = self.ayar
+        iz = self.izleyici.ayar
+        acik = (self._hizli_serit_acik() and abs(self.son_komut[1]) <= a.hizli_w_maks
+                and self.t - self._son_donus_t >= a.hizli_donus_sonra_s)
+        kal = self.slam.son.get("kalite") if isinstance(self.slam.son, dict) else None
+        iyi = a.hizli_kalite <= 0 or (kal is not None and kal >= a.hizli_kalite)
+        if acik and iyi and self.mod in ("kesif", "cikis", "hafiza"):
+            iz.v_max = max(iz.v_max, a.v_hizli)
+            iz.yavas_mesafe_m = a.yavas_hizli_m
+            self.sayac["hizli"] = self.sayac.get("hizli", 0) + 1
+        else:
+            iz.yavas_mesafe_m = a.izleyici.get("yavas_mesafe_m", 0.50)
+
     def _cik(self, v, w, t_a, filtre=True):
+        if abs(v) < 0.02 and abs(w) > 0.05 or self.mod in ("kurtarma", "konumlan", "duvar_izle"):
+            self._son_donus_t = self.t
         if filtre:
             v, w = self._start_filtre(self.slam.poz, v, w)
         self.son_komut = (v, w)
@@ -289,7 +366,12 @@ class KesifBeyni:
                 "ek": {"cerceve": "baslangic", "slam": dict(self.slam.son), "start_cizgisi": self.start, "cikis": self.cikis,
                        "sayac": dict(self.sayac), "slam_istatistik": dict(self.slam.istatistik),
                        "plan": dict(self.son_plan), "on_mesafe": self.on_mesafe,
-                       "k_don": self.slam.k_don, "k_il": self.slam.k_il}}
+                       "k_don": self.slam.k_don, "k_il": self.slam.k_il,
+                       "sinirlar": list(self.son_sinirlar),
+                       "sinirlar_dizin": "[merkez_x, merkez_y, boy_m, bakis_x, bakis_y, maliyet] (son plan)",
+                       "secilen_sinir": None if self.hedef_sinir is None else
+                       [round(self.hedef_sinir.merkez[0], 2), round(self.hedef_sinir.merkez[1], 2)],
+                       "surum": "v2" if self.ayar.hiz_profili else "v1"}}
 
     def hafiza_ver(self):
         """Ek tur için: harita + son poz (benzetici koşu FINISH'te bitince çağırır)."""
@@ -350,6 +432,10 @@ class KesifBeyni:
             sinirlar = [s for s in sinirlar if not any(math.hypot(s.merkez[0] - kx, s.merkez[1] - ky) < 1.0
                                                        for kx, ky, _ in self.kara_liste)]
             bilgi["sinir"] = len(sinirlar)
+            # oynatıcı için (seyrek; kayıt 2 s aralıkla alır): sınır merkezi, boyu, bakış noktası, maliyeti
+            self.son_sinirlar = [[round(s.merkez[0], 2), round(s.merkez[1], 2), round(float(s.boy_m), 2),
+                                  round(float(s.bakis_xy[0]), 2), round(float(s.bakis_xy[1]), 2),
+                                  round(float(s.maliyet), 2)] for s in sinirlar[:40]]
             sec, degisti = hedef_sec(sinirlar, self.hedef_sinir, a.sinir)
             if sec is not None:
                 yol = yol_cikar2(kh, d_iyi, d_min, sec.bakis)
