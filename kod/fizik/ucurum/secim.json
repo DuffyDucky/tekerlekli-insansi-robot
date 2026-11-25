@@ -1,0 +1,16 @@
+{
+ "yerlesim": {
+  "ad": "4OD+2AD",
+  "z": 0.12,
+  "e": 30,
+  "koni": 27.0
+ },
+ "esik_m": 0.1,
+ "onay": 3,
+ "politika": "yavasla",
+ "fren": "rampa",
+ "fren_ivme": 2.0,
+ "sensor_n": 6,
+ "on_n": 4,
+ "not_": "dar aciklik duzeltmesi: dar_gelistirme (tohum 1-2) 2KD+2AD 49/540, 3KOD+2AD 2/540, 4OD+2AD 0/540 dustu -> 4OD+2AD. Sinama: sinama2. Ilk secim (2KD+2AD) deney.SECIM_1'de donduruldu (kusur, sinama, sinama_y)."
+}

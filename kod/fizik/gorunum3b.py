@@ -900,7 +900,14 @@ def main():
                     help="dönüş varyantı (V0 bugünkü robot; öbürleri VARSAYIM). Verilmezse koridor_* / labirent_* "
                          "sahnelerinde ONERI (koridor deneyinin robotu), öbürlerinde V0")
     ap.add_argument("--lidar", action="store_true", help="sanal LiDAR katmanı açık başlasın (pencerede F8 aç / kapa)")
+    ap.add_argument("--eklenti", action="append", default=[],
+                    help="pencere kurulmadan önce içe aktarılacak modül (kod/fizik altından, ör. ucurum.demo); modül kendi "
+                         "kancalarını bu süreçte kurar. Verilmezse davranış aynı")
     a = ap.parse_args()
+    if a.eklenti:
+        import importlib
+        for _m in a.eklenti:
+            importlib.import_module(_m)
     LIDAR_DURUM["acik"] = a.lidar
     for akis in (sys.stdout, sys.stderr):
         try:

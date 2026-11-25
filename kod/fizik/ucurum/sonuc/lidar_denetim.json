@@ -1,0 +1,20 @@
+{
+ "egim_0.0": {
+  "isin": 167,
+  "olcum_merdiven": 167,
+  "olcum_duz": 167,
+  "en_yakin_merdiven_m": 4.293991605096426,
+  "en_yakin_duz_m": 4.293991605096426,
+  "en_buyuk_fark_mm": 0.0,
+  "kenar_uzakligi_lidar_m": 0.295
+ },
+ "egim_1.5": {
+  "isin": 167,
+  "olcum_merdiven": 167,
+  "olcum_duz": 167,
+  "en_yakin_merdiven_m": 4.295466811608053,
+  "en_yakin_duz_m": 4.295466811608053,
+  "en_buyuk_fark_mm": 0.0,
+  "kenar_uzakligi_lidar_m": 0.295
+ }
+}
