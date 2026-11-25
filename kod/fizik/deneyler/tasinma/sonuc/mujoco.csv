@@ -1,0 +1,41 @@
+id,kume,senaryo,surum,kosul,koridor,tohum,basari,vardi,bitis,sure_s,rota_m,tasima_t_s,tasima_uzaklik_m,kalan_rota_m,tepki_s,suphe_s,bulma_s,yanlis_emin_s,yanlis_emin_yol_m,yanlis_surus_s,temas_sonra,temas_olay,kayboldum,kurtarma,yardim,son10_yol_m,son_hata_m,son_koridor_gercek,son_harita_inanilan,neden,duvar_s
+mj_ab_algi_ayni_uzak_koridor_1_2,mujoco,ab,algi,ayni_uzak,koridor_1,2,True,True,vardi,165.66,26.77,50.7,8.64,22.83,0.8,0.7,75.5,28.9,7.05,29.0,0,0,2,2,False,1.932,0.002,koridor_1,koridor_1,,43.49
+mj_ab_algi_ayni_uzak_koridor_3_1,mujoco,ab,algi,ayni_uzak,koridor_3,1,True,True,vardi,63.26,10.68,12.7,12.45,10.08,0.8,0.7,5.7,0.7,0.1,0.8,0,0,1,1,False,1.918,0.003,koridor_3,koridor_3,,15.02
+mj_ab_algi_ayni_uzak_koridor_4_2,mujoco,ab,algi,ayni_uzak,koridor_4,2,True,True,vardi,50.41,19.18,36.65,8.64,1.55,0.8,0.4,4.1,0.3,0.04,0.7,0,0,1,1,False,1.483,0.003,koridor_4,koridor_4,,13.35
+mj_ab_algi_ayni_uzak_koridor_5_1,mujoco,ab,algi,ayni_uzak,koridor_5,1,True,True,vardi,75.46,12.18,23.7,15.05,8.85,0.8,0.8,33.2,0.8,0.11,0.8,0,0,1,1,False,1.93,0.005,koridor_5,koridor_5,,18.21
+mj_ab_algi_ayni_uzak_koridor_6_2,mujoco,ab,algi,ayni_uzak,koridor_6,2,True,True,vardi,110.81,20.18,38.3,5.94,16.62,0.8,0.5,6.5,0.5,0.08,0.8,0,0,1,1,False,1.95,0.001,koridor_6,koridor_6,,26.18
+mj_ab_algi_kucuk_koridor_1_2,mujoco,ab,algi,kucuk,koridor_1,2,True,True,vardi,127.51,26.77,41.15,1.04,17.59,0.6,0.6,26.1,1.8,0.24,2.0,0,0,2,2,False,1.93,0.002,koridor_1,koridor_1,,33.59
+mj_ab_algi_kucuk_koridor_3_1,mujoco,ab,algi,kucuk,koridor_3,1,True,True,vardi,52.81,10.68,17.05,1.04,7.53,3.5,3.5,9.1,3.4,0.83,3.4,0,0,1,1,False,1.914,0.005,koridor_3,koridor_3,,12.12
+mj_ab_algi_kucuk_koridor_4_2,mujoco,ab,algi,kucuk,koridor_4,2,True,True,vardi,71.11,19.18,34.2,2.87,7.82,1.0,0.6,5.9,0.6,0.11,1.0,0,0,1,1,False,1.948,0.001,koridor_4,koridor_4,,15.76
+mj_ab_algi_kucuk_koridor_5_1,mujoco,ab,algi,kucuk,koridor_5,1,True,True,vardi,48.81,12.18,21.65,1.98,4.86,3.4,2.7,13.0,2.6,0.63,3.3,0,0,1,1,False,1.915,0.006,koridor_5,koridor_5,,11.97
+mj_ab_algi_kucuk_koridor_6_2,mujoco,ab,algi,kucuk,koridor_6,2,True,True,vardi,81.91,20.18,39.8,1.19,9.12,11.7,11.7,17.3,11.7,2.9,11.7,0,0,1,1,False,1.945,0.001,koridor_6,koridor_6,,16.84
+mj_ab_algi_ters180_koridor_1_2,mujoco,ab,algi,ters180,koridor_1,2,True,True,vardi,128.56,26.77,30.45,0.0,19.23,3.5,3.1,9.2,3.0,0.72,3.4,0,0,1,1,False,1.946,0.001,koridor_1,koridor_1,,32.52
+mj_ab_algi_ters180_koridor_3_1,mujoco,ab,algi,ters180,koridor_3,1,True,True,vardi,95.41,10.68,22.2,0.0,5.2,20.5,20.1,26.6,20.1,4.93,20.5,0,0,1,1,False,1.948,0.002,koridor_3,koridor_3,,21.83
+mj_ab_algi_ters180_koridor_4_2,mujoco,ab,algi,ters180,koridor_4,2,True,True,vardi,100.71,19.18,44.6,0.0,8.1,0.8,0.8,17.9,0.8,0.11,0.8,0,0,3,3,False,1.946,0.001,koridor_4,koridor_4,,24.09
+mj_ab_algi_ters180_koridor_5_1,mujoco,ab,algi,ters180,koridor_5,1,True,True,vardi,56.51,12.18,12.55,0.0,9.11,,0.6,0.6,0.5,0.1,0.5,0,0,0,0,False,1.926,0.001,koridor_5,koridor_5,,13.06
+mj_ab_algi_ters180_koridor_6_2,mujoco,ab,algi,ters180,koridor_6,2,True,True,vardi,113.91,20.18,36.9,0.0,11.03,9.4,9.4,20.8,9.4,2.13,9.4,0,0,2,2,False,1.95,0.002,koridor_6,koridor_6,,26.31
+mj_ab_algi_ya_taban_koridor_1_2,mujoco,ab,algi,ya_taban,koridor_1,2,True,True,vardi,109.81,26.77,,,,,,0.1,0.0,0.0,0.0,0,0,0,0,False,1.949,0.002,koridor_1,koridor_1,,28.14
+mj_ab_algi_ya_taban_koridor_3_1,mujoco,ab,algi,ya_taban,koridor_3,1,True,True,vardi,45.46,10.68,,,,,,0.1,0.0,0.0,0.0,0,0,0,0,False,1.923,0.003,koridor_3,koridor_3,,8.99
+mj_ab_algi_ya_taban_koridor_4_2,mujoco,ab,algi,ya_taban,koridor_4,2,True,True,vardi,79.41,19.18,,,,,,0.1,0.0,0.0,0.0,0,0,0,0,False,1.948,0.002,koridor_4,koridor_4,,16.39
+mj_ab_algi_ya_taban_koridor_5_1,mujoco,ab,algi,ya_taban,koridor_5,1,True,True,vardi,51.46,12.18,,,,,,0.1,0.0,0.0,0.0,0,0,0,0,False,1.922,0.003,koridor_5,koridor_5,,11.87
+mj_ab_algi_ya_taban_koridor_6_2,mujoco,ab,algi,ya_taban,koridor_6,2,True,True,vardi,83.46,20.18,,,,,,0.1,0.0,0.0,0.0,0,0,0,0,False,1.93,0.002,koridor_6,koridor_6,,18.63
+mj_ab_v3_ayni_uzak_koridor_1_2,mujoco,ab,v3,ayni_uzak,koridor_1,2,True,True,vardi,148.61,26.77,50.7,8.64,22.83,,0.5,25.1,23.7,5.35,24.9,0,0,0,,False,1.949,0.002,koridor_1,koridor_1,,36.98
+mj_ab_v3_ayni_uzak_koridor_3_1,mujoco,ab,v3,ayni_uzak,koridor_3,1,False,False,beyin bitti,20.66,10.68,12.7,12.45,10.08,,0.5,,6.1,1.49,6.6,0,0,0,,False,1.66,2.731,koridor_3,koridor_3,,4.68
+mj_ab_v3_ayni_uzak_koridor_4_2,mujoco,ab,v3,ayni_uzak,koridor_4,2,True,True,vardi,53.26,19.18,36.65,8.64,1.55,,0.4,8.5,6.6,0.96,8.4,0,0,0,,False,1.637,0.224,koridor_4,koridor_4,,13.36
+mj_ab_v3_ayni_uzak_koridor_5_1,mujoco,ab,v3,ayni_uzak,koridor_5,1,False,False,beyin bitti,25.96,12.18,23.7,15.05,8.85,,0.7,,0.7,0.14,0.9,0,0,0,,False,0.235,0.591,koridor_5,koridor_5,,6.3
+mj_ab_v3_ayni_uzak_koridor_6_2,mujoco,ab,v3,ayni_uzak,koridor_6,2,True,True,vardi,145.46,20.18,38.3,5.94,16.62,,0.4,48.3,46.8,11.02,48.2,0,0,0,,False,1.927,0.002,koridor_6,koridor_6,,31.34
+mj_ab_v3_kucuk_koridor_1_2,mujoco,ab,v3,kucuk,koridor_1,2,False,False,beyin bitti,78.11,26.77,41.15,1.04,17.59,,0.6,,33.9,6.87,35.4,0,0,0,,False,2.208,20.275,koridor_1,koridor_1,,20.63
+mj_ab_v3_kucuk_koridor_3_1,mujoco,ab,v3,kucuk,koridor_3,1,False,False,beyin bitti,27.46,10.68,17.05,1.04,7.53,,3.5,,9.7,1.39,9.0,0,0,0,,False,1.459,9.99,koridor_3,koridor_3,,6.32
+mj_ab_v3_kucuk_koridor_4_2,mujoco,ab,v3,kucuk,koridor_4,2,False,False,beyin bitti,36.41,19.18,34.2,2.87,7.82,,0.6,,0.6,0.11,0.8,0,0,0,,False,0.209,9.99,koridor_4,koridor_4,,7.77
+mj_ab_v3_kucuk_koridor_5_1,mujoco,ab,v3,kucuk,koridor_5,1,False,False,beyin bitti,26.21,12.18,21.65,1.98,4.86,,2.7,,2.6,0.63,3.1,0,0,0,,False,0.799,5.254,koridor_5,koridor_5,,6.3
+mj_ab_v3_kucuk_koridor_6_2,mujoco,ab,v3,kucuk,koridor_6,2,True,True,vardi,78.76,20.18,39.8,1.19,9.12,,11.7,11.7,11.7,2.9,11.7,0,0,0,,False,1.93,0.001,koridor_6,koridor_6,,16.49
+mj_ab_v3_ters180_koridor_1_2,mujoco,ab,v3,ters180,koridor_1,2,False,False,beyin bitti,57.26,26.77,30.45,0.0,19.23,,3.1,,25.4,5.75,25.2,0,0,0,,False,1.937,25.065,koridor_1,koridor_1,,13.67
+mj_ab_v3_ters180_koridor_3_1,mujoco,ab,v3,ters180,koridor_3,1,True,True,vardi,90.31,10.68,22.2,0.0,5.2,,20.1,20.4,20.1,4.93,20.4,0,0,0,,False,1.89,0.002,koridor_3,koridor_3,,18.84
+mj_ab_v3_ters180_koridor_4_2,mujoco,ab,v3,ters180,koridor_4,2,True,True,vardi,103.61,19.18,44.6,0.0,8.1,,1.3,11.1,9.5,2.19,10.9,0,0,0,,False,1.942,0.001,koridor_4,koridor_4,,22.33
+mj_ab_v3_ters180_koridor_5_1,mujoco,ab,v3,ters180,koridor_5,1,True,True,vardi,56.56,12.18,12.55,0.0,9.11,,0.6,0.6,0.5,0.1,0.5,0,0,0,,False,1.933,0.003,koridor_5,koridor_5,,12.94
+mj_ab_v3_ters180_koridor_6_2,mujoco,ab,v3,ters180,koridor_6,2,True,True,vardi,126.96,20.18,36.9,0.0,11.03,,9.8,43.0,41.0,8.94,42.8,0,0,0,,False,1.933,0.003,koridor_6,koridor_6,,28.62
+mj_ab_v3_ya_taban_koridor_1_2,mujoco,ab,v3,ya_taban,koridor_1,2,True,True,vardi,109.81,26.77,,,,,,0.1,0.0,0.0,0.0,0,0,0,,False,1.949,0.002,koridor_1,koridor_1,,27.3
+mj_ab_v3_ya_taban_koridor_3_1,mujoco,ab,v3,ya_taban,koridor_3,1,True,True,vardi,45.46,10.68,,,,,,0.1,0.0,0.0,0.0,0,0,0,,False,1.923,0.003,koridor_3,koridor_3,,8.7
+mj_ab_v3_ya_taban_koridor_4_2,mujoco,ab,v3,ya_taban,koridor_4,2,True,True,vardi,79.41,19.18,,,,,,0.1,0.0,0.0,0.0,0,0,0,,False,1.948,0.002,koridor_4,koridor_4,,16.31
+mj_ab_v3_ya_taban_koridor_5_1,mujoco,ab,v3,ya_taban,koridor_5,1,True,True,vardi,51.46,12.18,,,,,,0.1,0.0,0.0,0.0,0,0,0,,False,1.922,0.003,koridor_5,koridor_5,,11.91
+mj_ab_v3_ya_taban_koridor_6_2,mujoco,ab,v3,ya_taban,koridor_6,2,True,True,vardi,83.46,20.18,,,,,,0.1,0.0,0.0,0.0,0,0,0,,False,1.93,0.002,koridor_6,koridor_6,,17.23

@@ -1,0 +1,385 @@
+varyant,id,senaryo,kosul,etken,alt,kademe,deger,koridor,tohum,hedef,basari,neden,sure_s,yol_m,rota_m,varis_hatasi_m,tahmin_hatasi_m,konum_ort_m,konum_p95_m,konum_maks_m,konum_kesin_yanlis,temas_olay,temas_hareketli,temas_duran,bekleme_s,bitis,nan_orani,kayma_olay,duvar_s
+izleme,izleme_ab_cam_2_koridor_1_3,ab,cam_2,cam,e,2,0.5,koridor_1,3,k1_kapi_12,True,,73.75,17.843,17.775,0.0653,0.1134,0.0229,0.1476,0.2032,0,0,0,0,0.0,beyin,0.0327,0,6.5
+izleme,izleme_ab_cam_2_koridor_1_4,ab,cam_2,cam,e,2,0.5,koridor_1,4,k1_kapi_18,True,,109.45,26.737,26.775,0.0407,0.008,0.0657,0.2843,0.3285,0,0,0,0,0.0,beyin,0.0223,0,7.4
+izleme,izleme_ab_cam_2_koridor_2_3,ab,cam_2,cam,e,2,0.5,koridor_2,3,k2_kapi_2,True,,29.0,6.628,6.675,0.0491,0.0015,0.0028,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.2
+izleme,izleme_ab_cam_2_koridor_2_4,ab,cam_2,cam,e,2,0.5,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0492,0.001,0.0028,0.0103,0.0162,0,0,0,0,0.0,beyin,0.0,0,1.6
+izleme,izleme_ab_cam_2_koridor_3_3,ab,cam_2,cam,e,2,0.5,koridor_3,3,k3_kapi_5,True,,45.0,10.625,10.675,0.0532,0.0037,0.0058,0.0151,0.0467,0,0,0,0,0.0,beyin,0.0122,0,2.2
+izleme,izleme_ab_cam_2_koridor_3_4,ab,cam_2,cam,e,2,0.5,koridor_3,4,k3_kapi_8,True,,92.7,21.616,21.475,0.0423,0.0086,0.0069,0.0216,0.0599,0,0,0,0,0.0,beyin,0.0082,0,4.3
+izleme,izleme_ab_cam_2_koridor_4_3,ab,cam_2,cam,e,2,0.5,koridor_4,3,k4_kapi_9,True,,71.4,16.309,16.175,0.047,0.0014,0.0078,0.0241,0.0495,0,0,0,0,0.0,beyin,0.0236,0,4.2
+izleme,izleme_ab_cam_2_koridor_4_4,ab,cam_2,cam,e,2,0.5,koridor_4,4,k4_kapi_11,True,,79.05,19.13,19.175,0.0466,0.0017,0.0232,0.1085,0.118,0,0,0,0,0.0,beyin,0.0214,0,3.9
+izleme,izleme_ab_cam_2_koridor_5_3,ab,cam_2,cam,e,2,0.5,koridor_5,3,k5_kapi_6,True,,51.0,12.125,12.175,0.0496,0.0037,0.0088,0.034,0.0681,0,0,0,0,0.0,beyin,0.0374,0,3.3
+izleme,izleme_ab_cam_2_koridor_5_4,ab,cam_2,cam,e,2,0.5,koridor_5,4,k5_kapi_10,True,,83.05,20.133,20.175,0.0456,0.0028,0.006,0.0126,0.0277,0,0,0,0,0.0,beyin,0.0231,0,4.2
+izleme,izleme_ab_cam_2_koridor_6_3,ab,cam_2,cam,e,2,0.5,koridor_6,3,k6_kapi_6,True,,51.05,12.128,12.175,0.0465,0.0021,0.0043,0.0095,0.0403,0,0,0,0,0.0,beyin,0.0368,0,3.1
+izleme,izleme_ab_cam_2_koridor_6_4,ab,cam_2,cam,e,2,0.5,koridor_6,4,k6_kapi_10,True,,83.0,20.127,20.175,0.0486,0.001,0.0065,0.0211,0.0247,0,0,0,0,0.0,beyin,0.0226,0,4.7
+izleme,izleme_ab_cam_4_koridor_1_3,ab,cam_4,cam,e,4,1.0,koridor_1,3,k1_kapi_12,True,,73.05,17.624,17.775,0.1554,0.1097,0.0888,0.3032,0.3252,0,0,0,0,0.0,beyin,0.0333,0,5.6
+izleme,izleme_ab_cam_4_koridor_1_4,ab,cam_4,cam,e,4,1.0,koridor_1,4,k1_kapi_18,True,,109.45,26.736,26.775,0.0421,0.0063,0.0729,0.2915,0.3371,0,0,0,0,0.0,beyin,0.0223,0,6.8
+izleme,izleme_ab_cam_4_koridor_2_3,ab,cam_4,cam,e,4,1.0,koridor_2,3,k2_kapi_2,True,,29.05,6.63,6.675,0.0469,0.0017,0.0038,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.1
+izleme,izleme_ab_cam_4_koridor_2_4,ab,cam_4,cam,e,4,1.0,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0497,0.0004,0.0029,0.0103,0.0162,0,0,0,0,0.0,beyin,0.0,0,1.7
+izleme,izleme_ab_cam_4_koridor_3_3,ab,cam_4,cam,e,4,1.0,koridor_3,3,k3_kapi_5,True,,45.0,10.627,10.675,0.0513,0.0019,0.0053,0.0151,0.0467,0,0,0,0,0.0,beyin,0.0122,0,2.0
+izleme,izleme_ab_cam_4_koridor_3_4,ab,cam_4,cam,e,4,1.0,koridor_3,4,k3_kapi_8,True,,92.7,21.617,21.475,0.0425,0.0078,0.0075,0.0211,0.0593,0,0,0,0,0.0,beyin,0.0082,0,3.9
+izleme,izleme_ab_cam_4_koridor_4_3,ab,cam_4,cam,e,4,1.0,koridor_4,3,k4_kapi_9,True,,71.5,16.308,16.175,0.0481,0.0017,0.0308,0.1265,0.1332,0,0,0,0,0.0,beyin,0.0237,0,4.0
+izleme,izleme_ab_cam_4_koridor_4_4,ab,cam_4,cam,e,4,1.0,koridor_4,4,k4_kapi_11,True,,79.0,19.128,19.175,0.0484,0.0015,0.0235,0.112,0.1289,0,0,0,0,0.0,beyin,0.0214,0,3.8
+izleme,izleme_ab_cam_4_koridor_5_3,ab,cam_4,cam,e,4,1.0,koridor_5,3,k5_kapi_6,True,,51.05,12.13,12.175,0.0446,0.0034,0.0079,0.0318,0.0664,0,0,0,0,0.0,beyin,0.0376,0,2.9
+izleme,izleme_ab_cam_4_koridor_5_4,ab,cam_4,cam,e,4,1.0,koridor_5,4,k5_kapi_10,True,,83.05,20.131,20.175,0.0481,0.0012,0.0066,0.0193,0.0292,0,0,0,0,0.0,beyin,0.023,0,4.6
+izleme,izleme_ab_cam_4_koridor_6_3,ab,cam_4,cam,e,4,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.13,12.175,0.0442,0.0042,0.0048,0.0084,0.0451,0,0,0,0,0.0,beyin,0.0369,0,3.4
+izleme,izleme_ab_cam_4_koridor_6_4,ab,cam_4,cam,e,4,1.0,koridor_6,4,k6_kapi_10,True,,83.0,20.127,20.175,0.049,0.0004,0.0066,0.0204,0.0245,0,0,0,0,0.0,beyin,0.0226,0,4.7
+izleme,izleme_ab_donussuz_2_koridor_1_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_1,3,k1_kapi_12,True,,73.4,17.723,17.775,0.055,0.006,0.0057,0.0157,0.0321,0,0,0,0,0.0,beyin,0.36,0,15.8
+izleme,izleme_ab_donussuz_2_koridor_1_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_1,4,k1_kapi_18,True,,109.4,26.729,26.775,0.049,0.0017,0.0034,0.0057,0.0551,0,0,0,0,0.0,beyin,0.2544,0,21.2
+izleme,izleme_ab_donussuz_2_koridor_2_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_2,3,k2_kapi_2,True,,29.05,6.631,6.675,0.0457,0.0023,0.0042,0.0113,0.0137,0,0,0,0,0.0,beyin,0.1308,0,2.9
+izleme,izleme_ab_donussuz_2_koridor_2_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_2,4,k2_kapi_3,True,,39.4,9.225,9.275,0.0505,0.0042,0.0045,0.0137,0.0164,0,0,0,0,0.0,beyin,0.2488,0,4.2
+izleme,izleme_ab_donussuz_2_koridor_3_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_3,3,k3_kapi_5,True,,45.0,10.622,10.675,0.0566,0.007,0.0081,0.0207,0.0431,0,0,0,0,0.0,beyin,0.1473,0,4.7
+izleme,izleme_ab_donussuz_2_koridor_3_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_3,4,k3_kapi_8,True,,92.6,21.609,21.475,0.048,0.0016,0.0067,0.0215,0.0602,0,0,0,0,0.0,beyin,0.1856,0,14.3
+izleme,izleme_ab_donussuz_2_koridor_4_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_4,3,k4_kapi_9,True,,71.5,16.329,16.175,0.0376,0.012,0.0103,0.0252,0.0562,0,0,0,0,0.0,beyin,0.2429,0,11.7
+izleme,izleme_ab_donussuz_2_koridor_4_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_4,4,k4_kapi_11,True,,79.0,19.128,19.175,0.0479,0.0018,0.0072,0.0239,0.0293,0,0,0,0,0.0,beyin,0.2863,0,13.3
+izleme,izleme_ab_donussuz_2_koridor_5_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_5,3,k5_kapi_6,True,,51.0,12.125,12.175,0.0493,0.0038,0.0076,0.0353,0.0663,0,0,0,0,0.0,beyin,0.3243,0,7.7
+izleme,izleme_ab_donussuz_2_koridor_5_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_5,4,k5_kapi_10,True,,83.0,20.128,20.175,0.0507,0.0022,0.006,0.0135,0.0331,0,0,0,0,0.0,beyin,0.3134,0,12.5
+izleme,izleme_ab_donussuz_2_koridor_6_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_6,3,k6_kapi_6,True,,51.05,12.134,12.175,0.0408,0.0077,0.007,0.0175,0.0396,0,0,0,0,0.0,beyin,0.2591,0,7.8
+izleme,izleme_ab_donussuz_2_koridor_6_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_6,4,k6_kapi_10,True,,83.0,20.121,20.175,0.055,0.0065,0.0083,0.0226,0.038,0,0,0,0,0.0,beyin,0.2409,0,11.7
+izleme,izleme_ab_donussuz_4_koridor_1_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_1,3,k1_kapi_12,True,,73.45,17.74,17.775,0.0385,0.0103,0.0141,0.0303,0.0455,0,0,0,0,0.0,beyin,0.7586,0,16.7
+izleme,izleme_ab_donussuz_4_koridor_1_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_1,4,k1_kapi_18,True,,109.4,26.724,26.775,0.0556,0.007,0.0137,0.0363,0.0515,0,0,0,0,0.0,beyin,0.8001,0,23.5
+izleme,izleme_ab_donussuz_4_koridor_2_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_2,3,k2_kapi_2,True,,29.05,6.638,6.675,0.0395,0.0099,0.0093,0.0145,0.0209,0,0,0,0,0.0,beyin,0.7739,0,3.3
+izleme,izleme_ab_donussuz_4_koridor_2_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_2,4,k2_kapi_3,True,,39.4,9.224,9.275,0.0523,0.0028,0.0039,0.0143,0.02,0,0,0,0,0.0,beyin,0.7234,0,4.7
+izleme,izleme_ab_donussuz_4_koridor_3_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_3,3,k3_kapi_5,True,,45.0,10.622,10.675,0.0567,0.0082,0.0192,0.0456,0.0663,0,0,0,0,0.0,beyin,0.7355,0,5.7
+izleme,izleme_ab_donussuz_4_koridor_3_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_3,4,k3_kapi_8,True,,92.55,21.609,21.475,0.0519,0.0039,0.0225,0.1288,0.1588,0,0,0,0,0.0,beyin,0.7393,0,12.3
+izleme,izleme_ab_donussuz_4_koridor_4_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_4,3,k4_kapi_9,True,,71.45,16.345,16.175,0.0384,0.0108,0.0397,0.0932,0.1162,0,0,0,0,0.0,beyin,0.8398,0,12.1
+izleme,izleme_ab_donussuz_4_koridor_4_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_4,4,k4_kapi_11,True,,79.0,19.12,19.175,0.0576,0.0091,0.0303,0.0549,0.0615,0,0,0,0,0.0,beyin,0.8503,0,13.3
+izleme,izleme_ab_donussuz_4_koridor_5_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_5,3,k5_kapi_6,True,,51.1,12.149,12.175,0.0262,0.022,0.0211,0.0542,0.0702,0,0,0,0,0.0,beyin,0.7159,0,7.8
+izleme,izleme_ab_donussuz_4_koridor_5_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_5,4,k5_kapi_10,True,,83.05,20.139,20.175,0.0396,0.0094,0.0175,0.0418,0.0663,0,0,0,0,0.0,beyin,0.7818,0,11.8
+izleme,izleme_ab_donussuz_4_koridor_6_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_6,3,k6_kapi_6,True,,51.05,12.139,12.175,0.0362,0.0133,0.0285,0.0549,0.0575,0,0,0,0,0.0,beyin,0.7313,0,9.0
+izleme,izleme_ab_donussuz_4_koridor_6_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_6,4,k6_kapi_10,True,,83.0,20.122,20.175,0.054,0.0049,0.0131,0.0362,0.0427,0,0,0,0,0.0,beyin,0.6852,0,12.0
+izleme,izleme_ab_esya_2_koridor_1_3,ab,esya_2,esya,b,2,1.0,koridor_1,3,k1_kapi_12,True,,73.4,17.725,17.775,0.0529,0.0042,0.0154,0.0575,0.0906,0,0,0,0,0.0,beyin,0.0315,0,6.3
+izleme,izleme_ab_esya_2_koridor_1_4,ab,esya_2,esya,b,2,1.0,koridor_1,4,k1_kapi_18,True,,109.45,26.734,26.775,0.0494,0.0052,0.0132,0.038,0.0711,0,0,0,0,0.0,beyin,0.0192,0,8.6
+izleme,izleme_ab_esya_2_koridor_2_3,ab,esya_2,esya,b,2,1.0,koridor_2,3,k2_kapi_2,True,,29.1,6.627,6.675,0.073,0.0331,0.0347,0.078,0.0791,0,0,0,0,0.0,beyin,0.0,0,1.5
+izleme,izleme_ab_esya_2_koridor_2_4,ab,esya_2,esya,b,2,1.0,koridor_2,4,k2_kapi_3,True,,39.4,9.227,9.275,0.0486,0.0011,0.0115,0.029,0.0305,0,0,0,0,0.0,beyin,0.0,0,2.0
+izleme,izleme_ab_esya_2_koridor_3_3,ab,esya_2,esya,b,2,1.0,koridor_3,3,k3_kapi_5,True,,45.05,10.631,10.675,0.0517,0.0041,0.0239,0.0908,0.1029,0,0,0,0,0.0,beyin,0.0123,0,2.5
+izleme,izleme_ab_esya_2_koridor_3_4,ab,esya_2,esya,b,2,1.0,koridor_3,4,k3_kapi_8,True,,92.65,21.613,21.475,0.0487,0.0011,0.0209,0.0827,0.1018,0,0,0,0,0.0,beyin,0.0064,0,4.7
+izleme,izleme_ab_esya_2_koridor_4_3,ab,esya_2,esya,b,2,1.0,koridor_4,3,k4_kapi_9,True,,71.25,16.23,16.175,0.0473,0.0022,0.0876,0.2584,0.2706,0,0,0,0,0.0,beyin,0.0223,0,4.8
+izleme,izleme_ab_esya_2_koridor_4_4,ab,esya_2,esya,b,2,1.0,koridor_4,4,k4_kapi_11,True,,79.0,19.127,19.175,0.0485,0.0006,0.0521,0.1999,0.212,0,0,0,0,0.0,beyin,0.0215,0,5.2
+izleme,izleme_ab_esya_2_koridor_5_3,ab,esya_2,esya,b,2,1.0,koridor_5,3,k5_kapi_6,True,,51.05,12.129,12.175,0.0495,0.0019,0.022,0.0842,0.0897,0,0,0,0,0.0,beyin,0.0372,0,3.6
+izleme,izleme_ab_esya_2_koridor_5_4,ab,esya_2,esya,b,2,1.0,koridor_5,4,k5_kapi_10,True,,83.05,20.131,20.175,0.0468,0.0017,0.0161,0.0334,0.0385,0,0,0,0,0.0,beyin,0.0213,0,5.0
+izleme,izleme_ab_esya_2_koridor_6_3,ab,esya_2,esya,b,2,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.133,12.175,0.052,0.0309,0.0279,0.1017,0.1225,0,0,0,0,0.0,beyin,0.0353,0,3.6
+izleme,izleme_ab_esya_2_koridor_6_4,ab,esya_2,esya,b,2,1.0,koridor_6,4,k6_kapi_10,True,,83.05,20.134,20.175,0.0477,0.0014,0.0249,0.1043,0.1352,0,0,0,0,0.0,beyin,0.0211,0,5.0
+izleme,izleme_ab_esya_4_koridor_1_3,ab,esya_4,esya,b,4,4.0,koridor_1,3,k1_kapi_12,True,,73.45,17.729,17.775,0.0675,0.0416,0.0376,0.0778,0.1005,0,0,0,0,0.0,beyin,0.0247,0,6.5
+izleme,izleme_ab_esya_4_koridor_1_4,ab,esya_4,esya,b,4,4.0,koridor_1,4,k1_kapi_18,True,,109.8,26.768,26.775,0.0698,0.0306,0.0399,0.1151,0.1344,0,0,0,0,0.0,beyin,0.0152,0,7.3
+izleme,izleme_ab_esya_4_koridor_2_3,ab,esya_4,esya,b,4,4.0,koridor_2,3,k2_kapi_2,True,,29.2,6.632,6.675,0.0794,0.0394,0.0686,0.1224,0.1288,0,0,0,0,0.0,beyin,0.0,0,1.3
+izleme,izleme_ab_esya_4_koridor_2_4,ab,esya_4,esya,b,4,4.0,koridor_2,4,k2_kapi_3,True,,39.45,9.228,9.275,0.0533,0.0054,0.0545,0.131,0.1395,0,0,0,0,0.0,beyin,0.0,0,1.8
+izleme,izleme_ab_esya_4_koridor_3_3,ab,esya_4,esya,b,4,4.0,koridor_3,3,k3_kapi_5,True,,45.2,10.646,10.675,0.0904,0.0902,0.0559,0.1059,0.1255,0,0,0,0,0.0,beyin,0.0083,0,2.5
+izleme,izleme_ab_esya_4_koridor_3_4,ab,esya_4,esya,b,4,4.0,koridor_3,4,k3_kapi_8,True,,92.85,21.654,21.475,0.0491,0.0048,0.0476,0.1312,0.1411,0,0,0,0,0.0,beyin,0.0056,0,4.8
+izleme,izleme_ab_esya_4_koridor_4_3,ab,esya_4,esya,b,4,4.0,koridor_4,3,k4_kapi_9,True,,71.15,16.102,16.175,0.0533,0.0803,0.1169,0.2747,0.284,0,0,0,0,0.0,beyin,0.0179,0,4.4
+izleme,izleme_ab_esya_4_koridor_4_4,ab,esya_4,esya,b,4,4.0,koridor_4,4,k4_kapi_11,True,,79.1,19.144,19.175,0.0525,0.0271,0.0614,0.2142,0.2373,0,0,0,0,0.0,beyin,0.0192,0,5.3
+izleme,izleme_ab_esya_4_koridor_5_3,ab,esya_4,esya,b,4,4.0,koridor_5,3,k5_kapi_6,True,,51.1,12.145,12.175,0.0546,0.025,0.0476,0.1195,0.1288,0,0,0,0,0.0,beyin,0.0318,0,4.0
+izleme,izleme_ab_esya_4_koridor_5_4,ab,esya_4,esya,b,4,4.0,koridor_5,4,k5_kapi_10,True,,83.15,20.15,20.175,0.0506,0.0087,0.0423,0.1109,0.1315,0,0,0,0,0.0,beyin,0.0173,0,5.6
+izleme,izleme_ab_esya_4_koridor_6_3,ab,esya_4,esya,b,4,4.0,koridor_6,3,k6_kapi_6,True,,51.4,12.161,12.175,0.0559,0.0833,0.0481,0.1581,0.1691,0,0,0,0,0.0,beyin,0.0261,0,4.0
+izleme,izleme_ab_esya_4_koridor_6_4,ab,esya_4,esya,b,4,4.0,koridor_6,4,k6_kapi_10,True,,83.2,20.157,20.175,0.0871,0.0885,0.0435,0.0998,0.1349,0,0,0,0,0.0,beyin,0.0161,0,5.9
+izleme,izleme_ab_insan_2_koridor_1_3,ab,insan_2,insan,c,2,1.0,koridor_1,3,k1_kapi_12,True,,73.5,17.738,17.775,0.0423,0.0131,0.0164,0.0387,0.0535,0,0,0,0,0.0,beyin,0.0315,0,8.1
+izleme,izleme_ab_insan_2_koridor_1_4,ab,insan_2,insan,c,2,1.0,koridor_1,4,k1_kapi_18,True,,109.45,26.741,26.775,0.0383,0.0113,0.0124,0.0275,0.0571,0,0,0,0,0.0,beyin,0.0204,0,8.5
+izleme,izleme_ab_insan_2_koridor_2_3,ab,insan_2,insan,c,2,1.0,koridor_2,3,k2_kapi_2,True,,29.0,6.628,6.675,0.0493,0.0023,0.0031,0.0115,0.0146,0,0,0,0,0.0,beyin,0.0,0,1.4
+izleme,izleme_ab_insan_2_koridor_2_4,ab,insan_2,insan,c,2,1.0,koridor_2,4,k2_kapi_3,True,,39.45,9.229,9.275,0.0469,0.001,0.0033,0.0118,0.0149,0,0,0,0,0.0,beyin,0.0,0,1.8
+izleme,izleme_ab_insan_2_koridor_3_3,ab,insan_2,insan,c,2,1.0,koridor_3,3,k3_kapi_5,True,,45.15,10.628,10.675,0.0509,0.0071,0.007,0.0196,0.047,0,0,0,0,0.0,beyin,0.0099,0,2.5
+izleme,izleme_ab_insan_2_koridor_3_4,ab,insan_2,insan,c,2,1.0,koridor_3,4,k3_kapi_8,True,,93.05,21.609,21.475,0.0488,0.005,0.0106,0.0288,0.061,0,0,0,0,0.0,beyin,0.0073,0,4.8
+izleme,izleme_ab_insan_2_koridor_4_3,ab,insan_2,insan,c,2,1.0,koridor_4,3,k4_kapi_9,True,,74.35,16.317,16.175,0.0479,0.0031,0.0105,0.0422,0.05,0,0,0,0,2.65,beyin,0.0205,0,4.6
+izleme,izleme_ab_insan_2_koridor_4_4,ab,insan_2,insan,c,2,1.0,koridor_4,4,k4_kapi_11,True,,79.3,19.129,19.175,0.0476,0.002,0.0052,0.0199,0.0303,0,0,0,0,0.0,beyin,0.0202,0,4.7
+izleme,izleme_ab_insan_2_koridor_5_3,ab,insan_2,insan,c,2,1.0,koridor_5,3,k5_kapi_6,True,,51.05,12.133,12.175,0.0426,0.0093,0.0137,0.0317,0.0662,0,0,0,0,0.0,beyin,0.0366,0,3.4
+izleme,izleme_ab_insan_2_koridor_5_4,ab,insan_2,insan,c,2,1.0,koridor_5,4,k5_kapi_10,True,,83.05,20.133,20.175,0.0472,0.0035,0.0094,0.0201,0.0281,0,0,0,0,0.0,beyin,0.0221,0,6.2
+izleme,izleme_ab_insan_2_koridor_6_3,ab,insan_2,insan,c,2,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.129,12.175,0.0459,0.0102,0.0089,0.0163,0.0567,0,0,0,0,0.0,beyin,0.0357,0,4.7
+izleme,izleme_ab_insan_2_koridor_6_4,ab,insan_2,insan,c,2,1.0,koridor_6,4,k6_kapi_10,True,,83.0,20.127,20.175,0.0511,0.0176,0.0095,0.0207,0.0243,0,0,0,0,0.0,beyin,0.0217,0,6.7
+izleme,izleme_ab_insan_4_koridor_1_3,ab,insan_4,insan,c,4,4.0,koridor_1,3,k1_kapi_12,True,,73.55,17.751,17.775,0.0461,0.0412,0.029,0.0469,0.053,0,0,0,0,0.0,beyin,0.0267,0,8.1
+izleme,izleme_ab_insan_4_koridor_1_4,ab,insan_4,insan,c,4,4.0,koridor_1,4,k1_kapi_18,True,,109.6,26.739,26.775,0.0498,0.0258,0.0282,0.0482,0.0658,0,0,0,0,0.0,beyin,0.0165,0,9.2
+izleme,izleme_ab_insan_4_koridor_2_3,ab,insan_4,insan,c,4,4.0,koridor_2,3,k2_kapi_2,True,,29.15,6.63,6.675,0.0468,0.0039,0.0058,0.0115,0.0159,0,0,0,0,0.0,beyin,0.0,0,1.4
+izleme,izleme_ab_insan_4_koridor_2_4,ab,insan_4,insan,c,4,4.0,koridor_2,4,k2_kapi_3,True,,39.4,9.225,9.275,0.0511,0.0023,0.0044,0.0107,0.0151,0,0,0,0,0.0,beyin,0.0,0,2.0
+izleme,izleme_ab_insan_4_koridor_3_3,ab,insan_4,insan,c,4,4.0,koridor_3,3,k3_kapi_5,True,,46.1,10.628,10.675,0.05,0.0018,0.0214,0.0421,0.052,0,0,0,0,0.2,beyin,0.0081,0,2.6
+izleme,izleme_ab_insan_4_koridor_3_4,ab,insan_4,insan,c,4,4.0,koridor_3,4,k3_kapi_8,True,,94.05,21.617,21.475,0.0478,0.003,0.0097,0.0278,0.0566,0,0,0,0,0.3,beyin,0.004,0,5.5
+izleme,izleme_ab_insan_4_koridor_4_3,ab,insan_4,insan,c,4,4.0,koridor_4,3,k4_kapi_9,True,,72.7,16.308,16.175,0.0471,0.0094,0.0125,0.0281,0.0455,0,0,0,0,0.3,beyin,0.0164,0,5.6
+izleme,izleme_ab_insan_4_koridor_4_4,ab,insan_4,insan,c,4,4.0,koridor_4,4,k4_kapi_11,True,,80.8,19.128,19.175,0.0491,0.001,0.0081,0.026,0.0382,0,0,0,0,0.0,beyin,0.0147,0,5.5
+izleme,izleme_ab_insan_4_koridor_5_3,ab,insan_4,insan,c,4,4.0,koridor_5,3,k5_kapi_6,True,,51.45,12.133,12.175,0.0431,0.0161,0.0193,0.038,0.0567,0,0,0,0,0.0,beyin,0.0273,0,3.4
+izleme,izleme_ab_insan_4_koridor_5_4,ab,insan_4,insan,c,4,4.0,koridor_5,4,k5_kapi_10,True,,83.85,20.138,20.175,0.0436,0.0051,0.0122,0.0298,0.0336,0,0,0,0,0.0,beyin,0.0146,0,5.6
+izleme,izleme_ab_insan_4_koridor_6_3,ab,insan_4,insan,c,4,4.0,koridor_6,3,k6_kapi_6,True,,51.1,12.131,12.175,0.0443,0.0064,0.0223,0.0703,0.0937,0,0,0,0,0.0,beyin,0.0296,0,3.7
+izleme,izleme_ab_insan_4_koridor_6_4,ab,insan_4,insan,c,4,4.0,koridor_6,4,k6_kapi_10,True,,83.35,20.128,20.175,0.0552,0.0288,0.0182,0.0287,0.0333,0,0,0,0,0.0,beyin,0.0167,0,5.5
+izleme,izleme_ab_kapi_1_koridor_1_3,ab,kapi_1,kapi,a,1,0.1,koridor_1,3,k1_kapi_12,True,,73.45,17.733,17.775,0.045,0.0037,0.005,0.0185,0.0509,0,0,0,0,0.0,beyin,0.033,0,6.5
+izleme,izleme_ab_kapi_1_koridor_1_4,ab,kapi_1,kapi,a,1,0.1,koridor_1,4,k1_kapi_18,True,,109.45,26.73,26.775,0.0482,0.0005,0.0045,0.0083,0.0557,0,0,0,0,0.0,beyin,0.022,0,8.6
+izleme,izleme_ab_kapi_1_koridor_2_3,ab,kapi_1,kapi,a,1,0.1,koridor_2,3,k2_kapi_2,True,,29.0,6.628,6.675,0.0491,0.0015,0.0028,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.4
+izleme,izleme_ab_kapi_1_koridor_2_4,ab,kapi_1,kapi,a,1,0.1,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0494,0.0008,0.0031,0.0102,0.0161,0,0,0,0,0.0,beyin,0.0,0,1.9
+izleme,izleme_ab_kapi_1_koridor_3_3,ab,kapi_1,kapi,a,1,0.1,koridor_3,3,k3_kapi_5,True,,45.0,10.627,10.675,0.0512,0.0028,0.0045,0.0118,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.5
+izleme,izleme_ab_kapi_1_koridor_3_4,ab,kapi_1,kapi,a,1,0.1,koridor_3,4,k3_kapi_8,True,,92.65,21.607,21.475,0.0497,0.002,0.0078,0.0305,0.061,0,0,0,0,0.0,beyin,0.0082,0,4.6
+izleme,izleme_ab_kapi_1_koridor_4_3,ab,kapi_1,kapi,a,1,0.1,koridor_4,3,k4_kapi_9,True,,71.5,16.317,16.175,0.0468,0.0018,0.0078,0.0266,0.0626,0,0,0,0,0.0,beyin,0.0235,0,4.6
+izleme,izleme_ab_kapi_1_koridor_4_4,ab,kapi_1,kapi,a,1,0.1,koridor_4,4,k4_kapi_11,True,,79.0,19.126,19.175,0.0503,0.0014,0.005,0.0169,0.0265,0,0,0,0,0.0,beyin,0.0213,0,5.0
+izleme,izleme_ab_kapi_1_koridor_5_3,ab,kapi_1,kapi,a,1,0.1,koridor_5,3,k5_kapi_6,True,,51.05,12.127,12.175,0.0479,0.0018,0.0094,0.0338,0.0681,0,0,0,0,0.0,beyin,0.0377,0,4.0
+izleme,izleme_ab_kapi_1_koridor_5_4,ab,kapi_1,kapi,a,1,0.1,koridor_5,4,k5_kapi_10,True,,83.05,20.132,20.175,0.0464,0.0019,0.0053,0.011,0.0282,0,0,0,0,0.0,beyin,0.0231,0,5.5
+izleme,izleme_ab_kapi_1_koridor_6_3,ab,kapi_1,kapi,a,1,0.1,koridor_6,3,k6_kapi_6,True,,51.0,12.125,12.175,0.0499,0.003,0.0047,0.01,0.0399,0,0,0,0,0.0,beyin,0.0368,0,4.0
+izleme,izleme_ab_kapi_1_koridor_6_4,ab,kapi_1,kapi,a,1,0.1,koridor_6,4,k6_kapi_10,True,,83.0,20.126,20.175,0.0496,0.0013,0.0062,0.0206,0.0244,0,0,0,0,0.0,beyin,0.0226,0,5.3
+izleme,izleme_ab_kapi_2_koridor_1_3,ab,kapi_2,kapi,a,2,0.25,koridor_1,3,k1_kapi_12,True,,73.45,17.731,17.775,0.0469,0.0015,0.0053,0.0122,0.0525,0,0,0,0,0.0,beyin,0.033,0,6.0
+izleme,izleme_ab_kapi_2_koridor_1_4,ab,kapi_2,kapi,a,2,0.25,koridor_1,4,k1_kapi_18,True,,109.45,26.731,26.775,0.0471,0.0017,0.0174,0.1206,0.1827,0,0,0,0,0.0,beyin,0.0221,0,8.2
+izleme,izleme_ab_kapi_2_koridor_2_3,ab,kapi_2,kapi,a,2,0.25,koridor_2,3,k2_kapi_2,True,,29.0,6.628,6.675,0.0491,0.0015,0.0028,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.3
+izleme,izleme_ab_kapi_2_koridor_2_4,ab,kapi_2,kapi,a,2,0.25,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0494,0.0008,0.0031,0.0102,0.0161,0,0,0,0,0.0,beyin,0.0,0,1.7
+izleme,izleme_ab_kapi_2_koridor_3_3,ab,kapi_2,kapi,a,2,0.25,koridor_3,3,k3_kapi_5,True,,45.0,10.627,10.675,0.0512,0.0028,0.0045,0.0118,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.3
+izleme,izleme_ab_kapi_2_koridor_3_4,ab,kapi_2,kapi,a,2,0.25,koridor_3,4,k3_kapi_8,True,,92.75,21.618,21.475,0.041,0.0079,0.0084,0.0305,0.061,0,0,0,0,0.0,beyin,0.0082,0,5.0
+izleme,izleme_ab_kapi_2_koridor_4_3,ab,kapi_2,kapi,a,2,0.25,koridor_4,3,k4_kapi_9,True,,71.4,16.31,16.175,0.0483,0.0003,0.0079,0.0244,0.0593,0,0,0,0,0.0,beyin,0.0236,0,4.8
+izleme,izleme_ab_kapi_2_koridor_4_4,ab,kapi_2,kapi,a,2,0.25,koridor_4,4,k4_kapi_11,True,,79.0,19.126,19.175,0.0496,0.0011,0.0055,0.0198,0.0275,0,0,0,0,0.0,beyin,0.0213,0,5.3
+izleme,izleme_ab_kapi_2_koridor_5_3,ab,kapi_2,kapi,a,2,0.25,koridor_5,3,k5_kapi_6,True,,51.0,12.123,12.175,0.051,0.0033,0.0103,0.034,0.0681,0,0,0,0,0.0,beyin,0.0374,0,3.8
+izleme,izleme_ab_kapi_2_koridor_5_4,ab,kapi_2,kapi,a,2,0.25,koridor_5,4,k5_kapi_10,True,,83.0,20.128,20.175,0.0501,0.0011,0.0042,0.0109,0.0255,0,0,0,0,0.0,beyin,0.0232,0,5.4
+izleme,izleme_ab_kapi_2_koridor_6_3,ab,kapi_2,kapi,a,2,0.25,koridor_6,3,k6_kapi_6,True,,51.0,12.122,12.175,0.0528,0.0041,0.0048,0.0081,0.0399,0,0,0,0,0.0,beyin,0.0371,0,3.8
+izleme,izleme_ab_kapi_2_koridor_6_4,ab,kapi_2,kapi,a,2,0.25,koridor_6,4,k6_kapi_10,True,,83.0,20.127,20.175,0.0487,0.0028,0.0173,0.0638,0.0832,0,0,0,0,0.0,beyin,0.0228,0,5.6
+izleme,izleme_ab_kapi_3_koridor_1_3,ab,kapi_3,kapi,a,3,0.5,koridor_1,3,k1_kapi_12,True,,73.75,17.848,17.775,0.0697,0.1175,0.0235,0.1564,0.1981,0,0,0,0,0.0,beyin,0.0329,0,7.4
+izleme,izleme_ab_kapi_3_koridor_1_4,ab,kapi_3,kapi,a,3,0.5,koridor_1,4,k1_kapi_18,True,,109.45,26.731,26.775,0.047,0.002,0.0263,0.1653,0.2408,0,0,0,0,0.0,beyin,0.0222,0,8.9
+izleme,izleme_ab_kapi_3_koridor_2_3,ab,kapi_3,kapi,a,3,0.5,koridor_2,3,k2_kapi_2,True,,29.0,6.63,6.675,0.0468,0.003,0.0055,0.0136,0.0222,0,0,0,0,0.0,beyin,0.0,0,1.3
+izleme,izleme_ab_kapi_3_koridor_2_4,ab,kapi_3,kapi,a,3,0.5,koridor_2,4,k2_kapi_3,True,,39.45,9.225,9.275,0.0504,0.0024,0.0059,0.0139,0.0162,0,0,0,0,0.0,beyin,0.0,0,1.8
+izleme,izleme_ab_kapi_3_koridor_3_3,ab,kapi_3,kapi,a,3,0.5,koridor_3,3,k3_kapi_5,True,,45.0,10.627,10.675,0.0512,0.0028,0.0045,0.0118,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.6
+izleme,izleme_ab_kapi_3_koridor_3_4,ab,kapi_3,kapi,a,3,0.5,koridor_3,4,k3_kapi_8,True,,92.75,21.617,21.475,0.0399,0.0092,0.0068,0.0171,0.0594,0,0,0,0,0.0,beyin,0.0083,0,5.3
+izleme,izleme_ab_kapi_3_koridor_4_3,ab,kapi_3,kapi,a,3,0.5,koridor_4,3,k4_kapi_9,True,,71.5,16.311,16.175,0.0475,0.0016,0.0073,0.0236,0.0495,0,0,0,0,0.0,beyin,0.0234,0,4.7
+izleme,izleme_ab_kapi_3_koridor_4_4,ab,kapi_3,kapi,a,3,0.5,koridor_4,4,k4_kapi_11,True,,79.0,19.126,19.175,0.0504,0.0025,0.0056,0.0206,0.0291,0,0,0,0,0.0,beyin,0.0213,0,5.2
+izleme,izleme_ab_kapi_3_koridor_5_3,ab,kapi_3,kapi,a,3,0.5,koridor_5,3,k5_kapi_6,True,,51.0,12.128,12.175,0.0463,0.0031,0.0075,0.0343,0.0643,0,0,0,0,0.0,beyin,0.0375,0,3.9
+izleme,izleme_ab_kapi_3_koridor_5_4,ab,kapi_3,kapi,a,3,0.5,koridor_5,4,k5_kapi_10,True,,83.0,20.127,20.175,0.0512,0.0023,0.0048,0.0122,0.0255,0,0,0,0,0.0,beyin,0.023,0,5.4
+izleme,izleme_ab_kapi_3_koridor_6_3,ab,kapi_3,kapi,a,3,0.5,koridor_6,3,k6_kapi_6,True,,51.05,12.131,12.175,0.0429,0.0058,0.0058,0.0097,0.0403,0,0,0,0,0.0,beyin,0.0367,0,3.9
+izleme,izleme_ab_kapi_3_koridor_6_4,ab,kapi_3,kapi,a,3,0.5,koridor_6,4,k6_kapi_10,True,,83.05,20.13,20.175,0.0458,0.0023,0.2288,0.615,0.6403,140,0,0,0,0.0,beyin,0.0227,0,5.8
+izleme,izleme_ab_kapi_4_koridor_1_3,ab,kapi_4,kapi,a,4,1.0,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 0.42 m (tahmin hatasi 0.38 m)",71.95,17.355,17.775,0.4236,0.3765,0.2071,0.4223,0.4397,0,0,0,0,0.0,beyin,0.0344,0,7.3
+izleme,izleme_ab_kapi_4_koridor_1_4,ab,kapi_4,kapi,a,4,1.0,koridor_1,4,k1_kapi_18,True,,109.45,26.736,26.775,0.0431,0.0054,0.1576,0.4045,0.4359,0,0,0,0,0.0,beyin,0.0224,0,8.4
+izleme,izleme_ab_kapi_4_koridor_2_3,ab,kapi_4,kapi,a,4,1.0,koridor_2,3,k2_kapi_2,True,,29.0,6.631,6.675,0.0458,0.0039,0.0066,0.0136,0.0222,0,0,0,0,0.0,beyin,0.0,0,1.2
+izleme,izleme_ab_kapi_4_koridor_2_4,ab,kapi_4,kapi,a,4,1.0,koridor_2,4,k2_kapi_3,True,,39.4,9.222,9.275,0.0532,0.0031,0.0056,0.0122,0.0162,0,0,0,0,0.0,beyin,0.0,0,1.8
+izleme,izleme_ab_kapi_4_koridor_3_3,ab,kapi_4,kapi,a,4,1.0,koridor_3,3,k3_kapi_5,True,,45.0,10.627,10.675,0.0513,0.0019,0.0053,0.0151,0.0467,0,0,0,0,0.0,beyin,0.0122,0,2.4
+izleme,izleme_ab_kapi_4_koridor_3_4,ab,kapi_4,kapi,a,4,1.0,koridor_3,4,k3_kapi_8,True,,92.7,21.61,21.475,0.0452,0.0058,0.0097,0.0312,0.0593,0,0,0,0,0.0,beyin,0.0082,0,4.6
+izleme,izleme_ab_kapi_4_koridor_4_3,ab,kapi_4,kapi,a,4,1.0,koridor_4,3,k4_kapi_9,True,,71.5,16.307,16.175,0.0461,0.0025,0.0311,0.1265,0.1332,0,0,0,0,0.0,beyin,0.0237,0,4.6
+izleme,izleme_ab_kapi_4_koridor_4_4,ab,kapi_4,kapi,a,4,1.0,koridor_4,4,k4_kapi_11,True,,79.0,19.132,19.175,0.0446,0.0051,0.0247,0.112,0.1289,0,0,0,0,0.0,beyin,0.0214,0,5.0
+izleme,izleme_ab_kapi_4_koridor_5_3,ab,kapi_4,kapi,a,4,1.0,koridor_5,3,k5_kapi_6,True,,51.0,12.125,12.175,0.0494,0.0002,0.0314,0.0904,0.0987,0,0,0,0,0.0,beyin,0.0373,0,3.8
+izleme,izleme_ab_kapi_4_koridor_5_4,ab,kapi_4,kapi,a,4,1.0,koridor_5,4,k5_kapi_10,True,,83.05,20.132,20.175,0.0466,0.0017,0.0173,0.0782,0.1032,0,0,0,0,0.0,beyin,0.023,0,5.2
+izleme,izleme_ab_kapi_4_koridor_6_3,ab,kapi_4,kapi,a,4,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.13,12.175,0.0444,0.0036,0.0334,0.0981,0.1108,0,0,0,0,0.0,beyin,0.0368,0,3.7
+izleme,izleme_ab_kapi_4_koridor_6_4,ab,kapi_4,kapi,a,4,1.0,koridor_6,4,k6_kapi_10,True,,83.0,20.126,20.175,0.05,0.0006,0.2566,0.5899,0.6078,205,0,0,0,0.0,beyin,0.0226,0,5.6
+izleme,izleme_ab_okul_agir_koridor_1_3,ab,okul_agir,okul,g,3,3,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 2.37 m (tahmin hatasi 2.28 m)",87.15,15.781,17.775,2.373,2.2825,1.4542,2.2341,2.2825,703,0,0,0,18.5,beyin,0.4286,6,17.2
+izleme,izleme_ab_okul_agir_koridor_1_4,ab,okul_agir,okul,g,3,3,koridor_1,4,k1_kapi_18,False,sure doldu (hedefe 7.00 m),232.8,20.471,26.775,7.0016,2.2687,1.6443,2.2687,2.2687,2215,0,0,0,139.0,sure,0.5244,1,26.6
+izleme,izleme_ab_okul_agir_koridor_2_3,ab,okul_agir,okul,g,3,3,koridor_2,3,k2_kapi_2,False,"beyin bitti dedi, hedefe 0.31 m (tahmin hatasi 0.26 m)",29.45,6.523,6.675,0.3112,0.2603,0.2535,0.4358,0.4484,0,0,0,0,0.3,beyin,0.396,1,3.6
+izleme,izleme_ab_okul_agir_koridor_2_4,ab,okul_agir,okul,g,3,3,koridor_2,4,k2_kapi_3,False,sure doldu (hedefe 6.38 m),106.8,3.195,9.275,6.3843,0.9749,0.9109,0.9749,0.9749,978,0,0,0,90.8,sure,0.6036,2,5.1
+izleme,izleme_ab_okul_agir_koridor_3_3,ab,okul_agir,okul,g,3,3,koridor_3,3,k3_kapi_5,False,"beyin bitti dedi, hedefe 1.11 m (tahmin hatasi 1.04 m)",42.0,9.79,10.675,1.1088,1.0419,0.5584,1.0419,1.06,292,0,0,0,0.0,beyin,0.4408,3,6.1
+izleme,izleme_ab_okul_agir_koridor_3_4,ab,okul_agir,okul,g,3,3,koridor_3,4,k3_kapi_8,False,sure doldu (hedefe 7.54 m),194.65,14.567,21.475,7.5403,0.1028,0.2206,0.5769,0.6496,340,0,0,0,128.45,sure,0.3677,1,14.7
+izleme,izleme_ab_okul_agir_koridor_4_3,ab,okul_agir,okul,g,3,3,koridor_4,3,k4_kapi_9,False,"beyin bitti dedi, hedefe 0.73 m (tahmin hatasi 0.70 m)",92.15,15.143,16.175,0.7256,0.697,0.7614,0.9414,0.9556,816,0,0,0,19.5,beyin,0.4657,2,15.2
+izleme,izleme_ab_okul_agir_koridor_4_4,ab,okul_agir,okul,g,3,3,koridor_4,4,k4_kapi_11,False,sure doldu (hedefe 11.76 m); temas 1,178.1,8.031,19.175,11.7624,1.835,1.1922,1.7807,1.8346,1503,1,1,0,0.2,sure,0.823,0,14.6
+izleme,izleme_ab_okul_agir_koridor_5_3,ab,okul_agir,okul,g,3,3,koridor_5,3,k5_kapi_6,False,"beyin bitti dedi, hedefe 1.58 m (tahmin hatasi 1.50 m)",45.85,10.85,12.175,1.5788,1.5005,1.0072,1.4921,1.5006,432,0,0,0,0.0,beyin,0.461,0,9.6
+izleme,izleme_ab_okul_agir_koridor_5_4,ab,okul_agir,okul,g,3,3,koridor_5,4,k5_kapi_10,False,"beyin bitti dedi, hedefe 3.40 m (tahmin hatasi 3.29 m)",93.45,17.221,20.175,3.3982,3.288,1.8207,3.2406,3.2881,835,0,0,0,18.4,beyin,0.4774,5,14.8
+izleme,izleme_ab_okul_agir_koridor_6_3,ab,okul_agir,okul,g,3,3,koridor_6,3,k6_kapi_6,False,"beyin bitti dedi, hedefe 1.08 m (tahmin hatasi 1.08 m)",49.15,11.425,12.175,1.0781,1.0765,0.755,1.0634,1.0765,453,0,0,0,0.0,beyin,0.425,0,10.2
+izleme,izleme_ab_okul_agir_koridor_6_4,ab,okul_agir,okul,g,3,3,koridor_6,4,k6_kapi_10,False,"beyin bitti dedi, hedefe 1.52 m (tahmin hatasi 1.45 m)",100.95,19.096,20.175,1.5238,1.4493,1.1363,1.4718,1.4961,988,0,0,0,19.0,beyin,0.4566,0,18.6
+izleme,izleme_ab_okul_hafif_koridor_1_3,ab,okul_hafif,okul,g,1,1,koridor_1,3,k1_kapi_12,True,,73.8,17.824,17.775,0.0537,0.027,0.0444,0.078,0.1228,0,0,0,0,0.0,beyin,0.1696,0,14.7
+izleme,izleme_ab_okul_hafif_koridor_1_4,ab,okul_hafif,okul,g,1,1,koridor_1,4,k1_kapi_18,True,,110.0,26.868,26.775,0.0501,0.0322,0.0885,0.3399,0.3968,0,0,0,0,0.0,beyin,0.0713,0,12.0
+izleme,izleme_ab_okul_hafif_koridor_2_3,ab,okul_hafif,okul,g,1,1,koridor_2,3,k2_kapi_2,True,,29.2,6.675,6.675,0.0385,0.0107,0.0487,0.1224,0.1287,0,0,0,0,0.0,beyin,0.0427,0,1.8
+izleme,izleme_ab_okul_hafif_koridor_2_4,ab,okul_hafif,okul,g,1,1,koridor_2,4,k2_kapi_3,True,,39.6,9.271,9.275,0.0515,0.0029,0.0183,0.0351,0.0382,0,0,0,0,0.0,beyin,0.0687,0,2.7
+izleme,izleme_ab_okul_hafif_koridor_3_3,ab,okul_hafif,okul,g,1,1,koridor_3,3,k3_kapi_5,True,,45.25,10.667,10.675,0.0656,0.0173,0.0185,0.0346,0.0657,0,0,0,0,0.0,beyin,0.177,0,6.3
+izleme,izleme_ab_okul_hafif_koridor_3_4,ab,okul_hafif,okul,g,1,1,koridor_3,4,k3_kapi_8,True,,93.35,21.712,21.475,0.053,0.0047,0.0167,0.0496,0.0686,0,0,0,0,0.0,beyin,0.1014,0,10.3
+izleme,izleme_ab_okul_hafif_koridor_4_3,ab,okul_hafif,okul,g,1,1,koridor_4,3,k4_kapi_9,True,,74.6,16.391,16.175,0.044,0.0049,0.0272,0.1082,0.13,0,0,0,0,2.85,beyin,0.1424,0,9.8
+izleme,izleme_ab_okul_hafif_koridor_4_4,ab,okul_hafif,okul,g,1,1,koridor_4,4,k4_kapi_11,True,,79.45,19.23,19.175,0.0433,0.0055,0.0176,0.0516,0.0619,0,0,0,0,0.0,beyin,0.1826,0,13.4
+izleme,izleme_ab_okul_hafif_koridor_5_3,ab,okul_hafif,okul,g,1,1,koridor_5,3,k5_kapi_6,True,,51.35,12.205,12.175,0.0307,0.0193,0.0255,0.0459,0.0743,0,0,0,0,0.0,beyin,0.1198,0,8.6
+izleme,izleme_ab_okul_hafif_koridor_5_4,ab,okul_hafif,okul,g,1,1,koridor_5,4,k5_kapi_10,True,,83.7,20.234,20.175,0.0459,0.0097,0.0206,0.0492,0.0523,0,0,0,0,0.0,beyin,0.1389,0,13.1
+izleme,izleme_ab_okul_hafif_koridor_6_3,ab,okul_hafif,okul,g,1,1,koridor_6,3,k6_kapi_6,True,,51.3,12.19,12.175,0.0461,0.0071,0.0216,0.0515,0.0591,0,0,0,0,0.0,beyin,0.0877,0,6.5
+izleme,izleme_ab_okul_hafif_koridor_6_4,ab,okul_hafif,okul,g,1,1,koridor_6,4,k6_kapi_10,True,,83.55,20.231,20.175,0.0496,0.0033,0.0157,0.0477,0.0635,0,0,0,0,0.0,beyin,0.183,0,12.3
+izleme,izleme_ab_okul_orta_koridor_1_3,ab,okul_orta,okul,g,2,2,koridor_1,3,k1_kapi_12,True,,95.65,17.752,17.775,0.224,0.1726,0.2539,0.5357,0.599,67,0,0,0,18.6,beyin,0.333,3,18.4
+izleme,izleme_ab_okul_orta_koridor_1_4,ab,okul_orta,okul,g,2,2,koridor_1,4,k1_kapi_18,True,,136.1,26.991,26.775,0.0787,0.0303,0.3035,0.5678,0.6135,136,0,0,0,19.7,beyin,0.1619,2,23.5
+izleme,izleme_ab_okul_orta_koridor_2_3,ab,okul_orta,okul,g,2,2,koridor_2,3,k2_kapi_2,True,,29.25,6.692,6.675,0.0958,0.0797,0.0623,0.0808,0.0832,0,0,0,0,0.0,beyin,0.2369,0,3.3
+izleme,izleme_ab_okul_orta_koridor_2_4,ab,okul_orta,okul,g,2,2,koridor_2,4,k2_kapi_3,True,,39.85,9.326,9.275,0.0559,0.0208,0.0953,0.2131,0.2174,0,0,0,0,0.0,beyin,0.2165,0,4.9
+izleme,izleme_ab_okul_orta_koridor_3_3,ab,okul_orta,okul,g,2,2,koridor_3,3,k3_kapi_5,True,,46.5,10.733,10.675,0.054,0.019,0.0476,0.0811,0.0854,0,0,0,0,0.0,beyin,0.2165,0,6.1
+izleme,izleme_ab_okul_orta_koridor_3_4,ab,okul_orta,okul,g,2,2,koridor_3,4,k3_kapi_8,True,,120.8,21.804,21.475,0.0619,0.0126,0.1218,0.2873,0.3415,0,0,0,0,21.0,beyin,0.1774,3,15.0
+izleme,izleme_ab_okul_orta_koridor_4_3,ab,okul_orta,okul,g,2,2,koridor_4,3,k4_kapi_9,True,,72.45,16.404,16.175,0.0553,0.031,0.1373,0.3074,0.415,0,0,0,0,0.1,beyin,0.359,1,17.7
+izleme,izleme_ab_okul_orta_koridor_4_4,ab,okul_orta,okul,g,2,2,koridor_4,4,k4_kapi_11,True,,102.4,19.268,19.175,0.1121,0.0622,0.1799,0.3171,0.3872,0,0,0,0,18.8,beyin,0.3218,2,17.4
+izleme,izleme_ab_okul_orta_koridor_5_3,ab,okul_orta,okul,g,2,2,koridor_5,3,k5_kapi_6,True,,72.3,12.102,12.175,0.1948,0.1455,0.1002,0.1673,0.1945,0,0,0,0,17.4,beyin,0.3276,0,8.8
+izleme,izleme_ab_okul_orta_koridor_5_4,ab,okul_orta,okul,g,2,2,koridor_5,4,k5_kapi_10,True,,104.95,20.349,20.175,0.1517,0.178,0.1153,0.2333,0.2703,0,0,0,0,17.2,beyin,0.286,0,12.6
+izleme,izleme_ab_okul_orta_koridor_6_3,ab,okul_orta,okul,g,2,2,koridor_6,3,k6_kapi_6,True,,71.9,12.056,12.175,0.2624,0.2118,0.1483,0.2136,0.2363,0,0,0,0,17.7,beyin,0.2598,0,11.0
+izleme,izleme_ab_okul_orta_koridor_6_4,ab,okul_orta,okul,g,2,2,koridor_6,4,k6_kapi_10,True,,104.15,20.126,20.175,0.2586,0.2078,0.4428,0.7158,0.7344,334,0,0,0,17.7,beyin,0.26,2,16.7
+izleme,izleme_ab_taban_koridor_1_3,ab,taban,taban,-,0,0.0,koridor_1,3,k1_kapi_12,True,,73.45,17.728,17.775,0.0498,0.002,0.0047,0.0158,0.0527,0,0,0,0,0.0,beyin,0.0328,0,7.3
+izleme,izleme_ab_taban_koridor_1_4,ab,taban,taban,-,0,0.0,koridor_1,4,k1_kapi_18,True,,109.45,26.732,26.775,0.0459,0.003,0.0039,0.0072,0.0571,0,0,0,0,0.0,beyin,0.0221,0,8.3
+izleme,izleme_ab_taban_koridor_2_3,ab,taban,taban,-,0,0.0,koridor_2,3,k2_kapi_2,True,,29.05,6.631,6.675,0.0462,0.0021,0.0035,0.0089,0.0141,0,0,0,0,0.0,beyin,0.0,0,1.5
+izleme,izleme_ab_taban_koridor_2_4,ab,taban,taban,-,0,0.0,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0497,0.0006,0.0026,0.0102,0.0161,0,0,0,0,0.0,beyin,0.0,0,2.0
+izleme,izleme_ab_taban_koridor_3_3,ab,taban,taban,-,0,0.0,koridor_3,3,k3_kapi_5,True,,45.05,10.627,10.675,0.051,0.0035,0.0064,0.0196,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.4
+izleme,izleme_ab_taban_koridor_3_4,ab,taban,taban,-,0,0.0,koridor_3,4,k3_kapi_8,True,,92.65,21.61,21.475,0.049,0.0011,0.0075,0.0305,0.061,0,0,0,0,0.0,beyin,0.0082,0,4.7
+izleme,izleme_ab_taban_koridor_4_3,ab,taban,taban,-,0,0.0,koridor_4,3,k4_kapi_9,True,,71.5,16.312,16.175,0.047,0.0021,0.0074,0.0244,0.0527,0,0,0,0,0.0,beyin,0.0235,0,4.5
+izleme,izleme_ab_taban_koridor_4_4,ab,taban,taban,-,0,0.0,koridor_4,4,k4_kapi_11,True,,79.05,19.13,19.175,0.046,0.0021,0.0049,0.0168,0.0265,0,0,0,0,0.0,beyin,0.0213,0,5.1
+izleme,izleme_ab_taban_koridor_5_3,ab,taban,taban,-,0,0.0,koridor_5,3,k5_kapi_6,True,,51.0,12.122,12.175,0.0525,0.0036,0.01,0.034,0.0681,0,0,0,0,0.0,beyin,0.0375,0,3.7
+izleme,izleme_ab_taban_koridor_5_4,ab,taban,taban,-,0,0.0,koridor_5,4,k5_kapi_10,True,,83.05,20.131,20.175,0.0471,0.0011,0.0057,0.0128,0.0282,0,0,0,0,0.0,beyin,0.0231,0,5.1
+izleme,izleme_ab_taban_koridor_6_3,ab,taban,taban,-,0,0.0,koridor_6,3,k6_kapi_6,True,,51.0,12.124,12.175,0.0508,0.002,0.0047,0.0095,0.0399,0,0,0,0,0.0,beyin,0.0369,0,3.6
+izleme,izleme_ab_taban_koridor_6_4,ab,taban,taban,-,0,0.0,koridor_6,4,k6_kapi_10,True,,83.05,20.13,20.175,0.0461,0.0024,0.0066,0.0206,0.0244,0,0,0,0,0.0,beyin,0.0228,0,4.9
+varsayilan,varsayilan_ab_cam_2_koridor_1_3,ab,cam_2,cam,e,2,0.5,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 16.27 m (tahmin hatasi 18.91 m)",7.25,1.505,17.775,16.2738,18.9134,2.9029,18.9135,18.9456,0,0,0,0,0.0,beyin,0.036,0,0.6
+varsayilan,varsayilan_ab_cam_2_koridor_1_4,ab,cam_2,cam,e,2,0.5,koridor_1,4,k1_kapi_18,True,,109.45,26.739,26.775,0.0386,0.0102,0.0675,0.2709,0.3289,0,0,0,0,0.0,beyin,0.0222,0,8.1
+varsayilan,varsayilan_ab_cam_2_koridor_2_3,ab,cam_2,cam,e,2,0.5,koridor_2,3,k2_kapi_2,True,,29.05,6.631,6.675,0.0455,0.0029,0.0035,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.2
+varsayilan,varsayilan_ab_cam_2_koridor_2_4,ab,cam_2,cam,e,2,0.5,koridor_2,4,k2_kapi_3,True,,39.45,9.229,9.275,0.0468,0.0016,0.0031,0.0103,0.0162,0,0,0,0,0.0,beyin,0.0,0,1.7
+varsayilan,varsayilan_ab_cam_2_koridor_3_3,ab,cam_2,cam,e,2,0.5,koridor_3,3,k3_kapi_5,True,,45.0,10.626,10.675,0.0523,0.0049,0.0043,0.0104,0.0467,0,0,0,0,0.0,beyin,0.0122,0,2.3
+varsayilan,varsayilan_ab_cam_2_koridor_3_4,ab,cam_2,cam,e,2,0.5,koridor_3,4,k3_kapi_8,True,,92.75,21.622,21.475,0.0388,0.0106,0.007,0.0236,0.0599,0,0,0,0,0.0,beyin,0.0083,0,4.5
+varsayilan,varsayilan_ab_cam_2_koridor_4_3,ab,cam_2,cam,e,2,0.5,koridor_4,3,k4_kapi_9,True,,71.35,16.301,16.175,0.0489,0.0014,0.0074,0.0226,0.0481,0,0,0,0,0.0,beyin,0.0237,0,4.4
+varsayilan,varsayilan_ab_cam_2_koridor_4_4,ab,cam_2,cam,e,2,0.5,koridor_4,4,k4_kapi_11,True,,79.0,19.125,19.175,0.0511,0.0024,0.0235,0.1092,0.1205,0,0,0,0,0.0,beyin,0.0214,0,4.5
+varsayilan,varsayilan_ab_cam_2_koridor_5_3,ab,cam_2,cam,e,2,0.5,koridor_5,3,k5_kapi_6,True,,51.0,12.125,12.175,0.0497,0.0017,0.0072,0.034,0.0681,0,0,0,0,0.0,beyin,0.0372,0,2.5
+varsayilan,varsayilan_ab_cam_2_koridor_5_4,ab,cam_2,cam,e,2,0.5,koridor_5,4,k5_kapi_10,False,"beyin bitti dedi, hedefe 17.91 m (tahmin hatasi 17.86 m)",110.8,26.403,20.175,17.9085,17.86,4.3042,16.1833,17.86,656,0,0,0,0.0,beyin,0.0224,0,6.3
+varsayilan,varsayilan_ab_cam_2_koridor_6_3,ab,cam_2,cam,e,2,0.5,koridor_6,3,k6_kapi_6,True,,51.0,12.126,12.175,0.0487,0.0018,0.0052,0.009,0.0403,0,0,0,0,0.0,beyin,0.0367,0,3.6
+varsayilan,varsayilan_ab_cam_2_koridor_6_4,ab,cam_2,cam,e,2,0.5,koridor_6,4,k6_kapi_10,True,,83.0,20.125,20.175,0.0508,0.0016,0.0067,0.0229,0.0247,0,0,0,0,0.0,beyin,0.0227,0,4.6
+varsayilan,varsayilan_ab_cam_4_koridor_1_3,ab,cam_4,cam,e,4,1.0,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 14.87 m (tahmin hatasi 14.83 m)",14.75,2.925,17.775,14.8709,14.8296,6.8576,14.8297,14.8297,63,0,0,0,0.0,beyin,0.0363,0,1.1
+varsayilan,varsayilan_ab_cam_4_koridor_1_4,ab,cam_4,cam,e,4,1.0,koridor_1,4,k1_kapi_18,True,,137.55,31.195,26.775,0.0408,0.0088,5.8121,16.6613,19.4822,667,0,0,0,0.0,beyin,0.0229,0,9.7
+varsayilan,varsayilan_ab_cam_4_koridor_2_3,ab,cam_4,cam,e,4,1.0,koridor_2,3,k2_kapi_2,True,,29.05,6.63,6.675,0.0472,0.0013,0.0038,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.0
+varsayilan,varsayilan_ab_cam_4_koridor_2_4,ab,cam_4,cam,e,4,1.0,koridor_2,4,k2_kapi_3,True,,39.45,9.23,9.275,0.0459,0.0027,0.0032,0.0103,0.0162,0,0,0,0,0.0,beyin,0.0,0,1.6
+varsayilan,varsayilan_ab_cam_4_koridor_3_3,ab,cam_4,cam,e,4,1.0,koridor_3,3,k3_kapi_5,True,,45.0,10.625,10.675,0.0537,0.005,0.004,0.0104,0.0467,0,0,0,0,0.0,beyin,0.0122,0,2.3
+varsayilan,varsayilan_ab_cam_4_koridor_3_4,ab,cam_4,cam,e,4,1.0,koridor_3,4,k3_kapi_8,True,,92.7,21.615,21.475,0.0395,0.0093,0.0067,0.0197,0.0593,0,0,0,0,0.0,beyin,0.0082,0,4.1
+varsayilan,varsayilan_ab_cam_4_koridor_4_3,ab,cam_4,cam,e,4,1.0,koridor_4,3,k4_kapi_9,True,,71.5,16.305,16.175,0.0504,0.0021,0.0307,0.1247,0.1327,0,0,0,0,0.0,beyin,0.0236,0,4.2
+varsayilan,varsayilan_ab_cam_4_koridor_4_4,ab,cam_4,cam,e,4,1.0,koridor_4,4,k4_kapi_11,True,,79.0,19.127,19.175,0.0488,0.0009,0.0226,0.1083,0.121,0,0,0,0,0.0,beyin,0.0214,0,4.4
+varsayilan,varsayilan_ab_cam_4_koridor_5_3,ab,cam_4,cam,e,4,1.0,koridor_5,3,k5_kapi_6,False,"beyin bitti dedi, hedefe 4.61 m (tahmin hatasi 6.15 m)",31.55,7.563,12.175,4.612,6.1499,3.1328,4.1004,6.182,222,0,0,0,0.0,beyin,0.0432,0,2.1
+varsayilan,varsayilan_ab_cam_4_koridor_5_4,ab,cam_4,cam,e,4,1.0,koridor_5,4,k5_kapi_10,True,,83.05,20.13,20.175,0.0492,0.0021,0.0079,0.0162,0.0292,0,0,0,0,0.0,beyin,0.023,0,4.5
+varsayilan,varsayilan_ab_cam_4_koridor_6_3,ab,cam_4,cam,e,4,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.13,12.175,0.0441,0.0039,0.0069,0.0109,0.0451,0,0,0,0,0.0,beyin,0.0368,0,3.4
+varsayilan,varsayilan_ab_cam_4_koridor_6_4,ab,cam_4,cam,e,4,1.0,koridor_6,4,k6_kapi_10,True,,83.05,20.128,20.175,0.0478,0.0008,0.6102,3.9555,3.97,121,0,0,0,0.0,beyin,0.0227,0,5.3
+varsayilan,varsayilan_ab_donussuz_2_koridor_1_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_1,3,k1_kapi_12,True,,73.4,17.725,17.775,0.0534,0.0042,0.0054,0.0155,0.0321,0,0,0,0,0.0,beyin,0.3601,0,16.6
+varsayilan,varsayilan_ab_donussuz_2_koridor_1_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_1,4,k1_kapi_18,True,,109.4,26.727,26.775,0.0506,0.0018,0.0039,0.0074,0.0551,0,0,0,0,0.0,beyin,0.2542,0,20.5
+varsayilan,varsayilan_ab_donussuz_2_koridor_2_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_2,3,k2_kapi_2,True,,29.05,6.63,6.675,0.0465,0.0014,0.0039,0.0113,0.0137,0,0,0,0,0.0,beyin,0.1308,0,2.8
+varsayilan,varsayilan_ab_donussuz_2_koridor_2_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_2,4,k2_kapi_3,True,,39.4,9.225,9.275,0.051,0.0017,0.004,0.0137,0.0164,0,0,0,0,0.0,beyin,0.2485,0,4.6
+varsayilan,varsayilan_ab_donussuz_2_koridor_3_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_3,3,k3_kapi_5,True,,45.0,10.619,10.675,0.0592,0.0104,0.0086,0.0207,0.0431,0,0,0,0,0.0,beyin,0.1473,0,5.1
+varsayilan,varsayilan_ab_donussuz_2_koridor_3_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_3,4,k3_kapi_8,True,,92.7,21.612,21.475,0.0488,0.0022,0.0079,0.0233,0.0602,0,0,0,0,0.0,beyin,0.1857,0,11.7
+varsayilan,varsayilan_ab_donussuz_2_koridor_4_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_4,3,k4_kapi_9,True,,71.5,16.33,16.175,0.0401,0.009,0.0097,0.0265,0.055,0,0,0,0,0.0,beyin,0.243,0,12.0
+varsayilan,varsayilan_ab_donussuz_2_koridor_4_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_4,4,k4_kapi_11,True,,79.0,19.128,19.175,0.0478,0.0019,0.0068,0.0225,0.0293,0,0,0,0,0.0,beyin,0.2863,0,13.7
+varsayilan,varsayilan_ab_donussuz_2_koridor_5_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_5,3,k5_kapi_6,True,,51.05,12.141,12.175,0.0333,0.0154,0.0101,0.037,0.0663,0,0,0,0,0.0,beyin,0.3246,0,7.8
+varsayilan,varsayilan_ab_donussuz_2_koridor_5_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_5,4,k5_kapi_10,True,,83.05,20.13,20.175,0.0483,0.0005,0.0069,0.0234,0.0331,0,0,0,0,0.0,beyin,0.3134,0,13.1
+varsayilan,varsayilan_ab_donussuz_2_koridor_6_3,ab,donussuz_2,donussuz,e,2,0.25,koridor_6,3,k6_kapi_6,True,,51.05,12.137,12.175,0.0371,0.0116,0.0086,0.0212,0.0396,0,0,0,0,0.0,beyin,0.2585,0,8.0
+varsayilan,varsayilan_ab_donussuz_2_koridor_6_4,ab,donussuz_2,donussuz,e,2,0.25,koridor_6,4,k6_kapi_10,True,,83.0,20.119,20.175,0.0568,0.0089,0.0083,0.0249,0.038,0,0,0,0,0.0,beyin,0.2409,0,12.5
+varsayilan,varsayilan_ab_donussuz_4_koridor_1_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 12.67 m (tahmin hatasi 12.91 m)",21.65,5.105,17.775,12.6736,12.9052,0.671,3.2604,12.9375,0,0,0,0,0.0,beyin,0.7003,0,4.6
+varsayilan,varsayilan_ab_donussuz_4_koridor_1_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_1,4,k1_kapi_18,False,sure doldu (hedefe 27.31 m); temas 1,232.8,32.071,26.775,27.3093,17.0018,9.4349,16.9181,17.0014,1342,1,1,0,0.0,sure,0.8745,0,39.2
+varsayilan,varsayilan_ab_donussuz_4_koridor_2_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_2,3,k2_kapi_2,True,,29.05,6.64,6.675,0.0369,0.0122,0.0103,0.0149,0.0209,0,0,0,0,0.0,beyin,0.7738,0,3.4
+varsayilan,varsayilan_ab_donussuz_4_koridor_2_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_2,4,k2_kapi_3,True,,39.4,9.225,9.275,0.0508,0.0035,0.0039,0.0143,0.02,0,0,0,0,0.0,beyin,0.7236,0,4.5
+varsayilan,varsayilan_ab_donussuz_4_koridor_3_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_3,3,k3_kapi_5,True,,45.0,10.623,10.675,0.0554,0.0072,0.0221,0.0525,0.0767,0,0,0,0,0.0,beyin,0.7353,0,6.1
+varsayilan,varsayilan_ab_donussuz_4_koridor_3_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_3,4,k3_kapi_8,True,,92.65,21.615,21.475,0.0512,0.0042,0.0213,0.1113,0.1465,0,0,0,0,0.0,beyin,0.7392,0,11.9
+varsayilan,varsayilan_ab_donussuz_4_koridor_4_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_4,3,k4_kapi_9,True,,71.5,16.348,16.175,0.0371,0.0131,0.0359,0.0882,0.1057,0,0,0,0,0.0,beyin,0.8396,0,13.4
+varsayilan,varsayilan_ab_donussuz_4_koridor_4_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_4,4,k4_kapi_11,True,,80.55,19.211,19.175,0.056,0.0074,0.0665,0.061,4.1801,0,0,0,0,0.0,beyin,0.8528,0,14.6
+varsayilan,varsayilan_ab_donussuz_4_koridor_5_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_5,3,k5_kapi_6,True,,51.1,12.154,12.175,0.0212,0.0269,0.0307,0.0611,0.0723,0,0,0,0,0.0,beyin,0.7158,0,8.8
+varsayilan,varsayilan_ab_donussuz_4_koridor_5_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_5,4,k5_kapi_10,True,,83.05,20.138,20.175,0.0406,0.0086,0.015,0.028,0.0445,0,0,0,0,0.0,beyin,0.7816,0,12.1
+varsayilan,varsayilan_ab_donussuz_4_koridor_6_3,ab,donussuz_4,donussuz,e,4,0.75,koridor_6,3,k6_kapi_6,True,,51.1,12.146,12.175,0.0289,0.0173,0.0222,0.042,0.0445,0,0,0,0,0.0,beyin,0.7317,0,8.1
+varsayilan,varsayilan_ab_donussuz_4_koridor_6_4,ab,donussuz_4,donussuz,e,4,0.75,koridor_6,4,k6_kapi_10,True,,83.0,20.118,20.175,0.0576,0.0093,0.0164,0.0364,0.0428,0,0,0,0,0.0,beyin,0.6853,0,13.0
+varsayilan,varsayilan_ab_esya_2_koridor_1_3,ab,esya_2,esya,b,2,1.0,koridor_1,3,k1_kapi_12,True,,73.4,17.721,17.775,0.0568,0.0077,0.0156,0.0544,0.0807,0,0,0,0,0.0,beyin,0.0315,0,7.3
+varsayilan,varsayilan_ab_esya_2_koridor_1_4,ab,esya_2,esya,b,2,1.0,koridor_1,4,k1_kapi_18,True,,109.45,26.735,26.775,0.0472,0.0053,0.0124,0.037,0.0596,0,0,0,0,0.0,beyin,0.0193,0,8.5
+varsayilan,varsayilan_ab_esya_2_koridor_2_3,ab,esya_2,esya,b,2,1.0,koridor_2,3,k2_kapi_2,True,,29.05,6.627,6.675,0.0726,0.0335,0.034,0.0768,0.0789,0,0,0,0,0.0,beyin,0.0,0,1.5
+varsayilan,varsayilan_ab_esya_2_koridor_2_4,ab,esya_2,esya,b,2,1.0,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0502,0.0018,0.0114,0.0278,0.0294,0,0,0,0,0.0,beyin,0.0,0,2.0
+varsayilan,varsayilan_ab_esya_2_koridor_3_3,ab,esya_2,esya,b,2,1.0,koridor_3,3,k3_kapi_5,True,,45.05,10.632,10.675,0.0498,0.0025,0.0227,0.0898,0.0968,0,0,0,0,0.0,beyin,0.0123,0,2.6
+varsayilan,varsayilan_ab_esya_2_koridor_3_4,ab,esya_2,esya,b,2,1.0,koridor_3,4,k3_kapi_8,True,,92.65,21.612,21.475,0.05,0.0016,0.0209,0.0802,0.104,0,0,0,0,0.0,beyin,0.0064,0,5.0
+varsayilan,varsayilan_ab_esya_2_koridor_4_3,ab,esya_2,esya,b,2,1.0,koridor_4,3,k4_kapi_9,True,,71.2,16.224,16.175,0.0495,0.0014,0.0841,0.2466,0.257,0,0,0,0,0.0,beyin,0.0223,0,5.1
+varsayilan,varsayilan_ab_esya_2_koridor_4_4,ab,esya_2,esya,b,2,1.0,koridor_4,4,k4_kapi_11,True,,79.0,19.127,19.175,0.0489,0.0024,0.0526,0.2021,0.2098,0,0,0,0,0.0,beyin,0.0214,0,5.2
+varsayilan,varsayilan_ab_esya_2_koridor_5_3,ab,esya_2,esya,b,2,1.0,koridor_5,3,k5_kapi_6,True,,51.0,12.128,12.175,0.0516,0.0039,0.0275,0.0947,0.1166,0,0,0,0,0.0,beyin,0.0373,0,3.9
+varsayilan,varsayilan_ab_esya_2_koridor_5_4,ab,esya_2,esya,b,2,1.0,koridor_5,4,k5_kapi_10,True,,83.0,20.128,20.175,0.0496,0.0007,0.0167,0.0344,0.0392,0,0,0,0,0.0,beyin,0.0213,0,5.2
+varsayilan,varsayilan_ab_esya_2_koridor_6_3,ab,esya_2,esya,b,2,1.0,koridor_6,3,k6_kapi_6,True,,51.1,12.139,12.175,0.0487,0.0323,0.0303,0.1123,0.1291,0,0,0,0,0.0,beyin,0.0352,0,3.9
+varsayilan,varsayilan_ab_esya_2_koridor_6_4,ab,esya_2,esya,b,2,1.0,koridor_6,4,k6_kapi_10,True,,83.05,20.132,20.175,0.0494,0.0016,0.0219,0.0942,0.1248,0,0,0,0,0.0,beyin,0.021,0,5.3
+varsayilan,varsayilan_ab_esya_4_koridor_1_3,ab,esya_4,esya,b,4,4.0,koridor_1,3,k1_kapi_12,True,,73.45,17.739,17.775,0.063,0.0426,0.3772,5.5189,5.5335,33,0,0,0,0.0,beyin,0.0247,0,6.3
+varsayilan,varsayilan_ab_esya_4_koridor_1_4,ab,esya_4,esya,b,4,4.0,koridor_1,4,k1_kapi_18,True,,109.75,26.763,26.775,0.0728,0.0317,0.0392,0.1191,0.1403,0,0,0,0,0.0,beyin,0.0152,0,7.8
+varsayilan,varsayilan_ab_esya_4_koridor_2_3,ab,esya_4,esya,b,4,4.0,koridor_2,3,k2_kapi_2,True,,29.15,6.629,6.675,0.0818,0.0417,0.0682,0.1247,0.1298,0,0,0,0,0.0,beyin,0.0,0,1.4
+varsayilan,varsayilan_ab_esya_4_koridor_2_4,ab,esya_4,esya,b,4,4.0,koridor_2,4,k2_kapi_3,True,,39.45,9.23,9.275,0.0507,0.0024,0.0543,0.1357,0.1458,0,0,0,0,0.0,beyin,0.0,0,1.8
+varsayilan,varsayilan_ab_esya_4_koridor_3_3,ab,esya_4,esya,b,4,4.0,koridor_3,3,k3_kapi_5,True,,45.15,10.625,10.675,0.0947,0.0928,0.7336,3.6372,3.6633,82,0,0,0,0.0,beyin,0.0083,0,2.5
+varsayilan,varsayilan_ab_esya_4_koridor_3_4,ab,esya_4,esya,b,4,4.0,koridor_3,4,k3_kapi_8,True,,92.9,21.657,21.475,0.0466,0.0039,0.0475,0.1302,0.1412,0,0,0,0,0.0,beyin,0.0056,0,5.0
+varsayilan,varsayilan_ab_esya_4_koridor_4_3,ab,esya_4,esya,b,4,4.0,koridor_4,3,k4_kapi_9,True,,71.15,16.104,16.175,0.0552,0.0786,0.1169,0.2754,0.2849,0,0,0,0,0.0,beyin,0.018,0,4.9
+varsayilan,varsayilan_ab_esya_4_koridor_4_4,ab,esya_4,esya,b,4,4.0,koridor_4,4,k4_kapi_11,True,,79.1,19.142,19.175,0.0543,0.0261,0.0609,0.2158,0.2433,0,0,0,0,0.0,beyin,0.0192,0,5.5
+varsayilan,varsayilan_ab_esya_4_koridor_5_3,ab,esya_4,esya,b,4,4.0,koridor_5,3,k5_kapi_6,False,"beyin bitti dedi, hedefe 0.59 m (tahmin hatasi 7.16 m)",52.35,12.781,12.175,0.5906,7.1582,3.2401,8.1612,8.1766,194,0,0,0,0.0,beyin,0.031,0,3.7
+varsayilan,varsayilan_ab_esya_4_koridor_5_4,ab,esya_4,esya,b,4,4.0,koridor_5,4,k5_kapi_10,True,,83.15,20.152,20.175,0.0482,0.0094,0.0418,0.1053,0.1285,0,0,0,0,0.0,beyin,0.0173,0,5.9
+varsayilan,varsayilan_ab_esya_4_koridor_6_3,ab,esya_4,esya,b,4,4.0,koridor_6,3,k6_kapi_6,True,,51.35,12.152,12.175,0.0601,0.0813,0.049,0.1604,0.1722,0,0,0,0,0.0,beyin,0.026,0,4.2
+varsayilan,varsayilan_ab_esya_4_koridor_6_4,ab,esya_4,esya,b,4,4.0,koridor_6,4,k6_kapi_10,True,,83.25,20.16,20.175,0.0851,0.0909,0.0465,0.1038,0.1292,0,0,0,0,0.0,beyin,0.0161,0,6.5
+varsayilan,varsayilan_ab_insan_2_koridor_1_3,ab,insan_2,insan,c,2,1.0,koridor_1,3,k1_kapi_12,True,,73.5,17.739,17.775,0.0423,0.0111,0.0158,0.0303,0.0535,0,0,0,0,0.0,beyin,0.0316,0,7.0
+varsayilan,varsayilan_ab_insan_2_koridor_1_4,ab,insan_2,insan,c,2,1.0,koridor_1,4,k1_kapi_18,True,,109.5,26.739,26.775,0.0399,0.0108,0.0124,0.026,0.0571,0,0,0,0,0.0,beyin,0.0204,0,9.2
+varsayilan,varsayilan_ab_insan_2_koridor_2_3,ab,insan_2,insan,c,2,1.0,koridor_2,3,k2_kapi_2,True,,29.05,6.632,6.675,0.0449,0.0038,0.0034,0.0115,0.0146,0,0,0,0,0.0,beyin,0.0,0,1.4
+varsayilan,varsayilan_ab_insan_2_koridor_2_4,ab,insan_2,insan,c,2,1.0,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0493,0.0013,0.0035,0.0118,0.0149,0,0,0,0,0.0,beyin,0.0,0,1.9
+varsayilan,varsayilan_ab_insan_2_koridor_3_3,ab,insan_2,insan,c,2,1.0,koridor_3,3,k3_kapi_5,True,,45.15,10.628,10.675,0.051,0.0063,0.0062,0.0196,0.047,0,0,0,0,0.0,beyin,0.0098,0,2.6
+varsayilan,varsayilan_ab_insan_2_koridor_3_4,ab,insan_2,insan,c,2,1.0,koridor_3,4,k3_kapi_8,True,,93.15,21.611,21.475,0.049,0.0032,0.0099,0.0288,0.061,0,0,0,0,0.0,beyin,0.0073,0,5.5
+varsayilan,varsayilan_ab_insan_2_koridor_4_3,ab,insan_2,insan,c,2,1.0,koridor_4,3,k4_kapi_9,True,,74.35,16.32,16.175,0.0465,0.004,0.0098,0.0477,0.0537,0,0,0,0,2.65,beyin,0.0205,0,4.8
+varsayilan,varsayilan_ab_insan_2_koridor_4_4,ab,insan_2,insan,c,2,1.0,koridor_4,4,k4_kapi_11,True,,79.3,19.127,19.175,0.0494,0.0004,0.0056,0.0218,0.0304,0,0,0,0,0.0,beyin,0.02,0,4.8
+varsayilan,varsayilan_ab_insan_2_koridor_5_3,ab,insan_2,insan,c,2,1.0,koridor_5,3,k5_kapi_6,True,,51.0,12.127,12.175,0.0484,0.0061,0.0129,0.0322,0.0662,0,0,0,0,0.0,beyin,0.0365,0,3.5
+varsayilan,varsayilan_ab_insan_2_koridor_5_4,ab,insan_2,insan,c,2,1.0,koridor_5,4,k5_kapi_10,True,,83.0,20.128,20.175,0.0517,0.0044,0.0099,0.0192,0.0281,0,0,0,0,0.0,beyin,0.0221,0,5.7
+varsayilan,varsayilan_ab_insan_2_koridor_6_3,ab,insan_2,insan,c,2,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.129,12.175,0.0464,0.0095,0.0104,0.015,0.0567,0,0,0,0,0.0,beyin,0.0358,0,5.0
+varsayilan,varsayilan_ab_insan_2_koridor_6_4,ab,insan_2,insan,c,2,1.0,koridor_6,4,k6_kapi_10,True,,83.05,20.129,20.175,0.0504,0.0176,0.0098,0.0202,0.0243,0,0,0,0,0.0,beyin,0.0218,0,7.1
+varsayilan,varsayilan_ab_insan_4_koridor_1_3,ab,insan_4,insan,c,4,4.0,koridor_1,3,k1_kapi_12,True,,73.7,17.75,17.775,0.043,0.0398,0.0303,0.0564,0.0768,0,0,0,0,0.0,beyin,0.0267,0,9.7
+varsayilan,varsayilan_ab_insan_4_koridor_1_4,ab,insan_4,insan,c,4,4.0,koridor_1,4,k1_kapi_18,True,,109.55,26.74,26.775,0.05,0.0111,0.0279,0.0493,0.0658,0,0,0,0,0.0,beyin,0.0165,0,9.4
+varsayilan,varsayilan_ab_insan_4_koridor_2_3,ab,insan_4,insan,c,4,4.0,koridor_2,3,k2_kapi_2,True,,29.15,6.63,6.675,0.0473,0.004,0.0062,0.0115,0.0159,0,0,0,0,0.0,beyin,0.0,0,1.5
+varsayilan,varsayilan_ab_insan_4_koridor_2_4,ab,insan_4,insan,c,4,4.0,koridor_2,4,k2_kapi_3,True,,39.45,9.228,9.275,0.0474,0.0014,0.0043,0.0106,0.0151,0,0,0,0,0.0,beyin,0.0,0,2.1
+varsayilan,varsayilan_ab_insan_4_koridor_3_3,ab,insan_4,insan,c,4,4.0,koridor_3,3,k3_kapi_5,True,,46.4,10.624,10.675,0.0539,0.0076,0.0227,0.047,0.052,0,0,0,0,0.3,beyin,0.008,0,2.5
+varsayilan,varsayilan_ab_insan_4_koridor_3_4,ab,insan_4,insan,c,4,4.0,koridor_3,4,k3_kapi_8,True,,94.05,21.619,21.475,0.0472,0.0027,0.0107,0.0308,0.0566,0,0,0,0,0.4,beyin,0.004,0,5.9
+varsayilan,varsayilan_ab_insan_4_koridor_4_3,ab,insan_4,insan,c,4,4.0,koridor_4,3,k4_kapi_9,True,,72.8,16.31,16.175,0.0492,0.0096,0.013,0.0278,0.0419,0,0,0,0,0.4,beyin,0.0166,0,5.3
+varsayilan,varsayilan_ab_insan_4_koridor_4_4,ab,insan_4,insan,c,4,4.0,koridor_4,4,k4_kapi_11,True,,81.0,19.128,19.175,0.0485,0.0002,0.0085,0.027,0.0382,0,0,0,0,0.2,beyin,0.0147,0,5.8
+varsayilan,varsayilan_ab_insan_4_koridor_5_3,ab,insan_4,insan,c,4,4.0,koridor_5,3,k5_kapi_6,True,,51.5,12.135,12.175,0.0418,0.0163,0.0187,0.034,0.0567,0,0,0,0,0.0,beyin,0.0272,0,3.8
+varsayilan,varsayilan_ab_insan_4_koridor_5_4,ab,insan_4,insan,c,4,4.0,koridor_5,4,k5_kapi_10,True,,84.0,20.136,20.175,0.0452,0.0052,0.0113,0.029,0.0353,0,0,0,0,0.0,beyin,0.0146,0,5.6
+varsayilan,varsayilan_ab_insan_4_koridor_6_3,ab,insan_4,insan,c,4,4.0,koridor_6,3,k6_kapi_6,True,,51.1,12.128,12.175,0.0466,0.0058,0.0202,0.0626,0.0822,0,0,0,0,0.0,beyin,0.0297,0,3.9
+varsayilan,varsayilan_ab_insan_4_koridor_6_4,ab,insan_4,insan,c,4,4.0,koridor_6,4,k6_kapi_10,True,,83.35,20.127,20.175,0.0568,0.0301,0.0172,0.0311,0.0376,0,0,0,0,0.0,beyin,0.0167,0,6.0
+varsayilan,varsayilan_ab_kapi_1_koridor_1_3,ab,kapi_1,kapi,a,1,0.1,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 6.14 m (tahmin hatasi 13.43 m)",48.05,11.633,17.775,6.1447,13.4346,2.4741,6.0161,13.4481,169,0,0,0,0.0,beyin,0.0356,0,4.3
+varsayilan,varsayilan_ab_kapi_1_koridor_1_4,ab,kapi_1,kapi,a,1,0.1,koridor_1,4,k1_kapi_18,True,,109.4,26.728,26.775,0.0499,0.0007,0.004,0.0071,0.0557,0,0,0,0,0.0,beyin,0.0221,0,8.6
+varsayilan,varsayilan_ab_kapi_1_koridor_2_3,ab,kapi_1,kapi,a,1,0.1,koridor_2,3,k2_kapi_2,True,,29.05,6.631,6.675,0.0455,0.0029,0.0035,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.4
+varsayilan,varsayilan_ab_kapi_1_koridor_2_4,ab,kapi_1,kapi,a,1,0.1,koridor_2,4,k2_kapi_3,True,,39.45,9.228,9.275,0.0477,0.0014,0.0031,0.0102,0.0161,0,0,0,0,0.0,beyin,0.0,0,1.9
+varsayilan,varsayilan_ab_kapi_1_koridor_3_3,ab,kapi_1,kapi,a,1,0.1,koridor_3,3,k3_kapi_5,True,,45.0,10.625,10.675,0.0529,0.0037,0.0044,0.0118,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.6
+varsayilan,varsayilan_ab_kapi_1_koridor_3_4,ab,kapi_1,kapi,a,1,0.1,koridor_3,4,k3_kapi_8,True,,92.65,21.613,21.475,0.047,0.0033,0.008,0.0305,0.061,0,0,0,0,0.0,beyin,0.0082,0,5.0
+varsayilan,varsayilan_ab_kapi_1_koridor_4_3,ab,kapi_1,kapi,a,1,0.1,koridor_4,3,k4_kapi_9,True,,71.45,16.312,16.175,0.0507,0.0015,0.0074,0.0242,0.0512,0,0,0,0,0.0,beyin,0.0236,0,4.7
+varsayilan,varsayilan_ab_kapi_1_koridor_4_4,ab,kapi_1,kapi,a,1,0.1,koridor_4,4,k4_kapi_11,True,,79.0,19.128,19.175,0.0485,0.001,0.0054,0.0192,0.0265,0,0,0,0,0.0,beyin,0.0213,0,5.1
+varsayilan,varsayilan_ab_kapi_1_koridor_5_3,ab,kapi_1,kapi,a,1,0.1,koridor_5,3,k5_kapi_6,True,,51.0,12.125,12.175,0.0496,0.0025,0.0099,0.034,0.0681,0,0,0,0,0.0,beyin,0.0376,0,3.1
+varsayilan,varsayilan_ab_kapi_1_koridor_5_4,ab,kapi_1,kapi,a,1,0.1,koridor_5,4,k5_kapi_10,True,,83.0,20.128,20.175,0.0503,0.0016,0.0045,0.0097,0.0282,0,0,0,0,0.0,beyin,0.0231,0,5.7
+varsayilan,varsayilan_ab_kapi_1_koridor_6_3,ab,kapi_1,kapi,a,1,0.1,koridor_6,3,k6_kapi_6,True,,51.0,12.124,12.175,0.0505,0.0011,0.0046,0.01,0.0399,0,0,0,0,0.0,beyin,0.0369,0,3.8
+varsayilan,varsayilan_ab_kapi_1_koridor_6_4,ab,kapi_1,kapi,a,1,0.1,koridor_6,4,k6_kapi_10,True,,83.0,20.126,20.175,0.0498,0.0003,0.0059,0.0206,0.0244,0,0,0,0,0.0,beyin,0.0226,0,5.7
+varsayilan,varsayilan_ab_kapi_2_koridor_1_3,ab,kapi_2,kapi,a,2,0.25,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 6.03 m (tahmin hatasi 5.99 m)",49.9,11.747,17.775,6.0348,5.9882,5.2516,9.3361,9.3488,359,0,0,0,0.0,beyin,0.0357,0,4.6
+varsayilan,varsayilan_ab_kapi_2_koridor_1_4,ab,kapi_2,kapi,a,2,0.25,koridor_1,4,k1_kapi_18,True,,109.4,26.726,26.775,0.0519,0.0024,0.1276,0.1164,5.2193,18,0,0,0,0.0,beyin,0.0221,0,8.3
+varsayilan,varsayilan_ab_kapi_2_koridor_2_3,ab,kapi_2,kapi,a,2,0.25,koridor_2,3,k2_kapi_2,True,,29.05,6.631,6.675,0.0455,0.0029,0.0035,0.0098,0.0144,0,0,0,0,0.0,beyin,0.0,0,1.3
+varsayilan,varsayilan_ab_kapi_2_koridor_2_4,ab,kapi_2,kapi,a,2,0.25,koridor_2,4,k2_kapi_3,True,,39.45,9.228,9.275,0.0477,0.0014,0.0031,0.0102,0.0161,0,0,0,0,0.0,beyin,0.0,0,1.9
+varsayilan,varsayilan_ab_kapi_2_koridor_3_3,ab,kapi_2,kapi,a,2,0.25,koridor_3,3,k3_kapi_5,True,,45.0,10.625,10.675,0.0529,0.0037,0.0044,0.0118,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.7
+varsayilan,varsayilan_ab_kapi_2_koridor_3_4,ab,kapi_2,kapi,a,2,0.25,koridor_3,4,k3_kapi_8,True,,92.7,21.619,21.475,0.0414,0.0092,0.0086,0.0305,0.061,0,0,0,0,0.0,beyin,0.0082,0,5.1
+varsayilan,varsayilan_ab_kapi_2_koridor_4_3,ab,kapi_2,kapi,a,2,0.25,koridor_4,3,k4_kapi_9,True,,71.5,16.315,16.175,0.0481,0.001,0.0087,0.026,0.0531,0,0,0,0,0.0,beyin,0.0235,0,5.0
+varsayilan,varsayilan_ab_kapi_2_koridor_4_4,ab,kapi_2,kapi,a,2,0.25,koridor_4,4,k4_kapi_11,True,,79.0,19.127,19.175,0.0494,0.0011,0.0066,0.0206,0.0275,0,0,0,0,0.0,beyin,0.0213,0,5.4
+varsayilan,varsayilan_ab_kapi_2_koridor_5_3,ab,kapi_2,kapi,a,2,0.25,koridor_5,3,k5_kapi_6,True,,51.05,12.128,12.175,0.0463,0.0044,0.0096,0.0338,0.0681,0,0,0,0,0.0,beyin,0.0374,0,3.9
+varsayilan,varsayilan_ab_kapi_2_koridor_5_4,ab,kapi_2,kapi,a,2,0.25,koridor_5,4,k5_kapi_10,True,,83.0,20.129,20.175,0.0495,0.0005,0.0041,0.011,0.0255,0,0,0,0,0.0,beyin,0.0232,0,5.7
+varsayilan,varsayilan_ab_kapi_2_koridor_6_3,ab,kapi_2,kapi,a,2,0.25,koridor_6,3,k6_kapi_6,True,,51.05,12.127,12.175,0.0479,0.0009,0.0046,0.0095,0.0399,0,0,0,0,0.0,beyin,0.0369,0,3.9
+varsayilan,varsayilan_ab_kapi_2_koridor_6_4,ab,kapi_2,kapi,a,2,0.25,koridor_6,4,k6_kapi_10,False,"beyin bitti dedi, hedefe 14.95 m (tahmin hatasi 15.02 m)",22.15,5.229,20.175,14.9462,15.0189,0.7677,0.0625,15.0513,0,0,0,0,0.0,beyin,0.0423,0,1.9
+varsayilan,varsayilan_ab_kapi_3_koridor_1_3,ab,kapi_3,kapi,a,3,0.5,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 16.97 m (tahmin hatasi 20.20 m)",4.45,0.804,17.775,16.9731,20.2024,5.0761,20.2025,20.2348,0,0,0,0,0.0,beyin,0.0354,0,0.4
+varsayilan,varsayilan_ab_kapi_3_koridor_1_4,ab,kapi_3,kapi,a,3,0.5,koridor_1,4,k1_kapi_18,False,"beyin bitti dedi, hedefe 25.71 m (tahmin hatasi 26.51 m)",56.05,11.759,26.775,25.7096,26.5103,6.825,16.4761,26.5103,283,0,0,0,0.0,beyin,0.0221,0,4.8
+varsayilan,varsayilan_ab_kapi_3_koridor_2_3,ab,kapi_3,kapi,a,3,0.5,koridor_2,3,k2_kapi_2,True,,29.05,6.634,6.675,0.0424,0.0061,0.006,0.0135,0.0222,0,0,0,0,0.0,beyin,0.0,0,1.4
+varsayilan,varsayilan_ab_kapi_3_koridor_2_4,ab,kapi_3,kapi,a,3,0.5,koridor_2,4,k2_kapi_3,True,,39.4,9.223,9.275,0.0527,0.0028,0.0057,0.0137,0.0162,0,0,0,0,0.0,beyin,0.0,0,2.0
+varsayilan,varsayilan_ab_kapi_3_koridor_3_3,ab,kapi_3,kapi,a,3,0.5,koridor_3,3,k3_kapi_5,True,,45.0,10.625,10.675,0.0529,0.0037,0.0044,0.0118,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.1
+varsayilan,varsayilan_ab_kapi_3_koridor_3_4,ab,kapi_3,kapi,a,3,0.5,koridor_3,4,k3_kapi_8,True,,92.7,21.617,21.475,0.04,0.0088,0.0075,0.0196,0.0594,0,0,0,0,0.0,beyin,0.0082,0,5.6
+varsayilan,varsayilan_ab_kapi_3_koridor_4_3,ab,kapi_3,kapi,a,3,0.5,koridor_4,3,k4_kapi_9,True,,71.5,16.314,16.175,0.0475,0.0016,0.0075,0.0234,0.057,0,0,0,0,0.0,beyin,0.0235,0,5.1
+varsayilan,varsayilan_ab_kapi_3_koridor_4_4,ab,kapi_3,kapi,a,3,0.5,koridor_4,4,k4_kapi_11,True,,79.05,19.13,19.175,0.0462,0.002,0.006,0.0219,0.0294,0,0,0,0,0.0,beyin,0.0213,0,5.5
+varsayilan,varsayilan_ab_kapi_3_koridor_5_3,ab,kapi_3,kapi,a,3,0.5,koridor_5,3,k5_kapi_6,True,,51.05,12.128,12.175,0.0462,0.0016,0.0065,0.0341,0.0643,0,0,0,0,0.0,beyin,0.0376,0,3.9
+varsayilan,varsayilan_ab_kapi_3_koridor_5_4,ab,kapi_3,kapi,a,3,0.5,koridor_5,4,k5_kapi_10,False,sure doldu (hedefe 2.78 m),185.3,44.937,20.175,2.778,0.0168,1.7546,8.081,9.8319,723,0,0,0,0.0,sure,0.0235,0,13.0
+varsayilan,varsayilan_ab_kapi_3_koridor_6_3,ab,kapi_3,kapi,a,3,0.5,koridor_6,3,k6_kapi_6,True,,51.05,12.132,12.175,0.0421,0.0064,0.0059,0.0089,0.0403,0,0,0,0,0.0,beyin,0.0366,0,4.0
+varsayilan,varsayilan_ab_kapi_3_koridor_6_4,ab,kapi_3,kapi,a,3,0.5,koridor_6,4,k6_kapi_10,False,"beyin bitti dedi, hedefe 17.90 m (tahmin hatasi 17.85 m)",122.5,29.335,20.175,17.9021,17.8526,4.1125,15.8622,17.8526,930,0,0,0,0.0,beyin,0.0221,0,8.8
+varsayilan,varsayilan_ab_kapi_4_koridor_1_3,ab,kapi_4,kapi,a,4,1.0,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 16.40 m (tahmin hatasi 16.37 m)",18.85,3.354,17.775,16.398,16.3672,8.3088,16.3658,16.3671,99,0,0,0,0.0,beyin,0.0245,0,1.8
+varsayilan,varsayilan_ab_kapi_4_koridor_1_4,ab,kapi_4,kapi,a,4,1.0,koridor_1,4,k1_kapi_18,False,"beyin bitti dedi, hedefe 25.11 m (tahmin hatasi 25.06 m)",164.95,38.587,26.775,25.1066,25.0586,7.7784,22.0339,25.0586,1517,0,0,0,0.0,beyin,0.024,0,14.0
+varsayilan,varsayilan_ab_kapi_4_koridor_2_3,ab,kapi_4,kapi,a,4,1.0,koridor_2,3,k2_kapi_2,True,,29.05,6.634,6.675,0.0424,0.0057,0.0073,0.0149,0.0222,0,0,0,0,0.0,beyin,0.0,0,1.4
+varsayilan,varsayilan_ab_kapi_4_koridor_2_4,ab,kapi_4,kapi,a,4,1.0,koridor_2,4,k2_kapi_3,True,,39.4,9.222,9.275,0.0539,0.005,0.0052,0.0121,0.0162,0,0,0,0,0.0,beyin,0.0,0,2.0
+varsayilan,varsayilan_ab_kapi_4_koridor_3_3,ab,kapi_4,kapi,a,4,1.0,koridor_3,3,k3_kapi_5,True,,45.0,10.627,10.675,0.0514,0.0025,0.0038,0.0104,0.0467,0,0,0,0,0.0,beyin,0.0122,0,2.7
+varsayilan,varsayilan_ab_kapi_4_koridor_3_4,ab,kapi_4,kapi,a,4,1.0,koridor_3,4,k3_kapi_8,True,,92.75,21.614,21.475,0.0444,0.0056,0.0087,0.0281,0.0593,0,0,0,0,0.0,beyin,0.0082,0,5.0
+varsayilan,varsayilan_ab_kapi_4_koridor_4_3,ab,kapi_4,kapi,a,4,1.0,koridor_4,3,k4_kapi_9,True,,71.5,16.308,16.175,0.0469,0.001,0.0303,0.1247,0.1327,0,0,0,0,0.0,beyin,0.0236,0,5.1
+varsayilan,varsayilan_ab_kapi_4_koridor_4_4,ab,kapi_4,kapi,a,4,1.0,koridor_4,4,k4_kapi_11,True,,79.0,19.131,19.175,0.0448,0.0048,0.0244,0.1083,0.121,0,0,0,0,0.0,beyin,0.0214,0,5.2
+varsayilan,varsayilan_ab_kapi_4_koridor_5_3,ab,kapi_4,kapi,a,4,1.0,koridor_5,3,k5_kapi_6,False,"beyin bitti dedi, hedefe 1.93 m (tahmin hatasi 1.88 m)",104.65,23.599,12.175,1.9281,1.8802,2.4255,6.0991,7.0265,661,0,0,0,0.0,beyin,0.0287,0,7.9
+varsayilan,varsayilan_ab_kapi_4_koridor_5_4,ab,kapi_4,kapi,a,4,1.0,koridor_5,4,k5_kapi_10,True,,83.05,20.131,20.175,0.0473,0.001,0.2923,0.0923,8.1783,22,0,0,0,0.0,beyin,0.023,0,5.7
+varsayilan,varsayilan_ab_kapi_4_koridor_6_3,ab,kapi_4,kapi,a,4,1.0,koridor_6,3,k6_kapi_6,True,,51.05,12.126,12.175,0.0485,0.0014,0.0327,0.0901,0.1528,0,0,0,0,0.0,beyin,0.037,0,4.0
+varsayilan,varsayilan_ab_kapi_4_koridor_6_4,ab,kapi_4,kapi,a,4,1.0,koridor_6,4,k6_kapi_10,False,"beyin bitti dedi, hedefe 17.93 m (tahmin hatasi 17.89 m)",53.4,12.037,20.175,17.9329,17.8867,5.9195,17.5738,17.8868,458,0,0,0,0.0,beyin,0.0253,0,3.9
+varsayilan,varsayilan_ab_okul_agir_koridor_1_3,ab,okul_agir,okul,g,3,3,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 15.87 m (tahmin hatasi 19.65 m)",10.85,2.279,17.775,15.8664,19.6506,6.2263,19.6507,19.6551,41,0,0,0,0.0,beyin,0.4466,0,2.3
+varsayilan,varsayilan_ab_okul_agir_koridor_1_4,ab,okul_agir,okul,g,3,3,koridor_1,4,k1_kapi_18,False,sure doldu (hedefe 22.11 m),232.8,5.286,26.775,22.1055,7.2914,6.6797,7.2914,7.4273,2217,0,0,0,211.0,sure,0.2802,1,18.2
+varsayilan,varsayilan_ab_okul_agir_koridor_2_3,ab,okul_agir,okul,g,3,3,koridor_2,3,k2_kapi_2,True,,31.8,6.802,6.675,0.1938,0.1404,0.2689,0.2625,4.2592,0,0,0,0,0.0,beyin,0.3934,0,4.0
+varsayilan,varsayilan_ab_okul_agir_koridor_2_4,ab,okul_agir,okul,g,3,3,koridor_2,4,k2_kapi_3,False,sure doldu (hedefe 6.42 m),106.8,3.186,9.275,6.4204,4.5832,4.2266,4.6238,5.6443,990,0,0,0,90.9,sure,0.6046,1,4.9
+varsayilan,varsayilan_ab_okul_agir_koridor_3_3,ab,okul_agir,okul,g,3,3,koridor_3,3,k3_kapi_5,False,"beyin bitti dedi, hedefe 8.96 m (tahmin hatasi 13.03 m)",9.0,1.929,10.675,8.9607,13.0256,1.6939,13.0256,13.0399,0,0,0,0,0.0,beyin,0.5318,0,1.3
+varsayilan,varsayilan_ab_okul_agir_koridor_3_4,ab,okul_agir,okul,g,3,3,koridor_3,4,k3_kapi_8,False,"beyin bitti dedi, hedefe 12.67 m (tahmin hatasi 12.70 m)",47.85,9.888,21.475,12.6656,12.7009,4.583,11.0362,12.7016,194,0,0,0,0.0,beyin,0.3841,1,7.7
+varsayilan,varsayilan_ab_okul_agir_koridor_4_3,ab,okul_agir,okul,g,3,3,koridor_4,3,k4_kapi_9,False,sure doldu (hedefe 7.25 m),156.5,10.019,16.175,7.2465,11.5675,8.9342,11.705,11.9925,1389,0,0,0,102.6,sure,0.4423,0,16.0
+varsayilan,varsayilan_ab_okul_agir_koridor_4_4,ab,okul_agir,okul,g,3,3,koridor_4,4,k4_kapi_11,False,"beyin bitti dedi, hedefe 18.53 m (tahmin hatasi 18.68 m)",7.15,1.207,19.175,18.5316,18.6841,3.0382,18.6841,18.6841,12,0,0,0,0.2,beyin,0.6296,0,1.2
+varsayilan,varsayilan_ab_okul_agir_koridor_5_3,ab,okul_agir,okul,g,3,3,koridor_5,3,k5_kapi_6,False,sure doldu (hedefe 2.09 m),127.7,10.972,12.175,2.0864,4.093,3.1843,4.1735,9.3367,1193,0,0,0,79.9,sure,0.565,0,12.0
+varsayilan,varsayilan_ab_okul_agir_koridor_5_4,ab,okul_agir,okul,g,3,3,koridor_5,4,k5_kapi_10,False,sure doldu (hedefe 14.39 m),185.3,17.137,20.175,14.3875,12.2973,8.5915,12.2973,12.2979,1755,0,0,0,108.7,sure,0.492,4,19.6
+varsayilan,varsayilan_ab_okul_agir_koridor_6_3,ab,okul_agir,okul,g,3,3,koridor_6,3,k6_kapi_6,False,"beyin bitti dedi, hedefe 7.63 m (tahmin hatasi 13.31 m)",20.45,4.788,12.175,7.6341,13.3149,3.9737,12.1305,13.3479,147,0,0,0,0.0,beyin,0.4131,0,4.2
+varsayilan,varsayilan_ab_okul_agir_koridor_6_4,ab,okul_agir,okul,g,3,3,koridor_6,4,k6_kapi_10,False,"beyin bitti dedi, hedefe 18.23 m (tahmin hatasi 17.83 m)",41.75,8.601,20.175,18.2348,17.8307,7.4744,17.6939,17.8307,372,0,0,0,0.4,beyin,0.5619,0,8.0
+varsayilan,varsayilan_ab_okul_hafif_koridor_1_3,ab,okul_hafif,okul,g,1,1,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 16.59 m (tahmin hatasi 16.74 m)",6.35,1.28,17.775,16.5892,16.7362,2.9409,16.7362,16.7688,0,0,0,0,0.0,beyin,0.0552,0,0.6
+varsayilan,varsayilan_ab_okul_hafif_koridor_1_4,ab,okul_hafif,okul,g,1,1,koridor_1,4,k1_kapi_18,False,"beyin bitti dedi, hedefe 15.37 m (tahmin hatasi 15.95 m)",57.95,13.42,26.775,15.3676,15.9535,6.2261,13.5311,15.9538,421,0,0,0,0.0,beyin,0.0749,0,7.6
+varsayilan,varsayilan_ab_okul_hafif_koridor_2_3,ab,okul_hafif,okul,g,1,1,koridor_2,3,k2_kapi_2,True,,29.2,6.674,6.675,0.0389,0.0096,0.0482,0.1209,0.1258,0,0,0,0,0.0,beyin,0.0428,0,1.8
+varsayilan,varsayilan_ab_okul_hafif_koridor_2_4,ab,okul_hafif,okul,g,1,1,koridor_2,4,k2_kapi_3,True,,39.6,9.27,9.275,0.053,0.0038,0.0184,0.0336,0.0373,0,0,0,0,0.0,beyin,0.0686,0,3.2
+varsayilan,varsayilan_ab_okul_hafif_koridor_3_3,ab,okul_hafif,okul,g,1,1,koridor_3,3,k3_kapi_5,True,,45.3,10.668,10.675,0.0645,0.0167,0.0172,0.0346,0.0657,0,0,0,0,0.0,beyin,0.1769,0,6.0
+varsayilan,varsayilan_ab_okul_hafif_koridor_3_4,ab,okul_hafif,okul,g,1,1,koridor_3,4,k3_kapi_8,True,,93.4,21.716,21.475,0.0495,0.0018,0.0166,0.0452,0.0686,0,0,0,0,0.0,beyin,0.1015,0,10.1
+varsayilan,varsayilan_ab_okul_hafif_koridor_4_3,ab,okul_hafif,okul,g,1,1,koridor_4,3,k4_kapi_9,True,,74.55,16.383,16.175,0.0482,0.0017,0.1713,0.1376,3.3936,24,0,0,0,2.75,beyin,0.1424,0,10.3
+varsayilan,varsayilan_ab_okul_hafif_koridor_4_4,ab,okul_hafif,okul,g,1,1,koridor_4,4,k4_kapi_11,True,,79.4,19.224,19.175,0.0494,0.0003,0.0184,0.0474,0.0632,0,0,0,0,0.0,beyin,0.1827,0,13.2
+varsayilan,varsayilan_ab_okul_hafif_koridor_5_3,ab,okul_hafif,okul,g,1,1,koridor_5,3,k5_kapi_6,True,,51.35,12.205,12.175,0.0309,0.0185,0.0237,0.042,0.0743,0,0,0,0,0.0,beyin,0.1202,0,9.5
+varsayilan,varsayilan_ab_okul_hafif_koridor_5_4,ab,okul_hafif,okul,g,1,1,koridor_5,4,k5_kapi_10,False,sure doldu (hedefe 9.36 m),185.3,11.616,20.175,9.3587,1.2931,1.8971,4.7737,11.0877,1732,0,0,0,131.3,sure,0.1831,0,14.7
+varsayilan,varsayilan_ab_okul_hafif_koridor_6_3,ab,okul_hafif,okul,g,1,1,koridor_6,3,k6_kapi_6,True,,51.3,12.188,12.175,0.0479,0.0054,0.0227,0.0533,0.0591,0,0,0,0,0.0,beyin,0.088,0,7.4
+varsayilan,varsayilan_ab_okul_hafif_koridor_6_4,ab,okul_hafif,okul,g,1,1,koridor_6,4,k6_kapi_10,False,sure doldu (hedefe 3.12 m),185.3,27.554,20.175,3.1192,8.4286,7.3929,18.3638,21.8268,1308,0,0,0,68.4,sure,0.1453,0,23.5
+varsayilan,varsayilan_ab_okul_orta_koridor_1_3,ab,okul_orta,okul,g,2,2,koridor_1,3,k1_kapi_12,False,"beyin bitti dedi, hedefe 5.43 m (tahmin hatasi 12.84 m)",53.25,12.716,17.775,5.4303,12.8376,2.8173,5.2831,12.8471,261,0,0,0,0.0,beyin,0.356,4,13.1
+varsayilan,varsayilan_ab_okul_orta_koridor_1_4,ab,okul_orta,okul,g,2,2,koridor_1,4,k1_kapi_18,False,"beyin bitti dedi, hedefe 15.46 m (tahmin hatasi 16.88 m)",48.25,11.617,26.775,15.4646,16.8755,9.5087,18.0954,18.107,398,0,0,0,0.0,beyin,0.1637,1,8.9
+varsayilan,varsayilan_ab_okul_orta_koridor_2_3,ab,okul_orta,okul,g,2,2,koridor_2,3,k2_kapi_2,True,,29.3,6.696,6.675,0.0927,0.0801,0.062,0.0815,0.0852,0,0,0,0,0.0,beyin,0.2368,0,3.0
+varsayilan,varsayilan_ab_okul_orta_koridor_2_4,ab,okul_orta,okul,g,2,2,koridor_2,4,k2_kapi_3,True,,39.85,9.325,9.275,0.0572,0.0197,0.0937,0.2041,0.2099,0,0,0,0,0.0,beyin,0.2164,0,4.8
+varsayilan,varsayilan_ab_okul_orta_koridor_3_3,ab,okul_orta,okul,g,2,2,koridor_3,3,k3_kapi_5,True,,46.55,10.734,10.675,0.0533,0.0156,0.049,0.082,0.0864,0,0,0,0,0.0,beyin,0.2166,0,6.6
+varsayilan,varsayilan_ab_okul_orta_koridor_3_4,ab,okul_orta,okul,g,2,2,koridor_3,4,k3_kapi_8,False,sure doldu (hedefe 8.61 m); temas 1,194.65,10.294,21.475,8.6146,5.6642,4.5657,5.6643,5.7179,1765,1,0,1,149.15,sure,0.1133,2,10.9
+varsayilan,varsayilan_ab_okul_orta_koridor_4_3,ab,okul_orta,okul,g,2,2,koridor_4,3,k4_kapi_9,True,,72.45,16.474,16.175,0.0591,0.0288,0.1094,0.2022,0.2311,0,0,0,0,0.1,beyin,0.3588,0,17.7
+varsayilan,varsayilan_ab_okul_orta_koridor_4_4,ab,okul_orta,okul,g,2,2,koridor_4,4,k4_kapi_11,False,"beyin bitti dedi, hedefe 10.46 m (tahmin hatasi 11.55 m)",46.35,9.932,19.175,10.4586,11.5528,1.5291,10.4613,11.5852,61,0,0,0,0.0,beyin,0.3296,1,10.0
+varsayilan,varsayilan_ab_okul_orta_koridor_5_3,ab,okul_orta,okul,g,2,2,koridor_5,3,k5_kapi_6,True,,72.45,12.132,12.175,0.1645,0.1146,0.0904,0.1462,0.1628,0,0,0,0,17.8,beyin,0.3296,0,9.1
+varsayilan,varsayilan_ab_okul_orta_koridor_5_4,ab,okul_orta,okul,g,2,2,koridor_5,4,k5_kapi_10,False,"beyin bitti dedi, hedefe 0.65 m (tahmin hatasi 0.61 m)",106.25,21.02,20.175,0.6502,0.6067,2.9754,8.6929,18.2206,339,0,0,0,17.3,beyin,0.2905,2,15.7
+varsayilan,varsayilan_ab_okul_orta_koridor_6_3,ab,okul_orta,okul,g,2,2,koridor_6,3,k6_kapi_6,False,"beyin bitti dedi, hedefe 11.22 m (tahmin hatasi 15.96 m)",5.55,1.079,12.175,11.2245,15.9633,3.2786,15.9634,15.9959,0,0,0,0,0.0,beyin,0.3469,0,0.8
+varsayilan,varsayilan_ab_okul_orta_koridor_6_4,ab,okul_orta,okul,g,2,2,koridor_6,4,k6_kapi_10,False,sure doldu (hedefe 9.95 m),185.3,10.578,20.175,9.9461,6.9173,5.971,6.9371,11.6933,1658,0,0,0,136.2,sure,0.29,0,13.8
+varsayilan,varsayilan_ab_taban_koridor_1_3,ab,taban,taban,-,0,0.0,koridor_1,3,k1_kapi_12,True,,73.45,17.73,17.775,0.0483,0.0001,0.0051,0.0158,0.0527,0,0,0,0,0.0,beyin,0.0329,0,6.7
+varsayilan,varsayilan_ab_taban_koridor_1_4,ab,taban,taban,-,0,0.0,koridor_1,4,k1_kapi_18,True,,109.45,26.733,26.775,0.045,0.0029,0.0045,0.0073,0.0571,0,0,0,0,0.0,beyin,0.0221,0,9.5
+varsayilan,varsayilan_ab_taban_koridor_2_3,ab,taban,taban,-,0,0.0,koridor_2,3,k2_kapi_2,True,,29.05,6.631,6.675,0.0462,0.0021,0.0035,0.0089,0.0141,0,0,0,0,0.0,beyin,0.0,0,1.5
+varsayilan,varsayilan_ab_taban_koridor_2_4,ab,taban,taban,-,0,0.0,koridor_2,4,k2_kapi_3,True,,39.4,9.226,9.275,0.0497,0.0006,0.0026,0.0102,0.0161,0,0,0,0,0.0,beyin,0.0,0,2.0
+varsayilan,varsayilan_ab_taban_koridor_3_3,ab,taban,taban,-,0,0.0,koridor_3,3,k3_kapi_5,True,,45.05,10.627,10.675,0.051,0.0035,0.0064,0.0196,0.047,0,0,0,0,0.0,beyin,0.0122,0,2.5
+varsayilan,varsayilan_ab_taban_koridor_3_4,ab,taban,taban,-,0,0.0,koridor_3,4,k3_kapi_8,True,,92.65,21.611,21.475,0.0497,0.0017,0.0078,0.0305,0.061,0,0,0,0,0.0,beyin,0.0082,0,4.8
+varsayilan,varsayilan_ab_taban_koridor_4_3,ab,taban,taban,-,0,0.0,koridor_4,3,k4_kapi_9,True,,71.5,16.314,16.175,0.048,0.0001,0.0082,0.0258,0.0529,0,0,0,0,0.0,beyin,0.0235,0,4.7
+varsayilan,varsayilan_ab_taban_koridor_4_4,ab,taban,taban,-,0,0.0,koridor_4,4,k4_kapi_11,True,,79.0,19.127,19.175,0.0492,0.0011,0.0052,0.0192,0.0265,0,0,0,0,0.0,beyin,0.0213,0,5.2
+varsayilan,varsayilan_ab_taban_koridor_5_3,ab,taban,taban,-,0,0.0,koridor_5,3,k5_kapi_6,True,,51.0,12.127,12.175,0.0477,0.0028,0.01,0.034,0.0681,0,0,0,0,0.0,beyin,0.0375,0,3.7
+varsayilan,varsayilan_ab_taban_koridor_5_4,ab,taban,taban,-,0,0.0,koridor_5,4,k5_kapi_10,True,,83.0,20.128,20.175,0.0508,0.0022,0.0043,0.0097,0.0282,0,0,0,0,0.0,beyin,0.0231,0,5.6
+varsayilan,varsayilan_ab_taban_koridor_6_3,ab,taban,taban,-,0,0.0,koridor_6,3,k6_kapi_6,True,,51.0,12.12,12.175,0.0541,0.0056,0.0048,0.0095,0.0399,0,0,0,0,0.0,beyin,0.0367,0,3.5
+varsayilan,varsayilan_ab_taban_koridor_6_4,ab,taban,taban,-,0,0.0,koridor_6,4,k6_kapi_10,True,,83.0,20.126,20.175,0.05,0.0014,0.0061,0.0206,0.0244,0,0,0,0,0.0,beyin,0.0226,0,5.1
