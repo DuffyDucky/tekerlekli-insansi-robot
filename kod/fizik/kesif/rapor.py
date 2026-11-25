@@ -14,7 +14,8 @@ SONUC = os.path.join(KESIF, "sonuc")
 def _oku():
     S = []
     for yol in sorted(glob.glob(os.path.join(SONUC, "*.csv"))):
-        if os.path.basename(yol).startswith(("mujoco", "tani")):
+        # deneme* / kahin*: hafızalı deneme zinciri ve kural dışı tavan; ilk giriş tablolarına karışmaz
+        if os.path.basename(yol).startswith(("mujoco", "tani", "deneme", "kahin", "hiz_tani")):
             continue
         with open(yol, encoding="utf-8") as f:
             for r in csv.DictReader(f):
@@ -245,6 +246,9 @@ def v3_bolumu(S):
         c3 = sum(int(_f(r.get("carpma_sayisi")) or 0) for r in s3)
         md += ["Sınama2 kararı: v2 başarı %d/%d, çarpma %d; v3 başarı %d/%d, çarpma %d -> varsayılan **%s**." % (
             b2, len(s2), c2, b3, len(s3), c3, "v3" if (b3 >= b2 and c3 <= c2) else "v2"), ""]
+        # SONUC.md'ye elle eklenmiş olan not (rapor yeniden üretilince kaybolmasın)
+        md += ["Not: v3 sınama2'de kazanç getirmedi (15/20 = 15/20). Geliştirmedeki kazanç (27 → 30 / 37) düzeltmenin "
+               "üzerinde tasarlandığı labirentten, 17x17_t3'ten geliyor; genel iyileşme kanıtı sayılmaz.", ""]
         es = {(r["sahne"], r["tohum"]): r for r in s2}
         md += ["| sınama2 sahnesi | tohum | v2 durum | v2 süre | v3 durum | v3 süre |",
                "| --- | --- | --- | --- | --- | --- |"]
@@ -386,6 +390,12 @@ def rapor_yaz():
     md += surum_bolumu(ilk, [r for r in S if r.get("_dosya") == "v2_2b.csv"])
     md += uzatilmis_bolumu()
     md += v3_bolumu(S)
+    from .rapor_deneme import deneme_bolumu
+    md += deneme_bolumu()
+    from .rapor_hiz4 import v4_bolumu
+    md += v4_bolumu()
+    from .rapor_v5 import v5_bolumu
+    md += v5_bolumu()
     fail = [r for r in S if r.get("durum") != "basari"]
     md += ["## Başarısızlıklar (%d)" % len(fail), "",
            "| dosya | strateji | sahne | tohum | odo | durum | süre | sebep / son mod | son olaylar |",

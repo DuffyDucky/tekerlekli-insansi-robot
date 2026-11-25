@@ -74,6 +74,34 @@ class BeyinAyari:
     disa_acik_bonus_m: float = 0.0
     disa_acik_esik: float = 0.3
     disa_acik_hafiza_m: float = 1.5
+    # v4 hız zarfı (v1-v3'te kapalı). Tanı (sonuc/hiz_tani_v3.csv, MuJoCo v3 57 koşu): düz sürüş sürenin %81'i, ölçülen
+    # düz hız 0,225 m/s; v2 hızlı kipi düz sürenin %22'sinde açık. Engelleyen kapılar (tek başına): 1,0 m ön şerit %71,
+    # |w| <= 0,12 %53, 1,5 s bekleme %19. Köşe sonu yumuşak varışının 0,10 m/s altı kuyruğu toplam sürenin %10'u.
+    # v4: (1) izleyicide fren zarfı v <= fren_hizi(kalan yol) ve fren_hizi(ön serbest mesafe - dur eşiği); (2) hızlı
+    # kip izni sabit zamanlayıcı ve 1,0 m kapı yerine saf takip açısından (alfa0..alfa1 arasında v_seyir'den v_hizli'ya),
+    # eğrilikten (teker sınırı |v| + |w| iz / 2 <= v_tavan, |w| <= zarf_w_yay) ve öngörülen yayın süpürdüğü alanın son
+    # taramaya ve haritaya karşı denetiminden (ayak izi + zarf_pay_m, ufuk = fren mesafesi + zarf_ufuk_ek_m).
+    hiz_zarfi: bool = False
+    zarf_a: float = 0.5              # m/s² zarfın varsaydığı yavaşlama (firmware fren 1,8; izleyici 1,0)
+    zarf_tepki_s: float = 0.15       # s gecikme (tarama 10 Hz + denetim 20 Hz)
+    zarf_alfa0: float = 0.25         # rad saf takip açısı bunun altındaysa tam v_hizli (2B ilk taramada 0,10 / 0,25
+    zarf_alfa1: float = 0.50         # rad ...bunun üstündeyse v_seyir (arada doğrusal)   %4-6 daha yavaş, çarpma 0)
+    zarf_pay_m: float = 0.05         # m süpürme denetiminde ayak izi payı
+    zarf_ufuk_ek_m: float = 0.30     # m fren mesafesine eklenen süpürme ufku
+    zarf_w_yay: float = 0.6          # rad/s hızlı kipte yayın açısal hız tavanı
+    zarf_hizala: bool = True         # süpürme v_seyir'de de çarpıyorsa ve yön hatası donus_cik_rad'ı aşıyorsa yerinde hizalan
+    zarf_v_yavas: float = 0.0        # m/s ...ve hız tavanı (0: yok). 2B'de 0,12 denendi: yavaş yay yine çarptı (20
+                                     # koşuda 8 çarpma; kaba sürüm 3), kapalı
+    # v5 dönüş / yay güvenliği (v1-v4'te kapalı). Tanı (MuJoCo yeniden koşu, sınama2'deki iki v4 çarpması):
+    # (a) 17x17_t11 t1: plan 0,33 m/s'de değişti, izleyici yerinde dönüşe geçti; süpürme denetimi robot henüz frenlerken
+    #     (v 0,20) yapıldı, hiçbir dönüş / kayma sığmadı (donus_sigmaz) ve dönüş yine de başladı -> 6,1 s temas.
+    # (b) 17x17_t13 t0: yay süpürmesi v_seyir'de 2,2 s boyunca çarpma öngördü, |alfa| < donus_cik_rad olduğu için önlem
+    #     yoktu; yol duvar ucunun 0,30 m yanından geçiyordu.
+    donus_durunca: bool = False      # yerinde dönüş süpürmesi robot durunca (izleyici hızı <= 0,02) denetlenir
+    donus_kay_m: float = 0.60        # dönüş sığmıyorsa düz kayma arama aralığı (v1-v4 0,60)
+    donus_sigmaz_geri: bool = False  # hiçbir dönüş / kayma sığmıyorsa körlemesine dönme: önce geri çekil + yeniden planla
+    yay_kacin: bool = False          # yay v_seyir'de de çarpıyorsa (hizalanma yoksa) eğriliği çarpmayan en yakın değere it
+    yay_kacin_pay_m: float = 0.03    # m kaçınma adaylarının süpürme payı
     kose_esigi_der: float = 100.0
     donus_gir_rad: float = 1.3
     # izleyici: köşede dönme merkezi hücre ortasına gelince ön yüz önündeki duvara ≈ 0,20 m kalır (1,3 m hücre);
@@ -86,7 +114,8 @@ class BeyinAyari:
 
 
 def surum_ayari(surum="v1"):
-    """Sürüm adı -> BeyinAyari. v1: ilk teslim (commit 461216f) davranışı; v2: hız profili."""
+    """Sürüm adı -> BeyinAyari. v1: ilk teslim (commit 461216f) davranışı; v2: hız profili; v3: v2 + dışa açık sınır
+    önceliği; v4: v3 + hız zarfı."""
     a = BeyinAyari()
     if surum in (None, "", "v1"):
         return a
@@ -97,7 +126,21 @@ def surum_ayari(surum="v1"):
         a.hiz_profili = True
         a.disa_acik_bonus_m = 25.0
         return a
-    if surum == "v2k":                 # v2 + akıcı köşe (deneysel)
+    if surum == "v4":                  # v3 + hız zarfı (fren zarfı, ölçüye dayalı hızlanma izni, yay süpürme denetimi)
+        a.hiz_profili = True
+        a.disa_acik_bonus_m = 25.0
+        a.hiz_zarfi = True
+        return a
+    if surum == "v5":                  # v4 + dönüş / yay güvenliği (durunca denetim, körlemesine dönmeme, yay kaçınma)
+        a.hiz_profili = True
+        a.disa_acik_bonus_m = 25.0
+        a.hiz_zarfi = True
+        a.donus_durunca = True
+        a.donus_kay_m = 1.0
+        a.donus_sigmaz_geri = True
+        a.yay_kacin = True
+        return a
+    if surum == "v2k":                # v2 + akıcı köşe (deneysel)
         a.hiz_profili = True
         a.akici_kose = True
         return a
@@ -109,6 +152,14 @@ def surum_ayari(surum="v1"):
 # v1 28/33. Ayrıntı: BENIOKU.md "v2", sonuc/SONUC.md.
 # Karar 2 (2026-11-25 öğle, MuJoCo sınama2 13x13_t9..t13 + 17x17_t9..t13 x 2 tohum): v2 15/20, v3 15/20, çarpma
 # 0 / 0 -> kural gereği v3. Sınama2'de fark yok; geliştirmede v3 30/37, v2 27/37 (17x17_t3 üç tohumda çözüldü).
+# Karar 3 (2026-11-25 akşam, MuJoCo YENİ sınama3 13x13 / 17x17 t14..t18 x 2 tohum): v3 14/20, v4 17/20, çarpma 1 / 0
+# -> kural gereği v4. Geliştirme v3 30/37, v4 33/37, süre oranı ortanca 0,88. UYARI: görülmüş sınama2 gerileme
+# denetiminde v4 iki çarpma verdi (17x17_t11 t1 yerinde dönüşte 6,1 s temas; 17x17_t13 t0 yayda 0,05 s; v3 0) ve duvar
+# payı < 5 mm koşu arttı.
+# Karar 4 (2026-11-25 gece, bağımsız inceleme sonrası): v4'ün iki çarpmasının kök nedeni giderildi (v5). YENİ sınama4
+# (13x13 / 17x17 t19..t23 x 2): v3 12/20, v5 12/20, çarpma 0 / 0 (kural sağlandı). Ama geliştirmede v5 bir çarpma verdi
+# (17x17_t1 t1, 0,25 s); v3 bütün MuJoCo kümelerinde 0. "Çarpma sıfır" yalnız v3'te kanıtlı -> varsayılan v3'e döndü.
+# v4 / v5 seçmeli (surum_ayari). Ayrıntı: BENIOKU.md "v5".
 VARSAYILAN_SURUM = "v3"
 
 
@@ -130,7 +181,11 @@ class KesifBeyni:
         iz_ayar.update(a.izleyici)
         if a.akici_kose:
             iz_ayar.update(kose_esigi_rad=math.radians(a.kose_esigi_der), donus_gir_rad=a.donus_gir_rad)
-        self.izleyici = YolIzleyici(IzleyiciAyar(**iz_ayar))
+        if a.hiz_zarfi:
+            from .surus4 import ZarfIzleyici
+            self.izleyici = ZarfIzleyici(IzleyiciAyar(**iz_ayar), a_zarf=a.zarf_a, tepki_s=a.zarf_tepki_s)
+        else:
+            self.izleyici = YolIzleyici(IzleyiciAyar(**iz_ayar))
         if start_cizgisi is None:
             start_cizgisi = ((-0.45, 0.65), (-0.45, -0.65))
         self.start = (tuple(map(float, start_cizgisi[0])), tuple(map(float, start_cizgisi[1])))
@@ -321,13 +376,17 @@ class KesifBeyni:
             self._planla(t, poz)
         # hafızalı koşuda yol bilinen haritada: tavan hıza kadar (keşifte v_seyir)
         self.izleyici.ayar.v_max = self.ayar.v_hafiza if self.mod == "hafiza" else self.ayar.v_seyir
-        if self.ayar.hiz_profili:
+        if self.ayar.hiz_zarfi:
+            self._hiz_ayarla_v4()
+        elif self.ayar.hiz_profili:
             self._hiz_ayarla()
         k = self.izleyici.komut(poz, on_mesafe=self.on_mesafe)
         v, w = k.v, k.w
         if k.mod == "yerinde":
             self._son_donus_t = t
-        if k.mod == "yerinde" and not self._donus_onay and k.hedef is not None:
+        # v5: izleyici yerinde dönüşe geçtiğinde hâlâ frenliyorsa (w 0) denetim duruş pozunda yapılır
+        bekle_dur = self.ayar.donus_durunca and abs(getattr(self.izleyici, "_v", 0.0)) > 0.02
+        if k.mod == "yerinde" and not self._donus_onay and k.hedef is not None and not bekle_dur:
             if self._donus_karar(poz, k) is not None:
                 return self._cik(0.0, 0.0, t_a)
         if k.mod != "yerinde":
@@ -361,6 +420,61 @@ class KesifBeyni:
         else:
             iz.yavas_mesafe_m = a.izleyici.get("yavas_mesafe_m", 0.50)
 
+    def _hiz_ayarla_v4(self):
+        """v4: v_seyir üstüne çıkış izni ölçüden: saf takip açısı, eğrilik / teker sınırı, yay süpürme denetimi.
+        Fren zarfı izleyicide (surus4.ZarfIzleyici). İzin yoksa izleyici v_seyir ile sürer (v3 hız tavanı)."""
+        from .surus4 import supurme_carpar, yay_pozlari
+        a = self.ayar
+        iz = self.izleyici
+        ia = iz.ayar
+        taban = ia.v_max
+        if self.mod not in ("kesif", "cikis", "hafiza") or iz.son.mod != "izle" or iz.son_alfa is None:
+            return
+        f = (a.zarf_alfa1 - abs(iz.son_alfa)) / max(1e-6, a.zarf_alfa1 - a.zarf_alfa0)
+        f = max(0.0, min(1.0, f))
+        v = taban + f * (a.v_hizli - taban)
+        k = abs(iz.son_kappa)
+        v = min(v, self.robot.v_tavan / (1.0 + 0.5 * self.robot.iz_m * k))
+        if k > 1e-6:
+            v = min(v, a.zarf_w_yay / k)
+        tarama = getattr(self.slam, "son_noktalar", None)
+
+        def carpar(vv):
+            ufuk = vv * a.zarf_tepki_s + vv * vv / (2.0 * a.zarf_a) + a.zarf_ufuk_ek_m
+            P = yay_pozlari(vv, iz._w, iz.son_kappa, self.robot.dingil_x_m, ufuk, a_w=ia.a_w, w_max=ia.w_max)
+            return supurme_carpar(P, self.robot, a.zarf_pay_m, tarama_xy=tarama, dolu_mu=self._dolu_mu,
+                                  govde_poz=self.slam.poz)
+        if v > taban + 0.01 and not carpar(v):
+            ia.v_max = v
+            self.sayac["hizli"] = self.sayac.get("hizli", 0) + 1
+            return
+        if v > taban + 0.01:
+            self.sayac["zarf_red"] = self.sayac.get("zarf_red", 0) + 1
+        # v_seyir'de de süpürme çarpıyorsa (2B: yerinde / bakış dönüşünden sonra yön oturmadan v_seyir'de yayla duvar
+        # ucuna sürtünme): yön hatası büyükse önce yerinde hizalan, değilse yavaş sür
+        if (a.zarf_hizala or a.zarf_v_yavas > 0) and carpar(taban):
+            self.sayac["zarf_yavas"] = self.sayac.get("zarf_yavas", 0) + 1
+            iz.hizala_iste = a.zarf_hizala
+            if a.zarf_v_yavas > 0:
+                ia.v_max = min(taban, a.zarf_v_yavas)
+            if a.yay_kacin and not (a.zarf_hizala and abs(iz.son_alfa) > ia.donus_cik_rad):
+                # v5: hizalanma yoksa (yön hatası küçük) yayın eğriliğini çarpmayan en yakın değere it (bir adım)
+                k0 = iz.son_kappa
+                vv = taban
+                ufuk = vv * a.zarf_tepki_s + vv * vv / (2.0 * a.zarf_a) + a.zarf_ufuk_ek_m
+                for dk in (0.0, 0.15, -0.15, 0.3, -0.3, 0.5, -0.5, 0.8, -0.8):
+                    kk = k0 + dk
+                    if abs(kk) * vv > ia.w_max:
+                        continue
+                    P = yay_pozlari(vv, iz._w, kk, self.robot.dingil_x_m, ufuk, a_w=ia.a_w, w_max=ia.w_max)
+                    if not supurme_carpar(P, self.robot, a.yay_kacin_pay_m, tarama_xy=tarama, dolu_mu=self._dolu_mu,
+                                          govde_poz=self.slam.poz):
+                        iz.kappa_iste = kk
+                        self.sayac["yay_kacin"] = self.sayac.get("yay_kacin", 0) + 1
+                        break
+                else:
+                    self.sayac["yay_kacin_yok"] = self.sayac.get("yay_kacin_yok", 0) + 1
+
     def _cik(self, v, w, t_a, filtre=True):
         if abs(v) < 0.02 and abs(w) > 0.05 or self.mod in ("kurtarma", "konumlan", "duvar_izle"):
             self._son_donus_t = self.t
@@ -386,8 +500,9 @@ class KesifBeyni:
                        "secilen_sinir": None if self.hedef_sinir is None else
                        [round(self.hedef_sinir.merkez[0], 2), round(self.hedef_sinir.merkez[1], 2)],
                        "disa_acik": list(self.disa_acik),
-                       "surum": ("v3" if self.ayar.disa_acik_bonus_m > 0 else "v2") if self.ayar.hiz_profili
-                       else "v1"}}
+                       "surum": ("v5" if self.ayar.yay_kacin or self.ayar.donus_durunca else "v4")
+                       if self.ayar.hiz_zarfi else
+                       (("v3" if self.ayar.disa_acik_bonus_m > 0 else "v2") if self.ayar.hiz_profili else "v1")}}
 
     def hafiza_ver(self):
         """Ek tur için: harita + son poz (benzetici koşu FINISH'te bitince çağırır)."""
@@ -602,7 +717,8 @@ class KesifBeyni:
             self._bak, self._bak_yon = hedef_yon, -yon
             self.sayac["donus_ters"] += 1
             return "ters"
-        for sm in sorted(np.arange(-0.60, 0.601, 0.05), key=abs):
+        km = self.ayar.donus_kay_m
+        for sm in sorted(np.arange(-km, km + 0.001, 0.05), key=abs):
             if abs(sm) < 0.04:
                 continue
             p2 = (poz[0] + sm * c, poz[1] + sm * s_, poz[2])
@@ -614,6 +730,17 @@ class KesifBeyni:
                 self.mod = "konumlan"
                 return "kay"
         self.sayac["donus_sigmaz"] += 1
+        if self.ayar.donus_sigmaz_geri:
+            # v5: körlemesine dönme yerine önce geri çekil ve yeniden planla; aynı yerde (0,3 m) 20 s içinde ikinci kez
+            # sığmazsa eski davranış (izleyiciye bırak; v3 / v4'ün takılmama güvencesi)
+            son = getattr(self, "_sigmaz_son", None)
+            ayni = son is not None and self.t - son[0] < 20.0 and math.hypot(poz[0] - son[1], poz[1] - son[2]) < 0.3
+            if not ayni:
+                self._sigmaz_son = (self.t, poz[0], poz[1])
+                self.sayac["donus_geri"] = self.sayac.get("donus_geri", 0) + 1
+                self._kurtarma_baslat(self.t, "donus_sigmaz")
+                return "geri"
+            self.sayac["donus_kor"] = self.sayac.get("donus_kor", 0) + 1
         self._donus_onay = True
         return None
 

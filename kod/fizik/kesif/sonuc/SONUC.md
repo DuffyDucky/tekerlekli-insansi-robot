@@ -421,7 +421,200 @@ Not: v3 sınama2'de kazanç getirmedi (15/20 = 15/20). Geliştirmedeki kazanç (
 | v3 7x7 | 2 | 2/2 | 167.2 | 205 | 36.2 | 0.00 | 1407 | 0.10 | 0.99 |
 | v3 9x9 | 6 | 6/6 | 227.9 | 276 | 54.5 | 0.00 | 1373 | 0.22 | 0.82 |
 
-## Başarısızlıklar (124)
+## Deneme zinciri (HAFIZALI sınıf): başarısız denemenin haritası sonraki denemeye taşınır
+
+**Bu bölüm "ilk girişte, hiç bilgi olmadan" KPI'sı değildir.** 2. ve sonraki denemelerde beyin önceki denemelerin haritasını bilir. İlk giriş KPI'sı (v3, ön bilgisiz) değişmedi: yukarıdaki "v2 / v3" bölümü. CSV: `sonuc/deneme_gelistirme.csv`, `sonuc/deneme_sinama2.csv` (sütunlar `sinif` = hafizali, `kume`, `deneme_no`; her deneme ayrı satır). Kurulum: `kesif.kos_deneme`, `kesif.deneme`. Robot her yeni denemede START pozuna + yerleştirme hatasına (std 3 cm, 2°; kırpma 6 cm, 4°) konur; beyin pozunu harita çerçevesinde START'a sıfırlar, ilk iki taramayı geniş aramayla eski haritaya oturtur. En çok 4 deneme, her biri 900 s.
+
+| küme | zincir | 1. denemede | 2. | 3. | 4. | 4 denemede çözülmedi | toplam süre ortanca (s, çözülen) | deneme sayısı | çarpma (toplam) | fail_start | START kesme | hata satırı |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gelistirme | 7 | 0 | 2 | 5 | 0 | 0 | 2502 | 19 | 0 | 0 | 0 | 0 |
+| sinama2 | 20 | 15 | 1 | 0 | 0 | 4 | 734 | 33 | 1 | 0 | 0 | 0 |
+
+1. deneme = eski ilk giriş koşusu (gelistirme, `mujoco_v3.csv`): 7/7 aynı sonuç ve süre (±1 s).
+1. deneme = eski ilk giriş koşusu (sinama2, `mujoco_sinama2_v3.csv`): 20/20 aynı sonuç ve süre (±1 s).
+
+| küme | deneme no | n | başarı | harita büyümesi ort (m²) | yeni hücre ort (birleşik artışı) | poz hatası maks ort (m) | kurtarma ort |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| gelistirme | 1 | 7 | 0 | 256.4 | 122.3 | 0.39 | 2.4 |
+| gelistirme | 2 | 7 | 2 | 95.3 | 38.7 | 0.33 | 2.0 |
+| gelistirme | 3 | 5 | 5 | 108.3 | 24.0 | 0.53 | 1.6 |
+| sinama2 | 1 | 20 | 15 | 268.5 | 99.0 | 0.39 | 1.8 |
+| sinama2 | 2 | 5 | 1 | 64.3 | 26.4 | 0.35 | 2.6 |
+| sinama2 | 3 | 4 | 0 | 23.1 | 11.8 | 0.36 | 3.2 |
+| sinama2 | 4 | 4 | 0 | 30.6 | 12.5 | 0.36 | 4.8 |
+
+### Zincirler: gelistirme
+
+| sahne | tohum | çözüm (m) | deneme: durum / süre (s) | çözüldüğü deneme | toplam süre (s) | bilinen alan sonda (m²), deneme başına | birleşik hücre (deneme sonu) | poz hatası maks (m) | START hatası 0,5 s (m / °) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| labirent_13x13_t2 | 0 | 72 | 1 fail_sure 900; 2 basari 491 | 2 | 1391.2 | 245 → 352 | 118 → 140 | 0.252 / 0.252 | 0.0057 0.108 |
+| labirent_13x13_t2 | 1 | 72 | 1 fail_sure 900; 2 basari 491 | 2 | 1391.35 | 244 → 354 | 115 → 138 | 0.251 / 0.235 | 0.0011 0.308 |
+| labirent_17x17_t2 | 1 | 118 | 1 fail_sure 900; 2 fail_sikisma 359; 3 basari 523 | 3 | 1782.1 | 277 → 308 → 423 | 130 → 143 → 168 | 0.657 / 0.182 / 0.783 | 0.0026 0.141 / 0.005 0.31 |
+| labirent_17x17_t4 | 0 | 183 | 1 fail_sure 900; 2 fail_sure 900; 3 basari 812 | 3 | 2612.15 | 253 → 369 → 512 | 114 → 176 → 217 | 0.432 / 0.549 / 0.621 | 0.0039 0.089 / 0.0046 0.111 |
+| labirent_17x17_t4 | 1 | 183 | 1 fail_sure 900; 2 fail_sure 900; 3 basari 782 | 3 | 2582.5 | 252 → 368 → 512 | 118 → 178 → 220 | 0.404 / 0.38 / 0.412 | 0.0159 0.059 / 0.0032 0.118 |
+| labirent_17x17_t5 | 0 | 152 | 1 fail_sure 900; 2 fail_sure 900; 3 basari 702 | 3 | 2501.6 | 269 → 366 → 436 | 132 → 179 → 185 | 0.446 / 0.45 / 0.546 | 0.0206 0.114 / 0.0305 0.108 |
+| labirent_17x17_t5 | 1 | 152 | 1 fail_sure 900; 2 fail_sure 900; 3 basari 738 | 3 | 2538.15 | 259 → 349 → 418 | 129 → 173 → 179 | 0.255 / 0.248 / 0.306 | 0.029 0.065 / 0.0104 0.09 |
+
+### Zincirler: sinama2
+
+| sahne | tohum | çözüm (m) | deneme: durum / süre (s) | çözüldüğü deneme | toplam süre (s) | bilinen alan sonda (m²), deneme başına | birleşik hücre (deneme sonu) | poz hatası maks (m) | START hatası 0,5 s (m / °) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| labirent_13x13_t10 | 0 | 46 | 1 basari 199 | 1 | 199.45 | 147 | 35 | 0.161 | - |
+| labirent_13x13_t10 | 1 | 46 | 1 basari 209 | 1 | 208.8 | 149 | 35 | 0.264 | - |
+| labirent_13x13_t11 | 0 | 90 | 1 basari 731 | 1 | 731.15 | 285 | 98 | 0.621 | - |
+| labirent_13x13_t11 | 1 | 90 | 1 basari 718 | 1 | 717.7 | 285 | 96 | 0.6 | - |
+| labirent_13x13_t12 | 0 | 155 | 1 basari 868 | 1 | 867.95 | 353 | 125 | 0.376 | - |
+| labirent_13x13_t12 | 1 | 155 | 1 basari 737 | 1 | 736.85 | 337 | 119 | 0.308 | - |
+| labirent_13x13_t13 | 0 | 113 | 1 basari 869 | 1 | 869.4 | 305 | 112 | 0.365 | - |
+| labirent_13x13_t13 | 1 | 113 | 1 basari 743 | 1 | 743.05 | 305 | 112 | 0.44 | - |
+| labirent_13x13_t9 | 0 | 56 | 1 basari 328 | 1 | 328.1 | 189 | 51 | 0.403 | - |
+| labirent_13x13_t9 | 1 | 56 | 1 basari 337 | 1 | 336.55 | 189 | 50 | 0.276 | - |
+| labirent_17x17_t10 | 0 | 69 | 1 basari 306 | 1 | 305.7 | 186 | 53 | 0.163 | - |
+| labirent_17x17_t10 | 1 | 69 | 1 basari 318 | 1 | 318.4 | 187 | 53 | 0.429 | - |
+| labirent_17x17_t11 | 0 | 165 | 1 fail_sure 900; 2 fail_sure 900; 3 fail_sure 900; 4 fail_sure 900 | yok | 3600.2 | 301 → 401 → 437 → 491 | 136 → 184 → 203 → 224 | 0.467 / 0.391 / 0.428 / 0.418 | 0.0095 0.589 / 0.0008 0.258 / 0.0048 0.29 |
+| labirent_17x17_t11 | 1 | 165 | 1 fail_sure 900; 2 fail_sure 900; 3 fail_sure 900; 4 fail_sure 900 | yok | 3600.2 | 280 → 402 → 439 → 493 | 126 → 186 → 205 → 228 | 0.271 / 0.328 / 0.288 / 0.286 | 0.0007 0.039 / 0.0017 0.222 / 0.0064 0.428 |
+| labirent_17x17_t12 | 0 | 207 | 1 fail_sure 900; 2 fail_sure 900; 3 fail_sure 900; 4 fail_sure 900 | yok | 3600.2 | 319 → 321 → 340 → 342 | 150 → 154 → 163 → 163 | 0.585 / 0.546 / 0.581 / 0.493 | 0.0054 0.171 / 0.0042 0.076 / 0.0057 0.096 |
+| labirent_17x17_t12 | 1 | 207 | 1 fail_sure 900; 2 fail_sure 900; 3 fail_sure 900; 4 fail_sure 900 | yok | 3600.2 | 315 → 323 → 323 → 335 | 147 → 152 → 152 → 158 | 0.137 / 0.13 / 0.126 / 0.253 | 0.0048 0.664 / 0.007 0.35 / 0.0004 0.058 |
+| labirent_17x17_t13 | 0 | 178 | 1 basari 861 | 1 | 861.25 | 368 | 138 | 0.379 | - |
+| labirent_17x17_t13 | 1 | 178 | 1 basari 797 | 1 | 797.4 | 368 | 137 | 0.685 | - |
+| labirent_17x17_t9 | 0 | 82 | 1 basari 895 | 1 | 894.55 | 302 | 111 | 0.631 | - |
+| labirent_17x17_t9 | 1 | 82 | 1 fail_sure 900; 2 basari 369 | 2 | 1268.85 | 213 → 303 | 96 → 111 | 0.254 / 0.351 | 0.0025 0.128 |
+
+### START'ta yeniden hizalama (gelistirme; aynı beyin kopyası, aynı yerleştirme, 10 s sonda)
+
+| hizalama | n | yerleştirme hatası ort (m / °) | START hatası 0,5 s ort / maks (m) | yön 0,5 s ort / maks (°) | 10 s ort / maks (m) | yön 10 s ort / maks (°) |
+| --- | --- | --- | --- | --- | --- | --- |
+| açık | 12 | 0.035 / 1.99 | 0.011 / 0.030 | 0.135 / 0.310 | 0.045 / 0.182 | 0.331 / 1.149 |
+| kapalı | 12 | 0.035 / 1.99 | 0.012 / 0.042 | 0.185 / 0.471 | 0.070 / 0.460 | 0.384 / 1.129 |
+
+### START'ta yeniden hizalama (sinama2; aynı beyin kopyası, aynı yerleştirme, 10 s sonda)
+
+| hizalama | n | yerleştirme hatası ort (m / °) | START hatası 0,5 s ort / maks (m) | yön 0,5 s ort / maks (°) | 10 s ort / maks (m) | yön 10 s ort / maks (°) |
+| --- | --- | --- | --- | --- | --- | --- |
+| açık | 13 | 0.030 / 1.90 | 0.004 / 0.009 | 0.259 / 0.664 | 0.007 / 0.017 | 0.756 / 2.269 |
+| kapalı | 13 | 0.030 / 1.90 | 0.008 / 0.020 | 0.507 / 0.965 | 0.007 / 0.019 | 0.678 / 2.262 |
+
+### Hız sınırı: harita tam bilinse 900 s'ye sığar mı
+
+Bilinen haritada ölçülen tempo (çözüm metresi başına süre, 14 hafızalı koşu): en iyi 3.86, ortanca 4.23, en kötü 4.75 s/m (yalnız düz sürüş + köşelerde dur–dön–kalk; ölçülen düz hız ~0,23 m/s).
+
+| sahne | çözüm (m) | alt sınır çözüm / 0,39 m/s (s) | tam haritayla beklenen süre en iyi / ortanca / en kötü (s) | 900 s'ye sığar mı | zincir sonucu (tohum: çözüldüğü deneme) |
+| --- | --- | --- | --- | --- | --- |
+| labirent_17x17_t12 | 207 | 530 | 798 / 874 / 982 | sınırda: ortanca tempoda +26 s pay, en kötüde -82 s; keşfe yer yok | t0: yok (4 deneme), t1: yok (4 deneme) |
+| labirent_17x17_t4 | 183 | 470 | 708 / 775 / 870 | evet | t0: 3, t1: 3 |
+| labirent_17x17_t13 | 178 | 457 | 688 / 753 / 846 | evet | t0: 1, t1: 1 |
+| labirent_17x17_t11 | 165 | 423 | 638 / 698 / 784 | evet | t0: yok (4 deneme), t1: yok (4 deneme) |
+| labirent_13x13_t12 | 155 | 397 | 597 / 654 / 735 | evet | t0: 1, t1: 1 |
+| labirent_17x17_t5 | 152 | 390 | 587 / 643 / 722 | evet | t0: 3, t1: 3 |
+
+## v4: hız zarfı (fren zarfı, ölçüye dayalı hızlanma izni, yay süpürme denetimi)
+
+### Tanı (v3 MuJoCo kayıtları, geliştirme + sınama2, 57 koşu; `sonuc/hiz_tani_v3.csv`)
+
+- Düz sürüş toplam sürenin %81'i; ölçülen düz hız (düz süre ağırlıklı) 0.225 m/s.
+- Hızlı kip (v_komut > 0,26) düz sürenin %22'inde açık. Koşulların tek başına engellediği pay: 1,0 m ön şerit %71, |w| <= 0,12 %53, 1,5 s bekleme %19. Yalnız ön şerit %24, yalnız w %5, yalnız bekleme %0.3.
+- Düz sürenin hız dağılımı: < 0,10 m/s %12, 0,10–0,20 %20, 0,20–0,24 %9, 0,24–0,26 %38, 0,26–0,33 %5, >= 0,33 %17.
+- Düz parça 3471 (ortalama 1.64 m). 1,5 m'den kısa 2074 parça 7459 s sürdü; ideal dur-kalk süresi 5142 s. Parça sonunda 0,10 m/s altında geçen kuyruk toplam 3098 s (toplam sürenin %10.0'i): izleyicinin doğrusal yumuşak varışı (v <= 0,8 x kalan) köşeye üstel yaklaşıyor.
+- Üst sınır: her düz parça 0,39 m/s tavan ve 0,5 m/s² hızlanma / yavaşlamayla (yay ve eğrilik yok sayılarak) 25082 s yerine 16952 s sürerdi; kazanç en çok 8131 s, toplam sürenin %26'i. Yerinde dönüş, plan ve kurtarma değişmez sayıldı.
+
+### 2B geliştirme (21 labirent x tohum {0, 1}; `sonuc/v3_2b.csv` v3 satırları, `sonuc/v4_2b.csv`)
+
+| sürüm | başarı | çarpma olayı | temas (s) | süre ortanca (başarılı) |
+| --- | --- | --- | --- | --- |
+| v3 | 38/42 | 2 | 5.80 | 360 |
+| v4 | 37/42 | 1 | 2.90 | 306 |
+
+v4/v3 süre oranı (ikisi de başarılı, 36 çift): ortanca 0.889, ortalama 0.927.
+
+### MuJoCo v3 / v4 (900 s, ön bilgisiz)
+
+Geliştirme ve sınama3 ayrı satırda. Sınama3 (13x13 / 17x17 t14..t18) bu aşamada üretildi; v4'ün sınama3 sonuçlarına geliştirme bitene kadar bakılmadı. Sınama2 görülmüş kümedir, yalnız gerileme denetimi.
+
+| küme | sürüm | başarı | süre ortanca (başarılı, s) | v4/v3 süre ortanca (ort; çift) | puan ort | düz hız ort (m/s) | hızlı kip payı (düz süre) | 0,10 m/s altı kuyruk (s) | çarpma olayı | temas (s) | en küçük duvar payı (m; koşu p01 ortancası) | payı < 5 mm koşu |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| geliştirme | v3 | 30/37 | 327 |  | 1105 | 0.227 | 0.23 | 1771 | 0 | 0.00 | 0.014 (0.099) | 0/37 |
+| geliştirme | v4 | 33/37 | 292 | 0.883 (0.909; 30) | 1199 | 0.275 | 0.70 | 357 | 0 | 0.00 | -0.001 (0.111) | 4/37 |
+| sınama3 | v3 | 14/20 | 635 |  | 914 | 0.223 | 0.21 | 1306 | 1 | 0.05 | -0.001 (0.102) | 2/20 |
+| sınama3 | v4 | 17/20 | 594 | 0.884 (0.906; 14) | 1042 | 0.269 | 0.68 | 314 | 0 | 0.00 | -0.001 (0.097) | 3/20 |
+
+Duvar payı gerçek pozdan ölçülür: ayak izi kutusu (±0,264 x ±0,262 m) ile 2B duvar çizgileri arası, her 2. adım (`kesif.hiz_tani`). -0,001 = kutu çizgiye değdi. MuJoCo temas bayrağı bu anların çoğunda 0 kaldı (temas sütunu); çarpışma geometrisinin kutudan birkaç mm farkı olabilir. Yine de bu, payın tükendiği andır.
+
+Sonradan bakıldı (sınama2, görülmüş küme; v4 koşulan satırlar):
+
+| küme | sürüm | başarı | süre ortanca (başarılı, s) | v4/v3 süre ortanca (ort; çift) | puan ort | düz hız ort (m/s) | hızlı kip payı (düz süre) | 0,10 m/s altı kuyruk (s) | çarpma olayı | temas (s) | en küçük duvar payı (m; koşu p01 ortancası) | payı < 5 mm koşu |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sınama2 (sonradan bakıldı) | v3 | 15/20 | 731 |  | 958 | 0.221 | 0.21 | 1327 | 0 | 0.00 | -0.001 (0.099) | 2/20 |
+| sınama2 (sonradan bakıldı) | v4 | 17/20 | 648 | 0.842 (0.821; 15) | 1062 | 0.272 | 0.69 | 273 | 2 | 6.15 | -0.001 (0.109) | 3/20 |
+
+Hız sınıfı (sınama2'de v3'ün süreye sığmadığı 17x17_t11 ve t12; sonradan bakıldı):
+
+| sahne | tohum | v3 durum / süre | v4 durum / süre | v4 p_en | v4 yol (m) |
+| --- | --- | --- | --- | --- | --- |
+| labirent_17x17_t11 | 0 | fail_sure / 900.05 | fail_sure / 900.05 | 0.6006 | 203.017 |
+| labirent_17x17_t11 | 1 | fail_sure / 900.05 | fail_sure / 900.05 | 0.6007 | 205.067 |
+| labirent_17x17_t12 | 0 | fail_sure / 900.05 | fail_sure / 900.05 | 0.8451 | 211.966 |
+| labirent_17x17_t12 | 1 | fail_sure / 900.05 | basari / 837.85 | 1.0 | 196.045 |
+
+**Karar kuralı** (sınama3): v4 başarısı v3'ten az değil (14 / 17) ve çarpma artmadı (1 / 0) -> sağlandı, `VARSAYILAN_SURUM = "v4"` (sonra v3'e döndü: v5 bölümü).
+
+Kalan başarısızlıklar (v4):
+
+| küme | sahne | tohum | durum | süre | p_en | yol (m) | çarpma | son olaylar |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| geliştirme | labirent_13x13_t2 | 0 | fail_sure | 900.05 | 0.9074 | 200.254 | 0 | 12.7:kurtarma; 251.7:kurtarma; 430.2:kurtarma |
+| geliştirme | labirent_17x17_t4 | 0 | fail_sure | 900.05 | 0.5073 | 206.634 | 0 | 366.0:kurtarma; 698.7:kurtarma |
+| geliştirme | labirent_17x17_t4 | 1 | fail_sure | 900.05 | 0.5375 | 210.31 | 0 | 375.6:kurtarma |
+| geliştirme | labirent_17x17_t5 | 1 | fail_sure | 900.05 | 0.944 | 214.968 | 0 | 838.6:kurtarma |
+| sınama3 | labirent_13x13_t15 | 1 | fail_sure | 900.05 | 0.9679 | 205.004 | 0 | 849.0:kurtarma; 876.8:kurtarma |
+| sınama3 | labirent_17x17_t18 | 0 | fail_sure | 900.05 | 0.6887 | 202.101 | 0 | 149.9:kurtarma; 671.9:kurtarma |
+| sınama3 | labirent_17x17_t18 | 1 | fail_sure | 900.05 | 0.6891 | 200.495 | 0 | 60.0:kurtarma; 104.3:kurtarma |
+| sınama2 | labirent_17x17_t11 | 0 | fail_sure | 900.05 | 0.6006 | 203.017 | 0 | 676.1:kurtarma |
+| sınama2 | labirent_17x17_t11 | 1 | fail_sure | 900.05 | 0.6007 | 205.067 | 1 | 720.8:kurtarma; 725.6:kurtarma |
+| sınama2 | labirent_17x17_t12 | 0 | fail_sure | 900.05 | 0.8451 | 211.966 | 0 |  |
+
+## v5: dönüş / yay güvenliği (durunca dönüş denetimi, körlemesine dönmeme, yay kaçınma)
+
+Geliştirme: MuJoCo geliştirme kümesi ve sınama2 (v4'ün iki çarpmasının tanısı sınama2 kayıtlarında yapıldı; bu yüzden sınama2 artık geliştirme sayılır). Sınama4 (13x13 / 17x17 t19..t23 x 2) bu aşamada üretildi; v5 kodu dondurulduktan sonra koşuldu, karar yalnız ona göre. v3 sınama4 koşuları v5 öncesi kod kopyasından, v4 sınama4 koşuları (yalnız karşılaştırma, karardan sonra) v4_kod kopyasından.
+
+| küme | sürüm | başarı | çarpma olayı (koşu) | temas (s) | süre ortanca (başarılı, s) | süre oranı / v4 (ortanca; çift) | süre oranı / v3 | puan ort | kurtarma | duvar payı < 5 mm koşu |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| geliştirme | v3 | 30/37 | 0 (0) | 0.00 | 327 |  |  | 1105 | 39 | 0/37 |
+| geliştirme | v4 | 33/37 | 0 (0) | 0.00 | 292 |  | 0.883; 30 | 1199 | 17 | 4/37 |
+| geliştirme | v5 | 32/37 | 1 (1) | 0.25 | 286 | 0.999; 32 | 0.893; 29 | 1172 | 14 | 1/37 |
+| sınama2 (görülmüş, tanı) | v3 | 15/20 | 0 (0) | 0.00 | 731 |  |  | 958 | 35 | 2/20 |
+| sınama2 (görülmüş, tanı) | v4 | 17/20 | 2 (2) | 6.15 | 648 |  | 0.842; 15 | 1062 | 12 | 3/20 |
+| sınama2 (görülmüş, tanı) | v5 | 17/20 | 0 (0) | 0.00 | 606 | 0.981; 16 | 0.833; 15 | 1078 | 16 | 2/20 |
+| **sınama4** (YENİ) | v3 | 12/20 | 0 (0) | 0.00 | 464 |  |  | 856 | 30 | 0/20 |
+| **sınama4** (YENİ) | v4 | 12/20 | 0 (0) | 0.00 | 426 |  | 0.877; 12 | 877 | 13 | 5/20 |
+| **sınama4** (YENİ) | v5 | 12/20 | 0 (0) | 0.00 | 389 | 0.964; 12 | 0.845; 12 | 886 | 19 | 0/20 |
+
+**Karar kuralı** (sınama4): v5 başarısı v3'ten az değil (12 / 12) ve çarpma artmadı (0 / 0) -> sağlandı.
+
+Bütün kümelerde çarpma olayı (koşu sayısı): v3 0 (77), v4 2 (77), v5 1 (77). "Çarpma sıfır" hedefi yalnız v3'te tutuyor; bu yüzden `VARSAYILAN_SURUM` v3'e döndü (sınama4 kuralı v5 için sağlansa da). v5 seçmeli: `surum_ayari("v5")`.
+
+Çarpmalı ya da başarısız v5 koşuları:
+
+| küme | sahne | tohum | durum | süre | p_en | çarpma | temas (s) | son olaylar |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| geliştirme | labirent_13x13_t2 | 0 | fail_sure | 900.05 | 0.908 | 0 | 0.0 | 12.7:kurtarma |
+| geliştirme | labirent_13x13_t2 | 2 | fail_sure | 900.05 | 0.9062 | 0 | 0.0 | 475.1:kurtarma |
+| geliştirme | labirent_17x17_t1 | 1 | basari | 349.95 | 1.0 | 1 | 0.25 | 335.4:disa_acik_sinir; 339.8:disa_acik_sinir; 340.8:cikis_goruldu |
+| geliştirme | labirent_17x17_t4 | 0 | fail_sure | 900.05 | 0.5482 | 0 | 0.0 |  |
+| geliştirme | labirent_17x17_t4 | 1 | fail_sure | 900.05 | 0.5402 | 0 | 0.0 | 729.5:kurtarma |
+| geliştirme | labirent_17x17_t5 | 1 | fail_sure | 900.05 | 0.9429 | 0 | 0.0 | 221.1:kurtarma |
+| sınama2 | labirent_17x17_t11 | 0 | fail_sure | 900.05 | 0.6005 | 0 | 0.0 | 266.2:kurtarma |
+| sınama2 | labirent_17x17_t12 | 0 | fail_sure | 900.05 | 0.8448 | 0 | 0.0 |  |
+| sınama2 | labirent_17x17_t12 | 1 | fail_sure | 900.05 | 0.8545 | 0 | 0.0 | 76.6:kurtarma |
+| sınama4 | labirent_17x17_t19 | 0 | fail_sure | 900.05 | 0.7881 | 0 | 0.0 | 221.5:kurtarma |
+| sınama4 | labirent_17x17_t19 | 1 | fail_sure | 900.05 | 0.788 | 0 | 0.0 | 524.2:kurtarma |
+| sınama4 | labirent_17x17_t20 | 0 | fail_sure | 900.05 | 0.7211 | 0 | 0.0 | 716.2:kurtarma; 723.9:kurtarma; 731.7:kurtarma; 739.6:kurtarma; 746.2:kurtarma; 753.9:kurtarma; 760.5:kurtarma |
+| sınama4 | labirent_17x17_t20 | 1 | fail_sure | 900.05 | 0.7436 | 0 | 0.0 |  |
+| sınama4 | labirent_17x17_t21 | 0 | fail_sure | 900.05 | 0.8141 | 0 | 0.0 | 185.6:kurtarma; 525.8:kurtarma |
+| sınama4 | labirent_17x17_t21 | 1 | fail_sure | 900.05 | 0.8132 | 0 | 0.0 | 48.1:kurtarma; 574.3:kurtarma |
+| sınama4 | labirent_17x17_t23 | 0 | fail_sure | 900.05 | 0.941 | 0 | 0.0 | 735.1:disa_acik_sinir |
+| sınama4 | labirent_17x17_t23 | 1 | fail_sure | 900.05 | 0.9387 | 0 | 0.0 | 223.6:kurtarma; 234.9:kurtarma |
+
+## Başarısızlıklar (129)
 
 | dosya | strateji | sahne | tohum | odo | durum | süre | sebep / son mod | son olaylar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -549,3 +742,8 @@ Not: v3 sınama2'de kazanç getirmedi (15/20 = 15/20). Geliştirmedeki kazanç (
 | v3_2b.csv | kesif | labirent_17x17_t5 | 1 | 0.14 | fail_sure | 900.0 | - / kesif |  |
 | v3_2b.csv | kesif | labirent_13x13_t2 | 1 | 0.14 | fail_sure | 900.0 | - / kesif | 206.2:kurtarma/on_engel |
 | v3_2b.csv | kesif | labirent_13x13_t2 | 1 | 0.14 | fail_sure | 900.0 | - / kesif | 206.2:kurtarma/on_engel |
+| v4_2b.csv | kesif | labirent_17x17_t2 | 0 | 0.14 | fail_sure | 900.0 | - / kesif | 58.9:kurtarma/on_engel; 288.2:kurtarma/sikisma; 293.1:kurtarma/on_engel; 537.5:kurtarma/sikisma; 687.4:kurtarma/on_engel |
+| v4_2b.csv | kesif | labirent_17x17_t4 | 0 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v4_2b.csv | kesif | labirent_17x17_t4 | 1 | 0.14 | fail_sure | 900.0 | - / kesif |  |
+| v4_2b.csv | kesif | labirent_17x17_t5 | 0 | 0.14 | fail_sure | 900.0 | - / kesif | 196.2:kurtarma/on_engel |
+| v4_2b.csv | kesif | labirent_17x17_t5 | 1 | 0.14 | fail_sure | 900.0 | - / kesif | 765.8:kurtarma/on_engel |

@@ -199,6 +199,14 @@ def gorev_listesi(deney):
                 for t in (0, 1):
                     G.append({"deney": "v3_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
                               "ayar": surum_ayari(sur), "ayar_ad": sur})
+    elif deney == "v4_2b":
+        # v4 2B: aynı 21 geliştirme labirenti x tohum {0, 1}; v3 karşılığı v3_2b.csv (aynı tohumlar, belirlenimci)
+        from .beyin import surum_ayari
+        labs = LABIRENTLER + ["labirent_%dx%d_t%d" % (n, n, t) for n in (13, 17) for t in range(4, 9)]
+        for lab in labs:
+            for t in (0, 1):
+                G.append({"deney": "v4_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
+                          "ayar": surum_ayari("v4"), "ayar_ad": "v4"})
     elif deney == "kose_2b":
         # v2 kısa 2B denemesi: 4 geliştirme labirenti x tohum {0, 1} (sonuç sonuc/v2_2b.csv'ye taşındı; v2k = akıcı
         # köşe ilk denemede 8 koşuda 9 çarpma verdi, sonuc/ham/kose_2b_v2_ilk_v2k.csv)
@@ -217,7 +225,7 @@ def gorev_listesi(deney):
 
 def main(argv=None):
     p = argparse.ArgumentParser()
-    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "v3_2b", "rapor"])
+    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "v3_2b", "v4_2b", "rapor"])
     p.add_argument("--is", dest="is_sayisi", type=int, default=2)
     p.add_argument("--sahne", default=None, help="virgüllü süzgeç (alt dize)")
     p.add_argument("--strateji", default=None)
