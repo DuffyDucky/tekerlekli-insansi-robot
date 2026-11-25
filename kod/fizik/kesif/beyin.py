@@ -1,0 +1,631 @@
+"""KesifBeyni: bilinmeyen labirentte haritalayarak çıkış arayan beyin (gezinme `Beyin` protokolü).
+
+    from kesif.beyin import KesifBeyni, olustur
+    b = olustur("labirent_9x9_t1")     # START çizgisinin yerini sahneden alır (yalnız o)
+    b = KesifBeyni()                     # sahnesiz: START çizgisi 0,45 m geride, 1,3 m (VARSAYIM)
+    v, w = b.adim(t, tarama, artim);  b.durum()
+
+Döngü (20 Hz denetim, 10 Hz LiDAR):
+- odometri + tarama -> HafifSLAM (slam.py)
+- ≈ 1 Hz (ve olaylarda) planlama: kaba harita, BFS; önce çıkış (dış alan diski) aranır, yoksa sınır seçimi (histerezis)
+- yol `gezinme.izleyici.YolIzleyici` ile sürülür (arka dingile göre saf takip, köşede yerinde dönüş)
+- güvenlik: START çizgisine yaklaşan hareket kesilir; öndeki engelde izleyici durur, uzarsa yeniden plan / kurtarma;
+  sıkışma (komut var, hareket yok) -> geri çekil; sınır kalmazsa kademeli kurtarma (gevşet -> zayıf duvarları unut ->
+  START'ı sanal duvar sayan sağ el duvar izleme).
+Mod adları: "baslangic", "kesif", "cikis", "hafiza", "kurtarma", "bak", "duvar_izle", "tukendi".
+"""
+
+import copy
+import math
+import time
+from dataclasses import dataclass, field
+
+import numpy as np
+
+from .planla import KabaHarita, PlanAyari, iki_katmanli_bfs, yol_cikar2, yol_uzunlugu
+from .robot import VARSAYILAN, gezinmeden_oku
+from .sinir import SinirAyari, cikis_bul, hedef_sec, sinirlari_bul
+from .slam import HafifSLAM, SlamAyari, birlestir
+
+try:
+    from gezinme.izleyici import IzleyiciAyar, YolIzleyici
+except ImportError:   # pragma: no cover
+    raise
+
+
+@dataclass
+class BeyinAyari:
+    v_seyir: float = 0.25
+    v_hafiza: float = 0.25           # hafızalı koşu seyir hızı. 0,39 denendi (7x7, 9x9): süre kazancı yok (köşelerde
+                                     # yerinde dönüş baskın), 7x7de çarpma; 0,25 bırakıldı
+    plan_aralik_s: float = 1.0
+    start_dur_m: float = 0.30        # gövde MERKEZİ (hakemin baktığı nokta) START çizgisine bundan yakın olacaksa
+                                     # çizgiye doğru hareket yok (başlangıç 0,45 m; yerinde dönüş en çok 0,08 m yaklaştırır)
+    start_yan_pay_m: float = 0.40    # sanal duvar / yasak bölge çizgi uçlarından bu kadar taşar
+    start_derinlik_m: float = 6.0    # yasak bölgenin çizgi gerisindeki derinliği
+    bakis_sure_s: float = 4.0        # bakış noktasında sınır kapanmazsa kara listeye
+    kara_liste_s: float = 40.0
+    sikisma_s: float = 3.0
+    geri_m: float = 0.25
+    on_serit_m: float = 0.56         # öndeki engel şeridi genişliği (ayak izi 0,523 + pay)
+    engel_bekle_s: float = 1.5
+    duvar_izle_s: float = 20.0       # sınır kalmayınca duvar izleme bu kadar sürer, sonra yeniden sınır aranır
+    # izleyici: köşede dönme merkezi hücre ortasına gelince ön yüz önündeki duvara ≈ 0,20 m kalır (1,3 m hücre);
+    # gezinmenin varsayılan 0,30 m dur eşiği köşeye varmayı engelliyor, bu yüzden 0,12 / 0,18 / 0,50
+    izleyici: dict = field(default_factory=lambda: {"dur_mesafe_m": 0.12, "kalk_mesafe_m": 0.18,
+                                                     "yavas_mesafe_m": 0.50})
+    sinir: SinirAyari = field(default_factory=SinirAyari)
+    plan: PlanAyari = field(default_factory=PlanAyari)
+    slam: SlamAyari = field(default_factory=SlamAyari)
+
+
+def _sar(a):
+    return (a + math.pi) % (2 * math.pi) - math.pi
+
+
+class KesifBeyni:
+    def __init__(self, ayar=None, start_cizgisi=None, hafiza=None, robot=None, ozellik=None):
+        self.ayar = a = copy.deepcopy(ayar) if ayar is not None else BeyinAyari()
+        self.robot = robot or gezinmeden_oku(VARSAYILAN)
+        izg = None
+        if hafiza is not None:
+            from .izgara import Izgara
+            izg = Izgara.sozlukten(hafiza["izgara"])
+        self.slam = HafifSLAM(a.slam, self.robot, ozellik, izgara=izg)
+        iz_ayar = dict(v_max=a.v_seyir)
+        iz_ayar.update(a.izleyici)
+        self.izleyici = YolIzleyici(IzleyiciAyar(**iz_ayar))
+        if start_cizgisi is None:
+            start_cizgisi = ((-0.45, 0.65), (-0.45, -0.65))
+        self.start = (tuple(map(float, start_cizgisi[0])), tuple(map(float, start_cizgisi[1])))
+        self._maske_anahtar = None
+        self._start_maskele()
+        if hafiza is None:
+            self._baslangic_bos()
+        self.hafiza = hafiza
+        self.mod = "hafiza" if hafiza is not None else "baslangic"
+        self.t = 0.0
+        self.t_plan = -1e9
+        self.yol = []
+        self.hedef = None
+        self.hedef_sinir = None
+        self.cikis = None
+        self.kara_liste = []          # (x, y, bitis_t)
+        self.sahte_cikis = []         # (x, y)
+        self.gevset = 0
+        self.on_mesafe = None
+        self._engel_t = None
+        self._bakis_t = None
+        self._gecmis = []             # (t, x, y, th, v_k, w_k)
+        self._kurtarma = None
+        self._duvar = None
+        self._bak = None
+        self._bak_yon = 0.0           # zorunlu dönüş yönü (+1 sola, -1 sağa, 0 kısa yol)
+        self._donus_onay = False      # izleyicinin başlattığı yerinde dönüşün süpürmesi denetlendi
+        self._kay = None              # dönüş sığmıyorsa düz ileri/geri konumlanma
+        self.olaylar = []
+        self.sayac = {"plan": 0, "kurtarma": 0, "kara_liste": 0, "start_kesme": 0, "yol_yok": 0, "donus_ters": 0,
+                      "donus_kay": 0, "donus_sigmaz": 0}
+        self.zaman = {"plan_ms": [], "adim_ms": []}
+        self.son_plan = {}
+        self.son_komut = (0.0, 0.0)
+
+    # ------------------------------------------------------------ START koruması
+    def _start_cerceve(self):
+        (x1, y1), (x2, y2) = self.start
+        tx, ty = x2 - x1, y2 - y1
+        L = math.hypot(tx, ty)
+        tx, ty = tx / L, ty / L
+        nx, ny = -ty, tx                       # içeri (robotun bulunduğu yan) normali
+        if (0.0 - x1) * nx + (0.0 - y1) * ny < 0:
+            nx, ny = -nx, -ny
+        return (x1, y1), (tx, ty), (nx, ny), L
+
+    def _start_maskele(self):
+        g = self.slam.izgara
+        anahtar = (g.nx, g.ny, g.x0, g.y0)
+        if anahtar == self._maske_anahtar:
+            return
+        self._maske_anahtar = anahtar
+        a = self.ayar
+        (x1, y1), (tx, ty), (nx, ny), L = self._start_cerceve()
+        pad = a.start_yan_pay_m
+        # yalnız ilgili kutu
+        uc = [(x1 - tx * pad, y1 - ty * pad), (x1 + tx * (L + pad), y1 + ty * (L + pad))]
+        xs = [p[0] for p in uc] + [p[0] - nx * a.start_derinlik_m for p in uc]
+        ys = [p[1] for p in uc] + [p[1] - ny * a.start_derinlik_m for p in uc]
+        g.kapsa(min(xs), min(ys), max(xs), max(ys))
+        i0, j0 = g.hucre(min(xs) - 0.2, min(ys) - 0.2)
+        i1, j1 = g.hucre(max(xs) + 0.2, max(ys) + 0.2)
+        i0, j0 = max(int(i0), 0), max(int(j0), 0)
+        i1, j1 = min(int(i1), g.nx - 1), min(int(j1), g.ny - 1)
+        II, JJ = np.meshgrid(np.arange(i0, i1 + 1), np.arange(j0, j1 + 1), indexing="ij")
+        cx, cy = g.merkezler(II, JJ)
+        u = (cx - x1) * tx + (cy - y1) * ty
+        s = (cx - x1) * nx + (cy - y1) * ny
+        boy = (u >= -pad) & (u <= L + pad)
+        g.yasak[i0:i1 + 1, j0:j1 + 1] |= boy & (s < -0.02) & (s > -a.start_derinlik_m)
+        g.sanal[i0:i1 + 1, j0:j1 + 1] |= boy & (np.abs(s) <= 0.06)
+        self._maske_anahtar = (g.nx, g.ny, g.x0, g.y0)
+
+    def _baslangic_bos(self):
+        """Kural: robot START çizgisinin hemen içinde; çizgi ile robot arası boştur (arka kör sektörde kalır)."""
+        (x1, y1), (tx, ty), (nx, ny), L = self._start_cerceve()
+        g = self.slam.izgara
+        c = g.coz
+        us, ss = np.meshgrid(np.arange(0.1, L - 0.1, c / 2), np.arange(0.08, 0.5, c / 2), indexing="ij")
+        px = x1 + us * tx + ss * nx
+        py = y1 + us * ty + ss * ny
+        # yalnız robotun gerisi (gövde merkezinden 0,1 m öne kadar)
+        g.bos_yaz(px.ravel(), py.ravel())
+        fx, fy = self.slam.ayak_izi_noktalari((0.0, 0.0, 0.0), iceri=0.0)
+        g.bos_yaz(fx, fy)
+
+    def _start_uzaklik(self, poz, v=0.0, w=0.0, dt=0.0):
+        """Gövde merkezinin START çizgisine işaretli uzaklığı (içeri +), dt sonra öngörülen pozda (çizgi boyunca
+        uçlardan 1 m dışarıdaysa 1e9)."""
+        (x1, y1), (tx, ty), (nx, ny), L = self._start_cerceve()
+        x, y, th = poz
+        if dt > 0:
+            q = -self.robot.dingil_x_m
+            a = (v * dt, 0.0, w * dt)
+            # dingil çevresinde hareket
+            ax_p = birlestir((x, y, th), (-q, 0.0, 0.0))
+            ax_p = birlestir(ax_p, a)
+            x, y, th = birlestir(ax_p, (q, 0.0, 0.0))
+        u = (x - x1) * tx + (y - y1) * ty
+        if -1.0 <= u <= L + 1.0:
+            return (x - x1) * nx + (y - y1) * ny
+        return 1e9
+
+    def _start_filtre(self, poz, v, w):
+        a = self.ayar
+        d0 = self._start_uzaklik(poz)
+        if d0 > a.start_dur_m + 0.3:
+            return v, w
+        d1 = self._start_uzaklik(poz, v, w, 0.3)
+        if d1 < a.start_dur_m and d1 < d0 - 1e-4:
+            self.sayac["start_kesme"] += 1
+            return 0.0, 0.0
+        return v, w
+
+    # ------------------------------------------------------------ algı yardımcıları
+    def _on_mesafe(self):
+        nok = getattr(self.slam, "son_noktalar", None)
+        if nok is None:
+            return None
+        x, y = nok
+        on = self.robot.on_x
+        yari = self.ayar.on_serit_m / 2
+        m = (np.abs(y) <= yari) & (x > on - 0.02)
+        if not m.any():
+            return math.inf
+        return float(max(0.0, (x[m] - on).min()))
+
+    # ------------------------------------------------------------ protokol
+    def adim(self, t, tarama, artim):
+        t_a = time.perf_counter()
+        self.t = t
+        if artim is not None:
+            self.slam.odometri(artim, t)
+        yeni_tarama = tarama is not None
+        if yeni_tarama:
+            self.slam.tarama_isle(tarama, t)
+            self._start_maskele()
+            self.on_mesafe = self._on_mesafe()
+        poz = self.slam.poz
+        self._gecmis.append((t, poz[0], poz[1], poz[2]) + self.son_komut)
+        while self._gecmis and self._gecmis[0][0] < t - 6.0:
+            self._gecmis.pop(0)
+        if self.slam.tur_sayisi < 3:
+            self.mod = "baslangic" if self.hafiza is None else "hafiza"
+            return self._cik(0.0, 0.0, t_a)
+        if self._kurtarma is not None:
+            v, w = self._kurtarma_adim(t, poz)
+            return self._cik(v, w, t_a, filtre=False)
+        if self._kay is not None:
+            v, w = self._kay_adim(t, poz)
+            return self._cik(v, w, t_a)
+        if self._bak is not None:
+            e = _sar(self._bak - poz[2])
+            if abs(e) < 0.2:
+                self._bak = None
+                self._bak_yon = 0.0
+                self.t_plan = -1e9
+            else:
+                if self._bak_yon and e * self._bak_yon < 0 and abs(e) > 0.35:
+                    e = e + self._bak_yon * 2 * math.pi        # zorunlu yönde uzun yol
+                return self._cik(0.0, max(-0.8, min(0.8, 1.5 * e)) if abs(e) > 0.35 else math.copysign(0.4, e), t_a)
+        if self.mod == "duvar_izle":
+            if t - self._duvar_t0 > self.ayar.duvar_izle_s:
+                # duvar izleme yeni yer açmış olabilir: sınır aramaya dön (kademe korunur)
+                self._duvar = None
+                self.mod = "kesif"
+                self.t_plan = -1e9
+                self.olaylar.append((round(t, 1), "duvar_izle_bitti", ""))
+                return self._cik(0.0, 0.0, t_a)
+            v, w = self._duvar_adim(poz, yeni_tarama)
+            return self._cik(v, w, t_a)
+        gerek = (t - self.t_plan >= self.ayar.plan_aralik_s) or not self.yol
+        if gerek:
+            self._planla(t, poz)
+        # hafızalı koşuda yol bilinen haritada: tavan hıza kadar (keşifte v_seyir)
+        self.izleyici.ayar.v_max = self.ayar.v_hafiza if self.mod == "hafiza" else self.ayar.v_seyir
+        k = self.izleyici.komut(poz, on_mesafe=self.on_mesafe)
+        v, w = k.v, k.w
+        if k.mod == "yerinde" and not self._donus_onay and k.hedef is not None:
+            if self._donus_karar(poz, k) is not None:
+                return self._cik(0.0, 0.0, t_a)
+        if k.mod != "yerinde":
+            self._donus_onay = False
+        if k.durdu:
+            if self._engel_t is None:
+                self._engel_t = t
+            elif t - self._engel_t > self.ayar.engel_bekle_s:
+                self._engel_t = None
+                self._kurtarma_baslat(t, "on_engel")
+        else:
+            self._engel_t = None
+        if k.bitti:
+            self._varis(t, poz)
+        if self._sikisti(t):
+            self._kurtarma_baslat(t, "sikisma")
+        return self._cik(v, w, t_a)
+
+    def _cik(self, v, w, t_a, filtre=True):
+        if filtre:
+            v, w = self._start_filtre(self.slam.poz, v, w)
+        self.son_komut = (v, w)
+        self.zaman["adim_ms"].append((time.perf_counter() - t_a) * 1000.0)
+        if len(self.zaman["adim_ms"]) > 20000:
+            del self.zaman["adim_ms"][:10000]
+        return v, w
+
+    def durum(self):
+        g = self.slam.izgara
+        return {"poz": tuple(self.slam.poz), "mod": self.mod, "yol": list(self.yol), "hedef": self.hedef,
+                "harita": {"cozunurluk_m": g.coz, "orijin": (g.x0, g.y0), "izgara": g.durum_dizisi().T,
+                           "dizin": "izgara[satır = y, sütun = x]; -1 bilinmeyen, 0 boş, 100 dolu"},
+                "ek": {"cerceve": "baslangic", "slam": dict(self.slam.son), "start_cizgisi": self.start, "cikis": self.cikis,
+                       "sayac": dict(self.sayac), "slam_istatistik": dict(self.slam.istatistik),
+                       "plan": dict(self.son_plan), "on_mesafe": self.on_mesafe,
+                       "k_don": self.slam.k_don, "k_il": self.slam.k_il}}
+
+    def hafiza_ver(self):
+        """Ek tur için: harita + son poz (benzetici koşu FINISH'te bitince çağırır)."""
+        return {"izgara": self.slam.izgara.kopya_sozluk(), "cikis_poz": tuple(self.slam.poz), "cikis": self.cikis}
+
+    # ------------------------------------------------------------ planlama
+    def _planla(self, t, poz):
+        t0 = time.perf_counter()
+        self.t_plan = t
+        self.sayac["plan"] += 1
+        a = self.ayar
+        pa = a.plan
+        if self.gevset:
+            pa = PlanAyari(**{**pa.__dict__, "r_min": pa.r_min - 0.03})
+        kh = KabaHarita(self.slam.izgara, pa)
+        dist, d_iyi, d_min = iki_katmanli_bfs(kh, poz[0], poz[1])
+        self.kara_liste = [k for k in self.kara_liste if k[2] > t]
+        yol = None
+        bilgi = {}
+        # 1) hafızalı koşu: bilinen çıkışa git
+        if self.mod == "hafiza" and self.hafiza is not None:
+            hx, hy, hth = self.hafiza["cikis_poz"]
+            i, j = kh.hucre(hx, hy)
+            if kh.icinde(i, j):
+                hi = self._en_yakin_ulasilan(kh, dist, int(i), int(j), 1.0)
+                if hi is not None:
+                    yol = yol_cikar2(kh, d_iyi, d_min, hi)
+            if yol:
+                yol = list(yol) + [(hx + 1.0 * math.cos(hth), hy + 1.0 * math.sin(hth))]
+                self.hedef = (hx, hy)
+                bilgi["hafiza"] = True
+            else:
+                self.mod = "kesif"
+        # 2) çıkış (dış alan)
+        if yol is None:
+            c, n = cikis_bul(kh, dist, a.sinir)
+            bilgi["dis_aday"] = n
+            if c is not None and not any(math.hypot(c[1][0] - sx, c[1][1] - sy) < 2.0 for sx, sy in self.sahte_cikis):
+                yol = yol_cikar2(kh, d_iyi, d_min, c[0])
+                if yol:
+                    # dışarı doğru uzat: son parçanın yönünde 1,5 m
+                    if len(yol) >= 2:
+                        dx, dy = yol[-1][0] - yol[-2][0], yol[-1][1] - yol[-2][1]
+                    else:
+                        dx, dy = yol[-1][0] - poz[0], yol[-1][1] - poz[1]
+                    L = math.hypot(dx, dy) or 1.0
+                    uzat = (yol[-1][0] + 1.5 * dx / L, yol[-1][1] + 1.5 * dy / L)
+                    if kh.acik_oku(np.array([uzat[0]]), np.array([uzat[1]]))[0] > 0.3:
+                        yol = list(yol) + [uzat]
+                    if self.cikis is None:
+                        self.olaylar.append((round(t, 1), "cikis_goruldu", c[1]))
+                    self.cikis = c[1]
+                    self.hedef = c[1]
+                    self.mod = "cikis"
+        # 3) sınır
+        if yol is None:
+            sinirlar = sinirlari_bul(kh, dist, poz, a.sinir)
+            sinirlar = [s for s in sinirlar if not any(math.hypot(s.merkez[0] - kx, s.merkez[1] - ky) < 1.0
+                                                       for kx, ky, _ in self.kara_liste)]
+            bilgi["sinir"] = len(sinirlar)
+            sec, degisti = hedef_sec(sinirlar, self.hedef_sinir, a.sinir)
+            if sec is not None:
+                yol = yol_cikar2(kh, d_iyi, d_min, sec.bakis)
+                if degisti:
+                    self._bakis_t = None
+                self.hedef_sinir = sec
+                self.hedef = sec.bakis_xy
+                self.mod = "kesif"
+                bilgi.update({"hedef_maliyet": round(sec.maliyet, 2), "d_yol": round(sec.d_yol_m, 2),
+                              "dis": round(sec.dis, 2)})
+            else:
+                self.hedef_sinir = None
+        if yol is None:
+            self.sayac["yol_yok"] += 1
+            self._tukendi(t, poz)
+        else:
+            self.yol = yol
+            self.izleyici.yol_ver(yol)
+        bilgi["ms"] = round((time.perf_counter() - t0) * 1000.0, 1)
+        bilgi["kaba"] = (kh.ni, kh.nj)
+        self.son_plan = bilgi
+        self.zaman["plan_ms"].append(bilgi["ms"])
+
+    def _en_yakin_ulasilan(self, kh, dist, i, j, yaricap_m):
+        r = int(math.ceil(yaricap_m / kh.coz))
+        i0, j0, i1, j1 = max(i - r, 0), max(j - r, 0), min(i + r + 1, kh.ni), min(j + r + 1, kh.nj)
+        alt = dist[i0:i1, j0:j1]
+        ii, jj = np.nonzero(alt >= 0)
+        if ii.size == 0:
+            return None
+        d2 = (ii + i0 - i) ** 2 + (jj + j0 - j) ** 2
+        k = int(np.argmin(d2))
+        return int(ii[k] + i0), int(jj[k] + j0)
+
+    def _varis(self, t, poz):
+        """Yol sonu: sınır bakış noktasında sınır kapanmadıysa sınıra dön, `bakis_sure_s` sonra kara listeye al."""
+        if self.mod == "cikis":
+            # dış alana geldik ama hakem bitirmedi: sahte çıkış
+            if self.cikis is not None:
+                self.sahte_cikis.append(self.cikis)
+                self.olaylar.append((round(t, 1), "sahte_cikis", self.cikis))
+            self.cikis = None
+            self.mod = "kesif"
+            self.yol = []
+            return
+        if self.mod == "hafiza":
+            self.mod = "kesif"
+            self.yol = []
+            return
+        s = self.hedef_sinir
+        if s is None:
+            self.yol = []
+            return
+        if self._bakis_t is None:
+            self._bakis_t = t
+        if t - self._bakis_t > self.ayar.bakis_sure_s:
+            self.kara_liste.append((s.merkez[0], s.merkez[1], t + self.ayar.kara_liste_s))
+            self.sayac["kara_liste"] += 1
+            self.hedef_sinir = None
+            self._bakis_t = None
+            self.yol = []
+            return
+        # sınıra doğru dön (kör sektör arkada)
+        yon = math.atan2(s.merkez[1] - poz[1], s.merkez[0] - poz[0])
+        if abs(_sar(yon - poz[2])) > 0.6:
+            e = _sar(yon - poz[2])
+            if not self._supurme_carpar(poz, e):
+                self._bak, self._bak_yon = yon, 0.0
+            elif not self._supurme_carpar(poz, e - math.copysign(2 * math.pi, e)):
+                self._bak, self._bak_yon = yon, -math.copysign(1.0, e)
+        self.t_plan = min(self.t_plan, t - self.ayar.plan_aralik_s + 0.3)
+
+    # ------------------------------------------------------------ yerinde dönüş süpürme denetimi
+    def _supurme_carpar(self, poz, dth, pay=0.03):
+        """Gövde arka dingil çevresinde poz[2]'den dth (işaretli) dönerken haritadaki dolu / sanal hücreye değer mi.
+        Ayak izi çevresi 4 cm aralıkla, açı yaklaşık 5 derece adımla örneklenir."""
+        r = self.robot
+        g = self.slam.izgara
+        q = -r.dingil_x_m
+        c0, s0 = math.cos(poz[2]), math.sin(poz[2])
+        ax, ay = poz[0] - q * c0, poz[1] - q * s0
+        if getattr(self, "_cevre", None) is None:
+            hx, hy = r.derinlik_m / 2 + pay, r.genislik_m / 2 + pay
+            ux = np.arange(-hx, hx + 1e-9, 0.04)
+            uy = np.arange(-hy, hy + 1e-9, 0.04)
+            px = np.concatenate([ux, ux, np.full(uy.size, -hx), np.full(uy.size, hx)]) + q
+            py = np.concatenate([np.full(ux.size, -hy), np.full(ux.size, hy), uy, uy])
+            self._cevre = (px, py)
+        px, py = self._cevre
+        n = max(2, int(math.ceil(abs(dth) / math.radians(5.0))) + 1)
+        A = poz[2] + np.linspace(0.0, dth, n)[:, None]
+        wx = ax + np.cos(A) * px[None, :] - np.sin(A) * py[None, :]
+        wy = ay + np.sin(A) * px[None, :] + np.cos(A) * py[None, :]
+        return self._dolu_mu(wx.ravel(), wy.ravel())
+
+    def _dolu_mu(self, wx, wy):
+        g = self.slam.izgara
+        i, j = g.hucre(wx, wy)
+        ic = (i >= 0) & (i < g.nx) & (j >= 0) & (j < g.ny)
+        i, j = i[ic], j[ic]
+        return bool(((g.L[i, j] > g.esik_dolu) | g.sanal[i, j]).any())
+
+    def _duz_carpar(self, poz, s, pay=0.02):
+        """Gövde yönü boyunca s (m, işaretli) düz giderken dolu / sanal hücreye değer mi."""
+        r = self.robot
+        c, si = math.cos(poz[2]), math.sin(poz[2])
+        hx, hy = r.derinlik_m / 2 + pay, r.genislik_m / 2 + pay
+        ux, uy = np.meshgrid(np.arange(-hx, hx + 1e-9, 0.04), np.arange(-hy, hy + 1e-9, 0.04), indexing="ij")
+        ux, uy = ux.ravel(), uy.ravel()
+        for d in np.linspace(0.0, s, max(2, int(abs(s) / 0.05) + 1))[1:]:
+            if self._dolu_mu(poz[0] + (ux + d) * c - uy * si, poz[1] + (ux + d) * si + uy * c):
+                return True
+        return False
+
+    def _donus_karar(self, poz, k):
+        """İzleyici yerinde dönmek istiyor. Süpürme sığıyorsa onayla (None); ters yönde sığıyorsa o yönde dön (_bak);
+        hiçbiri sığmıyorsa yön boyunca en yakın sığan noktaya düz kay; çözüm yoksa izleyiciye bırak."""
+        q = -self.robot.dingil_x_m
+        c, s_ = math.cos(poz[2]), math.sin(poz[2])
+        rx, ry = poz[0] - q * c, poz[1] - q * s_
+        hedef_yon = math.atan2(k.hedef[1] - ry, k.hedef[0] - rx)
+        e = _sar(hedef_yon - poz[2])
+        yon = math.copysign(1.0, k.w) if abs(k.w) > 1e-6 else math.copysign(1.0, e)
+        d1 = e if e * yon >= 0 else e + yon * 2 * math.pi
+        d2 = d1 - yon * 2 * math.pi
+        if not self._supurme_carpar(poz, d1):
+            self._donus_onay = True
+            return None
+        if not self._supurme_carpar(poz, d2):
+            self._bak, self._bak_yon = hedef_yon, -yon
+            self.sayac["donus_ters"] += 1
+            return "ters"
+        for sm in sorted(np.arange(-0.60, 0.601, 0.05), key=abs):
+            if abs(sm) < 0.04:
+                continue
+            p2 = (poz[0] + sm * c, poz[1] + sm * s_, poz[2])
+            if self._start_uzaklik(p2) < self.ayar.start_dur_m or self._duz_carpar(poz, sm):
+                continue
+            if not self._supurme_carpar(p2, d1) or not self._supurme_carpar(p2, d2):
+                self._kay = {"t0": self.t, "bas": poz, "s": float(sm)}
+                self.sayac["donus_kay"] += 1
+                self.mod = "konumlan"
+                return "kay"
+        self.sayac["donus_sigmaz"] += 1
+        self._donus_onay = True
+        return None
+
+    def _kay_adim(self, t, poz):
+        k = self._kay
+        b = k["bas"]
+        c, s_ = math.cos(b[2]), math.sin(b[2])
+        gidilen = (poz[0] - b[0]) * c + (poz[1] - b[1]) * s_
+        kalan = k["s"] - gidilen
+        bitti = abs(kalan) < 0.02 or t - k["t0"] > 6.0 or kalan * k["s"] < 0
+        if not bitti and k["s"] > 0 and self.on_mesafe is not None and self.on_mesafe < 0.06:
+            bitti = True
+        if bitti:
+            self._kay = None
+            self.mod = "kesif"
+            self._donus_onay = False
+            self.izleyici.yol_ver(self.yol)    # bacakları bu pozdan yeniden kur
+            return 0.0, 0.0
+        v = math.copysign(min(0.12, 0.6 * abs(kalan) + 0.03), kalan)
+        w = max(-0.3, min(0.3, 1.5 * _sar(b[2] - poz[2])))
+        return v, w
+
+    # ------------------------------------------------------------ sıkışma / kurtarma
+    def _sikisti(self, t):
+        g = self._gecmis
+        S = self.ayar.sikisma_s
+        if not g or g[-1][0] - g[0][0] < S:
+            return False
+        son = [p for p in g if p[0] >= t - S]
+        if len(son) < 5:
+            return False
+        komut = np.mean([abs(p[4]) for p in son]) > 0.05 or np.mean([abs(p[5]) for p in son]) > 0.3
+        x = np.array([p[1] for p in son])
+        y = np.array([p[2] for p in son])
+        th = np.unwrap(np.array([p[3] for p in son]))
+        # pencere başından en büyük uzaklaşma (son noktanın net yer değiştirmesi değil: geri çekil + ileri git
+        # döngüsünde net ~0 olur, kurtarma kendini yeniden tetikliyordu; MuJoCo 9x9_t2'de 40 kurtarma). Yol uzunluğu
+        # da değil: SLAM pozunun tarama başına titremesi takılı robotu "hareketli" gösterir.
+        hareket = (float(np.hypot(x - x[0], y - y[0]).max()) > 0.05
+                   or float(np.abs(th - th[0]).max()) > 0.15)
+        return komut and not hareket
+
+    def _kurtarma_baslat(self, t, neden):
+        self.sayac["kurtarma"] += 1
+        self.olaylar.append((round(t, 1), "kurtarma", neden))
+        poz = self.slam.poz
+        # geri gidilecek yer haritada boş mu (arka kör sektör: yalnız harita)
+        kh = KabaHarita(self.slam.izgara, self.ayar.plan)
+        c, s = math.cos(poz[2]), math.sin(poz[2])
+        geri_ok = True
+        for d in (0.1, 0.2, 0.3):
+            gx, gy = poz[0] - (d + 0.264) * c, poz[1] - (d + 0.264) * s
+            a = kh.acik_oku(np.array([gx]), np.array([gy]))[0]
+            i, j = kh.hucre(gx, gy)
+            if a < 0.22 or not (kh.icinde(i, j) and kh.bos[i, j]) or self._start_uzaklik(
+                    (poz[0] - d * c, poz[1] - d * s, poz[2])) < self.ayar.start_dur_m:
+                geri_ok = False
+                break
+        self._kurtarma = {"t0": t, "baslangic": poz, "geri": geri_ok, "neden": neden}
+        self.mod = "kurtarma"
+        if self.hedef_sinir is not None and neden == "sikisma":
+            s_ = self.hedef_sinir
+            self.kara_liste.append((s_.merkez[0], s_.merkez[1], t + self.ayar.kara_liste_s * 0.5))
+        self._gecmis.clear()
+
+    def _kurtarma_adim(self, t, poz):
+        k = self._kurtarma
+        dt = t - k["t0"]
+        b = k["baslangic"]
+        gidilen = math.hypot(poz[0] - b[0], poz[1] - b[1])
+        if k["geri"] and gidilen < self.ayar.geri_m and dt < 4.0:
+            return -0.08, 0.0
+        self._kurtarma = None
+        self.mod = "kesif"
+        self.yol = []
+        self.t_plan = -1e9
+        self._gecmis.clear()           # sıkışma penceresi kurtarmadan sonra yeniden başlar
+        return 0.0, 0.0
+
+    # ------------------------------------------------------------ sınır kalmadı
+    def _tukendi(self, t, poz):
+        """Kademeli: (1) gevşet (r_min - 3 cm, kısa sınırlar), (2) zayıf duvarları unut, (3) duvar izleme."""
+        self.yol = []
+        self.izleyici.yol_ver([])
+        if self.gevset == 0:
+            self.gevset = 1
+            self.ayar.sinir = SinirAyari(**{**self.ayar.sinir.__dict__,
+                                            "min_genislik_m": self.ayar.sinir.min_genislik_m * 0.6})
+            self.kara_liste = []
+            self.olaylar.append((round(t, 1), "tukendi", "gevset"))
+            self.t_plan = t - self.ayar.plan_aralik_s + 0.2
+            self.mod = "tukendi"
+            return
+        if self.gevset == 1:
+            self.gevset = 2
+            L = self.slam.izgara.L
+            zayif = (L > self.slam.izgara.esik_dolu) & (L < 1.6)
+            L[zayif] = 0.0
+            self.slam.izgara.surum += 1
+            self.olaylar.append((round(t, 1), "tukendi", "unut:%d" % int(zayif.sum())))
+            self.t_plan = t - self.ayar.plan_aralik_s + 1.0
+            self.mod = "tukendi"
+            return
+        self.olaylar.append((round(t, 1), "tukendi", "duvar_izle"))
+        from .taban import SagDuvar
+        self._duvar = SagDuvar(self.robot, v=self.ayar.v_seyir * 0.8)
+        self._duvar_t0 = t
+        self.mod = "duvar_izle"
+
+    def _duvar_adim(self, poz, yeni_tarama):
+        nok = getattr(self.slam, "son_noktalar", None)
+        if nok is None:
+            return 0.0, 0.0
+        x, y = nok
+        # START sanal duvarını gövde çerçevesinde nokta olarak ekle
+        (x1, y1), (x2, y2) = self.start
+        ts = np.linspace(-0.3, 1.3, 40)
+        wx = x1 + (x2 - x1) * ts
+        wy = y1 + (y2 - y1) * ts
+        c, s = math.cos(poz[2]), math.sin(poz[2])
+        bx = c * (wx - poz[0]) + s * (wy - poz[1])
+        by = -s * (wx - poz[0]) + c * (wy - poz[1])
+        yakin = np.hypot(bx, by) < 3.0
+        x = np.concatenate([x, bx[yakin]])
+        y = np.concatenate([y, by[yakin]])
+        return self._duvar.komut(x, y)
+
+
+def olustur(sahne_adi=None, **kw):
+    """Fabrika: sahne verilirse START çizgisi (yalnız o) başlangıç gövde çerçevesine çevrilip beyne verilir."""
+    if sahne_adi is None:
+        return KesifBeyni(**kw)
+    from .sahne import beyin_start_cizgisi, sahne_yukle
+    s = sahne_yukle(sahne_adi)
+    return KesifBeyni(start_cizgisi=beyin_start_cizgisi(s), **kw)
