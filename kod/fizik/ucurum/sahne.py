@@ -332,7 +332,9 @@ def pay(kenarlar, x, y):
         return math.inf
     out = math.inf
     for k in kenarlar:
-        if k[0] == "dik":
+        if k[0] == "dikr":                      # bağımsız hüküm 3: döndürülmüş dikdörtgen delik (eğik yarık)
+            p = _pay_dikr(k, x, y)
+        elif k[0] == "dik":
             _, x0, x1, y0, y1 = k
             if x0 <= x <= x1 and y0 <= y <= y1:
                 p = -min(x - x0, x1 - x, y - y0, y1 - y)
@@ -343,3 +345,101 @@ def pay(kenarlar, x, y):
             p = c - (nx * x + ny * y)
         out = min(out, p)
     return out
+
+
+# ------------------------------------------------------------------ bağımsız hüküm 3 (yalnız ekleme; yukarıdaki sahneler aynı)
+# Hiçbir önceki CSV'de geçmeyen geometriler (adları "h3_" ile başlar). Hüküm koşusu `hukum3.py`.
+def _pay_dikr(k, x, y):
+    """["dikr", cx, cy, phi, hx, hy]: merkezi (cx, cy), uzun ekseni +x'ten phi rad dönük, yarı boyları hx (eksen boyunca),
+    hy (enine) dikdörtgen delik. Pay "dik" ile aynı kural, deliğin kendi çerçevesinde."""
+    _, cx, cy, phi, hx, hy = k
+    c, s = math.cos(phi), math.sin(phi)
+    u = (x - cx) * c + (y - cy) * s
+    v = -(x - cx) * s + (y - cy) * c
+    if -hx <= u <= hx and -hy <= v <= hy:
+        return -min(u + hx, hx - u, v + hy, hy - v)
+    return math.hypot(max(-hx - u, 0.0, u - hx), max(-hy - v, 0.0, v - hy))
+
+
+def _kutu_don(ad, cx, cy, phi, u0, u1, v0, v1, z0, z1, renk=None):
+    """Delik çerçevesinde (u, v) [u0, u1] x [v0, v1] kutusu, z ekseni çevresinde phi dönük."""
+    uc, vc = (u0 + u1) / 2, (v0 + v1) / 2
+    c, s = math.cos(phi), math.sin(phi)
+    return dict(ad=ad, pos=[cx + c * uc - s * vc, cy + s * uc + c * vc, (z0 + z1) / 2],
+                size=[(u1 - u0) / 2, (v1 - v0) / 2, (z1 - z0) / 2],
+                quat=[math.cos(phi / 2), 0.0, 0.0, math.sin(phi / 2)], renk=renk, koyu=False)
+
+
+def egik_yarik(w, L=1.0, phi_derece=30.0, D=3.0, ad=None):
+    """Eğik yarık: w genişliğinde, L boyunda delik; uzun ekseni ilerleme yönünden (+x) phi derece dönük. Deliğin robota en
+    yakın noktası x = E'de, merkezi y = Y0'da. Zemin, delik çerçevesinde dört dönük kutu (iki yan, ön, arka)."""
+    phi = math.radians(phi_derece)
+    hx, hy = L / 2, w / 2
+    ex = hx * math.cos(phi) + hy * math.sin(phi)          # deliğin x yarı kapsamı
+    cx, cy = E + ex, Y0
+    dip = -D - 0.1
+    B = 12.0
+    K = [_kutu_don("zemin_duz", cx, cy, phi, -B, B, hy, B, dip, 0.0),
+         _kutu_don("zemin_yan_b", cx, cy, phi, -B, B, -B, -hy, dip, 0.0),
+         _kutu_don("zemin_geri", cx, cy, phi, -B, -hx, -hy, hy, dip, 0.0),
+         _kutu_don("zemin_ileri", cx, cy, phi, hx, B, -hy, hy, dip, 0.0),
+         _kutu_don("zemin_alt", cx, cy, phi, -hx, hx, -hy, hy, -D - 0.1, -D, renk=RENK_BASAMAK), _guvenlik()]
+    return dict(ad=ad or "h3_egik_%d_%d" % (round(w * 1000), round(phi_derece)), tur="ucurum", kutular=K,
+                kenarlar=[["dikr", cx, cy, phi, hx, hy]], yaklasma=[1.0, 0.0, E],
+                geometri=dict(tur="egik_yarik", w=w, L=L, phi=phi_derece, D=D, cx=cx, cy=cy))
+
+
+def kose_d(D, ad):
+    return dict(kose(D, ad), geometri=dict(tur="kose", D=D))
+
+
+def hali_kenar(h, ad):
+    return hali(h, ad=ad)
+
+
+H3_YARIK = {85: 1.0, 95: 0.9, 105: 1.2, 115: 0.9, 125: 1.0, 145: 1.2, 160: 0.9}        # genişlik mm -> boy m
+H3_EGIK_W = (95, 105, 125, 145)                                                          # mm
+H3_EGIK_PHI = (15, 25, 35, 45)                                                           # derece
+H3_ACIK = (48, 52, 58, 62, 68, 72, 78, 85)                                               # cm
+H3_SAHNE = {
+    # merdiven başı / sahanlık kenarı (yeni ölçüler)
+    "h3_merdiven_16x29": lambda: merdiven(0.16, 0.29, 6),
+    "h3_merdiven_18x26": lambda: merdiven(0.18, 0.26, 6),
+    "h3_burun_17x30": lambda: merdiven_burun(0.17, 0.30, 6, burun=0.025),
+    # sahanlık köşesi (yeni derinlikler)
+    "h3_kose_150": lambda: kose_d(1.5, "h3_kose_150"),
+    "h3_kose_60": lambda: kose_d(0.6, "h3_kose_60"),
+    # kuyu: menzil dışı derin dikdörtgen kuyu (1,2 x 1,2 m ve 2,0 m geniş x 1,5 m)
+    "h3_kuyu_120": lambda: acik(1.20, D=99.0, L=1.20),
+    "h3_kuyu_200": lambda: acik(2.00, D=99.0, L=1.50),
+    # iniş rampasının ucunda düşüş (yeni eğim / boy)
+    "h3_rampa_6_ucurum": lambda: rampa_ucurum(6.0, 3.0),
+    "h3_rampa_9_ucurum": lambda: rampa_ucurum(9.0, 2.0),
+    # yanlış alarm (yeni çeşitler)
+    "h3_koyu_5": lambda: koyu_serit(0.05, 0.5, 4),
+    "h3_koyu_20": lambda: koyu_serit(0.20, 0.7, 3),
+    "h3_esik_12mm": lambda: esik(0.012, 0.06),
+    "h3_esik_18mm": lambda: esik(0.018, 0.03),
+    "h3_hali_7mm": lambda: hali(0.007),
+    "h3_hali_12mm": lambda: hali(0.012),
+    "h3_derz_ince": lambda: derz(0.005, 0.003, 0.3, 8),
+    "h3_derz_derin": lambda: derz(0.015, 0.010, 0.5, 5),
+    "h3_parlak_3": lambda: duz(),                 # düz zemin; görevde dönüşsüz örnek oranı %3 (parlak zemin)
+    "h3_parlak_6": lambda: duz(),                 # %6
+    "h3_rampa_5_inis": lambda: rampa_inis(5.0, 2.0),
+    "h3_rampa_7_inis": lambda: rampa_inis(7.0, 1.6),
+    "h3_rampa_9_inis": lambda: rampa_inis(9.0, 1.2),
+}
+for _c in H3_ACIK:
+    H3_SAHNE["h3_acik_%d" % _c] = (lambda w: (lambda: acik(w)))(_c / 100.0)
+for _mm, _L in H3_YARIK.items():
+    H3_SAHNE["h3_yarik_%d" % _mm] = (lambda w, L: (lambda: acik(w, L=L)))(_mm / 1000.0, _L)
+for _mm in H3_EGIK_W:
+    for _p in H3_EGIK_PHI:
+        H3_SAHNE["h3_egik_%d_%d" % (_mm, _p)] = (lambda w, p: (lambda: egik_yarik(w, 1.0, p)))(_mm / 1000.0, float(_p))
+for _ad in H3_SAHNE:
+    assert _ad not in SAHNELER, _ad
+SAHNELER.update(H3_SAHNE)
+H3_DENETIM = ("h3_koyu_5", "h3_koyu_20", "h3_esik_12mm", "h3_esik_18mm", "h3_hali_7mm", "h3_hali_12mm", "h3_derz_ince",
+              "h3_derz_derin", "h3_parlak_3", "h3_parlak_6", "h3_rampa_5_inis", "h3_rampa_7_inis", "h3_rampa_9_inis")
+H3_PARLAK = {"h3_parlak_3": 0.03, "h3_parlak_6": 0.06}

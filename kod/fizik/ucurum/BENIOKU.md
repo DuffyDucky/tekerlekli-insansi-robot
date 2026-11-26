@@ -4,7 +4,12 @@ Robot (158 cm, devrilebilir; LiDAR yerden 0,295 m'de yatay tarar, aşağı inen 
 bakan VL53L1X türü lazerli mesafe sensörleri ve ESP32'de Pi'den bağımsız motor kesme / fren mantığı ölçülür. Sonuç ve
 hüküm: `sonuc/SONUC.md`. Robot varyantı **ONERI** (öneri firmware + ön omni; VARSAYIM, bugünkü robot V0 değil).
 
-> **Durum (bağımsız inceleme 3, 2026-11-26): onaylanmış seçim yok.** `secim.json`'daki on dört sensörlü
+> **Durum (bağımsız hüküm 3, 2026-11-26): onaylı seçim `8WRaD+4AD+2YR40` (SECIM_3A, on dört sensör), `secim.json`'da.**
+> Taze kümede (tohum 211–220, yeni geometriler) önceden konan ölçütü sağlayan tek düzen bu: hakem 0 / 2742, yanlış durma
+> 0 / 585. Ama en küçük pay 0,35 cm. Aşağıda "Bağımsız hüküm 3" ve SONUC.md'de. Bu kutunun altındaki önceki not tarih
+> olarak duruyor.
+>
+> **Önceki durum (bağımsız inceleme 3): onaylanmış seçim yoktu.** `secim.json`'daki on dört sensörlü
 > `8WRD+4AD+2YR40`, **ölçütü SAĞLAMAYAN en iyi adaydır**, onaylanmış seçim değildir. Önceden konan ölçüt (0 hakem düşmesi,
 > 0 yanlış durma) `t2_hukum`'da 1 / 3476 hakem düşmesiyle sağlanmadı (fiziksel 0). On sensörlü `6OD+4AD` de `t_hukum`'da
 > sağlamadı (27 hakem, 6 fiziksel). Son commit edilen seçim altı sensörlü `4OD+2AD`. Tamamlama turu ve tamamlama 2 commit
@@ -218,3 +223,35 @@ Bağımsız inceleme tamamlama turunu "koşullu" bıraktı; üç engelleyicisi b
 - Bedel: on dört VL53L1X (I2C / XSHUT), altı sensörde ROI (sinyal kaybı modellenmedi), etek yanında pencere. Robot yan
   kenarı bir uçuruma ≈ 9 cm'den yakınken durur.
 - Gösterim (`kod\ucurum.bat`) yeni seçimi okur. `gorsel/demo_pencere.png` on dört sensörle yeniden çekildi.
+
+## Bağımsız hüküm 3 (2026-11-26)
+
+Hükmü, tasarım ajanından ayrı bir ajan koştu, adayların ayarına dokunmadı. Ölçüt koşudan önce `sonuc/on_kayit_3.md`'ye
+yazıldı ve önceki hükümlerle aynı: 0 hakem düşmesi, 0 yanlış durma, bütün hızlar sayılır.
+
+| Ne | Komut | Süre |
+| --- | --- | --- |
+| Hüküm koşusu: 5 düzen x 3327 görev, tohum 211–220, yeni sahneler `h3_*` | `%V% hukum3.py kos --surec 6` | ≈ 39 dk (6 süreç) |
+| Hakemin düşme saydığı her görev, koşu sürdürülerek (fiziksel sonuç) | `%V% hukum3.py fiz --surec 6` | ≈ 2 dk |
+| Tablo `sonuc/hukum3_tablo.md` / görev sayıları | `py -3 hukum3.py tablo` / `py -3 hukum3.py say` | ≈ 5 s |
+
+- **Sonuç:** yalnız 3A (`8WRaD+4AD+2YR40`) geçti: 0 / 2742 hakem, 0 / 585 durma. `secim.json` buna göre "onaylı seçim"
+  oldu (`durum` alanı). Öbürleri geçmedi:
+  - 14 sensör (8WRD): 2 / 2742, fiziksel 0;
+  - 3B: 66 / 2742, fiziksel 28;
+  - 10 sensör: 189 / 2742, fiziksel 18;
+  - 6 sensör: 453 / 2742, fiziksel 164.
+- **Sınır:** 3A'nın en küçük payı 0,35 cm, 12 koşuda pay 1 cm'nin altında (dar yarık ve dar açıklık yanında dönüş). Bu
+  sonuç geniş bir güvenlik payı değil. Kusur ve duyarlılık ızgaraları 3A ile koşulmadı.
+- **Yeni dosyalar:**
+  - `hukum3.py` (görev listesi, koşucu, tablo);
+  - `testler/test_hukum3.py` (eğik yarık hakemi, yeni sahneler, görev listesi);
+  - `sonuc/on_kayit_3.md`, `sonuc/hukum3.csv`, `sonuc/hukum3_fiz.csv`, `sonuc/hukum3_tablo.md`.
+- **`sahne.py`'ye yalnız ekleme:**
+  - `h3_*` sahneleri;
+  - `egik_yarik()`;
+  - hakemde döndürülmüş dikdörtgen delik (`["dikr", cx, cy, phi, hx, hy]`).
+
+  Eski sahneler birebir aynı.
+- **Yeniden üretim:** `secim.json` değiştiği için `t2_hukum`, `t2_kusur` ve `t2_duyar` görev listeleri bugünkü dosyadan
+  farklı yerleşim adıyla çıkar. Önceki değerler `hukum3.S14`'te ve commit 06acd65'te.

@@ -7,7 +7,12 @@ V0 değil). Bütün tablolar `analiz.py` ile CSV'lerden üretilir (`tablolar.md`
 Tamamlama turunun tabloları `tamamla_analiz.py` ile `tamamlama_tablolar.md`'ye üretilir (CSV: `t_*.csv`).
 Tamamlama 2'nin tabloları aynı betikle `tamamlama2_tablolar.md`'ye üretilir (CSV: `t2_*.csv`).
 
-> **Durum (bağımsız inceleme 3, 2026-11-26): onaylanmış seçim YOK.** `secim.json`'daki on dört sensörlü
+> **Durum (bağımsız hüküm 3, 2026-11-26): onaylı seçim `8WRaD+4AD+2YR40` (SECIM_3A, on dört sensör).** Önceden konan
+> ölçütü (0 hakem düşmesi, 0 yanlış durma) taze kümede, yani tohum 211–220 ve hiç koşulmamış geometrilerle sağlayan tek
+> düzen bu. Sayılar: hakem 0 / 2742, yanlış durma 0 / 585. **Ama pay dar:** en küçük pay 0,35 cm, 12 koşuda 1 cm'nin
+> altında. Aşağıda "Bağımsız hüküm 3". Bu kutunun altındaki önceki durum notu tarih olarak duruyor.
+>
+> **Önceki durum (bağımsız inceleme 3, 2026-11-26): onaylanmış seçim YOK.** `secim.json`'daki on dört sensörlü
 > `8WRD+4AD+2YR40` **ölçütü SAĞLAMAYAN en iyi adaydır**, onaylanmış seçim değildir. Önceden konan ölçüt (uçurum
 > koşularında 0 hakem düşmesi, yanlış alarm koşularında 0 durma) `t2_hukum`'da sağlanmadı: hakem 1 / 3476, fiziksel 0,
 > yanlış durma 0 / 540. On sensörlü `6OD+4AD` de kendi hükmünde (`t_hukum`) sağlamadı: hakem 27 / 2872, fiziksel 6. Son
@@ -17,7 +22,101 @@ Tamamlama 2'nin tabloları aynı betikle `tamamlama2_tablolar.md`'ye üretilir (
 > kayıtla 0 farkla aynı, sızıntı yok. Sınırlama: `t2_hukum`'un 4016 görevinden 2992'si `t_hukum`'la birebir aynı sahne ve
 > senaryo (yalnız tohum farklı). Hiç koşulmamış sahne yalnız 9 / 11 / 13 cm yarık (328 koşu).
 
-## Tamamlama 2 (2026-11-26, bağımsız incelemenin üç engelleyicisi): güncel hüküm
+## Bağımsız hüküm 3 (2026-11-26): güncel hüküm
+
+**Hüküm: yalnız 3A (`8WRaD+4AD+2YR40`, 14 sensör) GEÇTİ. Öbür dört düzen GEÇMEDİ.** Karar kuralı gereği 3A
+`secim.json`'a "onaylı seçim" olarak yazıldı. Hükmü, tasarım ajanından ayrı bir ajan koştu ve adayların ayarına dokunmadı.
+
+- **Ön kayıt** (`sonuc/on_kayit_3.md`, 06:27, koşudan önce):
+  - Ölçüt önceki iki hükümle aynı: uçurum koşularında 0 hakem düşmesi, yanlış alarm koşularında 0 durma. Izgaradaki
+    bütün hızlar sayılır, hatalı koşu geçti sayılmaz.
+  - İkincil ölçütler: fiziksel düşme (koşu sürdürülerek) ve en küçük pay.
+  - Görev listesinin özeti (sha1) koşudan sonra yeniden hesaplandı ve aynı çıktı: `3e938d1e…`.
+- **Taze küme:**
+  - Tohum 211–220: 38 CSV'nin ve 35 ham kaydın hiçbirinde yok.
+  - 53 yeni sahne (`h3_*`, `sahne.py`'ye yalnız ekleme): hiçbiri önceki kayıtlarda geçmiyor, hiçbirinin geometrisi eski
+    bir sahneyle aynı değil. Tek bilinçli istisna `h3_parlak_3/6`: geometrisi düz zemin, yeni olan %3 / %6 dönüşsüz okuma.
+  - Yeni sahneler: dar yarık 8,5 / 9,5 / 10,5 / 11,5 / 12,5 / 14,5 / 16 cm; eğik yarık (ekseni 15 / 25 / 35 / 45°
+    dönük; hakemde yeni kenar türü `dikr`); merdiven 16x29 / 18x26 / burunlu 17x30; köşe D 1,5 / 0,6 m;
+    dikdörtgen kuyu; dar açıklık 0,48–0,85 m (8 yeni genişlik); d 0,33 / 0,38 / 0,43 / 0,48 m'de dönüş; 6° / 9° rampa
+    ucu; 13 yeni yanlış alarm sahnesi.
+  - Eski 89 sahnenin sözlükleri, XML'leri ve hakem payları değişmedi.
+- **Koşu:** `hukum3` 16 635 koşu, 0 hata, 39 dk (6 süreç, yük ≈ 7,5 çekirdek). Beş düzen aynı 3327 taban görevi koşar:
+  2742 uçurum ve 585 yanlış alarm. Üç tur da tamamlandı, hiçbir sınıf azaltılmadı. Fiziksel doğrulama: `hukum3_fiz`,
+  hakemin düşme saydığı 710 görevin hepsi, koşu sürdürülerek, 0 hata.
+
+| düzen | sensör | hakem düşme (uçurum) | fiziksel düşme | yanlış durma | en küçük pay cm | hüküm |
+| --- | --- | --- | --- | --- | --- | --- |
+| `4OD+2AD` (6, son commit edilen; ortak K20 + konum tutma koşuluyla) | 6 | **453 / 2742** | 164 | 0 / 585 | −9,5 | GEÇMEDİ |
+| `6OD+4AD` (10, SECIM_3) | 10 | **189 / 2742** | 18 | 0 / 585 | −9,3 | GEÇMEDİ |
+| `8WRD+4AD+2YR40` (14, önceki secim.json) | 14 | **2 / 2742** | 0 | 0 / 585 | −0,4 | GEÇMEDİ |
+| **`8WRaD+4AD+2YR40` (3A)** | 14 | **0 / 2742** | 0 | **0 / 585** | **0,35** | **GEÇTİ** |
+| `6OD+4AD` + kurallar (3B) | 10 | **66 / 2742** | 28 | 0 / 585 | −4,5 | GEÇMEDİ |
+
+Bütün sınıfların tablosu: `sonuc/hukum3_tablo.md`, düzen x sınıf, her hücre ölçüldü. Düşmeler sınıfa göre:
+
+- **6 sensör:**
+  - dar yarık 238 / 840 (fiziksel 118);
+  - eğik yarık 83 / 288 (26);
+  - dar açıklık yanında dönüş 109 / 384 (fiziksel 0);
+  - dar açıklığa geri 21 / 288 (19);
+  - köşe 2 / 108 (1).
+- **10 sensör:**
+  - dar açıklık yanında dönüş 110 / 384 (fiziksel 0; d 0,33'te 65 / 96, d 0,38'de 45 / 96);
+  - dar yarık 68 / 840 (17);
+  - eğik yarık 11 / 288 (1).
+- **14 sensör (8WRD):** dar yarık 2 / 840, ikisinde de fiziksel 0. Koşular:
+  - `h3_yarik_105`, −12°, 0,10 m/s, tetik yok, pay −0,38;
+  - `h3_yarik_115`, 12°, 0,25 m/s, köşe sensörü geç, pay −0,11.
+
+  Dondurma 3'te bulunan köşe kırpması mekanizması hiç görülmemiş ±12°'de yineledi.
+- **3B:** dar yarık 61 / 840 (27), eğik yarık 5 / 288 (1).
+  - Dönüş kuralı dar açıklık yanındaki dönüşü kapattı: 0 / 384, pay 3,8.
+  - Dar yarık açık kaldı. Dondurma 3 bunu öngörmüştü. 61 düşmenin 59'unda hiçbir sensör tetiklemedi.
+  - Sürünme 585 yanlış alarm koşusunun 265'inde başladı. Durma olmadı.
+- **Bütün düzenlerde 0 düşme:** merdiven başı, kuyu, dar açıklığa ileri, geniş kenara geri, geniş kenarda dönüş ve rampa
+  ucu.
+
+**3A'nın sınırı (dürüstlük):** 3A ölçütü hakemin kuralıyla geçti, ama pay geniş değil.
+
+- En küçük pay 0,35 cm (`h3_yarik_95`, −7°, 0,10 m/s, köşe sensörü "sapma" ile durdurdu). 12 koşuda pay 1 cm'nin altında.
+  Bunların 10'u dar yarıkta, 2'si dar açıklık yanında dönüşte (en küçüğü d 0,38 m'de 0,39 cm).
+- Aynı görevlerde 8WRD'nin iki hakem düşmesi var, ±2 cm ile ±2,5 cm arasındaki fark tam bu sınırda.
+- Gerçek lastik birkaç mm içeri girer, hakem rijit teker merkezine bakar. Model hatası (sensör konisi, ROI kaybı, montaj)
+  bu payı kolayca yiyebilir.
+- Bu hüküm, simülasyonda önceden konan ölçütün sağlandığını söyler. Gerçek robotta dar yarıkta güvenlik payı olduğunu
+  söylemez.
+- Kusur ve duyarlılık ızgaraları (`t2_kusur`, `t2_duyar`) 3A ile koşulmadı. ROI sinyal kaybı, çapraz konuşma ve iki I2C
+  hattı modellenmedi. Etek sınırına uzaklık 9 mm (dondurma 3, bölüm 4).
+
+**Ön kayıt kararı (yorum):** 6 sensörlü düzenin kendi tanımında `hukum_kosul` yoktu. Burada ortak koşulla (K20, konum
+tutma) ölçüldü. Rampa ucunda 0 / 72 düşmesi bu koşulun sonucudur. Öbür sınıflardaki düşmeler zamanlamadan bağımsız
+geometri kaçırmalarıdır.
+
+**Yeniden üretim notu:** `secim.json` değiştiği için `t2_hukum`, `t2_kusur` ve `t2_duyar` görev listeleri bugünkü dosyadan
+üretilirse yerleşim adı farklı çıkar (`8WRaD` / `8WRD`; değerlerin geri kalanı aynı). Önceki değerler `hukum3.S14`'te
+ve commit 06acd65'te. `t3_a_gel` görev listesi değişmedi (yeniden üretildi, 0 fark).
+
+**Dosya bütünlüğü:**
+
+- Aday kodunun özetleri hükümden sonra da dondurma 3'tekiyle aynı: `sensor.py`, `denetci.py`, `kosu.py`, `deney.py`.
+- `sahne.py` yalnız ekleme yapıldı ve ön kayıttaki özetle aynı (c641ad4d…).
+- `hukum3.py` ön kayıttan sonra yalnız tablo kodunda değişti: ondalık virgül, ayrıntı tabloları, UTF-8 çıktı. Görev
+  listesi özeti aynı. Bağımsız inceleme yalnız 14 sensörlü düzenin etiketini "önceki secim.json" yaptı ve tabloyu yeniden
+  üretti (sayılar aynı, görev listesi özeti yine `3e938d1e…`).
+- **Bağımsız inceleme (hüküm 3):** sayılar `hukum3.csv` ve `hukum3_fiz` ham kaydından yeniden sayıldı, hepsi tuttu. Görev
+  listesi ham kayıtla 0 farkla aynı, beş düzen 3327 taban görevin hepsinde aynı sahne, senaryo ve tohumla koşuldu. Tohum
+  211–220 ve `h3_*` adları önceki hiçbir CSV'de ya da ham kayıtta yok. Altı görev aynı tohumla yeniden koşuldu (3A'nın en
+  küçük paylı görevi ve hakemin düşme saydığı üç görev dahil), sonuç alanları birebir aynı. Denetçi ve 3B kuralları yalnız
+  sensör okumasını ve Pi komutunu görüyor. İki çekince: `h3_kose_150` (D 1,5 m) sensör menzilinin (1,3 m) dışında, bu
+  yüzden sensör ve hakem için eski `kose` ile aynı görünür; yalnız açılar yeni. 3B'nin dönüş görevi aynı 9 s'de geri yayla
+  en çok ≈ 77° döner (w 0,15 rad/s), öbür düzenler aynı sürede w 1 rad/s ile dönmeye çalışır. 3B'nin dönüşteki
+  0 / 384'ü bu yüzden eşit maruziyet değil. İkisi de 3A'nın hükmünü değiştirmez.
+- `testler/test_aday3.py`'de hükümden sonra tek bir denetim değişti. Önceki denetim "secim.json değişmedi" diyordu. Yeni
+  denetim 3A'yı yalnız `durum` alanı bu hükmü gösteriyorsa kabul ediyor.
+- Testler: `ucurum/testler` venv'de 48 / 48, py -3'te 48 (8 atlanan); `kod/testler/kos.py` 78 geçen, 2 atlanan, 0 kalan.
+
+## Tamamlama 2 (2026-11-26, bağımsız incelemenin üç engelleyicisi): önceki hüküm
 
 **Hüküm: GEÇMEDİ, önceden konan ölçüte göre (bir hakem düşmesi).** Ölçüt `t2_hukum` başlamadan `.durum`'a yazıldı ve
 ilk hükmünkiyle aynıydı: uçurum koşularında hakem 0 düşme, yanlış alarm koşularında 0 durma. Hakem kuralı (teker merkezi

@@ -142,6 +142,9 @@ def _esp32_sinifi():
                     return super()._motor_guncelle()
                 finally:
                     self.ivme = eski
+            if d.ayar.kural:                        # aday 3B: firmware davranış kuralları (Pi komutu -> uygulanan komut)
+                v_k, w_k = d.komut(self.v_hedef, self.w_hedef)
+                self.hedef = self._teker_hedefleri(v_k, w_k)
             lim = d.hiz_siniri(self.dunya.zaman_s)
             if lim is not None and max(abs(h) for h in self.hedef) > lim:
                 o = lim / max(abs(h) for h in self.hedef)
@@ -439,6 +442,8 @@ def kos(sahne_ad, yerlesim, ayar, senaryo, tohum=0, golgeler=(), etkin=True, kay
              duvar_s=round(time.perf_counter() - duvar0, 2), son_sur_ok=son_ok,
              teker_dz_min_mm=round(hk.teker_dz_min * 1000, 1), govde_temas=hk.govde_temas, x_son=round(x, 4),
              y_son=round(y, 4))
+    if den is not None and den.ayar.kural:          # aday 3B: kaç okuma sürünmeyi başlattı
+        r["supheli_say"] = den.supheli_say
     r["golge"] = [dict(anahtar=g.ayar.anahtar(), tetik=g.tetik, tetik_t=(round(g.tetik_t - t0, 3) if g.tetik else None),
                        neden=g.neden) for g in gol]
     if kayit:

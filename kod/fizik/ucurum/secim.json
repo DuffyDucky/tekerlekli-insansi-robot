@@ -1,6 +1,6 @@
 {
  "yerlesim": {
-  "ad": "8WRD+4AD+2YR40",
+  "ad": "8WRaD+4AD+2YR40",
   "z": 0.12,
   "e": 30,
   "koni": 27.0
@@ -23,6 +23,7 @@
    100.0
   ]
  },
- "durum": "OLCUTU SAGLAMAYAN EN IYI ADAY, onaylanmis secim degil. Onceden konan olcut (ucurum kosularinda 0 hakem dusmesi, yanlis alarm kosularinda 0 durma) t2_hukum'da saglanmadi: hakem 1/3476 (yarik_11, teker merkezi kenari 3 mm gecti), fiziksel 0, yanlis durma 0/540. Bu dosya t2_hukum'un yeniden uretimi icin bu degerleri tasir. Karsilastirma: sonuc/katmanli_oneri.md. Son commit edilen secim 4OD+2AD (deney.SECIM_2).",
- "not_": "tamamlama 2:t2_yarik_gel / t2_yarik_gel2 (yarik 8-20 cm, hakem: 6OD+4AD 42/400, 6WD+4AD 23/400, 6WRD+4AD 13/400, 8WRD+4AD 0/400) -> her teker hizasinda iki ROI 15 derece iz sensoru (y +-0,196 / +-0,236); t2_donus_gel / t2_donus_gel2 (dar aciklik yaninda yerinde donus d 0,35-0,50: yan sensorsuz 48/240, 2Y30 11/240, 2Y35 11/240, 2YR37 1/240, 2YR40 0/240) -> ROI'li yan sensorler x 0,10, yon +-90, 40 derece. Hukum: t2_hukum (tohum 206-210; 4016 gorevin 2992'si t_hukum ile ayni sahne/senaryo, yalniz tohum farkli) -> GECMEDI. Onceki secimler: 6OD+4AD (deney.SECIM_3, t_hukum tohum 201-205), 4OD+2AD (SECIM_2), 2KD+2AD (SECIM_1)."
+ "durum": "ONAYLI SECIM: bagimsiz hukum 3 (hukum3, 2026-11-26; on kayit sonuc/on_kayit_3.md 06:27, kosu 06:27-07:06). Duzen SECIM_3A (dondurma_3, 06:13:46), degerler deney.SECIM_3A ile ayni. Onceden konan olcut (ucurum kosularinda 0 hakem dusmesi, yanlis alarm kosularinda 0 durma; butun hizlar) saglandi: hakem 0/2742, yanlis durma 0/585, hata 0; tohum 211-220, sahneler yeni (h3_*). Ayni gorev listesinde 6 sensor 453/2742, 10 sensor 189/2742, 14 sensor (8WRD, onceki secim.json) 2/2742, 3B 66/2742: GECMEDI. SINIR: en kucuk pay 0,35 cm (yarik_95, -7 derece, 0,10 m/s), 12 kosuda pay < 1 cm; hakemin teker merkezi kuralina gore gecti, pay genis degil. Ayrinti sonuc/hukum3_tablo.md, SONUC.md 'Bagimsiz hukum 3'.",
+ "onceki_durum": "OLCUTU SAGLAMAYAN EN IYI ADAY, onaylanmis secim degil (8WRD+4AD+2YR40). Onceden konan olcut t2_hukum'da saglanmadi: hakem 1/3476 (yarik_11, teker merkezi kenari 3 mm gecti), fiziksel 0, yanlis durma 0/540. t2_* asamalarinin (t2_hukum, t2_kusur, t2_duyar) gorev listesi secim.json'u okur: yeniden uretim icin onceki degerler hukum3.S14'te ve git gecmisinde (06acd65).",
+ "not_": "tamamlama 2:t2_yarik_gel / t2_yarik_gel2 (yarik 8-20 cm, hakem: 6OD+4AD 42/400, 6WD+4AD 23/400, 6WRD+4AD 13/400, 8WRD+4AD 0/400) -> her teker hizasinda iki ROI 15 derece iz sensoru (y +-0,196 / +-0,236); t2_donus_gel / t2_donus_gel2 (dar aciklik yaninda yerinde donus d 0,35-0,50: yan sensorsuz 48/240, 2Y30 11/240, 2Y35 11/240, 2YR37 1/240, 2YR40 0/240) -> ROI'li yan sensorler x 0,10, yon +-90, 40 derece. Hukum: t2_hukum (tohum 206-210) -> GECMEDI. Aday 3 (t3_a_gel, tohum 1-2): iz cifti +-2 cm -> +-2,5 cm (y +-0,191 / +-0,241) -> SECIM_3A. Bagimsiz hukum 3 (hukum3, tohum 211-220) -> GECTI. Onceki secimler: 8WRD+4AD+2YR40 (hukum3.S14, t2_hukum), 6OD+4AD (deney.SECIM_3, t_hukum tohum 201-205), 4OD+2AD (SECIM_2), 2KD+2AD (SECIM_1)."
 }

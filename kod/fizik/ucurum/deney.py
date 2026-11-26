@@ -66,7 +66,10 @@ def secim():
 
 
 def _ana(s, politika=None):
-    return dict(esik_m=s["esik_m"], onay=s["onay"], politika=politika or s["politika"], fren=s["fren"], fren_ivme=s["fren_ivme"])
+    a = dict(esik_m=s["esik_m"], onay=s["onay"], politika=politika or s["politika"], fren=s["fren"], fren_ivme=s["fren_ivme"])
+    if s.get("kural"):                  # aday 3B: davranış kuralları (eski seçimlerde alan yok: görevler aynı)
+        a["kural"] = dict(s["kural"])
+    return a
 
 
 def _sinama_temel(asama, ys, ana, tohumlar=SINAMA_TOHUM):
@@ -194,6 +197,100 @@ def _t2_kosul(temel, kad):
             ks.pop(k, None)
     ks.update(ek)
     return ks
+
+
+# ------------------------------------------------------------------ aday 3 (dondurma 3; iki zayıf sınıf: dar yarık, dar açıklık yanında dönüş)
+# Ayar koşuları yalnız geliştirme tohumları 1-3 ve daha önce kullanılmış sahnelerle (t3_a_gel, t3_b_gel). Hüküm burada YOK
+# (başka bir koşuda, yeni tohum ve sahneyle). Adaylar sonuc/dondurma_3.md'de donduruldu.
+T3_A_ADAY = ("8WRD+4AD+2YR40", "8WRaD+4AD+2YR40", "8WLD+4AD+2YR40", "8WLaD+4AD+2YR40")
+T3_B_KURAL = {
+    "yok": None,
+    "yay30": dict(donus_yay_r=0.30, donus_w_tavan=0.5, geri_tavan=0.15, supheli_esik_m=0.02, surunme_hiz=0.05, supheli_s=1.0),
+    "yay50": dict(donus_yay_r=0.50, donus_w_tavan=0.5, geri_tavan=0.15, supheli_esik_m=0.02, surunme_hiz=0.05, supheli_s=1.0),
+    # t3_b_gel'in ilk sonucundan sonra eklendi (yay30 / yay50 dönüş yönündeki iç tekerleri görmüyor): büyük yarıçap, hız ≈ 0,25
+    "yay80": dict(donus_yay_r=0.80, donus_w_tavan=0.30, geri_tavan=0.15, supheli_esik_m=0.02, surunme_hiz=0.05, supheli_s=1.0),
+    "yay100": dict(donus_yay_r=1.00, donus_w_tavan=0.25, geri_tavan=0.15, supheli_esik_m=0.02, surunme_hiz=0.05, supheli_s=1.0),
+    # ikinci sonuçtan sonra eklendi (ileri yay, dönülen yandaki kenarı teğet geçiyor): GERİ yay (r < 0), arka sensörler önde
+    "geri50": dict(donus_yay_r=-0.50, donus_w_tavan=0.5, geri_tavan=0.15, supheli_esik_m=0.02, surunme_hiz=0.05, supheli_s=1.0),
+    "geri100": dict(donus_yay_r=-1.00, donus_w_tavan=0.25, geri_tavan=0.15, supheli_esik_m=0.02, surunme_hiz=0.05, supheli_s=1.0),
+}
+T3_YARIK_GEN = (9, 10, 11, 12, 13, 15)
+T3_YARIK_Y = tuple(round(0.025 * i, 3) for i in range(13))        # 0 .. 0,30
+
+
+# DONDURMA 3 (sonuc/dondurma_3.md; t3_a_gel / t3_b_gel ayarından sonra, hükümden ÖNCE). Bu andan sonra değişmez.
+# 3A (donanım): 14 sensörlü düzenin tek değişikliği iz çifti ±2 cm -> ±2,5 cm (y ±0,191 / ±0,241). Gerisi secim.json'la aynı.
+SECIM_3A = {"yerlesim": {"ad": "8WRaD+4AD+2YR40", "z": 0.12, "e": 30, "koni": 27.0}, "esik_m": 0.1, "onay": 3,
+            "politika": "yavasla", "fren": "rampa", "fren_ivme": 2.0, "sensor_n": 14, "on_n": 8, "hiz_onerisi_m_s": 0.25,
+            "hukum_kosul": {"periyot_ms": 20, "butce_ms": 20, "menzil_m": 1.3, "tutma": ["konum", 40.0, 100.0]}}
+# 3B (pratik): on sensör 6OD+4AD (SECIM_3 donanımı) + firmware davranış kuralları (denetci.KURAL_ALANLARI): yerinde dönüş
+# r 1,0 m GERİ yaya çevrilir (|w| <= 0,25), geri hız tavanı 0,15 m/s, +20 mm şüpheli okumada 1 s 0,05 m/s sürünme.
+SECIM_3B = {"yerlesim": {"ad": "6OD+4AD", "z": 0.12, "e": 30, "koni": 27.0}, "esik_m": 0.1, "onay": 3, "politika": "yavasla",
+            "fren": "rampa", "fren_ivme": 2.0, "sensor_n": 10, "on_n": 6, "hiz_onerisi_m_s": 0.25,
+            "hukum_kosul": {"periyot_ms": 20, "butce_ms": 20, "menzil_m": 1.3, "tutma": ["konum", 40.0, 100.0]},
+            "kural": {"donus_yay_r": -1.00, "donus_w_tavan": 0.25, "geri_tavan": 0.15, "supheli_esik_m": 0.02,
+                      "surunme_hiz": 0.05, "supheli_s": 1.0}}
+
+
+def _t3_ortak(asama, ys, ana, ks, kad, yarik_y, yarik_aci, yarik_t, donus_t):
+    """Aday 3 ayar ızgarası (bir aday için): dar yarık, dar açıklık yanında dönüş, geri (dar), ileri (dar / geniş), geniş
+    kenar dönüşü, yanlış alarm (geliştirme + daha önce kullanılmış yanlış alarm sahneleri)."""
+    from ucurum import sahne as SH
+    G = []
+    for c in T3_YARIK_GEN:
+        for yr in yarik_y:
+            for aci in yarik_aci:
+                for v in (0.25, 0.39):
+                    for t in yarik_t:
+                        G.append(_tam_g(asama, "yarik", "yarik_%d" % c, ys, ana, dict(tur="ileri", aci=aci, v=v,
+                                        yanal=[-yr - 0.01, -yr + 0.01], yanal_ad=yr), t, kosul=ks, kad=kad))
+    for geo in ("acik_40", "acik_50", "acik_60", "acik_80", "acik_100"):
+        for d in (0.35, 0.40, 0.45, 0.50):
+            for w in (-1.0, 1.0):
+                for o in (-0.3, 0.0, 0.3):
+                    for t in donus_t:
+                        G.append(_tam_g(asama, "donus_dar", geo, ys, ana, dict(tur="donus", d=d, w=w, yanal=[o - 0.02, o + 0.02],
+                                        yanal_ad=o), t, kosul=ks, kad=kad))
+    for geo in ("acik_40", "acik_50", "acik_60"):
+        for o in (-0.2, 0.0, 0.2):
+            for aci in (0, 30):
+                for t in (1, 2):
+                    G.append(_tam_g(asama, "geri_dar", geo, ys, ana, dict(tur="geri", aci=aci, v=0.25, yanal=[o - 0.02, o + 0.02],
+                                    yanal_ad=o), t, kosul=ks, kad=kad))
+    G += [dict(g, alt="dar", kosul=ks, kad=kad) for g in _dar(asama, ys, ana, ("acik_40", "acik_50"), DAR_GEL_YANAL, (0, 20), (1,))]
+    for geo in GELISTIRME_GEO:
+        for aci in (0, 30, 60):
+            for v in HIZLAR:
+                G.append(_tam_g(asama, "ileri", geo, ys, ana, dict(tur="ileri", aci=aci, v=v), 1, kosul=ks, kad=kad))
+        for aci in (0, 30):
+            G.append(_tam_g(asama, "geri", geo, ys, ana, dict(tur="geri", aci=aci, v=0.25), 1, kosul=ks, kad=kad))
+    for d in (0.30, 0.35, 0.45):
+        for w in (-1.0, 1.0):
+            for t in (1, 2):
+                G.append(_tam_g(asama, "donus_genis", "merdiven_17x30", ys, ana, dict(tur="donus", d=d, w=w), t, kosul=ks, kad=kad))
+    for sh in SH.DENETIM_GELISTIRME + SH.DENETIM_SINAMA_YENI:
+        for v in (0.25, 0.39):
+            for aci in (0, 30, 45):
+                G.append(dict(asama=asama, alt="yanlis_alarm", sahne=sh, ys=ys, ayar=ana, etkin=True, tohum=1, kosul=ks, kad=kad,
+                              senaryo=dict(tur="ileri", aci=aci, v=v, yol_m=2.2)))
+    return G
+
+
+def _aday3(asama):
+    s = secim()                                     # 14 sensörlü aday (t2_hukum'daki değerler; secim.json değişmez)
+    ks = dict(s["hukum_kosul"])
+    G = []
+    if asama == "t3_a_gel":
+        for ad in T3_A_ADAY:
+            G += _t3_ortak(asama, dict(s["yerlesim"], ad=ad), _ana(s), ks, ad, T3_YARIK_Y, (-10, 0, 10, 15), (1, 2), (1,))
+    elif asama == "t3_b_gel":
+        s3 = SECIM_3                                # 10 sensör 6OD+4AD, donanım aynı; yalnız davranış kuralı değişir
+        for kad, kural in T3_B_KURAL.items():
+            ana = dict(_ana(s3), kural=kural) if kural else _ana(s3)
+            G += _t3_ortak(asama, s3["yerlesim"], ana, dict(s3["hukum_kosul"]), kad, T3_YARIK_Y[::2], (0, 10), (1,), (1, 2))
+    else:
+        raise SystemExit("bilinmeyen aşama: %s" % asama)
+    return G
 
 
 def _tamamlama2(asama):
@@ -854,6 +951,8 @@ def gorevler(asama):
         G += _tamamlama(asama)
     elif asama.startswith("t2_"):
         G += _tamamlama2(asama)
+    elif asama.startswith("t3_"):
+        G += _aday3(asama)
     elif asama in ("kusur", "sinama"):
         s = SECIM_1                     # donmuş ilk seçim (yeniden üretim)
         ys = s["yerlesim"]

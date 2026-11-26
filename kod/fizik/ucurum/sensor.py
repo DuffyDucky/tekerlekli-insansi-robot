@@ -113,14 +113,25 @@ def yerlesim(ad, z=0.06, egim=15.0, koni=27.0):
     on["8WR"] = [("on_sol", ON_X, KOSE_Y), ("on_iz_dis_sol", ON_X, IZ_Y + 0.02), ("on_iz_ic_sol", ON_X, IZ_Y - 0.02),
                  ("on_ic_sol", ON_X, IC_Y), ("on_ic_sag", ON_X, -IC_Y), ("on_iz_ic_sag", ON_X, -IZ_Y + 0.02),
                  ("on_iz_dis_sag", ON_X, -IZ_Y - 0.02), ("on_sag", ON_X, -KOSE_Y)]
+    # aday 3 (dondurma 3, SECIM_3A): 8WR'nin iz çiftinin aralığı / yüksekliği / eğimi değişir (IZ_DUZEN); öbür sensörler aynı
+    for b, (ara, _z, _e) in IZ_DUZEN.items():
+        on[b] = [("on_sol", ON_X, KOSE_Y), ("on_iz_dis_sol", ON_X, IZ_Y + ara), ("on_iz_ic_sol", ON_X, IZ_Y - ara),
+                 ("on_ic_sol", ON_X, IC_Y), ("on_ic_sag", ON_X, -IC_Y), ("on_iz_ic_sag", ON_X, -IZ_Y + ara),
+                 ("on_iz_dis_sag", ON_X, -IZ_Y - ara), ("on_sag", ON_X, -KOSE_Y)]
     # "D" soneki: köşe sensörleri çapraz dışa yatık (yon ±45°, arkada ±135°): eğim yanal kenarı ve yerinde dönüşü de görür
     parca = ad.split("+")
     capraz = parca[0].endswith("D")
+    taban = parca[0].rstrip("D")
     L = []
-    for nm, x, y in on[parca[0].rstrip("D")]:
+    for nm, x, y in on[taban]:
         yon = (45.0 if y > 0 else -45.0) if (capraz and abs(y) >= KOSE_Y) else 0.0
-        k = 15.0 if (parca[0].rstrip("D") in ("6WR", "8WR") and nm.startswith("on_iz")) else koni
-        L.append(SensorAyar(nm, x, y, z, egim, yon, k))
+        iz_roi = (taban in ("6WR", "8WR") or taban in IZ_DUZEN) and nm.startswith("on_iz")
+        k = 15.0 if iz_roi else koni
+        zz, ee = z, egim
+        if taban in IZ_DUZEN and nm.startswith("on_iz"):
+            zz = IZ_DUZEN[taban][1] if IZ_DUZEN[taban][1] is not None else z
+            ee = IZ_DUZEN[taban][2] if IZ_DUZEN[taban][2] is not None else egim
+        L.append(SensorAyar(nm, x, y, zz, ee, yon, k))
     if len(parca) > 1 and parca[1] in ("2A", "2AD", "4AD"):
         for nm, x, y in (("arka_sol", ARKA_X, KOSE_Y), ("arka_sag", ARKA_X, -KOSE_Y)):
             yon = (135.0 if y > 0 else -135.0) if parca[1] in ("2AD", "4AD") else 180.0
@@ -143,6 +154,12 @@ def yerlesim(ad, z=0.06, egim=15.0, koni=27.0):
 
 
 IZ_Y = 0.216
+# aday 3 (donanım adayı, dondurma 3): 8WR iz çiftinin (teker ekseninin ± ara m yanında, ROI 15°) aralığı, yüksekliği (z m) ve
+# dikeyden eğimi (°); None = düzenin z / eğimi. "8WRa": ±2,5 cm; "8WL": z 60 mm, 40°; "8WLa": ikisi birlikte.
+IZ_DUZEN = {"8WRa": (0.025, None, None), "8WL": (0.02, 0.06, 40.0), "8WLa": (0.025, 0.06, 40.0)}
+# DONDURMA 3 (sonuc/dondurma_3.md): adaylar. 3A = 14 sensör, iz çifti ±2,5 cm; 3B = 10 sensör (SECIM_3 donanımı) + kurallar.
+ADAY_3A = "8WRaD+4AD+2YR40"
+ADAY_3B = "6OD+4AD"
 YAN = {"2Y30": (0.10, KOSE_Y, 90.0, 30.0), "2Y35": (0.09, KOSE_Y, 90.0, 35.0), "2YK": (ON_X, 0.235, 137.0, 40.0),
        "2YR37": (0.10, KOSE_Y, 90.0, 37.0, 15.0), "2YR40": (0.10, KOSE_Y, 90.0, 40.0, 15.0)}
 

@@ -16,16 +16,29 @@ import math
 
 POLITIKALAR = ("ucurum", "yok_say", "yavasla")
 FREN_KIPLERI = ("kes", "fren", "rampa")
+# Davranış kuralları (aday 3B; hepsi isteğe bağlı):
+#   donus_yay_r (m): Pi yerinde dönüş isterse (|v| < 0,02 m/s, |w| > 0,02 rad/s) firmware yaya çevirir: v = r·|w|
+#                    (r > 0 ileri yay, r < 0 geri yay; dönüş yönü korunur, dönme merkezi gövdenin yanına kayar).
+#   donus_w_tavan (rad/s): yerinde dönüş / yaya çevrilen dönüşte |w| tavanı.
+#   geri_tavan (m/s): geri gidişte hız tavanı.
+#   supheli_esik_m (m): herhangi bir sensörde okuma - beklenen bu değeri aşarsa (ama tetik eşiği aşılmadan) `supheli_s` s
+#                    boyunca bütün hız `surunme_hiz` m/s ile sınırlanır (sürünme). Durdurmaz.
+KURAL_ALANLARI = ("donus_yay_r", "donus_w_tavan", "geri_tavan", "supheli_esik_m", "surunme_hiz", "supheli_s")
 
 
 class DenetciAyar:
     def __init__(self, esik_m=0.04, onay=2, politika="ucurum", fren="rampa", fren_ivme=2.0, dongu_ms=10,
-                 donuk_n=25, yavas_hiz=0.10, yavas_yok_n=5, kalibrasyon_n=25):
+                 donuk_n=25, yavas_hiz=0.10, yavas_yok_n=5, kalibrasyon_n=25, kural=None):
         assert politika in POLITIKALAR and fren in FREN_KIPLERI
         self.esik_m, self.onay, self.politika = float(esik_m), int(onay), politika
         self.fren, self.fren_ivme, self.dongu_ms = fren, float(fren_ivme), int(dongu_ms)
         self.donuk_n, self.yavas_hiz, self.yavas_yok_n = int(donuk_n), float(yavas_hiz), int(yavas_yok_n)
         self.kalibrasyon_n = int(kalibrasyon_n)
+        # aday 3 (dondurma 3, SECIM_3B): davranış kuralları (None = kural yok; davranış önceki sürümle aynı). Kurallar
+        # yalnız sensör okumalarını ve Pi'nin `sur` komutunu (v, w) görür; yer gerçeği / hakem kullanılmaz. Bkz. KURAL_ALANLARI.
+        self.kural = dict(kural) if kural else None
+        if self.kural:
+            assert set(self.kural) <= set(KURAL_ALANLARI), set(self.kural) - set(KURAL_ALANLARI)
 
     def sozluk(self):
         return dict(self.__dict__)
@@ -51,6 +64,8 @@ class UcurumDenetci:
         self.neden = None
         self.ariza_olay = []          # (t, sensör, neden)
         self._yavas_bitis = -math.inf
+        self._surun_bitis = -math.inf
+        self.supheli_say = 0
         self.ornek_say = 0
         self.yok_say = 0
 
@@ -72,7 +87,29 @@ class UcurumDenetci:
 
     # ------------------------------------------------------------ döngü
     def hiz_siniri(self, t):
-        return self.ayar.yavas_hiz if (self.ayar.politika == "yavasla" and t < self._yavas_bitis) else None
+        lim = self.ayar.yavas_hiz if (self.ayar.politika == "yavasla" and t < self._yavas_bitis) else None
+        k = self.ayar.kural
+        if k and k.get("supheli_esik_m") is not None and t < self._surun_bitis:
+            s = float(k.get("surunme_hiz", 0.05))
+            lim = s if lim is None else min(lim, s)
+        return lim
+
+    def komut(self, v, w):
+        """Davranış kuralları (aday 3B): Pi'nin komutu (v m/s, w rad/s) -> uygulanacak (v, w). Kural yoksa aynen döner."""
+        k = self.ayar.kural
+        if not k:
+            return v, w
+        if abs(v) < 0.02 and abs(w) > 0.02:                      # yerinde dönüş komutu
+            if k.get("donus_w_tavan") is not None:
+                wt = float(k["donus_w_tavan"])
+                w = max(-wt, min(wt, w))
+            if k.get("donus_yay_r") is not None:
+                v = float(k["donus_yay_r"]) * abs(w)
+        if v < 0 and k.get("geri_tavan") is not None:
+            o = float(k["geri_tavan"]) / abs(v)
+            if o < 1.0:
+                v, w = v * o, w * o
+        return v, w
 
     def isle(self, t, i, deger):
         """t anında (s) i. sensörün yeni okuması (m ya da None). Tetiklenirse True."""
@@ -107,6 +144,10 @@ class UcurumDenetci:
             b = self.beklenen[i]
             kanit = b is not None and (deger - b) > a.esik_m
             neden = "sapma"
+            if (a.kural and a.kural.get("supheli_esik_m") is not None and b is not None
+                    and (deger - b) > float(a.kural["supheli_esik_m"])):
+                self._surun_bitis = t + float(a.kural.get("supheli_s", 1.0))
+                self.supheli_say += 1
         self.sayac[i] = self.sayac[i] + 1 if kanit else 0
         if self.sayac[i] >= a.onay:
             return self._tetikle(t, i, neden)
