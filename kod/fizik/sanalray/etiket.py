@@ -315,9 +315,20 @@ def kamerali_model_xml(fovy=41.0):
     j = x.index("\n", i)
     x = x[:j + 1] + "            " + cam + "\n" + x[j + 1:]
     os.makedirs(_yol.ONBELLEK, exist_ok=True)
-    yol = os.path.join(_yol.ONBELLEK, "lale_kamerali.xml")
-    with open(yol, "w", encoding="utf-8") as f:
-        f.write(x)
+    # içerikten adlı dosya, geçici dosya + os.replace: aynı anda başlayan süreçler birbirinin yarım yazdığı dosyayı
+    # okumasın (tamamlama turunda 3 süreçle bir kez "teker_on_sol gövdesi bulunamadı" istisnası buydu)
+    import hashlib
+    yol = os.path.join(_yol.ONBELLEK, "lale_kamerali_%s.xml" % hashlib.sha1(x.encode("utf-8")).hexdigest()[:12])
+    if not os.path.exists(yol):
+        gecici = "%s.%d.tmp" % (yol, os.getpid())
+        with open(gecici, "w", encoding="utf-8") as f:
+            f.write(x)
+        try:
+            os.replace(gecici, yol)
+        except OSError:
+            if not os.path.exists(yol):
+                raise
+            os.remove(gecici)
     return yol
 
 

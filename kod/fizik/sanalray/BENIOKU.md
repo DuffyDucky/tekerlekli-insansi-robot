@@ -19,6 +19,13 @@ gezinme deneyinin robotu). LiDAR düzenekten ayrılır (`dz.lidar.ayir()`), hiç
 | `rapor.py` | ham -> `sonuc/*.csv`, `sonuc/tablolar.md`; `--ciz` -> `gorsel/gorunurluk.png`. `kayip_*.csv` içinde `ilk_etiket_s` = herhangi bir etiketin ilk algılanması, `lokalize_s` / `lokalize_yol_m` = süzgecin 3,5 m içindeki etiketten başlatıldığı an (konumlanma) |
 | `demo.py` | 3B pencere (`kod\sanalray.bat`) |
 | `testler/test_sanalray.py` | birim testleri (saf + MuJoCo / cv2 varsa görüntü ve fizik) |
+| `kusur.py` | (dayanıklılık turu) kusur modeli: gerçek etiket planı (konum / açı hatası, eksik, yanlış yer, yırtık doku), `KusurluAlgilayici` (odak, montaj eğimi, gecikme, kare düşmesi, örtülme, parlama, titreşim bulanıklığı); kusur sıfırken `Algilayicilar` ile birebir aynı |
+| `dayaniklilik.py` | (dayanıklılık turu) kusur ızgarası koşucusu ve raporu -> `sonuc/dayaniklilik_ab.csv`, `sonuc/dayaniklilik_kayip.csv`, `sonuc/dayaniklilik.md`; ham `sonuc/ham/dayaniklilik/` |
+| `testler/test_dayaniklilik.py` | kusur planı, doğrulamalı başlatma, takılma denetimi, arındırılmış yanal sapma testleri (MuJoCo gerekmez) |
+| (tamamlama turu) `kusur.gercek_plan(aday=...)`, `dayaniklilik.py` grupları `rota_temiz` / `rota`, `rapor_rota` | eksik / yanlış yer etiketi, aynı koridor / tohumun kusursuz koşusunda süzgecin kabul ettiği etiketlerden seçilir -> `sonuc/dayaniklilik_rota_ab.csv`, `sonuc/dayaniklilik_rota.md`; ham `sonuc/ham/dayaniklilik_rota/` |
+
+Sanal ray testleri depo koşusuna bağlıdır: `py -3 kod\testler\kos.py` `kod/testler/test_sanalray_bag.py` üzerinden
+`test_sanalray` ve `test_dayaniklilik`'i de koşar (MuJoCo / cv2 yoksa ilgili testler atlanır).
 
 ## Çalıştırma (`cd kod\fizik`, `%V%` = `%LOCALAPPDATA%\lale-sim-venv\Scripts\python.exe`)
 
@@ -32,6 +39,12 @@ gezinme deneyinin robotu). LiDAR düzenekten ayrılır (`dz.lidar.ayir()`), hiç
 %V% sanalray\deney.py tek --koridor koridor_3 --aralik 5 --donus 0.25 [--kafa tarayan] [--kayit x.npz]
 %V% sanalray\rapor.py ; py -3 sanalray\rapor.py --ciz
 %V% -m unittest sanalray.testler.test_sanalray -v
+%V% sanalray\dayaniklilik.py kos --grup tek_agir --parca 0/2    (ve 1/2; gruplar: temiz, tek_agir, ara --kosullar a,b,
+                                                                  birlesik, kayip_tek, baslatma_gel, baslatma_sin)
+%V% sanalray\dayaniklilik.py rapor
+%V% sanalray\dayaniklilik.py kos --grup rota_temiz --parca 0/3   (önce; kusursuz koşu + ölçüm sayacı = aday etiketler)
+%V% sanalray\dayaniklilik.py kos --grup rota --parca 0/3         (sonra; [--kosullar yanlis025_rota,...])
+%V% sanalray\dayaniklilik.py rapor_rota
 kod\sanalray.bat koridor_3 ab        kod\sanalray.bat koridor_5 kayip --kafa tarayan
 ```
 
@@ -75,6 +88,17 @@ ham koşu kayıtları `sonuc/ham/` (git dışı; üretilen dokular ve kameralı 
 Geliştirme (ayar ve plan seçimi): koridor_1, koridor_3, tohum 101 (kayıpta bırakma tohumu +500). Sınama (hüküm):
 koridor_2, koridor_4, koridor_5, koridor_6, tohum 1. Süzgeç gürültü değerleri görünürlük haritasından (ayrı, yapay duvar
 sahnesi) ve geliştirme koşularından. Beyin yer gerçeğini görmez; hakem (varış, yanal sapma, konum hatası, temas) görür.
+
+Dayanıklılık turu (2026-11-26, `dayaniklilik.py`): kusur ölçümleri sınama koridorlarında, tohum 1-3; hiçbir ayar bunlara
+göre seçilmedi. Doğrulamalı başlatmanın eşikleri geliştirme kümesinde (koridor_1, koridor_3, bırakma 0-3, +500 tohumu;
+üç tasarım, ikisi atıldı), hüküm sınamada (bırakma 10-13) ve birleşik orta kurulumda. `beyin.py` varsayılanı
+`baslatma="tek"` (ilk sürüm) kaldı; ayrıntı `sonuc/SONUC.md` "Dayanıklılık turu".
+
+Tamamlama turu (2026-11-26, bağımsız incelemeden sonra): ilk turda eksik / yanlış yer etiketi bütün plandan seçilmiş,
+12 koşunun 6'sında robotun hiç görmediği bir etiket olmuştu (koşu temizle birebir aynı). Artık etiket, aynı koridor /
+tohumun kusursuz koşusunda süzgecin kabul ettiği etiketlerden seçiliyor; bu liste deney tasarımı (hakem tarafı), Beyin
+görmez. Ölçümler sınama koridorlarında, tohum 1-6 (1-3 ilk turla aynı), yalnız hüküm; hiçbir ayar değişmedi. Ayrıntı
+`sonuc/SONUC.md` "Tamamlama turu".
 
 ## Sınırlar (simülasyonun iyimserliği)
 
