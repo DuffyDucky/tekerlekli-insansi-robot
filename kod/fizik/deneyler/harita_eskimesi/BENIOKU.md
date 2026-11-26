@@ -42,6 +42,7 @@ alır, numpy iş parçacığını 1'e indirir.
     py -3 kos2b.py --senaryo kayip --isci 3 --kosul taban,okul_hafif,okul_orta,kapi_2,cam_1,menzil_3,esya_4,donussuz_4,odo_kayma_4,insan_4,kapi_4,cam_4,menzil_4,okul_agir,egrilme_4,olcek_4,odo_donus_4,odo_olcek_4,gurultu_4,grup_4
     py -3 kos2b.py --tek ab:kapi_2:koridor_5:2            # tek koşu, sonucu ekrana
     py -3 kos_varyant.py                                  # isteğe bağlı dayanıklılık varyantı (AYRI tohumlar)
+    py -3 kos_ek.py --isci 2                              # tamamlama turu: kayıpta genişlik 1-4 (ana ızgarayla aynı tohum)
     %V% kos_mujoco.py --kosul taban,kapi_2,... --kosu koridor_5:1,koridor_1:2,koridor_3:2
     py -3 analiz.py                                       # CSV, sonuc/tablolar.md, sonuc/ozet.json, gorsel/*.png
     py -3 ciz_dunya.py koridor_4                          # harita / dünya üstten görünüm
@@ -65,7 +66,8 @@ Bitmiş koşu `sonuc/ham/<2b/ab | 2b/kayip | mujoco | varyant>/<id>.json` olarak
 | `kos2b.py` | 2B koşu tanımları (tohumlar gezinme senaryolarıyla aynı), işçi havuzu |
 | `kos_mujoco.py` | aynı dünyalarla `gezinme.duzenek.Duzenek` (MuJoCo) doğrulaması; sensör / odometri bozucusu beyin sarmalayıcısında |
 | `kos_varyant.py` | isteğe bağlı dayanıklılık varyantı, ayrı tohumlar |
-| `analiz.py`, `ciz_dunya.py` | tablolar, kırılma noktaları, görseller |
+| `kos_ek.py` | tamamlama turu ek koşuları (kayıp robot, genişlik sapması); ham `sonuc/ham/2b/kayip_ek/`, CSV `kayip_ek_2b.csv` (ana `kayip_2b.csv` değişmez) |
+| `analiz.py`, `ciz_dunya.py` | tablolar, kırılma noktaları (iki sayım: katı 0,3 m ve sınırdaki 0,30-0,35 m "vardım" başarı sayılınca), zarar sırası (güncellendi: yalnız tam ızgaralı A'dan B'ye ortalaması), görseller |
 | `testler/` | birim testleri (dönüşüm, kapı, eşya, insan, menzil / dönüşsüz yüzey, belirlenimcilik) |
 
 ## Tohumlar

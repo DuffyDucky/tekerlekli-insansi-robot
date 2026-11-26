@@ -1,0 +1,1294 @@
+{
+ "kural": [
+  [
+   "uyum",
+   0.75
+  ],
+  [
+   "std",
+   0.05
+  ]
+ ],
+ "secim": {
+  "kural": [
+   [
+    "uyum",
+    0.75
+   ],
+   [
+    "std",
+    0.05
+   ]
+  ],
+  "gelistirme": {
+   "sessiz": 38,
+   "dogru": 112,
+   "onlenen": 26,
+   "gereksiz": 2
+  },
+  "sinir": 2.24,
+  "en_iyi_tek": [
+   [
+    [
+     [
+      "uyum",
+      0.75
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 20,
+     "gereksiz": 1
+    }
+   ],
+   [
+    [
+     [
+      "pay",
+      0.8
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 17,
+     "gereksiz": 1
+    }
+   ],
+   [
+    [
+     [
+      "pay",
+      0.9
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 17,
+     "gereksiz": 1
+    }
+   ],
+   [
+    [
+     [
+      "kk",
+      true
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 17,
+     "gereksiz": 1
+    }
+   ],
+   [
+    [
+     [
+      "pay",
+      0.7
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 16,
+     "gereksiz": 0
+    }
+   ],
+   [
+    [
+     [
+      "uyum",
+      0.7
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 14,
+     "gereksiz": 0
+    }
+   ],
+   [
+    [
+     [
+      "pay",
+      0.6
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 13,
+     "gereksiz": 0
+    }
+   ],
+   [
+    [
+     [
+      "uyum",
+      0.65
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 9,
+     "gereksiz": 0
+    }
+   ]
+  ],
+  "en_iyi_cift": [
+   [
+    [
+     [
+      "uyum",
+      0.75
+     ],
+     [
+      "std",
+      0.05
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 26,
+     "gereksiz": 2
+    }
+   ],
+   [
+    [
+     [
+      "uyum",
+      0.75
+     ],
+     [
+      "pay",
+      0.8
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 26,
+     "gereksiz": 2
+    }
+   ],
+   [
+    [
+     [
+      "uyum",
+      0.75
+     ],
+     [
+      "pay",
+      0.9
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 26,
+     "gereksiz": 2
+    }
+   ],
+   [
+    [
+     [
+      "uyum",
+      0.75
+     ],
+     [
+      "kk",
+      true
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 26,
+     "gereksiz": 2
+    }
+   ],
+   [
+    [
+     [
+      "uyum",
+      0.75
+     ],
+     [
+      "pay",
+      0.7
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 25,
+     "gereksiz": 1
+    }
+   ],
+   [
+    [
+     [
+      "std",
+      0.05
+     ],
+     [
+      "pay",
+      0.8
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 24,
+     "gereksiz": 2
+    }
+   ],
+   [
+    [
+     [
+      "std",
+      0.05
+     ],
+     [
+      "pay",
+      0.9
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 24,
+     "gereksiz": 2
+    }
+   ],
+   [
+    [
+     [
+      "std",
+      0.05
+     ],
+     [
+      "kk",
+      true
+     ]
+    ],
+    {
+     "sessiz": 38,
+     "dogru": 112,
+     "onlenen": 24,
+     "gereksiz": 2
+    }
+   ]
+  ],
+  "kume": "gelistirme (kipler, tohum 7, 8; v3 ve izleme kipleri; 168 kosu)"
+ },
+ "ozet": {
+  "sinama": {
+   "temiz harita|v3": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "temiz harita|izleme": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "temiz harita|algi": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "temiz harita|izleme_algi": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü hafif|v3": {
+    "n": 12,
+    "basari": 11,
+    "dogru": 11,
+    "sessiz": 1,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü hafif|izleme": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü hafif|algi": {
+    "n": 12,
+    "basari": 6,
+    "dogru": 6,
+    "sessiz": 0,
+    "guvenli": 6,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 8,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü hafif|izleme_algi": {
+    "n": 12,
+    "basari": 6,
+    "dogru": 6,
+    "sessiz": 0,
+    "guvenli": 6,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 8,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü orta|v3": {
+    "n": 12,
+    "basari": 5,
+    "dogru": 5,
+    "sessiz": 5,
+    "guvenli": 0,
+    "sure": 2,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 4,
+    "e_gereksiz": 1
+   },
+   "okul günü orta|izleme": {
+    "n": 12,
+    "basari": 8,
+    "dogru": 8,
+    "sessiz": 4,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 3,
+    "e_gereksiz": 0
+   },
+   "okul günü orta|algi": {
+    "n": 12,
+    "basari": 2,
+    "dogru": 2,
+    "sessiz": 0,
+    "guvenli": 10,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 10,
+    "temas": 3,
+    "temas_olay": 3,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü orta|izleme_algi": {
+    "n": 12,
+    "basari": 2,
+    "dogru": 2,
+    "sessiz": 0,
+    "guvenli": 10,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 10,
+    "temas": 3,
+    "temas_olay": 5,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü ağır|v3": {
+    "n": 12,
+    "basari": 1,
+    "dogru": 1,
+    "sessiz": 7,
+    "guvenli": 0,
+    "sure": 4,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 3,
+    "temas_olay": 17,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 5,
+    "e_gereksiz": 0
+   },
+   "okul günü ağır|izleme": {
+    "n": 12,
+    "basari": 2,
+    "dogru": 2,
+    "sessiz": 8,
+    "guvenli": 0,
+    "sure": 2,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 8,
+    "e_gereksiz": 0
+   },
+   "okul günü ağır|algi": {
+    "n": 12,
+    "basari": 1,
+    "dogru": 1,
+    "sessiz": 1,
+    "guvenli": 10,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 12,
+    "temas": 3,
+    "temas_olay": 3,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 1,
+    "e_gereksiz": 0
+   },
+   "okul günü ağır|izleme_algi": {
+    "n": 12,
+    "basari": 1,
+    "dogru": 1,
+    "sessiz": 1,
+    "guvenli": 10,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 12,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 1,
+    "e_gereksiz": 1
+   },
+   "tek etken 2. kademe: kapı %25, cam %50|v3": {
+    "n": 24,
+    "basari": 21,
+    "dogru": 21,
+    "sessiz": 2,
+    "guvenli": 0,
+    "sure": 1,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "tek etken 2. kademe: kapı %25, cam %50|izleme": {
+    "n": 24,
+    "basari": 23,
+    "dogru": 23,
+    "sessiz": 1,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "tek etken 2. kademe: kapı %25, cam %50|algi": {
+    "n": 24,
+    "basari": 4,
+    "dogru": 4,
+    "sessiz": 0,
+    "guvenli": 20,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 22,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "tek etken 2. kademe: kapı %25, cam %50|izleme_algi": {
+    "n": 24,
+    "basari": 5,
+    "dogru": 5,
+    "sessiz": 0,
+    "guvenli": 19,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 22,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "tek etken 3. kademe: kapı %50, dönüşsüz %50|v3": {
+    "n": 24,
+    "basari": 19,
+    "dogru": 19,
+    "sessiz": 5,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 3
+   },
+   "tek etken 3. kademe: kapı %50, dönüşsüz %50|izleme": {
+    "n": 24,
+    "basari": 24,
+    "dogru": 24,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 4
+   },
+   "tek etken 3. kademe: kapı %50, dönüşsüz %50|algi": {
+    "n": 24,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 12,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 12,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 3
+   },
+   "tek etken 3. kademe: kapı %50, dönüşsüz %50|izleme_algi": {
+    "n": 24,
+    "basari": 13,
+    "dogru": 13,
+    "sessiz": 0,
+    "guvenli": 11,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 11,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 3
+   },
+   "taşınma, temiz harita (4 tür)|v3": {
+    "n": 48,
+    "basari": 13,
+    "dogru": 13,
+    "sessiz": 28,
+    "guvenli": 0,
+    "sure": 7,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 48,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 17,
+    "e_gereksiz": 0
+   },
+   "taşınma, temiz harita (4 tür)|izleme": {
+    "n": 48,
+    "basari": 1,
+    "dogru": 1,
+    "sessiz": 11,
+    "guvenli": 0,
+    "sure": 36,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 48,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 8,
+    "e_gereksiz": 0
+   },
+   "taşınma, temiz harita (4 tür)|algi": {
+    "n": 48,
+    "basari": 47,
+    "dogru": 36,
+    "sessiz": 1,
+    "guvenli": 11,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 48,
+    "fark": 46,
+    "fark_med": 0.8,
+    "fark_maks": 13.3,
+    "e_onlenen": 0,
+    "e_gereksiz": 1
+   },
+   "taşınma, temiz harita (4 tür)|izleme_algi": {
+    "n": 48,
+    "basari": 44,
+    "dogru": 33,
+    "sessiz": 4,
+    "guvenli": 11,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 48,
+    "fark": 45,
+    "fark_med": 0.8,
+    "fark_maks": 34.2,
+    "e_onlenen": 2,
+    "e_gereksiz": 0
+   },
+   "taşınma (küçük) + eskime (kapı / cam / dönüşsüz)|v3": {
+    "n": 36,
+    "basari": 17,
+    "dogru": 17,
+    "sessiz": 18,
+    "guvenli": 0,
+    "sure": 1,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 33,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 7,
+    "e_gereksiz": 1
+   },
+   "taşınma (küçük) + eskime (kapı / cam / dönüşsüz)|izleme": {
+    "n": 36,
+    "basari": 4,
+    "dogru": 4,
+    "sessiz": 24,
+    "guvenli": 0,
+    "sure": 8,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 36,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 22,
+    "e_gereksiz": 1
+   },
+   "taşınma (küçük) + eskime (kapı / cam / dönüşsüz)|algi": {
+    "n": 36,
+    "basari": 11,
+    "dogru": 11,
+    "sessiz": 0,
+    "guvenli": 23,
+    "sure": 2,
+    "istisna": 0,
+    "alarm": 17,
+    "temas": 3,
+    "temas_olay": 5,
+    "tasima": 30,
+    "fark": 30,
+    "fark_med": 0.8,
+    "fark_maks": 13.8,
+    "e_onlenen": 0,
+    "e_gereksiz": 2
+   },
+   "taşınma (küçük) + eskime (kapı / cam / dönüşsüz)|izleme_algi": {
+    "n": 36,
+    "basari": 11,
+    "dogru": 11,
+    "sessiz": 2,
+    "guvenli": 22,
+    "sure": 1,
+    "istisna": 0,
+    "alarm": 17,
+    "temas": 2,
+    "temas_olay": 2,
+    "tasima": 30,
+    "fark": 29,
+    "fark_med": 0.8,
+    "fark_maks": 34.1,
+    "e_onlenen": 1,
+    "e_gereksiz": 1
+   }
+  },
+  "sinama_kip": {
+   "v3": {
+    "n": 180,
+    "basari": 99,
+    "dogru": 99,
+    "sessiz": 66,
+    "guvenli": 0,
+    "sure": 15,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 5,
+    "temas_olay": 19,
+    "tasima": 81,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 33,
+    "e_gereksiz": 5
+   },
+   "izleme": {
+    "n": 180,
+    "basari": 86,
+    "dogru": 86,
+    "sessiz": 48,
+    "guvenli": 0,
+    "sure": 46,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 1,
+    "temas_olay": 1,
+    "tasima": 84,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 41,
+    "e_gereksiz": 5
+   },
+   "algi": {
+    "n": 180,
+    "basari": 95,
+    "dogru": 84,
+    "sessiz": 2,
+    "guvenli": 92,
+    "sure": 2,
+    "istisna": 0,
+    "alarm": 81,
+    "temas": 11,
+    "temas_olay": 13,
+    "tasima": 78,
+    "fark": 76,
+    "fark_med": 0.8,
+    "fark_maks": 13.8,
+    "e_onlenen": 1,
+    "e_gereksiz": 6
+   },
+   "izleme_algi": {
+    "n": 180,
+    "basari": 94,
+    "dogru": 83,
+    "sessiz": 7,
+    "guvenli": 89,
+    "sure": 1,
+    "istisna": 0,
+    "alarm": 80,
+    "temas": 6,
+    "temas_olay": 8,
+    "tasima": 78,
+    "fark": 74,
+    "fark_med": 0.8,
+    "fark_maks": 34.2,
+    "e_onlenen": 4,
+    "e_gereksiz": 5
+   }
+  },
+  "sinama_kip_tek": {
+   "kural": [
+    [
+     "uyum",
+     0.75
+    ]
+   ],
+   "ozet": {
+    "v3": {
+     "n": 180,
+     "basari": 99,
+     "dogru": 99,
+     "sessiz": 66,
+     "guvenli": 0,
+     "sure": 15,
+     "istisna": 0,
+     "alarm": 0,
+     "temas": 5,
+     "temas_olay": 19,
+     "tasima": 81,
+     "fark": 0,
+     "fark_med": null,
+     "fark_maks": null,
+     "e_onlenen": 29,
+     "e_gereksiz": 0
+    },
+    "izleme": {
+     "n": 180,
+     "basari": 86,
+     "dogru": 86,
+     "sessiz": 48,
+     "guvenli": 0,
+     "sure": 46,
+     "istisna": 0,
+     "alarm": 0,
+     "temas": 1,
+     "temas_olay": 1,
+     "tasima": 84,
+     "fark": 0,
+     "fark_med": null,
+     "fark_maks": null,
+     "e_onlenen": 25,
+     "e_gereksiz": 0
+    },
+    "algi": {
+     "n": 180,
+     "basari": 95,
+     "dogru": 84,
+     "sessiz": 2,
+     "guvenli": 92,
+     "sure": 2,
+     "istisna": 0,
+     "alarm": 81,
+     "temas": 11,
+     "temas_olay": 13,
+     "tasima": 78,
+     "fark": 76,
+     "fark_med": 0.8,
+     "fark_maks": 13.8,
+     "e_onlenen": 0,
+     "e_gereksiz": 0
+    },
+    "izleme_algi": {
+     "n": 180,
+     "basari": 94,
+     "dogru": 83,
+     "sessiz": 7,
+     "guvenli": 89,
+     "sure": 1,
+     "istisna": 0,
+     "alarm": 80,
+     "temas": 6,
+     "temas_olay": 8,
+     "tasima": 78,
+     "fark": 74,
+     "fark_med": 0.8,
+     "fark_maks": 34.2,
+     "e_onlenen": 1,
+     "e_gereksiz": 1
+    }
+   }
+  },
+  "gelistirme": {
+   "temiz harita|v3": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "temiz harita|izleme": {
+    "n": 12,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü hafif|v3": {
+    "n": 12,
+    "basari": 8,
+    "dogru": 8,
+    "sessiz": 1,
+    "guvenli": 0,
+    "sure": 3,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 0
+   },
+   "okul günü hafif|izleme": {
+    "n": 12,
+    "basari": 11,
+    "dogru": 11,
+    "sessiz": 1,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 1,
+    "e_gereksiz": 0
+   },
+   "okul günü orta|v3": {
+    "n": 12,
+    "basari": 5,
+    "dogru": 5,
+    "sessiz": 5,
+    "guvenli": 0,
+    "sure": 2,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 4,
+    "e_gereksiz": 0
+   },
+   "okul günü orta|izleme": {
+    "n": 12,
+    "basari": 9,
+    "dogru": 9,
+    "sessiz": 3,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 2,
+    "e_gereksiz": 1
+   },
+   "tek etken 3. kademe: kapı %50, dönüşsüz %50|v3": {
+    "n": 24,
+    "basari": 17,
+    "dogru": 17,
+    "sessiz": 6,
+    "guvenli": 0,
+    "sure": 1,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 3,
+    "e_gereksiz": 0
+   },
+   "tek etken 3. kademe: kapı %50, dönüşsüz %50|izleme": {
+    "n": 24,
+    "basari": 24,
+    "dogru": 24,
+    "sessiz": 0,
+    "guvenli": 0,
+    "sure": 0,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 0,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 0,
+    "e_gereksiz": 1
+   },
+   "taşınma, temiz harita (4 tür)|v3": {
+    "n": 24,
+    "basari": 12,
+    "dogru": 12,
+    "sessiz": 10,
+    "guvenli": 0,
+    "sure": 2,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 24,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 8,
+    "e_gereksiz": 0
+   },
+   "taşınma, temiz harita (4 tür)|izleme": {
+    "n": 24,
+    "basari": 2,
+    "dogru": 2,
+    "sessiz": 12,
+    "guvenli": 0,
+    "sure": 10,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 24,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 8,
+    "e_gereksiz": 0
+   }
+  },
+  "gelistirme_kip": {
+   "v3": {
+    "n": 84,
+    "basari": 54,
+    "dogru": 54,
+    "sessiz": 22,
+    "guvenli": 0,
+    "sure": 8,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 24,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 15,
+    "e_gereksiz": 0
+   },
+   "izleme": {
+    "n": 84,
+    "basari": 58,
+    "dogru": 58,
+    "sessiz": 16,
+    "guvenli": 0,
+    "sure": 10,
+    "istisna": 0,
+    "alarm": 0,
+    "temas": 0,
+    "temas_olay": 0,
+    "tasima": 24,
+    "fark": 0,
+    "fark_med": null,
+    "fark_maks": null,
+    "e_onlenen": 11,
+    "e_gereksiz": 2
+   }
+  },
+  "gelistirme_kip_tek": {
+   "kural": [
+    [
+     "uyum",
+     0.75
+    ]
+   ],
+   "ozet": {
+    "v3": {
+     "n": 84,
+     "basari": 54,
+     "dogru": 54,
+     "sessiz": 22,
+     "guvenli": 0,
+     "sure": 8,
+     "istisna": 0,
+     "alarm": 0,
+     "temas": 0,
+     "temas_olay": 0,
+     "tasima": 24,
+     "fark": 0,
+     "fark_med": null,
+     "fark_maks": null,
+     "e_onlenen": 13,
+     "e_gereksiz": 0
+    },
+    "izleme": {
+     "n": 84,
+     "basari": 58,
+     "dogru": 58,
+     "sessiz": 16,
+     "guvenli": 0,
+     "sure": 10,
+     "istisna": 0,
+     "alarm": 0,
+     "temas": 0,
+     "temas_olay": 0,
+     "tasima": 24,
+     "fark": 0,
+     "fark_med": null,
+     "fark_maks": null,
+     "e_onlenen": 7,
+     "e_gereksiz": 1
+    }
+   }
+  }
+ }
+}

@@ -1,6 +1,6 @@
 # Tablolar (analiz.py üretir)
 
-Koşu sayısı: A'dan B'ye 2B 720, kayıp 2B 240, MuJoCo 87.
+Koşu sayısı: A'dan B'ye 2B 720, kayıp 2B 288 (ana 240 + ek 48), MuJoCo 87.
 
 ## A'dan B'ye (2B)
 
@@ -78,6 +78,10 @@ Koşu sayısı: A'dan B'ye 2B 720, kayıp 2B 240, MuJoCo 87.
 | c. insan (kişi / 10 m) | 4 | 11 / 12 | 0 / 0 | 0 | 6 | 1.0 | 0.019 / 0.037 | 0 / 0 |
 | c. grup (duvardan içeri m) | 1.5 | 12 / 12 | 1 / 0 | 0 | 4 | 0.8 | 0.011 / 0.026 | 0 / 0 |
 | d. ölçek hatası | 3 % | 12 / 12 | 0 / 0 | 0 | 7 | 1.2 | 0.105 / 0.168 | 0 / 0 |
+| d. genişlik sapması (m) | ± 2.5 cm | 12 / 12 | 0 / 0 | 0 | 6 | 1.0 | 0.016 / 0.029 | 0 / 0 |
+|  | ± 5 cm | 12 / 12 | 0 / 0 | 0 | 5 | 0.9 | 0.026 / 0.034 | 0 / 0 |
+|  | ± 7.5 cm | 12 / 12 | 0 / 0 | 0 | 7 | 1.2 | 0.038 / 0.047 | 0 / 0 |
+|  | ± 10 cm | 12 / 12 | 0 / 0 | 0 | 7 | 1.3 | 0.052 / 0.068 | 0 / 0 |
 | d. eğrilme (° / 20 m) | 4 | 12 / 12 | 0 / 0 | 0 | 5 | 0.9 | 0.013 / 0.033 | 0 / 0 |
 | e. menzil gürültüsü σ (m) | 0.08 | 12 / 12 | 0 / 0 | 0 | 6 | 1.0 | 0.011 / 0.030 | 0 / 0 |
 | e. dönüşsüz yüzey oranı | 75 % | 3 / 12 | 3 / 3 | 4 | 11 | 1.0 | 2.795 / 4.139 | 11 / 0 |
@@ -94,42 +98,46 @@ Koşu sayısı: A'dan B'ye 2B 720, kayıp 2B 240, MuJoCo 87.
 
 ## Kırılma noktaları
 
-| Etken | A'dan B'ye kırılma (başarı < %90) | A'dan B'ye kademe başarıları | Kayıp kırılma | Kayıp kademe başarıları |
-| --- | --- | --- | --- | --- |
-| a. kapı durumu değişen oran | 25 % (k2) | 11/12, 9/12, 7/12, 8/12 | 25 % (k2) | 10/12, 3/12 |
-| b. eşya (adet / 10 m) | 4 (k4) | 12/12, 12/12, 12/12, 9/12 | 4 (k4) | 9/12 |
-| c. insan (kişi / 10 m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 11/12 |
-| c. grup (duvardan içeri m) | yok | 12/12, 12/12, 12/12, 11/12 | yok | 12/12 |
-| d. ölçek hatası | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
-| d. genişlik sapması (m) | yok | 12/12, 12/12, 12/12, 12/12 | - | - |
-| d. eğrilme (° / 20 m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
-| e. menzil gürültüsü σ (m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
-| e. dönüşsüz yüzey oranı | 75 % (k4) | 12/12, 12/12, 12/12, 8/12 | 75 % (k4) | 3/12 |
-| e. cam kapı oranı | 25 % (k1) | 10/12, 10/12, 8/12, 9/12 | 100 % (k4) | 11/12, 6/12 |
-| e. en uzun menzil (m) | 4 (k3) | 11/12, 11/12, 10/12, 8/12 | 4 (k3) | 7/12, 3/12 |
-| f. odometri ölçek (+) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
-| f. dönüş hatası (+, %14 tabana ek) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
-| f. ani kayma (olay / dk) | 2 (k3) | 12/12, 12/12, 10/12, 10/12 | yok | 12/12 |
-| g. okul günü (hafif / orta / ağır) | hafif (k1) | 9/12, 3/12, 0/12 | hafif (k1) | 10/12, 4/12, 0/12 |
+Sınırdaki koşular (beyin bitti dedi, hedefe 0,30-0,35 m, temas yok; 5 koşu): ab_cam_1_koridor_1_1, ab_kapi_1_koridor_1_1, ab_kapi_3_koridor_1_1, ab_odo_kayma_3_koridor_5_1, ab_odo_kayma_4_koridor_1_2.
+
+| Etken | A'dan B'ye kırılma (başarı < %90) | A'dan B'ye kademe başarıları | Sınırdakiler başarı sayılırsa: kırılma | kademe başarıları | Kayıp kırılma | Kayıp kademe başarıları |
+| --- | --- | --- | --- | --- | --- | --- |
+| a. kapı durumu değişen oran | 25 % (k2) | 11/12, 9/12, 7/12, 8/12 | 25 % (k2) | 12/12, 9/12, 8/12, 8/12 | 25 % (k2) | 10/12, 3/12 |
+| b. eşya (adet / 10 m) | 4 (k4) | 12/12, 12/12, 12/12, 9/12 | 4 (k4) | 12/12, 12/12, 12/12, 9/12 | 4 (k4) | 9/12 |
+| c. insan (kişi / 10 m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 11/12 |
+| c. grup (duvardan içeri m) | yok | 12/12, 12/12, 12/12, 11/12 | yok | 12/12, 12/12, 12/12, 11/12 | yok | 12/12 |
+| d. ölçek hatası | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
+| d. genişlik sapması (m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 |
+| d. eğrilme (° / 20 m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
+| e. menzil gürültüsü σ (m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
+| e. dönüşsüz yüzey oranı | 75 % (k4) | 12/12, 12/12, 12/12, 8/12 | 75 % (k4) | 12/12, 12/12, 12/12, 8/12 | 75 % (k4) | 3/12 |
+| e. cam kapı oranı | 25 % (k1) | 10/12, 10/12, 8/12, 9/12 | 50 % (k2) | 11/12, 10/12, 8/12, 9/12 | 100 % (k4) | 11/12, 6/12 |
+| e. en uzun menzil (m) | 4 (k3) | 11/12, 11/12, 10/12, 8/12 | 4 (k3) | 11/12, 11/12, 10/12, 8/12 | 4 (k3) | 7/12, 3/12 |
+| f. odometri ölçek (+) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
+| f. dönüş hatası (+, %14 tabana ek) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
+| f. ani kayma (olay / dk) | 2 (k3) | 12/12, 12/12, 10/12, 10/12 | yok | 12/12, 12/12, 11/12, 11/12 | yok | 12/12 |
+| g. okul günü (hafif / orta / ağır) | hafif (k1) | 9/12, 3/12, 0/12 | hafif (k1) | 9/12, 3/12, 0/12 | hafif (k1) | 10/12, 4/12, 0/12 |
 
 ## Zarar sırası
 
-| Sıra | Etken | A'dan B'ye ort başarı | en kötü kademe | Kayıp ort başarı | en kötü kademe |
-| --- | --- | --- | --- | --- | --- |
-| 1 | e. dönüşsüz yüzey oranı | 92 % | 67 % | 25 % | 25 % |
-| 2 | e. en uzun menzil (m) | 83 % | 67 % | 42 % | 25 % |
-| 3 | a. kapı durumu değişen oran | 73 % | 58 % | 54 % | 25 % |
-| 4 | e. cam kapı oranı | 77 % | 67 % | 71 % | 50 % |
-| 5 | b. eşya (adet / 10 m) | 94 % | 75 % | 75 % | 75 % |
-| 6 | c. insan (kişi / 10 m) | 100 % | 100 % | 92 % | 92 % |
-| 7 | f. ani kayma (olay / dk) | 92 % | 83 % | 100 % | 100 % |
-| 8 | c. grup (duvardan içeri m) | 98 % | 92 % | 100 % | 100 % |
-| 9 | d. ölçek hatası | 100 % | 100 % | 100 % | 100 % |
-| 10 | d. genişlik sapması (m) | 100 % | 100 % | - | - |
-| 11 | d. eğrilme (° / 20 m) | 100 % | 100 % | 100 % | 100 % |
-| 12 | e. menzil gürültüsü σ (m) | 100 % | 100 % | 100 % | 100 % |
-| 13 | f. odometri ölçek (+) | 100 % | 100 % | 100 % | 100 % |
-| 14 | f. dönüş hatası (+, %14 tabana ek) | 100 % | 100 % | 100 % | 100 % |
+Yalnız tam ızgaralı A'dan B'ye ortalamasıyla (4 kademe x 12 koşu), eşitlikte en kötü kademe. Kayıp sütunları bilgi içindir, sıraya girmez (ölçülen kademe sayısı etkenden etkene 0-2).
+
+| Sıra | Etken | A'dan B'ye ort başarı | en kötü kademe | sınırdakiler başarı sayılırsa ort | Kayıp ort başarı (ölçülen kademe) | Kayıp en kötü kademe |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | a. kapı durumu değişen oran | 73 % | 58 % | 77 % | 54 % (2) | 25 % |
+| 2 | e. cam kapı oranı | 77 % | 67 % | 79 % | 71 % (2) | 50 % |
+| 3 | e. en uzun menzil (m) | 83 % | 67 % | 83 % | 42 % (2) | 25 % |
+| 4 | e. dönüşsüz yüzey oranı | 92 % | 67 % | 92 % | 25 % (1) | 25 % |
+| 5 | f. ani kayma (olay / dk) | 92 % | 83 % | 96 % | 100 % (1) | 100 % |
+| 6 | b. eşya (adet / 10 m) | 94 % | 75 % | 94 % | 75 % (1) | 75 % |
+| 7 | c. grup (duvardan içeri m) | 98 % | 92 % | 98 % | 100 % (1) | 100 % |
+| 8 | c. insan (kişi / 10 m) | 100 % | 100 % | 100 % | 92 % (1) | 92 % |
+| 9 | d. ölçek hatası | 100 % | 100 % | 100 % | 100 % (1) | 100 % |
+| 10 | d. genişlik sapması (m) | 100 % | 100 % | 100 % | 100 % (4) | 100 % |
+| 11 | d. eğrilme (° / 20 m) | 100 % | 100 % | 100 % | 100 % (1) | 100 % |
+| 12 | e. menzil gürültüsü σ (m) | 100 % | 100 % | 100 % | 100 % (1) | 100 % |
+| 13 | f. odometri ölçek (+) | 100 % | 100 % | 100 % | 100 % (1) | 100 % |
+| 14 | f. dönüş hatası (+, %14 tabana ek) | 100 % | 100 % | 100 % | 100 % (1) | 100 % |
 
 ## MuJoCo doğrulaması ile 2B (aynı koşul / koridor / tohum)
 

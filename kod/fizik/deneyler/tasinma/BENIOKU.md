@@ -48,6 +48,10 @@ numpy iş parçacığını 1'e indirir.
                                                                      # MuJoCo doğrulaması (A'dan B'ye, 40 koşu)
     py -3 gerileme.py --isci 3                                       # koridor_karisiklik kayıtlarıyla gerileme denetimi
     py -3 rapor.py                                                   # CSV, sonuc/tablolar.md, sonuc/ozet.json, gorsel/
+    py -3 kipler.py --kume gelistirme --isci 2                       # tamamlama: "emin değilim" ayarı (tohum 7, 8)
+    py -3 kipler.py --kume sinama --isci 2                           # tamamlama: dört kip yan yana (tohum 5, 6)
+    py -3 emin.py                                                    # ölçüt seçimi (yalnız geliştirme) -> sonuc/emin_secim.json
+    py -3 kipler_rapor.py                                            # sonuc/kipler_2b.csv, kipler_tablolar.md, kipler_ozet.json
     py -3 -m unittest discover -s testler -v                         # birim testleri
 
 Süreler (bu PC, tek iş parçacığı): 2B `ab` koşusu 2-10 s, `cok` 6-25 s; MuJoCo 6-40 s; gerileme kaydı başına ≈ 20-30 s. Ölçümde sınama (432 koşu) 3 işçiyle ≈ 25 dk, geliştirme (144) ≈ 10 dk, MuJoCo (40) ≈ 15 dk, gerileme 2 işçiyle ≈ 7 dk.
@@ -64,6 +68,9 @@ Bitmiş koşu `sonuc/ham/<2b/<küme> | mujoco/mujoco>/<id>.json` olarak durur, y
 | `kos_mj.py` | MuJoCo doğrulaması (`Duzenek`; taşıma `c.konum_ayarla`, odometri değişmez) |
 | `gerileme.py` | koridor_karisiklik `akis/` kayıtlarının küçültülmüş alt kümesiyle gerileme |
 | `rapor.py` | tablolar, CSV, görsel |
+| `kipler.py` | tamamlama turu: kipler v3 / izleme / algi / izleme_algi, aynı görevlerde eşli; dünya eskimesi (harita_eskimesi koşulları) + isteğe bağlı taşıma ("kapi_2+kucuk"); pasif `Gozlemci` ("vardım" anındaki belirsizlik adayları); hakem yalnız beyin "vardım" deyince bitirir |
+| `emin.py` | "emin değilim, duruyorum" ölçütü: adaylar, kural seçimi (yalnız geliştirme kümesi), çevrimdışı uygulama |
+| `kipler_rapor.py` | kip tabloları, gruplar, ölçütün sınamada etkisi |
 | `testler/` | algı, taşıma pozları, taşımanın odometriye yansımaması, sarmalayıcının iyi taramada komutu aynen geçirmesi |
 
 ## Ölçüm (hakem tarafı; beyne gitmez)

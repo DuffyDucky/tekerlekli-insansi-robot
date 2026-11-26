@@ -1,0 +1,280 @@
+{
+ "kural": [
+  [
+   "uyum",
+   0.75
+  ],
+  [
+   "std",
+   0.05
+  ]
+ ],
+ "gelistirme": {
+  "sessiz": 38,
+  "dogru": 112,
+  "onlenen": 26,
+  "gereksiz": 2
+ },
+ "sinir": 2.24,
+ "en_iyi_tek": [
+  [
+   [
+    [
+     "uyum",
+     0.75
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 20,
+    "gereksiz": 1
+   }
+  ],
+  [
+   [
+    [
+     "pay",
+     0.8
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 17,
+    "gereksiz": 1
+   }
+  ],
+  [
+   [
+    [
+     "pay",
+     0.9
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 17,
+    "gereksiz": 1
+   }
+  ],
+  [
+   [
+    [
+     "kk",
+     true
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 17,
+    "gereksiz": 1
+   }
+  ],
+  [
+   [
+    [
+     "pay",
+     0.7
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 16,
+    "gereksiz": 0
+   }
+  ],
+  [
+   [
+    [
+     "uyum",
+     0.7
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 14,
+    "gereksiz": 0
+   }
+  ],
+  [
+   [
+    [
+     "pay",
+     0.6
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 13,
+    "gereksiz": 0
+   }
+  ],
+  [
+   [
+    [
+     "uyum",
+     0.65
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 9,
+    "gereksiz": 0
+   }
+  ]
+ ],
+ "en_iyi_cift": [
+  [
+   [
+    [
+     "uyum",
+     0.75
+    ],
+    [
+     "std",
+     0.05
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 26,
+    "gereksiz": 2
+   }
+  ],
+  [
+   [
+    [
+     "uyum",
+     0.75
+    ],
+    [
+     "pay",
+     0.8
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 26,
+    "gereksiz": 2
+   }
+  ],
+  [
+   [
+    [
+     "uyum",
+     0.75
+    ],
+    [
+     "pay",
+     0.9
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 26,
+    "gereksiz": 2
+   }
+  ],
+  [
+   [
+    [
+     "uyum",
+     0.75
+    ],
+    [
+     "kk",
+     true
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 26,
+    "gereksiz": 2
+   }
+  ],
+  [
+   [
+    [
+     "uyum",
+     0.75
+    ],
+    [
+     "pay",
+     0.7
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 25,
+    "gereksiz": 1
+   }
+  ],
+  [
+   [
+    [
+     "std",
+     0.05
+    ],
+    [
+     "pay",
+     0.8
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 24,
+    "gereksiz": 2
+   }
+  ],
+  [
+   [
+    [
+     "std",
+     0.05
+    ],
+    [
+     "pay",
+     0.9
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 24,
+    "gereksiz": 2
+   }
+  ],
+  [
+   [
+    [
+     "std",
+     0.05
+    ],
+    [
+     "kk",
+     true
+    ]
+   ],
+   {
+    "sessiz": 38,
+    "dogru": 112,
+    "onlenen": 24,
+    "gereksiz": 2
+   }
+  ]
+ ],
+ "kume": "gelistirme (kipler, tohum 7, 8; v3 ve izleme kipleri; 168 kosu)"
+}

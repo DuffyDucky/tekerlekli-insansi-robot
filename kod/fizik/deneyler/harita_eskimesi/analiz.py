@@ -154,31 +154,52 @@ def tablo_kayip(oz):
     return "\n".join(s)
 
 
-def tablo_kirilma(kab, kky):
-    s = ["| Etken | A'dan B'ye kırılma (başarı < %90) | A'dan B'ye kademe başarıları | Kayıp kırılma | Kayıp kademe başarıları |",
-         "| --- | --- | --- | --- | --- |"]
+def tablo_kirilma(kab, kky, kab_g=None):
+    s = ["| Etken | A'dan B'ye kırılma (başarı < %90) | A'dan B'ye kademe başarıları | Sınırdakiler başarı sayılırsa: kırılma | kademe başarıları | Kayıp kırılma | Kayıp kademe başarıları |",
+         "| --- | --- | --- | --- | --- | --- | --- |"]
     for et in kab:
         a = kab[et]
         b = kky.get(et, {})
+        g = (kab_g or {}).get(et, {})
         f = lambda r: ", ".join("%d/%d" % (x[2], x[3]) for x in r) if r else "-"
 
         def kd(r, et_=et):
             if not r or r.get("kirilma_kademe") is None:
                 return "yok" if r else "-"
             return _deger(dict(etken=et_, deger=r["kirilma_deger"])) + " (k%d)" % r["kirilma_kademe"]
-        s.append("| %s | %s | %s | %s | %s |" % (ETIKET.get(et, et), kd(a), f(a["oranlar"]), kd(b), f(b.get("oranlar"))))
+        s.append("| %s | %s | %s | %s | %s | %s | %s |" % (ETIKET.get(et, et), kd(a), f(a["oranlar"]), kd(g),
+                                                       f(g.get("oranlar")), kd(b), f(b.get("oranlar"))))
     return "\n".join(s)
 
 
-def siralama(kab, kky):
-    """Zarar sırası: A'dan B'ye ve kayıpta ortalama başarı (kademeler üzerinden), sonra en kötü kademe."""
+SINIR_M = 0.35       # "sınırda" başarısızlık: beyin bitti dedi, hedefe 0,30-0,35 m (sıçrama sonucu değil, pay sınırı)
+
+
+def sinirda(s):
+    v = s.get("varis_hatasi_m")
+    return (not s.get("basari")) and s.get("bitis") == "beyin" and _sayi(v) and v < SINIR_M \
+        and not (s.get("temas_olay") or 0)
+
+
+def gevset(satir):
+    """Sınırdaki koşuları başarı sayan kopya (ikinci sayım)."""
+    return [dict(s, basari=True) if sinirda(s) else s for s in satir]
+
+
+def siralama(kab, kky, kab_g=None):
+    """Zarar sırası (düzeltildi, tamamlama turu): YALNIZ tam ızgaralı A'dan B'ye ortalama başarıyla (4 kademe x 12
+    koşu), eşitlikte en kötü kademe. Kayıp ortalaması sıralamaya GİRMEZ (kayıpta etkenlerin ölçülen kademe sayısı
+    eşit değil: 0-2), yalnız bilgi olarak, ölçülen kademe sayısıyla döner. kab_g: sınırdaki koşular başarı sayılınca.
+    -> [(etken, ab_ort, ab_en_kotu, kayip_ort, kayip_en_kotu, kayip_kademe_sayisi, ab_ort_gevsek)]"""
     L = []
     for et in kab:
         if et == "okul":
             continue
         a, b = kab[et], kky.get(et)
-        L.append((et, a["ort_oran"], a["en_kotu"], b["ort_oran"] if b else None, b["en_kotu"] if b else None))
-    L.sort(key=lambda r: (r[1] + (r[3] if r[3] is not None else r[1])) / 2)
+        g = (kab_g or {}).get(et)
+        L.append((et, a["ort_oran"], a["en_kotu"], b["ort_oran"] if b else None, b["en_kotu"] if b else None,
+                  len(b["oranlar"]) if b else 0, g["ort_oran"] if g else None))
+    L.sort(key=lambda r: (round(r[1], 6), r[2]))      # yuvarlama: 44/48 eşitliği kayan nokta farkına kalmasın
     return L
 
 
@@ -292,12 +313,16 @@ def gorseller(oz_ab, oz_ky, K):
 
 def main():
     ab = oku(os.path.join(ortak.HAM, "2b", "ab", "*.json"))
-    ky = oku(os.path.join(ortak.HAM, "2b", "kayip", "*.json"))
+    ky_ana = oku(os.path.join(ortak.HAM, "2b", "kayip", "*.json"))
+    ky_ek = oku(os.path.join(ortak.HAM, "2b", "kayip_ek", "*.json"))      # tamamlama turu (kos_ek.py)
+    ky = ky_ana + ky_ek
     mj = oku(os.path.join(ortak.HAM, "mujoco", "*.json"))
     V = oku(os.path.join(ortak.HAM, "varyant", "*.json"))
     os.makedirs(ortak.SONUC, exist_ok=True)
     csv_yaz(os.path.join(ortak.SONUC, "ab_2b.csv"), ab, ALANLAR_AB)
-    csv_yaz(os.path.join(ortak.SONUC, "kayip_2b.csv"), ky, ALANLAR_KAYIP)
+    csv_yaz(os.path.join(ortak.SONUC, "kayip_2b.csv"), ky_ana, ALANLAR_KAYIP)
+    if ky_ek:
+        csv_yaz(os.path.join(ortak.SONUC, "kayip_ek_2b.csv"), ky_ek, ALANLAR_KAYIP)
     mj_alan = ["id", "kosul", "etken", "kademe", "deger", "koridor", "tohum", "hedef", "basari", "neden", "sure_s",
                "yol_m", "rota_m", "varis_hatasi_m", "konum_ort_m", "konum_p95_m", "konum_maks_m",
                "konum_kesin_yanlis", "temas_olay", "temas_hareketli", "temas_duran", "bekleme_s", "bitis", "nan_orani",
@@ -306,20 +331,30 @@ def main():
     oz_ab, oz_ky = ozetle(ab), ozetle(ky, kayip=True)
     kab, kky = kirilma(oz_ab), kirilma(oz_ky)
     K = mujoco_karsilastir(mj, ab)
-    sira = siralama(kab, kky)
-    ozet = dict(ab=oz_ab, kayip=oz_ky, kirilma_ab=kab, kirilma_kayip=kky, siralama=sira, mujoco_2b=K,
-                sayilar=dict(ab=len(ab), kayip=len(ky), mujoco=len(mj)))
+    sinir = [s["id"] for s in ab if sinirda(s)]
+    kab_g = kirilma(ozetle(gevset(ab)))
+    sira = siralama(kab, kky, kab_g)
+    ozet = dict(ab=oz_ab, kayip=oz_ky, kirilma_ab=kab, kirilma_kayip=kky, kirilma_ab_sinir_basari=kab_g,
+                sinirda=sinir, siralama=sira, mujoco_2b=K,
+                sayilar=dict(ab=len(ab), kayip=len(ky), kayip_ek=len(ky_ek), mujoco=len(mj)))
     with open(os.path.join(ortak.SONUC, "ozet.json"), "w", encoding="utf-8") as f:
         json.dump(ozet, f, ensure_ascii=False, indent=1, default=str)
     md = ["# Tablolar (analiz.py üretir)", "",
-          "Koşu sayısı: A'dan B'ye 2B %d, kayıp 2B %d, MuJoCo %d." % (len(ab), len(ky), len(mj)), "",
+          "Koşu sayısı: A'dan B'ye 2B %d, kayıp 2B %d (ana %d + ek %d), MuJoCo %d." % (
+              len(ab), len(ky), len(ky_ana), len(ky_ek), len(mj)), "",
           "## A'dan B'ye (2B)", "", tablo_ab(oz_ab), "", "## Kayıp robot (2B)", "", tablo_kayip(oz_ky), "",
-          "## Kırılma noktaları", "", tablo_kirilma(kab, kky), "", "## Zarar sırası", "",
-          "| Sıra | Etken | A'dan B'ye ort başarı | en kötü kademe | Kayıp ort başarı | en kötü kademe |",
-          "| --- | --- | --- | --- | --- | --- |"]
+          "## Kırılma noktaları", "",
+          "Sınırdaki koşular (beyin bitti dedi, hedefe 0,30-%s m, temas yok; %d koşu): %s." % (
+              ("%.2f" % SINIR_M).replace(".", ","), len(sinir), ", ".join(sinir) or "-"), "",
+          tablo_kirilma(kab, kky, kab_g), "", "## Zarar sırası", "",
+          "Yalnız tam ızgaralı A'dan B'ye ortalamasıyla (4 kademe x 12 koşu), eşitlikte en kötü kademe. Kayıp sütunları "
+          "bilgi içindir, sıraya girmez (ölçülen kademe sayısı etkenden etkene 0-2).", "",
+          "| Sıra | Etken | A'dan B'ye ort başarı | en kötü kademe | sınırdakiler başarı sayılırsa ort | Kayıp ort başarı (ölçülen kademe) | Kayıp en kötü kademe |",
+          "| --- | --- | --- | --- | --- | --- | --- |"]
     for i, r in enumerate(sira, 1):
-        md.append("| %d | %s | %s | %s | %s | %s |" % (i, ETIKET.get(r[0], r[0]), _f(r[1], yuzde=True),
-                                                    _f(r[2], yuzde=True), _f(r[3], yuzde=True), _f(r[4], yuzde=True)))
+        md.append("| %d | %s | %s | %s | %s | %s (%d) | %s |" % (
+            i, ETIKET.get(r[0], r[0]), _f(r[1], yuzde=True), _f(r[2], yuzde=True), _f(r[6], yuzde=True),
+            _f(r[3], yuzde=True), r[5], _f(r[4], yuzde=True)))
     md += ["", "## MuJoCo doğrulaması ile 2B (aynı koşul / koridor / tohum)", "", tablo_mujoco(K), ""]
     if V:
         csv_yaz(os.path.join(ortak.SONUC, "varyant_2b.csv"), V, ["varyant"] + ALANLAR_AB)

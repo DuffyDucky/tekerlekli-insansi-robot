@@ -162,6 +162,93 @@ bu klasörün testleri 5 / 5. Ortak dosyalara dokunulmadı.
 - Algının maliyeti: tarama başına 90 ışınlık ışın izleme + uzaklık alanı (bu PC'de ms mertebesi; Pi 5'te ölçülmedi).
   Kurtarmada 6 haritalı kafes başlangıcı ≈ 2,5 s (konumlama BENIOKU), robot bu sürede durur.
 
+## Tamamlama turu (2026-11-26): dört kip aynı koşullarda, "emin değilim" ölçütü
+
+`kipler.py`, `emin.py`, `kipler_rapor.py`; tablolar `kipler_tablolar.md`, koşu başına `kipler_2b.csv`, özet
+`kipler_ozet.json`. A'dan B'ye (tek harita, bilinen başlangıç), 2B benzetici, ONERI.
+
+### Hüküm
+
+- **Hiçbir kip her koşulda iyi değil; seçim taşınma riskine ve haritanın eskiliğine göre.** Varsayılan v3 DEĞİŞMEDİ
+  (tam gerileme koşusu yok). Öneri tablosu aşağıda.
+- **"algi" eskimiş haritada kullanılamaz durumda:** taşınma YOKKEN kapı %25'te 11 / 12, cam %50'de 11 / 12, kapı %50'de
+  11 / 12, okul günü hafif 8 / 12, orta 10 / 12, ağır 12 / 12 koşuda boşuna "kayboldum" dedi. Nedeni neredeyse hep aynı:
+  alarm taramasında **geçiş > 0,10** (açılmış kapının ya da camın arkasındaki odayı görmek, haritaya göre "duvarın
+  arkası"); uyum < 0,60 hiçbirinde değil. Sonuç güvenli ama işe yaramaz: robot durup yardım bekliyor (kapı %25: 9 / 12
+  güvenli durma, 3 / 12 varış). Dönüşsüz yüzey %50'de yalnız 1 / 12 alarm (dönüşsüz ışın NaN, geçişi büyütmüyor).
+- **Taşınma varken algi fark ediyor:** temiz haritada 46 / 48 taşımada (medyan 0,8 s; 180°'de 10 / 12, 2,5 s), kapı /
+  cam / dönüşsüz eskimesi altında küçük taşımada 30 / 30 (6 koşu taşımadan önce zaten alarm verip durmuştu; yapılan 30
+  taşımanın 11'inde de taşımadan önce yanlış alarm vardı, bu yüzden eskimedeki fark etme oranı yanlış alarm eğilimiyle
+  karışık); izleme_algi temizde 45 / 48, eskimede 29 / 30.
+- **"izleme" eskimiş ama taşınmasız haritada en iyisi** (84 koşu / kip: varış 69 / 84; v3 57, algi 25, izleme_algi 27),
+  **taşınmada en kötüsü** (temiz haritada 1 / 48: kendini kurtaramıyor, 36 koşuda süre doldu, 11'inde sessiz hata).
+- **"emin değilim" ölçütü (sessiz hata azaltma) çalışıyor ama seçilen eşik fazla sıkı çıktı.** Geliştirmede seçilen
+  kural (uyum medyanı < 0,75 VEYA ana mod std > 0,05 m) sınamada v3'ün 66 sessiz hatasının 33'ünü, izlemenin 48'inin
+  41'ini durdurdu; bedeli 5 / 99 ve 5 / 86 doğru varışın gereksiz durması (geliştirme sınırı %2 idi, sınamada %5-6):
+  gereksiz durmaların 17 / 21'i dönüşsüz yüzey %50'de std 0,051-0,066 m (az ışınla std büyüyor). Geliştirmenin en iyi
+  TEK adaylı kuralı (uyum < 0,75) sınamada v3 29 / 66, izleme 25 / 48 sessiz hatayı durdurdu, gereksiz durma 0 / 99 ve
+  0 / 86. Bu ikinci kural sınamaya bakıldıktan sonra öne çıktığı için hüküm değil, yeni tohumlarla doğrulanacak aday.
+
+### Öneri tablosu (sınama, tohum 5, 6; hücre: doğru davranış / koşu, sessiz hata, güvenli durma)
+
+"Doğru davranış": hedefe doğru varış; başka koridora taşımada güvenli durma. Sessiz hata: yanlış yerde "vardım" (123
+sessiz hatanın 122'si hedefe > 0,5 m; 13'ü başka koridorda).
+
+| Koşul (koşu / kip) | v3 | izleme | algi | izleme_algi | Öneri | Gerekçe |
+| --- | --- | --- | --- | --- | --- | --- |
+| Temiz harita, taşınma yok (12) | 12/12, 0, 0 | 12/12, 0, 0 | 12/12, 0, 0 | 12/12, 0, 0 | v3 (varsayılan) | fark yok; algi yanlış alarm 0 / 12 |
+| Eskimiş harita, taşınma yok: okul günü hafif / orta / ağır + kapı %25, cam %50, kapı %50, dönüşsüz %50 (84) | 57/84, 20, 0 | 69/84, 13, 0 | 25/84, 1, 58 | 27/84, 1, 56 | **izleme** (+ "emin değilim" ölçütü) | en çok varış, v3'ten az sessiz hata; algi'nin yanlış alarmı 64 / 84 koşu |
+| &nbsp;&nbsp;yalnız okul günü ağır (12) | 1/12, 7, 0 | 2/12, 8, 0 | 1/12, 1, 10 | 1/12, 1, 10 | hiçbiri; zorunluysa algi | hepsi ≤ 2 / 12; algi en azından durup yardım istiyor |
+| Taşınma riski, temiz harita: 4 tür (48) | 13/48, 28, 0 | 1/48, 11, 0 | **47/48**, 1, 11 | 44/48, 4, 11 | **algi** | fark etme 46 / 48, medyan 0,8 s; v3'ün 28 sessiz hatası |
+| Taşınma riski + eskime: kapı %25 / cam %50 / dönüşsüz %50, küçük (1-3 m) taşıma (36) | 17/36, 18, 0 | 4/36, 24, 0 | 11/36, 0, 23 | 11/36, 2, 22 | algi (sessiz hata 0) ya da v3 (daha çok varış, 18 sessiz hata) | iyi seçenek yok; algi'nin geçiş testi kapı / cam için düzeltilmeli |
+
+Ek: temaslı koşu (taşınmasız eskimiş 84 koşuda) v3 5, izleme 1, algi 8, izleme_algi 4; algi'nin temaslarının 6'sı
+okul günü orta / ağırda (kaynağı ayrıca incelenmedi; kurtarma evresinin keşif sürüşü olası). İstisna 0 / 720.
+
+Bilinen başlangıçla gezinen robot için öneri (ölçülmedi, birleşik hâli): **izleme + "emin değilim" ölçütü + taşınma
+algısının geçiş testi kapı açıklıklarında ve cam olabilecek yüzeylerde kapalı** (yalnız uyum ve poz sıçraması). Geçişsiz
+algının yanlış alarmı ve fark etmesi koşulmadı; taşınmada 180° ve küçük kaydırmayı uyum yerine `konum_kararsiz` ve poz
+sıçraması yakalıyordu (yukarıda "Fark etme süresi"), bu yüzden geçişi kapatmanın fark etmeyi ne kadar düşürdüğü açık.
+
+### "Emin değilim, duruyorum" ölçütü (`emin.py`)
+
+- Yalnız beynin gördüğü (pasif `kipler.Gozlemci`, komutu değiştirmez; birim testi): "vardım" anında son 10 taramada
+  tahmin pozunda tarama-harita uyumu ve geçiş, konumlayıcının ana mod payı / std'si / `konum_kararsiz`'ı, koşu boyunca
+  poz tahmininin odometri öngörüsünden en büyük sapması (poz sıçraması), rastgele saçma oranı. Kural vardım anında
+  uygulandığı için gidişi değiştirmez; etkisi kayıtlı koşulardan çevrimdışı ve tam ölçülür.
+- **Ayar ve hüküm ayrı:** geliştirme kümesi tohum 7, 8 (168 koşu: v3 ve izleme; taban, okul hafif / orta, kapı %50,
+  cam %75, taşınma küçük / uzak); sınama tohum 5, 6 (720 koşu, dört kip). Seçim kuralı sınamadan önce yazıldı (`emin.py`
+  başı): gereksiz durma ≤ %2, en çok yakalanan sessiz hata, eşit eşik aralığının ortası; iki adaylı kural ancak +2
+  yakalarsa. Sonuç: `uyum < 0,75 VEYA std_xy > 0,05` (geliştirmede 26 / 38 yakalandı, 2 / 112 gereksiz).
+- Sınama: v3 33 / 66, izleme 41 / 48, algi 1 / 2, izleme_algi 4 / 7 sessiz hata durduruldu; gereksiz durma 5 / 99,
+  5 / 86, 6 / 84, 5 / 83. Std eşiği (0,05 m) normal değerin (0,02-0,05) hemen üstünde; geliştirmede dönüşsüz yüzey
+  yoktu, sınamada gereksiz durmayı o yarattı. Ders: tek bir geliştirme kümesinde çıkan sıkı std eşiği taşınmıyor.
+- Neyi yakalayamıyor: poz sıçraması (sic_maks) ayırt edici DEĞİL: v3 taşınmadan doğru kurtulduğunda da 0,4-16 m
+  sıçrıyor (sınamada 0,4-11,8 m, geliştirmede 0,8-16,1 m; sessiz hatalarda 0,04-21,9 m).
+  İzleme kipinde taşınmadan sonra sürüklenen tahmin hedefte haritaya iyi uyabiliyor (uyum 0,80-1,00): bu sessiz
+  hataların bir kısmı tarama-harita uyumuyla görünmez.
+
+### Nasıl ölçüldü, neyi değiştirdi
+
+- Kipler aynı görevde eşli (dünya, başlangıç sapması, MCL tohumu, taşıma anı / pozu, benzetici gürültüsü). Tohum 5-8
+  önceki hiçbir aşamada kullanılmadı. 6 koridorun hepsi. "algi" eşikleri önceki geliştirmede donmuştu, değişmedi.
+- Hakem farkı (önceki ölçümlere göre daha katı): koşu yalnız beyin "vardım" deyince biter; "hedefte 1,5 s durdu"
+  kısa yolu kapalı. Süre rota / 0,25 x 1,8 + 130 s (önceki aşamada taşınmasız koşularda + 40 s). Bu yüzden ve tohumlar
+  farklı olduğundan sayılar önceki tablolarla birebir karşılaştırılmaz. Güncellendi: harita_eskimesi'nin izleme
+  varyantında (tohum 3, 4) okul günü orta 12 / 12 idi, burada (tohum 5, 6) 8 / 12; kapı %50 12 / 12 burada da 12 / 12.
+- Güncellendi: yukarıdaki "Yanlış alarm bedeli" yalnız insan ve eşyayla ölçülmüştü (taban / insan 0 / 48); kapı, cam ve
+  okul gününde yanlış alarm 8-12 / 12 (bu bölüm).
+- **Kapsam daraltıldı (süre bütçesi):** ilk plan 29 sınama koşuluydu, 15'i koşuldu. Koşulmayanlar: tek etkenlerin
+  2. kademesinden eşya, insan, grup, ölçek, genişlik, menzil, ani kayma, dönüşsüz %25 (8);
+  cam %75, dönüşsüz %75, menzil 4 m (3); taşınma + eskimede yalnız küçük (1-3 m) taşıma koşuldu, planlanan uzak
+  taşıma (kapı %25 / cam %50 / dönüşsüz %50 ile, 3) koşulmadı (180° ve başka koridor eskimeyle planda da yoktu;
+  eğrilme, gürültü ve odometri hatası bu karşılaştırmanın planında yoktu). cam_3'ün yarıda kesilen 9 koşusu ham klasörde durur, tablolara girmez. Geliştirme
+  kümesi de 10'dan 7 koşula indi (dönüşsüz %75, menzil 4 m, eşya 4 / 10 m atıldı). Yalnız A'dan B'ye; 6 haritalı
+  beyin ve MuJoCo bu turda koşulmadı. Koşul başına 12 koşu: 1-2 koşuluk farklar gürültü içinde.
+- İyimser varsayımlar önceki bölümlerdeki gibi (2B, ideal ince duvar, cam yalnız kapılarda ve tam saydam, anlık taşıma).
+- Testler (tamamlama turu sonunda): `kod/testler/kos.py` 74 geçti / 2 atlandı / 0 kalan; bu klasör 9 / 9 (yeni
+  `test_kipler.py` 4); harita_eskimesi 14 / 14. Ortak dosyalara dokunulmadı.
+
 ## Öneri (ölçülmedi)
 
 Algı tarafı iyi çalışıyor; bedel kurtarma tarafında. Poz sıçramasıyla tetiklenen alarmda bütün haritalara küresel

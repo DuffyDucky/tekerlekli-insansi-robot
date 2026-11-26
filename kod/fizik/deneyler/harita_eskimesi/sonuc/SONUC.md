@@ -18,6 +18,10 @@ dönüş alamayınca güvenilmez, ve bozulma zarif değil, ani.**
   kayıp 10/12; hepsi değişince 8/12 ve 3/12), **cam kapı** (%25'te 10/12), **en uzun menzil** (4 m'de 10/12 ve 7/12;
   2 m'de 8/12 ve 3/12), **ani teker kayması** (2 olay / dk'da 10/12), **eşya** (4 adet / 10 m'de 9/12 ve 9/12),
   **dönüşsüz yüzey** (%75'te 8/12 ve 3/12; %50'ye dek 12/12).
+  *Güncellendi (tamamlama turu):* cam kapı ve ani kaymanın kırılma iddiası sınırdaki koşulara dayanıyor. 5 koşu hedefe
+  0,30-0,34 m'de "vardım" dedi (sıçrama değil, pay sınırı). Katı sayım (0,3 m): cam %25'te kırar (10/12), ani kayma
+  2 / dk'da (10/12). Sınırdakiler başarı sayılırsa: cam %50'de kırar (11, 10, 8, 9 /12), ani kayma hiç kırmaz
+  (12, 12, 11, 11 /12), kapı yine %25'te (12, 9, 8, 8 /12). Öbür kırılma noktaları iki sayımda aynı.
 - **Sıradan okul günü hafifte bile kırıyor**: hafif 9/12 ve 10/12, orta 3/12 ve 4/12, ağır 0/12 ve 0/12.
 - Nasıl bozuluyor: A'dan B'ye 68 başarısızlığın 64'ünde konum tahmini 1 m'den çok sıçradı (çoğu 10–25 m: düzenli kapı
   ritmindeki "takma" bir yere), 53'ünde robot yanlış yerde durup "vardım" dedi, 54'ünde konumlayıcı bu yanlış konumdan
@@ -37,7 +41,8 @@ dönüş alamayınca güvenilmez, ve bozulma zarif değil, ani.**
 
 1. **Okulun koridorunda LiDAR'ın dönüş haritası:** rota boyunca (robotu elle iterek ya da bir arabada) taramaları kaydet;
    yüzey türüne göre dönüşsüz ışın oranı (cam kapı, cam bölme, koyu / parlak kaplama, dolap kapakları) ve etkin en uzun
-   menzil. Zarar sırasının ilk dördünden üçü (dönüşsüz yüzey, menzil, cam) buna bağlı; simülasyon bunları tahmin ediyor.
+   menzil. Zarar sırasının ilk dördünden üçü (düzeltilmiş sırayla cam, menzil, dönüşsüz yüzey; ilki kapı) buna bağlı;
+   simülasyon bunları tahmin ediyor.
 2. **Haritanın ne kadar eskidiği:** haritayı bir kez çıkar, sonra günün farklı saatlerinde aynı yerlerden tarama al;
    haritadan > 15 cm sapan nokta oranını, kapı durumu değişimini (kaç kapı, ne sıklıkla) ve duvar dibindeki eşya sayısını
    say. Bu sayılar bu deneyin kademe eksenine doğrudan yerleşir (hangi kademede yaşandığını söyler).
@@ -79,7 +84,7 @@ dönüş alamayınca güvenilmez, ve bozulma zarif değil, ani.**
 | c. insan (kişi / 10 m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 11/12 |
 | c. grup (duvardan içeri m) | yok | 12/12, 12/12, 12/12, 11/12 | yok | 12/12 |
 | d. ölçek hatası | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
-| d. genişlik sapması (m) | yok | 12/12, 12/12, 12/12, 12/12 | - | - |
+| d. genişlik sapması (m) | yok | 12/12, 12/12, 12/12, 12/12 | yok (güncellendi: tamamlama turu) | 12/12, 12/12, 12/12, 12/12 |
 | d. eğrilme (° / 20 m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
 | e. menzil gürültüsü σ (m) | yok | 12/12, 12/12, 12/12, 12/12 | yok | 12/12 |
 | e. dönüşsüz yüzey oranı | 75 % (k4) | 12/12, 12/12, 12/12, 8/12 | 75 % (k4) | 3/12 |
@@ -90,8 +95,25 @@ dönüş alamayınca güvenilmez, ve bozulma zarif değil, ani.**
 | f. ani kayma (olay / dk) | 2 (k3) | 12/12, 12/12, 10/12, 10/12 | yok | 12/12 |
 | g. okul günü (hafif / orta / ağır) | hafif (k1) | 9/12, 3/12, 0/12 | hafif (k1) | 10/12, 4/12, 0/12 |
 
-Zarar sırası (A'dan B'ye ve kayıpta kademeler üzerinden ortalama başarının ortalamasıyla; kayıpta yalnız ölçülen
-kademeler):
+**Zarar sırası (güncellendi, tamamlama turu; `analiz.siralama()` düzeltildi).** Sıra YALNIZ tam ızgaralı A'dan B'ye
+ortalamasından (her etken 4 kademe x 12 koşu = 48), eşitlikte en kötü kademe. Kayıp ortalaması sıraya girmez, çünkü
+kayıpta etkenlerin ölçülen kademe sayısı eşit değil (0-2). İki sayım: katı (0,3 m) ve sınırdaki 5 koşu başarı sayılırsa.
+
+| Sıra | Etken | A'dan B'ye ort başarı (katı) | en kötü kademe | sınırdakiler başarı sayılırsa | Kayıp ort (ölçülen kademe sayısı), yalnız bilgi |
+| --- | --- | --- | --- | --- | --- |
+| 1 | a. kapı durumu değişen oran | 73 % (35/48) | 58 % | 77 % | 54 % (2) |
+| 2 | e. cam kapı oranı | 77 % (37/48) | 67 % | 79 % | 71 % (2) |
+| 3 | e. en uzun menzil (m) | 83 % (40/48) | 67 % | 83 % | 42 % (2) |
+| 4 | e. dönüşsüz yüzey oranı | 92 % (44/48) | 67 % | 92 % | 25 % (1) |
+| 5 | f. ani kayma (olay / dk) | 92 % (44/48) | 83 % | 96 % | 100 % (1) |
+| 6 | b. eşya (adet / 10 m) | 94 % (45/48) | 75 % | 94 % | 75 % (1) |
+| 7 | c. grup (duvardan içeri m) | 98 % (47/48) | 92 % | 98 % | 100 % (1) |
+| 8-14 | insan, ölçek, genişlik, eğrilme, menzil gürültüsü, odometri ölçek, dönüş hatası | 100 % | 100 % | 100 % | 92-100 % (genişlik: bkz. "Tamamlama turu") |
+
+Sağlam olan: kapı, cam ve menzil iki sayımda da ilk üç; dönüşsüz yüzey A'dan B'ye'de ani kaymayla eşit (44 / 48), en
+kötü kademesi daha kötü (%67, ani kayma %83); sınırdakiler başarı sayılırsa ani kayma dönüşsüzün arkasına düşer (%96).
+
+Eski sıra (YANLIŞTI, yalnız kayıt için; kayıpta eşit olmayan kademe kapsamıyla iki ortalamanın ortalaması):
 
 | Sıra | Etken | A'dan B'ye ort başarı | en kötü kademe | Kayıp ort başarı | en kötü kademe |
 | --- | --- | --- | --- | --- | --- |
@@ -286,11 +308,28 @@ saçılan parçacık taramayı "takma" yerde daha iyi açıklıyor ve konum oray
 - Kapı, cam, eşya, dönüşsüz, hafif ve orta günde sıçrama yok oldu (en büyük konum hatası 25 m -> ≤ 0,73 m), başarı 12 / 12
   (kapı %100'de 11 / 12).
 - Ağır günde düzeltmez (0 / 12): sıçrama yerine 0,3–3,3 m kayma ve önünde duvar / grup görüp bekleme (süre doldu).
+- Güncellendi (tamamlama turu, yeni tohumlar 5, 6, daha katı hakem: yalnız beyin "vardım" deyince biter): izleme
+  okul günü hafif 12 / 12, orta 8 / 12 (burada 12 / 12 idi; 4 sessiz hata), ağır 2 / 12; kapı %25 12 / 12, kapı %50
+  12 / 12; v3 aynı koşullarda 11, 5, 1, 10, 8. Taşınmada izleme 1 / 48 (`../../tasinma/sonuc/SONUC.md`).
 - Bedeli: gerçek bir "kaçırılma" (robot elle taşındı, büyük kayma) olursa kendini kurtaramaz. Öneri: bilinen başlangıçta
   izleme kipi + ayrı bir kaçırılma algısı (ör. uyum N metre boyunca kötüyse küresel yeniden konumlama ve dur). Kayıp
   robotun karardan sonraki evresine de aynısı uygulanabilir; bu ÖLÇÜLMEDİ.
 - Ölçüm modelinde beklenmeyen engel payı (z_rastgele, "isin" modeli) denenmedi: sıçramaların kaynağı engel değil,
   kapı / cam / dönüşsüz yüzey gibi harita yapısındaki farklardı.
+
+## Tamamlama turu (2026-11-26): incelemenin açık bıraktıkları
+
+- **Zarar sırası ve kırılma metni düzeltildi** (yukarıda, "güncellendi" notlarıyla; `analiz.siralama()` artık yalnız tam
+  ızgaralı A'dan B'ye ortalamasıyla sıralıyor, `tablolar.md` "Kırılma noktaları" iki sayımı da veriyor). Doğru sıra:
+  kapı %73 > cam %77 > menzil %83 > dönüşsüz %92 = ani kayma %92 (eşitlikte en kötü kademe: dönüşsüz %67, ani kayma
+  %83) > eşya %94 > grup %98 > geri kalanı %100. Sınırdaki 5 koşu (hedefe 0,30-0,34 m "vardım", tahmin hatası
+  0,26-0,29 m) başarı sayılırsa: kapı %77, cam %79, ani kayma %96; cam %50'de kırar, ani kayma hiç kırmaz.
+- **Kayıp robotta genişlik sapması (48 koşu, ana ızgarayla aynı tohumlar 0, 1; `kos_ek.py`, `kayip_ek_2b.csv`):**
+  ± 2,5 / 5 / 7,5 / 10 cm'de 12 / 12, 12 / 12, 12 / 12, 12 / 12; yanlış koridora karar 0, temas 0, karar süresi
+  medyan 5-7 s (taban 6 s); karardan sonraki konum hatası ortalaması 0,016 / 0,026 / 0,038 / 0,052 m (taban 0,008):
+  hata duvar kaymasının yaklaşık yarısı kadar büyüyor, sıçrama yok. Genişlik sapması kayıpta da kırmıyor.
+- Kip karşılaştırması (v3 / izleme / algi / izleme + algi aynı koşullarda) ve "emin değilim" ölçütü:
+  `../../tasinma/sonuc/SONUC.md` "Tamamlama turu".
 
 ## Simülasyonun iyimser varsayımları (gerçekte daha kötü olabilir)
 
@@ -313,7 +352,8 @@ saçılan parçacık taramayı "takma" yerde daha iyi açıklıyor ve konum oray
 
 - **Kayıp robot 20 koşulda** (60 değil): taban; okul hafif / orta / ağır; kapı %25 ve %100; cam %25 ve %100; menzil 4 m ve
   2 m; eşya, dönüşsüz, ani kayma, insan, grup, eğrilme, ölçek, dönüş hatası, odometri ölçek, gürültünün yalnız 4.
-  kademesi. Genişlik sapması kayıpta hiç koşulmadı; 1. ve 3. kademeler (kapı, cam, menzil dışında) yok. Neden: kayıp
+  kademesi. Genişlik sapması kayıpta hiç koşulmadı (güncellendi: tamamlama turunda 4 kademe x 12 = 48 koşu eklendi,
+  aşağıda); 1. ve 3. kademeler (kapı, cam, menzil dışında) yok. Neden: kayıp
   koşusu A'dan B'ye koşusunun 5–15 katı (6 harita, 3000 parçacık, 300 s'ye dek) ve süre bütçesi.
 - **MuJoCo yalnız A'dan B'ye**, koşul başına 3 koşu; cam kapı etkeni MuJoCo'da yok.
 - Koşul başına 12 koşu (6 koridor x 2 tohum): kırılma kademesi istatistiksel olarak ± 1 kademe.
@@ -321,7 +361,7 @@ saçılan parçacık taramayı "takma" yerde daha iyi açıklıyor ve konum oray
 
 ## Dosyalar
 
-`ab_2b.csv`, `kayip_2b.csv`, `mujoco.csv`, `varyant_2b.csv` (koşu başına bir satır: kimlik, koşul, koridor, tohum, sonuç,
+`ab_2b.csv`, `kayip_2b.csv`, `kayip_ek_2b.csv` (tamamlama turu), `mujoco.csv`, `varyant_2b.csv` (koşu başına bir satır: kimlik, koşul, koridor, tohum, sonuç,
 neden, hatalar, temas), `ozet.json` (koşul özetleri, kırılma, sıralama, MuJoCo eşleşmesi), `tablolar.md` (bu tabloların
 kaynağı), `../gorsel/basari_kademe.png` (başarı / kademe), `../gorsel/mujoco_2b.png` (aynı koşu 2B / MuJoCo),
 `../gorsel/dunya_koridor_4.png`, `../gorsel/dunya_koridor_5.png` (harita / dünya). Ham koşular `ham/` (depo dışı).

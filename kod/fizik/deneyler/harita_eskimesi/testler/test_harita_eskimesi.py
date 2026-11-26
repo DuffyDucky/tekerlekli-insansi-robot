@@ -163,5 +163,29 @@ class TestBenzet(unittest.TestCase):
             self.assertEqual(a[k], b[k])
 
 
+class TestAnaliz(unittest.TestCase):
+    def test_siralama_yalniz_tam_izgara(self):
+        """Kayıpta yalnız en kötü kademesi ölçülen etken sıralamayı bozmasın (tamamlama turu düzeltmesi)."""
+        import analiz
+
+        def k(*oran):
+            return dict(ort_oran=sum(oran) / len(oran), en_kotu=min(oran),
+                        oranlar=[(i + 1, 0, int(o * 12), 12) for i, o in enumerate(oran)])
+        kab = {"kapi": k(11 / 12, 9 / 12, 7 / 12, 8 / 12), "donussuz": k(1, 1, 1, 8 / 12),
+               "odo_kayma": k(1, 1, 10 / 12, 10 / 12), "olcek": k(1, 1, 1, 1)}
+        kky = {"donussuz": k(3 / 12), "kapi": k(10 / 12, 3 / 12)}
+        sira = [r[0] for r in analiz.siralama(kab, kky)]
+        self.assertEqual(sira, ["kapi", "donussuz", "odo_kayma", "olcek"])    # eşitlikte en kötü kademe
+
+    def test_sinirda(self):
+        import analiz
+        s = dict(basari=False, bitis="beyin", varis_hatasi_m=0.33, temas_olay=0)
+        self.assertTrue(analiz.sinirda(s))
+        self.assertFalse(analiz.sinirda(dict(s, varis_hatasi_m=0.36)))
+        self.assertFalse(analiz.sinirda(dict(s, bitis="sure")))
+        self.assertFalse(analiz.sinirda(dict(s, basari=True)))
+        self.assertTrue(analiz.gevset([s])[0]["basari"])
+
+
 if __name__ == "__main__":
     unittest.main()

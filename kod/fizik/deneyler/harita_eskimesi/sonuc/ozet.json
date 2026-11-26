@@ -1451,6 +1451,114 @@
    "karar_yol_med": 1.2375,
    "yanlis_kesin_adim_kosu": 0
   },
+  "genislik_1": {
+   "kosul": "genislik_1",
+   "etken": "genislik",
+   "kademe": 1,
+   "deger": 0.025,
+   "n": 12,
+   "basari": 12,
+   "oran": 1.0,
+   "istisna": 0,
+   "varis_med": 0.0513,
+   "konum_ort": 0.015758333333333333,
+   "konum_p95": 0.028591666666666668,
+   "konum_maks": 0.0731,
+   "kesin_yanlis_kosu": 0,
+   "temas_hareketli": 0,
+   "temas_duran": 0,
+   "temas_kosu": 0,
+   "sure_med": 70.025,
+   "bekleme_ort": 0.0,
+   "nan_orani": 0.016183333333333334,
+   "yanlis_karar": 0,
+   "yanlis_son": 0,
+   "karar_yok": 0,
+   "karar_t_med": 5.6,
+   "karar_yol_med": 0.9914999999999999,
+   "yanlis_kesin_adim_kosu": 0
+  },
+  "genislik_2": {
+   "kosul": "genislik_2",
+   "etken": "genislik",
+   "kademe": 2,
+   "deger": 0.05,
+   "n": 12,
+   "basari": 12,
+   "oran": 1.0,
+   "istisna": 0,
+   "varis_med": 0.054150000000000004,
+   "konum_ort": 0.026266666666666664,
+   "konum_p95": 0.033925000000000004,
+   "konum_maks": 0.0561,
+   "kesin_yanlis_kosu": 0,
+   "temas_hareketli": 0,
+   "temas_duran": 0,
+   "temas_kosu": 0,
+   "sure_med": 54.875,
+   "bekleme_ort": 0.0,
+   "nan_orani": 0.01525,
+   "yanlis_karar": 0,
+   "yanlis_son": 0,
+   "karar_yok": 0,
+   "karar_t_med": 5.45,
+   "karar_yol_med": 0.9415,
+   "yanlis_kesin_adim_kosu": 0
+  },
+  "genislik_3": {
+   "kosul": "genislik_3",
+   "etken": "genislik",
+   "kademe": 3,
+   "deger": 0.075,
+   "n": 12,
+   "basari": 12,
+   "oran": 1.0,
+   "istisna": 0,
+   "varis_med": 0.061799999999999994,
+   "konum_ort": 0.038066666666666665,
+   "konum_p95": 0.04686666666666667,
+   "konum_maks": 0.0712,
+   "kesin_yanlis_kosu": 0,
+   "temas_hareketli": 0,
+   "temas_duran": 0,
+   "temas_kosu": 0,
+   "sure_med": 64.725,
+   "bekleme_ort": 0.0,
+   "nan_orani": 0.016033333333333333,
+   "yanlis_karar": 0,
+   "yanlis_son": 0,
+   "karar_yok": 0,
+   "karar_t_med": 6.55,
+   "karar_yol_med": 1.19,
+   "yanlis_kesin_adim_kosu": 0
+  },
+  "genislik_4": {
+   "kosul": "genislik_4",
+   "etken": "genislik",
+   "kademe": 4,
+   "deger": 0.1,
+   "n": 12,
+   "basari": 12,
+   "oran": 1.0,
+   "istisna": 0,
+   "varis_med": 0.07105,
+   "konum_ort": 0.052075,
+   "konum_p95": 0.068275,
+   "konum_maks": 0.0914,
+   "kesin_yanlis_kosu": 0,
+   "temas_hareketli": 0,
+   "temas_duran": 0,
+   "temas_kosu": 0,
+   "sure_med": 59.65,
+   "bekleme_ort": 0.0,
+   "nan_orani": 0.015983333333333332,
+   "yanlis_karar": 0,
+   "yanlis_son": 0,
+   "karar_yok": 0,
+   "karar_t_med": 7.0,
+   "karar_yol_med": 1.29,
+   "yanlis_kesin_adim_kosu": 0
+  },
   "egrilme_4": {
    "kosul": "egrilme_4",
    "etken": "egrilme",
@@ -2356,6 +2464,38 @@
    "ort_oran": 1.0,
    "en_kotu": 1.0
   },
+  "genislik": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.025,
+     12,
+     12
+    ],
+    [
+     2,
+     0.05,
+     12,
+     12
+    ],
+    [
+     3,
+     0.075,
+     12,
+     12
+    ],
+    [
+     4,
+     0.1,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
   "egrilme": {
    "kirilma_kademe": null,
    "kirilma_deger": null,
@@ -2507,47 +2647,524 @@
    "en_kotu": 0.0
   }
  },
+ "kirilma_ab_sinir_basari": {
+  "kapi": {
+   "kirilma_kademe": 2,
+   "kirilma_deger": 0.25,
+   "oranlar": [
+    [
+     1,
+     0.1,
+     12,
+     12
+    ],
+    [
+     2,
+     0.25,
+     9,
+     12
+    ],
+    [
+     3,
+     0.5,
+     8,
+     12
+    ],
+    [
+     4,
+     1.0,
+     8,
+     12
+    ]
+   ],
+   "ort_oran": 0.7708333333333333,
+   "en_kotu": 0.6666666666666666
+  },
+  "esya": {
+   "kirilma_kademe": 4,
+   "kirilma_deger": 4.0,
+   "oranlar": [
+    [
+     1,
+     0.5,
+     12,
+     12
+    ],
+    [
+     2,
+     1.0,
+     12,
+     12
+    ],
+    [
+     3,
+     2.0,
+     12,
+     12
+    ],
+    [
+     4,
+     4.0,
+     9,
+     12
+    ]
+   ],
+   "ort_oran": 0.9375,
+   "en_kotu": 0.75
+  },
+  "insan": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.5,
+     12,
+     12
+    ],
+    [
+     2,
+     1.0,
+     12,
+     12
+    ],
+    [
+     3,
+     2.0,
+     12,
+     12
+    ],
+    [
+     4,
+     4.0,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "grup": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.6,
+     12,
+     12
+    ],
+    [
+     2,
+     0.9,
+     12,
+     12
+    ],
+    [
+     3,
+     1.2,
+     12,
+     12
+    ],
+    [
+     4,
+     1.5,
+     11,
+     12
+    ]
+   ],
+   "ort_oran": 0.9791666666666666,
+   "en_kotu": 0.9166666666666666
+  },
+  "olcek": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.005,
+     12,
+     12
+    ],
+    [
+     2,
+     0.01,
+     12,
+     12
+    ],
+    [
+     3,
+     0.02,
+     12,
+     12
+    ],
+    [
+     4,
+     0.03,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "genislik": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.025,
+     12,
+     12
+    ],
+    [
+     2,
+     0.05,
+     12,
+     12
+    ],
+    [
+     3,
+     0.075,
+     12,
+     12
+    ],
+    [
+     4,
+     0.1,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "egrilme": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.5,
+     12,
+     12
+    ],
+    [
+     2,
+     1.0,
+     12,
+     12
+    ],
+    [
+     3,
+     2.0,
+     12,
+     12
+    ],
+    [
+     4,
+     4.0,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "gurultu": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.02,
+     12,
+     12
+    ],
+    [
+     2,
+     0.03,
+     12,
+     12
+    ],
+    [
+     3,
+     0.05,
+     12,
+     12
+    ],
+    [
+     4,
+     0.08,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "donussuz": {
+   "kirilma_kademe": 4,
+   "kirilma_deger": 0.75,
+   "oranlar": [
+    [
+     1,
+     0.1,
+     12,
+     12
+    ],
+    [
+     2,
+     0.25,
+     12,
+     12
+    ],
+    [
+     3,
+     0.5,
+     12,
+     12
+    ],
+    [
+     4,
+     0.75,
+     8,
+     12
+    ]
+   ],
+   "ort_oran": 0.9166666666666666,
+   "en_kotu": 0.6666666666666666
+  },
+  "cam": {
+   "kirilma_kademe": 2,
+   "kirilma_deger": 0.5,
+   "oranlar": [
+    [
+     1,
+     0.25,
+     11,
+     12
+    ],
+    [
+     2,
+     0.5,
+     10,
+     12
+    ],
+    [
+     3,
+     0.75,
+     8,
+     12
+    ],
+    [
+     4,
+     1.0,
+     9,
+     12
+    ]
+   ],
+   "ort_oran": 0.7916666666666666,
+   "en_kotu": 0.6666666666666666
+  },
+  "menzil": {
+   "kirilma_kademe": 3,
+   "kirilma_deger": 4.0,
+   "oranlar": [
+    [
+     1,
+     8.0,
+     11,
+     12
+    ],
+    [
+     2,
+     6.0,
+     11,
+     12
+    ],
+    [
+     3,
+     4.0,
+     10,
+     12
+    ],
+    [
+     4,
+     2.0,
+     8,
+     12
+    ]
+   ],
+   "ort_oran": 0.8333333333333333,
+   "en_kotu": 0.6666666666666666
+  },
+  "odo_olcek": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.02,
+     12,
+     12
+    ],
+    [
+     2,
+     0.05,
+     12,
+     12
+    ],
+    [
+     3,
+     0.075,
+     12,
+     12
+    ],
+    [
+     4,
+     0.1,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "odo_donus": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.05,
+     12,
+     12
+    ],
+    [
+     2,
+     0.1,
+     12,
+     12
+    ],
+    [
+     3,
+     0.15,
+     12,
+     12
+    ],
+    [
+     4,
+     0.25,
+     12,
+     12
+    ]
+   ],
+   "ort_oran": 1.0,
+   "en_kotu": 1.0
+  },
+  "odo_kayma": {
+   "kirilma_kademe": null,
+   "kirilma_deger": null,
+   "oranlar": [
+    [
+     1,
+     0.5,
+     12,
+     12
+    ],
+    [
+     2,
+     1.0,
+     12,
+     12
+    ],
+    [
+     3,
+     2.0,
+     11,
+     12
+    ],
+    [
+     4,
+     4.0,
+     11,
+     12
+    ]
+   ],
+   "ort_oran": 0.9583333333333333,
+   "en_kotu": 0.9166666666666666
+  },
+  "okul": {
+   "kirilma_kademe": 1,
+   "kirilma_deger": 1,
+   "oranlar": [
+    [
+     1,
+     1,
+     9,
+     12
+    ],
+    [
+     2,
+     2,
+     3,
+     12
+    ],
+    [
+     3,
+     3,
+     0,
+     12
+    ]
+   ],
+   "ort_oran": 0.3333333333333333,
+   "en_kotu": 0.0
+  }
+ },
+ "sinirda": [
+  "ab_cam_1_koridor_1_1",
+  "ab_kapi_1_koridor_1_1",
+  "ab_kapi_3_koridor_1_1",
+  "ab_odo_kayma_3_koridor_5_1",
+  "ab_odo_kayma_4_koridor_1_2"
+ ],
  "siralama": [
-  [
-   "donussuz",
-   0.9166666666666666,
-   0.6666666666666666,
-   0.25,
-   0.25
-  ],
-  [
-   "menzil",
-   0.8333333333333333,
-   0.6666666666666666,
-   0.4166666666666667,
-   0.25
-  ],
   [
    "kapi",
    0.7291666666666666,
    0.5833333333333334,
    0.5416666666666667,
-   0.25
+   0.25,
+   2,
+   0.7708333333333333
   ],
   [
    "cam",
    0.7708333333333334,
    0.6666666666666666,
    0.7083333333333333,
-   0.5
+   0.5,
+   2,
+   0.7916666666666666
   ],
   [
-   "esya",
-   0.9375,
-   0.75,
-   0.75,
-   0.75
+   "menzil",
+   0.8333333333333333,
+   0.6666666666666666,
+   0.4166666666666667,
+   0.25,
+   2,
+   0.8333333333333333
   ],
   [
-   "insan",
-   1.0,
-   1.0,
+   "donussuz",
    0.9166666666666666,
+   0.6666666666666666,
+   0.25,
+   0.25,
+   1,
    0.9166666666666666
   ],
   [
@@ -2555,13 +3172,35 @@
    0.9166666666666667,
    0.8333333333333334,
    1.0,
-   1.0
+   1.0,
+   1,
+   0.9583333333333333
+  ],
+  [
+   "esya",
+   0.9375,
+   0.75,
+   0.75,
+   0.75,
+   1,
+   0.9375
   ],
   [
    "grup",
    0.9791666666666666,
    0.9166666666666666,
    1.0,
+   1.0,
+   1,
+   0.9791666666666666
+  ],
+  [
+   "insan",
+   1.0,
+   1.0,
+   0.9166666666666666,
+   0.9166666666666666,
+   1,
    1.0
   ],
   [
@@ -2569,20 +3208,26 @@
    1.0,
    1.0,
    1.0,
+   1.0,
+   1,
    1.0
   ],
   [
    "genislik",
    1.0,
    1.0,
-   null,
-   null
+   1.0,
+   1.0,
+   4,
+   1.0
   ],
   [
    "egrilme",
    1.0,
    1.0,
    1.0,
+   1.0,
+   1,
    1.0
   ],
   [
@@ -2590,6 +3235,8 @@
    1.0,
    1.0,
    1.0,
+   1.0,
+   1,
    1.0
   ],
   [
@@ -2597,6 +3244,8 @@
    1.0,
    1.0,
    1.0,
+   1.0,
+   1,
    1.0
   ],
   [
@@ -2604,6 +3253,8 @@
    1.0,
    1.0,
    1.0,
+   1.0,
+   1,
    1.0
   ]
  ],
@@ -4264,7 +4915,8 @@
  ],
  "sayilar": {
   "ab": 720,
-  "kayip": 240,
+  "kayip": 288,
+  "kayip_ek": 48,
   "mujoco": 87
  }
 }
