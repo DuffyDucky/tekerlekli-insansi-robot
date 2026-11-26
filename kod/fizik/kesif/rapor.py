@@ -396,6 +396,8 @@ def rapor_yaz():
     md += v4_bolumu()
     from .rapor_v5 import v5_bolumu
     md += v5_bolumu()
+    from .rapor_v6 import v6_bolumu
+    md += v6_bolumu()
     fail = [r for r in S if r.get("durum") != "basari"]
     md += ["## Başarısızlıklar (%d)" % len(fail), "",
            "| dosya | strateji | sahne | tohum | odo | durum | süre | sebep / son mod | son olaylar |",

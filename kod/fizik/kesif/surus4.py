@@ -163,6 +163,27 @@ def yay_pozlari(v, w0, kappa, q, ufuk_m, a_w=3.0, w_max=1.0, dt=0.05):
     return out
 
 
+def aciklik(pozlar, robot, x, y):
+    """v6: öngörülen gövde merkezi pozlarında (gövde çerçevesi) ayak izi kutusu ile noktalar (x, y) arası en küçük
+    açıklık (m; kutunun içindeki nokta negatif, nokta yoksa inf)."""
+    if not len(pozlar) or x is None or not np.size(x):
+        return math.inf
+    hx, hy = robot.derinlik_m / 2, robot.genislik_m / 2
+    P = np.asarray(pozlar, dtype=float)
+    r = math.hypot(np.abs(P[:, 0]).max() + hx, np.abs(P[:, 1]).max() + hy) + 0.3
+    m = (x * x + y * y) < r * r
+    x, y = x[m], y[m]
+    if not x.size:
+        return math.inf
+    c, s = np.cos(P[:, 2])[:, None], np.sin(P[:, 2])[:, None]
+    dx, dy = x[None, :] - P[:, 0:1], y[None, :] - P[:, 1:2]
+    ox = np.abs(c * dx + s * dy) - hx
+    oy = np.abs(-s * dx + c * dy) - hy
+    dis = np.hypot(np.maximum(ox, 0.0), np.maximum(oy, 0.0))
+    d = np.where((ox < 0) & (oy < 0), np.maximum(ox, oy), dis)
+    return float(d.min())
+
+
 def supurme_carpar(pozlar, robot, pay, tarama_xy=None, dolu_mu=None, govde_poz=None):
     """pozlar: gövde çerçevesinde öngörülen gövde merkezi pozları. tarama_xy: son tarama (gövde çerçevesi x, y).
     dolu_mu(wx, wy): harita sorgusu (dünya çerçevesi); govde_poz: o anki SLAM gövde pozu. Çarpar -> True."""

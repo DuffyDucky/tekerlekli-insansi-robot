@@ -5,7 +5,8 @@ Beyin ızgara varsaymaz. Hücre boyunu ve FINISH'in yerini bilmez. Bildiği yaln
 START çizgisinin 0,45 m içindedir ve içeri bakar.
 
     from kesif.beyin import KesifBeyni, olustur, surum_ayari
-    b = KesifBeyni()                       # ön bilgisiz, varsayılan sürüm (v3: tüm MuJoCo kümelerinde çarpma 0)
+    b = KesifBeyni()                       # ön bilgisiz, varsayılan sürüm (v6; güncellendi 2026-11-26, eskiden v3)
+    b = KesifBeyni(ayar=surum_ayari("v6")) # v5 + tüm gövde süpürme öngörüsü (seçmeli; bkz. "v6")
     b = KesifBeyni(ayar=surum_ayari("v5")) # v4 hızı + dönüş / yay güvenliği (seçmeli; bkz. "v5")
     b = KesifBeyni(ayar=surum_ayari("v4")) # hız zarfı (seçmeli; sınama2'de 2 çarpma)
     b = KesifBeyni(ayar=surum_ayari("v1")) # ilk teslim davranışı
@@ -50,6 +51,12 @@ biçiminde, temas kuvveti yok. Işınlar 2B parçalara çizilir (yükseklik, eğ
     py -3 -m unittest kesif.testler.test_deneme -v     # 4 sınama (deneme zinciri: harita taşıma, hizalama)
     py -3 -m unittest kesif.testler.test_hiz4 -v       # 10 sınama (v4: fren zarfı, süpürme, hızlanma izni, 5x5)
     py -3 -m unittest kesif.testler.test_v5 -v         # 5 sınama (v5: durunca denetim, geri çekilme, yay kaçınma)
+    py -3 -m unittest kesif.testler.test_v6 -v         # 7 sınama (v6: açıklık, geçmiş tarama + harita, aday kabulü, 5x5)
+    py -3 -m kesif.temas_tani --kayit sonuc/ham/mujoco_v5/labirent_17x17_t1_t1.npz,... --cikti sonuc/tani_temas_v6.csv
+    py -3 -m kesif.kos v6_2b --is 1 --tohum 0           # 2B v5 / v6 (21 geliştirme labirenti) -> sonuc/v6_2b.csv
+    bash sonuc/ham/v6_sira.sh                           # v6 MuJoCo parçaları (v6_kod kopyasından, işlemci kuyruğu)
+    bash sonuc/ham/sinama5_v3.sh [surec]                # v3 sınama5 (v6_oncesi_kod kopyasından)
+    py -3 -m kesif.rapor_v6 --birlestir                 # parça CSV'leri -> mujoco_v6.csv, mujoco_sinama{2,4,5}_v6.csv
     py -3 -m kesif.rapor_v5                             # v5 bölümü (kesif.kos rapor da SONUC.md'ye ekler)
     bash sonuc/ham/v5_isler.sh sinama2|sinama4|gel_a|gel_b [surec]   # v5 MuJoCo koşuları (v5_kod kopyasından)
     py -3 -m kesif.kos v4_2b --is 2                     # v4 2B geliştirme (21 labirent x 2 tohum) -> sonuc/v4_2b.csv
@@ -66,6 +73,9 @@ biçiminde, temas kuvveti yok. Işınlar 2B parçalara çizilir (yükseklik, eğ
     %PY% -m kesif.kos_deneme --is 4 --kume sinama2 --tam labirent_13x13_t9,... --tohum 0,1 --ablasyon ^
         --cikti deneme_sinama2.csv                     # deneme zinciri (HAFIZALI sınıf), en çok 4 deneme
     py -3 -m kesif.rapor_deneme [--gorsel]             # zincir bölümü (kesif.kos rapor da SONUC.md'ye ekler)
+    py -3 -m unittest kesif.testler.test_zincir_tani -v  # 3 sınama (zincir tanısı: bayat ek kaydı, neden kuralı, bağlantı)
+    py -3 -m kesif.zincir_tani --csv deneme_sinama4.csv --cikti tani_zincir_sinama4.csv   # zincir tanısı (.npz'den)
+    bash sonuc/ham/zincir4_isler.sh [surec]            # sınama4 zinciri (zincir4_kod kopyasından, v3, 4 deneme)
 
 MuJoCo çıktıları: CSV koşu başına tek satır (dosya her koşuda yeniden yazılır; `--ekle` ile eklenir), sütunlar
 `surum`, `kume`, `kos` (ilk / hafiza), `zaman`; `kayit` sütunu `kesif/` klasörüne göreli yol. `.npz` meta'sında
@@ -255,6 +265,8 @@ sütunları var. Ayrı bölüm: `sonuc/SONUC.md` "Deneme zinciri".
 | sınama2 (13x13_t9..t13, 17x17_t9..t13 x 2) | 20 | 15 | 1 | 0 | 0 | 4 | 734 s | 1 / 33 deneme | 0 |
 
 **Hüküm:**
+- (Eklendi 2026-11-26) Hiç görülmemiş sınama4'te zincir 19/20 çözdü (ilk giriş 12/20); bkz. "Deneme zinciri,
+  sınama4" bölümü.
 - Sınama2'de hafızalı sınıf 16/20 çözdü (ilk giriş 15/20).
   - Kazanılan tek zincir 17x17_t9 t1. Keşif sınıfındaydı; 2. denemede 369 s'de çözdü, toplam 1269 s.
   - Hız sınıfı (17x17_t11, t12, ikişer tohum) 4 denemede de çözülmedi.
@@ -269,10 +281,16 @@ sütunları var. Ayrı bölüm: `sonuc/SONUC.md` "Deneme zinciri".
 
 **Neden çözülmedi (sınama2'ye bakıldıktan sonra yapılan tanı; düzeltilmedi, ayar yapılmadı):**
 - **Sınır sırası START'a göre.** Her deneme START'tan başladığı için en ucuz sınır, START'a en yakın olandır.
-  - 17x17_t11 t1'in 2. denemesi FINISH'e çok yaklaştı (p_en 0,98). Bittiğinde FINISH'in hemen yanında iki sınır
-    vardı, robota maliyetleri 2,7–2,8'di.
-  - 3. deneme START'tan önce 104 m'lik, sonra 80 m'lik başka sınırlara gitti. FINISH yanındaki sınırlara hiç
-    varmadı; p_en 0,78'e düştü. 4. deneme 131 m'lik bir sınıra gitti.
+  - 17x17_t11 t1'in 2. denemesi FINISH'e çok yaklaştı (p_en 0,98). Bittiğinde FINISH'in hemen yanında sınır
+    vardı, robota maliyeti 2,7'ydi.
+  - 3. deneme START'tan önce 108 m'lik, sonra 80 m'lik başka sınırlara gitti. FINISH yanındaki sınırın START'tan
+    maliyeti ~150 m'ydi; oraya hiç varmadı, p_en 0,78'e düştü. 4. deneme 135 m'lik bir sınıra gitti.
+  - **Güncellendi (2026-11-26):** bu maddedeki ilk sürüm "104 m / 80 m / 131 m" diyordu; o sayılar hiçbir CSV'den
+    üretilemiyordu. Yukarıdakiler `.npz` kayıtlarından `kesif.zincir_tani` ile üretildi: `sonuc/tani_zincir_sinama2.csv`
+    (`hedef_dyol_dizi` = seçilen sınırın plan yolu; `hedef_maliyet_dizi` 108,7 / 81,1 ve 134,5;
+    `finish_sinir_son_maliyet` 2,7; `finish_sinir_bas_maliyet` 149,7). p_en `sonuc/deneme_sinama2.csv`'den.
+    `sonuc/SONUC.md` "Deneme zinciri" bölümünde bu tür elle yazılmış sayı yoktu; tablo olarak eklendi ("Çözülmeyen
+    zincirlerin tanısı").
   - "Kaldığı yerden devam" bu maliyetle olmuyor. Sıradaki adım: önceki denemenin son hedefini ya da son konumuna
     yakın sınırı öne almak. Yeni geliştirme / sınama kümesiyle denenmeli; bu sınama kümesi artık görülmüş sayılır.
 - **900 s'lik yarıçap.** Her denemede bilinen yolu yeniden yürümek gerekir; robot ~0,23 m/s düz hızla
@@ -313,6 +331,64 @@ iki 10 s'lik sonda koşuldu (CSV: `sonuc/deneme_*_hizala.csv`). Geliştirmede 12
 - MuJoCo zemini düz; tekerlek kayması modeli düzeneğinki kadar.
 - Denemeler arasında haritanın beyinde kalması kural gereği serbest varsayıldı (kullanıcının görev tanımı).
 - Her denemede LiDAR gürültü tohumu farklı (tohum + 1000 (k − 1)).
+
+## Deneme zinciri, sınama4 (2026-11-26 gece): hiç görülmemiş kümede ölçüm
+
+**Sınıf: HAFIZALI.** İlk giriş KPI'sı değildir; sınama4'te ilk giriş (v3, ön bilgisiz) 12/20 kalır
+(`sonuc/mujoco_sinama4_v3.csv`). CSV: `sonuc/deneme_sinama4.csv` (`sinif` = hafizali, `kume` = sinama4, `deneme_no`),
+tanı `sonuc/tani_zincir_sinama4.csv`. Tablolar `sonuc/SONUC.md` "Deneme zinciri".
+
+**Hüküm:** görülmemiş kümede zincir 19/20 çözdü (ilk girişte 12/20). Sınama2'deki 16/20'den iyi; ama sınama4'ün
+başarısızları hız sınıfında değildi (en uzun çözüm 157 m). Tek çözülmeyen zincirde zincir işi kötüleştirdi: taşınan
+harita START'ı sınırlardan kopardı, 2–4. denemelerin her biri 61 s'de `fail_sikisma` ile bitti.
+
+**Kurulum:** zincir mantığı değişmedi. Koşu `sonuc/ham/zincir4_kod/` anlık kopyasından (canlı `kesif/` 23:41,
+`--surum v3` açık; `sonuc/ham/zincir4_isler.sh`, 4 süreç, düşük öncelik, tek iş parçacığı). 20 zincirin hepsi koşuldu;
+ayar yapılmadı, sonuçlara bakıldıktan sonra beyin kodu değişmedi. Hizalama sondası (`--ablasyon`) koşulmadı (süre).
+
+| küme | zincir | 1. denemede | 2. | 3. | 4. | 4 denemede çözülmedi | toplam süre ortanca (çözülen) | deneme | çarpma olayı | fail_start | START kesme |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sinama4 (13x13 / 17x17 t19..t23 x 2) | 20 | 12 | 6 | 1 | 0 | 1 | 761 s | 31 | 1 (0,70 s temas) | 0 | 0 |
+
+- **1. deneme = eski ilk giriş:** 20/20 aynı sonuç ve süre (±1 s; `mujoco_sinama4_v3.csv` v5 öncesi kod kopyasından
+  koşulmuştu, bu canlı koddan). v3 yolu birebir.
+- **Sonradan çözülen 7 zincir** (hepsi 17x17): toplam süre 1350–2597 s (ortanca 1650 s). Çözen denemenin süresi
+  450–816 s; ikisi 800 s'nin üstünde (17x17_t20 t1 805 s, 17x17_t23 t0 816 s), pay ince.
+- **Deneme başına poz hatası maks** (ort / en çok, m): 1. 0,55 / 0,78; 2. 0,71 / 1,25; 3. 0,34 / 0,61. 2. denemede
+  büyüdü (17x17_t20 t0 1,25 m, t20 t1 1,02 m, t23 t0 1,03 m); üçü de yine çözüldü. Döngü kapatma yok.
+- **Çarpma:** 17x17_t23 t1, 2. deneme, 108,7 s, 0,70 s temas. Konumlanma (düz kayma) → yerinde dönüş (w 0,8) → ~0,5 s
+  sonra v 0,25, w 0,18 ile yay. O an poz hatası 0,005 m: harita kayması değil. v2'den bilinen "dönüşten hemen sonra
+  yay" mekanizması; sınama2'deki zincir çarpmasıyla aynı.
+- Aynı denemede 613–895 s arası 39 kurtarma, çoğu `on_engel` (önde engel beklemesi döngüsü; v5 bölümünde de görülen
+  v3 mekanizması), p_en 0,50'de kaldı; 3. denemede 797 s'de çözüldü.
+
+**Neden (tanı, sınama4'e bakıldıktan sonra; düzeltilmedi):**
+- **İlk girişte başarısız 8 koşu hız değil keşif.** Hepsi 17x17, çözüm 103–157 m; tam haritayla beklenen süre ortanca
+  tempoda 434–665 s, en kötü tempoda en çok 747 s. 1. denemede yol / çözüm 1,10–1,84, p_en 0,66–0,94.
+- **Tek çözülmeyen: 17x17_t21 t0 → harita kayması (START kopuk).**
+  - 1. deneme `fail_sure` (yol / çözüm 1,84, p_en 0,81, poz hatası maks 0,74 m).
+  - 2. denemenin 0,8. saniyesinde sınır "tükendi". Haritada 4 sınır vardı ama START'tan hiçbirine plan yoktu
+    (`plan.sinir` 0, `yol_yok`).
+  - Kademeli kurtarma (gevşet → 538 zayıf hücreyi unut → 20 s duvar izleme x 3) işe yaramadı; hakem 61 s'de
+    `fail_sikisma` (hareketsiz) verdi. 3. ve 4. denemeler birebir aynı.
+  - Bağlantı denetimi (`start_bagli_025`; dolu hücreler 0,25 m şişirilir, planlayıcının 0,36 m'sinden gevşek): 1.
+    denemenin son haritasında START ile robotun son konumu bağlı değil. Sınama2 + sınama4'ün öbür 63 deneme sonu
+    haritasının hepsinde bağlı.
+  - Elle bakış (`sonuc/ham/zincir4_baglanti_bak.py`, git dışı): START'ın 4 m çevresindeki duvarlar doğru (ort hata 0,04 m).
+    Kopukluk ~5 m ötedeki geçitte: kaymış duvar kopyaları (hata > 0,3 m) koridoru planlayıcıya kapatıyor.
+  - Hız değil (103 m, tam haritayla 434 / 488 s). Aynı labirentin t1 zinciri 2. denemede 450 s'de çözdü.
+- **Sınır sırası yine görüldü ama kaybettirmedi.** 17x17_t23'ün iki zincirinde 2. deneme başında FINISH yanındaki sınır
+  haritadaydı (START'tan maliyeti 130–132 m). Beyin önce 18 m'lik sınıra gitti. t0 sonra FINISH sınırına döndü, 816 s'de
+  çözdü. t1 yukarıdaki `on_engel` döngüsünde kaldı, 3. denemede çözdü.
+
+**Öneri (ölçülmedi, zincir mantığı bu turda değişmedi):** yeni denemede START'tan hiçbir sınıra yol yoksa taşınan
+harita yerine boş haritayla (ilk giriş gibi) başlamak. Bu tek zinciri en az ilk giriş düzeyine getirirdi. Yeni bir
+geliştirme kümesinde denenmeli; sınama4 artık zincir için de görülmüş sayılır.
+
+**İyimser varsayımlar ve kapsam:** zincir bölümündekiler geçerli (3 cm / 2° yerleştirme, düz zemin, harita beyinde
+kalır). Yalnız v3, 2 tohum, 20 zincir. Tempo (tam haritayla beklenen süre) v2 sınamasının 14 hafızalı koşusundan; v3
+sürüşü v2 ile aynı. FINISH yeri ve gerçek duvarlar yalnız tanıda kullanıldı, beyin görmez. Bağlantı denetimi yaklaşık:
+5 cm eşiklenmiş haritada çalışır, planlayıcının 10 cm kaba ızgarası ve kapaması değil.
 
 ## v4 (2026-11-25 akşam): labirentte hız (fren zarfı, ölçüye dayalı hızlanma izni, yay süpürme denetimi)
 
@@ -410,7 +486,8 @@ Hiçbirinde START'tan çıkma ya da START kesmesi yok.
 **Hüküm:** v5 iki v4 çarpmasının kök nedenini gideriyor ve YENİ sınama4'te v3 kadar koşu çözüyor (12/20, çarpma
 0 / 0, süre oranı v5/v3 ortanca 0,845). Ama geliştirmede v5 yeni bir çarpma verdi (17x17_t1 t1, 0,25 s; v3 ve v4 orada
 0). "Çarpma sıfır" yalnız v3'te bütün MuJoCo kümelerinde tutuyor. Bu yüzden `VARSAYILAN_SURUM = "v3"` (v4'ten geri
-alındı). v4 ve v5 seçmeli.
+alındı). v4 ve v5 seçmeli. (Güncellendi 2026-11-26: v3 de sıfır değil; sınama3'te 1, deneme zincirinde 2, sınama5'te 1
+temas. v6 bölümü; varsayılan artık v6.)
 
 **Tanı** (MuJoCo'da aynı tohumla yeniden koşu, beyin iç durumu adım adım; iki koşu da belirlenimci, kayıttaki çarpma
 aynı anda yeniden çıktı):
@@ -475,6 +552,106 @@ koşusunda tutuyor, ama geliştirmenin 37 koşusunda 1 çarpma var. Bu sayılarl
 - Bilgi kanalı (bu hatta yeni değil): "dış alana geldik ama hakem bitirmedi" (`beyin._varis`) benzetimin sürmesinden
   çıkarılıyor ve sahte çıkış listesi buna dayanıyor. Gerçek robotta FINISH algısı ne veriyorsa o kadarı meşrudur.
 - İşlemci: en çok 3 süreç (MuJoCo), her biri tek iş parçacığı, düşük öncelik; gerçek zaman oranı 3,1–4,5.
+
+## v6 (2026-11-26 gece): temasların kök nedeni, tüm gövde süpürme öngörüsü
+
+**Hüküm:** sıkı varsayılan kuralı sağlandı, `VARSAYILAN_SURUM = "v6"`. (a) YENİ sınama5'te v6 14/20, v3 13/20. (b) koşulan
+bütün kümelerde v6 temas olayı 0: MuJoCo geliştirme 37, sınama2 20, sınama4 20, sınama5 20 koşu (97 koşu, temas 0 s) ve 2B
+21 koşu. v3 de sıfır değil: bütün MuJoCo kümelerinde 4 temas olayı, 2,30 s (biri sınama5'te). Sınama5 farkı 1 koşu; "v6
+daha çok çözer" denemez, doğru ifade "v6 sınama5'te koşu kaybettirmedi, temas vermedi ve daha hızlı" (süre oranı v6/v3
+ortanca 0,878). v3'e dönmek tek satır: `beyin.VARSAYILAN_SURUM = "v3"`.
+
+**Tanı** (`kesif.temas_tani`, kayıttan; `sonuc/tani_temas_v6.csv`; v5 için ek olarak MuJoCo'da aynı tohumla belirlenimci
+yeniden koşu, beyin iç durumu adım adım, `sonuc/ham/v6_tani_v5_17t1.txt`). Yer gerçeği yalnız tanıda kullanıldı.
+
+| temas | sürüm, küme | gövde noktası | manevra | öngörü neyi kaçırdı |
+| --- | --- | --- | --- | --- |
+| 17x17_t1 t1, 262,9 s, 0,25 s | v5, geliştirme | sol yan, gövde x +0,20 | yerinde sola dönüşten 1,9 s sonra v_seyir'e hızlanırken sola yay (w +0,12..+0,15) | hiçbir şeyi görmezden gelmedi: son tarama, harita ve birikmiş taramalar 2 s boyunca çarpma öngördü (15 anın 12-15'i). Duvar ucu başlangıç pozunda zaten 3 cm payın içindeydi; v5'in 9 eğrilik adayının hepsi "çarpar" çıktı (`yay_kacin_yok`; yeniden koşuda temasa kadar her adımda) ve v5 bu durumda çarpan yayı sürdü |
+| sınama3 13x13_t15 t0, 365,2 s, 0,05 s | v3, ilk giriş | sol yan, x −0,07 | dönüşten 2,1 s sonra sola yay (w +0,11..+0,24) | v3'te yay süpürme denetimi yok. Aynı veriyle v4/v5 öngörüsü 2 s boyunca çarpma derdi (21/21). Temas anında duvar ucu LiDAR'ın gerisinde, kör sektör sınırında (135°), ama 0,11 s önceki taramada ve haritada vardı |
+| zincir sınama2 17x17_t11 t0 d3, 74,65 s, 0,05 s | v3, hafızalı | sol yan, x −0,06 | dönüşten 2,25 s sonra sola yay | aynı (21/21; kör sektör sınırı 134°, haritada vardı) |
+| zincir sınama4 17x17_t23 t1 d2, 108,65 s, 0,70 s | v3, hafızalı | sol yan, x +0,21 | konumlanma + yerinde sola dönüşten 0,9 s sonra sola yay | aynı (10/10; LiDAR görüyordu, poz hatası 5 mm) |
+
+- Dördü de aynı mekanizma: iç köşede yerinde sola dönüş, dönüş |α| < 0,2 rad'da biter, saf takip kalan yön hatasını sola
+  yayla kapatır, gövdenin sol yanı köşedeki duvar ucunu süpürür. Hepsi v_seyir (0,25 m/s) hızlanma rampasında; hızlı kip değil.
+- Bilinen kusur (LiDAR'ın gerisindeki duvar ucunu son taramanın eksik görmesi) bu dört temasın kök nedeni DEĞİL: iki v3
+  temasında duvar ucu temas anında kör sektör sınırındaydı, ama son 3 s taramalarında ve haritada vardı. v4'ün sınama2
+  17x17_t13 t0 temasında ise son tarama 21 anın 18'inde görüyor, harita ve birikmiş taramalar 21'inde: kusur orada payı
+  inceltiyor. v6 onu da kapatır.
+- Kayıttaki temas anındaki büyük ölçülen w (0,39-0,42 rad/s) çarpmanın sonucu, nedeni değil (komut 0,15-0,18).
+- Karşı olgu (MuJoCo, belirlenimci): v5 aynı yörüngeyle 259,0 s'ye kadar koşuldu, sonra yay_v6 açıldı. v6 261,66 s'de
+  kabul edilir aday bulamadı, 0,25 m geri çekildi, yeniden planladı ve köşeyi temassız geçti (268 s'ye kadar 0 temas;
+  `sonuc/ham/v6_tani_karsi_17t1.txt`). Geçişsiz yeniden koşuda v5 kayıttaki gibi 0,25 s temas verdi.
+
+**Değişiklik** (`surum_ayari("v6")` = v5 + `yay_v6`; `beyin.py`, `surus4.aciklik`; v1-v5 birebir, test var):
+- Süpürme kaynağı: son tarama + son 2 s'nin taramaları (beyin pozuyla beyin çerçevesinde, 2 cm'ye seyreltilmiş) + gövdenin
+  1,6 m çevresindeki haritanın dolu hücreleri (hücre isabet ortalamasıyla) + sanal START hücreleri. Gövdenin şu an kapladığı
+  alanın 1 cm içine düşen noktalar atılır (eşleşme titremesi). Hızlanma izni, yay denetimi ve yerinde dönüş denetimi
+  (`_supurme_carpar`, haritaya ek olarak) bu noktaları kullanır. Böylece LiDAR'ın görmediği gövde yanı ve arkası da sınanır.
+- Aday kabulü açıklıkla: yol boyunca ayak izi kutusunun noktalara en küçük açıklığı
+  >= max(min(3 cm, şimdiki açıklık − 3 mm), 4 mm). Zaten yakın duran robot için "yaklaşmayan" yay geçerli; v5'te bu
+  durumda her aday reddediliyordu. Aday yolu izleyicinin gerçekten gideceği yere kadar sürülür (öndeki engelde dur eşiği,
+  bacak sonu); yoksa önde duran duvar her adayı "çarpar" yapıyordu (ilk 5x5 denemesinde 4 gereksiz geri çekilme).
+- Kabul edilen aday yoksa çarpan yayı sürmek yerine önce geri çekil + yeniden planla (`yay_sigmaz`); aynı yerde (0,3 m)
+  20 s içinde ikinci kez olursa en geniş açıklıklı aday.
+- Izgara, dik açı, hücre boyu ya da labirent bilgisi kullanılmaz; yalnız tarama, kendi haritası ve robot ölçüleri. START
+  koruması (0,3 s öngörülü kesme, yasak bölge, sanal duvar) aynen kalır; sanal hücreler süpürme noktalarına da eklendi.
+- Hesap yükü: 2B'de koşu başına gerçek süre v5'e göre yaklaşık %20-30 fazla (5x5 / 9x9 duman denemesi).
+
+**2B** (21 geliştirme labirenti, yalnız tohum 0; `sonuc/v6_2b.csv`; v5 2B'de ilk kez koşuldu): v5 18/21, v6 19/21; temas
+0 / 0; v6/v5 süre ortanca 0,986 (18 çift). Kapsam daraltıldı: tohum 1 süre bütçesi için atıldı.
+
+**MuJoCo** (900 s, ön bilgisiz; tablo `sonuc/SONUC.md` "v6"; `sonuc/mujoco_v6.csv`, `mujoco_sinama2_v6.csv`,
+`mujoco_sinama4_v6.csv`, `mujoco_sinama5_v3.csv`, `mujoco_sinama5_v6.csv`; düz hız ve duvar payı `sonuc/hiz_tani_v6.csv`,
+`hiz_tani_sinama5_v3.csv`):
+
+| küme | v3 | v5 | v6 | temas olayı v3 / v5 / v6 | süre oranı v6/v3 ortanca (çift) | düz hız (m/s) v3 / v6 | en küçük duvar payı (m) v3 / v6 | payı < 5 mm koşu v3 / v6 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| geliştirme (37; ayar yok, v6 dondurulduktan sonra) | 30/37 | 32/37 | 31/37 | 0 / 1 / **0** | 0,872 (29) | 0,227 / 0,274 | 0,014 / 0,050 | 0/37 / 0/37 |
+| sınama2 (görülmüş) | 15/20 | 17/20 | 18/20 | 0 / 0 / 0 | 0,849 (15) | 0,221 / 0,272 | −0,001 / 0,047 | 2/20 / 0/20 |
+| sınama4 (görülmüş) | 12/20 | 12/20 | 12/20 | 0 / 0 / 0 | 0,848 (12) | 0,227 / 0,272 | 0,023 / 0,045 | 0/20 / 0/20 |
+| **sınama5** (YENİ: 13x13 / 17x17 t24..t28 x 2) | 13/20 | - | **14/20** | **1** (1,50 s) / - / **0** | 0,878 (13) | 0,222 / 0,272 | −0,000 / 0,027 | 2/20 / 0/20 |
+
+- Duvar payı gerçek pozdan ölçülür (`kesif.hiz_tani`; ayak izi kutusu ile 2B duvar çizgileri). v6'nın 97 koşusunda en
+  küçük pay 27 mm (sınama5), koşu p01 ortancası 0,117 m; payı 5 mm'nin altına inen v6 koşusu yok. Küme başına bu sayı v4'te 3-5, v5'te 0-2, v3'te 0-2 koşuydu.
+- Kümeler: sınama5 bu aşamada üretildi (`labirent/uretici.py uret --satir N --sutun N --tohum t`, doğrulama 10/10 TAMAM,
+  `sonuc/ham/sinama5_dogrula.log`; mevcut sahnelere dokunulmadı; `labirent/testler/dogrulama_son.json` doğrulamanın
+  üzerine yazdığı hâlinden HEAD içeriğine geri yazıldı, bu kümenin çıktısı `sonuc/ham/sinama5_dogrulama.json`).
+  17x17_t26'nın çözümü 232,7 m; 900 s'de çözülmesi beklenmez, yine de kümede bırakıldı (seçme yapılmadı).
+- Sıra: v6 kodu 2026-11-26 00:54:22'de donduruldu (`sonuc/ham/v6_kod/`, `.durum`'da). 2B (8 koşuluk duman denemesi
+  dışında) ve bütün MuJoCo v6 koşuları dondurmadan sonra bu kopyadan; sınama5 v6 sonuçlarına ilk kez 01:56:57'de bakıldı;
+  sonra v6 davranışı değişmedi. v3 sınama5 koşuları v6 öncesi kopyadan (`sonuc/ham/v6_oncesi_kod/`). 2B toplu koşusu
+  MuJoCo ile örtüştü (işlemci kuyruğu); "önce 2B" sırası yalnız duman denemesi düzeyinde tutuldu.
+- Dondurmadan sonra değişen iki satır grubu: `VARSAYILAN_SURUM` (karar) ve `deneme.py`'de denemeler arası v6 geçmiş
+  taramalarının sıfırlanması (önceki denemenin saatindeki noktalar yeni denemede silinmiyordu; yalnız deneme zinciri,
+  ilk giriş koşularını etkilemez; zincirde v6 ölçülmedi).
+- Başarısız v6 koşularının hepsi `fail_sure` (START'tan çıkma ve START kesmesi yok): geliştirme 13x13_t2 t1, t2,
+  17x17_t4 x 2, 17x17_t5 x 2; sınama2 17x17_t11 t1, 17x17_t12 t1; sınama4 17x17 t19 x 2, t20 x 2, t21 x 2, t23 x 2;
+  sınama5 17x17 t26 x 2, t27 x 2, t28 x 2. Keşif / süre sınıfı, hız ya da temas değil.
+- v6 sayaçları (97 MuJoCo koşusu, kayıtların son `sayac`'ı): eğrilik itme (`yay_kacin`) 1019 adım, kabul edilir aday yok
+  (`yay_kacin_yok`) 13 kez, hepsi geri çekilmeyle (`yay_geri` 13; "en geniş aday" yedeği hiç gerekmedi). Kurtarma toplamı
+  v6 54, v3 143 (aynı koşular).
+
+**v3 tabanı (dürüst; `sonuc/SONUC.md` "v6"):** ilk giriş MuJoCo koşularında 126 koşuda 2 temas olayı (sınama3 13x13_t15 t0
+0,05 s; sınama5 13x13_t27 t0 1,50 s), hafızalı zincirde 83 denemede 2 olay (0,05 s ve 0,70 s). Toplam 4 olay, 2,30 s.
+"v3 bütün kümelerde çarpma 0" ifadesi (v5 bölümü, başlık) bu yüzden güncellendi.
+
+**Yeni bulgu (v6'da düzeltilmedi):** v3'ün sınama5 teması (13x13_t27 t0, 558,6 s) başka bir mekanizma: sınır tükenince
+açılan 20 s'lik sağ el duvar izleme (`duvar_izle`, `taban.SagDuvar`) duvara 0,18 m/s ile yaklaşıp yerinde sağa dönüyor
+(w −0,7), sağ ön köşe duvar yüzüne değiyor; temas bayrağı 4 s içinde 6 kez açıldı, koşu `fail_sikisma` ile bitti. Duvar
+izleme kipinde ne v5 ne v6 süpürme denetimi yapar; v6 bu kipi değiştirmedi. v6'nın 97 koşusunda bu kipte temas olmadı,
+ama mekanizma duruyor (dondurmadan sonra bulundu; sınama5'e bakılarak düzeltme yapılmadı).
+
+**Simülasyonun iyimser varsayımları ve kapsam:**
+- v4/v5'inkiler geçerli (teker azamisi 0,39 m/s tahmin, 0,15 s tepki payı, seri hat gecikmesi yok).
+- Geçmiş taramalar SLAM pozuyla taşınır; 2 s içinde poz düzeltmesi birkaç cm'yi aşarsa noktalar kayar (hayalet engel ya da
+  eksik engel). MuJoCo'da poz hatası maks ortalaması 0,3-0,5 m olsa da 2 s içindeki göreli kayma küçük; ölçülmedi.
+- Hesap: 2B'de koşu başına gerçek süre v5'e göre yaklaşık %20-30 fazla. Pi 5'te ölçülmedi.
+- Sınama5 v3 / v6 farkı 1 koşu; istatistiksel olarak anlamlı değil. "Temas 0" 97 MuJoCo koşusunda; v3'ün oranıyla
+  (4 olay / 209 koşu-deneme) bu sayıda koşuda 0 görmek tek başına kanıt değil, ama 4 temasın ortak mekanizması tanı ve
+  karşı olguyla doğrulandı.
+- Deneme zinciri (hafızalı sınıf) v6 ile koşulmadı. Varsayılan v6 olduğu için `kos_deneme` artık v6 kullanır.
+- İşlemci: en çok 4 süreç (MuJoCo + 2B), her biri tek iş parçacığı, düşük öncelik; toplam yük 11 çekirdeği aşınca kuyruk
+  bekledi (`sonuc/ham/v6_sira.sh`); MuJoCo gerçek zaman oranı 1,3-5,2.
 
 ## Araştırma notuyla ayrılıklar (`planlama/labirent-kesif-arastirmasi.md`)
 

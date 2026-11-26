@@ -1,0 +1,113 @@
+{
+  "ad": "labirent_13x13_t26",
+  "aciklama": "Labirent sahnesi (kesif deneyi): labirent_13x13_t26 haritasi. Rampa / esik yok. Kurallar ve puan: kod/fizik/labirent/BENIOKU.md (hakem.py, puan.py).",
+  "harita": "labirent_13x13_t26",
+  "baslangic": {
+    "x": 3.65,
+    "y": 19.45,
+    "aci_derece": -90.0
+  },
+  "rampalar": [],
+  "esikler": [],
+  "labirent": {
+    "satir": 13,
+    "sutun": 13,
+    "hucre_m": 1.3,
+    "tohum": 26,
+    "algoritma": "geri_izleme",
+    "start": {
+      "kenar": "ust",
+      "hucre": [0, 0],
+      "cizgi": [
+        [3.0, 19.9],
+        [4.3, 19.9]
+      ],
+      "ic_normal": [0.0, -1.0],
+      "poz": [3.65, 19.45, -1.5708]
+    },
+    "finish": {
+      "kenar": "alt",
+      "hucre": [12, 12],
+      "cizgi": [
+        [18.6, 3.0],
+        [19.9, 3.0]
+      ],
+      "ic_normal": [0.0, 1.0]
+    },
+    "cozum_yolu": [
+      [3.65, 19.25],
+      [3.65, 17.95],
+      [4.95, 17.95],
+      [4.95, 19.25],
+      [6.25, 19.25],
+      [7.55, 19.25],
+      [7.55, 17.95],
+      [6.25, 17.95],
+      [6.25, 16.65],
+      [4.95, 16.65],
+      [3.65, 16.65],
+      [3.65, 15.35],
+      [3.65, 14.05],
+      [3.65, 12.75],
+      [4.95, 12.75],
+      [4.95, 11.45],
+      [3.65, 11.45],
+      [3.65, 10.15],
+      [4.95, 10.15],
+      [4.95, 8.85],
+      [6.25, 8.85],
+      [6.25, 10.15],
+      [7.55, 10.15],
+      [7.55, 8.85],
+      [7.55, 7.55],
+      [7.55, 6.25],
+      [6.25, 6.25],
+      [6.25, 7.55],
+      [4.95, 7.55],
+      [4.95, 6.25],
+      [3.65, 6.25],
+      [3.65, 4.95],
+      [3.65, 3.65],
+      [4.95, 3.65],
+      [6.25, 3.65],
+      [7.55, 3.65],
+      [7.55, 4.95],
+      [8.85, 4.95],
+      [8.85, 6.25],
+      [10.15, 6.25],
+      [11.45, 6.25],
+      [12.75, 6.25],
+      [14.05, 6.25],
+      [14.05, 7.55],
+      [14.05, 8.85],
+      [15.35, 8.85],
+      [15.35, 7.55],
+      [16.65, 7.55],
+      [17.95, 7.55],
+      [19.25, 7.55],
+      [19.25, 6.25],
+      [17.95, 6.25],
+      [17.95, 4.95],
+      [17.95, 3.65],
+      [19.25, 3.65]
+    ],
+    "cozum_hucre_sayisi": 55,
+    "cozum_uzunlugu_m": 71.5,
+    "cozum_donus": {
+      "d90": 37,
+      "d180": 0
+    },
+    "toplam_gecit_m": 218.4,
+    "gecit_sayisi": 168,
+    "cikmaz_sayisi": 20,
+    "cap_hucre": 101,
+    "duvar_takip": {
+      "sol_el_hucre": 247,
+      "sag_el_hucre": 89
+    },
+    "sinir": [3.0, 3.0, 19.9, 19.9],
+    "hucreler": ["56ac6ac46aec4", "396956b95693d", "6a96916a95685", "56ed6a96857a9", "515156e96d16c", "3c7a9556d1695", "693ac15516945", "3c6c56d3abad5", "4395553c6c295", "56c5392953aad", "79396aaa96c69", "52ae9686e9154", "3aa92ba93aabd"],
+    "hucre_kodu": "satir r = 0 en ustte; hane = acik kenar bitleri K 1 (+y), D 2 (+x), G 4 (-y), B 8 (-x)",
+    "tanimlar": "cozum_uzunlugu_m = cozum_hucre_sayisi x hucre_m (START cizgisinden FINISH cizgisine hucre merkezlerinden gecen kirik cizgi); toplam_gecit_m = ic gecit sayisi (hucre - 1) x hucre_m; cikmaz = tek acik kenarli hucre (START / FINISH acikligi acik kenar sayilir); poz = [x, y, th rad] govde merkezi, START cizgisinin 0.45 m icinde, iceri bakiyor."
+  }
+}

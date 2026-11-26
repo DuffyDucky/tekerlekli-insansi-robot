@@ -102,6 +102,20 @@ class BeyinAyari:
     donus_sigmaz_geri: bool = False  # hiçbir dönüş / kayma sığmıyorsa körlemesine dönme: önce geri çekil + yeniden planla
     yay_kacin: bool = False          # yay v_seyir'de de çarpıyorsa (hizalanma yoksa) eğriliği çarpmayan en yakın değere it
     yay_kacin_pay_m: float = 0.03    # m kaçınma adaylarının süpürme payı
+    # v6 tüm gövde süpürme öngörüsü (v1-v5'te kapalı). Tanı (sonuc/tani_temas_v6.csv; kesif.temas_tani + MuJoCo yeniden
+    # koşu): dört temasın dördü de (v5 17x17_t1 t1; v3 sınama3 13x13_t15 t0, zincir sınama2 17x17_t11 t0 d3, zincir
+    # sınama4 17x17_t23 t1 d2) yerinde sola dönüşten 0,9-2,3 s sonra v_seyir'e hızlanırken sola yayda gövdenin SOL
+    # YANININ (gövde x -0,07..+0,21) iç köşedeki duvar UCUNA sürtünmesi. v3'te yay denetimi yok. v5'te öngörü çarpmayı
+    # gördü ama duvar ucu başlangıç pozunda zaten 3 cm payın içindeydi: her aday "çarpar" çıktı (yay_kacin_yok) ve v5
+    # çarpan yayı sürdü. v6: (1) süpürme kaynağı son tarama + son yay_gecmis_s taramaları (beyin pozuyla) + haritanın
+    # dolu hücreleri (isabet ortalaması) ve sanal START hücreleri; yerinde dönüş denetimi de aynı noktaları kullanır;
+    # (2) aday kabulü açıklıkla: yol boyunca en küçük açıklık >= max(min(pay, şimdiki açıklık - 3 mm), 4 mm) (zaten
+    # yakınsa uzaklaşmayan / yaklaşmayan aday kabul); (3) kabul edilen aday yoksa çarpan yayı sürmek yerine önce geri
+    # çekil + yeniden planla (aynı yerde 20 s içinde ikinci kez: en geniş açıklıklı aday).
+    yay_v6: bool = False
+    yay_gecmis_s: float = 2.0        # s süpürme denetiminde tutulan yakın geçmiş taramalar
+    yay_yaricap_m: float = 1.6       # m bu yarıçap içindeki engel noktaları
+    yay_sert_pay_m: float = 0.004    # m adayın hiçbir koşulda inemeyeceği açıklık
     kose_esigi_der: float = 100.0
     donus_gir_rad: float = 1.3
     # izleyici: köşede dönme merkezi hücre ortasına gelince ön yüz önündeki duvara ≈ 0,20 m kalır (1,3 m hücre);
@@ -115,7 +129,7 @@ class BeyinAyari:
 
 def surum_ayari(surum="v1"):
     """Sürüm adı -> BeyinAyari. v1: ilk teslim (commit 461216f) davranışı; v2: hız profili; v3: v2 + dışa açık sınır
-    önceliği; v4: v3 + hız zarfı."""
+    önceliği; v4: v3 + hız zarfı; v5: v4 + dönüş / yay güvenliği; v6: v5 + tüm gövde süpürme öngörüsü."""
     a = BeyinAyari()
     if surum in (None, "", "v1"):
         return a
@@ -140,6 +154,10 @@ def surum_ayari(surum="v1"):
         a.donus_sigmaz_geri = True
         a.yay_kacin = True
         return a
+    if surum == "v6":                  # v5 + tüm gövde süpürme öngörüsü (geçmiş taramalar + harita) ve açıklıklı aday kabulü
+        a = surum_ayari("v5")
+        a.yay_v6 = True
+        return a
     if surum == "v2k":                # v2 + akıcı köşe (deneysel)
         a.hiz_profili = True
         a.akici_kose = True
@@ -160,7 +178,11 @@ def surum_ayari(surum="v1"):
 # (13x13 / 17x17 t19..t23 x 2): v3 12/20, v5 12/20, çarpma 0 / 0 (kural sağlandı). Ama geliştirmede v5 bir çarpma verdi
 # (17x17_t1 t1, 0,25 s); v3 bütün MuJoCo kümelerinde 0. "Çarpma sıfır" yalnız v3'te kanıtlı -> varsayılan v3'e döndü.
 # v4 / v5 seçmeli (surum_ayari). Ayrıntı: BENIOKU.md "v5".
-VARSAYILAN_SURUM = "v3"
+# Karar 5 (2026-11-26 gece, sıkı kural): v6 = v5 + tüm gövde süpürme öngörüsü. YENİ sınama5 (13x13 / 17x17 t24..t28 x 2):
+# v3 13/20 (1 temas), v6 14/20 (0). Koşulan bütün kümelerde (geliştirme 37 + sınama2 20 + sınama4 20 + sınama5 20 MuJoCo,
+# 2B 21) v6 temas olayı 0 -> kural (a) ve (b) sağlandı -> v6. v3'e dönmek tek satır: VARSAYILAN_SURUM = "v3".
+# Ayrıntı: BENIOKU.md "v6".
+VARSAYILAN_SURUM = "v6"
 
 
 def _sar(a):
@@ -223,6 +245,8 @@ class KesifBeyni:
         self._son_donus_t = -1e9          # v2: son yerinde dönüş / kurtarma / konumlanma anı
         self.disa_acik = []               # v3: dışa açık görülmüş sınır merkezleri (beyin çerçevesi)
         self.son_komut = (0.0, 0.0)
+        self._tarama_gecmis = []          # v6: (t, wx, wy) beyin çerçevesinde yakın geçmiş tarama noktaları
+        self._engel_onbellek = None       # v6: (t, wx, wy) bu adımın engel noktaları
 
     # ------------------------------------------------------------ START koruması
     def _start_cerceve(self):
@@ -338,6 +362,8 @@ class KesifBeyni:
             self.slam.tarama_isle(tarama, t)
             self._start_maskele()
             self.on_mesafe = self._on_mesafe()
+            if self.ayar.yay_v6:
+                self._gecmis_tarama_ekle(t)
         poz = self.slam.poz
         self._gecmis.append((t, poz[0], poz[1], poz[2]) + self.son_komut)
         while self._gecmis and self._gecmis[0][0] < t - 6.0:
@@ -378,6 +404,8 @@ class KesifBeyni:
         self.izleyici.ayar.v_max = self.ayar.v_hafiza if self.mod == "hafiza" else self.ayar.v_seyir
         if self.ayar.hiz_zarfi:
             self._hiz_ayarla_v4()
+            if self.ayar.yay_v6 and self._kurtarma is not None:      # v6: yay sığmadı, geri çekilme başladı
+                return self._cik(0.0, 0.0, t_a, filtre=False)
         elif self.ayar.hiz_profili:
             self._hiz_ayarla()
         k = self.izleyici.komut(poz, on_mesafe=self.on_mesafe)
@@ -438,6 +466,8 @@ class KesifBeyni:
         if k > 1e-6:
             v = min(v, a.zarf_w_yay / k)
         tarama = getattr(self.slam, "son_noktalar", None)
+        if a.yay_v6:
+            tarama = self._engel_govde(self.slam.poz)    # son tarama + yakın geçmiş + harita (tüm gövde çevresi)
 
         def carpar(vv):
             ufuk = vv * a.zarf_tepki_s + vv * vv / (2.0 * a.zarf_a) + a.zarf_ufuk_ek_m
@@ -457,7 +487,9 @@ class KesifBeyni:
             iz.hizala_iste = a.zarf_hizala
             if a.zarf_v_yavas > 0:
                 ia.v_max = min(taban, a.zarf_v_yavas)
-            if a.yay_kacin and not (a.zarf_hizala and abs(iz.son_alfa) > ia.donus_cik_rad):
+            if a.yay_v6 and not (a.zarf_hizala and abs(iz.son_alfa) > ia.donus_cik_rad):
+                self._yay_sec_v6(taban, tarama)
+            elif a.yay_kacin and not (a.zarf_hizala and abs(iz.son_alfa) > ia.donus_cik_rad):
                 # v5: hizalanma yoksa (yön hatası küçük) yayın eğriliğini çarpmayan en yakın değere it (bir adım)
                 k0 = iz.son_kappa
                 vv = taban
@@ -474,6 +506,126 @@ class KesifBeyni:
                         break
                 else:
                     self.sayac["yay_kacin_yok"] = self.sayac.get("yay_kacin_yok", 0) + 1
+
+    # ------------------------------------------------------------ v6: tüm gövde süpürme öngörüsü
+    def _gecmis_tarama_ekle(self, t):
+        """Son taramanın noktalarını beyin çerçevesinde (SLAM pozuyla) 2 cm'ye seyrelterek sakla."""
+        nok = getattr(self.slam, "son_noktalar", None)
+        if nok is not None and nok[0].size:
+            x, y, th = self.slam.poz
+            c, s = math.cos(th), math.sin(th)
+            wx = x + c * nok[0] - s * nok[1]
+            wy = y + s * nok[0] + c * nok[1]
+            k = np.unique(np.round(np.stack([wx, wy], 1) / 0.02).astype(np.int64), axis=0) * 0.02
+            self._tarama_gecmis.append((t, k[:, 0], k[:, 1]))
+        while self._tarama_gecmis and self._tarama_gecmis[0][0] < t - self.ayar.yay_gecmis_s:
+            self._tarama_gecmis.pop(0)
+        self._engel_onbellek = None
+
+    def _engel_dunya(self):
+        """Gövde çevresindeki engel noktaları (beyin çerçevesi): son + yakın geçmiş taramalar, haritanın dolu hücreleri
+        (isabet ortalaması; LiDAR'ın görmediği gövde yanı / arkası dahil) ve sanal START hücreleri. Adım başına önbellek."""
+        if self._engel_onbellek is not None and self._engel_onbellek[0] == self.t:
+            return self._engel_onbellek[1], self._engel_onbellek[2]
+        x, y, _ = self.slam.poz
+        R = self.ayar.yay_yaricap_m
+        X = [p[1] for p in self._tarama_gecmis]
+        Y = [p[2] for p in self._tarama_gecmis]
+        g = self.slam.izgara
+        i0, j0 = g.hucre(x - R, y - R)
+        i1, j1 = g.hucre(x + R, y + R)
+        i0, j0 = max(int(i0), 0), max(int(j0), 0)
+        i1, j1 = min(int(i1), g.nx - 1), min(int(j1), g.ny - 1)
+        if i1 >= i0 and j1 >= j0:
+            Lp = g.L[i0:i1 + 1, j0:j1 + 1]
+            dolu = (Lp > g.esik_dolu) | g.sanal[i0:i1 + 1, j0:j1 + 1]
+            ii, jj = np.nonzero(dolu)
+            if ii.size:
+                ii, jj = ii + i0, jj + j0
+                cx, cy = g.merkezler(ii, jj)
+                n = g.N[ii, jj]
+                ok = n > 0
+                cx = cx + np.where(ok, g.Sx[ii, jj] / np.maximum(n, 1.0), 0.0)
+                cy = cy + np.where(ok, g.Sy[ii, jj] / np.maximum(n, 1.0), 0.0)
+                X.append(np.asarray(cx, float))
+                Y.append(np.asarray(cy, float))
+        nok = getattr(self.slam, "son_noktalar", None)
+        if nok is not None and nok[0].size:
+            px, py, th = self.slam.poz
+            c, s = math.cos(th), math.sin(th)
+            X.append(px + c * nok[0] - s * nok[1])
+            Y.append(py + s * nok[0] + c * nok[1])
+        if X:
+            wx, wy = np.concatenate(X), np.concatenate(Y)
+            m = (wx - x) ** 2 + (wy - y) ** 2 < R * R
+            # gövdenin şu an kapladığı alanın 1 cm içindeki noktalar fiziksel olarak olamaz (eşleşme titremesi):
+            # açıklık hesabını bozmasın
+            th = self.slam.poz[2]
+            c, s = math.cos(th), math.sin(th)
+            u = c * (wx - x) + s * (wy - y)
+            v = -s * (wx - x) + c * (wy - y)
+            m &= ~((np.abs(u) < self.robot.derinlik_m / 2 - 0.01) & (np.abs(v) < self.robot.genislik_m / 2 - 0.01))
+            wx, wy = wx[m], wy[m]
+        else:
+            wx = wy = np.zeros(0)
+        self._engel_onbellek = (self.t, wx, wy)
+        return wx, wy
+
+    def _engel_govde(self, poz):
+        """Engel noktaları poz'un gövde çerçevesinde (x ileri, y sol)."""
+        wx, wy = self._engel_dunya()
+        c, s = math.cos(poz[2]), math.sin(poz[2])
+        dx, dy = wx - poz[0], wy - poz[1]
+        return c * dx + s * dy, -s * dx + c * dy
+
+    def _yay_sec_v6(self, vv, tarama):
+        """v6: v_seyir yayı payı (zarf_pay_m) ihlal ediyor. Eğrilik adayları (v5 kümesi) açıklığa göre: yol boyunca en
+        küçük açıklık >= max(min(yay_kacin_pay_m, şimdiki - 3 mm), yay_sert_pay_m) olan en küçük sapma seçilir (0 sapma
+        da aday: zaten yakınsa uzaklaşmayan / yaklaşmayan yay geçerli). Yoksa geri çekil + yeniden planla; aynı yerde
+        (0,3 m) 20 s içinde ikinci kez kabul edilen aday çıkmazsa en geniş açıklıklı aday."""
+        from .surus4 import aciklik, yay_pozlari
+        a = self.ayar
+        iz = self.izleyici
+        ia = iz.ayar
+        x, y = tarama
+        c0 = aciklik([(0.0, 0.0, 0.0)], self.robot, x, y)
+        esik = max(min(a.yay_kacin_pay_m, c0 - 0.003), a.yay_sert_pay_m)
+        ufuk = vv * a.zarf_tepki_s + vv * vv / (2.0 * a.zarf_a) + a.zarf_ufuk_ek_m
+        # izleyici öndeki engelde dur eşiğinde, bacak sonunda da yerinde dönüşe geçip durur (o dönüş ayrıca
+        # denetlenir): aday yolu robotun gerçekten gideceği yere kadar
+        if self.on_mesafe is not None and math.isfinite(self.on_mesafe):
+            ufuk = min(ufuk, max(0.03, self.on_mesafe - ia.dur_mesafe_m))
+        if iz.son_kalan is not None:
+            ufuk = min(ufuk, max(0.03, iz.son_kalan + 0.05))
+        k0 = iz.son_kappa
+        en = None
+        for dk in (0.0, 0.15, -0.15, 0.3, -0.3, 0.5, -0.5, 0.8, -0.8):
+            kk = k0 + dk
+            if abs(kk) * vv > ia.w_max:
+                continue
+            P = yay_pozlari(vv, iz._w, kk, self.robot.dingil_x_m, ufuk, a_w=ia.a_w, w_max=ia.w_max)
+            ck = aciklik(P, self.robot, x, y)
+            if ck >= esik:
+                if dk != 0.0:
+                    iz.kappa_iste = kk
+                    self.sayac["yay_kacin"] = self.sayac.get("yay_kacin", 0) + 1
+                else:
+                    self.sayac["yay_gecer"] = self.sayac.get("yay_gecer", 0) + 1
+                return
+            if en is None or ck > en[0]:
+                en = (ck, kk)
+        self.sayac["yay_kacin_yok"] = self.sayac.get("yay_kacin_yok", 0) + 1
+        poz = self.slam.poz
+        son = getattr(self, "_yay_sigmaz_son", None)
+        ayni = son is not None and self.t - son[0] < 20.0 and math.hypot(poz[0] - son[1], poz[1] - son[2]) < 0.3
+        if not ayni:
+            self._yay_sigmaz_son = (self.t, poz[0], poz[1])
+            self.sayac["yay_geri"] = self.sayac.get("yay_geri", 0) + 1
+            self._kurtarma_baslat(self.t, "yay_sigmaz")
+            return
+        if en is not None:
+            iz.kappa_iste = en[1]
+            self.sayac["yay_en_genis"] = self.sayac.get("yay_en_genis", 0) + 1
 
     def _cik(self, v, w, t_a, filtre=True):
         if abs(v) < 0.02 and abs(w) > 0.05 or self.mod in ("kurtarma", "konumlan", "duvar_izle"):
@@ -500,7 +652,8 @@ class KesifBeyni:
                        "secilen_sinir": None if self.hedef_sinir is None else
                        [round(self.hedef_sinir.merkez[0], 2), round(self.hedef_sinir.merkez[1], 2)],
                        "disa_acik": list(self.disa_acik),
-                       "surum": ("v5" if self.ayar.yay_kacin or self.ayar.donus_durunca else "v4")
+                       "surum": ("v6" if self.ayar.yay_v6 else "v5" if self.ayar.yay_kacin or self.ayar.donus_durunca
+                                 else "v4")
                        if self.ayar.hiz_zarfi else
                        (("v3" if self.ayar.disa_acik_bonus_m > 0 else "v2") if self.ayar.hiz_profili else "v1")}}
 
@@ -678,7 +831,16 @@ class KesifBeyni:
         A = poz[2] + np.linspace(0.0, dth, n)[:, None]
         wx = ax + np.cos(A) * px[None, :] - np.sin(A) * py[None, :]
         wy = ay + np.sin(A) * px[None, :] + np.cos(A) * py[None, :]
-        return self._dolu_mu(wx.ravel(), wy.ravel())
+        if self._dolu_mu(wx.ravel(), wy.ravel()):
+            return True
+        if self.ayar.yay_v6:
+            # v6: aynı dönüş, tarama / geçmiş / harita noktalarına karşı (gövde çerçevesinde, arka dingil çevresinde)
+            from .surus4 import supurme_carpar
+            ex, ey = self._engel_govde(poz)
+            a_ = np.linspace(0.0, dth, n)
+            P = [(-q + q * math.cos(b), q * math.sin(b), b) for b in a_]    # arka dingil gövde x = -q
+            return supurme_carpar(P, r, pay, tarama_xy=(ex, ey))
+        return False
 
     def _dolu_mu(self, wx, wy):
         g = self.slam.izgara

@@ -207,6 +207,15 @@ def gorev_listesi(deney):
             for t in (0, 1):
                 G.append({"deney": "v4_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
                           "ayar": surum_ayari("v4"), "ayar_ad": "v4"})
+    elif deney == "v6_2b":
+        # v5 / v6 2B: aynı 21 geliştirme labirenti x tohum {0, 1} (v5 2B'de hiç koşulmamıştı; ikisi de burada)
+        from .beyin import surum_ayari
+        labs = LABIRENTLER + ["labirent_%dx%d_t%d" % (n, n, t) for n in (13, 17) for t in range(4, 9)]
+        for sur in ("v5", "v6"):
+            for lab in labs:
+                for t in (0, 1):
+                    G.append({"deney": "v6_2b", "strateji": "kesif", "sahne": lab, "tohum": t, "donus_hata": 0.14,
+                              "ayar": surum_ayari(sur), "ayar_ad": sur})
     elif deney == "kose_2b":
         # v2 kısa 2B denemesi: 4 geliştirme labirenti x tohum {0, 1} (sonuç sonuc/v2_2b.csv'ye taşındı; v2k = akıcı
         # köşe ilk denemede 8 koşuda 9 çarpma verdi, sonuc/ham/kose_2b_v2_ilk_v2k.csv)
@@ -225,10 +234,11 @@ def gorev_listesi(deney):
 
 def main(argv=None):
     p = argparse.ArgumentParser()
-    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "v3_2b", "v4_2b", "rapor"])
+    p.add_argument("deney", choices=["ilk", "odometri", "hafiza", "v2_2b", "kose_2b", "v3_2b", "v4_2b", "v6_2b", "rapor"])
     p.add_argument("--is", dest="is_sayisi", type=int, default=2)
     p.add_argument("--sahne", default=None, help="virgüllü süzgeç (alt dize)")
     p.add_argument("--strateji", default=None)
+    p.add_argument("--tohum", default=None, help="virgüllü tohum süzgeci (ör. 0)")
     a = p.parse_args(argv)
     if a.deney == "rapor":
         from .rapor import rapor_yaz
@@ -241,6 +251,8 @@ def main(argv=None):
         G = [g for g in G if any(s in str(g["sahne"]) for s in sz)]
     if a.strateji:
         G = [g for g in G if g["strateji"] in a.strateji.split(",")]
+    if a.tohum:
+        G = [g for g in G if str(g["tohum"]) in a.tohum.split(",")]
     durum_yaz("kos %s basladi: %d gorev" % (a.deney, len(G)))
     calistir(G, os.path.join(SONUC, a.deney + ".csv"), a.is_sayisi)
     durum_yaz("kos %s bitti" % a.deney)

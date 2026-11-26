@@ -143,6 +143,10 @@ def yeni_deneme(beyin, zincir, hizala=True, hizala_tarama=2):
     b.son_plan = {}
     b.hafiza = None
     b.mod = "baslangic"
+    # v6: yakın geçmiş taramalar ve "yay sığmadı" kaydı önceki denemenin saatinde; taşınmaz (v1-v5 bunları doldurmaz)
+    b._tarama_gecmis = []
+    b._engel_onbellek = None
+    b._yay_sigmaz_son = None
     if type(b.izleyici) is YolIzleyici:
         b.izleyici = YolIzleyici(copy.deepcopy(b.izleyici.ayar))
     else:                                   # v4 ZarfIzleyici: aynı sınıf ve zarf parametreleri
