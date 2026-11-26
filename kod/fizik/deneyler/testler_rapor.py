@@ -11,7 +11,8 @@ denetler, geçmiyorsa durur. Yalnız standart kütüphane kullanılır.
 
 Okunan bütün CSV'ler testlerin `sonuc/` klasöründe ve depoda tutulan dosyalardır; git dışı `sonuc/ham/` hiç okunmaz
 (`oku` reddeder), bu yüzden betik temiz bir kopyada da çalışır. Keşif beyninin varsayılan sürümü `kesif/beyin.py`'den
-okunur. Uçurumda 6 / 10 / 14 sensörlü düzenler tehlike sınıfına göre yan yana sayılır (`katmanli`).
+okunur. Uçurumda güncel hüküm bağımsız hüküm 3'tür (`hukum3`: beş düzen, `sonuc/hukum3.csv` ve `hukum3_fiz.csv`;
+onaylı seçim `secim.json`'dan); görülmüş ızgaradaki 6 / 10 / 14 sensör karşılaştırması (`katmanli`) "önce" olarak kalır.
 """
 from __future__ import annotations
 
@@ -1411,6 +1412,190 @@ def katmanli():
     return html_, veri, tot
 
 
+# Bağımsız hüküm 3 (taze küme): beş düzen AYNI görev listesinde, tohum ve sahneler yeni. Bütün hücreler
+# sonuc/hukum3.csv (hüküm koşusu) ve sonuc/hukum3_fiz.csv (hakemin düşme saydığı koşular, sürdürülerek) dosyalarından.
+DUZEN3 = [
+    # (CSV'deki düzen, başlık, açıklama, CSV'deki yerleşim)
+    ("6", "6 sensör", "dört köşe, önde iki iç; önceki kabul edilen seçim", "4OD+2AD_z120_e30"),
+    ("10", "10 sensör", "önde altı, arkada dört", "6OD+4AD_z120_e30"),
+    ("14", "14 sensör, iz ±2 cm", "her teker hizasında iki dar iz, iki yan sensör; görülmüş ızgaranın en iyi adayı",
+     "8WRD+4AD+2YR40_z120_e30"),
+    ("3A", "14 sensör, iz ±2,5 cm", "aynı düzen; yalnız iz çiftinin aralığı genişletildi", "8WRaD+4AD+2YR40_z120_e30"),
+    ("3B", "10 sensör + sürüş kuralları", "10 sensörün donanımı; yerinde dönmez, geri yay çizer; şüpheli okumada yavaşlar",
+     "6OD+4AD_z120_e30"),
+]
+H3_SINIF = [
+    ("merdiven_ileri", "Merdiven başı ve sahanlık kenarı, ileri"),
+    ("kose_ileri", "Sahanlık köşesi, ileri"),
+    ("kuyu_ileri", "Kuyu, ileri"),
+    ("dar_ileri", "Dar açıklık {acik}, ileri"),
+    ("dar_geri", "Dar açıklığa geri gidiş"),
+    ("genis_geri", "Geniş kenara geri gidiş"),
+    ("donus_genis", "Yerinde dönüş, geniş kenar"),
+    ("donus_dar", "Yerinde dönüş, dar açıklık yanında (merkez kenardan {d})"),
+    ("yarik_dar", "Dar yarık {yarik}"),
+    ("yarik_egik", "Eğik yarık (ekseni {egik} dönük)"),
+    ("rampa_ucu", "İniş rampasının ucunda düşüş ({rampa})"),
+]
+
+
+def _sayi_tr(x):
+    """8.5 -> '8,5', 16.0 -> '16'."""
+    return (f"{x:.2f}".rstrip("0").rstrip(".")).replace(".", ",")
+
+
+def _pay_tr(p):
+    return sy(p, 2 if p is not None and abs(p) < 1 else 1)
+
+
+def hukum3():
+    """Taze kümenin düzen x tehlike sınıfı tablosu ve ön kayıtlı ölçüte göre hüküm; hepsi CSV'den."""
+    H3, F3 = oku(U / "hukum3.csv"), oku(U / "hukum3_fiz.csv")
+
+    def hatali(x):
+        return bool((x.get("hata") or "").strip())
+
+    def fiz(x):
+        # ön kayıtlı tanım (hukum3.fiziksel_dustu ile aynı): rampa ucunda eğim rampanın kendisidir
+        if x["alt"] == "rampa_ucu":
+            eg = 6.0 if "rampa_6" in x["sahne"] else 9.0
+            return (say(x["pay_min_cm"]) or 0) < -6.25 or (say(x["egim_max_der"]) or 0) > eg + 5.0
+        return ((say(x["teker_dz_min_mm"]) or 0) < -20 or (say(x["egim_max_der"]) or 0) > 5
+                or dogru(x["govde_temas"]))
+
+    Fk = {(x["duzen"], x["taban"]): x for x in F3 if not hatali(x)}
+    dz_l = [d[0] for d in DUZEN3]
+    R = {k: [x for x in H3 if x["duzen"] == k] for k in dz_l}
+    bilinmeyen = sorted({x["duzen"] for x in H3} - set(dz_l))
+    if bilinmeyen:
+        raise SystemExit(f"Uçurum hüküm 3: tabloda olmayan düzen var: {bilinmeyen}")
+    for k, _, _, ys in DUZEN3:
+        if {x["yerlesim"] for x in R[k]} != {ys}:
+            raise SystemExit(f"Uçurum hüküm 3: düzen {k} için yerleşim beklenenle tutmuyor")
+
+    def gorev(x):
+        return (x["taban"], x["alt"], x["sahne"], x["tur"], x["tohum"], x["aci"], x["v"], x["w"], x["d"], x["yanal"])
+
+    g0 = sorted(gorev(x) for x in R[dz_l[0]])
+    r = {"ayni_gorev": all(sorted(gorev(x) for x in R[k]) == g0 for k in dz_l), "taban_n": len(g0),
+         "kosu_n": len(H3), "fiz_n": len(F3), "fiz_hata": sum(hatali(x) for x in F3),
+         "tohum": (min(int(x["tohum"]) for x in H3), max(int(x["tohum"]) for x in H3)),
+         "sahne_n": len({x["sahne"] for x in H3}),
+         "hizlar": sorted({say(x["v"]) for x in H3 if say(x["v"]) is not None}),
+         "kosul": sorted({x["kosul"] for x in H3}),
+         "kural": {k: any((x.get("supheli_say") or "").strip() for x in R[k]) for k in dz_l}}
+
+    # sınıf etiketlerindeki aralıklar sahne adlarından
+    def sahneler(alt):
+        return sorted({x["sahne"] for x in H3 if x["alt"] == alt})
+
+    acik = sorted(int(s.split("_")[2]) / 100 for s in sahneler("dar_ileri"))
+    yarik = sorted(int(s.split("_")[2]) / 10 for s in sahneler("yarik_dar"))
+    egik = sorted({int(s.split("_")[3]) for s in sahneler("yarik_egik")})
+    rampa = sorted({int(s.split("_")[2]) for s in sahneler("rampa_ucu")})
+    dd = sorted({say(x["d"]) for x in H3 if x["alt"] == "donus_dar"})
+    alan = {"acik": f"{_sayi_tr(acik[0])}–{_sayi_tr(acik[-1])} m", "yarik": f"{_sayi_tr(yarik[0])}–{_sayi_tr(yarik[-1])} cm",
+            "egik": f"{egik[0]}–{egik[-1]}°", "rampa": " / ".join(f"{a}°" for a in rampa),
+            "d": f"{_sayi_tr(dd[0])}–{_sayi_tr(dd[-1])} m"}
+
+    def hucre(k, alt):
+        q = [x for x in R[k] if x["alt"] == alt]
+        if not q:
+            return {"n": 0, "d": 0, "f": 0, "s": 0, "p": None, "hata": 0,
+                    "html": "<span class='uyari'>ölçülmedi</span>"}
+        ok = [x for x in q if not hatali(x)]
+        hata = len(q) - len(ok)
+        dus_ = [x for x in ok if dogru(x["dustu"])]
+        p = mn([say(x["pay_min_cm"]) for x in ok])
+        F = [Fk[(x["duzen"], x["taban"])] for x in dus_ if (x["duzen"], x["taban"]) in Fk]
+        f_n = sum(fiz(z) for z in F)
+        if not dus_:
+            f_txt = "fiziksel 0"
+        else:
+            f_txt = f"fiziksel {f_n} / {len(F)}"
+            if len(F) < len(dus_):
+                f_txt += f" ({len(dus_) - len(F)} koşu sürdürülmedi)"
+        h_txt = f" · <span class='kotu'>{hata} hata</span>" if hata else ""
+        sinif = "iyi" if not dus_ and not hata else "kotu"
+        return {"n": len(q), "d": len(dus_), "f": f_n, "s": len(F), "p": p, "hata": hata, "dusen": dus_,
+                "html": f"<span class='{sinif}'>{len(dus_)} / {len(q)}</span> <span class='ince'>· {f_txt} · pay "
+                        f"{_pay_tr(p)} cm</span>{h_txt}"}
+
+    kat = {alt: {k: hucre(k, alt) for k in dz_l} for alt, _ in H3_SINIF}
+    top = {}
+    for k in dz_l:
+        uc_ = [x for x in R[k] if x["alt"] != "yanlis_alarm"]
+        ya_ = [x for x in R[k] if x["alt"] == "yanlis_alarm"]
+        ok = [x for x in uc_ if not hatali(x)]
+        dus_ = [x for x in ok if dogru(x["dustu"])]
+        F = [Fk[(x["duzen"], x["taban"])] for x in dus_ if (x["duzen"], x["taban"]) in Fk]
+        bos = sum(1 for alt, _ in H3_SINIF if kat[alt][k]["n"] == 0) + (0 if ya_ else 1)
+        t = {"d": len(dus_), "n": len(uc_), "f": sum(fiz(z) for z in F), "s": len(F),
+             "durma": sum(dogru(x["tetik"]) for x in ya_ if not hatali(x)), "ya": len(ya_),
+             "surun": sum(1 for x in ya_ if (say(x.get("supheli_say")) or 0) > 0),
+             "hata": sum(hatali(x) for x in R[k]), "p": mn([say(x["pay_min_cm"]) for x in ok]), "bos": bos,
+             "sensor": int(R[k][0]["sensor_n"]), "pay1": [x for x in ok if (say(x["pay_min_cm"]) or 0) < 1 and
+                                                          not dogru(x["dustu"])]}
+        # ön kayıtlı ölçüt: uçurum koşularında 0 hakem düşmesi, yanlış alarm koşularında 0 durma; hatalı koşu geçti sayılmaz
+        t["gecti"] = t["d"] == 0 and t["durma"] == 0 and t["hata"] == 0 and bos == 0
+        top[k] = t
+    r["kat"], r["top"], r["alan"] = kat, top, alan
+    r["bos"] = sum(t["bos"] for t in top.values())
+
+    def ad(k):
+        return next(d[1] for d in DUZEN3 if d[0] == k)
+
+    # tablo 1: ön kayıtlı ölçüte göre
+    s1 = []
+    for k, baslik, ac, _ in DUZEN3:
+        t = top[k]
+        s1.append([f"<strong>{baslik}</strong><span class='ince th-alt'>{ac}</span>",
+                   f"<span class='{'kotu' if t['d'] else 'iyi'}'>{t['d']} / {t['n']}</span>",
+                   f"{t['f']} / {t['s']}" if t["d"] else "0",
+                   f"<span class='{'kotu' if t['durma'] else 'iyi'}'>{t['durma']} / {t['ya']}</span>"
+                   + (f" <span class='ince'>(yavaşlama {t['surun']})</span>" if t["surun"] else ""),
+                   str(t["hata"]), f"{_pay_tr(t['p'])} cm",
+                   rz("GEÇTİ", "iyi") if t["gecti"] else rz("GEÇMEDİ", "kotu")])
+    b1 = ["Düzen", "Hakem düşmesi (uçurum)", "Fiziksel düşme", "Yanlış durma", "Hata", "En küçük pay", "Ön kayıtlı ölçüt"]
+    t1 = ("<div class='tablo-kap'><table class='veri katman olcut'><thead><tr>" + "".join(f"<th>{b}</th>" for b in b1)
+          + "</tr></thead><tbody>" + "".join(
+              "<tr>" + "".join(f"<td data-etiket='{e(b1[i])}'>{c}</td>" for i, c in enumerate(s)) + "</tr>" for s in s1)
+          + "</tbody></table></div>")
+    # tablo 2: düzen x tehlike sınıfı
+    satirlar = []
+    for alt, et in H3_SINIF:
+        n = {kat[alt][k]["n"] for k in dz_l}
+        n_txt = f" <span class='ince'>· {n.pop()} koşu</span>" if len(n) == 1 else ""
+        satirlar.append((et.format(**alan) + n_txt, [kat[alt][k]["html"] for k in dz_l], "ana"))
+    yd = []
+    for k in dz_l:
+        t = top[k]
+        yd.append(f"<span class='{'kotu' if t['durma'] else 'iyi'}'>{t['durma']} durma / {t['ya']}</span>"
+                  + (f" <span class='ince'>· yavaşlama {t['surun']} / {t['ya']}</span>" if t["surun"] else ""))
+    ya_sahne = len({x["sahne"] for x in H3 if x["alt"] == "yanlis_alarm"})
+    satirlar.append((f"<strong>Yanlış durma</strong> ({ya_sahne} düz zemin sahnesi: derz, eşik, halı, koyu şerit, parlak "
+                     "zemin, iniş rampası)", yd, "toplam"))
+    satirlar.append(("<strong>Uçurum koşuları, toplam</strong>",
+                     [f"<strong class='{'kotu' if top[k]['d'] else 'iyi'}'>{top[k]['d']} / {top[k]['n']}</strong> "
+                      f"<span class='ince'>· fiziksel {top[k]['f']}{f' / ' + str(top[k]['s']) if top[k]['d'] else ''} · "
+                      f"{top[k]['hata']} hata</span>"
+                      for k in dz_l], "toplam"))
+    satirlar.append(("<strong>Ön kayıtlı ölçüte göre</strong>",
+                     [rz("GEÇTİ", "iyi") if top[k]["gecti"] else rz("GEÇMEDİ", "kotu") for k in dz_l], "toplam"))
+    bas = "".join(f"<th>{b}<span class='ince th-alt'>{a}</span></th>" for _, b, a, _ in DUZEN3)
+    govde = "".join(
+        f"<tr class='g-{grup}'><td>{et}</td>" + "".join(
+            f"<td data-etiket='{e(DUZEN3[i][1])}'>{c}</td>" for i, c in enumerate(hs)) + "</tr>"
+        for et, hs, grup in satirlar)
+    t2 = (f"<div class='tablo-kap'><table class='veri katman bes'><thead><tr><th>Tehlike sınıfı</th>{bas}</tr></thead>"
+          f"<tbody>{govde}</tbody></table></div>")
+    r["t1"], r["t2"], r["ad"] = t1, t2, ad
+    r["adq"] = lambda k: f"“{ad(k)}”"
+    r["gecen"] = [k for k in dz_l if top[k]["gecti"]]
+    r["rows"] = H3
+    return r
+
+
 def ucurum_yeni(eu):
     H2, H1 = oku(U / "t2_hukum.csv"), oku(U / "t_hukum.csv")
     F1, F2 = oku(U / "t_hukum_fiz.csv"), oku(U / "t2_hukum_fiz.csv")
@@ -1534,12 +1719,12 @@ def ucurum_yeni(eu):
         f"{y14[1]['n']} hakem ve {y14[1]['f']} fiziksel düşme; 14 sensörde {kat[yk][2]['d']} / {kat[yk][2]['n']} "
         f"hakem düşmesi, fiziksel 0, en küçük pay {sy(kat[yk][2]['p'])} cm.",
     ])
-    ana = ("<h4>Üç düzen yan yana, tehlike sınıfına göre</h4>"
+    ana_eski = ("<h4>Üç düzen yan yana, tehlike sınıfına göre</h4>"
            "<p class='ince'>Hücre: hakemin saydığı düşme / koşu · fiziksel düşme · en küçük pay (eksi pay: teker merkezi "
            "kenarı o kadar geçti). Hüküm koşusu yoksa ayar koşusu gösterilir (tohum 1–2, düzeni seçmek için kullanıldı; "
            "iyimser okunmalı). Hakem düşmesi 0 ise fiziksel düşme de 0'dır. 6 sensörün hüküm koşuları ilk zamanlama "
            "modeliyle ve konum tutmasız koşulmuştu.</p>" + kat_html + "<h4>Hangi düzen neyi kapsıyor</h4>" + kapsam_html)
-    ana += "<h4>10 ve 14 sensörün hüküm koşuları, grup başına</h4>" + tablo(["Hüküm koşusu, grup", f"{h1['sensor']} sensör (bu turun ara adımı; tohum {h1['tohum'][0]}–{h1['tohum'][1]})",
+    ana_eski += "<h4>10 ve 14 sensörün hüküm koşuları, grup başına</h4>" + tablo(["Hüküm koşusu, grup", f"{h1['sensor']} sensör (bu turun ara adımı; tohum {h1['tohum'][0]}–{h1['tohum'][1]})",
                  f"{h2['sensor']} sensör (ölçütü sağlamayan en iyi aday; tohum {h2['tohum'][0]}–{h2['tohum'][1]})"], sat,
                 not_="Hücre: hakemin saydığı düşme / koşu; pay: düşmeyen koşularda teker temas noktasının kenara en yakın "
                      "yatay mesafesi. Hakem kuralı teker merkezinin kenarı geçmesi; değiştirilmedi. Fiziksel düşme: "
@@ -1560,7 +1745,7 @@ def ucurum_yeni(eu):
                      sy(mn([say(x["pay_min_cm"]) for x in rs])) + " cm", f"{dus(dar)} / {len(dar)}"])
         ygraf.append((ad, [d], [f"{d} / {len(rs)}"]))
     r["yarik_ayar"] = ysat
-    ana += "<h4>Ayar: dar yarık düzeltmesi (tohum 1–2; 8 / 10 / 12 / 15 / 20 cm yarık)</h4>" + tablo(
+    ana_eski += "<h4>Ayar: dar yarık düzeltmesi (tohum 1–2; 8 / 10 / 12 / 15 / 20 cm yarık)</h4>" + tablo(
         ["Ön düzen", "Yarıkta hakem düşmesi", "En küçük pay", "Dar açıklık ve geniş kenarda düşme"], ysat)
     DAD = [("6WD+4AD_z120_e30", "Yan sensör yok"), ("6WD+4AD+2Y30_z120_e30", "İki yan sensör, dışa 30°, geniş koni"),
            ("6WD+4AD+2Y35_z120_e30", "İki yan sensör, dışa 35°, geniş koni"),
@@ -1579,7 +1764,7 @@ def ucurum_yeni(eu):
         yy = [x for x in DG if x["yerlesim"] == k and x["alt"].startswith("yanlis")]
         dsat.append([ad] + hh + [f"{dus(q)} / {len(q)}",
                                  f"{sum(dogru(x['tetik']) for x in yy)} / {len(yy)}" if yy else "-"])
-    ana += ("<h4>Ayar: dar açıklık yanında yerinde dönüş (tohum 1–2; dönme merkezi kenardan d)</h4>" + tablo(
+    ana_eski += ("<h4>Ayar: dar açıklık yanında yerinde dönüş (tohum 1–2; dönme merkezi kenardan d)</h4>" + tablo(
         ["Yan sensör", "d 0,35 m: düşme (en küçük pay)", "d 0,40 m", "d 0,45 / 0,50 m", "Yanlış durma"], dsat))
     # duyarlılık: tek hız önerisinin dayanağı
     def duy(R, kad, v, alts):
@@ -1616,7 +1801,7 @@ def ucurum_yeni(eu):
     yd = [x for x in D2 if x["alt"].startswith("yanlis")]
     r["duy_yanlis"] = (sum(dogru(x["tetik"]) for x in yd), len(yd))
     r["hiz"] = secim["hiz_onerisi_m_s"]
-    ana += (f"<h4>Duyarlılık: tek hız önerisinin dayanağı (tohum 1; ileri, dar açıklık ve yarık)</h4>" + tablo(
+    ana_eski += (f"<h4>Duyarlılık: tek hız önerisinin dayanağı (tohum 1; ileri, dar açıklık ve yarık)</h4>" + tablo(
         ["Koşul (14 sensörlü adayın ayarının üstüne)", f"{h2['sensor']} sensör, 0,25 m/s", "0,30 m/s", "0,39 m/s",
          "Önceki 6 sensör, 0,25 m/s"], usat,
         not_=f"Hücre: en küçük pay. Yanlış durma bütün koşullarda {r['duy_yanlis'][0]} / {r['duy_yanlis'][1]}. Önceki 6 "
@@ -1646,13 +1831,13 @@ def ucurum_yeni(eu):
     r["arka_guvenli"] = [a_ for a_, v in sorted(ark.items()) if min(v) > 0]
     r["kotu_birlesik"] = {v: pay([x for x in H2 if x["alt"] == "kotu_birlesik" and say(x["v"]) == v]) for v in (0.25, 0.30)}
 
-    grafik = cubuk_grafik(
+    grafik_eski = cubuk_grafik(
         "Ayarda dar yarıkta hakem düşmesi, ön düzen başına (400 koşu)", [("hakem düşmesi", "--c-b")], ygraf,
         en_buyuk=max(1, max(g[1][0] for g in ygraf)),
         aciklama="İncelemenin önerdiği iki düzeltme (izi teker hizasına almak, koniyi daraltmak) düşmeyi azalttı ama "
                  "bitirmedi. Her tekerin iki yanına konan iki dar iz, yarığın kenarı nereden geçerse geçsin birini "
                  "tümüyle boşluğun üstünde bırakıyor.")
-    grafik += cubuk_grafik(
+    grafik_eski += cubuk_grafik(
         "0,25 m/s'de en küçük pay, koşul başına (cm)",
         [("önceki 6 sensör", "--c-c"), (f"{h2['sensor']} sensörlü aday", "--c-a")], dgraf,
         en_buyuk=max(max(v for v in g[1] if v is not None) for g in dgraf),
@@ -1666,116 +1851,268 @@ def ucurum_yeni(eu):
     b70 = bel(U, "Uçurum", "≈ 0,70 m", ["0,70 m'den dar şeritte"], "≈ 0,70 m'den dar şeritte robot sürülemez")
     dz_txt = (f"{int(dz['sahne'].split('_')[1])} cm yarığa {dz['aci']}° açıyla, {sy(say(dz['v']), 2)} m/s'de girişte teker "
               f"merkezi kenarı {tam(-10 * say(dz['pay_min_cm']))} mm geçti") if dz else "düşme yok"
-    if "SAGLAMAYAN" not in secim.get("durum", ""):
-        raise SystemExit("Uçurum: secim.json'da 'durum' alanı beklenen 'ölçütü sağlamayan aday' notunu taşımıyor.")
-    hukum = (f"Önceden konan ölçüte göre <strong>geçmedi</strong>; onaylanmış bir düzen yok. Ölçüt: uçurum koşularında "
-             f"hakem 0 düşme, yanlış alarm koşularında 0 durma. En iyi aday olan {h2['sensor']} sensörlü düzen "
-             f"{h2['uc']} uçurum koşusunda {h2['dus']} hakem düşmesi verdi ({dz_txt}); fiziksel düşme "
-             f"{r['fiz2'][0]} / {r['fiz2'][1]}, yanlış durma {h2['durma']} / {h2['ya']}. Fiziksel sonuç hükmü değiştirmez. "
-             f"{h1['sensor']} sensörlü ara adım {h1['dus']} hakem ve {r['fiz1'][0]} fiziksel düşme verdi. Son kabul "
-             f"edilen 6 sensörlü düzen kendi sınamasında {t6[0]} / {t6[1]} düştü, ama o sınamada dar yarık, dar açıklığa "
-             "geri gitme ve dar açıklık yanında dönme yoktu. Üç düzenin tehlike sınıfına göre karşılaştırması aşağıda.")
+    hukum_eski = (f"Önceden konan ölçüte göre <strong>geçmedi</strong>; onaylanmış bir düzen yoktu. En iyi aday olan "
+                  f"{h2['sensor']} sensörlü düzen (iz ±2 cm) {h2['uc']} uçurum koşusunda {h2['dus']} hakem düşmesi verdi "
+                  f"({dz_txt}); fiziksel düşme {r['fiz2'][0]} / {r['fiz2'][1]}, yanlış durma {h2['durma']} / {h2['ya']}. "
+                  f"{h1['sensor']} sensörlü ara adım {h1['dus']} hakem ve {r['fiz1'][0]} fiziksel düşme verdi. Son kabul "
+                  f"edilen 6 sensörlü düzen kendi sınamasında {t6[0]} / {t6[1]} düştü, ama o sınamada dar yarık, dar "
+                  "açıklığa geri gitme ve dar açıklık yanında dönme yoktu. Bu ızgaranın görevlerinin çoğu daha önce "
+                  "koşulmuş sahne ve senaryolardı.")
+
+    # ---------------------------------------------------------- bağımsız hüküm 3 (taze küme): güncel hüküm
+    h3 = hukum3()
+    r["h3"] = h3
+    T3 = h3["top"]
+    K3 = h3["kat"]
+    ad3, adq = h3["ad"], h3["adq"]
+    # onaylı seçim: secim.json'dan (yerleşim + davranış kuralı var mı), CSV'deki düzenle eşlenir
+    ys = secim["yerlesim"]
+    ys_ad = f"{ys['ad']}_z{round(ys['z'] * 1000)}_e{ys['e']}"
+    eslesen = [k for k, _, _, y_ in DUZEN3 if y_ == ys_ad and h3["kural"][k] == bool(secim.get("kural"))]
+    if len(eslesen) != 1:
+        raise SystemExit("Uçurum: secim.json'daki düzen hüküm 3'ün düzenlerinden birine eşlenemedi.")
+    sk = eslesen[0]
+    if not secim.get("durum", "").startswith("ONAYLI SECIM"):
+        raise SystemExit("Uçurum: secim.json'da 'durum' alanı onaylı seçimi göstermiyor; metni güncelleyin.")
+    if h3["gecen"] != [sk] or T3[sk]["sensor"] != int(secim["sensor_n"]):
+        raise SystemExit("Uçurum: secim.json'daki onaylı düzen hüküm 3'te ölçütü sağlayan tek düzen değil; metni güncelleyin.")
+    if not h3["ayni_gorev"] or h3["bos"] or h3["fiz_hata"]:
+        raise SystemExit("Uçurum: hüküm 3'te görev listesi, boş hücre ya da fiziksel koşu hatası beklenenle tutmuyor.")
+    hk = secim["hukum_kosul"]
+    r["secim3"] = sk
+    S = T3[sk]
+    kac = sorted(k for k in T3 if k != sk)
+    # metindeki "nerede düşüldü" cümleleri veriyle tutmalı; tutmazsa dur
+    sifir = [alt for alt, _ in H3_SINIF if all(K3[alt][k]["d"] == 0 for k in T3)]
+    if sifir != ["merdiven_ileri", "kuyu_ileri", "dar_ileri", "genis_geri", "donus_genis", "rampa_ucu"]:
+        raise SystemExit("Uçurum: hüküm 3'te 'bütün düzenlerde 0 düşme' sınıfları değişti; metni güncelleyin.")
+    s3 = list(S["pay1"])
+    KISA = {"yarik_dar": "dar yarıkta", "donus_dar": "dar açıklık yanında dönüşte", "yarik_egik": "eğik yarıkta"}
+    s3_sinif = {}
+    for x in s3:
+        s3_sinif[x["alt"]] = s3_sinif.get(x["alt"], 0) + 1
+    H3rows = h3["rows"]
+    en_ince = min((x for x in H3rows if x["duzen"] == sk and x["alt"] != "yanlis_alarm"), key=lambda x: say(x["pay_min_cm"]))
+    ince_txt = (f"{_sayi_tr(int(en_ince['sahne'].split('_')[2]) / 10)} cm yarığa {en_ince['aci']}° açıyla, "
+                f"{sy(say(en_ince['v']), 2)} m/s'de") if en_ince["alt"] == "yarik_dar" else en_ince["sahne"]
+    d14 = [x for x in H3rows if x["duzen"] == "14" and x["alt"] != "yanlis_alarm" and dogru(x["dustu"])]
+
+    def dusus_txt(x):
+        tet = ("tetik yok" if not dogru(x["tetik"]) else
+               ("ön köşe sensörü geç tetikledi" if x["tetik_sensor"].startswith("on_s") else "sensör geç tetikledi"))
+        return (f"{_sayi_tr(int(x['sahne'].split('_')[2]) / 10)} cm yarık, {x['aci']}°, {sy(say(x['v']), 2)} m/s, {tet}, "
+                f"pay {_pay_tr(say(x['pay_min_cm']))} cm")
+
+    b3_yarik = K3["yarik_dar"]["3B"]["dusen"]
+    b3_tetiksiz = sum(1 for x in b3_yarik if not dogru(x["tetik"]))
+    dd = sorted({say(x["d"]) for x in H3rows if x["alt"] == "donus_dar"})
+
+    def donus_d(k):
+        q = K3["donus_dar"][k]["dusen"]
+        return " / ".join(f"{sum(1 for x in q if say(x['d']) == d_)}" for d_ in dd)
+
+    hizlar = " / ".join(sy(v_, 2) for v_ in h3["hizlar"])
+    b_tohum = bel(U, "Uçurum", "önceki hiçbir sonuç dosyasında geçmiyor", ["38 CSV'nin ve 35 ham kaydın hiçbirinde yok"],
+                  "hüküm 3'ün tohumları 211–220 önceki 38 sonuç tablosunun ve 35 ham kaydın hiçbirinde yok")
+    b_sahne = bel(U, "Uçurum", "hiçbiri daha önce koşulmamıştı",
+                  ["hiçbiri önceki kayıtlarda geçmiyor, hiçbirinin geometrisi eski"],
+                  "hüküm 3'ün sahneleri önceki kayıtlarda yok, geometrileri eskilerle aynı değil (parlak zemin sahneleri "
+                  "dışında: düz zemin, yeni olan dönüşsüz okuma oranı)")
+    b_onkayit = bel(U, "Uçurum", "koşudan önce yazıldı", ["06:27, koşudan önce"],
+                    "hüküm 3'ün ölçütü ve görev listesi koşudan önce yazıldı (ön kayıt)")
+    b_kose = bel(U, "Uçurum", "1,5 m derinlikteki köşe sensörün menzili dışında",
+                 ["(D 1,5 m) sensör menzilinin (1,3 m) dışında"],
+                 "hüküm 3'te 1,5 m derin köşe sahnesi sensör menzilinin (1,3 m) dışında: sensör ve hakem için eski köşeyle aynı")
+    b_77 = bel(U, "Uçurum", "en çok ≈ 77°", ["en çok ≈ 77° döner (w 0,15 rad/s)"],
+               "sürüş kurallı düzen dönüş görevinin süresinde geri yayla en çok ≈ 77° döner (öbürleri 1 rad/s ile döner)")
+    b_25 = bel(U, "Uçurum", "±2 cm'den ±2,5 cm'ye", ["±2 cm ile ±2,5 cm"],
+               "iki 14 sensörlü düzen yalnız iz çiftinin aralığında ayrılıyor: ±2 cm ve ±2,5 cm")
+    b_etek = bel(U, "Uçurum", "9 mm", ["Etek sınırına uzaklık 9 mm"],
+                 "onaylı düzende dış iz sensörü etek sınırına 9 mm")
+    kosul_ok = h3["kosul"] == [json.dumps(hk, ensure_ascii=False)]
+    if not kosul_ok:
+        raise SystemExit("Uçurum: hüküm 3'ün ortak koşulu secim.json'daki hüküm koşuluyla tutmuyor.")
+    kosul_txt = (f"kısa kip {hk['periyot_ms']} ms, {sy(hk['menzil_m'])} m menzil, enkoderle konum tutma, "
+                 f"{sy(secim['fren_ivme'])} m/s² rampa freni")
+
+    hukum = (f"Taze kümede önceden konan ölçüte göre <strong>yalnız {adq(sk)} düzeni geçti</strong> ve onaylı "
+             f"seçim oldu. Ölçüt: uçurum koşularında 0 hakem düşmesi, yanlış alarm koşularında 0 durma, bütün hızlar, "
+             f"hatalı koşu geçti sayılmaz. Bu düzen {S['n']} uçurum koşusunda {S['d']} hakem düşmesi, {S['ya']} yanlış "
+             f"alarm koşusunda {S['durma']} durma verdi; {S['hata']} hata. Öbür dört düzen geçmedi: "
+             + "; ".join(f"{adq(k)} {T3[k]['d']} / {T3[k]['n']} hakem ve {T3[k]['f']} fiziksel düşme" for k in
+                         ["6", "10", "14", "3B"] if k in kac)
+             + f". <strong>Pay ince:</strong> en küçük pay {_pay_tr(S['p'])} cm, {len(s3)} koşuda 1 cm'nin altında. "
+               "Bu, simülasyonda ölçütün sağlandığını gösterir; geniş bir güvenlik payı değildir.")
     once_simdi = [
         ("Hüküm",
-         f"6 sensörle sınama 2: {eu['ucurum_kosu']} uçurum koşusunda {eu['dustu']} düşme, geçer sayıldı. Dar yarık, "
-         "açıklığa geri ve dönerek yaklaşma sınanmamıştı.",
-         f"Ölçüt sağlanmadı. Ara adımda {h1['sensor']} sensörle hakem {h1['dus']} / {h1['uc']}, fiziksel "
-         f"{r['fiz1'][0]}; en iyi adayda ({h2['sensor']} sensör) hakem {h2['dus']} / {h2['uc']}, fiziksel {r['fiz2'][0]}."),
+         f"Görülmüş ızgarada geçmedi, onaylı düzen yoktu. En iyi aday {h2['sensor']} sensör (iz ±2 cm): hakem "
+         f"{h2['dus']} / {h2['uc']}, fiziksel {r['fiz2'][0]}. {h1['sensor']} sensör: hakem {h1['dus']} / {h1['uc']}, "
+         f"fiziksel {r['fiz1'][0]}. 6 sensörün sınamasında dar yarık yoktu.",
+         f"Taze kümede yalnız {adq(sk)} geçti: hakem {S['d']} / {S['n']}, yanlış durma {S['durma']} / "
+         f"{S['ya']}, {S['hata']} hata. Aynı görevlerde ±2 cm izli düzen {T3['14']['d']} / {T3['14']['n']}, "
+         f"10 sensör {T3['10']['d']}, 6 sensör {T3['6']['d']} hakem düşmesi verdi."),
         ("Sensör düzeni",
-         "6 sensör: dört köşe ve önde iki iç.",
-         "Karar verilmedi; üç seçenek yan yana. 6 sensör en ucuz, ama üç tehlike sınıfı hükümde hiç ölçülmedi. 10 sensör "
-         "dar açıklığa geri gitmeyi de kapsıyor. 14 sensör (her teker hizasında iki dar iz, iki yanda dışa 40° bakan dar "
-         "konili sensör) ölçülen her sınıfta fiziksel düşme 0, ama ölçütü bir hakem düşmesiyle sağlamadı."),
+         "Karar verilmedi; 6, 10 ve 14 sensör tehlike sınıfına göre yan yana gösterildi.",
+         f"Onaylı seçim (seçim dosyasından): {secim['sensor_n']} sensör, her teker hizasında iki dar iz, iki yan "
+         f"sensör; tek değişiklik iz çiftinin aralığı {b_25}. Yalnız yazılım kuralı eklenen 10 sensör dönüşü kapattı "
+         f"ama dar yarıkta düştü."),
+        ("Hüküm verisi",
+         f"Tohumlar yeniydi ama 14 sensörün {r['ayni_gorev'][1]} hüküm görevinden {r['ayni_gorev'][0]} tanesi 10 "
+         "sensörün hükmüyle aynı sahne ve senaryoydu; düzeltmeyi yönlendiren durumlar aynen yinelendi.",
+         f"Tohum {h3['tohum'][0]}–{h3['tohum'][1]} {b_tohum}; {h3['sahne_n']} sahnenin {b_sahne}. Ölçüt "
+         f"{b_onkayit}. Beş düzen aynı {h3['taban_n']} görevi koştu (sahne, senaryo ve tohum eşli)."),
         ("Hız önerisi",
          f"Sayfada iki ifade vardı: sınamada 0,39 m/s'de pay {sy(eu['pay_dar'])} cm, ayrıca \"ilk denemeler 0,25 m/s\".",
-         f"Tek öneri {sy(r['hiz'], 2)} m/s, üç düzen için de. Dayanağı bu turun duyarlılık ölçümü: 0,25 m/s'de en kötü "
-         f"tekil pay {sy(r['k25'][0])} cm ({r['k25'][1].lower()}); 6 sensörlü düzende {sy(r['k25_eski'][0])} cm."),
+         f"Tek öneri {sy(secim['hiz_onerisi_m_s'], 2)} m/s (seçim dosyası). Dayanağı ±2 cm izli 14 sensörle yapılan "
+         f"duyarlılık ölçümü: 0,25 m/s'de en kötü tekil pay {sy(r['k25'][0])} cm ({r['k25'][1].lower()}). Onaylı "
+         "düzenle yinelenmedi."),
         ("Eğimde fren",
          f"10° inişte frenden sonra robot {sy(eu['inis_kayma'][1], 2)} m/s kayıyordu; \"tutma freni gerekir\".",
          f"2,0 m/s² rampa freni ve enkoderle konum tutma: kayma {tam(r['kayma'][0])} mm/s'den en çok "
-         f"{sy(r['kayma'][1])} mm/s'ye indi. Rampa ucundaki uçurumda tutmasız {r['rampa'][0]} / {r['rampa'][1]} düştü, "
-         f"konum tutmayla {r['rampa'][2]} / {r['rampa'][3]}."),
+         f"{sy(r['kayma'][1])} mm/s'ye indi. Taze kümede rampa ucunda ({h3['alan']['rampa']}) beş düzende de "
+         f"{sum(K3['rampa_ucu'][k]['d'] for k in T3)} düşme."),
         ("Sensör zamanlaması",
          "Saniyede 50 örnek ile 4 m menzil birlikte varsayılmıştı (veri sayfasıyla çelişiyordu).",
          f"Kısa kip, 20 ms, 1,3 m menzil seçildi. Uzun kip 100 ms 0,39 m/s'de {r['u100_039'][1]} / {r['u100_039'][2]} "
          "koşuda düşüyor."),
     ]
-    rozet = (rz("İnceleme: koşullu (3 engelleyici)") + rz("Onarımdan sonra: ölçüte göre geçmedi", "kotu")
-             + rz("Son inceleme: sayılar tuttu", "iyi"))
+    rozet = (rz("Bağımsız hüküm: geçti", "iyi") + rz("İnceleme: sayılar tuttu, sızıntı yok", "iyi")
+             + rz(f"Pay ince: {_pay_tr(S['p'])} cm"))
     olculen = (
-        "<p>Bağımsız incelemenin açık bıraktığı sekiz iş (dar delik, geri ve dönerek yaklaşma, kusur, iniş rampası, sensör "
-        "zamanlaması, duyarlılık, yeni tohumlu hüküm, gösterim) ve ardından incelemenin üç engelleyicisi. İlk adımda "
-        f"aday {h1['sensor']} sensöre çıktı; hükmü ({h1['n']} koşu) ölçütü sağlamadı. Onarımda önerilen düzeltmeler "
-        f"ayar koşularında denendi, aday {h2['sensor']} sensöre çıktı ve hükümden önce donduruldu. Yeni hüküm: "
-        f"{h2['n']} koşu, tohum {h2['tohum'][0]}–{h2['tohum'][1]}, yarıkta hiçbir ayarda olmayan 9 / 11 / 13 cm "
-        f"genişlikler ve kenardan 0,35 m'de dönüş eklendi; {h2['hata']} yazılım hatası. Kusur ve duyarlılık "
-        f"{h2['sensor']} sensörle yinelendi. Son bağımsız inceleme yeni koşu yapmadı: sayıları CSV'lerden yeniden saydı, "
-        "belgelerdeki \"seçilen\" adlandırmasını \"ölçütü sağlamayan en iyi aday\" olarak düzeltti ve üç düzeni tehlike "
-        "sınıfına göre yan yana koydu. Hepsi MuJoCo, önerilen firmware ve önde omni tekerli robot modeliyle.</p>")
+        "<p>Görülmüş ızgaradaki hükümler ölçütü sağlamadığı için yeni bir bağımsız hüküm koşuldu. Adaylar koşudan önce "
+        f"donduruldu; ölçüt, fiziksel düşme tanımı ve görev listesi {b_onkayit}. Taze küme: tohum {h3['tohum'][0]}–"
+        f"{h3['tohum'][1]} ve {h3['sahne_n']} yeni sahne (dar yarık {h3['alan']['yarik']}, eğik yarık, dar açıklık "
+        f"{h3['alan']['acik']}, kenardan {h3['alan']['d']}'de dönüş, iki yeni merdiven ve burunlu merdiven, iki köşe, "
+        f"dikdörtgen kuyu, {h3['alan']['rampa']} rampa ucu, düz zeminde yanlış alarm sahneleri). Beş düzen aynı "
+        f"{h3['taban_n']} görevi koştu: toplam {h3['kosu_n']} koşu, hızlar {hizlar} m/s, {sum(t['hata'] for t in T3.values())} "
+        f"hata. Hepsi ortak koşulla: {kosul_txt}. Hakemin düşme saydığı {h3['fiz_n']} koşunun hepsi koşu sürdürülerek "
+        f"yeniden koşuldu (fiziksel doğrulama), {h3['fiz_hata']} hata. Hakem: teker merkezi kenarı geçerse düşme. "
+        f"Fiziksel düşme: {esik_fiz}, ya da gövde zemine değer (ön kayıtlı tanım). Hepsi MuJoCo, önerilen firmware ve "
+        "önde omni tekerli robot modeliyle.</p>")
+    ana = ("<h4>Ön kayıtlı ölçüte göre, düzen başına</h4>" + h3["t1"]
+           + "<p class='tablo-not'>Ölçüt: uçurum koşularında 0 hakem düşmesi, yanlış alarm koşularında 0 durma; ızgaradaki "
+             f"bütün hızlar ({hizlar} m/s) sayılır, hatalı koşu geçti sayılmaz. Fiziksel düşme yalnız hakemin düşme "
+             "saydığı koşular sürdürülerek ölçülür (hakem düşmesi 0 ise fiziksel de 0). Pay: koşu boyunca dört teker "
+             "merkezinin kenara en küçük yatay uzaklığı; eksi pay, teker merkezinin kenarı o kadar geçtiği anlamına "
+             "gelir. Yavaşlama: sürüş kurallı düzende şüpheli okumanın başlattığı kısa sürünme; robot durmaz.</p>"
+           + "<h4>Beş düzen yan yana, tehlike sınıfına göre</h4>"
+           + "<p class='ince'>Hücre: hakem düşmesi / koşu · fiziksel düşme / sürdürülen koşu · en küçük pay. "
+             + ("Bütün hücreler ölçüldü, boş hücre yok." if not h3["bos"] else
+                f"<span class='uyari'>{h3['bos']} hücre ölçülmedi.</span>")
+             + f" Beş düzen aynı görevleri koştu: aynı sahne, senaryo ve tohum.</p>" + h3["t2"]
+           + "<h4>Nerede düşüldü</h4>" + liste([
+               "<strong>Bütün düzenlerde 0 düşme:</strong> merdiven başı, kuyu, dar açıklığa ileri yaklaşma, geniş kenara "
+               "geri gitme, geniş kenarda yerinde dönüş ve rampa ucu.",
+               f"<strong>6 sensör:</strong> dar yarık {K3['yarik_dar']['6']['d']}, eğik yarık {K3['yarik_egik']['6']['d']}, "
+               f"dar açıklık yanında dönüş {K3['donus_dar']['6']['d']}, dar açıklığa geri {K3['dar_geri']['6']['d']}, köşe "
+               f"{K3['kose_ileri']['6']['d']} hakem düşmesi; fiziksel {T3['6']['f']}.",
+               f"<strong>10 sensör:</strong> dar açıklık yanında dönüş {K3['donus_dar']['10']['d']} (fiziksel "
+               f"{K3['donus_dar']['10']['f']}), dar yarık {K3['yarik_dar']['10']['d']} (fiziksel "
+               f"{K3['yarik_dar']['10']['f']}), eğik yarık {K3['yarik_egik']['10']['d']}. Dönüşte düşmeler kenara yakın "
+               f"merkezlerde: d {' / '.join(_sayi_tr(d_) for d_ in dd)} m için 6 sensörde {donus_d('6')}, 10 sensörde "
+               f"{donus_d('10')} (her d'de {K3['donus_dar']['10']['n'] // len(dd)} koşu).",
+               f"<strong>14 sensör, iz ±2 cm:</strong> dar yarıkta {len(d14)} hakem düşmesi, fiziksel "
+               f"{K3['yarik_dar']['14']['f']}: " + "; ".join(dusus_txt(x) for x in d14) + ".",
+               f"<strong>10 sensör + sürüş kuralları:</strong> dar açıklık yanında dönüşü kapattı "
+               f"({K3['donus_dar']['3B']['d']} / {K3['donus_dar']['3B']['n']}), ama dar yarıkta "
+               f"{K3['yarik_dar']['3B']['d']} / {K3['yarik_dar']['3B']['n']} düştü (fiziksel "
+               f"{K3['yarik_dar']['3B']['f']}); bu düşmelerin {b3_tetiksiz} tanesinde hiçbir sensör tetiklemedi. Kural "
+               f"donanımın görmediği yarığı kapatamaz. Yanlış alarm koşularında yavaşlama {T3['3B']['surun']} / "
+               f"{T3['3B']['ya']} koşuda başladı, durma olmadı.",
+               f"<strong>Onaylı düzen:</strong> bütün sınıflarda 0 düşme. En küçük pay {_pay_tr(S['p'])} cm ({ince_txt}); "
+               f"{len(s3)} koşuda pay 1 cm'nin altında ("
+               + ", ".join(f"{n_} {KISA.get(a_, a_)}" for a_, n_ in sorted(s3_sinif.items(), key=lambda t_: -t_[1]))
+               + ").",
+           ]))
+    # grafik: düzen başına düşme; dar yarıkta iki 14 sensörlü düzenin payı
+    g1 = [(f"{b_}", [T3[k]["d"], T3[k]["f"]], [f"{T3[k]['d']} / {T3[k]['n']}", f"{T3[k]['f']}"])
+          for k, b_, _, _ in DUZEN3]
+    grafik = cubuk_grafik(
+        f"Uçurum koşularında düşme, düzen başına ({S['n']} koşu)",
+        [("hakem düşmesi", "--c-b"), ("fiziksel düşme", "--c-a")], g1,
+        en_buyuk=max(1, max(T3[k]["d"] for k in T3)),
+        aciklama="Hakem düşmesi ölçütün baktığı sayı. Fiziksel düşme, hakemin düşme saydığı koşu sürdürülünce tekerin "
+                 "gerçekten inip inmediği.")
+    gen = sorted({int(x["sahne"].split("_")[2]) for x in H3rows if x["alt"] == "yarik_dar"})
+    g2 = []
+    for g_ in gen:
+        vals, txt = [], []
+        for k in ("14", sk):
+            p_ = mn([say(x["pay_min_cm"]) for x in H3rows if x["duzen"] == k and x["sahne"] == f"h3_yarik_{g_}"])
+            vals.append(max(0.0, p_))
+            txt.append(f"{_pay_tr(p_)} cm")
+            if k == "14":
+                p14 = p_
+        g2.append((f"{_sayi_tr(g_ / 10)} cm yarık", vals, txt, p14, p_))
+    eksi_arti = sum(1 for g in g2 if g[3] < 0 <= g[4])
+    yarim_g = [g[0].replace(" cm yarık", "") for g in g2 if g[4] < 1]
+    yarim = len(yarim_g)
+    yarim_ar = f"{yarim_g[0]}–{yarim_g[-1]} cm" if yarim > 1 else ", ".join(yarim_g) + " cm"
+    g2 = [g[:3] for g in g2]
+    grafik += cubuk_grafik(
+        "Dar yarıkta en küçük pay, yarık genişliğine göre (cm)",
+        [("14 sensör, iz ±2 cm", "--c-c"), (ad3(sk), "--c-a")], g2,
+        en_buyuk=max(max(v_ for v_ in g[1]) for g in g2),
+        aciklama=f"Eksi pay sıfırda kesildi; değer yazıda. İz aralığını yarım santimetre açmak {eksi_arti} genişlikte "
+                 f"eksi payı artıya geçirdi; {yarim} genişlikte ({yarim_ar}) pay yine 1 cm'nin altında: kırılma noktası "
+                 "bu aralıkta.")
+    ana += (f"<details class='eski'><summary>Önce: görülmüş ızgara ({DUZENLER[0][1]}, {DUZENLER[1][1]}, "
+            f"{DUZENLER[2][1]}; ayar ve önceki hüküm koşuları)</summary><div class='eski-ic'>"
+            f"<p class='hukum eski-hukum'><strong>Önceki hüküm.</strong> {hukum_eski}</p>"
+            f"{ana_eski}<h4>Grafik</h4>{grafik_eski}</div></details>")
     oneri = [
-        f"<strong>Kalan düşme:</strong> {dz_txt}. Ön izler tekerin önünde olduğu için açılı girişte iz teker çizgisinden "
-        f"{b24} yana kayıyor ve çift izin ±2 cm aralığını yiyor. Aynı koşu sürdürülünce teker inmiyor, gövde zemine "
-        "değmiyor; ama ölçüt hakem kuralı.",
-        f"<strong>Hız:</strong> tek öneri {sy(r['hiz'], 2)} m/s, hangi düzen seçilirse seçilsin. 14 sensörle kısa kipte "
-        f"0,25 m/s'de en küçük pay {sy(r['secilen25'])} cm, en kötü tekil koşulda ({r['k25'][1].lower()}) "
-        f"{sy(r['k25'][0])} cm. 0,30 ve 0,39 m/s yalnız karşılaştırma için ölçüldü; öneri değil. Kötü koşulların "
-        f"birleşiminde hükümde en küçük pay {sy(r['kotu_birlesik'][0.25])} cm (köşe sahnesi). Seçilmeyen uzun kipler en "
-        "kötü koşul sayımına katılmadı; 100 ms'de 0,39 m/s düşüyor.",
-        f"<strong>Fren:</strong> 2,0 m/s² rampa ve enkoderle konum tutma. 10° inişte arka aks yalnız "
-        f"{' / '.join(sy(a_) for a_ in r['arka_guvenli'])} m/s² frende yükünü hiç kaybetmiyor; 2,0'da kısa süre 0 N'a "
-        f"iniyor (robotta eğim ölçeri yok, bu kabul edildi). Konum tutma teker başına {b070} istiyor; motorun sürekli "
-        f"torku {b618} tahmin ediliyor, uzun park için mekanik fren gerekebilir.",
-        f"<strong>Kusur:</strong> {h2['sensor']} sensörün her biri tek tek donmuş ya da hep dönüşsüzken {r['kusur'][1]} "
-        f"koşuda kaçırma {r['kusur'][0]}; robot her arızada durdu. Düz zeminde dönüşsüz örnek oranı "
-        + " / ".join(f"%{tam(k_ * 100)}" for k_ in sorted(r["parlak"])) + " iken boşuna durma "
-        + " / ".join(f"{v[0]}/{v[1]}" for _, v in sorted(r["parlak"].items()))
-        + ": dönüşsüz oranı %20'yi geçen zeminde robot sürülemez.",
-        f"<strong>14 sensörün bedeli:</strong> 14 sensör (6 sensörün 2,3 katı), 6'sında dar koni ayarı (sinyal kaybı "
-        f"ölçülmedi), büyük olasılıkla ikinci bir I2C hattı (ölçülmedi), eteğin iki yanında pencere; yan sensörler "
-        f"robotu yan kenarı bir uçuruma {b9} yakınken durdurur, {b70} dar şeritte robot sürülemez.",
-        "<strong>Seçenekler (karar verilmedi):</strong> (1) 6 sensör: en ucuz; kullanılacaksa dar yarık, dar açıklığa "
-        "geri gitme ve dar açıklık yanında dönme yasaklanmalı ya da bu yerler binada kapatılmalı. (2) 10 sensör: dar "
-        "açıklığa geri gitmeyi de kapsıyor; dar açıklığın yakınında dönme ve 14 cm yarık açık. (3) 14 sensör: ölçülen her "
-        "sınıfta fiziksel düşme 0, bedeli yukarıda.",
-        "<strong>Bir düzeni onaylamak için:</strong> yeni bir düzeltme (izleri tekere yaklaştırmak ya da açılı girişi hesaba "
-        "katmak), ayar ve hiç kullanılmamış tohum ve geometriyle yeni hüküm. Ya da ölçütün kendisi (hakem mi, fiziksel "
-        f"mi) karar verecek kişi tarafından açıkça yeniden konmalı. Bu turda ikisi de yapılmadı. Aday {h1['sensor']} "
-        f"sensörlü düzene döndürülmedi, çünkü o aynı ölçütte {h1['dus']} hakem düşmesi veriyor.",
+        f"<strong>Onaylı seçim:</strong> {adq(sk)} (seçim dosyasından okundu): {secim['sensor_n']} VL53L1X, her "
+        f"teker hizasında iki dar iz, iki yanda dışa bakan dar konili sensör. Ortak ayarlar: {kosul_txt}, tek hız önerisi "
+        f"{sy(secim['hiz_onerisi_m_s'], 2)} m/s.",
+        f"<strong>Kırılma noktası:</strong> dar yarık ve açılı giriş. İz çiftinin aralığı {b_25} açılınca aynı "
+        f"görevlerdeki {len(d14)} hakem düşmesi kalktı, ama en küçük pay {_pay_tr(S['p'])} cm. Fark yarım santimetre; "
+        "gerçek lastik, sensör konisi, dar koninin sinyal kaybı ya da montaj hatası bu payı yiyebilir.",
+        f"<strong>Daha ucuz düzenler:</strong> 6 ve 10 sensör dar yarıkta ve dar açıklık yanında dönüşte düşüyor; 6 sensör "
+        f"ayrıca dar açıklığa geri giderken ({K3['dar_geri']['6']['d']} / {K3['dar_geri']['6']['n']}). Yalnız yazılım "
+        f"kuralı eklemek dönüşü kapatıyor ama yarığı kapatmıyor. Bunlardan biri kullanılacaksa dar yarıklar ve dar "
+        "açıklıklar binada fiziksel olarak kapatılmalı.",
+        f"<strong>Bedel:</strong> 14 sensör (6 sensörün 2,3 katı), 6'sında dar koni ayarı, büyük olasılıkla ikinci bir "
+        f"I2C hattı, eteğin iki yanında pencere; dış iz sensörü etek sınırına {b_etek}. Yan sensörler robotu yan kenarı "
+        f"bir uçuruma {b9} yakınken durdurur, {b70} dar şeritte robot sürülemez.",
+        f"<strong>Fren ve eğim:</strong> 2,0 m/s² rampa ve enkoderle konum tutma. Konum tutma teker başına {b070} "
+        f"istiyor; motorun sürekli torku {b618} tahmin ediliyor, uzun park için mekanik fren gerekebilir.",
     ]
     iyimser = [
-        f"{h2['sensor']} sensörün tek I2C hattında 20 ms'de gecikmesiz okunduğu varsayıldı; büyük olasılıkla iki hat gerekir. "
-        "Sensörler arası etkileşim yok.",
+        f"{secim['sensor_n']} sensörün tek I2C hattında 20 ms'de gecikmesiz okunduğu varsayıldı; büyük olasılıkla iki "
+        "hat gerekir. Sensörler arası etkileşim yok.",
         "Dar koni (ROI 15°) yalnız koni daraltılarak modellendi; sinyal ve menzil kaybı, gürültü artışı yok.",
         "Kısa kip modelde ilk iyimser modelle aynı örnekleme yolunu izliyor; tek fark 1,3 m menzil.",
-        "Teker ve gövde rijit; pay yarıkta ve dönüşte 0,5 cm'ye iniyor, gerçek lastik birkaç mm içeri girer.",
+        f"Teker ve gövde rijit; hakem teker merkezine bakıyor. Pay yarıkta {_pay_tr(S['p'])} cm'ye iniyor, gerçek "
+        "lastik birkaç mm içeri girer.",
         "Kalibrasyon hep düz zeminde; yan sensörün izi başlangıçta boşluğun üstündeyse yanlış beklenen değer alınır "
         "(modellenmedi).",
     ]
     aciklar = [
-        "Ölçüt sağlanmadı: yeni düzeltme, ayar ve yeni tohumlarla hüküm, ya da ölçütün açık kararı bekliyor. Satın alma "
-        "kararı verilmedi.",
-        f"Hüküm verisi tam bağımsız değil: 14 sensörün {r['ayni_gorev'][1]} hüküm görevinden {r['ayni_gorev'][0]} tanesi 10 "
-        "sensörün hükmüyle aynı sahne ve senaryo (yalnız tohum farklı); hiç koşulmamış sahne yalnız 9 / 11 / 13 cm yarık. "
-        "İlk hükmün düşen durumları düzeltmeyi yönlendirdi ve aynen yinelendi.",
-        "Hükümde pay yarıkta ve kenardan 0,40 m dönüşte 0,5 cm: sonuç ölçütün sınırında, geniş pay yok.",
-        "6 sensörlü düzen dar yarık, dar açıklığa geri gitme ve dar açıklık yanında dönmede hükümde hiç ölçülmedi; "
-        "sürülebilir en dar şerit hiçbir düzende ölçülmedi (0,9 m iskele 10 ve 14 sensörde düşmesiz).",
-        f"{h2['sensor']} VL53L1X: I2C ve XSHUT okuması, dar koninin sinyal kaybı, etek yan penceresi masada doğrulanmalı.",
-        "Duyarlılık tek tohumla koşuldu; ilk iyimser model, uzun kip 33 ms ve fren 1,5 / 1,0 m/s² satırları yinelenmedi.",
-        "İyimser zamanlamayla karşılaştırma koşusu yine yapılmadı; kare delik hükümde yok.",
+        f"Pay ince: en küçük {_pay_tr(S['p'])} cm, {len(s3)} koşuda 1 cm'nin altında. Masada doğrulanmadan sahada "
+        "güvenlik payı varmış gibi okunmamalı.",
+        "Kusur (donmuş ya da hep dönüşsüz sensör) ve duyarlılık ızgaraları onaylı düzenle yinelenmedi; dar koninin sinyal "
+        "kaybı, çapraz konuşma ve iki I2C hattı modellenmedi.",
+        f"Köşe sahnelerinden biri yeni sayılmaz: {b_kose}; yalnız giriş açıları yeni.",
+        f"Sürüş kurallı düzenin dönüşteki {K3['donus_dar']['3B']['d']} / {K3['donus_dar']['3B']['n']}'ü eşit maruziyet "
+        f"değil: aynı sürede geri yayla {b_77} dönüyor, öbür düzenler yerinde 1 rad/s ile dönmeye çalışıyor.",
+        f"6 sensörlü düzen burada ortak koşulla ({kosul_txt}) ölçüldü; kendi tanımında bu koşul yoktu (ön kayıt "
+        "kararı). Rampa ucundaki 0 düşme bu koşulun sonucudur.",
+        "Sürülebilir en dar şerit hiçbir düzende ölçülmedi; satın alma ve montaj masada doğrulamadan sonra.",
     ]
     ust = {
-        "hukum": f"Ölçüte göre <strong>geçmedi</strong>, onaylanmış düzen yok. En iyi aday {h2['sensor']} sensör: "
-                 f"{h2['uc']} uçurum koşusunda {h2['dus']} hakem düşmesi "
-                 f"({int(dz['sahne'].split('_')[1]) if dz else '-'} cm yarığa açılı giriş), fiziksel düşme "
-                 f"{r['fiz2'][0]}, {h2['ya']} yanlış alarm koşusunda {h2['durma']} durma. {h1['sensor']} sensör: hakem "
-                 f"{t10[0]} / {t10[1]}, fiziksel {t10[2]}. 6 sensör: {t6[0]} / {t6[1]}, ama dar yarık, dar açıklığa geri "
-                 "ve dar açıklık yanında dönme sınanmadı.",
-        "rozet": rz("İnceleme: koşullu") + rz("Onarım sonrası: geçmedi", "kotu"),
-        "karar": "Sensör sayısı kararı verilmedi; üç seçenek tehlike sınıfına göre yan yana (Uçurum bölümü). Merdiven, "
-                 "sahanlık, kuyu ve dar açıklığa ileri yaklaşmayı üçü de kapsıyor; dar açıklık yanında dönmeyi yalnız 14, "
-                 "9–14 cm dar yarığı hiçbiri ölçüte göre kapsamıyor. Ortak olanlar: kısa kip 20 ms, 2,0 m/s² rampa freni "
-                 f"ve enkoderle konum tutma, tek hız önerisi {sy(r['hiz'], 2)} m/s.",
+        "hukum": f"Taze kümede ölçüte göre <strong>geçti</strong>: yalnız {adq(sk)} düzeni. Hakem {S['d']} / {S['n']}, "
+                 f"yanlış durma {S['durma']} / {S['ya']}, {S['hata']} hata. Aynı görevlerde geçmeyenlerin hakem düşmesi: "
+                 + "; ".join(f"{adq(k)} {T3[k]['d']}" for k in ["6", "10", "14", "3B"] if k in kac)
+                 + f". Pay ince: en küçük {_pay_tr(S['p'])} cm.",
+        "once": f"Görülmüş ızgarada ölçüte göre <strong>geçmedi</strong>, onaylı düzen yoktu. En iyi aday "
+                f"{h2['sensor']} sensör (iz ±2 cm): hakem {h2['dus']} / {h2['uc']}, fiziksel {r['fiz2'][0]}. "
+                f"{h1['sensor']} sensör: hakem {t10[0]} / {t10[1]}, fiziksel {t10[2]}. 6 sensör {t6[0]} / {t6[1]}, ama dar "
+                "yarık, dar açıklığa geri ve dar açıklık yanında dönme sınanmamıştı.",
+        "rozet": rz("Bağımsız hüküm: geçti", "iyi") + rz("Pay ince"),
+        "karar": f"Onaylı seçim (seçim dosyası): {adq(sk)}, yani {secim['sensor_n']} VL53L1X, her teker "
+                 f"hizasında iki dar iz, iki yan sensör. Ortak: {kosul_txt}, tek hız önerisi {sy(secim['hiz_onerisi_m_s'], 2)} m/s. "
+                 f"Pay ince ({_pay_tr(S['p'])} cm): satın almadan önce masada iki I2C hattı, dar koni ve etek penceresi "
+                 "doğrulanmalı.",
     }
     y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
          "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
@@ -2769,14 +3106,24 @@ def inceleme_yeni(Y):
         "yazıldı, seçim dosyasına durum notu eklendi, önceki \"koşullu geçer\" hükmü \"geçmedi\" oldu, \"bu tohumlar "
         f"kullanılmadı\" ve \"hiç koşulmamış geometri\" ifadeleri düzeltildi ({u['ayni_gorev'][0]} / "
         f"{u['ayni_gorev'][1]} görev önceki hükümle aynı sahne ve senaryo). Üç düzen tehlike sınıfına göre yan yana "
-        "kondu; satın alma kararı verilmedi.</p>",
-        ["Bir düzeni onaylamak için yeni düzeltme, ayar ve hiç kullanılmamış tohum ve geometriyle hüküm, ya da ölçütün "
-         "açık kararı.",
-         f"{u['h2']['sensor']} sensörün donanım gerçekliği (iki I2C hattı, dar koni, yan pencere) ölçülmedi.",
-         "Hükümde pay 0,5 cm'ye iniyor; yan sensörler dar şeritte sürmeyi engelliyor.",
-         "6 sensörlü düzen dar yarık, dar açıklığa geri ve dar açıklık yanında dönmede hükümde ölçülmedi."],
-        rozetler=rz("İnceleme: koşullu") + rz("Onarım sonrası: geçmedi", "kotu") + rz("Son inceleme: geçer", "iyi"),
-        onarim_baslik="Onarımda ne değişti"),
+        "kondu; satın alma kararı verilmedi.</p>"
+        f"<p><strong>Bağımsız hüküm ve incelemesi: geçer.</strong> Ardından yeni tohum ({u['h3']['tohum'][0]}–"
+        f"{u['h3']['tohum'][1]}) ve hiç koşulmamış sahnelerle beş düzen aynı {u['h3']['taban_n']} görevi koştu; ölçüt "
+        f"koşudan önce yazıldı. Yalnız {e(u['h3']['adq'](u['secim3']))} düzeni geçti (hakem "
+        f"{u['h3']['top'][u['secim3']]['d']} / {u['h3']['top'][u['secim3']]['n']}, yanlış durma "
+        f"{u['h3']['top'][u['secim3']]['durma']} / {u['h3']['top'][u['secim3']]['ya']}). Ayrı bir inceleme sayıları "
+        "CSV'den ve ham kayıttan yeniden saydı, hepsi tuttu; görev listesi ham kayıtla aynı çıktı; altı görev aynı "
+        "tohumla birebir yeniden üretildi; denetçi ve sürüş kuralları yalnız sensör okumasını ve sürüş komutunu görüyor. "
+        "Düzeltilen tek şey bir tablo etiketiydi (sayılar aynı). İki çekince hükmü değiştirmiyor: 1,5 m derin köşe "
+        "sahnesi sensör menzilinin dışında, ve sürüş kurallı düzen dönüş görevinde öbürleri kadar dönmüyor.</p>",
+        [f"Onaylı düzenin payı ince: en küçük {_pay_tr(u['h3']['top'][u['secim3']]['p'])} cm.",
+         "Onaylı düzenle kusur ve duyarlılık ızgaraları koşulmadı.",
+         f"{u['h3']['top'][u['secim3']]['sensor']} sensörün donanım gerçekliği (iki I2C hattı, dar koni, yan pencere) "
+         "ölçülmedi; yan sensörler dar şeritte sürmeyi engelliyor.",
+         "6 sensörlü düzen ortak koşulla ölçüldü, kendi tanımıyla değil."],
+        rozetler=rz("İnceleme: koşullu") + rz("Onarım sonrası: geçmedi", "kotu") + rz("Bağımsız hüküm: geçti", "iyi")
+        + rz("Son inceleme: geçer", "iyi"),
+        onarim_baslik="Onarımda ve bağımsız hükümde ne değişti"),
         kart(
         "Harita eskimesi ve çalışırken taşınma",
         "Ana sayılar CSV'lerden yeniden sayıldı ve tuttu; üç koşu aynı tohumla yeniden koşuldu, bütün alanlar aynı.",
@@ -2960,6 +3307,9 @@ table.katman .th-alt{display:block;font-weight:400;font-size:.95em;margin-top:2p
 table.katman tr.g-ek td:first-child{font-weight:400;color:var(--soluk)}
 table.katman tr.g-toplam td{background:var(--yuzey2)}
 .uyari{color:var(--uyari);font-weight:600}
+table.katman.bes th:first-child{width:20%}
+table.katman.olcut th:first-child{width:26%}
+table.katman.olcut td:first-child .th-alt{display:block;font-weight:400;color:var(--soluk);font-size:.85em;margin-top:2px}
 @media (max-width:720px){
  table.katman{table-layout:auto}
  table.katman,table.katman tbody,table.katman tr,table.katman td{display:block;width:100%!important}
@@ -3009,7 +3359,7 @@ def sayfa(R, govdeler, ustler, Y, yeniler, ustler_yeni):
     adlar = [ustler_yeni[i].get("test") or ustler[i]["test"] for i in range(6)]
     karar_satir = "".join(
         f"<tr><td><a href='#{kid}'>{e(ad)}</a></td>"
-        f"<td data-etiket='Önce (önceki tur)' class='once-hucre'>{x['hukum']}</td>"
+        f"<td data-etiket='Önce (önceki tur)' class='once-hucre'>{y.get('once') or x['hukum']}</td>"
         f"<td data-etiket='Şimdi (bu tur)'>{y['rozet']}<br>{y['hukum']}</td>"
         f"<td data-etiket='Gerçek robotta karar'>{y['karar']}</td></tr>"
         for kid, ad, x, y in zip(kimlik, adlar, ustler, ustler_yeni))
@@ -3019,11 +3369,16 @@ def sayfa(R, govdeler, ustler, Y, yeniler, ustler_yeni):
         for i, (kid, ad, y, g) in enumerate(zip(kimlik, adlar, yeniler, govdeler)))
     u = Y[0]
     k_vs = e(Y[5]["varsayilan"])
+    u_h3 = u["h3"]
+    u_gecen = e(u_h3["adq"](u["secim3"]))
+    u_pay = _pay_tr(u_h3["top"][u["secim3"]]["p"])
     tork = bel(U, "Uçurum", "≈ 0,70 N·m", ["0,70 N·m"], "10° inişte konum tutma için teker başına ≈ 0,70 N·m tork")
     olcumler = [
-        ("Uçurum", "Hangi düzen seçilirse seçilsin (6, 10 ya da 14 VL53L1X): tek I2C hattında 20 ms'de yetişiyor mu (14 "
-                   "sensörde büyük olasılıkla iki hat gerekir), sensör başına XSHUT ucu, sensörler arası etkileşim, etek "
-                   "penceresinin ışını kırpıp kırpmadığı."),
+        ("Uçurum", f"Onaylı düzenin {u_h3['top'][u['secim3']]['sensor']} VL53L1X'i: tek I2C hattında 20 ms'de yetişiyor mu "
+                   "(büyük olasılıkla iki hat gerekir), sensör başına XSHUT ucu, sensörler arası etkileşim, etek "
+                   "penceresinin ışını kırpıp kırpmadığı (dış iz etek sınırına çok yakın)."),
+        ("Uçurum", f"Dar yarıkta pay: simülasyonda en küçük pay {u_pay} cm. Gerçek lastik, montaj hatası ve dar koninin "
+                   "izi masada ölçülmeli; pay buna dayanıyor."),
         ("Uçurum", "Dar koninin (ROI 15°) masada sinyal ve menzil kaybı; kısa kipte 20 ms ve 1,3 m'nin gerçekte tutması; "
                    "parlak, siyah ve halı zeminde dönüşsüz örnek oranı (%20'yi geçerse robot durur)."),
         ("Uçurum", f"10° inişte konum tutma için teker başına gereken tork ({tork}) ve motorun sürekli torku; 2,0 m/s² "
@@ -3065,9 +3420,9 @@ değişti, gerçek robotta hangi kararı değiştiriyor. Sayılar testlerin sonu
 <button id="tema-dugme" type="button">Koyu tema</button>
 </div>
 <div class="uyari-kutu"><p><strong>Hepsi simülasyon.</strong> Bu turda önceki turun açık bıraktığı işler ölçüldü ve her
-hattı bağımsız bir inceleme yeniden denetledi. Uçurum testi incelemeden sonra onarıldı ama önceden konan ölçüte göre
-<strong>geçmedi</strong>: en iyi aday olan 14 sensörlü düzen bile ölçütü sağlamadı, onaylanmış düzen yok; 6, 10 ve 14
-sensör tehlike sınıfına göre yan yana gösterildi. Labirentte ek ölçümden sonra varsayılan sürüş {k_vs} kaldı. Sanal raydaki
+hattı bağımsız bir inceleme yeniden denetledi. Uçurum testinde görülmüş ızgarada hiçbir düzen önceden konan ölçütü
+sağlamamıştı; yeni tohum ve hiç koşulmamış sahnelerle koşulan bağımsız hükümde yalnız {u_gecen} düzeni
+<strong>geçti</strong> ve onaylı seçim oldu, ama payı ince (en küçük {u_pay} cm). Labirentte ek ölçümden sonra varsayılan sürüş {k_vs} kaldı. Sanal raydaki
 bulgu onarımla kapandı; harita ve taşınma hatları geçer aldı.</p>
 <p><sup class='bel'>†</sup> işaretli sayılar CSV'den değil, testin sonuç belgesinden alındı (liste sayfanın sonunda).
 Her bölümün sonunda önceki turun ayrıntısı katlanmış duruyor.</p></div>
