@@ -51,10 +51,14 @@ biçiminde, temas kuvveti yok. Işınlar 2B parçalara çizilir (yükseklik, eğ
     py -3 -m unittest kesif.testler.test_deneme -v     # 4 sınama (deneme zinciri: harita taşıma, hizalama)
     py -3 -m unittest kesif.testler.test_hiz4 -v       # 10 sınama (v4: fren zarfı, süpürme, hızlanma izni, 5x5)
     py -3 -m unittest kesif.testler.test_v5 -v         # 5 sınama (v5: durunca denetim, geri çekilme, yay kaçınma)
-    py -3 -m unittest kesif.testler.test_v6 -v         # 7 sınama (v6: açıklık, geçmiş tarama + harita, aday kabulü, 5x5)
+    py -3 -m unittest kesif.testler.test_v6 -v         # 8 sınama (v6: açıklık, geçmiş tarama + harita, aday kabulü, 5x5, varsayılan)
     py -3 -m kesif.temas_tani --kayit sonuc/ham/mujoco_v5/labirent_17x17_t1_t1.npz,... --cikti sonuc/tani_temas_v6.csv
     py -3 -m kesif.kos v6_2b --is 1 --tohum 0           # 2B v5 / v6 (21 geliştirme labirenti) -> sonuc/v6_2b.csv
     bash sonuc/ham/v6_sira.sh                           # v6 MuJoCo parçaları (v6_kod kopyasından, işlemci kuyruğu)
+    bash sonuc/ham/tur2_sira.sh                         # tur 2: sınama3 + uzatılmış (v6_kod), zincir v6 (zincir4_v6_kod),
+                                                        #   2B tohum 1 (sonuc/ham/tur2_2b.py -> sonuc/v6_2b_t1.csv)
+    py -3 -m kesif.hiz_tani --dizin sonuc/ham/mujoco_sinama3_v6,sonuc/ham/mujoco_uzatilmis_v6 --cikti sonuc/hiz_tani_sinama3_uzatilmis_v6.csv
+    py -3 -m kesif.zincir_tani --csv deneme_sinama4_v6.csv --cikti tani_zincir_sinama4_v6.csv
     bash sonuc/ham/sinama5_v3.sh [surec]                # v3 sınama5 (v6_oncesi_kod kopyasından)
     py -3 -m kesif.rapor_v6 --birlestir                 # parça CSV'leri -> mujoco_v6.csv, mujoco_sinama{2,4,5}_v6.csv
     py -3 -m kesif.rapor_v5                             # v5 bölümü (kesif.kos rapor da SONUC.md'ye ekler)
@@ -340,7 +344,8 @@ tanı `sonuc/tani_zincir_sinama4.csv`. Tablolar `sonuc/SONUC.md` "Deneme zinciri
 
 **Hüküm:** görülmemiş kümede zincir 19/20 çözdü (ilk girişte 12/20). Sınama2'deki 16/20'den iyi; ama sınama4'ün
 başarısızları hız sınıfında değildi (en uzun çözüm 157 m). Tek çözülmeyen zincirde zincir işi kötüleştirdi: taşınan
-harita START'ı sınırlardan kopardı, 2–4. denemelerin her biri 61 s'de `fail_sikisma` ile bitti.
+harita START'ı sınırlardan kopardı, 2–4. denemelerin her biri 61 s'de `fail_sikisma` ile bitti. (Eklendi 2026-11-26
+sabah: aynı kümede v6 zinciri 20/20 çözdü, temas 0; bkz. "v6", "Tur 2".)
 
 **Kurulum:** zincir mantığı değişmedi. Koşu `sonuc/ham/zincir4_kod/` anlık kopyasından (canlı `kesif/` 23:41,
 `--surum v3` açık; `sonuc/ham/zincir4_isler.sh`, 4 süreç, düşük öncelik, tek iş parçacığı). 20 zincirin hepsi koşuldu;
@@ -485,9 +490,10 @@ Hiçbirinde START'tan çıkma ya da START kesmesi yok.
 
 **Hüküm:** v5 iki v4 çarpmasının kök nedenini gideriyor ve YENİ sınama4'te v3 kadar koşu çözüyor (12/20, çarpma
 0 / 0, süre oranı v5/v3 ortanca 0,845). Ama geliştirmede v5 yeni bir çarpma verdi (17x17_t1 t1, 0,25 s; v3 ve v4 orada
-0). "Çarpma sıfır" yalnız v3'te bütün MuJoCo kümelerinde tutuyor. Bu yüzden `VARSAYILAN_SURUM = "v3"` (v4'ten geri
-alındı). v4 ve v5 seçmeli. (Güncellendi 2026-11-26: v3 de sıfır değil; sınama3'te 1, deneme zincirinde 2, sınama5'te 1
-temas. v6 bölümü; varsayılan artık v6.)
+0). "Çarpma sıfır" o aşamada koşulan üç MuJoCo kümesinde (geliştirme, sınama2, sınama4) yalnız v3'te tutuyordu. Bu
+yüzden o aşamada `VARSAYILAN_SURUM = "v3"` oldu (v4'ten geri alındı). v4 ve v5 seçmeli. (Güncellendi 2026-11-26: bu
+"v3'e döndü" kararı güncel değil. v3 de sıfır değil; sınama3'te 1, deneme zincirinde 2, sınama5'te 1 temas. Güncel
+varsayılan ve dayanağı v6 bölümünde.)
 
 **Tanı** (MuJoCo'da aynı tohumla yeniden koşu, beyin iç durumu adım adım; iki koşu da belirlenimci, kayıttaki çarpma
 aynı anda yeniden çıktı):
@@ -555,11 +561,18 @@ koşusunda tutuyor, ama geliştirmenin 37 koşusunda 1 çarpma var. Bu sayılarl
 
 ## v6 (2026-11-26 gece): temasların kök nedeni, tüm gövde süpürme öngörüsü
 
-**Hüküm:** sıkı varsayılan kuralı sağlandı, `VARSAYILAN_SURUM = "v6"`. (a) YENİ sınama5'te v6 14/20, v3 13/20. (b) koşulan
-bütün kümelerde v6 temas olayı 0: MuJoCo geliştirme 37, sınama2 20, sınama4 20, sınama5 20 koşu (97 koşu, temas 0 s) ve 2B
-21 koşu. v3 de sıfır değil: bütün MuJoCo kümelerinde 4 temas olayı, 2,30 s (biri sınama5'te). Sınama5 farkı 1 koşu; "v6
-daha çok çözer" denemez, doğru ifade "v6 sınama5'te koşu kaybettirmedi, temas vermedi ve daha hızlı" (süre oranı v6/v3
-ortanca 0,878). v3'e dönmek tek satır: `beyin.VARSAYILAN_SURUM = "v3"`.
+**Hüküm (tur 2 ile kesinleşti, 2026-11-26 sabah):** `VARSAYILAN_SURUM = "v6"` kalır; `kos_deneme` de varsayılanı (v6)
+kullanır. Tur 2'nin esnetilmeyen kuralı sağlandı: v6'nın ilk giriş MuJoCo koşularının tamamında, yani geliştirme 37 +
+sınama2 20 + sınama3 20 + sınama4 20 + sınama5 20 + uzatılmış (1800 s) 9 = 126 koşuda temas olayı 0; sınama3'te v6 16/20,
+v3 14/20. Zincir kuralı da sağlandı: sınama4'te v6 zinciri 20/20 çözdü, temas 0 (v3 zinciri 19/20, 1 temas). Ayrıntı
+aşağıda "Tur 2".
+- İlk karar (02:44): (a) YENİ sınama5'te v6 14/20, v3 13/20. (b) o anda koşulan dört MuJoCo kümesinde (geliştirme 37,
+  sınama2 20, sınama4 20, sınama5 20 = 97 koşu) ve 2B tohum 0'ın 21 koşusunda v6 temas olayı 0. Sınama3 ve uzatılmış küme
+  o zaman koşulmamıştı; tur 2 onları ekledi.
+- v3 de sıfır değil: ilk giriş MuJoCo kümelerinde 2 (sınama3, sınama5), hafızalı zincirde 2 temas olayı; toplam 2,30 s.
+- Farklar küçük: sınama5'te 1, sınama3'te 2 koşu. "v6 daha çok çözer" denemez. Doğru ifade: "v6 bu kümelerde koşu
+  kaybettirmedi, temas vermedi ve daha hızlı" (süre oranı v6/v3 ortanca sınama5 0,878, sınama3 0,888).
+- v3'e dönmek tek satır: `beyin.VARSAYILAN_SURUM = "v3"`.
 
 **Tanı** (`kesif.temas_tani`, kayıttan; `sonuc/tani_temas_v6.csv`; v5 için ek olarak MuJoCo'da aynı tohumla belirlenimci
 yeniden koşu, beyin iç durumu adım adım, `sonuc/ham/v6_tani_v5_17t1.txt`). Yer gerçeği yalnız tanıda kullanıldı.
@@ -597,8 +610,23 @@ yeniden koşu, beyin iç durumu adım adım, `sonuc/ham/v6_tani_v5_17t1.txt`). Y
   koruması (0,3 s öngörülü kesme, yasak bölge, sanal duvar) aynen kalır; sanal hücreler süpürme noktalarına da eklendi.
 - Hesap yükü: 2B'de koşu başına gerçek süre v5'e göre yaklaşık %20-30 fazla (5x5 / 9x9 duman denemesi).
 
-**2B** (21 geliştirme labirenti, yalnız tohum 0; `sonuc/v6_2b.csv`; v5 2B'de ilk kez koşuldu): v5 18/21, v6 19/21; temas
-0 / 0; v6/v5 süre ortanca 0,986 (18 çift). Kapsam daraltıldı: tohum 1 süre bütçesi için atıldı.
+**2B** (21 geliştirme labirenti x tohum {0, 1}; v5 2B'de ilk kez koşuldu). Tohum 0 ilk turda (`sonuc/v6_2b.csv`), tohum
+1 tur 2'de (`sonuc/v6_2b_t1.csv`, aynı v6_kod kopyası; plan 42 + 42 böylece tamamlandı):
+
+| sürüm | tohum 0 | tohum 1 | toplam | çarpma olayı (koşu) t0 / t1 |
+| --- | --- | --- | --- | --- |
+| v5 | 18/21 | 15/21 | 33/42 | 0 / 4 (5,90 s) |
+| v6 | 19/21 | 18/21 | 37/42 | 0 / 0 |
+
+- v6/v5 süre oranı ortanca 0,986 (32 çift).
+- v6'nın 5 başarısızlığı: 17x17_t4 x 2, 17x17_t5 t1, 17x17_t6 t1 `fail_sure`; 17x17_t5 t0 **`fail_sikisma`**
+  (hareketsiz, 717,75 s, p_en 0,87, temas 0). Belirlenimci 2B yeniden koşusu aynı sonucu verdi
+  (`sonuc/ham/tur2_2b_tani.py`, döküm `sonuc/ham/tur2_2b_tani_17t5.txt`, git dışı). 658 s'den sonra robot yerinde dönüşte
+  kaldı. Her ~1 s'lik yeniden planda yolun ilk bacağı değişiyor (hedef aynı), dönüş yönü ±0,8 rad/s arasında her ~1 s
+  (her plandan sonra) tersine dönüyor, yön 2,45–2,88 rad arasında salınıyor; hakem 60 s hareketsizlikten sonra bitirdi. Bu 60 s'de yalnız
+  plan sayacı arttı (~60 plan, saniyede bir); süpürme reddi, geri çekilme ya da kurtarma yok. v6'nın süpürme öngörüsüne özgü olduğu
+  gösterilmedi (plan / izleyici salınımı). Düzeltilmedi; MuJoCo v6 koşularında `fail_sikisma` yok.
+- v5'in tohum 1'deki 4 çarpması ve 4 `fail_sikisma`sı v5'e ait; v5 seçmeli sürüm, varsayılan değil.
 
 **MuJoCo** (900 s, ön bilgisiz; tablo `sonuc/SONUC.md` "v6"; `sonuc/mujoco_v6.csv`, `mujoco_sinama2_v6.csv`,
 `mujoco_sinama4_v6.csv`, `mujoco_sinama5_v3.csv`, `mujoco_sinama5_v6.csv`; düz hız ve duvar payı `sonuc/hiz_tani_v6.csv`,
@@ -623,13 +651,53 @@ yeniden koşu, beyin iç durumu adım adım, `sonuc/ham/v6_tani_v5_17t1.txt`). Y
   MuJoCo ile örtüştü (işlemci kuyruğu); "önce 2B" sırası yalnız duman denemesi düzeyinde tutuldu.
 - Dondurmadan sonra değişen iki satır grubu: `VARSAYILAN_SURUM` (karar) ve `deneme.py`'de denemeler arası v6 geçmiş
   taramalarının sıfırlanması (önceki denemenin saatindeki noktalar yeni denemede silinmiyordu; yalnız deneme zinciri,
-  ilk giriş koşularını etkilemez; zincirde v6 ölçülmedi).
+  ilk giriş koşularını etkilemez; zincirde v6 ilk kararda ölçülmemişti, tur 2'de ölçüldü).
 - Başarısız v6 koşularının hepsi `fail_sure` (START'tan çıkma ve START kesmesi yok): geliştirme 13x13_t2 t1, t2,
   17x17_t4 x 2, 17x17_t5 x 2; sınama2 17x17_t11 t1, 17x17_t12 t1; sınama4 17x17 t19 x 2, t20 x 2, t21 x 2, t23 x 2;
   sınama5 17x17 t26 x 2, t27 x 2, t28 x 2. Keşif / süre sınıfı, hız ya da temas değil.
 - v6 sayaçları (97 MuJoCo koşusu, kayıtların son `sayac`'ı): eğrilik itme (`yay_kacin`) 1019 adım, kabul edilir aday yok
   (`yay_kacin_yok`) 13 kez, hepsi geri çekilmeyle (`yay_geri` 13; "en geniş aday" yedeği hiç gerekmedi). Kurtarma toplamı
   v6 54, v3 143 (aynı koşular).
+
+**Tur 2 (2026-11-26 03:40–04:57): eksik ölçümler, v6 kodu değişmeden.** İlk giriş koşuları dondurulmuş
+`sonuc/ham/v6_kod/` kopyasından, zincir `sonuc/ham/zincir4_v6_kod/` kopyasından (canlı kesif; beyin ve surus4 v6_kod ile
+aynı, tek fark `VARSAYILAN_SURUM` satırı ve `deneme.py`'deki denemeler arası v6 geçmiş sıfırlaması). Hepsi `--surum v6`
+açık; kuyruk `sonuc/ham/tur2_sira.sh` (en çok 4 ağır süreç, tek iş parçacığı, düşük öncelik, toplam yük 11 çekirdeği
+aşarsa bekler; ölçülen en yüksek toplam ~4,2 çekirdek). Kural koşulardan önce yazılıydı; esnetilmedi.
+
+| küme | v3 | v6 | temas olayı v3 / v6 | süre oranı v6/v3 ortanca (çift) | v6 en küçük duvar payı | v6 başarısızları |
+| --- | --- | --- | --- | --- | --- | --- |
+| sınama3 (13x13 / 17x17 t14..t18 x 2; `mujoco_sinama3_v6.csv`) | 14/20 | **16/20** | 1 (0,05 s) / **0** | 0,888 (14) | 0,045 m | 13x13_t17 x 2 (p_en 0,87), 17x17_t18 x 2 (p_en 0,69); hepsi `fail_sure` |
+| uzatılmış (KURAL DIŞI 1800 s, tohum 0, 9 koşu; `mujoco_uzatilmis_v6.csv`) | 7/9 | 8/9 | 0 / 0 | 0,865 (7) | 0,038 m | 17x17_t5 `fail_sure` 1800 s (p_en 0,94) |
+
+- Sınama3 v6 için tam taze değil: v6'nın temas tanısında v3'ün sınama3 kaydı (13x13_t15 t0) kullanıldı ve küme v3 / v4
+  kararında görülmüştü (v4 orada 17/20). v6, v3'ün çözemediği 13x13_t15'i iki tohumda çözdü (890 / 778 s, sınıra yakın).
+- Uzatılmışta v3'ün iki `fail_sikisma`sından (17x17_t5, 13x13_t2; ilerlemesiz) 13x13_t2'yi v6 309 s'de çözdü; 17x17_t5
+  1800 s'de de bitmedi (sıkışma değil, süre).
+- Duvar payı ve düz hız: `sonuc/hiz_tani_sinama3_uzatilmis_v6.csv` (payı < 5 mm koşu 0/29; düz hız 0,270 / 0,273 m/s).
+
+**Kural (tur 2), sonuç:** ilk giriş MuJoCo koşularının tamamı (geliştirme 37, sınama2 20, sınama3 20, sınama4 20,
+sınama5 20, uzatılmış 9 = 126 koşu) temas olayı 0; sınama3 başarısı v6 16 >= v3 14 -> **`VARSAYILAN_SURUM = "v6"`
+kalır.** Test: `test_v6.V6Surum.test_varsayilan_karar`.
+
+**Deneme zinciri v6, sınama4** (HAFIZALI sınıf; `sonuc/deneme_sinama4_v6.csv`, tanı `sonuc/tani_zincir_sinama4_v6.csv`;
+v3 zinciri `deneme_sinama4.csv`; en çok 4 deneme, 2 tohum, hizalama sondası yok, zincir mantığı değişmedi):
+
+| zincir beyni | çözülen | 1. / 2. / 3. / 4. denemede | deneme | toplam süre, bütün denemeler | ortanca toplam süre (çözülen) | temas olayı (s) | START'tan çıkma / START kesme |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| v3 | 19/20 | 12 / 6 / 1 / 0 | 31 | 19450 s | 761 s | 1 (0,70 s) | 0 / 0 |
+| v6 | **20/20** | 12 / 8 / 0 / 0 | 28 | 17190 s | 633 s | **0** | 0 / 0 |
+
+- 1. deneme = v6 ilk giriş koşusu: 20/20 aynı sonuç ve süre (±1 s; `mujoco_sinama4_v6.csv`).
+- Sonradan çözülen 8 zincirin hepsi 2. denemede çözdü (çözen deneme 401–782 s; toplam 1301–1682 s). 2. denemelerde poz
+  hatası maks ortalama 0,59 m, en çok 0,87 m.
+- v3'ün çözemediği tek zincir (17x17_t21 t0; 2–4. denemeler START'tan sınıra yol olmadığı için 61 s'de `fail_sikisma`, harita
+  kayması / START kopuk) v6'da 2. denemede 408 s'de çözüldü. v6'nın 1. denemesi farklı yörünge izlediği için bu, zincir
+  mantığının düzeldiği anlamına gelmez; "START kopuk" mekanizması v6'da yalnız bu kümede görülmedi.
+- Çözülmeyen v6 zinciri yok, temas yok. **Zincir kuralı:** v6 zinciri v3'ten az çözmüyor (20 / 19) ve daha çok temas
+  yapmıyor (0 / 1) -> `kos_deneme` varsayılanı değişmedi (`--surum` verilmezse `VARSAYILAN_SURUM`, v6).
+- Sınama4 zincir için artık iki kez görülmüş sayılır; v6 zinciri için yeni bir küme yok (sınama4 v6 ilk girişte de
+  koşulmuştu).
 
 **v3 tabanı (dürüst; `sonuc/SONUC.md` "v6"):** ilk giriş MuJoCo koşularında 126 koşuda 2 temas olayı (sınama3 13x13_t15 t0
 0,05 s; sınama5 13x13_t27 t0 1,50 s), hafızalı zincirde 83 denemede 2 olay (0,05 s ve 0,70 s). Toplam 4 olay, 2,30 s.
@@ -646,10 +714,12 @@ ama mekanizma duruyor (dondurmadan sonra bulundu; sınama5'e bakılarak düzeltm
 - Geçmiş taramalar SLAM pozuyla taşınır; 2 s içinde poz düzeltmesi birkaç cm'yi aşarsa noktalar kayar (hayalet engel ya da
   eksik engel). MuJoCo'da poz hatası maks ortalaması 0,3-0,5 m olsa da 2 s içindeki göreli kayma küçük; ölçülmedi.
 - Hesap: 2B'de koşu başına gerçek süre v5'e göre yaklaşık %20-30 fazla. Pi 5'te ölçülmedi.
-- Sınama5 v3 / v6 farkı 1 koşu; istatistiksel olarak anlamlı değil. "Temas 0" 97 MuJoCo koşusunda; v3'ün oranıyla
+- Sınama5 v3 / v6 farkı 1 koşu; istatistiksel olarak anlamlı değil. "Temas 0" ilk kararda 97, tur 2'den sonra 126 ilk
+  giriş MuJoCo koşusunda (artı 28 zincir denemesi); v3'ün oranıyla
   (4 olay / 209 koşu-deneme) bu sayıda koşuda 0 görmek tek başına kanıt değil, ama 4 temasın ortak mekanizması tanı ve
   karşı olguyla doğrulandı.
-- Deneme zinciri (hafızalı sınıf) v6 ile koşulmadı. Varsayılan v6 olduğu için `kos_deneme` artık v6 kullanır.
+- Deneme zinciri (hafızalı sınıf) ilk kararda v6 ile koşulmamıştı; tur 2'de sınama4'te koşuldu (yukarıda, "Deneme zinciri v6, sınama4"). `kos_deneme`
+  `--surum` verilmezse varsayılanı (v6) kullanır.
 - İşlemci: en çok 4 süreç (MuJoCo + 2B), her biri tek iş parçacığı, düşük öncelik; toplam yük 11 çekirdeği aşınca kuyruk
   bekledi (`sonuc/ham/v6_sira.sh`); MuJoCo gerçek zaman oranı 1,3-5,2.
 

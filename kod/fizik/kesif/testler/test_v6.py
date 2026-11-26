@@ -44,6 +44,16 @@ class V6Surum(unittest.TestCase):
         self.assertEqual(KesifBeyni(ayar=surum_ayari("v6")).durum()["ek"]["surum"], "v6")
         self.assertEqual(KesifBeyni(ayar=surum_ayari("v5")).durum()["ek"]["surum"], "v5")
 
+    def test_varsayilan_karar(self):
+        # Tur 2 kuralı (BENIOKU "v6", SONUC.md "Varsayılan kuralı, tur 2"): ilk giriş 126 MuJoCo koşusunda temas 0, sınama3
+        # v6 16/20 >= v3 14/20 -> v6; zincir kuralı: v6 zinciri 20/20, temas 0 (v3 19/20, 1) -> kos_deneme de varsayılanı
+        # kullanır. Ölçüm değişmeden bu değer değişirse belge ve rapor da değişmeli.
+        from kesif import kos_deneme
+        from kesif.beyin import VARSAYILAN_SURUM, KesifBeyni
+        self.assertEqual(VARSAYILAN_SURUM, "v6")
+        self.assertEqual(KesifBeyni().durum()["ek"]["surum"], "v6")
+        self.assertIsNone(getattr(kos_deneme, "ZINCIR_VARSAYILAN_SURUM", None))
+
 
 class Aciklik(unittest.TestCase):
     def test_kutu_acikligi(self):

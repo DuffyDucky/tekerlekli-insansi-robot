@@ -97,9 +97,14 @@ def v5_bolumu():
         top = {sur: sum(int(_f(r.get("carpma_sayisi")) or 0) for D in (gel, s2, s4) for r in (D.get(sur) or []))
                for sur in ("v3", "v4", "v5")}
         n = {sur: sum(len(D.get(sur) or []) for D in (gel, s2, s4)) for sur in ("v3", "v4", "v5")}
-        md += ["", "Bütün kümelerde çarpma olayı (koşu sayısı): v3 %d (%d), v4 %d (%d), v5 %d (%d). \"Çarpma sıfır\" "
-               "hedefi yalnız v3'te tutuyor; bu yüzden `VARSAYILAN_SURUM` v3'e döndü (sınama4 kuralı v5 için sağlansa "
-               "da). v5 seçmeli: `surum_ayari(\"v5\")`." % (top["v3"], n["v3"], top["v4"], n["v4"], top["v5"], n["v5"])]
+        from .beyin import VARSAYILAN_SURUM
+        md += ["", "Bu aşamada koşulan üç MuJoCo kümesinde (geliştirme + sınama2 + sınama4) çarpma olayı (koşu sayısı): "
+               "v3 %d (%d), v4 %d (%d), v5 %d (%d). \"Çarpma sıfır\" hedefi bu üç kümede yalnız v3'te tutuyordu; bu yüzden "
+               "o aşamada `VARSAYILAN_SURUM` v3'e döndü (sınama4 kuralı v5 için sağlansa da). v5 seçmeli: "
+               "`surum_ayari(\"v5\")`." % (top["v3"], n["v3"], top["v4"], n["v4"], top["v5"], n["v5"]),
+               "", "**Güncellendi (2026-11-26):** yukarıdaki \"v3'e döndü\" cümlesi o aşamanın kararıdır, güncel değil. v3 de "
+               "çarpma sıfır değil: ilk girişte sınama3'te 1 ve sınama5'te 1 temas olayı, hafızalı zincirde 2 (v6 bölümü, "
+               "\"v3 tabanı\"). Güncel varsayılan `VARSAYILAN_SURUM = \"%s\"`; dayanağı v6 bölümünde." % VARSAYILAN_SURUM]
     md += ["", "Çarpmalı ya da başarısız v5 koşuları:", "",
            "| küme | sahne | tohum | durum | süre | p_en | çarpma | temas (s) | son olaylar |",
            "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]

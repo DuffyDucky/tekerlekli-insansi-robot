@@ -179,9 +179,10 @@ def surum_ayari(surum="v1"):
 # (17x17_t1 t1, 0,25 s); v3 bütün MuJoCo kümelerinde 0. "Çarpma sıfır" yalnız v3'te kanıtlı -> varsayılan v3'e döndü.
 # v4 / v5 seçmeli (surum_ayari). Ayrıntı: BENIOKU.md "v5".
 # Karar 5 (2026-11-26 gece, sıkı kural): v6 = v5 + tüm gövde süpürme öngörüsü. YENİ sınama5 (13x13 / 17x17 t24..t28 x 2):
-# v3 13/20 (1 temas), v6 14/20 (0). Koşulan bütün kümelerde (geliştirme 37 + sınama2 20 + sınama4 20 + sınama5 20 MuJoCo,
-# 2B 21) v6 temas olayı 0 -> kural (a) ve (b) sağlandı -> v6. v3'e dönmek tek satır: VARSAYILAN_SURUM = "v3".
-# Ayrıntı: BENIOKU.md "v6".
+# v3 13/20 (1 temas), v6 14/20 (0). O anda koşulan kümelerde (geliştirme 37 + sınama2 20 + sınama4 20 + sınama5 20 MuJoCo,
+# 2B 21) v6 temas olayı 0 -> kural (a) ve (b) sağlandı -> v6. Tur 2 (aynı gün, kod değişmeden): sınama3 v6 16/20, v3 14/20;
+# uzatılmış (1800 s) 9 koşu; ilk giriş MuJoCo 126 koşunun (geliştirme, sınama2, sınama3, sınama4, sınama5, uzatılmış)
+# hepsinde temas 0 -> v6 kalır. v3'e dönmek tek satır: VARSAYILAN_SURUM = "v3". Ayrıntı: BENIOKU.md "v6".
 VARSAYILAN_SURUM = "v6"
 
 
