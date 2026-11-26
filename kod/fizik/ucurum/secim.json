@@ -1,6 +1,6 @@
 {
  "yerlesim": {
-  "ad": "4OD+2AD",
+  "ad": "8WRD+4AD+2YR40",
   "z": 0.12,
   "e": 30,
   "koni": 27.0
@@ -10,7 +10,19 @@
  "politika": "yavasla",
  "fren": "rampa",
  "fren_ivme": 2.0,
- "sensor_n": 6,
- "on_n": 4,
- "not_": "dar aciklik duzeltmesi: dar_gelistirme (tohum 1-2) 2KD+2AD 49/540, 3KOD+2AD 2/540, 4OD+2AD 0/540 dustu -> 4OD+2AD. Sinama: sinama2. Ilk secim (2KD+2AD) deney.SECIM_1'de donduruldu (kusur, sinama, sinama_y)."
+ "sensor_n": 14,
+ "on_n": 8,
+ "hiz_onerisi_m_s": 0.25,
+ "hukum_kosul": {
+  "periyot_ms": 20,
+  "butce_ms": 20,
+  "menzil_m": 1.3,
+  "tutma": [
+   "konum",
+   40.0,
+   100.0
+  ]
+ },
+ "durum": "OLCUTU SAGLAMAYAN EN IYI ADAY, onaylanmis secim degil. Onceden konan olcut (ucurum kosularinda 0 hakem dusmesi, yanlis alarm kosularinda 0 durma) t2_hukum'da saglanmadi: hakem 1/3476 (yarik_11, teker merkezi kenari 3 mm gecti), fiziksel 0, yanlis durma 0/540. Bu dosya t2_hukum'un yeniden uretimi icin bu degerleri tasir. Karsilastirma: sonuc/katmanli_oneri.md. Son commit edilen secim 4OD+2AD (deney.SECIM_2).",
+ "not_": "tamamlama 2:t2_yarik_gel / t2_yarik_gel2 (yarik 8-20 cm, hakem: 6OD+4AD 42/400, 6WD+4AD 23/400, 6WRD+4AD 13/400, 8WRD+4AD 0/400) -> her teker hizasinda iki ROI 15 derece iz sensoru (y +-0,196 / +-0,236); t2_donus_gel / t2_donus_gel2 (dar aciklik yaninda yerinde donus d 0,35-0,50: yan sensorsuz 48/240, 2Y30 11/240, 2Y35 11/240, 2YR37 1/240, 2YR40 0/240) -> ROI'li yan sensorler x 0,10, yon +-90, 40 derece. Hukum: t2_hukum (tohum 206-210; 4016 gorevin 2992'si t_hukum ile ayni sahne/senaryo, yalniz tohum farkli) -> GECMEDI. Onceki secimler: 6OD+4AD (deney.SECIM_3, t_hukum tohum 201-205), 4OD+2AD (SECIM_2), 2KD+2AD (SECIM_1)."
 }

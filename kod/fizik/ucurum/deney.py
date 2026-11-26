@@ -47,6 +47,11 @@ SUREC_TAVAN = 3                    # aynı anda en çok bu kadar işçi süreci 
 # (secim.json artık yeni seçimi taşır). `sinama` politika `ucurum` ile, `sinama_y` `yavasla` ile koşuldu.
 SECIM_1 = {"yerlesim": {"ad": "2KD+2AD", "z": 0.12, "e": 30, "koni": 27.0}, "esik_m": 0.1, "onay": 3, "politika": "ucurum",
            "fren": "rampa", "fren_ivme": 2.0, "sensor_n": 4, "on_n": 2}
+# İkinci seçim (dar açıklık düzeltmesi; `sinama2`, `sinama2_karsi` bununla koşuldu). Tamamlama turunda secim.json değişti
+# (6OD+4AD); sınama 2'nin yeniden üretimi için donduruldu. Tamamlama aşamalarından t_aday_son ve t_hukum dışındakiler de
+# bununla koşuldu (o an secim.json buydu).
+SECIM_2 = {"yerlesim": {"ad": "4OD+2AD", "z": 0.12, "e": 30, "koni": 27.0}, "esik_m": 0.1, "onay": 3, "politika": "yavasla",
+           "fren": "rampa", "fren_ivme": 2.0, "sensor_n": 6, "on_n": 4}
 # dar açıklık (bağımsız denetimden sonra eklendi)
 DAR_GEL_GEO = ("acik_40", "acik_50", "acik_60", "acik_70", "acik_80", "acik_100")
 DAR_SIN_GEO = ("acik_45", "acik_55", "acik_65", "acik_75", "acik_90", "acik_60_sig", "dar_merdiven_60", "dar_merdiven_80")
@@ -123,6 +128,571 @@ def _ayar(**k):
     a = dict(esik_m=ANA_ESIK, onay=ANA_ONAY, politika="ucurum", fren="rampa", fren_ivme=2.0)
     a.update(k)
     return a
+
+
+# ------------------------------------------------------------------ tamamlama turu (bağımsız incelemenin açık bıraktıkları)
+# Ayar (geliştirme) koşuları tohum 1-3 ve geliştirme sahneleri; hüküm koşuları (`t_hukum`) tohum 201-205 (201-210 ayrılmıştı;
+# 206-210 tamamlama 2 hükmünde, `t2_hukum`) ve yeni sahneler.
+TAM_DELIK_YREL = (0.0, 0.10, 0.15, 0.19, 0.216, 0.25, 0.30)     # deliğin robota göre y'si (sol yarı; simetrik)
+TAM_ADAYLAR = ("4OD+2AD", "4TD+2AD", "6OD+2AD")
+# sensör zamanlaması (görev 5; VL53L1X veri sayfası DS12385 Rev 8, 3.5.1 / 3.5.2, Tablo 5, 17-19)
+ZAMAN = {
+    "taban": {},                                                              # ilk model: 50 Hz + 4 m (iyimser birleşim)
+    "K20": dict(periyot_ms=20, butce_ms=20, menzil_m=1.30),                   # kısa kip, 20 ms (yalnız kısada), 1,3 m
+    "U33": dict(periyot_ms=33, butce_ms=33, menzil_m=3.60),                   # uzun kip, en kısa bütçe 33 ms, 3,6 m (karanlık)
+    "U33G": dict(periyot_ms=33, butce_ms=33, menzil_m=0.73),                  # uzun kip, güçlü ortam ışığı: 0,73 m
+    "U50": dict(periyot_ms=50, butce_ms=50, menzil_m=3.60),
+    "U100": dict(periyot_ms=100, butce_ms=100, menzil_m=3.60),                # uzun kip, tablo koşulu (TB 100 ms)
+}
+DUYAR = dict(ZAMAN, **{
+    "g20": dict(gecikme_ms=20), "g50": dict(gecikme_ms=50),
+    "mu05": dict(degis={"teker_zemin_surtunme": 0.5}),
+    "montaj_kotu": dict(montaj="kotu"), "montaj_rasgele": dict(montaj="rasgele"),
+    "yuk_ust5": dict(ek_kutle=(5.0, (0.10, 0.0, 0.90))),                      # +5 kg tepside (gövde merkezinin 10 cm önü, 0,9 m)
+    "yuk_alt10": dict(ek_kutle=(10.0, (0.0, 0.0, 0.15))),                     # +10 kg altta (taşıma yükü)
+    "gurultu10": dict(sigma_taban_m=0.010),                                   # veri sayfası menzil hatası ±20 mm ≈ 2σ
+    "a15": dict(fren_ivme=1.5), "a10": dict(fren_ivme=1.0),
+})
+
+
+def _tam_g(asama, alt, sahne, ys, ana, sen, t, **k):
+    g = dict(asama=asama, alt=alt, sahne=sahne, ys=ys, ayar=ana, senaryo=sen, tohum=t)
+    g.update(k)
+    return g
+
+
+def _tam_secim(asama=None):
+    """t_hukum / t_aday_son dışındaki tamamlama aşamaları SECIM_2 ile (koşuldukları anki seçim; yeniden üretim).
+    t_hukum / t_hukum_karsi (ve t_hukum_fiz) tamamlama 2'de secim.json değişince SECIM_3 ile (donduruldu)."""
+    s = SECIM_3 if asama in ("t_hukum", "t_hukum_karsi") else SECIM_2
+    return s, s["yerlesim"], _ana(s)
+
+
+# Üçüncü seçim (tamamlama turu; `t_hukum` bununla koşuldu). Tamamlama 2'de secim.json değişti; yeniden üretim için donduruldu.
+SECIM_3 = {"yerlesim": {"ad": "6OD+4AD", "z": 0.12, "e": 30, "koni": 27.0}, "esik_m": 0.1, "onay": 3, "politika": "yavasla",
+           "fren": "rampa", "fren_ivme": 2.0, "sensor_n": 10, "on_n": 6, "hiz_onerisi_m_s": 0.25,
+           "hukum_kosul": {"periyot_ms": 20, "butce_ms": 20, "menzil_m": 1.3, "tutma": ["konum", 40.0, 100.0]}}
+
+# ------------------------------------------------------------------ tamamlama 2 (bağımsız incelemenin engelleyicileri)
+# Ayar koşuları (t2_yarik_gel, t2_donus_gel, t2_kusur, t2_duyar): tohum 1-3, geliştirme sahneleri. Hüküm (t2_hukum):
+# tohum 206-210 (hiçbir koşuda kullanılmadı), sınama geometrileri + yeni yarık genişlikleri (9 / 11 / 13 cm) ve yeni y'ler.
+# Geçme ölçütü hükümden ÖNCE yazıldı: uçurum koşularında hakem 0 düşme, yanlış alarm koşularında 0 durma.
+T2_YARIK_ADAY = ("6OD+4AD", "6WD+4AD", "6WRD+4AD")
+T2_YAN_ADAY = ("6WD+4AD", "6WD+4AD+2Y30", "6WD+4AD+2Y35")
+T2_YARIK_Y_GEL = (0.0, 0.10, 0.15, 0.19, 0.205, 0.216, 0.23, 0.25, 0.27, 0.30)
+T2_YARIK_Y_HUK = (0.035, 0.08, 0.13, 0.175, 0.21, 0.225, 0.24, 0.26, 0.285)
+T2_DUYAR = ("K20", "U33", "U50", "U100", "g20", "g50", "mu05", "montaj_kotu", "montaj_rasgele", "yuk_ust5", "yuk_alt10",
+            "gurultu10")
+
+
+def _t2_kosul(temel, kad):
+    """Duyarlılık koşulu: seçimin `hukum_kosul`'u üstüne DUYAR[kad]; zamanlama kipi temeldeki zamanlamanın yerine geçer."""
+    ek = dict(DUYAR[kad])
+    ks = dict(temel)
+    if any(k in ek for k in ("periyot_ms", "butce_ms", "menzil_m")):
+        for k in ("periyot_ms", "butce_ms", "menzil_m"):
+            ks.pop(k, None)
+    ks.update(ek)
+    return ks
+
+
+def _tamamlama2(asama):
+    G = []
+    if asama in ("t2_yarik_gel", "t2_yarik_gel2", "t2_donus_gel", "t2_donus_gel2"):
+        s = SECIM_3                                 # ayar: seçimin geri kalanı t_hukum'daki gibi
+    else:
+        s = secim()
+    ys0, ana0 = s["yerlesim"], _ana(s)
+    ks = dict(s["hukum_kosul"])
+    if asama in ("t2_yarik_gel", "t2_yarik_gel2"):
+        # t2_yarik_gel2: t2_yarik_gel'den sonra eklenen aday (çift iz sensörü), aynı ızgara
+        for ad in (T2_YARIK_ADAY if asama == "t2_yarik_gel" else ("8WRD+4AD",)):
+            ys = dict(ys0, ad=ad)
+            for c in (8, 10, 12, 15, 20):
+                for yr in T2_YARIK_Y_GEL:
+                    for aci in (0, 15):
+                        for v in (0.25, 0.39):
+                            for t in (1, 2):
+                                G.append(_tam_g(asama, "delik", "yarik_%d" % c, ys, ana0, dict(tur="ileri", aci=aci, v=v,
+                                                yanal=[-yr - 0.01, -yr + 0.01], yanal_ad=yr), t, kosul=ks))
+            G += [dict(g, alt="dar", kosul=ks) for g in _dar(asama, ys, ana0, ("acik_40", "acik_50"), DAR_GEL_YANAL, (0, 20), (1,))]
+            for geo in GELISTIRME_GEO:
+                for aci in (0, 30, 60):
+                    for v in HIZLAR:
+                        G.append(_tam_g(asama, "ileri", geo, ys, ana0, dict(tur="ileri", aci=aci, v=v), 1, kosul=ks))
+    elif asama in ("t2_donus_gel", "t2_donus_gel2"):
+        # t2_donus_gel2: t2_donus_gel'den sonra eklenen adaylar (çift iz sensörü + ROI 15° yan sensör, 37° / 40°; 2YK ışını tekere çarptığı için koşulmadı), aynı ızgara
+        from ucurum import sahne as SH
+        for ad in (T2_YAN_ADAY if asama == "t2_donus_gel" else ("8WRD+4AD+2YR37", "8WRD+4AD+2YR40")):
+            ys = dict(ys0, ad=ad)
+            for geo in ("acik_40", "acik_50", "acik_60", "acik_80", "acik_100"):
+                for d in (0.35, 0.40, 0.45, 0.50):
+                    for w in (-1.0, 1.0):
+                        for o in (-0.3, 0.0, 0.3):
+                            for t in (1, 2):
+                                G.append(_tam_g(asama, "donus", geo, ys, ana0, dict(tur="donus", d=d, w=w, yanal=[o - 0.02, o + 0.02],
+                                                yanal_ad=o), t, kosul=ks))
+            for d in (0.30, 0.35, 0.45):
+                for w in (-1.0, 1.0):
+                    for t in (1, 2):
+                        G.append(_tam_g(asama, "donus_genis", "merdiven_17x30", ys, ana0, dict(tur="donus", d=d, w=w), t, kosul=ks))
+            for geo in GELISTIRME_GEO:
+                for aci in (0, 30, 60):
+                    for v in HIZLAR:
+                        G.append(_tam_g(asama, "ileri", geo, ys, ana0, dict(tur="ileri", aci=aci, v=v), 1, kosul=ks))
+            if "+2Y" in ad:
+                for sh in SH.DENETIM_GELISTIRME:
+                    for v in (0.25, 0.39):
+                        for aci in (0, 30, 45):
+                            for t in (1, 2):
+                                G.append(dict(asama=asama, alt="yanlis_alarm", sahne=sh, ys=ys, ayar=ana0, etkin=True, tohum=t,
+                                              kosul=ks, senaryo=dict(tur="ileri", aci=aci, v=v, yol_m=2.2)))
+    elif asama == "t2_kusur":
+        # görev 3, seçilen düzenle: her sensör tek tek ölü (donmuş / hep dönüşsüz) + dönüşsüz örnek oranı; tohum 1
+        n_on, n = s["on_n"], s["sensor_n"]
+        n_arka = 4
+        geo_l = ("merdiven_17x30", "bosluk_3m", "acik_50", "acik_70")
+        for ariza in [None] + [{str(i): k} for i in range(n_on) for k in ("sabit", "yok")]:
+            for geo in geo_l:
+                for aci in (0, 30):
+                    for v in (0.25, 0.39):
+                        sen = dict(tur="ileri", aci=aci, v=v)
+                        if geo.startswith("acik"):
+                            sen.update(yanal=[-0.12, 0.12], yanal_ad=0.0)
+                        G.append(_tam_g(asama, "olu_on", geo, ys0, ana0, sen, 1, ariza=ariza, kosul=ks))
+            for geo in ("yarik_15",):
+                for yr in (0.19, 0.23):
+                    G.append(_tam_g(asama, "olu_on_yarik", geo, ys0, ana0, dict(tur="ileri", aci=0, v=0.25, yanal=[-yr - 0.01, -yr + 0.01],
+                                    yanal_ad=yr), 1, ariza=ariza, kosul=ks))
+        for ariza in [None] + [{str(i): k} for i in range(n_on, n_on + n_arka) for k in ("sabit", "yok")]:
+            for geo in geo_l[:3]:
+                for aci in (0, 30):
+                    sen = dict(tur="geri", aci=aci, v=0.25)
+                    if geo.startswith("acik"):
+                        sen.update(yanal=[-0.12, 0.12], yanal_ad=0.0)
+                    G.append(_tam_g(asama, "olu_arka", geo, ys0, ana0, sen, 1, ariza=ariza, kosul=ks))
+        for ariza in [None] + [{str(i): k} for i in range(n_on + n_arka, n) for k in ("sabit", "yok")]:
+            for d in (0.35, 0.40):
+                for w in (-1.0, 1.0):
+                    G.append(_tam_g(asama, "olu_yan", "acik_50", ys0, ana0, dict(tur="donus", d=d, w=w, yanal=[-0.02, 0.02], yanal_ad=0.0),
+                                    1, ariza=ariza, kosul=ks))
+        for yok in (0.0, 0.05, 0.20, 0.50):
+            for geo in geo_l[:3] + ("duz",):
+                for aci in (0, 30):
+                    for v in (0.25, 0.39):
+                        sen = dict(tur="ileri", aci=aci, v=v) if geo != "duz" else dict(tur="ileri", aci=aci, v=v, yol_m=4.0)
+                        G.append(_tam_g(asama, "parlak", geo, ys0, ana0, sen, 1, yok=yok, kosul=ks))
+    elif asama == "t2_duyar":
+        # görev 5 + 6, seçilen düzenle: her tekil koşul seçimin hukum_kosul'u üstüne; tohum 1, geliştirme sahneleri
+        for kad in T2_DUYAR:
+            kk = _t2_kosul(ks, kad)
+            for v in (0.25, 0.30, 0.39):
+                for geo in GELISTIRME_GEO:
+                    for aci in (0, 30, 60):
+                        G.append(_tam_g(asama, "ileri", geo, ys0, ana0, dict(tur="ileri", aci=aci, v=v), 1, kosul=kk, kad=kad))
+                for geo in ("acik_40", "acik_50", "acik_60"):
+                    for o in (-0.2, 0.0, 0.2):
+                        for aci in (0, 20):
+                            G.append(_tam_g(asama, "dar", geo, ys0, ana0, dict(tur="ileri", aci=aci, v=v, yanal=[o - 0.02, o + 0.02],
+                                            yanal_ad=o), 1, kosul=kk, kad=kad))
+                for geo in ("yarik_10", "yarik_15"):
+                    for yr in (0.19, 0.23):
+                        G.append(_tam_g(asama, "delik", geo, ys0, ana0, dict(tur="ileri", aci=0, v=v, yanal=[-yr - 0.01, -yr + 0.01],
+                                        yanal_ad=yr), 1, kosul=kk, kad=kad))
+                if v <= 0.25:
+                    G.append(_tam_g(asama, "geri", "merdiven_17x30", ys0, ana0, dict(tur="geri", aci=0, v=v), 1, kosul=kk, kad=kad))
+                    for d in (0.30, 0.40):
+                        for w in (-1.0, 1.0):
+                            G.append(_tam_g(asama, "donus", "merdiven_17x30", ys0, ana0, dict(tur="donus", d=d, w=w), 1, kosul=kk, kad=kad))
+                    for d in (0.35, 0.40):
+                        for w in (-1.0, 1.0):
+                            G.append(_tam_g(asama, "donus_dar", "acik_50", ys0, ana0, dict(tur="donus", d=d, w=w, yanal=[-0.02, 0.02],
+                                            yanal_ad=0.0), 1, kosul=kk, kad=kad))
+            for sh in ("duz", "rampa_10_inis", "esik_20mm", "koyu_serit"):
+                for v in (0.25, 0.39):
+                    for aci in (0, 30):
+                        G.append(dict(asama=asama, alt="yanlis_alarm", sahne=sh, ys=ys0, ayar=ana0, etkin=True, tohum=1, kosul=kk,
+                                      kad=kad, senaryo=dict(tur="ileri", aci=aci, v=v, yol_m=2.2)))
+    elif asama == "t2_hukum":
+        G += _hukum2(asama, s, ys0, ana0)
+    elif asama == "t2_hukum_fiz":
+        # hükümden SONRA, yalnız rapor: t2_hukum'da hakemin düşme saydığı tek durumun (yarik_11, y 0,285) bütün görevleri
+        # (2 açı x 3 hız x 2 tohum), koşu hakemden sonra da sürer; seçim değişmez
+        for g in gorevler("t2_hukum"):
+            if g["alt"] == "yeni_delik" and g["sahne"] == "yarik_11" and g["senaryo"]["yanal_ad"] == 0.285:
+                G.append(dict(g, asama=asama, surdur=True, t_max=12.0 / g["senaryo"]["v"] * 0.25 + 6.0))
+    else:
+        raise SystemExit("bilinmeyen aşama: %s" % asama)
+    return G
+
+
+def _hukum2(asama, s, ys0, ana0):
+    """Tamamlama 2 hükmü: secim.json (+ hukum_kosul), tohum 206-210 (hiç kullanılmadı). İlk hükmün ızgarası + incelemenin
+    istediği en kötü durumlar: yerinde dönüş d 0,35 / 0,45 ve 8-13 cm yarık (yeni genişlik 9 / 11 / 13, yeni y'ler)."""
+    from ucurum import sahne as SH
+    ks = dict(s.get("hukum_kosul") or {})
+    ana = dict(ana0)
+    T = tuple(range(206, 211))
+    G = []
+    for g in _sinama_temel(asama, ys0, ana, T):
+        g["kosul"] = ks
+        G.append(g)
+    for g in _dar(asama, ys0, ana, DAR_SIN_GEO, DAR_SIN_YANAL, (0, 10, 30), T[:3]):
+        g["kosul"] = ks
+        G.append(g)
+    for g in _yanlis_alarm(asama, ys0, ana, SH.DENETIM_SINAMA_YENI, T, alt="yanlis_alarm_yeni"):
+        g["kosul"] = ks
+        G.append(g)
+    for geo in ("merdiven_burun_18x28", "basamak_12"):
+        for aci in (0, 10, 22, 37, 52, 68, 80):
+            for v in HIZLAR:
+                for t in T:
+                    G.append(_tam_g(asama, "yeni_ileri", geo, ys0, ana, dict(tur="ileri", aci=aci, v=v), t, kosul=ks))
+        for aci in (0, 25):
+            for v in (0.10, 0.25):
+                for t in T:
+                    G.append(_tam_g(asama, "yeni_geri", geo, ys0, ana, dict(tur="geri", aci=aci, v=v), t, kosul=ks))
+    for aci in (0, 4, 8):
+        for o in (-0.12, 0.0, 0.12):
+            for v in HIZLAR:
+                for t in T:
+                    G.append(_tam_g(asama, "yeni_iskele", "iskele_90", ys0, ana, dict(tur="ileri", aci=aci, v=v,
+                                    yanal=[o - 0.02, o + 0.02], yanal_ad=o), t, kosul=ks))
+    for c in SH.KARE_SIN2 + SH.KARE_SIN:
+        for yr in T2_YARIK_Y_HUK + ((0.23,) if c == 14 else ()):     # 0,23: ilk hükmün düşen durumu (artık görülmüş)
+            for aci in (0, 10):
+                for v in HIZLAR:
+                    for t in T[:2]:
+                        G.append(_tam_g(asama, "yeni_delik", "yarik_%d" % c, ys0, ana, dict(tur="ileri", aci=aci, v=v,
+                                        yanal=[-yr - 0.01, -yr + 0.01], yanal_ad=yr), t, kosul=ks))
+    for geo in ("acik_45", "acik_55", "acik_65", "acik_75", "acik_90"):
+        for o in (-0.15, 0.05, 0.15):
+            for t in T[:3]:
+                if geo in ("acik_45", "acik_55", "acik_75"):
+                    for aci in (0, 10, 30):
+                        G.append(_tam_g(asama, "yeni_geri_dar", geo, ys0, ana, dict(tur="geri", aci=aci, v=0.25,
+                                        yanal=[o - 0.02, o + 0.02], yanal_ad=o), t, kosul=ks))
+                for d in (0.35, 0.40, 0.45, 0.50):
+                    for w in (-1.0, 1.0):
+                        G.append(_tam_g(asama, "yeni_donus_dar", geo, ys0, ana, dict(tur="donus", d=d, w=w, yanal=[o - 0.02, o + 0.02],
+                                        yanal_ad=o), t, kosul=ks))
+    kb = dict(ks, gecikme_ms=20, montaj="kotu", degis={"teker_zemin_surtunme": 0.5}, ek_kutle=(10.0, (0.0, 0.0, 0.15)))
+    for v in (0.25, 0.30):
+        for geo in ("merdiven_15x28", "kuyu", "kose"):
+            for aci in (0, 22, 37):
+                for t in T[:3]:
+                    sen = dict(tur="ileri", aci=aci, v=v)
+                    if geo == "kose":
+                        sen["yanal"] = [-0.9, -0.3]
+                    G.append(_tam_g(asama, "kotu_birlesik", geo, ys0, ana, sen, t, kosul=kb))
+        for geo in ("acik_45", "acik_60_sig", "dar_merdiven_60"):
+            for o in (-0.15, 0.05, 0.25):
+                for aci in (0, 10):
+                    for t in T[:2]:
+                        G.append(_tam_g(asama, "kotu_birlesik", geo, ys0, ana, dict(tur="ileri", aci=aci, v=v, yanal=[o - 0.02, o + 0.02],
+                                        yanal_ad=o), t, kosul=kb))
+        for geo in ("yarik_11", "yarik_14"):
+            for yr in (0.21, 0.24):
+                G.append(_tam_g(asama, "kotu_birlesik", geo, ys0, ana, dict(tur="ileri", aci=0, v=v, yanal=[-yr - 0.01, -yr + 0.01],
+                                yanal_ad=yr), T[0], kosul=kb))
+    for geo in ("acik_45", "acik_55"):
+        for w in (-1.0, 1.0):
+            for o in (-0.15, 0.15):
+                G.append(_tam_g(asama, "kotu_birlesik", geo, ys0, ana, dict(tur="donus", d=0.35, w=w, yanal=[o - 0.02, o + 0.02],
+                                yanal_ad=o), T[0], kosul=kb))
+    for v in (0.10, 0.20, 0.25, 0.39):
+        for aci in (0, 15):
+            for t in T:
+                G.append(_tam_g(asama, "yeni_rampa_ucurum", "rampa_8_ucurum", ys0, ana, dict(tur="ileri", aci=aci, v=v), t,
+                                baslangic=(SH.E - 0.8, SH.Y0, math.radians(aci)), kosul=ks, t_max=3.8 / v + 8.0, durdu_bekle_s=3.0))
+    return G
+
+
+def _tamamlama(asama):
+    G = []
+    s, ys0, ana0 = _tam_secim(asama)
+    from ucurum import sahne as SH
+    if asama == "t_delik_tehlike":
+        # görev 1a: hangi delik boyu tehlikeli? Denetçi KAPALI (etkin False), robot deliğin üstünden geçer; hakem ölçer.
+        for tur in ("kare", "yarik"):
+            for c in SH.KARE_GEL:
+                for yr in (0.216, 0.0):
+                    for v in (0.25, 0.39):
+                        L = c / 100.0 if tur == "kare" else 1.0
+                        G.append(_tam_g(asama, tur, "%s_%d" % (tur, c), ys0, ana0, dict(tur="ileri", aci=0, v=v,
+                                        yanal=[-yr - 0.005, -yr + 0.005], yanal_ad=yr), 1, etkin=False, surdur=True,
+                                        t_max=(1.2 + L + 0.8) / v))
+    elif asama == "t_delik_boy":
+        # görev 1a devamı: yarığın BOYU (gidiş yönünde) ne kadar olunca tehlikeli? Denetçi kapalı; tohum 1-3, açı 0 (±2° tohumla)
+        for c in (8, 10, 15, 20):
+            for l in (20, 30, 40, 50, 70):
+                for v in (0.25, 0.39):
+                    for aci in (0,):
+                        for t in (1, 2, 3):
+                            G.append(_tam_g(asama, "yarik_boy", "yarik_%dx%d" % (c, l), ys0, ana0, dict(tur="ileri", aci=aci, v=v,
+                                            yanal=[-0.221, -0.211], yanal_ad=0.216), t, etkin=False, surdur=True,
+                                            t_max=(1.2 + l / 100.0 + 0.8) / v))
+    elif asama == "t_donus_w":
+        # görev 2 devamı (geliştirme): dar açıklık yanında yerinde dönüş 1 rad/s'de düşüyor; dönüş hızı tavanı (firmware) adayı
+        for geo in ("acik_40", "acik_50", "acik_60", "acik_80", "acik_100"):
+            for d in (0.35, 0.40, 0.50):
+                for w in (-0.5, 0.5, -0.7, 0.7):
+                    for o in (-0.3, 0.0, 0.3):
+                        for t in (1, 2):
+                            G.append(_tam_g(asama, "donus", geo, dict(ys0, ad="4OD+4AD"), ana0,
+                                            dict(tur="donus", d=d, w=w, yanal=[o - 0.02, o + 0.02], yanal_ad=o), t, t_max=12.0))
+    elif asama == "t_aday_son":
+        # seçim öncesi son geliştirme denetimi: 6OD+4AD (ön iz sensörleri + arka iç sensörler, 10 sensör), kısa kip K20 zamanlaması,
+        # konum tutma. Dar açıklık yanında dönüş, yanlış alarm, yeni sensör arızası, ileri / dar hız taraması. Tohum 1-2.
+        ys = dict(ys0, ad="6OD+4AD")
+        ks = dict(ZAMAN["K20"], tutma=("konum", 40.0, 100.0))
+        for geo in ("acik_40", "acik_50", "acik_60", "acik_80", "acik_100"):
+            for d in (0.35, 0.40, 0.50):
+                for w in (-1.0, 1.0):
+                    for o in (-0.3, 0.0, 0.3):
+                        for t in (1, 2):
+                            G.append(_tam_g(asama, "donus", geo, ys, ana0, dict(tur="donus", d=d, w=w, yanal=[o - 0.02, o + 0.02],
+                                            yanal_ad=o), t, kosul=ks))
+        for sh in SH.DENETIM_GELISTIRME:
+            for v in (0.25, 0.39):
+                for aci in (0, 30, 45):
+                    for t in (1, 2):
+                        G.append(dict(asama=asama, alt="yanlis_alarm", sahne=sh, ys=ys, ayar=ana0, etkin=True, tohum=t, kosul=ks,
+                                      senaryo=dict(tur="ileri", aci=aci, v=v, yol_m=2.2)))
+        for i in (1, 4):                                      # on_iz_sol, on_iz_sag
+            for k in ("sabit", "yok"):
+                for geo in ("acik_50", "yarik_15", "bosluk_3m"):
+                    for v in (0.25, 0.39):
+                        G.append(_tam_g(asama, "kusur", geo, ys, ana0, dict(tur="ileri", aci=0, v=v, yanal=[-0.02, 0.02], yanal_ad=0.0),
+                                        1, ariza={str(i): k}, kosul=ks))
+        for v in (0.25, 0.30, 0.39):
+            for geo in GELISTIRME_GEO:
+                for aci in (0, 30, 60):
+                    G.append(_tam_g(asama, "ileri", geo, ys, ana0, dict(tur="ileri", aci=aci, v=v), 1, kosul=ks))
+            for geo in ("acik_40", "acik_50", "acik_60"):
+                for o in (-0.2, 0.0, 0.2):
+                    for aci in (0, 20):
+                        G.append(_tam_g(asama, "dar", geo, ys, ana0, dict(tur="ileri", aci=aci, v=v, yanal=[o - 0.02, o + 0.02],
+                                        yanal_ad=o), 1, kosul=ks))
+            for geo in ("yarik_10", "yarik_15", "yarik_20"):
+                for yr in TAM_DELIK_YREL:
+                    G.append(_tam_g(asama, "delik", geo, ys, ana0, dict(tur="ileri", aci=0, v=v, yanal=[-yr - 0.01, -yr + 0.01],
+                                    yanal_ad=yr), 1, kosul=ks))
+    elif asama == "t_hukum_fiz":
+        # hükümden SONRA, yalnız rapor: hükümde hakemin düşme saydığı iki sahne türünün bütün görevleri (aynı tohum / sahne,
+        # seçim değişmez), koşu hakemden sonra da sürer: gerçekten düşüyor mu
+        for g in gorevler("t_hukum"):
+            if (g["alt"] == "yeni_delik" and g["sahne"] == "yarik_14") or g["alt"] == "yeni_donus_dar":
+                e = dict(g, asama=asama, surdur=True)
+                if g["senaryo"].get("v"):
+                    e["t_max"] = 12.0 / g["senaryo"]["v"] * 0.25 + 6.0
+                G.append(e)
+    elif asama == "t_delik_fiz":
+        # t_delik_gel'in yarık görevleri, hakem "düştü" dese de koşu sürer (surdur): durdu mu, gerçekten devrildi / oturdu mu
+        for g in gorevler("t_delik_gel"):
+            if g["alt"] == "delik" and g["sahne"].startswith("yarik") and g["ys"]["ad"] in ("4OD+2AD", "6OD+2AD"):
+                G.append(dict(g, asama=asama, surdur=True, t_max=12.0 / g["senaryo"]["v"] * 0.25 + 6.0))
+    elif asama == "t_delik_gel":
+        # görev 1b (geliştirme / aday seçimi): tehlikeli boylarda algılama ve durma; üç aday, tohum 1-2
+        # kare delikler 0,35 m'ye dek fiziksel olarak tehlikesiz çıktı (t_delik_tehlike): yalnız en büyüğü + yarıklar
+        sahneler = ["yarik_%d" % c for c in (10, 15, 20)] + ["kare_35"]
+        for ad in TAM_ADAYLAR:
+            ys = dict(ys0, ad=ad)
+            for sh in sahneler:
+                for yr in TAM_DELIK_YREL:
+                    for aci in (0, 15):
+                        for v in (0.25, 0.39):          # 0,10 atıldı (süre; en yavaş hız en kolay durum)
+                            for t in (1, 2):
+                                G.append(_tam_g(asama, "delik", sh, ys, ana0, dict(tur="ileri", aci=aci, v=v,
+                                                yanal=[-yr - 0.01, -yr + 0.01], yanal_ad=yr), t))
+            # robottan dar açıklık (seçimin gerekçesi bozulmasın: 0,40 / 0,50 m, dar_gelistirme yanalları)
+            G += [dict(g, alt="dar") for g in _dar(asama, ys, ana0, ("acik_40", "acik_50"), DAR_GEL_YANAL, (0, 20), (1, 2))]
+            # geniş kenar ileri (geliştirme sahneleri)
+            for geo in GELISTIRME_GEO:
+                for aci in (0, 30, 60):
+                    for v in HIZLAR:
+                        G.append(_tam_g(asama, "ileri", geo, ys, ana0, dict(tur="ileri", aci=aci, v=v), 1))
+    elif asama == "t_yaklasma_gel":
+        # görev 2 (geliştirme): açıklığa GERİ giderek ve kenarın yanında yerinde dönerek yaklaşma; arka iç sensör adayı
+        for ad in ("4OD+2AD", "4OD+4AD"):
+            ys = dict(ys0, ad=ad)
+            for geo in ("acik_40", "acik_50", "acik_60", "acik_80", "acik_100", "merdiven_17x30", "bosluk_3m"):
+                dar = geo.startswith("acik")
+                for aci in (0, 30):
+                    for v in (0.10, 0.25):
+                        for o in (DAR_GEL_YANAL if dar else (None,)):
+                            for t in (1, 2):
+                                sen = dict(tur="geri", aci=aci, v=v)
+                                if o is not None:
+                                    sen.update(yanal=[o - 0.02, o + 0.02], yanal_ad=o)
+                                G.append(_tam_g(asama, "geri", geo, ys, ana0, sen, t))
+                for d in (0.40, 0.50):
+                    for w in (-1.0, 1.0):
+                        for o in ((-0.3, 0.0, 0.3) if dar else (None,)):
+                            for t in (1, 2):
+                                sen = dict(tur="donus", d=d, w=w)
+                                if o is not None:
+                                    sen.update(yanal=[o - 0.02, o + 0.02], yanal_ad=o)
+                                G.append(_tam_g(asama, "donus", geo, ys, ana0, sen, t))
+    elif asama == "t_kusur6":
+        # görev 3: altı sensörün her biri tek tek ölü (donmuş / hep menzil dışı) + dönüşsüz örnek oranı; politika yavasla
+        ys = ys0
+        on = range(4)
+        geo_l = ("merdiven_17x30", "bosluk_3m", "acik_50", "acik_70")
+        for ariza in [None] + [{str(i): k} for i in on for k in ("sabit", "yok")]:
+            for geo in geo_l:
+                for aci in (0, 30):
+                    for v in (0.25, 0.39):
+                        for t in GELISTIRME_TOHUM[:2]:
+                            sen = dict(tur="ileri", aci=aci, v=v)
+                            if geo.startswith("acik"):
+                                sen.update(yanal=[-0.12, 0.12], yanal_ad=0.0)
+                            G.append(_tam_g(asama, "olu_on", geo, ys, ana0, sen, t, ariza=ariza))
+        for ariza in [None] + [{str(i): k} for i in (4, 5) for k in ("sabit", "yok")]:
+            for geo in geo_l[:3]:
+                for aci in (0, 30):
+                    for t in GELISTIRME_TOHUM[:2]:
+                        sen = dict(tur="geri", aci=aci, v=0.25)
+                        if geo.startswith("acik"):
+                            sen.update(yanal=[-0.12, 0.12], yanal_ad=0.0)
+                        G.append(_tam_g(asama, "olu_arka", geo, ys, ana0, sen, t, ariza=ariza))
+        for yok in (0.0, 0.05, 0.20, 0.50):
+            for geo in geo_l[:3] + ("duz",):
+                for aci in (0, 30):
+                    for v in (0.25, 0.39):
+                        for t in GELISTIRME_TOHUM[:2]:
+                            sen = dict(tur="ileri", aci=aci, v=v) if geo != "duz" else dict(tur="ileri", aci=aci, v=v, yol_m=4.0)
+                            G.append(_tam_g(asama, "parlak", geo, ys, ana0, sen, t, yok=yok))
+    elif asama == "t_rampa_fren":
+        # görev 4a: 10° inişte (4 m rampa) ve düzde zorla tetik; fren ivmesi taraması; tutma freni yok / konum / mekanik
+        for sahne in ("rampa_10_uzun", "duz"):
+            for a in (0.5, 0.75, 1.0, 1.25, 1.5, 2.0):
+                for v in (0.10, 0.20, 0.25, 0.39):
+                    for tut in ((None, ("konum", 40.0, 100.0), ("mekanik", 2.0)) if sahne != "duz" else (None,)):
+                        for t in (1,):
+                            G.append(dict(asama=asama, alt="fren", sahne=sahne, ys=_ys("2K", 0.06, 15), tohum=t, zorla=True,
+                                          ayar=_ayar(esik_m=50.0, fren="rampa", fren_ivme=a), senaryo=dict(tur="ileri", aci=0, v=v),
+                                          kosul=dict(tutma=tut) if tut else {}, t_max=(1.45 / v) + 7.0, durdu_bekle_s=6.0))
+    elif asama == "t_rampa_ucurum":
+        # görev 4b: 10° iniş rampasının ucunda 3 m düşüş; seçilen sensörlerle gerçek tetik. Fren ivmesi x tutma x hız.
+        for a in (1.0, 1.5, 2.0):
+            for tut in (None, ("konum", 40.0, 100.0)):
+                for v in (0.10, 0.15, 0.20, 0.25, 0.39):
+                    for aci in (0, 20):
+                        for t in (1,):
+                            G.append(_tam_g(asama, "rampa_ucurum", "rampa_10_ucurum", ys0, dict(ana0, fren_ivme=a),
+                                            dict(tur="ileri", aci=aci, v=v), t, baslangic=(SH.E - 0.8, SH.Y0, math.radians(aci)),
+                                            kosul=dict(tutma=tut) if tut else {}, t_max=3.6 / v + 8.0, durdu_bekle_s=3.0))
+    elif asama == "t_duyar":
+        # görev 5 + 6: zamanlama kipleri ve duyarlılık; geliştirme sahneleri, tohum 1-2, hız 0,25 / 0,30 / 0,39
+        for kad, ks in DUYAR.items():
+            ana = dict(ana0, fren_ivme=ks.get("fren_ivme", ana0["fren_ivme"]))
+            ks = {k: v for k, v in ks.items() if k != "fren_ivme"}
+            for v in (0.25, 0.30, 0.39):
+                for t in (1,):                  # süre: tohum 1 (koşular tohum dışında deterministik; gürültü / faz tohumla)
+                    for geo in GELISTIRME_GEO:
+                        for aci in (0, 30, 60):
+                            G.append(_tam_g(asama, "ileri", geo, ys0, ana, dict(tur="ileri", aci=aci, v=v), t, kosul=ks, kad=kad))
+                    for geo in ("acik_40", "acik_50", "acik_60"):
+                        for o in (-0.2, 0.0, 0.2):
+                            for aci in (0, 20):
+                                G.append(_tam_g(asama, "dar", geo, ys0, ana, dict(tur="ileri", aci=aci, v=v, yanal=[o - 0.02, o + 0.02],
+                                                yanal_ad=o), t, kosul=ks, kad=kad))
+                    if v <= 0.25:
+                        G.append(_tam_g(asama, "geri", "merdiven_17x30", ys0, ana, dict(tur="geri", aci=0, v=v), t, kosul=ks, kad=kad))
+                        for d in (0.30, 0.40):
+                            for w in (-1.0, 1.0):
+                                G.append(_tam_g(asama, "donus", "merdiven_17x30", ys0, ana, dict(tur="donus", d=d, w=w), t,
+                                                kosul=ks, kad=kad))
+            for sh in ("duz", "rampa_10_inis", "esik_20mm", "koyu_serit"):
+                for v in (0.25, 0.39):
+                    for aci in (0, 30):
+                        G.append(dict(asama=asama, alt="yanlis_alarm", sahne=sh, ys=ys0, ayar=ana, etkin=True, tohum=1, kosul=ks,
+                                      kad=kad, senaryo=dict(tur="ileri", aci=aci, v=v, yol_m=2.2)))
+    elif asama in ("t_hukum", "t_hukum_karsi"):
+        G += _hukum(asama, s, ys0, ana0)
+    else:
+        raise SystemExit("bilinmeyen aşama: %s" % asama)
+    return G
+
+
+def _hukum(asama, s, ys0, ana0):
+    """Görev 7: hüküm koşuları. Tohum aralığı 201-210 ayrıldı, KULLANILAN 201-205 (dar açıklık / yarık / geri-dönüş /
+    kötü birleşim 201-203); seçim SECIM_3 (koşulduğu anki secim.json, + `hukum_kosul`: sensör zamanlaması, tutma); sınama
+    geometrileri + yeni geometriler (iskele, burunlu merdiven, tek basamak, yeni boy dar delikler, 8° rampa ucu).
+    Tamamlama 2 hükmü 206-210 ile `_hukum2`'de."""
+    from ucurum import sahne as SH
+    ks = dict(s.get("hukum_kosul") or {})
+    ana = dict(ana0)
+    T = tuple(range(201, 211))
+    G = []
+    if asama == "t_hukum_karsi":                     # yalnız rapor: zamanlama iyimser ilk modelle (karşılaştırma)
+        ks = {k: v for k, v in ks.items() if k not in ("periyot_ms", "butce_ms", "menzil_m")}
+    for g in _sinama_temel(asama, ys0, ana, T[:5]):     # süre: geniş kenar ızgarası tohum 201-205
+        g["kosul"] = ks
+        G.append(g)
+    for g in _dar(asama, ys0, ana, DAR_SIN_GEO, DAR_SIN_YANAL, (0, 10, 30), T[:3]):
+        g["kosul"] = ks
+        G.append(g)
+    for g in _yanlis_alarm(asama, ys0, ana, SH.DENETIM_SINAMA_YENI, T[:5], alt="yanlis_alarm_yeni"):
+        g["kosul"] = ks
+        G.append(g)
+    # yeni geometriler
+    for geo in ("merdiven_burun_18x28", "basamak_12"):
+        for aci in (0, 10, 22, 37, 52, 68, 80):
+            for v in HIZLAR:
+                for t in T[:5]:
+                    G.append(_tam_g(asama, "yeni_ileri", geo, ys0, ana, dict(tur="ileri", aci=aci, v=v), t, kosul=ks))
+        for aci in (0, 25):
+            for v in (0.10, 0.25):
+                for t in T[:5]:
+                    G.append(_tam_g(asama, "yeni_geri", geo, ys0, ana, dict(tur="geri", aci=aci, v=v), t, kosul=ks))
+    for aci in (0, 4, 8):
+        for o in (-0.12, 0.0, 0.12):
+            for v in HIZLAR:
+                for t in T[:5]:
+                    G.append(_tam_g(asama, "yeni_iskele", "iskele_90", ys0, ana, dict(tur="ileri", aci=aci, v=v,
+                                    yanal=[o - 0.02, o + 0.02], yanal_ad=o), t, kosul=ks))
+    for c in SH.KARE_SIN:
+        for tur in ("yarik",):                       # kare delik 0,35 m'ye dek fiziksel tehlikesiz (t_delik_tehlike)
+            for yr in (0.05, 0.12, 0.17, 0.205, 0.23, 0.27):
+                for aci in (0, 10):
+                    for v in HIZLAR:
+                        for t in T[:3]:
+                            G.append(_tam_g(asama, "yeni_delik", "%s_%d" % (tur, c), ys0, ana, dict(tur="ileri", aci=aci, v=v,
+                                            yanal=[-yr - 0.01, -yr + 0.01], yanal_ad=yr), t, kosul=ks))
+    for geo in ("acik_45", "acik_55", "acik_75"):              # görev 2'nin hüküm kısmı: geri ve yerinde dönüş, sınama açıklıkları
+        for o in (-0.15, 0.05, 0.15):
+            for t in T[:3]:
+                for aci in (0, 10, 30):
+                    G.append(_tam_g(asama, "yeni_geri_dar", geo, ys0, ana, dict(tur="geri", aci=aci, v=0.25, yanal=[o - 0.02, o + 0.02],
+                                    yanal_ad=o), t, kosul=ks))
+                for d in (0.40, 0.50):
+                    for w in (-1.0, 1.0):
+                        G.append(_tam_g(asama, "yeni_donus_dar", geo, ys0, ana, dict(tur="donus", d=d, w=w, yanal=[o - 0.02, o + 0.02],
+                                        yanal_ad=o), t, kosul=ks))
+    # kötü durumların birleşimi (önerilen hız 0,25 ve bir üstü 0,30): +20 ms gecikme, en kötü montaj, µ 0,5, +10 kg yük
+    kb = dict(ks, gecikme_ms=20, montaj="kotu", degis={"teker_zemin_surtunme": 0.5}, ek_kutle=(10.0, (0.0, 0.0, 0.15)))
+    for v in (0.25, 0.30):
+        for geo in ("merdiven_15x28", "kuyu", "kose"):
+            for aci in (0, 22, 37):
+                for t in T[:3]:
+                    sen = dict(tur="ileri", aci=aci, v=v)
+                    if geo == "kose":
+                        sen["yanal"] = [-0.9, -0.3]
+                    G.append(_tam_g(asama, "kotu_birlesik", geo, ys0, ana, sen, t, kosul=kb))
+        for geo in ("acik_45", "acik_60_sig", "dar_merdiven_60"):
+            for o in (-0.15, 0.05, 0.25):
+                for aci in (0, 10):
+                    for t in T[:2]:
+                        G.append(_tam_g(asama, "kotu_birlesik", geo, ys0, ana, dict(tur="ileri", aci=aci, v=v, yanal=[o - 0.02, o + 0.02],
+                                        yanal_ad=o), t, kosul=kb))
+    for v in (0.10, 0.20, 0.25, 0.39):                       # 8° iniş rampasının ucunda düşüş (yeni)
+        for aci in (0, 15):
+            for t in T[:5]:
+                G.append(_tam_g(asama, "yeni_rampa_ucurum", "rampa_8_ucurum", ys0, ana, dict(tur="ileri", aci=aci, v=v), t,
+                                baslangic=(SH.E - 0.8, SH.Y0, math.radians(aci)), kosul=ks, t_max=3.8 / v + 8.0, durdu_bekle_s=3.0))
+    return G
 
 
 def gorevler(asama):
@@ -269,7 +839,7 @@ def gorevler(asama):
     elif asama == "sinama2":
         # dar açıklık düzeltmesinden sonraki seçimle (secim.json) sınama: ilk sınamanın bütün ızgarası + dar açıklık
         # (yeni genişlikler, sığ açıklık, dar merdiven, yeni yanal kaymalar) + yeni yanlış alarm sahneleri. Tohum 101-110.
-        s = secim()
+        s = SECIM_2
         ys, ana = s["yerlesim"], _ana(s)
         G += _sinama_temel(asama, ys, ana)
         G += _dar(asama, ys, ana, DAR_SIN_GEO, DAR_SIN_YANAL, (0, 10, 30), SINAMA_TOHUM[:5])
@@ -277,9 +847,13 @@ def gorevler(asama):
         G += _yanlis_alarm(asama, ys, ana, SH.DENETIM_SINAMA_YENI, SINAMA_TOHUM[:5], alt="yanlis_alarm_yeni")
     elif asama == "sinama2_karsi":
         # yalnız rapor: seçilmeyen iki aday sınama dar açıklıklarında (seçime girmez; seçim dar_gelistirme'den yapıldı)
-        s = secim()
+        s = SECIM_2
         for ad in ("2KD+2AD", "3KOD+2AD"):
             G += _dar(asama, dict(s["yerlesim"], ad=ad), _ana(s), DAR_SIN_GEO, DAR_SIN_YANAL, (0, 10, 30), SINAMA_TOHUM[:5])
+    elif asama.startswith("t_"):
+        G += _tamamlama(asama)
+    elif asama.startswith("t2_"):
+        G += _tamamlama2(asama)
     elif asama in ("kusur", "sinama"):
         s = SECIM_1                     # donmuş ilk seçim (yeniden üretim)
         ys = s["yerlesim"]
@@ -330,11 +904,23 @@ def _durma_olcu(r, sahne):
     tt = t0 + r["tetik_t"]
     from ucurum import sahne as SH
     egim = math.tan(math.radians(10.0)) if sahne.startswith("rampa") else 0.0
+    L_r = SH.al(sahne)["geometri"].get("L", 1.5) if egim else 1.5
 
     def yuzey(x):
         if not egim:
             return 0.0
-        return -min(max(x - SH.E, 0.0), 1.5) * egim
+        return -min(max(x - SH.E, 0.0), L_r) * egim
+    # tamamlama: durduktan sonraki kayma (koşu uzun tutulduysa): tetikten 2 s sonrası ile son arası yol, son 1 s hız
+    if S and S[-1][0] - tt >= 3.0:
+        def _p(t):
+            s = min(S, key=lambda q: abs(q[0] - t))
+            return s[1], s[2]
+        a2, b2 = _p(tt + 2.0), _p(S[-1][0])
+        son1 = [abs(s[4]) for s in S if s[0] >= S[-1][0] - 1.0]
+        r.update(kayma_2s_son_mm=round(math.hypot(b2[0] - a2[0], b2[1] - a2[1]) * 1000, 2),
+                 v_son1s_mm_s=round(sum(son1) / len(son1) * 1000, 3), sure_tetik_son_s=round(S[-1][0] - tt, 2),
+                 toplam_yol_tetik_m=round(math.hypot(S[-1][1] - [s for s in S if s[0] < tt][-1][1],
+                                                     S[-1][2] - [s for s in S if s[0] < tt][-1][2]), 4))
 
     on = [s for s in S if tt - 0.2 <= s[0] < tt]
     hep = [s for s in S if s[0] >= tt]
@@ -373,6 +959,15 @@ def gorev_kos(g):
     from ucurum.denetci import DenetciAyar
     ys = g["ys"]
     yer = sensor.yerlesim(ys["ad"], ys["z"], ys["e"], ys.get("koni", 27.0))
+    ks = g.get("kosul") or {}              # tamamlama turu koşulları (yoksa davranış aynı)
+    if ks.get("montaj"):
+        import numpy as np
+        yer = sensor.montaj_bozu(yer, np.random.default_rng(50_000 + g["tohum"]), kotu=(ks["montaj"] == "kotu"))
+    for a in yer:
+        if ks.get("menzil_m"):
+            a.menzil_maks_m = float(ks["menzil_m"])
+        if ks.get("sigma_taban_m"):
+            a.sigma_taban_m = float(ks["sigma_taban_m"])
     if g.get("yok"):
         for a in yer:
             a.yok_orani = g["yok"]
@@ -395,16 +990,22 @@ def gorev_kos(g):
             baslangic = (SH.E - 0.6, 15.0, 0.0)
             zorla = lambda c: c.dunya.poz()[0] >= SH.E + 0.85
         t_max = 1.6 / max(sen["v"], 0.05) + 4.0
+    elif g.get("baslangic"):
+        baslangic = tuple(g["baslangic"])
     elif g["senaryo"].get("yol_m") is not None or g["sahne"] in _denetim_sahneleri():
         from ucurum import sahne as SH
         # denetim sahneleri: özellik x = E; robotun ön tekeri özelliğin 0,6 m gerisinden başlar
         a = math.radians(sen.get("aci", 0))
         baslangic = (SH.E - 0.6 - 0.185 * math.cos(a) - 0.05, 15.0, a)
+    if g.get("t_max"):
+        t_max = float(g["t_max"])
     golge = [DenetciAyar(**dict(_ayar(), **x)) for x in g.get("golge", [])]
     try:
         r = kosu.kos(g["sahne"], yer, DenetciAyar(**g["ayar"]), sen, tohum=g["tohum"], golgeler=golge,
                      etkin=g.get("etkin", True), kayit=kayit, yuk_olc=kayit, zorla_tetik=zorla, baslangic=baslangic,
-                     t_max=t_max, ariza=ariza)
+                     t_max=t_max, ariza=ariza, degis=ks.get("degis"), ek_kutle=ks.get("ek_kutle"),
+                     periyot_ms=ks.get("periyot_ms"), butce_ms=ks.get("butce_ms"), gecikme_ms=ks.get("gecikme_ms", 0),
+                     tutma=ks.get("tutma"), dusunce_dur=not g.get("surdur"), durdu_bekle_s=g.get("durdu_bekle_s", 0.3))
         if g.get("zorla"):
             r = _durma_olcu(r, g["sahne"])
         r["hata"] = None
@@ -424,6 +1025,8 @@ def _duz_satir(r):
              fren_ivme=g.get("ayar", {}).get("fren_ivme"), esik_m=g.get("ayar", {}).get("esik_m"), onay=g.get("ayar", {}).get("onay"),
              politika=g.get("ayar", {}).get("politika"), ariza=json.dumps(g.get("ariza")) if g.get("ariza") else "",
              yok_orani_ayar=g.get("yok", 0.0), etkin=g.get("etkin", True), yanal=g.get("senaryo", {}).get("yanal_ad"))
+    if g.get("kosul") is not None or g.get("kad") is not None:       # tamamlama turu aşamaları
+        s.update(kad=g.get("kad"), kosul=json.dumps(g.get("kosul") or {}, ensure_ascii=False))
     for k, v in r.items():
         if k in ("gorev", "golge", "kimlik", "yerlesim") or k.startswith("_"):
             continue

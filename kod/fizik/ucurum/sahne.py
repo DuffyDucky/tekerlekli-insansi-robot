@@ -101,6 +101,47 @@ def acik(w, D=3.0, L=ACIK_L, R=None, T=None, ad=None):
                 yaklasma=[1.0, 0.0, E], geometri=geo)
 
 
+def iskele(w=0.90, D=3.0, ad=None):
+    """Tamamlama turu, yeni geometri (hüküm): w genişliğinde iskele / köprü şeridi; zemin yalnız x <= E ve
+    |y - Y0| <= w/2, iki yanında ve ucunda D m düşüş. Hakem kenarı: uç + iki yan."""
+    y0, y1 = Y0 - w / 2, Y0 + w / 2
+    K = [kutu("zemin_duz", X_MIN, E, y0, y1, -0.3, 0.0),
+         kutu("zemin_alt", X_MIN - 2, X_MAX, Y_MIN, Y_MAX, -D - 0.1, -D, renk=RENK_BASAMAK), _guvenlik()]
+    return dict(ad=ad or "iskele_%d" % round(w * 100), tur="ucurum", kutular=K,
+                kenarlar=[[1.0, 0.0, E], [0.0, 1.0, y1], [0.0, -1.0, -y0]], yaklasma=[1.0, 0.0, E],
+                geometri=dict(tur="iskele", w=w, D=D))
+
+
+def merdiven_burun(R=0.18, T=0.28, n=6, burun=0.03, ad=None):
+    """Tamamlama turu, yeni geometri (hüküm): basamak burunlu (3 cm çıkıntı, 2 cm kalınlık) aşağı inen merdiven.
+    Hakem kenarı burnun ucu (x = E + burun)."""
+    s = merdiven(R, T, n)
+    K = [k for k in s["kutular"] if k["ad"] != "zemin_guvenlik"]
+    K.append(kutu("zemin_burun_ust", E, E + burun, Y_MIN, Y_MAX, -0.02, 0.0))
+    for i in range(n - 1):
+        x = E + (i + 1) * T
+        K.append(kutu("zemin_burun_%d" % i, x, x + burun, Y_MIN, Y_MAX, -(i + 1) * R - 0.02, -(i + 1) * R, renk=RENK_BASAMAK))
+    K.append(_guvenlik())
+    return dict(ad=ad or "merdiven_burun_%dx%d" % (round(R * 100), round(T * 100)), tur="ucurum", kutular=K,
+                kenarlar=[[1.0, 0.0, E + burun]], geometri=dict(tur="merdiven_burun", R=R, T=T, n=n, burun=burun))
+
+
+def rampa_ucurum(egim_derece=10.0, L=2.0, D=3.0, ad=None):
+    """Tamamlama turu (ölçüm sahnesi, inişte durma): x = E'den L m aşağı inen rampa, rampanın ucunda D m dik düşüş
+    (yükleme rampası ucu). Hakem kenarı rampa ucu x = E + L; z düşüşü ölçütü bu sahnede kapalı (robot rampadan iner)."""
+    th = math.radians(egim_derece)
+    H = L * math.tan(th)
+    Ls = L / math.cos(th)
+    k = 0.05
+    cx, cz = E + L / 2 - math.sin(th) * k / 2, -H / 2 - math.cos(th) * k / 2
+    K = [kutu("zemin_duz", 0.0, E, 0.0, 30.0, -0.3, 0.0),
+         dict(ad="zemin_rampa", pos=[cx, Y0, cz], size=[Ls / 2, 10.0, k / 2],
+              quat=[math.cos(th / 2), 0.0, math.sin(th / 2), 0.0], renk=RENK_BASAMAK, koyu=False),
+         kutu("zemin_alt", E + L, 30.0, 0.0, 30.0, -H - D - 0.1, -H - D), _guvenlik()]
+    return dict(ad=ad or "rampa_%d_ucurum" % round(egim_derece), tur="ucurum", kutular=K, kenarlar=[[1.0, 0.0, E + L]],
+                z_dusus_yok=True, geometri=dict(tur="rampa_ucurum", egim=egim_derece, L=L, H=H, D=D))
+
+
 def duz(ad="duz"):
     K = [kutu("zemin_duz", 0.0, 30.0, 0.0, 30.0, -0.3, 0.0), _guvenlik()]
     return dict(ad=ad, tur="denetim", kutular=K, kenarlar=[], geometri=dict(tur="duz"))
@@ -205,8 +246,31 @@ SAHNELER = {
     "koyu_genis": lambda: koyu_serit(0.30, 0.9, 2),
     "rampa_8_inis": lambda: rampa_inis(8.0, 1.8),
     "hali_15mm": lambda: hali(0.015),
+    # tamamlama turu: ölçüm sahneleri (inişte fren / tutma) ve yeni hüküm geometrileri
+    "rampa_10_uzun": lambda: rampa_inis(10.0, 4.0),
+    "rampa_10_ucurum": lambda: rampa_ucurum(10.0, 2.0),
+    "rampa_8_ucurum": lambda: rampa_ucurum(8.0, 2.5),          # yalnız hüküm (t_hukum)
+    "iskele_90": lambda: iskele(0.90),
+    "merdiven_burun_18x28": lambda: merdiven_burun(0.18, 0.28),
+    "basamak_12": lambda: bosluk(0.12, ad="basamak_12"),
 }
-DENETIM_GELISTIRME = ("duz", "esik_20mm", "derz", "koyu_serit", "rampa_10_inis", "hali_10mm", "hali_5mm")
+# tamamlama turu, görev 1: 0,40 m'den dar delikler. kare_<cm>: w x w kare delik (3 m derin); yarik_<cm>: w genişliğinde
+# (y), 1,0 m boyunda (x, gidiş yönünde) yarık. Delik orta hatta (y = Y0); robotun deliğe göre yeri senaryonun yanal kaymasıdır.
+KARE_GEL = (4, 6, 8, 10, 12, 15, 20, 25, 30, 35)       # geliştirme / tehlike taraması
+KARE_SIN = (14, 17, 22, 28)                            # hüküm (geliştirmede hiç koşulmadı)
+for _c in sorted(set(KARE_GEL + KARE_SIN)):
+    SAHNELER["kare_%d" % _c] = (lambda w: (lambda: acik(w, L=w, ad="kare_%d" % round(w * 100))))(_c / 100.0)
+    SAHNELER["yarik_%d" % _c] = (lambda w: (lambda: acik(w, L=1.0, ad="yarik_%d" % round(w * 100))))(_c / 100.0)
+# yarık boyu taraması (tehlike: aynı yandaki iki teker aynı anda boşlukta mı; dingil aralığı 0,37 m)
+for _c in (8, 10, 15, 20):
+    for _l in (20, 30, 40, 50, 70):
+        SAHNELER["yarik_%dx%d" % (_c, _l)] = (lambda w, L: (lambda: acik(w, L=L, ad="yarik_%dx%d" % (round(w * 100), round(L * 100)))))(
+            _c / 100.0, _l / 100.0)
+# tamamlama 2: hükümde 8-12 cm yarık (bağımsız inceleme: ilk hükümde yoktu). Bu genişlikler hiçbir ayar koşusunda yok.
+KARE_SIN2 = (9, 11, 13)
+for _c in KARE_SIN2:
+    SAHNELER["yarik_%d" % _c] = (lambda w: (lambda: acik(w, L=1.0, ad="yarik_%d" % round(w * 100))))(_c / 100.0)
+DENETIM_GELISTIRME =("duz", "esik_20mm", "derz", "koyu_serit", "rampa_10_inis", "hali_10mm", "hali_5mm")
 DENETIM_SINAMA_YENI = ("esik_25mm", "derz_genis", "koyu_genis", "rampa_8_inis", "hali_15mm")
 
 

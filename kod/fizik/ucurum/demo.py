@@ -74,9 +74,15 @@ class DemoEsp32(_TABAN):
         self.demo_ayar = DenetciAyar(esik_m=s["esik_m"], onay=s["onay"], politika=s["politika"], fren=s["fren"],
                                      fren_ivme=s["fren_ivme"])
         yer = SN.yerlesim(ys["ad"], ys["z"], ys["e"], ys.get("koni", 27.0))
+        hk = s.get("hukum_kosul") or {}                # tamamlama turu: sensör zamanlaması, menzil, tutma freni
+        if hk.get("menzil_m"):
+            for a in yer:
+                a.menzil_maks_m = float(hk["menzil_m"])
         self.demo_yer = yer
-        sd = SN.SensorDizisi(self.dunya, yer, np.random.default_rng(0))
+        sd = SN.SensorDizisi(self.dunya, yer, np.random.default_rng(0), periyot_ms=hk.get("periyot_ms"),
+                             butce_ms=hk.get("butce_ms"))
         self.ucurum_bagla(sd, UcurumDenetci(len(yer), self.demo_ayar))
+        self.u_tutma = tuple(hk["tutma"]) if hk.get("tutma") else None
         self.demo_kal_ms = 0
         SON["c"] = self
 

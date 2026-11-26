@@ -42,6 +42,46 @@ def _esp32_sinifi():
             self.u_tetik_ms = None
             self.u_kayit_ac = True
             self._u_bekleyen = []
+            self.u_gecikme_ms = getattr(self, "u_gecikme_ms", 0)   # tamamlama: tetik -> fren arası ek denetim gecikmesi
+            self.u_tutma = getattr(self, "u_tutma", None)          # tamamlama: None | ("konum", kp, ki) | ("mekanik", N·m)
+            self._u_tut = None                                     # tutma durumu (devreye girince sözlük)
+
+        def _fren_aktif(self):
+            d = getattr(self, "u_den", None)
+            if d is None or not d.tetik:
+                return False
+            if not self.u_gecikme_ms:
+                return True
+            return self.u_tetik_ms is not None and self.dunya_ms - self.u_tetik_ms >= self.u_gecikme_ms
+
+        def _tutma_adim(self):
+            """Tutma freni (tamamlama turu; VARSAYIM). Fren rampası bitip teker hedefi 0 olunca devreye girer.
+            "konum": firmware enkoder konum tutması (arka enkoderler; u = kp e + ki ∫e, |u| <= 1, her iki yanın motorları);
+            "mekanik": teker eklemine sabit fren torku (yay baskılı elektromanyetik fren varsayımı), PWM 0.
+            Döner: None (tutma yok) ya da [u_sol, u_sag]."""
+            t = self.u_tutma
+            if not t or not self._fren_aktif() or any(self.rampa_hiz) or any(self.hedef):
+                return None
+            if self._u_tut is None:
+                self._u_tut = dict(tik0=list(self.tik), integral=[0.0, 0.0], ms=None, u=[0.0, 0.0], t_ms=self.dunya_ms)
+                if t[0] == "mekanik":
+                    # MuJoCo eklem sürtünmesi yumuşak kısıttır, yük altında sızar (kod/SIMULASYON.md); fren kısıtı sertleştirilir
+                    for dof in self.dunya.teker_dof:
+                        self.dunya.m.dof_frictionloss[dof] = float(t[1])
+                        self.dunya.m.dof_solref[dof] = (0.002, 1.0)
+                        self.dunya.m.dof_solimp[dof] = (0.99, 0.999, 0.001, 0.5, 2.0)
+            s = self._u_tut
+            if t[0] == "mekanik":
+                return [0.0, 0.0]
+            if s["ms"] != self.dunya_ms:            # 10 ms'de bir güncelle (hakem çağrıları integrali bozmasın)
+                s["ms"] = self.dunya_ms
+                kp, ki = float(t[1]), float(t[2])
+                m_tik = math.pi * self.teker_capi / self.tik_tur
+                for k in range(2):
+                    e = (s["tik0"][k] - self.tik[k]) * m_tik
+                    s["integral"][k] = max(-0.6 / max(ki, 1e-9), min(0.6 / max(ki, 1e-9), s["integral"][k] + e * 0.01))
+                    s["u"][k] = max(-1.0, min(1.0, kp * e + ki * s["integral"][k]))
+            return list(s["u"])
 
         def _dilim(self):
             s = getattr(self, "u_sensor", None)
@@ -77,15 +117,19 @@ def _esp32_sinifi():
 
         def _surucu(self):
             d = getattr(self, "u_den", None)
-            if d is not None and d.tetik and d.ayar.fren == "kes":
+            if d is not None and self._fren_aktif() and d.ayar.fren == "kes":
                 return False, [0.0, 0.0]            # EN LOW: sürücü boşta (motor kesme)
+            if d is not None and getattr(self, "u_tutma", None):
+                u = self._tutma_adim()
+                if u is not None and self.en and self._bara_gerilimli() and self.calisiyor:
+                    return True, u
             return super()._surucu()
 
         def _motor_guncelle(self):
             d = getattr(self, "u_den", None)
             if d is None:
                 return super()._motor_guncelle()
-            if d.tetik:
+            if self._fren_aktif():
                 self.v_hedef = self.w_hedef = 0.0
                 self.hedef = [0.0, 0.0]
                 if d.ayar.fren in ("fren", "kes"):
@@ -120,10 +164,14 @@ def esp32_sinifi():
 class Hakem:
     """Yer gerçeği. Her 10 ms: teker temas noktalarının kenara payı, eğim, z, aks yükü (isteğe bağlı)."""
 
-    def __init__(self, c, kenarlar, yuk_olc=False):
+    def __init__(self, c, kenarlar, yuk_olc=False, z_kontrol=True):
         import mujoco
         self.c, self.w = c, c.dunya
         self.kenarlar = kenarlar
+        self.z_kontrol = z_kontrol           # False: rampadan inilen sahnede gövde z düşüşü düşme sayılmaz
+        self.teker_z0 = None                 # tamamlama: teker merkezlerinin başlangıç z'si (deliğe inme ölçüsü)
+        self.teker_dz_min = 0.0
+        self.govde_temas = False
         m = self.w.m
         self.teker_body = [mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_BODY, t) for t in ("teker_on_sol", "teker_arka_sol",
                                                                                          "teker_on_sag", "teker_arka_sag")]
@@ -161,6 +209,12 @@ class Hakem:
         self.pitch_max = max(self.pitch_max, math.degrees(pitch))
         dz = z - self.z0
         self.dz_min = min(self.dz_min, dz)
+        tz = [float(self.w.d.xpos[b][2]) for b in self.teker_body]
+        if self.teker_z0 is None:
+            self.teker_z0 = tz
+        self.teker_dz_min = min(self.teker_dz_min, min(a - b for a, b in zip(tz, self.teker_z0)))
+        if self.kenarlar and not self.govde_temas and self.w.govde_zemine_degiyor():
+            self.govde_temas = True
         t = self.w.zaman_s
         if not self.dustu:
             neden = None
@@ -168,7 +222,7 @@ class Hakem:
                 neden = "teker_kenari_gecti"
             elif self.kenarlar and eg > 15.0:
                 neden = "egim"
-            elif self.kenarlar and dz < -0.03:
+            elif self.kenarlar and self.z_kontrol and dz < -0.03:
                 neden = "z_dusus"
             elif eg > 25.0:                     # kenarsız (denetim) sahne: rampada z ve eğim değişir; yalnız devrilme
                 neden = "devrilme"
@@ -229,7 +283,25 @@ def baslangic_pozu(kenar, senaryo, rng):
 
 
 # ------------------------------------------------------------------ koşu
-def dunya_kur(sahne_ad, yerlesim, tohum, baslangic=(S.E - 1.5, S.Y0, 0.0), varyant=VARYANT):
+def yuk_ekle(dunya, kg, p_govde):
+    """Tamamlama turu, yük değişimi (VARSAYIM): taban gövdesine nokta kütle (kg, taban çerçevesinde konum m). Kütle ve AM
+    güncellenir; atalete yalnız paralel eksen terimi (köşegene kg·r²) eklenir. Yuvarlanma direnci (statik yükten) değişmez."""
+    import numpy as np
+    m, b = dunya.m, dunya.taban
+    M = float(m.body_mass[b])
+    ip = np.array(m.body_ipos[b])
+    p = np.array(p_govde, dtype=float)
+    yeni = (M * ip + kg * p) / (M + kg)
+    ek = kg * float(np.sum((p - yeni) ** 2)) + M * float(np.sum((ip - yeni) ** 2))   # köşegene (kaba, fazla)
+    m.body_mass[b] = M + kg
+    m.body_ipos[b] = yeni
+    m.body_inertia[b] = np.array(m.body_inertia[b]) + ek
+    import mujoco
+    mujoco.mj_forward(m, dunya.d)
+
+
+def dunya_kur(sahne_ad, yerlesim, tohum, baslangic=(S.E - 1.5, S.Y0, 0.0), varyant=VARYANT, degis=None, ek_kutle=None,
+              periyot_ms=None, butce_ms=None):
     import numpy as np
     import varyantlar as VR
     from sahte_esp32.harita import Harita
@@ -240,22 +312,28 @@ def dunya_kur(sahne_ad, yerlesim, tohum, baslangic=(S.E - 1.5, S.Y0, 0.0), varya
     sz = S.sahne_sozlugu(sahne_ad, baslangic)
     harita = Harita.dosyadan(S.HARITA)
     C = esp32_sinifi()
-    c = C(harita, konum=baslangic, sahne=sz, varyant=VR.al(varyant), sonar_acik=False)
+    c = C(harita, konum=baslangic, sahne=sz, varyant=VR.al(varyant), sonar_acik=False, degis=degis)
+    if ek_kutle:
+        yuk_ekle(c.dunya, float(ek_kutle[0]), ek_kutle[1])
     z = sz["ucurum"].get("taban_z", 0.0)
     if z:
         c.dunya.konum_ayarla(baslangic[0], baslangic[1], baslangic[2], z=z + 0.002)
         c._enkoder_bas()
     rng = np.random.default_rng(tohum)
-    sd = SensorDizisi(c.dunya, yerlesim, rng)
+    sd = SensorDizisi(c.dunya, yerlesim, rng, periyot_ms=periyot_ms, butce_ms=butce_ms)
     e = Esp32Istemci(BellekTasima(c))
     e.baglan()
     return sz, c, e, sd, rng
 
 
 def kos(sahne_ad, yerlesim, ayar, senaryo, tohum=0, golgeler=(), etkin=True, kayit=False, yuk_olc=False,
-        zorla_tetik=None, baslangic=None, t_max=None, ariza=None):
+        zorla_tetik=None, baslangic=None, t_max=None, ariza=None, degis=None, ek_kutle=None, periyot_ms=None,
+        butce_ms=None, gecikme_ms=0, tutma=None, dusunce_dur=True, durdu_bekle_s=0.3):
     """Tek koşu. ayar: DenetciAyar (etkin denetçi; etkin False ise yalnız gölge). golgeler: [DenetciAyar].
-    ariza: {sensör sırası: "sabit" | "yok"} ya da None. Döner: sonuç sözlüğü (+ kayıt istenmişse '_hakem', '_okuma')."""
+    ariza: {sensör sırası: "sabit" | "yok"} ya da None. Döner: sonuç sözlüğü (+ kayıt istenmişse '_hakem', '_okuma').
+    Tamamlama turu seçenekleri (varsayılanlarla davranış aynı): degis (fizik parametreleri, ör. µ), ek_kutle (kg, (x, y, z)),
+    periyot_ms / butce_ms (sensör zamanlaması), gecikme_ms (tetik -> fren), tutma (bkz. UcurumEsp32._tutma_adim),
+    dusunce_dur False (hakem düştü dese de koşu sürer: delik tehlike taraması), durdu_bekle_s (durduktan sonra bekleme)."""
     import numpy as np
     duvar0 = time.perf_counter()
     rng0 = np.random.default_rng(10_000 + tohum)
@@ -263,13 +341,16 @@ def kos(sahne_ad, yerlesim, ayar, senaryo, tohum=0, golgeler=(), etkin=True, kay
     kenar = u.get("yaklasma") or (u["kenarlar"] or [[1.0, 0.0, S.E]])[0]   # dar açıklık: yakın kenar x = E
     if baslangic is None:
         baslangic = baslangic_pozu(kenar, senaryo, rng0)
-    sz, c, e, sd, rng = dunya_kur(sahne_ad, yerlesim, tohum, baslangic)
+    sz, c, e, sd, rng = dunya_kur(sahne_ad, yerlesim, tohum, baslangic, degis=degis, ek_kutle=ek_kutle,
+                                  periyot_ms=periyot_ms, butce_ms=butce_ms)
     for k, v in (ariza or {}).items():
         sd.ayarlar[k].ariza = v
     den = UcurumDenetci(len(yerlesim), ayar) if etkin else None
     gol = [UcurumDenetci(len(yerlesim), g) for g in golgeler]
     c.ucurum_bagla(sd, den, gol, zorla_tetik)
-    hk = Hakem(c, u["kenarlar"], yuk_olc=yuk_olc)
+    c.u_gecikme_ms = int(gecikme_ms or 0)
+    c.u_tutma = tuple(tutma) if tutma else None
+    hk = Hakem(c, u["kenarlar"], yuk_olc=yuk_olc, z_kontrol=not u.get("z_dusus_yok"))
     hk.kayit_ac = kayit
     onceki = c.kayitci
 
@@ -326,7 +407,7 @@ def kos(sahne_ad, yerlesim, ayar, senaryo, tohum=0, golgeler=(), etkin=True, kay
         if den is not None and den.tetik and x_tetik is None:
             x_tetik = c.u_tetik_poz
             v_tetik = c.u_tetik_v
-        if hk.dustu and t - hk.dustu_t > 0.3:
+        if hk.dustu and t - hk.dustu_t > 0.3 and dusunce_dur:
             bitis = "dustu"
             break
         tetik = den.tetik if den is not None else False
@@ -334,7 +415,7 @@ def kos(sahne_ad, yerlesim, ayar, senaryo, tohum=0, golgeler=(), etkin=True, kay
             v, w = c.dunya.hiz()
             if abs(v) < 0.005 and abs(w) < 0.01:
                 dur_bas = dur_bas or t
-                if t - dur_bas >= 0.3:
+                if t - dur_bas >= durdu_bekle_s:
                     bitis = "durdu"
                     break
             else:
@@ -355,7 +436,9 @@ def kos(sahne_ad, yerlesim, ayar, senaryo, tohum=0, golgeler=(), etkin=True, kay
              dz_min_mm=round(hk.dz_min * 1000, 1), ariza_olay=len(den.ariza_olay) if den else None,
              beklenen_mm=[round(b * 1000, 1) if b is not None else None for b in (beklenen or [])],
              yok_orani=round(den.yok_say / max(den.ornek_say, 1), 3) if den else None,
-             duvar_s=round(time.perf_counter() - duvar0, 2), son_sur_ok=son_ok)
+             duvar_s=round(time.perf_counter() - duvar0, 2), son_sur_ok=son_ok,
+             teker_dz_min_mm=round(hk.teker_dz_min * 1000, 1), govde_temas=hk.govde_temas, x_son=round(x, 4),
+             y_son=round(y, 4))
     r["golge"] = [dict(anahtar=g.ayar.anahtar(), tetik=g.tetik, tetik_t=(round(g.tetik_t - t0, 3) if g.tetik else None),
                        neden=g.neden) for g in gol]
     if kayit:
