@@ -3,16 +3,22 @@
 Kullanım (bu klasörde):  py -3 testler_rapor.py
 Çıktı: testler-rapor.html (aynı klasör). Dış kaynak yok; bütün biçem ve betik gömülü.
 
-Tablolardaki ve üst karar tablosundaki sayılar her koşuda sonuç CSV'lerinden yeniden sayılır.
-CSV'de olmayan birkaç sayı (LiDAR'lı taban, devrilme el hesabı gibi) sonuç belgelerinden (SONUC.md) alınır;
-betik her birinin ilgili SONUC.md içinde hâlâ geçtiğini denetler, geçmiyorsa durur.
-Yalnız standart kütüphane kullanılır.
+Her test bölümü iki katmanlı: üstte bu turun (tamamlama turu) sonucu ve "önce / şimdi" karşılaştırması, altta
+açılır kutuda önceki turun ayrıntısı. Tablolardaki ve üst karar tablosundaki sayılar her koşuda sonuç CSV'lerinden
+(ve seçim JSON'larından) yeniden sayılır. CSV'de olmayan birkaç sayı sonuç belgelerinden (SONUC.md) alınır: bunlar
+sayfada † ile işaretlenir ve sayfanın sonunda listelenir; betik her birinin ilgili SONUC.md içinde hâlâ geçtiğini
+denetler, geçmiyorsa durur. Yalnız standart kütüphane kullanılır.
+
+Okunan bütün CSV'ler testlerin `sonuc/` klasöründe ve depoda tutulan dosyalardır; git dışı `sonuc/ham/` hiç okunmaz
+(`oku` reddeder), bu yüzden betik temiz bir kopyada da çalışır. Keşif beyninin varsayılan sürümü `kesif/beyin.py`'den
+okunur. Uçurumda 6 / 10 / 14 sensörlü düzenler tehlike sınıfına göre yan yana sayılır (`katmanli`).
 """
 from __future__ import annotations
 
 import csv
 import datetime as _dt
 import html
+import json
 import statistics
 import sys
 from pathlib import Path
@@ -29,6 +35,9 @@ CIKTI = BURASI / "testler-rapor.html"
 
 # ------------------------------------------------------------------ yardımcılar
 def oku(yol: Path) -> list[dict]:
+    # yalnız depoda izlenen sonuç dosyaları: sonuc/ham git dışıdır, temiz bir kopyada bulunmaz
+    if "ham" in Path(yol).parts:
+        raise SystemExit(f"git dışı ham kayıt okunmaz: {Path(yol).name}")
     with open(yol, encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
 
@@ -50,6 +59,8 @@ def sy(x, n=1) -> str:
     """Türkçe ondalık virgülle."""
     if x is None:
         return "-"
+    if round(x, n) == 0:
+        x = 0.0
     return f"{x:.{n}f}".replace(".", ",")
 
 
@@ -83,6 +94,37 @@ def sonuc_var(klasor: Path, *parcalar: str) -> None:
     for p in parcalar:
         if p not in metin:
             raise SystemExit(f"SONUC.md'de bulunamadı ({yol.parent.parent.name}): {p!r}")
+
+
+BELGE: list[tuple[str, str]] = []      # (bölüm, açıklama): sayfada † ile işaretli, sonuç belgesinden alınan sayılar
+
+
+def bel(klasor: Path, bolum: str, gosterim: str, kanitlar, aciklama: str) -> str:
+    """SONUC.md'den alınan sayıyı denetle, kaydet ve † ile işaretle."""
+    sonuc_var(klasor, *kanitlar)
+    if (bolum, aciklama) not in BELGE:
+        BELGE.append((bolum, aciklama))
+    return f"{gosterim}<sup class='bel' title='Sonuç belgesinden'>†</sup>"
+
+
+def mn(xs):
+    xs = [x for x in xs if x is not None]
+    return min(xs) if xs else None
+
+
+def mx(xs):
+    xs = [x for x in xs if x is not None]
+    return max(xs) if xs else None
+
+
+def rz(metin, tur="uyari"):
+    return f"<span class='rozet {tur}'>{metin}</span>"
+
+
+def kesir(b, n, esik=None):
+    """b/n; esik verilirse b < esik iken kötü renkli."""
+    kotu = (b < esik) if esik is not None else False
+    return f"<span class='{'kotu' if kotu else ''}'>{b}/{n}</span>"
 
 
 # ------------------------------------------------------------------ HTML parçaları
@@ -154,7 +196,7 @@ def liste(maddeler):
 
 def bolum_parcalari(olculen, ana, grafik, oneri, iyimser, aciklar, hukum):
     return (
-        f"<p class='hukum'><strong>Hüküm.</strong> {hukum}</p>"
+        f"<p class='hukum eski-hukum'><strong>Önceki turun hükmü.</strong> {hukum}</p>"
         f"<h3>Ne ölçüldü</h3>{olculen}"
         f"<h3>Ana tablo</h3>{ana}"
         f"<h3>Grafik</h3>{grafik}"
@@ -257,7 +299,8 @@ def ucurum():
         t[2] = min(t[2], say(x["pay_min_cm"]))
     r["genis"] = gen
 
-    sonuc_var(U, "düz zeminde 3,68 m/s², 10° inişte 1,93 m/s²", "0,0 mm", "≈ 87 mm", "0,40 m", "XSHUT")
+    b87 = bel(U, "Uçurum", "≈ 87 mm", ["≈ 87 mm"], "100 mm eşiğin göremediği en sığ düşüş ≈ 87 mm (önceki tur)")
+    b00 = bel(U, "Uçurum", "0,0 mm", ["0,0 mm"], "LiDAR'ın merdivenli / merdivensiz tarama farkı 0,0 mm (önceki tur)")
 
     hukum = (f"Önde iki iç sensör eklenmiş altı sensörlü düzen, yeni sınamanın {r['ucurum_kosu']} uçurum koşusunda "
              f"düşme sayısı {r['dustu']}, {r['yanlis_kosu']} yanlış alarm koşusunda boşuna durma sayısı {r['yanlis_durma']}. "
@@ -315,16 +358,16 @@ def ucurum():
         f"arda 3 örnek. Dönüş alamayan okumada robot önce yavaşlar, art arda 5'te durur.",
         f"<strong>Fren:</strong> yalnız motoru kesmek yetmez: 0,39 m/s'de durma yolu {sy(dy['Yalnız motor kesme'][0.39])} cm. "
         f"Etkin rampa freni 2,0 m/s² ile {sy(dy['Etkin rampa freni 2,0 m/s²'][0.39])} cm.",
-        f"<strong>Hız:</strong> sınamada 0,39 m/s'de en küçük pay {sy(r['pay_dar'])} cm (dar açıklık), geniş kenarda "
-        f"{sy(r['pay_genis'])} cm. Bu pay sensör gecikmesindeki ya da fren modelindeki birkaç santimlik hatayla "
-        f"tükenebilir; gerçek robotta ilk denemeler 0,25 m/s ile.",
+        f"<strong>Hız (güncellendi):</strong> o turun sınamasında 0,39 m/s'de en küçük pay {sy(r['pay_dar'])} cm (dar "
+        f"açıklık), geniş kenarda {sy(r['pay_genis'])} cm idi. Hız önerisi bu turda tekleşti: 0,25 m/s, dayanağı "
+        "yukarıdaki duyarlılık ölçümü.",
         "<strong>Sensörden tasarruf gerekirse:</strong> beşli düzen (ön orta sensörlü) sınamada düşmedi ama geliştirmede "
         f"0,40 m açıklıkta {r['gel_5'][0]} / {r['gel_5'][1]} düştü; ancak en dar açıklık ≈ 0,45 m kabul edilirse "
         "ikinci seçenek. Geri gitme firmware'de yasaksa arka iki sensör çıkarılabilir.",
         f"<strong>Kırılma:</strong> 10° iniş rampasında her fren kipinde robot tam durmuyor, frenden sonra yaklaşık "
         f"{sy(r['inis_kayma'][1], 2)} m/s kaymaya devam ediyor. Rampa dibinde uçurum varsa bu düzen yetmez: "
-        "tutma freni gerekir. 100 mm eşik ≈ 87 mm'den sığ düşüşü (tek basamak kaldırım) görmez. LiDAR merdiveni hiç görmüyor "
-        "(merdivenli ve merdivensiz tarama arasındaki en büyük fark 0,0 mm).",
+        f"tutma freni gerekir (güncellendi: bu turda konum tutma eklendi). 100 mm eşik {b87}'den sığ düşüşü (tek basamak "
+        f"kaldırım) görmez. LiDAR merdiveni hiç görmüyor (merdivenli ve merdivensiz tarama arasındaki en büyük fark {b00}).",
     ])
     iyimser = [
         "Sensör modeli varsayım: koni, en yakın öbek kuralı, gürültü. Ortam ışığı, cam / ayna / parlak siyah zemin, toz ve "
@@ -378,6 +421,7 @@ ETKEN = [
 def harita():
     ab = oku(H / "ab_2b.csv")
     ky = oku(H / "kayip_2b.csv")
+    ky_ek = oku(H / "kayip_ek_2b.csv")     # bu tur: kayıp robotta genişlik sapması
     mj = oku(H / "mujoco.csv")
     vr = oku(H / "varyant_2b.csv")
 
@@ -389,7 +433,7 @@ def harita():
             t[1] += dogru(x["basari"])
         return d
 
-    a, k = kosul_say(ab), kosul_say(ky)
+    a, k = kosul_say(ab), kosul_say(ky + ky_ek)
     r = {"ab_n": len(ab), "ab_basari": sum(dogru(x["basari"]) for x in ab)}
     bas = [x for x in ab if not dogru(x["basari"])]
     r["bas_n"] = len(bas)
@@ -439,10 +483,23 @@ def harita():
                         "<strong>hafif</strong>",
                         ", ".join(f"<span class='kotu'>{okul_ad[s]}: {okul_k[s][1]}/{okul_k[s][0]}</span>" for s in okul_k),
                         "<strong>hafif</strong>"])
-    ortalamalar.append(("Sıradan okul günü (3 kademe)", 100.0 * sum(v[1] for v in okul.values()) / 36,
-                        min(v[1] for v in okul.values()), 12))
-    ortalamalar.sort(key=lambda x: x[1])
+    # Zarar sırası (düzeltilmiş): yalnız tam ızgaralı A'dan B'ye ortalaması, eşitlikte en kötü kademe.
+    # Sıradan okul günü karma bir koşul (3 kademe); sıraya girmez.
+    ortalamalar.sort(key=lambda x: (round(x[1], 6), x[2] / x[3]))
     r["siralama"] = ortalamalar
+    kisa = {"Kapı durumu değişen oran": "kapı", "Cam kapı oranı": "cam", "LiDAR'ın en uzun menzili": "menzil",
+            "Dönüş vermeyen yüzey oranı": "dönüşsüz yüzey", "Ani teker kayması": "ani kayma",
+            "Duvar dibinde eşya (adet / 10 m)": "eşya", "Duran grup (duvardan içeri)": "grup"}
+    parca, onceki = [], None
+    for ad, o, mnb, n in ortalamalar:
+        if o >= 99.99:
+            break
+        if onceki is not None:
+            parca.append("=" if abs(o - onceki) < 1e-9 else "&gt;")
+        parca.append(f"{kisa.get(ad, ad)} (%{tam(o)})")
+        onceki = o
+    r["sira_metin"] = " ".join(parca) + " &gt; geri kalanı (%100)"
+    r["a"] = a
 
     # izleme seçeneği (ayrı tohumlar)
     vd = {}
@@ -475,9 +532,9 @@ def harita():
         [("ortalama başarı", "--c-a")],
         [(ad, [o], [f"%{tam(o)} <span class='ince'>(en kötü {mn}/{n})</span>"]) for ad, o, mn, n in ortalamalar],
         en_buyuk=100, esik=90, esik_etiket="%90 çizgisi",
-        aciklama="Sıralama bütün kademeleri koşulmuş A'dan B'ye sonuçlarından. Sonuç belgesindeki ilk sıralama kayıp "
-                 "robotta eşit olmayan kademe kapsamına dayandığı için bağımsız inceleme onu sağlam bulmadı; sağlam olan, "
-                 "kapı, cam ve menzilin her ölçütte ilk dörtte olması.")
+        aciklama="Sıra (güncellendi): yalnız bütün kademeleri koşulmuş A'dan B'ye ortalaması (etken başına 48 koşu), "
+                 "eşitlikte en kötü kademe. Kayıp robot sıraya girmez, çünkü orada etkenlerin ölçülen kademe sayısı eşit "
+                 "değil. Sıradan okul günü karma bir koşul olduğu için sıraya girmez (tabloda ayrı satır).")
     vsat = []
     for kos in ("kapi_3", "kapi_4", "cam_4", "donussuz_4", "okul_hafif", "okul_orta", "okul_agir"):
         if ("varsayilan", kos) in vd and ("izleme", kos) in vd:
@@ -508,7 +565,8 @@ def harita():
         "2B robot kinematik, sonar yok; tek kat, düz zemin; LiDAR eğimi, titreşim ve gecikme yok.",
     ]
     aciklar = [
-        "Kayıp robot 60 koşulun 20'sinde koşuldu; koridor genişliği etkeni kayıpta hiç koşulmadı.",
+        "Kayıp robot 60 koşulun 20'sinde koşuldu; koridor genişliği etkeni kayıpta koşulmamıştı (güncellendi: bu turda "
+        "4 kademede koşuldu, yukarıda).",
         "MuJoCo'da yalnız A'dan B'ye, koşul başına 3 koşu; cam kapı MuJoCo'da modellenemedi.",
         "İzleme seçeneği yalnız A'dan B'ye için ölçüldü; kayıp robotun karardan sonraki evresi ve kaçırılma algısıyla "
         "birlikte ölçülmedi. Karar proje sahibinin.",
@@ -672,7 +730,10 @@ def sanalray():
     ab = oku(S / "ab_sinama.csv")
     ky = oku(S / "kayip_sinama.csv")
     gv = oku(S / "gorunurluk.csv")
-    sonuc_var(S, "24/24", "0,048", "20/20", "0,053", "26,5")
+    bt24 = bel(S, "Sanal ray", "24/24", ["24/24", "0,048"], "LiDAR'lı taban A'dan B'ye 24/24, varış hatası 0,048 m (önceki tur)")
+    bt048 = bel(S, "Sanal ray", "0,048", ["0,048"], "LiDAR'lı taban A'dan B'ye 24/24, varış hatası 0,048 m (önceki tur)")
+    bt20 = bel(S, "Sanal ray", "20/20", ["20/20", "26,5"], "LiDAR'lı taban kayıp robot 20/20, karar süresi 26,5 s (önceki tur)")
+    bt265 = bel(S, "Sanal ray", "26,5", ["26,5"], "LiDAR'lı taban kayıp robot 20/20, karar süresi 26,5 s (önceki tur)")
 
     def grp(rows, anahtar):
         d = {}
@@ -705,7 +766,7 @@ def sanalray():
         satirlar.append([ad, f"<span class='{'kotu' if b < len(rows) else ''}'>{b}/{len(rows)}</span>",
                          f"{sy(ort(va), 3)} / {sy(max(va), 3)}", f"{sy(ort(ya), 3)} / {sy(max(ya), 3)}",
                          str(sum(int(say(x["temas_olay"]) or 0) for x in rows))])
-    satirlar.append(["LiDAR'lı taban (karşılaştırma)", "24/24", "0,048", "ölçülmedi", "0"])
+    satirlar.append(["LiDAR'lı taban (karşılaştırma)", bt24, bt048, "ölçülmedi", "0"])
     r["varis_ort"] = ort([say(x["varis_hatasi_m"]) for x in ab
                           if x["aralik"] == "5" and x["kafa"] == "sabit"])
     ana = tablo(["A'dan B'ye koşulu (sınama koridorları)", "Başarı", "Varış hatası ort / en (m)",
@@ -725,7 +786,7 @@ def sanalray():
                      f"{sy(ort([say(x['ilk_etiket_s']) for x in rows]))} / {sy(max(say(x['ilk_etiket_s']) for x in rows))}",
                      f"{sy(ort([say(x['lokalize_s']) for x in rows]))} / {sy(max(say(x['lokalize_s']) for x in rows))}",
                      sy(ort([say(x["sure_s"]) for x in rows])), str(sum(int(say(x["temas_olay"]) or 0) for x in rows))])
-    ksat.append(["LiDAR'lı taban (karar)", "20/20", "-", "26,5", "-", "0"])
+    ksat.append(["LiDAR'lı taban (karar)", bt20, "-", bt265, "-", "0"])
     ana += "<h4>Rastgele bırakılma (robot nerede olduğunu bilmeden başlar)</h4>" + tablo(
         ["Kafa", "Başarı", "İlk etiket görülme ort / en (s)", "Konumlanma süresi ort / en (s)", "Toplam süre ort (s)",
          "Temas"], ksat,
@@ -773,10 +834,10 @@ def sanalray():
         f"<strong>Mercek:</strong> standart mercek (66°), 1152 × 648, saniyede 10 kare. Karşıdan bakışta 15 cm etiket "
         f"standart mercekte {tam(menzil[('std', '15', '0')])} m'de, geniş açılıda {tam(menzil[('genis', '15', '0')])} m'de "
         "algılanıyor. Geniş açılı mercek yalnız görünürlük ölçümünde denendi, gezinmede denenmedi.",
-        "<strong>Zayıflık:</strong> rastgele bırakılmadaki tek başarısızlıkta süzgeç ilk saniyede 2,0 m'deki tek bir "
-        f"etiketten başlatıldı; koşu boyunca en büyük konum hatası {sy(say(tb['konum_hata_en_m']) if tb else None)} m. "
-        "Hiç ret olmadığı için yeniden başlatma tetiklenmedi ve robot 262 s eğik açıyla duvara dayalı kaldı; ön sonar bunu "
-        "durdurmadı. Tek etiketten başlatmaya güvenilmemeli.",
+        "<strong>Zayıflık (güncellendi):</strong> rastgele bırakılmadaki tek başarısızlıkta koşu boyunca en büyük konum "
+        f"hatası {sy(say(tb['konum_hata_en_m']) if tb else None)} m; robot 262 s eğik açıyla duvara dayalı kaldı ve ön "
+        "sonar bunu durdurmadı. O tur bunun nedeni tek etiketten yanlış başlatma sanıldı; bu turun yeniden üretimi "
+        "başlangıcın kabaca doğru olduğunu, asıl kusurun takılmanın sezilmemesi olduğunu gösterdi (yukarıda).",
     ])
     iyimser = [
         "Baskı kusursuz, duvar düz ve mat; yansıma ve parlak laminasyon yok; ışık düzgün; insan ve kapı kanadı yok.",
@@ -816,7 +877,8 @@ def sanalray():
 # ================================================================== 5. DENEME ZİNCİRİ
 def deneme():
     r = {}
-    sonuc_var(K, "798 / 874 / 982", "530")
+    b798 = bel(K, "Haritayla yeniden deneme", "798 / 874 / 982 s", ["798 / 874 / 982"],
+               "en uzun sınama 2 labirentinin ölçülen tempoyla beklenen süresi 798 / 874 / 982 s (önceki tur)")
     satirlar, yig = [], []
     for ad, dosya, ilk_dosya in (("Geliştirme (önceki sürümün 7 başarısızı)", "deneme_gelistirme.csv", "mujoco_v3.csv"),
                                  ("Sınama 2 (20 labirent)", "deneme_sinama2.csv", "mujoco_sinama2_v3.csv")):
@@ -870,7 +932,7 @@ def deneme():
         f"<strong>Kırılma noktası:</strong> çözülmeyen dört zincir: {cz}. Tanıya göre (sınama 2'ye bakıldıktan sonra, ayar "
         "yapılmadan) iki nedeni var: yeni denemede sınır seçme sırası başlangıca göre, yani robot önceki denemenin "
         "kaldığı yere değil başlangıca yakın sınırlara gidiyor; en uzun labirentin 207 m'lik çözümü harita tam bilinse de "
-        "900 s'ye ancak sınırda sığıyor (ölçülen tempoyla beklenen 798 / 874 / 982 s).",
+        f"900 s'ye ancak sınırda sığıyor (ölçülen tempoyla beklenen {b798}).",
         "<strong>Öneri:</strong> yeni denemede önceki denemenin son hedefini ya da son konumuna yakın sınırı öne almak. "
         "Sınama 2 artık görülmüş sayılır; bu değişiklik yeni, görülmemiş bir kümeyle denenmeli.",
         f"<strong>Güvenlik:</strong> başlangıçtan çıkma {s2['start'] + gl['start']}; bir çarpma oldu (sınama 2, 3. deneme, "
@@ -997,9 +1059,10 @@ def kose():
         f"<strong>İstatistik:</strong> sınama 3'teki {r['kume'][('sinama3', 'v3')][0]} → {r['kume'][('sinama3', 'v4')][0]} "
         f"farkı yalnız {r['s3_uyusmayan'][0]} uyuşmayan labirent çiftinden geliyor (hepsi v4 lehine) ve kazanılanlar 900 s "
         "sınırına çok yakın; \"v4 daha iyi\" anlamlı değil, \"kaybettirmedi ve daha hızlı\" doğru.",
-        f"<strong>Karar:</strong> çarpma sıfır hedefi yalnız v3'te tutuyor (geliştirme + sınama 2 + sınama 4, sürüm başına "
-        f"{top_c['v3'][1]} koşu: v3 {top_c['v3'][0]}, v4 {top_c['v4'][0]}, v5 {top_c['v5'][0]} çarpma). Varsayılan v3'e döndü; "
-        "v4 ve v5 isteğe bağlı.",
+        f"<strong>Karar (o tur):</strong> geliştirme + sınama 2 + sınama 4'te (sürüm başına {top_c['v3'][1]} koşu) çarpma "
+        f"v3 {top_c['v3'][0]}, v4 {top_c['v4'][0]}, v5 {top_c['v5'][0]}; o üç kümede sıfır olan yalnız v3'tü. Varsayılan v3'e "
+        "döndü; v4 ve v5 isteğe bağlı. Güncellendi: v3 başka kümelerde sıfır değil (toplam 4 temas olayı) ve bu tur "
+        "varsayılan v6 oldu (yukarıda).",
     ])
     iyimser = [
         "Teker azami hızı 0,39 m/s bir tahmin; v4 düz sürenin yaklaşık %69'unda hızlı kipte. Gerçek tavan düşükse kazanç ve "
@@ -1015,12 +1078,12 @@ def kose():
         "v5, v4'ün çözdüğü bir geliştirme labirentini kaybetti; incelenmedi.",
         "Önde engel beklemesi döngüsü (v3'ten kalma) ve sınır seçme sırası sorunu sürüyor.",
         "Yerinde dönüş hızı değiştirilmedi (toplam sürenin yaklaşık %11'i).",
-        "2B'de v4 için de \"çarpma sıfır\" sağlanmadı.",
+        "2B'de v4'ün çarpması sıfır değildi.",
     ]
     hukum = (f"Hız zarfı (v4) labirenti yaklaşık %{tam(100 * (1 - o_gel))} daha kısa sürede bitirdi ama görülmüş kümede 2 "
              f"çarpma verdi. Onarılmış v5 bu ikisini giderdi ve yeni sınama 4'te v3 kadar "
-             f"({r['kume'][('sinama4', 'v5')][0]}/20) çözdü, fakat geliştirmede yeni 1 çarpma verdi. Çarpma sıfır yalnız "
-             "v3'te tuttuğu için varsayılan v3'e döndü.")
+             f"({r['kume'][('sinama4', 'v5')][0]}/20) çözdü, fakat geliştirmede yeni 1 çarpma verdi. O üç kümede çarpması "
+             "sıfır olan yalnız v3 olduğu için varsayılan v3'e döndü.")
     olculen = (
         "<p>Labirentte köşelerde ve düz parçalarda hız kaybının nedeni (v3 kayıtlarının tanısı) ve onu gideren hızlı sürüş "
         "sürümlerinin çözülen labirent, süre ve çarpma üzerindeki etkisi. Kural her sürüm için önceden yazıldı: yeni, "
@@ -1039,21 +1102,23 @@ def kose():
 
 
 # ================================================================== İNCELEME
-def inceleme(R):
+def kart(baslik, kapsam, engel, diger, onarim, acik, rozetler=None, onarim_baslik="Onarımda ne değişti"):
+    rozetler = rozetler or rz("Hüküm: koşullu")
+    return (
+        f"<article class='kart'><header><h3>{baslik}</h3><span>{rozetler}</span></header>"
+        f"<p class='ince'>{kapsam}</p>"
+        "<p class='satir-durum'><span class='rozet iyi'>Sayılar CSV'den yeniden sayıldı: tuttu</span> "
+        "<span class='rozet iyi'>Sınama verisinin ayara sızması: bulunmadı</span></p>"
+        f"<h4>Engelleyici bulgu</h4>{engel}"
+        f"<h4>Diğer sorunlar</h4>{liste(diger)}"
+        f"<h4>{onarim_baslik}</h4>{onarim}"
+        f"<h4>İnceleme sonrası açık kalanlar</h4>{liste(acik)}"
+        "</article>")
+
+
+def inceleme_eski(R):
     u, h, t, s, d, k = R
     kartlar = []
-
-    def kart(baslik, kapsam, engel, diger, onarim, acik):
-        return (
-            f"<article class='kart'><header><h3>{baslik}</h3><span class='rozet uyari'>Hüküm: koşullu</span></header>"
-            f"<p class='ince'>{kapsam}</p>"
-            "<p class='satir-durum'><span class='rozet iyi'>Sayılar CSV'den yeniden sayıldı: tuttu</span> "
-            "<span class='rozet iyi'>Sınama verisinin ayara sızması: bulunmadı</span></p>"
-            f"<h4>Engelleyici bulgu</h4>{engel}"
-            f"<h4>Diğer sorunlar</h4>{liste(diger)}"
-            f"<h4>Onarımda ne değişti</h4>{onarim}"
-            f"<h4>İnceleme sonrası açık kalanlar</h4>{liste(acik)}"
-            "</article>")
 
     kartlar.append(kart(
         "Uçurum ve merdiven", "Bütün tablolar yeniden sayıldı; dört koşu aynı tohumla yeniden koşuldu ve alan alan aynı çıktı.",
@@ -1084,8 +1149,9 @@ def inceleme(R):
          f"kademe başına bir kaba başarısızlık ile hedefe 0,30–0,34 m'de bir durmadan oluşuyor ({h['bas_sinirda']} sınırda "
          "başarısızlık). Bunlar \"sınırda\" sayılmalı; bu yüzden ani kaymanın gerçek robotta ölçülecekler listesindeki "
          "gerekçesi zayıf.",
-         "Sonuç belgesinin zarar sırası (\"dönüşsüz > menzil > kapı\") kayıp robottaki eşit olmayan kademe kapsamından "
-         "geliyor; sağlam değil. Bu sayfadaki sıralama bütün kademeleri koşulmuş A'dan B'ye sonuçlarından.",
+         "Sonuç belgesinin o turki zarar sırası (\"dönüşsüz > menzil > kapı\") kayıp robottaki eşit olmayan kademe "
+         "kapsamından geliyordu; sağlam değildi. Güncellendi: bu tur yalnız A'dan B'ye ortalamasıyla düzeltildi "
+         f"({h['sira_metin']}).",
          "Taşınmada \"tek haritalı sürüş hiç tepki vermedi\" ölçülmüş bir bulgu değil, yapısal: o sürüşte tepki düzeneği yok.",
          "Algılı sürümün yanlış alarmı yalnız insan ve eşyayla ölçüldü; okul gününün hafif hâlinde bile kapı, cam ve dönüşsüz "
          "yüzey var. Varsayılana almadan önce ölçülmeli.",
@@ -1146,6 +1212,1637 @@ def inceleme(R):
     return "".join(kartlar)
 
 
+# ================================================================== BU TUR (tamamlama turu)
+def bolum_yeni(y, eski_govde, eski_baslik):
+    os_html = "<div class='os'>" + "".join(
+        f"<div class='os-satir'><div class='os-konu'>{k}</div>"
+        f"<div class='os-once'><span class='os-et'>Önce</span>{o}</div>"
+        f"<div class='os-simdi'><span class='os-et'>Şimdi</span>{s}</div></div>" for k, o, s in y["os"]) + "</div>"
+    return (
+        f"<p class='hukum'><strong>Hüküm (bu tur).</strong> {y['hukum']}</p>"
+        f"<p class='satir-durum'>{y['rozet']}</p>"
+        f"<h3>Önce / şimdi</h3>{os_html}"
+        f"<h3>Bu turda ne ölçüldü</h3>{y['olculen']}"
+        f"<h3>Ana tablo</h3>{y['ana']}"
+        f"<h3>Grafik</h3>{y['grafik']}"
+        f"<h3>Kırılma noktası ve öneri</h3><div class='oneri'>{liste(y['oneri'])}</div>"
+        "<div class='iki'>"
+        f"<div><h3>Simülasyonun iyimser varsayımları</h3>{liste(y['iyimser'])}</div>"
+        f"<div><h3>Kalan açıklar</h3>{liste(y['aciklar'])}</div>"
+        "</div>"
+        f"<details class='eski'><summary>{eski_baslik}</summary><div class='eski-ic'>"
+        "<p class='ince'>Bu kısım önceki turun ayrıntısıdır. Hüküm, öneri ve açıklar yukarıda güncellendi; çelişen "
+        "yerlere \"güncellendi\" notu düşüldü.</p>"
+        f"{eski_govde}</div></details>")
+
+
+UC_GRUP = [
+    ("İleri: iki merdiven, kuyu, sahanlık köşesi", ("ileri",)),
+    ("Geri, yerinde dönüş, yay (iki merdiven)", ("geri", "donus", "yay")),
+    ("Dar açıklığa ileri (8 sahne)", ("dar",)),
+    ("Burunlu merdiven ve tek 12 cm basamak", ("yeni_ileri", "yeni_geri")),
+    ("0,9 m genişlikte iskele", ("yeni_iskele",)),
+    ("8° rampanın ucunda uçurum", ("yeni_rampa_ucurum",)),
+    ("Dar açıklığa geri giderek", ("yeni_geri_dar",)),
+    ("Dar yarık, 1 m boy", ("yeni_delik",)),
+    ("Dar açıklık yanında yerinde dönüş", ("yeni_donus_dar",)),
+    ("Kötü koşulların birleşimi (+20 ms, en kötü montaj, µ 0,5, +10 kg)", ("kotu_birlesik",)),
+]
+DUY_AD = [("K20", "Seçilen kısa kip (20 ms)"), ("U33", "Uzun kip, 33 ms"), ("U50", "Uzun kip, 50 ms"),
+          ("U100", "Uzun kip, 100 ms (seçilmeyen)"), ("g20", "Ek gecikme +20 ms"), ("g50", "Ek gecikme +50 ms"),
+          ("mu05", "Sürtünme µ 0,5"), ("montaj_kotu", "Montaj hatası, en kötü"), ("montaj_rasgele", "Montaj hatası, rastgele"),
+          ("yuk_ust5", "+5 kg yük, üstte"), ("yuk_alt10", "+10 kg yük, altta"), ("gurultu10", "Ölçüm gürültüsü σ 10 mm")]
+
+
+# Üç düzen yan yana (6 / 10 / 14 sensör), tehlike sınıfına göre. Her hücre CSV'den sayılır:
+# hüküm (sınama) koşusu varsa o, yoksa ayar koşusu (tohum 1–2, düzeni seçmek için kullanıldı), yoksa "ölçülmedi".
+DUZENLER = [
+    ("6", "6 sensör", "dört köşe, önde iki iç; son kabul edilen seçim", "4OD+2AD_z120_e30"),
+    ("10", "10 sensör", "önde altı, arkada dört; ilk tamamlama adımının adayı", "6OD+4AD_z120_e30"),
+    ("14", "14 sensör", "her teker hizasında iki dar iz, iki yan sensör; ölçütü sağlamayan en iyi aday",
+     "8WRD+4AD+2YR40_z120_e30"),
+]
+DAR_45_70 = {"acik_45", "acik_55", "acik_60_sig", "acik_65", "dar_merdiven_60"}
+DAR_75_90 = {"acik_75", "acik_90", "dar_merdiven_80"}
+
+
+def _yarik(*cm):
+    ad = {f"yarik_{c}" for c in cm}
+    return (lambda x: x["alt"] == "yeni_delik" and x["sahne"] in ad), (lambda x: x["alt"] == "delik" and x["sahne"] in ad)
+
+
+def _donus_d(d):
+    return ((lambda x: x["alt"] == "yeni_donus_dar" and say(x["d"]) == d),
+            (lambda x: x["alt"] == "donus" and x["sahne"].startswith("acik_") and say(x["d"]) == d))
+
+
+KATMAN_SINIF = [
+    # (etiket, hüküm süzgeci, ayar süzgeci ya da None, okul binasındaki karşılığı)
+    ("Merdiven başı, sahanlık kenarı ve köşesi, ileri",
+     lambda x: x["alt"] in ("ileri", "yeni_ileri") and x["sahne"] != "kuyu", None, "ana"),
+    ("Kuyu, ileri", lambda x: x["alt"] == "ileri" and x["sahne"] == "kuyu", None, "ana"),
+    ("Dar açıklık 0,45–0,70 m, ileri", lambda x: x["alt"] == "dar" and x["sahne"] in DAR_45_70, None, "ana"),
+    ("Dar açıklık 0,75–0,90 m, ileri", lambda x: x["alt"] == "dar" and x["sahne"] in DAR_75_90, None, "ana"),
+    ("Geri gidiş, geniş kenar", lambda x: x["alt"] in ("geri", "yeni_geri"), None, "ana"),
+    ("Geri gidiş, dar açıklığa", lambda x: x["alt"] == "yeni_geri_dar",
+     lambda x: x["alt"] == "geri" and x["sahne"].startswith("acik_"), "ana"),
+    ("Yerinde dönüş, geniş kenar", lambda x: x["alt"] == "donus", None, "ana"),
+    ("Dar açıklık yanında yerinde dönüş, merkez kenardan 0,35 m", *_donus_d(0.35), "ana"),
+    ("… 0,40 m", *_donus_d(0.40), "ana"),
+    ("… 0,45 m", *_donus_d(0.45), "ana"),
+    ("… 0,50 m", *_donus_d(0.50), "ana"),
+    ("Dar yarık 9 cm × 1 m", *_yarik(9), "yarik"),
+    ("… 10 cm", *_yarik(10), "yarik"),
+    ("… 11 cm", *_yarik(11), "yarik"),
+    ("… 12 cm", *_yarik(12), "yarik"),
+    ("… 13 cm", *_yarik(13), "yarik"),
+    ("… 14 cm", *_yarik(14), "yarik"),
+    ("<strong>Dar yarık 9–14 cm, toplam</strong>", *_yarik(9, 10, 11, 12, 13, 14), "toplam"),
+    ("Ek: yarık 15 ve 20 cm", *_yarik(15, 20), "ek"),
+    ("Ek: yarık 17–28 cm", *_yarik(17, 22, 28), "ek"),
+    ("Ek: 0,9 m genişlikte iskele (üç yanı boşluk)", lambda x: x["alt"] == "yeni_iskele", None, "ek"),
+    ("Ek: kötü koşulların birleşimi", lambda x: x["alt"] == "kotu_birlesik", None, "ek"),
+]
+
+
+def katmanli():
+    """Üç düzenin tehlike sınıfına göre karşılaştırması; bütün hücreler CSV'den."""
+    def uc(R):
+        return [x for x in R if not x["alt"].startswith("yanlis")]
+
+    def dus(R):
+        return sum(dogru(x["dustu"]) for x in R)
+
+    def fiz(x):
+        return ((say(x.get("teker_dz_min_mm")) or 0) < -20 or (say(x.get("egim_max_der")) or 0) > 5
+                or dogru(x.get("govde_temas")))
+
+    def sec(R, yer):
+        return [x for x in R if x["yerlesim"] == yer]
+
+    D6, D10, D14 = (d[3] for d in DUZENLER)
+    hk = {"6": oku(U / "sinama2.csv"), "10": oku(U / "t_hukum.csv"), "14": oku(U / "t2_hukum.csv")}
+    fz = {"6": [], "10": oku(U / "t_hukum_fiz.csv"), "14": oku(U / "t2_hukum_fiz.csv")}
+    ay = {"6": sec(oku(U / "t_delik_gel.csv") + oku(U / "t_yaklasma_gel.csv"), D6),
+          "10": sec(oku(U / "t_aday_son.csv") + oku(U / "t2_yarik_gel.csv"), D10),
+          "14": sec(oku(U / "t2_donus_gel2.csv"), D14)}
+    ay_fz = {"6": sec(oku(U / "t_delik_fiz.csv"), D6), "10": [], "14": []}
+    # 14 sensörün yarık ayarı yan sensörsüz öncülüyle koşuldu (yan sensörler yarıkta işe karışmaz)
+    ay14_yan_yok = [x for x in oku(U / "t2_yarik_gel2.csv") if x["yerlesim"] == "8WRD+4AD_z120_e30"]
+    ru = oku(U / "t_rampa_ucurum.csv")
+
+    def hucre(k, fh, fa):
+        H = [x for x in uc(hk[k]) if fh(x)]
+        if H:
+            d, n = dus(H), len(H)
+            p = mn([say(x["pay_min_cm"]) for x in H])
+            if d == 0:
+                f_txt, f_n = "fiziksel 0", 0
+            else:
+                F = [x for x in fz[k] if fh(x)]
+                f_n = sum(fiz(x) for x in F) if F else None
+                f_txt = f"fiziksel {f_n} / {len(F)}" if F else "fiziksel ölçülmedi"
+            sinif = "iyi" if d == 0 else ("kotu" if (f_n is None or f_n > 0) else "uyari")
+            return {"tur": "H", "d": d, "n": n, "f": f_n, "p": p, "sinif": sinif,
+                    "html": f"<span class='{sinif}'>{d} / {n}</span> <span class='ince'>· {f_txt} · pay "
+                            f"{sy(p)} cm</span>"}
+        if fa is not None:
+            A = [x for x in uc(ay[k]) if fa(x)]
+            not_ = ""
+            if not A and k == "14":
+                A = [x for x in ay14_yan_yok if fa(x)]
+                not_ = ", yan sensörsüz öncülüyle"
+            if A:
+                d, n = dus(A), len(A)
+                p = mn([say(x["pay_min_cm"]) for x in A])
+                F = [x for x in ay_fz[k] if fa(x)]
+                if d == 0:
+                    f_txt = "fiziksel 0"
+                elif F:
+                    f_txt = f"fiziksel {sum(fiz(x) for x in F)} / {len(F)}"
+                else:
+                    f_txt = "fiziksel ölçülmedi"
+                return {"tur": "A", "d": d, "n": n, "p": p, "sinif": "ayar",
+                        "html": f"<span class='ince'>hükümde ölçülmedi; ayarda{not_}:</span> "
+                                f"<span class='{'kotu' if d else ''}'>{d} / {n}</span> <span class='ince'>· {f_txt} · "
+                                f"pay {sy(p)} cm</span>"}
+        return {"tur": "-", "sinif": "yok", "html": "<span class='ince'>ölçülmedi</span>"}
+
+    satirlar, veri = [], {}
+    for etiket, fh, fa, grup in KATMAN_SINIF:
+        hs = [hucre(k, fh, fa) for k, *_ in DUZENLER]
+        veri[etiket] = hs
+        satirlar.append((etiket, [h["html"] for h in hs], grup))
+    # rampa ucu: 6 sensör yalnız ayarda (10°), öbürleri hükümde (8°); eğim rampanın kendisi, fiziksel eşik uygulanmaz
+    rp = []
+    k2 = [x for x in ru if "konum" in x["kosul"] and say(x["fren_ivme"]) == 2.0 and x["yerlesim"] == D6]
+    tutmasiz = [x for x in ru if x["kosul"] == "{}" and x["yerlesim"] == D6]
+    rp.append(f"<span class='ince'>hükümde ölçülmedi; ayarda (10° rampa), konum tutmayla:</span> "
+              f"<span class='{'kotu' if dus(k2) else ''}'>{dus(k2)} / {len(k2)}</span> <span class='ince'>· tutmasız "
+              f"{dus(tutmasiz)} / {len(tutmasiz)} düşer</span>")
+    for k in ("10", "14"):
+        R = [x for x in hk[k] if x["alt"] == "yeni_rampa_ucurum"]
+        d = dus(R)
+        rp.append(f"<span class='{'kotu' if d else 'iyi'}'>{d} / {len(R)}</span> <span class='ince'>· pay "
+                  f"{sy(mn([say(x['pay_min_cm']) for x in R if say(x['v']) == 0.25]))} cm (0,25 m/s)</span>")
+    satirlar.insert(len(satirlar) - 2, ("Ek: iniş rampasının ucunda uçurum (hükümde 8°)", rp, "ek"))
+    # yanlış durma ve toplam
+    yd, top = [], []
+    tot = {}
+    for k, *_ in DUZENLER:
+        Y = [x for x in hk[k] if x["alt"].startswith("yanlis")]
+        y = sum(dogru(x["tetik"]) for x in Y)
+        yd.append(f"<span class='{'kotu' if y else 'iyi'}'>{y} durma / {len(Y)}</span>")
+        Uc = uc(hk[k])
+        d = dus(Uc)
+        f_n = sum(fiz(x) for x in fz[k]) if d else 0
+        tot[k] = (d, len(Uc), f_n, y, len(Y))
+        top.append(f"<strong class='{'kotu' if d else 'iyi'}'>{d} / {len(Uc)}</strong> <span class='ince'>· fiziksel "
+                   f"{f_n}</span>")
+    satirlar.append(("<strong>Yanlış durma</strong> (12 düz zemin sahnesi: derz, eşik, halı, koyu bant, rampa)", yd, "toplam"))
+    satirlar.append(("<strong>Uçurum koşuları, hüküm toplamı</strong>", top, "toplam"))
+    bas = "".join(f"<th>{ad}<span class='ince th-alt'>{ac}</span></th>" for _, ad, ac, _ in DUZENLER)
+    govde = "".join(
+        f"<tr class='g-{grup}'><td>{et}</td>" + "".join(
+            f"<td data-etiket='{e(DUZENLER[i][1])}'>{c}</td>" for i, c in enumerate(hs)) + "</tr>"
+        for et, hs, grup in satirlar)
+    html_ = (f"<div class='tablo-kap'><table class='veri katman'><thead><tr><th>Tehlike sınıfı</th>{bas}</tr></thead>"
+             f"<tbody>{govde}</tbody></table></div>")
+    return html_, veri, tot
+
+
+def ucurum_yeni(eu):
+    H2, H1 = oku(U / "t2_hukum.csv"), oku(U / "t_hukum.csv")
+    F1, F2 = oku(U / "t_hukum_fiz.csv"), oku(U / "t2_hukum_fiz.csv")
+    D2, D1 = oku(U / "t2_duyar.csv"), oku(U / "t_duyar.csv")
+    K2 = oku(U / "t2_kusur.csv")
+    YG = oku(U / "t2_yarik_gel.csv") + oku(U / "t2_yarik_gel2.csv")
+    DG = oku(U / "t2_donus_gel.csv") + oku(U / "t2_donus_gel2.csv")
+    RU, RF = oku(U / "t_rampa_ucurum.csv"), oku(U / "t_rampa_fren.csv")
+    secim = json.loads((FIZIK / "ucurum" / "secim.json").read_text(encoding="utf-8"))
+
+    def uc(R):
+        return [x for x in R if not x["alt"].startswith("yanlis")]
+
+    def ya(R):
+        return [x for x in R if x["alt"].startswith("yanlis")]
+
+    def dus(R):
+        return sum(dogru(x["dustu"]) for x in R)
+
+    def pay(R):
+        return mn([say(x["pay_min_cm"]) for x in R if not dogru(x["dustu"])])
+
+    def fiz(x):
+        return ((say(x["teker_dz_min_mm"]) or 0) < -20 or (say(x["egim_max_der"]) or 0) > 5
+                or dogru(x["govde_temas"]))
+
+    def ozet(R):
+        u_, y_ = uc(R), ya(R)
+        return {"n": len(R), "uc": len(u_), "dus": dus(u_), "ya": len(y_),
+                "durma": sum(dogru(x["tetik"]) for x in y_),
+                "hata": sum(1 for x in R if (x.get("hata") or "").strip()),
+                "tohum": (min(int(x["tohum"]) for x in R), max(int(x["tohum"]) for x in R)),
+                "pay": pay(u_), "sensor": int(R[0]["sensor_n"])}
+
+    r = {"h1": ozet(H1), "h2": ozet(H2)}
+    h1, h2 = r["h1"], r["h2"]
+
+    def gorev(x):
+        return (x["alt"], x["sahne"], x["tur"], x["aci"], x["v"], x["w"], x["d"], x["yanal"])
+
+    g1 = {gorev(x) for x in H1}
+    r["ayni_gorev"] = (sum(gorev(x) in g1 for x in H2), len(H2))
+    f2k = [x for x in uc(H2) if x["sahne"] != "rampa_8_ucurum"]
+    r["fiz2"] = (sum(fiz(x) for x in f2k), len(f2k))
+    r["govde2"] = sum(dogru(x["govde_temas"]) for x in uc(H2))
+    r["fiz2s"] = (sum(fiz(x) for x in F2), len(F2))
+    f1d = [x for x in F1 if fiz(x)]
+    r["fiz1"] = (len(f1d), len(F1))
+    r["fiz1_teker"] = (mn([-say(x["teker_dz_min_mm"]) for x in f1d]), mx([-say(x["teker_dz_min_mm"]) for x in f1d]))
+    r["fiz1_sahne"] = sorted({x["sahne"] for x in f1d})
+    r["fiz1_donus"] = (sum(fiz(x) for x in F1 if x["alt"] == "yeni_donus_dar"),
+                       sum(1 for x in F1 if x["alt"] == "yeni_donus_dar"))
+    r["h1_yarik"] = dus([x for x in H1 if x["alt"] == "yeni_delik"])
+    r["h1_donus"] = dus([x for x in H1 if x["alt"] == "yeni_donus_dar"])
+    r["h1_donus_d"] = sorted({say(x["d"]) for x in H1 if x["alt"] == "yeni_donus_dar" and dogru(x["dustu"])})
+    dusen = [x for x in uc(H2) if dogru(x["dustu"])]
+    r["dusen2"] = dusen
+    dz = dusen[0] if dusen else None
+
+    def hucre(R, alts):
+        rs = [x for x in R if x["alt"] in alts]
+        if not rs:
+            return "<span class='ince'>yok</span>"
+        d, n, p = dus(rs), len(rs), pay(rs)
+        ek = ""
+        if "yeni_delik" in alts:
+            ek = "; " + " / ".join(str(g) for g in sorted({int(x["sahne"].split("_")[1]) for x in rs})) + " cm"
+        if "yeni_donus_dar" in alts:
+            ek = "; kenardan " + " / ".join(sy(v, 2) for v in sorted({say(x["d"]) for x in rs})) + " m"
+        return f"<span class='{'kotu' if d else 'iyi'}'>{d} / {n}</span> <span class='ince'>(pay {sy(p)} cm{ek})</span>"
+
+    sat = [[ad, hucre(H1, alts), hucre(H2, alts)] for ad, alts in UC_GRUP]
+    sat.append(["Yanlış alarm (12 düz zemin sahnesi)",
+                f"<span class='iyi'>{h1['durma']} durma / {h1['ya']}</span>",
+                f"<span class='iyi'>{h2['durma']} durma / {h2['ya']}</span>"])
+    sat.append(["<strong>Uçurum koşuları, toplam</strong>",
+                f"<strong class='kotu'>{h1['dus']} / {h1['uc']}</strong> <span class='ince'>({h1['hata']} hata)</span>",
+                f"<strong class='kotu'>{h2['dus']} / {h2['uc']}</strong> <span class='ince'>({h2['hata']} hata)</span>"])
+    sat.append(["Fiziksel düşme (koşu sürdürülünce)",
+                f"<span class='kotu'>{r['fiz1'][0]} / {r['fiz1'][1]}</span> <span class='ince'>(yarık ve dönüş "
+                "koşuları sürdürüldü)</span>",
+                f"<span class='iyi'>{r['fiz2'][0]} / {r['fiz2'][1]}</span> <span class='ince'>(rampa ucu hariç; düşen "
+                f"koşu sürdürülünce {r['fiz2s'][0]} / {r['fiz2s'][1]})</span>"])
+    esik_fiz = bel(U, "Uçurum", "teker 20 mm'den çok iner ya da gövde 5°'den çok eğilir",
+                   ["teker > 20 mm iner ya da eğim > 5°"], "fiziksel düşme eşiği: teker > 20 mm ya da eğim > 5° (varsayım)")
+    # üç düzen yan yana (bağımsız incelemenin üçüncüsünden sonra)
+    kat_html, kat, kat_top = katmanli()
+    r["kat_top"] = kat_top
+    ANA_SINIF = [et for et, _, _, g in KATMAN_SINIF if g in ("ana", "yarik")]
+    r["kapsam"] = {k: (sum(1 for et in ANA_SINIF if kat[et][i]["sinif"] == "iyi"), len(ANA_SINIF))
+                   for i, (k, *_) in enumerate(DUZENLER)}
+    yk = "<strong>Dar yarık 9–14 cm, toplam</strong>"
+    d40 = "… 0,40 m"
+    y14 = kat["… 14 cm"]
+    t6, t10, t14 = kat_top["6"], kat_top["10"], kat_top["14"]
+    # metindeki kapsama cümleleri veriyle tutmalı; tutmazsa dur
+    ucu_de = ["Merdiven başı, sahanlık kenarı ve köşesi, ileri", "Kuyu, ileri", "Dar açıklık 0,45–0,70 m, ileri",
+              "Dar açıklık 0,75–0,90 m, ileri", "Geri gidiş, geniş kenar", "Yerinde dönüş, geniş kenar"]
+    donus_dar = [et for et in kat if et.startswith("Dar açıklık yanında") or et in ("… 0,40 m", "… 0,45 m", "… 0,50 m")]
+    yarik_s = [et for et in kat if et.startswith("Dar yarık 9") or et in ("… 10 cm", "… 11 cm", "… 12 cm", "… 13 cm",
+                                                                         "… 14 cm")]
+    if not (all(kat[et][i]["sinif"] == "iyi" for et in ucu_de for i in range(3))
+            and [kat["Geri gidiş, dar açıklığa"][i]["sinif"] for i in range(3)] == ["ayar", "iyi", "iyi"]
+            and all(kat[et][2]["sinif"] == "iyi" for et in donus_dar)
+            and not all(kat[et][1]["sinif"] == "iyi" for et in donus_dar)
+            and not any(all(kat[et][i]["sinif"] == "iyi" for et in yarik_s) for i in range(3))
+            and (t6[3], t10[3], t14[3]) == (0, 0, 0)):
+        raise SystemExit("Uçurum: kapsama cümleleri katmanlı tabloyla tutmuyor; metni güncelleyin.")
+    kapsam_html = liste([
+        f"<strong>Üçü de kapsıyor</strong> (hükümde 0 hakem düşmesi): merdiven başı, sahanlık kenarı ve köşesi, kuyu, "
+        "0,45–0,90 m dar açıklığa ileri yaklaşma, geniş kenarda geri gitme ve yerinde dönüş; düz zeminde yanlış durma "
+        f"{t6[3]} / {t10[3]} / {t14[3]}.",
+        f"<strong>Dar açıklığa geri gitme:</strong> 10 ve 14 sensör kapsıyor; 6 sensör hükümde ölçülmedi, ayarda "
+        f"{kat['Geri gidiş, dar açıklığa'][0]['d']} / {kat['Geri gidiş, dar açıklığa'][0]['n']} düştü.",
+        f"<strong>Dar açıklık yanında yerinde dönme:</strong> yalnız 14 sensör kapsıyor (kenardan 0,40 m'de pay "
+        f"{sy(kat[d40][2]['p'])} cm, sınırda). 10 sensörde hükümde {kat[d40][1]['d']} / {kat[d40][1]['n']} hakem "
+        f"düşmesi, fiziksel {kat[d40][1]['f']}; 6 sensör hükümde ölçülmedi, ayarda {kat[d40][0]['d']} / "
+        f"{kat[d40][0]['n']}.",
+        f"<strong>9–14 cm dar yarık hiçbir düzenle ölçütü sağlamıyor:</strong> 6 sensör hükümde ölçülmedi (ayarda 10 "
+        f"cm'de {kat['… 10 cm'][0]['d']} / {kat['… 10 cm'][0]['n']}); 10 sensörde 14 cm'de {y14[1]['d']} / "
+        f"{y14[1]['n']} hakem ve {y14[1]['f']} fiziksel düşme; 14 sensörde {kat[yk][2]['d']} / {kat[yk][2]['n']} "
+        f"hakem düşmesi, fiziksel 0, en küçük pay {sy(kat[yk][2]['p'])} cm.",
+    ])
+    ana = ("<h4>Üç düzen yan yana, tehlike sınıfına göre</h4>"
+           "<p class='ince'>Hücre: hakemin saydığı düşme / koşu · fiziksel düşme · en küçük pay (eksi pay: teker merkezi "
+           "kenarı o kadar geçti). Hüküm koşusu yoksa ayar koşusu gösterilir (tohum 1–2, düzeni seçmek için kullanıldı; "
+           "iyimser okunmalı). Hakem düşmesi 0 ise fiziksel düşme de 0'dır. 6 sensörün hüküm koşuları ilk zamanlama "
+           "modeliyle ve konum tutmasız koşulmuştu.</p>" + kat_html + "<h4>Hangi düzen neyi kapsıyor</h4>" + kapsam_html)
+    ana += "<h4>10 ve 14 sensörün hüküm koşuları, grup başına</h4>" + tablo(["Hüküm koşusu, grup", f"{h1['sensor']} sensör (bu turun ara adımı; tohum {h1['tohum'][0]}–{h1['tohum'][1]})",
+                 f"{h2['sensor']} sensör (ölçütü sağlamayan en iyi aday; tohum {h2['tohum'][0]}–{h2['tohum'][1]})"], sat,
+                not_="Hücre: hakemin saydığı düşme / koşu; pay: düşmeyen koşularda teker temas noktasının kenara en yakın "
+                     "yatay mesafesi. Hakem kuralı teker merkezinin kenarı geçmesi; değiştirilmedi. Fiziksel düşme: "
+                     f"{esik_fiz}, ya da gövde zemine değer. Her iki hükümde düzen hükümden önce donduruldu ve tohumlar "
+                     f"daha önce hiç kullanılmamıştı; ama 14 sensörün {r['ayni_gorev'][1]} hüküm görevinden "
+                     f"{r['ayni_gorev'][0]} tanesi 10 sensörün hükmüyle aynı sahne ve senaryoydu (yalnız tohum farklı).")
+    # ayar: yarık ve dönüş
+    YAD = [("6OD+4AD_z120_e30", "10 sensör (ilk aday): tek iz, geniş koni"),
+           ("6WD+4AD_z120_e30", "İz teker hizasında (incelemenin 1. önerisi)"),
+           ("6WRD+4AD_z120_e30", "İz teker hizasında, dar koni (1. ve 2. öneri)"),
+           ("8WRD+4AD_z120_e30", "Her teker hizasında iki dar iz (14 sensörlü adayın ön düzeni)")]
+    ysat, ygraf = [], []
+    for k, ad in YAD:
+        rs = [x for x in YG if x["yerlesim"] == k and x["alt"] == "delik"]
+        dar = [x for x in YG if x["yerlesim"] == k and x["alt"] in ("dar", "ileri")]
+        d = dus(rs)
+        ysat.append([ad, f"<span class='{'kotu' if d else 'iyi'}'>{d} / {len(rs)}</span>",
+                     sy(mn([say(x["pay_min_cm"]) for x in rs])) + " cm", f"{dus(dar)} / {len(dar)}"])
+        ygraf.append((ad, [d], [f"{d} / {len(rs)}"]))
+    r["yarik_ayar"] = ysat
+    ana += "<h4>Ayar: dar yarık düzeltmesi (tohum 1–2; 8 / 10 / 12 / 15 / 20 cm yarık)</h4>" + tablo(
+        ["Ön düzen", "Yarıkta hakem düşmesi", "En küçük pay", "Dar açıklık ve geniş kenarda düşme"], ysat)
+    DAD = [("6WD+4AD_z120_e30", "Yan sensör yok"), ("6WD+4AD+2Y30_z120_e30", "İki yan sensör, dışa 30°, geniş koni"),
+           ("6WD+4AD+2Y35_z120_e30", "İki yan sensör, dışa 35°, geniş koni"),
+           ("8WRD+4AD+2YR37_z120_e30", "İki yan sensör, dışa 37°, dar koni"),
+           ("8WRD+4AD+2YR40_z120_e30", "İki yan sensör, dışa 40°, dar koni (14 sensörlü aday)")]
+    dsat = []
+    for k, ad in DAD:
+        rs = [x for x in DG if x["yerlesim"] == k and x["alt"] == "donus"]
+        hh = []
+        for dd in (0.35, 0.40):
+            q = [x for x in rs if say(x["d"]) == dd]
+            dq = dus(q)
+            hh.append(f"<span class='{'kotu' if dq else 'iyi'}'>{dq} / {len(q)}</span> "
+                      f"<span class='ince'>({sy(mn([say(x['pay_min_cm']) for x in q]))} cm)</span>")
+        q = [x for x in rs if say(x["d"]) in (0.45, 0.50)]
+        yy = [x for x in DG if x["yerlesim"] == k and x["alt"].startswith("yanlis")]
+        dsat.append([ad] + hh + [f"{dus(q)} / {len(q)}",
+                                 f"{sum(dogru(x['tetik']) for x in yy)} / {len(yy)}" if yy else "-"])
+    ana += ("<h4>Ayar: dar açıklık yanında yerinde dönüş (tohum 1–2; dönme merkezi kenardan d)</h4>" + tablo(
+        ["Yan sensör", "d 0,35 m: düşme (en küçük pay)", "d 0,40 m", "d 0,45 / 0,50 m", "Yanlış durma"], dsat))
+    # duyarlılık: tek hız önerisinin dayanağı
+    def duy(R, kad, v, alts):
+        rs = [x for x in R if x["kad"] == kad and say(x["v"]) == v and x["alt"] in alts]
+        if not rs:
+            return None
+        return mn([say(x["pay_min_cm"]) for x in rs]), dus(rs), len(rs)
+
+    A2, A1 = ("ileri", "dar", "delik"), ("ileri", "dar")
+    usat, dgraf = [], []
+    for kad, ad in DUY_AD:
+        hh = []
+        for R, v, alts in ((D2, 0.25, A2), (D2, 0.30, A2), (D2, 0.39, A2), (D1, 0.25, A1)):
+            q = duy(R, kad, v, alts)
+            if q is None:
+                hh.append("-")
+                continue
+            p, d, n = q
+            hh.append(f"<span class='{'kotu' if (p is not None and p < 0) or d else ''}'>{sy(p)} cm</span>"
+                      + (f" <span class='kotu'>({d}/{n} düştü)</span>" if d else ""))
+        usat.append([ad] + hh)
+        q2, q1 = duy(D2, kad, 0.25, A2), duy(D1, kad, 0.25, A1)
+        dgraf.append((ad, [max(0.0, q1[0]) if q1 else None, max(0.0, q2[0]) if q2 else None],
+                      [f"{sy(q1[0])} cm" if q1 else None, f"{sy(q2[0])} cm" if q2 else None]))
+
+    def en_kotu(R, v, alts, haric=("U33", "U50", "U100")):
+        c = [(duy(R, kad, v, alts)[0], ad) for kad, ad in DUY_AD if kad not in haric and duy(R, kad, v, alts)]
+        return min(c)
+
+    r["k25"], r["k30"] = en_kotu(D2, 0.25, A2), en_kotu(D2, 0.30, A2)
+    r["k25_eski"] = en_kotu(D1, 0.25, A1)
+    r["secilen25"] = duy(D2, "K20", 0.25, A2)[0]
+    r["u100_039"] = duy(D2, "U100", 0.39, A2)
+    yd = [x for x in D2 if x["alt"].startswith("yanlis")]
+    r["duy_yanlis"] = (sum(dogru(x["tetik"]) for x in yd), len(yd))
+    r["hiz"] = secim["hiz_onerisi_m_s"]
+    ana += (f"<h4>Duyarlılık: tek hız önerisinin dayanağı (tohum 1; ileri, dar açıklık ve yarık)</h4>" + tablo(
+        ["Koşul (14 sensörlü adayın ayarının üstüne)", f"{h2['sensor']} sensör, 0,25 m/s", "0,30 m/s", "0,39 m/s",
+         "Önceki 6 sensör, 0,25 m/s"], usat,
+        not_=f"Hücre: en küçük pay. Yanlış durma bütün koşullarda {r['duy_yanlis'][0]} / {r['duy_yanlis'][1]}. Önceki 6 "
+             "sensörlü düzenin satırları bu turun başında aynı ızgarayla koşulmuştu (yarık olmadan)."))
+    # kusur, rampa
+    olu = [x for x in K2 if x["alt"].startswith("olu")]
+    r["kusur"] = (dus(olu), len(olu), sum(dogru(x["tetik"]) for x in olu))
+    pd = {}
+    for x in K2:
+        if x["alt"] == "parlak" and x["sahne"] == "duz":
+            t_ = pd.setdefault(say(x["yok_orani_ayar"]), [0, 0])
+            t_[0] += dogru(x["tetik"])
+            t_[1] += 1
+    r["parlak"] = pd
+    tutmasiz = [x for x in RU if x["kosul"] == "{}"]
+    k2 = [x for x in RU if "konum" in x["kosul"] and say(x["fren_ivme"]) == 2.0]
+    r["rampa"] = (dus(tutmasiz), len(tutmasiz), dus(k2), len(k2),
+                  mn([say(x["pay_min_cm"]) for x in k2 if say(x["v"]) == 0.25]),
+                  mn([say(x["pay_min_cm"]) for x in k2 if say(x["v"]) == 0.39]))
+    rr = [x for x in RF if x["sahne"] != "duz"]
+    r["kayma"] = (mx([say(x["kayma_hiz_1_2s"]) for x in rr if x["kosul"] == "{}"]) * 1000,
+                  mx([abs(say(x["kayma_hiz_1_2s"])) for x in rr
+                      if "konum" in x["kosul"] and say(x["fren_ivme"]) == 2.0]) * 1000)
+    ark = {}
+    for x in rr:
+        ark.setdefault(say(x["fren_ivme"]), []).append(say(x["arka_yuk_min_N"]))
+    r["arka_guvenli"] = [a_ for a_, v in sorted(ark.items()) if min(v) > 0]
+    r["kotu_birlesik"] = {v: pay([x for x in H2 if x["alt"] == "kotu_birlesik" and say(x["v"]) == v]) for v in (0.25, 0.30)}
+
+    grafik = cubuk_grafik(
+        "Ayarda dar yarıkta hakem düşmesi, ön düzen başına (400 koşu)", [("hakem düşmesi", "--c-b")], ygraf,
+        en_buyuk=max(1, max(g[1][0] for g in ygraf)),
+        aciklama="İncelemenin önerdiği iki düzeltme (izi teker hizasına almak, koniyi daraltmak) düşmeyi azalttı ama "
+                 "bitirmedi. Her tekerin iki yanına konan iki dar iz, yarığın kenarı nereden geçerse geçsin birini "
+                 "tümüyle boşluğun üstünde bırakıyor.")
+    grafik += cubuk_grafik(
+        "0,25 m/s'de en küçük pay, koşul başına (cm)",
+        [("önceki 6 sensör", "--c-c"), (f"{h2['sensor']} sensörlü aday", "--c-a")], dgraf,
+        en_buyuk=max(max(v for v in g[1] if v is not None) for g in dgraf),
+        aciklama="Eksi pay sıfırda kesildi; değer yazıda. Uzun kip 100 ms seçilmeyen bir kip, karşılaştırma için.")
+
+    b24 = bel(U, "Uçurum", "≈ 2,4 cm", ["≈ 2,4 cm"],
+              "yarığa 10° ile girişte iz sensörünün teker çizgisinden yana kayması ≈ 2,4 cm")
+    b070 = bel(U, "Uçurum", "≈ 0,70 N·m", ["0,70 N·m"], "10° inişte konum tutma için teker başına ≈ 0,70 N·m tork")
+    b618 = bel(U, "Uçurum", "0,618 N·m", ["0,618, TAHMİN"], "motorun sürekli torku 0,618 N·m (tahmin)")
+    b9 = bel(U, "Uçurum", "≈ 9 cm", ["≈ 9 cm'den yakın"], "yan sensörler robotu yan kenar uçuruma ≈ 9 cm'den yakınken durdurur")
+    b70 = bel(U, "Uçurum", "≈ 0,70 m", ["0,70 m'den dar şeritte"], "≈ 0,70 m'den dar şeritte robot sürülemez")
+    dz_txt = (f"{int(dz['sahne'].split('_')[1])} cm yarığa {dz['aci']}° açıyla, {sy(say(dz['v']), 2)} m/s'de girişte teker "
+              f"merkezi kenarı {tam(-10 * say(dz['pay_min_cm']))} mm geçti") if dz else "düşme yok"
+    if "SAGLAMAYAN" not in secim.get("durum", ""):
+        raise SystemExit("Uçurum: secim.json'da 'durum' alanı beklenen 'ölçütü sağlamayan aday' notunu taşımıyor.")
+    hukum = (f"Önceden konan ölçüte göre <strong>geçmedi</strong>; onaylanmış bir düzen yok. Ölçüt: uçurum koşularında "
+             f"hakem 0 düşme, yanlış alarm koşularında 0 durma. En iyi aday olan {h2['sensor']} sensörlü düzen "
+             f"{h2['uc']} uçurum koşusunda {h2['dus']} hakem düşmesi verdi ({dz_txt}); fiziksel düşme "
+             f"{r['fiz2'][0]} / {r['fiz2'][1]}, yanlış durma {h2['durma']} / {h2['ya']}. Fiziksel sonuç hükmü değiştirmez. "
+             f"{h1['sensor']} sensörlü ara adım {h1['dus']} hakem ve {r['fiz1'][0]} fiziksel düşme verdi. Son kabul "
+             f"edilen 6 sensörlü düzen kendi sınamasında {t6[0]} / {t6[1]} düştü, ama o sınamada dar yarık, dar açıklığa "
+             "geri gitme ve dar açıklık yanında dönme yoktu. Üç düzenin tehlike sınıfına göre karşılaştırması aşağıda.")
+    once_simdi = [
+        ("Hüküm",
+         f"6 sensörle sınama 2: {eu['ucurum_kosu']} uçurum koşusunda {eu['dustu']} düşme, geçer sayıldı. Dar yarık, "
+         "açıklığa geri ve dönerek yaklaşma sınanmamıştı.",
+         f"Ölçüt sağlanmadı. Ara adımda {h1['sensor']} sensörle hakem {h1['dus']} / {h1['uc']}, fiziksel "
+         f"{r['fiz1'][0]}; en iyi adayda ({h2['sensor']} sensör) hakem {h2['dus']} / {h2['uc']}, fiziksel {r['fiz2'][0]}."),
+        ("Sensör düzeni",
+         "6 sensör: dört köşe ve önde iki iç.",
+         "Karar verilmedi; üç seçenek yan yana. 6 sensör en ucuz, ama üç tehlike sınıfı hükümde hiç ölçülmedi. 10 sensör "
+         "dar açıklığa geri gitmeyi de kapsıyor. 14 sensör (her teker hizasında iki dar iz, iki yanda dışa 40° bakan dar "
+         "konili sensör) ölçülen her sınıfta fiziksel düşme 0, ama ölçütü bir hakem düşmesiyle sağlamadı."),
+        ("Hız önerisi",
+         f"Sayfada iki ifade vardı: sınamada 0,39 m/s'de pay {sy(eu['pay_dar'])} cm, ayrıca \"ilk denemeler 0,25 m/s\".",
+         f"Tek öneri {sy(r['hiz'], 2)} m/s, üç düzen için de. Dayanağı bu turun duyarlılık ölçümü: 0,25 m/s'de en kötü "
+         f"tekil pay {sy(r['k25'][0])} cm ({r['k25'][1].lower()}); 6 sensörlü düzende {sy(r['k25_eski'][0])} cm."),
+        ("Eğimde fren",
+         f"10° inişte frenden sonra robot {sy(eu['inis_kayma'][1], 2)} m/s kayıyordu; \"tutma freni gerekir\".",
+         f"2,0 m/s² rampa freni ve enkoderle konum tutma: kayma {tam(r['kayma'][0])} mm/s'den en çok "
+         f"{sy(r['kayma'][1])} mm/s'ye indi. Rampa ucundaki uçurumda tutmasız {r['rampa'][0]} / {r['rampa'][1]} düştü, "
+         f"konum tutmayla {r['rampa'][2]} / {r['rampa'][3]}."),
+        ("Sensör zamanlaması",
+         "Saniyede 50 örnek ile 4 m menzil birlikte varsayılmıştı (veri sayfasıyla çelişiyordu).",
+         f"Kısa kip, 20 ms, 1,3 m menzil seçildi. Uzun kip 100 ms 0,39 m/s'de {r['u100_039'][1]} / {r['u100_039'][2]} "
+         "koşuda düşüyor."),
+    ]
+    rozet = (rz("İnceleme: koşullu (3 engelleyici)") + rz("Onarımdan sonra: ölçüte göre geçmedi", "kotu")
+             + rz("Son inceleme: sayılar tuttu", "iyi"))
+    olculen = (
+        "<p>Bağımsız incelemenin açık bıraktığı sekiz iş (dar delik, geri ve dönerek yaklaşma, kusur, iniş rampası, sensör "
+        "zamanlaması, duyarlılık, yeni tohumlu hüküm, gösterim) ve ardından incelemenin üç engelleyicisi. İlk adımda "
+        f"aday {h1['sensor']} sensöre çıktı; hükmü ({h1['n']} koşu) ölçütü sağlamadı. Onarımda önerilen düzeltmeler "
+        f"ayar koşularında denendi, aday {h2['sensor']} sensöre çıktı ve hükümden önce donduruldu. Yeni hüküm: "
+        f"{h2['n']} koşu, tohum {h2['tohum'][0]}–{h2['tohum'][1]}, yarıkta hiçbir ayarda olmayan 9 / 11 / 13 cm "
+        f"genişlikler ve kenardan 0,35 m'de dönüş eklendi; {h2['hata']} yazılım hatası. Kusur ve duyarlılık "
+        f"{h2['sensor']} sensörle yinelendi. Son bağımsız inceleme yeni koşu yapmadı: sayıları CSV'lerden yeniden saydı, "
+        "belgelerdeki \"seçilen\" adlandırmasını \"ölçütü sağlamayan en iyi aday\" olarak düzeltti ve üç düzeni tehlike "
+        "sınıfına göre yan yana koydu. Hepsi MuJoCo, önerilen firmware ve önde omni tekerli robot modeliyle.</p>")
+    oneri = [
+        f"<strong>Kalan düşme:</strong> {dz_txt}. Ön izler tekerin önünde olduğu için açılı girişte iz teker çizgisinden "
+        f"{b24} yana kayıyor ve çift izin ±2 cm aralığını yiyor. Aynı koşu sürdürülünce teker inmiyor, gövde zemine "
+        "değmiyor; ama ölçüt hakem kuralı.",
+        f"<strong>Hız:</strong> tek öneri {sy(r['hiz'], 2)} m/s, hangi düzen seçilirse seçilsin. 14 sensörle kısa kipte "
+        f"0,25 m/s'de en küçük pay {sy(r['secilen25'])} cm, en kötü tekil koşulda ({r['k25'][1].lower()}) "
+        f"{sy(r['k25'][0])} cm. 0,30 ve 0,39 m/s yalnız karşılaştırma için ölçüldü; öneri değil. Kötü koşulların "
+        f"birleşiminde hükümde en küçük pay {sy(r['kotu_birlesik'][0.25])} cm (köşe sahnesi). Seçilmeyen uzun kipler en "
+        "kötü koşul sayımına katılmadı; 100 ms'de 0,39 m/s düşüyor.",
+        f"<strong>Fren:</strong> 2,0 m/s² rampa ve enkoderle konum tutma. 10° inişte arka aks yalnız "
+        f"{' / '.join(sy(a_) for a_ in r['arka_guvenli'])} m/s² frende yükünü hiç kaybetmiyor; 2,0'da kısa süre 0 N'a "
+        f"iniyor (robotta eğim ölçeri yok, bu kabul edildi). Konum tutma teker başına {b070} istiyor; motorun sürekli "
+        f"torku {b618} tahmin ediliyor, uzun park için mekanik fren gerekebilir.",
+        f"<strong>Kusur:</strong> {h2['sensor']} sensörün her biri tek tek donmuş ya da hep dönüşsüzken {r['kusur'][1]} "
+        f"koşuda kaçırma {r['kusur'][0]}; robot her arızada durdu. Düz zeminde dönüşsüz örnek oranı "
+        + " / ".join(f"%{tam(k_ * 100)}" for k_ in sorted(r["parlak"])) + " iken boşuna durma "
+        + " / ".join(f"{v[0]}/{v[1]}" for _, v in sorted(r["parlak"].items()))
+        + ": dönüşsüz oranı %20'yi geçen zeminde robot sürülemez.",
+        f"<strong>14 sensörün bedeli:</strong> 14 sensör (6 sensörün 2,3 katı), 6'sında dar koni ayarı (sinyal kaybı "
+        f"ölçülmedi), büyük olasılıkla ikinci bir I2C hattı (ölçülmedi), eteğin iki yanında pencere; yan sensörler "
+        f"robotu yan kenarı bir uçuruma {b9} yakınken durdurur, {b70} dar şeritte robot sürülemez.",
+        "<strong>Seçenekler (karar verilmedi):</strong> (1) 6 sensör: en ucuz; kullanılacaksa dar yarık, dar açıklığa "
+        "geri gitme ve dar açıklık yanında dönme yasaklanmalı ya da bu yerler binada kapatılmalı. (2) 10 sensör: dar "
+        "açıklığa geri gitmeyi de kapsıyor; dar açıklığın yakınında dönme ve 14 cm yarık açık. (3) 14 sensör: ölçülen her "
+        "sınıfta fiziksel düşme 0, bedeli yukarıda.",
+        "<strong>Bir düzeni onaylamak için:</strong> yeni bir düzeltme (izleri tekere yaklaştırmak ya da açılı girişi hesaba "
+        "katmak), ayar ve hiç kullanılmamış tohum ve geometriyle yeni hüküm. Ya da ölçütün kendisi (hakem mi, fiziksel "
+        f"mi) karar verecek kişi tarafından açıkça yeniden konmalı. Bu turda ikisi de yapılmadı. Aday {h1['sensor']} "
+        f"sensörlü düzene döndürülmedi, çünkü o aynı ölçütte {h1['dus']} hakem düşmesi veriyor.",
+    ]
+    iyimser = [
+        f"{h2['sensor']} sensörün tek I2C hattında 20 ms'de gecikmesiz okunduğu varsayıldı; büyük olasılıkla iki hat gerekir. "
+        "Sensörler arası etkileşim yok.",
+        "Dar koni (ROI 15°) yalnız koni daraltılarak modellendi; sinyal ve menzil kaybı, gürültü artışı yok.",
+        "Kısa kip modelde ilk iyimser modelle aynı örnekleme yolunu izliyor; tek fark 1,3 m menzil.",
+        "Teker ve gövde rijit; pay yarıkta ve dönüşte 0,5 cm'ye iniyor, gerçek lastik birkaç mm içeri girer.",
+        "Kalibrasyon hep düz zeminde; yan sensörün izi başlangıçta boşluğun üstündeyse yanlış beklenen değer alınır "
+        "(modellenmedi).",
+    ]
+    aciklar = [
+        "Ölçüt sağlanmadı: yeni düzeltme, ayar ve yeni tohumlarla hüküm, ya da ölçütün açık kararı bekliyor. Satın alma "
+        "kararı verilmedi.",
+        f"Hüküm verisi tam bağımsız değil: 14 sensörün {r['ayni_gorev'][1]} hüküm görevinden {r['ayni_gorev'][0]} tanesi 10 "
+        "sensörün hükmüyle aynı sahne ve senaryo (yalnız tohum farklı); hiç koşulmamış sahne yalnız 9 / 11 / 13 cm yarık. "
+        "İlk hükmün düşen durumları düzeltmeyi yönlendirdi ve aynen yinelendi.",
+        "Hükümde pay yarıkta ve kenardan 0,40 m dönüşte 0,5 cm: sonuç ölçütün sınırında, geniş pay yok.",
+        "6 sensörlü düzen dar yarık, dar açıklığa geri gitme ve dar açıklık yanında dönmede hükümde hiç ölçülmedi; "
+        "sürülebilir en dar şerit hiçbir düzende ölçülmedi (0,9 m iskele 10 ve 14 sensörde düşmesiz).",
+        f"{h2['sensor']} VL53L1X: I2C ve XSHUT okuması, dar koninin sinyal kaybı, etek yan penceresi masada doğrulanmalı.",
+        "Duyarlılık tek tohumla koşuldu; ilk iyimser model, uzun kip 33 ms ve fren 1,5 / 1,0 m/s² satırları yinelenmedi.",
+        "İyimser zamanlamayla karşılaştırma koşusu yine yapılmadı; kare delik hükümde yok.",
+    ]
+    ust = {
+        "hukum": f"Ölçüte göre <strong>geçmedi</strong>, onaylanmış düzen yok. En iyi aday {h2['sensor']} sensör: "
+                 f"{h2['uc']} uçurum koşusunda {h2['dus']} hakem düşmesi "
+                 f"({int(dz['sahne'].split('_')[1]) if dz else '-'} cm yarığa açılı giriş), fiziksel düşme "
+                 f"{r['fiz2'][0]}, {h2['ya']} yanlış alarm koşusunda {h2['durma']} durma. {h1['sensor']} sensör: hakem "
+                 f"{t10[0]} / {t10[1]}, fiziksel {t10[2]}. 6 sensör: {t6[0]} / {t6[1]}, ama dar yarık, dar açıklığa geri "
+                 "ve dar açıklık yanında dönme sınanmadı.",
+        "rozet": rz("İnceleme: koşullu") + rz("Onarım sonrası: geçmedi", "kotu"),
+        "karar": "Sensör sayısı kararı verilmedi; üç seçenek tehlike sınıfına göre yan yana (Uçurum bölümü). Merdiven, "
+                 "sahanlık, kuyu ve dar açıklığa ileri yaklaşmayı üçü de kapsıyor; dar açıklık yanında dönmeyi yalnız 14, "
+                 "9–14 cm dar yarığı hiçbiri ölçüte göre kapsamıyor. Ortak olanlar: kısa kip 20 ms, 2,0 m/s² rampa freni "
+                 f"ve enkoderle konum tutma, tek hız önerisi {sy(r['hiz'], 2)} m/s.",
+    }
+    y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
+         "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
+    return r, y, ust
+
+
+def harita_yeni(eh):
+    ab = oku(H / "ab_2b.csv")
+    ek = oku(H / "kayip_ek_2b.csv")
+    ky = oku(H / "kayip_2b.csv")
+    kp = [x for x in oku(T / "kipler_2b.csv") if x["kume"] == "sinama"]
+    r = {}
+    bic = {et: (ad, f) for et, ad, f in ETKEN}
+    # sıralama (yalnız tam ızgaralı A'dan B'ye)
+    sira = []
+    for et, ad, f in ETKEN:
+        rs = [x for x in ab if x["etken"] == et]
+        if not rs:
+            continue
+        kad = {}
+        for x in rs:
+            t_ = kad.setdefault(int(x["kademe"]), [0, 0])
+            t_[0] += 1
+            t_[1] += dogru(x["basari"])
+        b = sum(dogru(x["basari"]) for x in rs)
+        yakin = sum(1 for x in rs if not dogru(x["basari"]) and 0.30 <= (say(x["varis_hatasi_m"]) or 9) < 0.35)
+        en_kotu = min(v[1] / v[0] for v in kad.values())
+        sira.append((b / len(rs), en_kotu, ad, b, len(rs), (b + yakin) / len(rs)))
+    sira.sort(key=lambda x: (round(x[0], 9), x[1]))
+    r["sira"] = sira
+    ssat = []
+    i = 0
+    for o, ek_, ad, b, n, yk in sira:
+        if o >= 0.9999:
+            continue
+        i += 1
+        ssat.append([str(i), ad, f"%{tam(100 * o)} <span class='ince'>({b}/{n})</span>", f"%{tam(100 * ek_)}",
+                     f"%{tam(100 * yk)}"])
+    kalan = [s[2] for s in sira if s[0] >= 0.9999]
+    ssat.append([f"{i + 1}–{i + len(kalan)}", f"Geri kalan {len(kalan)} etken (insan, ölçek, genişlik, eğrilme, "
+                 "gürültü, odometri)", "%100", "%100", "%100"])
+    ana = tablo(["Sıra", "Etken", "A'dan B'ye ortalama başarı", "En kötü kademe", "Sınırdakiler başarı sayılırsa"],
+                ssat, not_="Sıra yalnız bütün kademeleri koşulmuş A'dan B'ye ortalamasından (etken başına 4 kademe × 12 "
+                           "koşu), eşitlikte en kötü kademe. Sınırdaki koşu: robot hedefe 0,30–0,34 m'de \"vardım\" deyip "
+                           "durdu (başarı ölçütü 0,30 m).")
+    # kayıp robotta genişlik
+    tb = ort([say(x["konum_ort_m"]) for x in ky if x["kosul"] == "taban"])
+    gsat = []
+    gek = {}
+    for x in ek:
+        gek.setdefault(int(x["kademe"]), []).append(x)
+    for kd in sorted(gek):
+        rs = gek[kd]
+        dg = say(rs[0]["deger"])
+        gsat.append([f"±{sy(dg * 100) if (dg * 100) % 1 else tam(dg * 100)} cm",
+                     kesir(sum(dogru(x["basari"]) for x in rs), len(rs), len(rs)),
+                     str(sum(1 for x in rs if x["karar_dogru"] and not dogru(x["karar_dogru"]))),
+                     str(sum(int(say(x["temas_olay"]) or 0) for x in rs)),
+                     sy(ort([say(x["konum_ort_m"]) for x in rs]), 3)])
+    r["gen"] = (sum(dogru(x["basari"]) for x in ek), len(ek),
+                ort([say(x["konum_ort_m"]) for x in gek[max(gek)]]), tb)
+    ana += "<h4>Kayıp robotta koridor genişlik sapması (yeni, ana ızgarayla aynı tohumlar)</h4>" + tablo(
+        ["Genişlik sapması", "Başarı", "Yanlış koridor kararı", "Temas", "Karardan sonra konum hatası ort (m)"], gsat,
+        not_=f"Bozulmasız tabanda konum hatası ortalaması {sy(tb, 3)} m. Hata duvar kaymasının yaklaşık yarısı kadar "
+             "büyüyor; sıçrama yok.")
+    # kip karşılaştırması: eskimiş harita, taşınma yok
+    kos_ad = {}
+    for x in ab:
+        if x["kosul"] not in kos_ad and x["etken"] in bic:
+            kos_ad[x["kosul"]] = f"{bic[x['etken']][0]}: {bic[x['etken']][1](say(x['deger']))}"
+    kos_ad.update({"okul_hafif": "Okul günü, hafif", "okul_orta": "Okul günü, orta", "okul_agir": "Okul günü, ağır"})
+    ESKI = ["okul_hafif", "okul_orta", "okul_agir", "kapi_2", "kapi_3", "cam_2", "donussuz_3"]
+    KIP3 = [("v3", "v3 (varsayılan)", "--c-c"), ("izleme", "izleme kipi", "--c-a"), ("algi", "algılı kip", "--c-b")]
+    ksat, kgraf = [], []
+    r["kip_eski"] = {}
+    for kos in ESKI:
+        hh, vals, txt = [], [], []
+        for kip, _, _ in KIP3:
+            rs = [x for x in kp if x["kosul"] == kos and x["kip"] == kip]
+            dv = sum(x["sonuc"] == "dogru_varis" for x in rs)
+            sh = sum(x["sonuc"] == "sessiz_hata" for x in rs)
+            r["kip_eski"][(kos, kip)] = (dv, len(rs), sh)
+            hh.append(f"{kesir(dv, len(rs), 0.9 * len(rs))} <span class='ince'>({sh} sessiz hata)</span>")
+            vals.append(dv)
+            txt.append(f"{dv}/{len(rs)}")
+        ksat.append([kos_ad[kos]] + hh)
+        kgraf.append((kos_ad[kos], vals, txt))
+    top = {kip: [sum(r["kip_eski"][(k_, kip)][i_] for k_ in ESKI) for i_ in range(3)] for kip, _, _ in KIP3}
+    r["kip_top"] = top
+    ksat.append(["<strong>Toplam</strong>"] + [f"<strong>{top[k][0]}/{top[k][1]}</strong> <span class='ince'>"
+                                                f"({top[k][2]} sessiz hata)</span>" for k, _, _ in KIP3])
+    ana += "<h4>Eskimiş harita, taşınma yok: kip başına doğru varış (yeni tohumlar 5, 6)</h4>" + tablo(
+        ["Koşul"] + [ad for _, ad, _ in KIP3], ksat,
+        not_="Sessiz hata: robot yanlış yerde \"vardım\" dedi. Bu turun hakemi daha katı (koşu yalnız beyin \"vardım\" "
+             "deyince biter) ve tohumlar yeni; sayılar önceki tablolarla birebir karşılaştırılmaz. Algılı kipin düşük "
+             "varışı boşuna \"kayboldum\" deyip durmasından (taşınma bölümü).")
+    grafik = cubuk_grafik("Eskimiş haritada doğru varış, kip başına (12 koşu)", [(a_, c_) for _, a_, c_ in KIP3], kgraf,
+                          en_buyuk=12, aciklama="Okul günü ağır hâlinde her kip 12 koşuda en çok 2 doğru varış.")
+    vd = eh["varyant"]
+    sm = eh["sira_metin"]
+    hukum = (f"Değişmedi: kapı durumu, cam, menzil ve dönüş vermeyen yüzey kırıyor, bozulma ani. Bu turda zarar sırası "
+             f"düzeltildi: {sm}. Kayıp robotta genişlik sapması da kırmıyor ({r['gen'][0]}/{r['gen'][1]}). Yeni tohumlarla "
+             f"eskimiş haritada izleme kipi {top['izleme'][0]}/{top['izleme'][1]}, v3 {top['v3'][0]}/{top['v3'][1]} doğru "
+             "varış; okul günü ağır hâlinde her kip en çok 2/12.")
+    once_simdi = [
+        ("Zarar sırası",
+         "Sonuç belgesi \"dönüşsüz > menzil > kapı\" diyordu (kayıp robottaki eşit olmayan kapsamdan); bu sayfanın grafiği "
+         "okul gününü de sıraya katıyordu.",
+         f"Yalnız A'dan B'ye ortalamasıyla, eşitlikte en kötü kademe: {sm}."),
+        ("Kayıp robotta genişlik sapması", "Koşulmamıştı.",
+         f"±2,5–10 cm'de {r['gen'][0]}/{r['gen'][1]}, yanlış koridor 0, temas 0; konum hatası en çok "
+         f"{sy(r['gen'][2], 3)} m."),
+        ("İzleme kipi",
+         f"Ayrı tohumlarda (3, 4) okul günü orta {vd[('izleme', 'okul_orta')][1]}/12, kapı %50 "
+         f"{vd[('izleme', 'kapi_3')][1]}/12.",
+         f"Yeni tohumlarda (5, 6), katı hakemle okul günü orta {r['kip_eski'][('okul_orta', 'izleme')][0]}/12, kapı %50 "
+         f"{r['kip_eski'][('kapi_3', 'izleme')][0]}/12; eskimiş haritada toplam {top['izleme'][0]}/{top['izleme'][1]} "
+         f"(v3 {top['v3'][0]}/{top['v3'][1]})."),
+    ]
+    rozet = rz("İnceleme: geçer", "iyi") + rz("Engelleyici yok; belgede küçük düzeltmeler", "iyi")
+    olculen = ("<p>İncelemenin açık bıraktıkları: zarar sırasının düzeltilmesi, kayıp robotta koridor genişlik sapması "
+               f"({len(ek)} koşu) ve izleme kipinin dört kiple aynı koşullarda karşılaştırılması (taşınma bölümündeki "
+               "720 koşunun eskimiş harita kısmı). Ana ızgaranın CSV'leri değişmedi; analiz yeniden koşulunca birebir aynı "
+               "çıktı.</p>")
+    oneri = [
+        f"<strong>Sıra:</strong> {sm}. Sınırdaki 5 koşu başarı sayılırsa cam %50'de kırar, ani kayma hiç kırmaz; kapı, cam "
+        "ve menzil iki sayımda da ilk üçte.",
+        "<strong>Öneri (ölçülmedi, varsayılan değişmedi):</strong> bilinen başlangıçta izleme kipi, \"emin değilim\" "
+        "denetimi ve kapı / camda geçiş testi kapatılmış taşınma algısı birlikte. Tam gerileme koşusu olmadığı için "
+        "varsayılan v3.",
+        "<strong>Gerçekte ilk ölçülecek:</strong> okul koridorunda dönüş vermeyen yüzeyler ve etkin menzil (sıranın 2.–4. "
+        "etkenleri buna bağlı), haritanın gün içinde ne kadar eskidiği.",
+    ]
+    iyimser = [
+        "Duvar ideal ince levha, ışın sonsuz ince; cam yalnız kapılarda ve tam saydam (yalnız 2B).",
+        "Kapı kanadı koridora açılmıyor; eşya yolu kapatmıyor; insanlar yol veriyor.",
+        "Taban harita kusursuz; 2B robot kinematik, sonar yok; tek kat, düz zemin.",
+    ]
+    aciklar = [
+        "Kayıp robot 20 koşulda (genişlik eklendi); MuJoCo'da cam ve kayıp robot yok.",
+        "Bu turda 6 haritalı beyin, MuJoCo doğrulaması ve tam gerileme koşusu yapılmadı.",
+        "Eşitlikte \"en kötü kademe\" kuralı yalnız dönüşsüz yüzey ile ani kaymayı ayırıyor; 12 koşuda kırılma ± 1 kademe.",
+    ]
+    ust = {
+        "hukum": f"Değişmedi: kapı, cam, menzil ve dönüşsüz yüzey kırıyor, bozulma ani. Zarar sırası düzeltildi ({sm}); "
+                 f"kayıp robotta genişlik sapması da kırmıyor ({r['gen'][0]}/{r['gen'][1]}).",
+        "rozet": rz("İnceleme: geçer", "iyi"),
+        "karar": "Haritaya güvenmeden önce okul koridorunda dönüş vermeyen yüzeyler, etkin menzil ve kapı değişimi ölçülmeli. "
+                 "Bilinen başlangıçta izleme kipi eskimiş haritada en çok varışı veriyor, ama taşınmada kendini "
+                 "kurtaramıyor; varsayılan v3 kaldı.",
+    }
+    y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
+         "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
+    return r, y, ust
+
+
+KIP4 = [("v3", "v3 (varsayılan)"), ("izleme", "İzleme"), ("algi", "Algılı"), ("izleme_algi", "İzleme + algı")]
+
+
+def tasinma_yeni(et):
+    kp = [x for x in oku(T / "kipler_2b.csv") if x["kume"] == "sinama"]
+    emin = json.loads((T / "emin_secim.json").read_text(encoding="utf-8"))
+    ab = oku(H / "ab_2b.csv")
+    bic = {e_: (ad, f) for e_, ad, f in ETKEN}
+    kos_ad = {"okul_hafif": "Okul günü, hafif", "okul_orta": "Okul günü, orta", "okul_agir": "Okul günü, ağır",
+              "taban": "Bozulmasız"}
+    for x in ab:
+        if x["kosul"] not in kos_ad and x["etken"] in bic:
+            kos_ad[x["kosul"]] = f"{bic[x['etken']][0]}: {bic[x['etken']][1](say(x['deger']))}"
+
+    def grup(x):
+        k = x["kosul"]
+        if k == "taban":
+            return "temiz"
+        if "+" not in k:
+            return "eski"
+        return "tas_temiz" if k.startswith("taban+") else "tas_eski"
+
+    def dogru_dv(x):
+        return x["sonuc"] == "dogru_varis" or (x["tur"] == "baska_koridor" and x["sonuc"] == "guvenli_durma")
+
+    r = {"g": {}}
+    GR = [("temiz", "Temiz harita, taşınma yok", "v3 (varsayılan)"),
+          ("eski", "Eskimiş harita, taşınma yok (okul günü 3 hâl, kapı %25 ve %50, cam %50, dönüşsüz %50)",
+           "izleme + \"emin değilim\" denetimi"),
+          ("agir", "  yalnız okul günü ağır", "hiçbiri iyi değil; zorunluysa algılı"),
+          ("tas_temiz", "Taşınma riski, temiz harita (4 taşıma türü)", "algılı"),
+          ("tas_eski", "Taşınma + eskimiş harita (kapı %25, cam %50, dönüşsüz %50; 1–3 m taşıma)",
+           "iyi seçenek yok: algılı (sessiz hata 0) ya da v3 (daha çok varış)")]
+    osat = []
+    for g, ad, oner in GR:
+        hh = []
+        for kip, _ in KIP4:
+            rs = [x for x in kp if x["kip"] == kip and (grup(x) == g if g != "agir" else x["kosul"] == "okul_agir")]
+            d_ = sum(dogru_dv(x) for x in rs)
+            sh = sum(x["sonuc"] == "sessiz_hata" for x in rs)
+            gd = sum(x["sonuc"] == "guvenli_durma" for x in rs)
+            r["g"][(g, kip)] = (d_, len(rs), sh, gd)
+            hh.append(f"{kesir(d_, len(rs), 0.9 * len(rs))}<br><span class='ince'>{sh} sessiz, {gd} durma</span>")
+        osat.append([ad.replace("  ", "&nbsp;&nbsp;↳ ")] + hh + [oner])
+    ana = tablo(["Koşul"] + [a_ for _, a_ in KIP4] + ["Öneri"], osat,
+                not_="Hücre: doğru davranış / koşu (hedefe doğru varış; başka koridora taşımada güvenle durma), altında "
+                     "sessiz hata (yanlış yerde \"vardım\") ve güvenli durma sayısı. Sınama, tohum 5 ve 6, 6 koridor, 2B.")
+    # algılı kipin yanlış alarmı
+    YK = ["taban", "kapi_2", "cam_2", "kapi_3", "donussuz_3", "okul_hafif", "okul_orta", "okul_agir"]
+    asat, agraf = [], []
+    r["alarm"] = {}
+    for kos in YK:
+        al = [x for x in kp if x["kip"] == "algi" and x["kosul"] == kos]
+        ia = [x for x in kp if x["kip"] == "izleme_algi" and x["kosul"] == kos]
+        na = sum(int(x["alarm"]) > 0 for x in al)
+        r["alarm"][kos] = (na, len(al))
+        asat.append([kos_ad[kos], kesir(na, len(al)) if not na else f"<span class='kotu'>{na}/{len(al)}</span>",
+                     f"{sum(x['sonuc'] == 'dogru_varis' for x in al)}/{len(al)}",
+                     f"{sum(x['sonuc'] == 'guvenli_durma' for x in al)}/{len(al)}",
+                     f"{sum(int(x['alarm']) > 0 for x in ia)}/{len(ia)}"])
+        agraf.append((kos_ad[kos], [na], [f"{na}/{len(al)}"]))
+    ana += "<h4>Taşınma yokken boşuna \"kayboldum\" (algılı kip)</h4>" + tablo(
+        ["Koşul", "Algılı: boşuna alarm verilen koşu", "Algılı: doğru varış", "Algılı: durup yardım bekleme",
+         "İzleme + algı: boşuna alarm"], asat,
+        not_="Nedeni neredeyse hep aynı: alarm anındaki taramada ışınların bir kısmı haritadaki duvarın arkasına geçiyor "
+             "(açılmış kapının ya da camın arkasındaki oda). Dönüş vermeyen yüzey bu oranı büyütmüyor.")
+    # fark etme
+    tt = [x for x in kp if x["kip"] == "algi" and grup(x) == "tas_temiz"]
+    r["fark"] = (sum(x["tepki_s"] != "" for x in tt), len(tt), medyan([say(x["tepki_s"]) for x in tt]))
+    TUR_AD = dict(TUR)
+    fsat = []
+    for tur, tad in TUR:
+        q = [x for x in tt if x["tur"] == tur]
+        fsat.append([tad, f"{sum(x['tepki_s'] != '' for x in q)}/{len(q)}",
+                     sy(medyan([say(x["tepki_s"]) for x in q])) + " s",
+                     f"{sum(dogru_dv(x) for x in q)}/{len(q)}"])
+    ana += "<h4>Taşınmayı fark etme, algılı kip, temiz harita</h4>" + tablo(
+        ["Taşıma türü", "Fark etti", "Fark etme süresi, ortanca", "Doğru davranış"], fsat)
+    # emin değilim
+    esat = []
+    r["emin"] = {}
+    for kip, ad in KIP4:
+        rs = [x for x in kp if x["kip"] == kip]
+        s_ = [x for x in rs if x["sonuc"] == "sessiz_hata"]
+        d_ = [x for x in rs if x["sonuc"] == "dogru_varis"]
+        onl = sum(x["emin_sonuc"] == "onlenen" for x in rs)
+        ger = sum(x["emin_sonuc"] == "gereksiz_durma" for x in rs)
+        t1 = sum(1 for x in s_ if say(x["v_u_med"]) is not None and say(x["v_u_med"]) < 0.75)
+        t2 = sum(1 for x in d_ if say(x["v_u_med"]) is not None and say(x["v_u_med"]) < 0.75)
+        r["emin"][kip] = (onl, len(s_), ger, len(d_), t1, t2)
+        esat.append([ad, f"{onl}/{len(s_)}", f"<span class='{'kotu' if ger else ''}'>{ger}/{len(d_)}</span>",
+                     f"{t1}/{len(s_)}", f"{t2}/{len(d_)}"])
+    gl = emin["gelistirme"]
+    esat.append(["Geliştirme (tohum 7, 8; v3 ve izleme)", f"{gl['onlenen']}/{gl['sessiz']}", f"{gl['gereksiz']}/{gl['dogru']}",
+                 "-", "-"])
+    ger_rows = [x for x in kp if x["emin_sonuc"] == "gereksiz_durma"]
+    r["ger_kaynak"] = (sum(1 for x in ger_rows if x["dunya"].startswith("donussuz") and (say(x["v_std_xy"]) or 0) > 0.05),
+                       len(ger_rows))
+    ana += "<h4>\"Emin değilim, duruyorum\" denetimi (\"vardım\" anında, kayıtlardan)</h4>" + tablo(
+        ["Kip", "Seçilen kural: durdurulan sessiz hata", "Boşuna durdurulan doğru varış", "Tek kural (uyum &lt; 0,75): "
+         "sessiz hata", "Tek kural: boşuna durma"], esat,
+        not_="Seçilen kural geliştirme tohumlarında, sınamadan önce donduruldu: tarama-harita uyumu &lt; 0,75 ya da konum "
+             f"belirsizliği &gt; 0,05 m. Geliştirmede boşuna durma sınırı %2 idi; sınamada %5–6. Boşuna durmaların "
+             f"{r['ger_kaynak'][0]}/{r['ger_kaynak'][1]}'i dönüşsüz yüzeyde belirsizlik eşiğinden. Tek kural sınamaya "
+             "bakıldıktan sonra öne çıktı: hüküm değil, yeni tohumlarla doğrulanacak aday.")
+    grafik = cubuk_grafik("Algılı kipin taşınma yokken boşuna alarm verdiği koşu (12 koşuda)",
+                          [("boşuna alarm", "--c-b")], agraf, en_buyuk=12,
+                          aciklama="Robot güvende kalıyor ama durup yardım bekliyor: eskimiş haritada işe yaramaz.")
+    g = r["g"]
+    e3, ei = r["emin"]["v3"], r["emin"]["izleme"]
+    hukum = (f"Hiçbir kip her koşulda iyi değil; varsayılan v3 değişmedi. Algılı kip temiz haritada taşınmayı "
+             f"{r['fark'][0]}/{r['fark'][1]} fark ediyor (ortanca {sy(r['fark'][2])} s) ama taşınma yokken eskimiş "
+             f"haritada boşuna \"kayboldum\" diyor: kapı %25'te {r['alarm']['kapi_2'][0]}/12, okul günü ağırda "
+             f"{r['alarm']['okul_agir'][0]}/12. \"Emin değilim\" denetimi v3'ün {e3[1]} sessiz hatasından {e3[0]}'ünü "
+             f"durdurdu, bedeli {e3[2]}/{e3[3]} doğru varışın boşuna durması.")
+    once_simdi = [
+        ("Algılı kipin yanlış alarmı",
+         "Yalnız insan ve eşyayla ölçülmüştü: bozulmasız ve insanlı koridorda 0; cam, kapı ve dönüşsüz yüzey ölçülmemişti.",
+         f"Kapı %25'te {r['alarm']['kapi_2'][0]}/12, cam %50'de {r['alarm']['cam_2'][0]}/12, okul günü hafif / orta / ağır "
+         f"{r['alarm']['okul_hafif'][0]} / {r['alarm']['okul_orta'][0]} / {r['alarm']['okul_agir'][0]} koşuda (12'de) "
+         "boşuna alarm."),
+        ("Taşınmayı fark etme",
+         f"Algılı sürüm {et['algi_fark']}/{et['algi_n']} taşımada, ortanca {sy(et['algi_fark_med'])} s.",
+         f"Dört kip aynı görevlerde: algılı {g[('tas_temiz', 'algi')][0]}/48 doğru davranış; v3 "
+         f"{g[('tas_temiz', 'v3')][0]}/48 ({g[('tas_temiz', 'v3')][2]} sessiz hata); izleme "
+         f"{g[('tas_temiz', 'izleme')][0]}/48."),
+        ("Sessiz hata önlemi", "Yoktu.",
+         f"\"Emin değilim\" denetimi v3'te {e3[0]}/{e3[1]}, izlemede {ei[0]}/{ei[1]} sessiz hatayı durdurdu; boşuna durma "
+         f"{e3[2]}/{e3[3]} ve {ei[2]}/{ei[3]}."),
+        ("Karar",
+         "Algılı sürümü almadan önce cam, açık kapı ve eşyalı koridorda yanlış alarm ölçülmeli.",
+         "Ölçüldü: geçiş testi yüzünden algılı kip eskimiş haritada kullanılamaz. Önerilen birleşik kip (izleme + denetim "
+         "+ kapı ve camda geçiş testi kapalı) ölçülmedi."),
+    ]
+    rozet = rz("İnceleme: geçer", "iyi") + rz("Engelleyici yok; belgede 4 düzeltme", "iyi")
+    olculen = (f"<p>Dört kip (v3, izleme, algılı, izleme + algı) aynı görevlerde eşli koşuldu: sınamada tohum 5 ve 6, "
+               f"{len(kp)} koşu, 15 koşul; geliştirmede tohum 7 ve 8, 168 koşu. Tek haritalı A'dan B'ye, 2B benzetici. "
+               "\"Emin değilim\" denetimi robotun \"vardım\" dediği anda yalnız robotun gördükleriyle karar veriyor; "
+               "kuralı geliştirmede seçildi, sınamadan önce donduruldu.</p>")
+    oneri = [
+        "<strong>Seçim:</strong> temiz haritada v3; eskimiş haritada izleme + denetim; taşınma riski varsa algılı. "
+        "Taşınma ve eskime birlikteyse iyi seçenek yok.",
+        f"<strong>Algılı kipin düzeltmesi (ölçülmedi):</strong> geçiş testini kapı açıklıklarında ve cam olabilecek "
+        f"yüzeylerde kapatmak. Bunun fark etmeyi ne kadar düşüreceği bilinmiyor; 180° çevrilme zaten en zor tür "
+        f"({TUR_AD['ters180'].lower()}).",
+        f"<strong>Denetimin eşiği:</strong> belirsizlik eşiği 0,05 m sıkı çıktı (boşuna durmaların "
+        f"{r['ger_kaynak'][0]}/{r['ger_kaynak'][1]}'i). Eşit sonuçlu aday kurallar arasında seçim sözlük sırasıyla yapıldı "
+        "ve 0,05 ızgaranın en alt eşiği; tek kural (uyum &lt; 0,75) yeni tohumlarla sınanmalı.",
+        "<strong>Gözle görülmeyen:</strong> izleme kipinde taşınmadan sonra kayan tahmin hedefte haritaya iyi uyabiliyor; "
+        "bu sessiz hataların bir kısmı uyumla yakalanamaz. Konum sıçraması iyi ve kötüyü ayırmıyor.",
+    ]
+    iyimser = [
+        "2B benzetici; ideal ince duvar; cam yalnız kapılarda ve tam saydam.",
+        "Taşıma anlık: kaldırırken teker dönmüyor, taşıyan kişi görünmüyor.",
+        "Algının ve denetimin Pi 5'teki süresi ölçülmedi.",
+    ]
+    aciklar = [
+        "Plandaki 29 sınama koşulunun 15'i koşuldu; atılanlar sonuç belgesinde. Yarım kalan 9 cam koşusu tablolara girmedi.",
+        "6 haritalı beyin, MuJoCo ve tam gerileme bu turda yok; bu yüzden varsayılan değiştirilemez.",
+        "Kural geliştirmede yalnız v3 ve izlemeyle, dönüşsüz yüzey olmadan seçildi; algılı kiplere öyle uygulandı.",
+        "Sınama koşarken bir kip dosyası düzenlendi; aynı tohumla üç yeniden koşu birebir aynı çıktı, değişiklik "
+        "gösterilemiyor (sürüm geçmişi yok).",
+    ]
+    ust = {
+        "hukum": f"Hiçbir kip her yerde iyi değil. Algılı kip taşınmayı {r['fark'][0]}/{r['fark'][1]} fark ediyor ama "
+                 f"eskimiş haritada taşınma yokken boşuna alarm veriyor (kapı %25'te {r['alarm']['kapi_2'][0]}/12); "
+                 f"\"emin değilim\" denetimi v3'ün {e3[1]} sessiz hatasından {e3[0]} tanesini durdurdu.",
+        "rozet": rz("İnceleme: geçer", "iyi"),
+        "karar": "Varsayılan v3 kaldı. Algılı kip, geçiş testi kapı ve camda kapatılıp yeniden ölçülmeden gerçek robota "
+                 "alınmamalı; \"emin değilim\" denetiminin eşiği yeni tohumlarla doğrulanmalı.",
+    }
+    y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
+         "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
+    return r, y, ust
+
+
+SR_AB = [("temiz", "Kusursuz kurulum"), ("konum5", "Etiket yeri ±5 cm"), ("konum20", "Etiket yeri ±20 cm"),
+         ("aci5", "Etiket açısı ±5°"), ("odak2", "Odak hatası %2"), ("egim2", "Kamera montaj eğimi ±2°"),
+         ("gecikme200", "Algılama gecikmesi 200 ms"), ("dusme50", "Kare düşmesi %50"),
+         ("ortulme50", "Zamanın %50'sinde örtülme"), ("parlama_agir", "Zamanın %50'sinde sert parlama"),
+         ("bulanik_agir", "33 ms pozlama + titreşim"), ("yirtik_hafif", "Etiketlerin 1/3'ünde köşe %15 yırtık"),
+         ("yirtik_agir", "Bütün etiketlerde köşe %25 yırtık"), ("hafif", "Birleşik kurulum, hafif"),
+         ("orta", "Birleşik kurulum, orta"), ("agir", "Birleşik kurulum, ağır")]
+SR_ROTA = [("temiz", "Kusursuz", "-"), ("kayip1_rota", "1 etiket eksik", "rotada ölçülenlerden"),
+           ("kayip1_kritik", "1 etiket eksik", "en çok ölçülen"),
+           ("yanlis025_rota", "1 etiket 0,25 m kaymış", "rotada ölçülenlerden"),
+           ("yanlis05_rota", "1 etiket 0,5 m kaymış", "rotada ölçülenlerden"),
+           ("yanlis1_rota", "1 etiket 1 m kaymış", "rotada ölçülenlerden"),
+           ("yanlis1_kritik", "1 etiket 1 m kaymış", "en çok ölçülen")]
+SR_KY = [("temiz", "tek", "Kusursuz, tek etiketle başlatma"), ("temiz", "dogrulamali", "Kusursuz, doğrulamalı başlatma"),
+         ("hafif", "tek", "Hafif kurulum, tek"), ("orta", "tek", "Orta kurulum, tek"),
+         ("orta", "dogrulamali", "Orta kurulum, doğrulamalı"), ("agir", "tek", "Ağır kurulum, tek")]
+
+
+def sanalray_yeni(es):
+    AB, KY, RO = oku(S / "dayaniklilik_ab.csv"), oku(S / "dayaniklilik_kayip.csv"), oku(S / "dayaniklilik_rota_ab.csv")
+    r = {}
+
+    def bas(rs):
+        return sum(dogru(x["basari"]) for x in rs)
+
+    def temas(rs):
+        return sum(int(say(x["temas_olay"]) or 0) for x in rs), sum(say(x["temas_sure_s"]) or 0 for x in rs)
+
+    sat, gr = [], []
+    r["ab"] = {}
+    for kos, ad in SR_AB:
+        rs = [x for x in AB if x["kosul"] == kos]
+        b, (to, ts) = bas(rs), temas(rs)
+        va = [say(x["varis_hatasi_m"]) for x in rs]
+        r["ab"][kos] = (b, len(rs), ort(va))
+        sat.append([ad, kesir(b, len(rs), len(rs)), f"{sy(ort(va), 3)} / {sy(max(va), 3)}",
+                    sy(max(say(x["yanal_en_arinmis_m"]) for x in rs), 3),
+                    f"<span class='{'kotu' if to else ''}'>{to}</span>" + (f" <span class='ince'>({sy(ts)} s)</span>" if to else "")])
+        gr.append((ad, [b / len(rs)], [f"{b}/{len(rs)}"]))
+    ana = tablo(["A'dan B'ye, kusur (en ağır düzey)", "Başarı", "Varış hatası ort / en (m)",
+                 "Yanal sapma, ilk 2 m sonrası en (m)", "Duvar teması"], sat,
+                not_="4 sınama koridoru × orta hedef × tohum 1–3 = 12 koşu, kafa sabit. Tek etkenlerde yalnız en ağır düzey "
+                     "koşuldu; hepsi 12/12 çıktığı için ara düzeyler geçer varsayıldı (ölçülmedi).")
+    # eksik / yanlış yer: robotun gördüğü etiketlerden
+    temiz_ab = {(x["koridor"], x["tohum"]): x for x in AB if x["kosul"] == "temiz"}
+    alanlar = ("varis_hatasi_m", "etiket_olcum", "etiket_ret", "sure_s", "en_yanal_sapma_m")
+    r["etkisiz"] = {}
+    for kos in ("kayip1", "yanlis1", "yirtik_hafif"):
+        rs = [x for x in AB if x["kosul"] == kos]
+        ez = [x for x in rs if all(x[a_] == temiz_ab[(x["koridor"], x["tohum"])][a_] for a_ in alanlar)]
+        et = [x for x in rs if x not in ez]
+        r["etkisiz"][kos] = (len(ez), bas(et), len(et), bas(rs), len(rs))
+    rsat = []
+    r["rota"] = {}
+    for kos, ad, sec in SR_ROTA:
+        rs = [x for x in RO if x["kosul"] == kos]
+        r13 = [x for x in rs if int(x["tohum"]) <= 3]
+        b, (to, ts) = bas(rs), temas(rs)
+        va = [say(x["varis_hatasi_m"]) for x in rs]
+        r["rota"][kos] = (b, len(rs), to, ts)
+        rsat.append([ad, sec, kesir(bas(r13), len(r13), len(r13)), kesir(b, len(rs), len(rs)),
+                     f"{sy(ort(va), 3)} / {sy(max(va), 3)}", sy(max(say(x["en_yanal_sapma_m"]) for x in rs), 3),
+                     sy(max(say(x["konum_hata_en_m"]) for x in rs), 3),
+                     f"<span class='{'kotu' if to else ''}'>{to}</span>" + (f" <span class='ince'>({sy(ts)} s)</span>" if to else "")])
+        if kos != "temiz":
+            gr.append((f"{ad}, {sec}", [b / len(rs)], [f"{b}/{len(rs)}"]))
+    for kos, ad in (("kayip1", "1 etiket eksik"), ("yanlis1", "1 etiket 1 m kaymış")):
+        ez, be, ne, b, n = r["etkisiz"][kos]
+        rsat.append([f"{ad} (bu turun ilk ölçümü)", "bütün plandan", f"{b}/{n} <span class='ince'>(etkili {be}/{ne})</span>",
+                     "-", "-", "-", "-", "0"])
+    ana += "<h4>Eksik ve yanlış yerdeki etiket, robotun rotada ölçtüğü etiketlerden seçilince (onarım)</h4>" + tablo(
+        ["Kusur", "Etiket seçimi", "Tohum 1–3", "Tohum 1–6", "Varış hatası ort / en (m)", "Yanal sapma en (m)",
+         "Konum hatası en (m)", "Duvar teması"], rsat,
+        not_="Aday etiket: aynı koridor, hedef ve tohumun kusursuz koşusunda süzgecin en az bir ölçümünü kabul ettiği "
+             f"etiket; aday listesi hakem tarafında, robot görmüyor. İlk ölçümde 12 koşunun "
+             f"{r['etkisiz']['kayip1'][0]}'sında etiket robotun görmediği yerdeydi ve sonuç temiz koşuyla birebir aynıydı; "
+             + (lambda n_, a_: f"yeni {n_} koşunun hiçbiri temiz koşuyla aynı değil. " if a_ == 0
+                else f"yeni {n_} koşunun {a_} tanesi temiz koşuyla aynı. ")(
+                 len([x for x in RO if x['kosul'] != 'temiz']),
+                 sum(1 for x in RO if x['temizle_ayni'] and dogru(x['temizle_ayni'])))
+             + "0,25 m düzeyi, "
+             "0,5 m'nin de kırdığı görüldükten sonra eklendi; ayar yapılmadı.")
+    # rastgele bırakılma
+    ksat = []
+    r["ky"] = {}
+    for kos, bs, ad in SR_KY:
+        rs = [x for x in KY if x["kume"] == "sinama" and x["kosul"] == kos and x["baslatma"] == bs]
+        b, (to, ts) = bas(rs), temas(rs)
+        bh = [say(x["baslatma_hata_m"]) for x in rs if say(x["baslatma_hata_m"]) is not None]
+        lk = [say(x["lokalize_s"]) for x in rs if say(x["lokalize_s"]) is not None]
+        r["ky"][(kos, bs)] = (b, len(rs), bh, ort(lk), to, ts)
+        ksat.append([ad, kesir(b, len(rs), len(rs)),
+                     (f"{sy(ort(bh), 3)} / {sy(max(bh), 3)} <span class='ince'>({len(bh)} koşu)</span>" if bh else "-"),
+                     sy(ort(lk)) if lk else "-", sy(ort([say(x["sure_s"]) for x in rs])),
+                     f"<span class='{'kotu' if to else ''}'>{to}</span>" + (f" <span class='ince'>({tam(ts)} s)</span>" if to else "")])
+    ana += "<h4>Rastgele bırakılma (sınama koridorları, kafa sabit)</h4>" + tablo(
+        ["Kurulum ve başlatma", "Başarı", "Başlatma hatası ort / en (m), konumlanan", "Konumlanma ort (s)",
+         "Toplam süre ort (s)", "Duvar teması (süre)"], ksat,
+        not_="Kusursuz satırlar ayrı bırakma noktalarında (10–13; 16 koşu), kusurlu kurulumlar ilk turun bırakma "
+             "noktalarında (12 koşu). Başlatma hatası yalnız konumlanan koşulardan; doğrulamalıda daha az koşu konumlandı.")
+    # bedel: eşli başarılı kusursuz koşular
+    tk = {(x["koridor"], x["birak"]): x for x in KY if x["kume"] == "sinama" and x["kosul"] == "temiz" and x["baslatma"] == "tek"}
+    dk = {(x["koridor"], x["birak"]): x for x in KY if x["kume"] == "sinama" and x["kosul"] == "temiz" and x["baslatma"] == "dogrulamali"}
+    cift = [k_ for k_ in tk if k_ in dk and dogru(tk[k_]["basari"]) and dogru(dk[k_]["basari"])]
+    r["bedel"] = (ort([say(dk[k_]["lokalize_s"]) - say(tk[k_]["lokalize_s"]) for k_ in cift]),
+                  ort([say(dk[k_]["sure_s"]) - say(tk[k_]["sure_s"]) for k_ in cift]), len(cift))
+    yan = [x for x in RO if x["kosul"] == "yanlis1_rota" and not dogru(x["basari"])]
+    r["yan_sure"] = [x for x in yan if x["bitis"] == "sure"]
+    r["yan_bitti"] = [say(x["varis_hatasi_m"]) for x in yan if x["bitis"] == "beyin"]
+    adaylar = {}
+    for x in RO:
+        if x["aday"]:
+            adaylar[x["koridor"]] = (len(json.loads(x["aday"])), int(x["etiket_sayisi"]))
+    r["adaylar"] = adaylar
+    pay_ = {s_: ort([say(x["secilen_temiz_kabul"]) / say(x["temiz_kabul_toplam"]) for x in RO if x["secim"] == s_])
+            for s_ in ("rota", "kritik")}
+    ik = es["kayip"]
+    grafik = cubuk_grafik("A'dan B'ye başarı oranı, kusur başına", [("başarı oranı", "--c-a")], gr, en_buyuk=1,
+                          esik=0.9, esik_etiket="%90 çizgisi",
+                          aciklama="Tek etkenler 12 koşu, eksik ve yanlış yer etiketi 24 koşu (tohum 1–6).")
+    b022 = bel(S, "Sanal ray", "0,22 m ve 6,0°", ["0,22 m", "yön 6,0°"],
+               "ilk turun başarısız rastgele bırakılma koşusu yeniden üretildi; başlatma hatası 0,22 m, yön 6,0°")
+    b34 = bel(S, "Sanal ray", "34. saniyede", ["34 s'de", "etiket 152"],
+              "yanlış yer mekanizması: bir koşuda 34. saniyede süzgeç kaymış etiketin kendisinden yeniden kuruldu")
+    rk = r["rota"]
+    kyo, kyd = r["ky"][("orta", "tek")], r["ky"][("orta", "dogrulamali")]
+    kyt, kytd = r["ky"][("temiz", "tek")], r["ky"][("temiz", "dogrulamali")]
+    hukum = (f"Bilinen başlangıçtan A'dan B'ye sürüş kurulum hatalarının çoğuna dayanıklı: köşe yırtığı dışındaki "
+             f"tek etkenlerin en ağır düzeyinde 12/12. Kıranlar: bütün etiketlerde köşe yırtığı ({r['ab']['yirtik_agir'][0]}/12) ve yanlış yere "
+             f"asılmış tek etiket: 1 m'de {rk['yanlis1_rota'][0]}/24 ve {rk['yanlis1_rota'][2]} koşuda duvar teması, "
+             f"0,5 m'de {rk['yanlis05_rota'][0]}/24, 0,25 m'de {rk['yanlis025_rota'][0]}/24. Eksik tek etiket bozmuyor "
+             f"({rk['kayip1_rota'][0]}/24). Rastgele bırakılma kırılgan: orta kurulumda {kyo[0]}/{kyo[1]}.")
+    once_simdi = [
+        ("Asıl risk",
+         "Etiketin örtülmesi ve parlama.",
+         f"Zamanın %50'sinde örtülme ya da sert parlama A'dan B'yi bozmadı ({r['ab']['ortulme50'][0]}/12, "
+         f"{r['ab']['parlama_agir'][0]}/12). Kıranlar köşe yırtığı ve yanlış yere asılmış etiket."),
+        ("Eksik / yanlış yer etiketi",
+         f"Bu turun ilk ölçümü eksik etikette {r['etkisiz']['kayip1'][3]}/12, yanlış yerde {r['etkisiz']['yanlis1'][3]}/12 "
+         f"dedi; ama 12 koşunun {r['etkisiz']['kayip1'][0]}'sında etiket robotun görmediği yerdeydi (etkili koşularda "
+         f"{r['etkisiz']['kayip1'][1]}/{r['etkisiz']['kayip1'][2]} ve {r['etkisiz']['yanlis1'][1]}/"
+         f"{r['etkisiz']['yanlis1'][2]}).",
+         f"Etiket robotun ölçtüklerinden seçilince eksik {rk['kayip1_rota'][0]}/24; yanlış yer 0,25 / 0,5 / 1 m'de "
+         f"{rk['yanlis025_rota'][0]} / {rk['yanlis05_rota'][0]} / {rk['yanlis1_rota'][0]} (24'te), 1 m'de "
+         f"{rk['yanlis1_rota'][2]} duvar teması (toplam {tam(rk['yanlis1_rota'][3])} s)."),
+        ("Rastgele bırakılmadaki başarısızlık",
+         "Tek etiketten yanlış başlatma sanıldı: \"tek etiketten başlatmaya güvenilmemeli\".",
+         f"Kusursuz dünyada asıl kusur takılmanın sezilmemesi: ilk dönüşten sonra eğik sürüş, eğik duvardan sonar yankısı "
+         f"yok. İlk turun başarısız koşusunda başlatma hatası yalnız {b022}. Orta kusurlu kurulumda ise tek etiket "
+         f"başlatması gerçekten yanlış: {' ve '.join(sy(v, 2) + ' m' for v in sorted(v for v in kyo[2] if v > 0.5))}."),
+        ("İlk etiket süresi",
+         f"Tablo konumlanma süresini ({sy(ik['sabit'][3])} / {sy(ik['tarayan'][3])} s) \"ilk etiket\" diye "
+         "basıyordu (inceleme düzeltti).",
+         f"İlk etiketin görülmesi ortalama {sy(ik['sabit'][2])} s (sabit kafa) / {sy(ik['tarayan'][2])} s (tarayan "
+         f"kafa); konumlanma {sy(ik['sabit'][3])} / {sy(ik['tarayan'][3])} s."),
+        ("Doğrulamalı başlatma", "Yoktu.",
+         f"Kusursuz dünyada {kytd[0]}/{kytd[1]} (tek {kyt[0]}/{kyt[1]}); orta kurulumda {kyd[0]}/{kyd[1]} (tek "
+         f"{kyo[0]}/{kyo[1]}), ama konumlanma {sy(kyo[3])} s'den {sy(kyd[3])} s'ye uzadı, temas olayı {kyo[4]}'ten "
+         f"{kyd[4]}'ye çıktı. Varsayılan değişmedi."),
+    ]
+    rozet = rz("İnceleme: koşullu (tek etiketlik etkenlerin yarısı etkisiz)") + rz("Onarımdan sonra: bulgu kapandı", "iyi")
+    olculen = (f"<p>Kusurlu dünyada dayanıklılık: harita ve etiket kurulum hataları, kamera hataları, görüntü bozulmaları "
+               f"ve birleşik kurulum; A'dan B'ye {len(AB)} koşu, rastgele bırakılmada {len(KY)} koşu. İnceleme eksik ve "
+               "yanlış yer etiketinin yarı yarıya etkisiz seçildiğini buldu; onarımda etiket robotun gördüklerinden "
+               f"seçildi ve {len(RO)} koşu (tohum 1–6) koşuldu. Ayrıca isteğe bağlı doğrulamalı başlatma denendi; "
+               "tasarımı geliştirme koridorlarında iki kez değişti, sınamadan önce donduruldu.</p>")
+    oneri = [
+        f"<strong>Yanlış yerin mekanizması:</strong> kaymış etiket önce reddediliyor; arka arkaya 6 retten sonra yeniden "
+        f"başlatma süzgeci yakındaki etiketten kuruyor ve bu kaymış etiketin kendisi olabiliyor (bir koşuda {b34}). "
+        f"1 m'deki başarısızlıkların {len(r['yan_sure'])}'si süre doldurdu ve duvara dayandı, "
+        f"{len(r['yan_bitti'])}'sinde robot hedefin {sy(min(r['yan_bitti']), 2)}–{sy(max(r['yan_bitti']), 2)} m uzağında "
+        "\"bitti\" dedi. Öneri (uygulanmadı): yeniden başlatma tek etiketi başka bir etiketle ya da sonarla çapraz "
+        "denetlemeden kabul etmesin.",
+        "<strong>Kırılma noktası:</strong> yanlış yer 0,25 m ile 0,5 m arasında kırıyor; köşe yırtığı etiketlerin "
+        "1/3'ünde %15 ile hepsinde %25 arasında.",
+        f"<strong>Eksik etiketin bedeli:</strong> başarı ve temas değişmiyor, ama koridorun başındaki etiket kalkınca "
+        f"yanal sapma {sy(max(say(x['en_yanal_sapma_m']) for x in RO if x['kosul'].startswith('kayip1')), 2)} m'ye çıkıyor.",
+        f"<strong>Doğrulamalı başlatmanın bedeli:</strong> kusursuz dünyada {r['bedel'][2]} eşli başarılı koşuda konumlanma "
+        f"+{sy(r['bedel'][0])} s, toplam süre +{sy(r['bedel'][1])} s. Takılmayı enkoder ancak duvara değdikten sonra "
+        "seziyor; robot daha çok değiyor ama daha kısa dayanıyor.",
+        "<strong>Gerçek koridorda:</strong> etiket yeri ±5 cm ile ölçülsün; kurulumdan sonra robotla bir tur \"etiket ve "
+        "harita aynı mı\" denetimi zorunlu; sert levha ya da laminasyon, yıpranan etiket yenilensin; robot bilinen bir "
+        "noktadan başlatılsın.",
+    ]
+    iyimser = [
+        "Gecikme sabit, kare düşmesi bağımsız; örtü düz gri, parlama tek leke; ışık düzgün.",
+        "Mercek bozulması, yuvarlanan deklanşör ve gövde eğimi yok; sonar ideal (ama eğik yüzeyden yankısız).",
+        "Tek etkenlerde ara düzeyler geçer varsayıldı (ölçülmedi).",
+    ]
+    aciklar = [
+        "Rastgele bırakılmada ve tarayan kafada eksik ya da yanlış yerdeki etiket koşulmadı.",
+        "Yanlış yerin kırılma noktası 0,25–0,5 m arasında; ara düzey ölçülmedi.",
+        "Birleşik ağır kurulumda eksik ve yanlış yer etiketi hâlâ bütün plandan seçiliyor (yırtık belirlediği için "
+        "yeniden koşulmadı).",
+        "Doğrulamalı başlatmanın bileşenleri tek tek ölçülmedi; takılma denetimi ilk sürüme tek başına eklenip sınanmadı.",
+        f"Aday etiket sayısı küçük: " + ", ".join(f"{k_.replace('koridor_', 'koridor ')} {a_}/{n_}"
+                                                   for k_, (a_, n_) in sorted(adaylar.items()))
+        + f"; seçilen etiket temiz koşudaki kabul edilen ölçümlerin ortalama %{tam(100 * pay_['rota'])}'ını taşıyordu.",
+    ]
+    ust = {
+        "hukum": f"Kurulum hatalarının çoğuna dayanıklı (köşe yırtığı dışındaki tek etkenlerde 12/12). Kıranlar köşe yırtığı "
+                 f"({r['ab']['yirtik_agir'][0]}/12) ve yanlış yerdeki tek etiket: 1 m'de {rk['yanlis1_rota'][0]}/24 ve "
+                 f"{rk['yanlis1_rota'][2]} duvar teması, 0,25 m'de {rk['yanlis025_rota'][0]}/24. Eksik etiket "
+                 f"{rk['kayip1_rota'][0]}/24. Rastgele bırakılma orta kurulumda {kyo[0]}/{kyo[1]}.",
+        "rozet": rz("İnceleme: koşullu") + rz("Onarım: kapandı", "iyi"),
+        "karar": "Kurulumdan sonra robotla etiket–harita denetimi zorunlu (±25 cm zararsız, 0,5 m bozuyor); etiket yeri ±5 cm "
+                 "ile ölçülsün, etiketler sert levha ya da laminasyonlu olsun ve yıpranınca yenilensin; robot bilinen "
+                 "noktadan başlatılsın. Doğrulamalı başlatma varsayılan değil.",
+    }
+    y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
+         "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
+    return r, y, ust
+
+
+ZK = [("gelistirme", "Geliştirme (önceki sürümün 7 başarısızı)", "deneme_gelistirme.csv", "mujoco_v3.csv"),
+      ("sinama2", "Sınama 2 (görülmüş)", "deneme_sinama2.csv", "mujoco_sinama2_v3.csv"),
+      ("sinama4", "Sınama 4, v3 beyniyle (önceki tur; zincir için o zaman görülmemiş)", "deneme_sinama4.csv",
+       "mujoco_sinama4_v3.csv"),
+      ("sinama4_v6", "Sınama 4, v6 beyniyle (bu tur; aynı labirent ve tohumlar)", "deneme_sinama4_v6.csv",
+       "mujoco_sinama4_v6.csv")]
+
+
+def lab_ad(sahne, tohum=None):
+    s = sahne.replace("labirent_", "").replace("x", "×").replace("_t", " labirent, no. ")
+    return f"{s}, tohum {tohum}" if tohum is not None else s
+
+
+def deneme_yeni(ed):
+    r = {}
+    sat, yig = [], []
+    for kume, ad, dosya, ilk_dosya in ZK:
+        rows = oku(K / dosya)
+        zin = {}
+        for x in rows:
+            zin.setdefault((x["sahne"], x["tohum"]), []).append(x)
+        dag = {1: 0, 2: 0, 3: 0, 4: 0, 0: 0}
+        top_sure, cozulmeyen, sonra = [], [], []
+        for kk, z in zin.items():
+            z.sort(key=lambda x: int(x["deneme_no"]))
+            cz = [int(x["deneme_no"]) for x in z if x["durum"] == "basari"]
+            if cz:
+                dag[min(cz)] += 1
+                ts = sum(say(x["sure_s"]) for x in z)
+                top_sure.append(ts)
+                if min(cz) > 1:
+                    sonra.append((kk, ts, say(z[min(cz) - 1]["sure_s"]), min(cz)))
+            else:
+                dag[0] += 1
+                cozulmeyen.append(kk)
+        ilk = {(x["sahne"], x["tohum"]): x for x in oku(K / ilk_dosya) if (x["sahne"], x["tohum"]) in zin}
+        bilgi = {"zincir": len(zin), "dag": dag, "deneme": len(rows), "rows": rows,
+                 "carpma": sum(int(say(x["carpma_sayisi"]) or 0) for x in rows),
+                 "temas": sum(say(x["carpma_suresi_s"]) or 0 for x in rows),
+                 "start": sum(int(say(x["fail_start"]) or 0) for x in rows),
+                 "kesme": sum(int(say(x["start_kesme"]) or 0) for x in rows),
+                 "sure_med": medyan(top_sure), "cozulmeyen": cozulmeyen, "sonra": sonra,
+                 "sure_top": sum(say(x["sure_s"]) for x in rows),
+                 "ilk_ayni": (sum(1 for x in rows if x["deneme_no"] == "1" and (x["sahne"], x["tohum"]) in ilk
+                                  and ilk[(x["sahne"], x["tohum"])]["durum"] == x["durum"]
+                                  and abs(say(ilk[(x["sahne"], x["tohum"])]["sure_s"]) - say(x["sure_s"])) <= 1.0),
+                              sum(1 for x in rows if x["deneme_no"] == "1")),
+                 "ilk_kpi": sum(1 for x in ilk.values() if x["durum"] == "basari"), "ilk_n": len(ilk)}
+        r[kume] = bilgi
+        sat.append([ad, str(len(zin)), f"{bilgi['ilk_kpi']}/{bilgi['ilk_n']}", str(dag[1]), str(dag[2]), str(dag[3]),
+                    str(dag[4]), f"<span class='{'kotu' if dag[0] else ''}'>{dag[0]}</span>", tam(bilgi["sure_med"]),
+                    tam(bilgi["sure_top"]), str(len(rows)), (f"{bilgi['carpma']} <span class='ince'>({sy(bilgi['temas'], 2)} s)</span>"
+                                     if bilgi["carpma"] else "0"), str(bilgi["start"] + bilgi["kesme"])])
+        yig.append((ad, [dag[1], dag[2], dag[3], dag[4], dag[0]], len(zin)))
+    s4 = r["sinama4"]
+    ana = tablo(["Küme", "Zincir", "İlk giriş (ön bilgisiz)", "1. denemede", "2.", "3.", "4.", "Çözülmedi",
+                 "Süre ortanca, çözülen (s)", "Süre toplamı (s)", "Deneme", "Çarpma", "Başlangıçtan çıkma / kesme"],
+                sat,
+                not_="Hafızalı sınıf: 2. ve sonraki denemelerde robot önceki denemelerin haritasını bilir. İlk giriş "
+                     "sütunu aynı kümenin aynı beyinle ön bilgisiz koşuları; ayrı bir ölçü. Her deneme en çok 900 s, en "
+                     "çok 4 deneme. Zincir mantığına dokunulmadı, ayar yapılmadı. v6 zinciri dondurulmuş v6 kodunun ayrı "
+                     "bir kopyasından koşuldu; tek fark, denemeler arasında v6'nın geçmiş taramalarının sıfırlanması.")
+    s6 = r["sinama4_v6"]
+    dsat = []
+    for beyin, bilgi_ in (("v3", s4), ("v6", s6)):
+        rows_ = bilgi_["rows"]
+        for no in sorted({int(x["deneme_no"]) for x in rows_}):
+            q = [x for x in rows_ if int(x["deneme_no"]) == no]
+            pz = [say(x["poz_hata_maks_m"]) for x in q]
+            c = sum(int(say(x["carpma_sayisi"]) or 0) for x in q)
+            dsat.append([beyin, str(no), str(len(q)), str(sum(x["durum"] == "basari" for x in q)),
+                         tam(ort([say(x["sure_s"]) for x in q])),
+                         f"<span class='{'kotu' if c else ''}'>{c}</span>", f"{sy(ort(pz), 2)} / {sy(max(pz), 2)}"])
+    rows = s4["rows"]
+    ana += "<h4>Sınama 4, deneme başına (v3 ve v6 zinciri)</h4>" + tablo(
+        ["Beyin", "Deneme", "Koşu", "Çözülen", "Süre ort (s)", "Çarpma", "Poz hatası en büyük: ort / en (m)"], dsat)
+    tani6 = oku(K / "tani_zincir_sinama4_v6.csv")
+    r["kopuk6"] = (sum(1 for x in tani6 if x["start_bagli_025"] == "0"), len(tani6))
+    s6_coz = 20 - s6["dag"][0]
+    s4_coz = 20 - s4["dag"][0]
+    # zincir kuralı: v6 zinciri v3'ten az çözüyorsa ya da daha çok temas yapıyorsa zincirin varsayılanı açıkça v3 olur
+    r["zincir_kural"] = s6_coz >= s4_coz and s6["carpma"] <= s4["carpma"] and s6["zincir"] == s4["zincir"]
+    tani = oku(K / "tani_zincir_sinama4.csv")
+    kopuk = [x for x in tani if x["start_bagli_025"] == "0"]
+    r["kopuk"] = (len(kopuk), len(tani))
+    ilk_bas = [x for x in tani if x["deneme_no"] == "1" and x["durum"] != "basari"]
+    tempo = bel(K, "Haritayla yeniden deneme", "4,23 / 4,75 s/m", ["3.86 / 4.23 / 4.75 s/m"],
+                "bilinen haritada ölçülen tempo 4,23 / 4,75 s/m (ortanca / en kötü)")
+    cz = [say(x["cozum_m"]) for x in ilk_bas]
+    yc = [say(x["yol_cozum"]) for x in ilk_bas]
+    r["ilk_bas"] = (len(ilk_bas), min(cz), max(cz), min(yc), max(yc), max(cz) * 4.75)
+    ck = s4["cozulmeyen"][0] if s4["cozulmeyen"] else None
+    ckr = sorted([x for x in rows if (x["sahne"], x["tohum"]) == ck], key=lambda x: int(x["deneme_no"])) if ck else []
+    ck_coz = say(ckr[0]["cozum_m"]) if ckr else None
+    r["ck"] = (ck, ckr)
+    temas_t = [x for x in oku(K / "tani_temas_v6.csv") if "deneme_sinama4" in x["kayit"]]
+    tt = temas_t[0] if temas_t else None
+    sonra = s4["sonra"]
+    grafik = yigin_grafik("Labirentin kaçıncı denemede çözüldüğü",
+                          [("1. deneme", "--c-c"), ("2. deneme", "--c-a"), ("3. deneme", "--c-a2"),
+                           ("4. deneme", "--c-a3"), ("çözülmedi", "--c-b")], yig,
+                          aciklama="Geliştirme kümesi yalnız ilk girişte çözülemeyen labirentlerden oluşuyor; bu yüzden "
+                                   "orada 1. denemede çözülen yok.")
+    s2 = r["sinama2"]
+    ck_txt = (f"{lab_ad(ck[0], ck[1])}: 1. deneme süre doldu; sonraki "
+              f"{sum(1 for x in ckr if x['durum'] == 'fail_sikisma')} deneme {sy(say(ckr[1]['sure_s']), 0)} s'de "
+              "\"sınır kalmadı\" ile sıkışıp bitti") if ck and len(ckr) > 1 else "yok"
+    hukum = (f"Sınama 4'te zincir v6 beyniyle {s6_coz}/20 çözdü (1. denemede {s6['dag'][1]}, 2. denemede {s6['dag'][2]}), "
+             f"temas {s6['carpma']}; v3 beyniyle {s4_coz}/20 çözmüştü, temas {s4['carpma']}. Bütün denemelerin toplam "
+             f"süresi v6'da {tam(s6['sure_top'])} s, v3'te {tam(s4['sure_top'])} s; başlangıçtan çıkma ve kesme v6'da "
+             f"{s6['start'] + s6['kesme']}, v3'te {s4['start'] + s4['kesme']}. Önceden yazılan zincir kuralı "
+             f"{'sağlandı: zincir de varsayılan v6 ile koşar' if r['zincir_kural'] else 'sağlanmadı: zincirin varsayılanı v3 olmalı'}. "
+             "Bu hafızalı sınıf, ilk giriş ölçüsü değil; sınama 4 zincir için artık görülmüş sayılır.")
+    once_simdi = [
+        ("Zincir beyni",
+         f"Zincir yalnız v3 ile koşulmuştu: sınama 4'te {s4_coz}/20, 1 zincir harita kaymasıyla çözülmedi.",
+         f"v6 ile de koşuldu: {s6_coz}/20, çözülmeyen yok, temas {s6['carpma']}. v6'nın 1. denemeleri aynı kümenin v6 "
+         f"ilk giriş koşularıyla {s6['ilk_ayni'][0]}/{s6['ilk_ayni'][1]} aynı sonuç (süre farkı en çok 1 s). Deneme "
+         f"sonu haritalarından {r['kopuk6'][0]} / {r['kopuk6'][1]} tanesinde başlangıç sınırlardan kopuktu (v3'te "
+         f"{r['kopuk'][0]} / {r['kopuk'][1]})."),
+        ("Kazanç",
+         f"Görülmüş sınama 2'de {s2['dag'][1]}/20'den {20 - s2['dag'][0]}/20'ye: \"kazanç küçük, tek labirent\".",
+         f"v3 zinciriyle o zaman görülmemiş sınama 4'te {s4['ilk_kpi']}/20'den {20 - s4['dag'][0]}/20'ye; sonradan çözülen "
+         f"{len(sonra)} zincirin toplam süresi {tam(min(x[1] for x in sonra))}–{tam(max(x[1] for x in sonra))} s."),
+        ("Çözülmeyenin nedeni",
+         "Yeni denemede sınır seçme sırası ve en uzun çözüm yolunun 900 s'ye ancak sığması.",
+         f"v3 zincirinde harita kayması: {ck_txt}. v6 zincirinde çözülmeyen yok. Bu labirent tam haritayla {tam(ck_coz * 4.23)} / {tam(ck_coz * 4.75)} s'de "
+         f"çözülebilirdi (tempo {tempo}). Sınır sırası sorunu sınama 4'te de görüldü ama koşu kaybettirmedi."),
+        ("Güvenlik",
+         f"Sınama 2'de {s2['carpma']} çarpma ({sy(s2['temas'], 2)} s), başlangıçtan çıkma {s2['start']}.",
+         f"Sınama 4'te {s4['carpma']} çarpma ({sy(s4['temas'], 2)} s): yerinde dönüşten "
+         f"{sy(say(tt['son_yerinde_s']))} s sonra yayla duvar ucuna sürtünme, o an poz hatası "
+         f"{sy(say(tt['poz_hata_m']), 3)} m (harita kayması değil). Başlangıçtan çıkma {s4['start']}. v6 zincirinde "
+         f"{s6['deneme']} denemede çarpma {s6['carpma']}, başlangıçtan çıkma {s6['start']}."
+         if tt else f"Sınama 4'te {s4['carpma']} çarpma."),
+    ]
+    rozet = rz("İnceleme: geçer", "iyi") + rz("Engelleyici yok; bir belge sayısı düzeltildi", "iyi")
+    olculen = ("<p>Deneme zinciri (başarısız denemenin haritası sonrakine taşınır) önce v3 beyniyle hiç görülmemiş sınama "
+               "4 kümesinde, zincir mantığına ve beyne dokunulmadan, ayrı bir kod kopyasından koşuldu. Bu turun ikinci "
+               "adımında aynı küme ve tohumlarla v6 beyniyle yinelendi (dondurulmuş v6 kodunun kopyası, en çok 4 deneme). "
+               "Kural koşudan önce yazıldı: v6 zinciri v3'ten az zincir çözerse ya da daha çok temas yaparsa zincirin "
+               "varsayılan beyni açıkça v3 olacaktı. Birinci denemeler ilk giriş koşularıyla karşılaştırıldı; "
+               "çözülmeyen zincirler kayıtlardan tanılandı (yer gerçeği yalnız tanıda).</p>")
+    oneri = [
+        f"<strong>Sonradan çözülen zincirler</strong> (hepsi 17×17): v3'te {len(sonra)}, çözen deneme "
+        f"{tam(min(x[2] for x in sonra))}–{tam(max(x[2] for x in sonra))} s; v6'da {len(s6['sonra'])}, çözen deneme "
+        f"{tam(min(x[2] for x in s6['sonra']))}–{tam(max(x[2] for x in s6['sonra']))} s, en geç {max(x[3] for x in s6['sonra'])}. denemede.",
+        f"<strong>İlk girişteki {r['ilk_bas'][0]} başarısızlığın hepsi keşif kaynaklı:</strong> çözüm yolu "
+        f"{tam(r['ilk_bas'][1])}–{tam(r['ilk_bas'][2])} m, tam haritayla en kötü tempoda ({tempo}) bile en çok "
+        f"{tam(r['ilk_bas'][5])} s; yürünen yol / çözüm {sy(r['ilk_bas'][3], 2)}–{sy(r['ilk_bas'][4], 2)}.",
+        f"<strong>Hafıza durumu kötüleştirebilir:</strong> v3 zincirinde deneme sonu haritalarından {r['kopuk'][0]} / {r['kopuk'][1]} tanesinde başlangıç "
+        "sınırlara bağlı değildi ve sonraki denemelerin hiçbiri ilerleyemedi. Öneri (ölçülmedi): yeni denemede "
+        "başlangıçtan hiçbir sınıra yol yoksa boş haritayla başlamak; yeni bir geliştirme kümesinde denenmeli.",
+        "<strong>Düzeltme:</strong> görülmüş sınama 2'deki \"104 / 80 / 131 m\" iddiası kayıtlardan 108 / 80 / 135 m "
+        "çıktı (testin açıklama belgesinde düzeltildi).",
+    ]
+    iyimser = [
+        "Robot her denemede başlangıca yalnız 3 cm / 2° hatayla konuyor.",
+        "Denemeler arasında haritayı saklamak kural gereği serbest varsayıldı.",
+        "Bağlantı denetimi yaklaşık: 5 cm eşikli harita ve 0,25 m şişirme; planlayıcının kaba ızgarası birebir değil.",
+    ]
+    aciklar = [
+        "Boş haritayla yeniden başlama önerisi ölçülmedi; sınama 4 artık zincir için de görülmüş sayılır, sonraki "
+        "kararlar için hiç görülmemiş bir küme gerekiyor.",
+        "Farklar küçük (v6 ile v3 arasında tek zincir); istatistik olarak anlamlı değil.",
+        "Hizalama sondası sınama 4'te süre yüzünden koşulmadı.",
+        "Önde engel beklemesi döngüsü ve dönüşten hemen sonra yayla sürtünme incelenmedi.",
+    ]
+    ust = {
+        "hukum": f"Sınama 4'te zincir v6 beyniyle {s6_coz}/20 (temas {s6['carpma']}), v3 beyniyle {s4_coz}/20 (temas "
+                 f"{s4['carpma']}); ilk girişte {s6['ilk_kpi']}/20. Bütün denemelerin süresi v6'da {tam(s6['sure_top'])} s, "
+                 f"v3'te {tam(s4['sure_top'])} s. Zincir kuralı "
+                 f"{'sağlandı' if r['zincir_kural'] else 'sağlanmadı'} (hafızalı sınıf).",
+        "rozet": rz("İnceleme: geçer", "iyi"),
+        "karar": f"Kural ikinci denemeye izin veriyorsa haritayı saklamak değer: sınama 4'te ilk girişte {s6['ilk_kpi']}/20, "
+                 f"zincirle {s6_coz}/20. Zincir de varsayılan v6 beyniyle koşar"
+                 f"{'' if r['zincir_kural'] else ' (KURAL SAĞLANMADI: v3 olmalı)'}. Yeni denemede başlangıçtan sınıra "
+                 "yol yoksa boş haritayla başlamak önerildi (ölçülmedi).",
+    }
+    y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
+         "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
+    return r, y, ust
+
+
+KUMELER6 = [
+    ("gelistirme", "Geliştirme", {"v3": "mujoco_v3.csv", "v5": "mujoco_v5.csv", "v6": "mujoco_v6.csv"}),
+    ("sinama2", "Sınama 2 (görülmüş)", {"v3": "mujoco_sinama2_v3.csv", "v5": "mujoco_sinama2_v5.csv",
+                                         "v6": "mujoco_sinama2_v6.csv"}),
+    ("sinama4", "Sınama 4 (görülmüş)", {"v3": "mujoco_sinama4_v3.csv", "v5": "mujoco_sinama4_v5.csv",
+                                         "v6": "mujoco_sinama4_v6.csv"}),
+    ("sinama5", "Sınama 5 (yeni; v6'nın ilk kararı)", {"v3": "mujoco_sinama5_v3.csv", "v6": "mujoco_sinama5_v6.csv"}),
+    ("sinama3", "Sınama 3 (bu tur; v3'ün temas yaptığı küme, v6 için tam taze değil)",
+     {"v3": "mujoco_sinama3_v3.csv", "v6": "mujoco_sinama3_v6.csv"}),
+    ("uzatilmis", "Uzatılmış süre (bu tur; kural dışı 1800 s, tohum 0)",
+     {"v3": "mujoco_uzatilmis_v3.csv", "v6": "mujoco_uzatilmis_v6.csv"}),
+]
+V6_2B = ["v6_2b.csv", "v6_2b_t1.csv"]          # 2B: tohum 0 ve tohum 1
+
+
+def varsayilan_surum() -> str:
+    """Keşif beyninin koddaki varsayılan sürümü (beyin.py'den okunur, belgeden değil)."""
+    import re
+    metin = (FIZIK / "kesif" / "beyin.py").read_text(encoding="utf-8")
+    m = re.findall(r'^VARSAYILAN_SURUM\s*=\s*"(v\d+)"', metin, flags=re.M)
+    if len(m) != 1:
+        raise SystemExit("kesif/beyin.py: VARSAYILAN_SURUM tek bir atama olarak bulunamadı.")
+    return m[0]
+V3_ILK = ["mujoco_v3.csv", "mujoco_sinama2_v3.csv", "mujoco_sinama3_v3.csv", "mujoco_sinama4_v3.csv",
+          "mujoco_sinama5_v3.csv", "mujoco_uzatilmis_v3.csv"]
+V3_ZIN = ["deneme_gelistirme.csv", "deneme_sinama2.csv", "deneme_sinama4.csv"]
+
+
+def kose_yeni(ek_):
+    tani = {}
+    for f in sorted(K.glob("hiz_tani_*.csv")):
+        for x in oku(f):
+            tani.setdefault((x["kume"], x["surum"]), {})[(x["sahne"], x["tohum"])] = x
+    r = {"k": {}}
+    sat, gsat = [], []
+    v6_top = [0, 0, 0.0]
+    for kume, ad, dosyalar in KUMELER6:
+        veri = {su: {(x["sahne"], x["tohum"]): x for x in oku(K / d)} for su, d in dosyalar.items()}
+        for su, rows in veri.items():
+            b = sum(1 for x in rows.values() if x["durum"] == "basari")
+            c = sum(int(say(x["carpma_sayisi"]) or 0) for x in rows.values())
+            ts = sum(say(x["carpma_suresi_s"]) or 0 for x in rows.values())
+            kur = sum(int(say(x["kurtarma"]) or 0) for x in rows.values())
+            oran = "-"
+            o_ = None
+            if su != "v3":
+                cift = [say(rows[kk]["sure_s"]) / say(veri["v3"][kk]["sure_s"]) for kk in rows
+                        if kk in veri["v3"] and rows[kk]["durum"] == "basari" and veri["v3"][kk]["durum"] == "basari"]
+                o_ = medyan(cift)
+                oran = f"{sy(o_, 3)} <span class='ince'>({len(cift)} çift)</span>"
+            td = tani.get((kume, su))
+            pmin = mn([say(x["duvar_pay_min_m"]) for x in td.values()]) if td else None
+            p5 = sum(1 for x in td.values() if say(x["duvar_pay_min_m"]) is not None
+                     and say(x["duvar_pay_min_m"]) < 0.005) if td else None
+            r["k"][(kume, su)] = (b, len(rows), c, ts, o_, pmin, p5, kur)
+            if su == "v6":
+                v6_top[0] += len(rows)
+                v6_top[1] += c
+                v6_top[2] += ts
+            sat.append([ad, su, f"{b}/{len(rows)}",
+                        f"<span class='{'kotu' if c else 'iyi'}'>{c}</span>" + (f" <span class='ince'>({sy(ts, 2)} s)</span>" if c else ""),
+                        oran, ((f"{tam(pmin * 1000)} mm" if round(pmin * 1000) > 0 else "≤ 0 mm")
+                               if pmin is not None else "-"),
+                        (f"{p5}/{len(rows)}" if p5 is not None else "-"), str(kur)])
+        gsat.append((ad, [r["k"][(kume, su)][0] / r["k"][(kume, su)][1] if (kume, su) in r["k"] else None
+                          for su in ("v3", "v5", "v6")],
+                     [f"{r['k'][(kume, su)][0]}/{r['k'][(kume, su)][1]}" + (
+                         f" · <span class='kotu'>{r['k'][(kume, su)][2]} çarpma</span>" if r['k'][(kume, su)][2] else "")
+                      if (kume, su) in r["k"] else "koşulmadı" for su in ("v3", "v5", "v6")]))
+    r["v6_top"] = v6_top
+    ana = tablo(["Küme", "Sürüm", "Çözülen", "Çarpma (temas)", "Süre oranı / v3 (ortanca, ikisi de çözdüyse)",
+                 "En küçük duvar payı", "Duvara 5 mm'den yaklaşan koşu", "Kurtarma"], sat,
+                not_="MuJoCo, 900 s (uzatılmış kümede 1800 s), robot labirent hakkında önceden bilgisiz. v6 kodu "
+                     "dondurulduktan sonra koşuldu, ayar yapılmadı. v6 = v5 + tüm gövde süpürme öngörüsü: son tarama, son 2 s'nin taramaları ve çevredeki "
+                     "harita hücreleri; kabul edilen yay yoksa geri çekilip yeniden plan. Duvar payı tanı aracının gövde "
+                     "çizimiyle hesaplanıyor, temas sayımı simülatörün temas kaydından; ikisi 1–2 mm farklı olabilir.")
+    # v3 tabanı
+    vsat = []
+    v3 = {"ilk": [0, 0, 0.0], "zin": [0, 0, 0.0]}
+    for grup_, dosyalar, ad in (("ilk", V3_ILK, "ilk giriş"), ("zin", V3_ZIN, "hafızalı zincir")):
+        for d in dosyalar:
+            rows = [x for x in oku(K / d) if x.get("surum", "v3") in ("v3", "")]
+            c = sum(int(say(x["carpma_sayisi"]) or 0) for x in rows)
+            ts = sum(say(x["carpma_suresi_s"]) or 0 for x in rows)
+            v3[grup_][0] += len(rows)
+            v3[grup_][1] += c
+            v3[grup_][2] += ts
+            vsat.append([ad, d.replace(".csv", "").replace("mujoco_", "").replace("deneme_", "zincir, ")
+                         .replace("_v3", "").replace("v3", "geliştirme").replace("sinama", "sınama ")
+                         .replace("uzatilmis", "uzatılmış süre").replace("gelistirme", "geliştirme"),
+                         str(len(rows)), f"<span class='{'kotu' if c else ''}'>{c}</span>", sy(ts, 2)])
+    r["v3"] = v3
+    vsat.append(["<strong>Toplam</strong>", "", str(v3["ilk"][0] + v3["zin"][0]),
+                 f"<strong>{v3['ilk'][1] + v3['zin'][1]}</strong>", f"<strong>{sy(v3['ilk'][2] + v3['zin'][2], 2)}</strong>"])
+    ana += "<h4>v3'ün temas tabanı (v3 de sıfır değil)</h4>" + tablo(
+        ["Sınıf", "Küme", "Koşu / deneme", "Temas olayı", "Temas (s)"], vsat)
+    d2 = [x for d in V6_2B for x in oku(K / d)]
+    r["2b"] = {}
+    bsat = []
+    for su in ("v5", "v6"):
+        for tohum in sorted({x["tohum"] for x in d2}) + [None]:
+            rs = [x for x in d2 if x["ayar"] == su and (tohum is None or x["tohum"] == tohum)]
+            c = sum(int(say(x["carpma_sayisi"]) or 0) for x in rs)
+            ts = sum(say(x["carpma_suresi_s"]) or 0 for x in rs)
+            b = sum(x["durum"] == "basari" for x in rs)
+            tur = sorted({x["durum"] for x in rs if x["durum"] != "basari"})
+            if tohum is None:
+                r["2b"][su] = (b, len(rs), c, tur, ts)
+            bsat.append([f"<strong>{su}</strong>" if tohum is None else su,
+                         "toplam" if tohum is None else tohum, f"{b}/{len(rs)}",
+                         f"<span class='{'kotu' if c else ''}'>{c}</span>" + (f" <span class='ince'>({sy(ts, 2)} s)</span>"
+                                                                            if c else ""),
+                         ", ".join({"fail_sure": "süre doldu", "fail_sikisma": "sıkışma"}.get(z, z)
+                                   + f" {sum(x['durum'] == z for x in rs)}" for z in tur)])
+    ikili = {(x["sahne"], x["tohum"]): x for x in d2 if x["ayar"] == "v5"}
+    r["2b_oran"] = (medyan([say(x["sure_s"]) / say(ikili[(x["sahne"], x["tohum"])]["sure_s"]) for x in d2
+                            if x["ayar"] == "v6" and x["durum"] == "basari"
+                            and ikili.get((x["sahne"], x["tohum"]), {}).get("durum") == "basari"]),
+                    sum(1 for x in d2 if x["ayar"] == "v6" and x["durum"] == "basari"
+                        and ikili.get((x["sahne"], x["tohum"]), {}).get("durum") == "basari"))
+    sik = [x for x in d2 if x["ayar"] == "v6" and x["durum"] == "fail_sikisma"]
+    r["2b_sik"] = sik
+    ana += "<h4>2B benzetici, 21 geliştirme labirenti, tohum 0 ve 1</h4>" + tablo(
+        ["Sürüm", "Tohum", "Çözülen", "Çarpma (temas)", "Başarısızlık türü"], bsat,
+        not_=f"v6 / v5 süre oranı, ikisi de çözdüyse: ortanca {sy(r['2b_oran'][0], 3)} ({r['2b_oran'][1]} çift).")
+    grafik = cubuk_grafik("Çözülen labirent ve çarpma, küme ve sürüm başına",
+                          [("v3", "--c-c"), ("v5", "--c-b"), ("v6 (yeni varsayılan)", "--c-a")], gsat, en_buyuk=1,
+                          aciklama="Çubuk boyu çözülen koşu oranı (kümeler 37, 20 ve 9 koşu). Kırmızı yazı o kümedeki "
+                                   "çarpma olayı; v5 sınama 3, sınama 5 ve uzatılmış kümede koşulmadı.")
+    tt = oku(K / "tani_temas_v6.csv")
+    sol = [x for x in tt if x["surum"] in ("v3", "v5") and "sol yan" in x["govde_nokta"]]
+    r["sol"] = (len(sol), mn([say(x["son_yerinde_s"]) for x in sol]), mx([say(x["son_yerinde_s"]) for x in sol]))
+    k = r["k"]
+    s5v3, s5v6 = k[("sinama5", "v3")], k[("sinama5", "v6")]
+    s3v3, s3v6 = k[("sinama3", "v3")], k[("sinama3", "v6")]
+    uzv3, uzv6 = k[("uzatilmis", "v3")], k[("uzatilmis", "v6")]
+    oranlar = [k[(kk, "v6")][4] for kk, _, _ in KUMELER6 if k[(kk, "v6")][4] is not None]
+    toplam_v3 = v3["ilk"][1] + v3["zin"][1]
+    s_v3 = sy(v3["ilk"][2] + v3["zin"][2], 2)
+    n_kume = len(KUMELER6)
+    vs = varsayilan_surum()
+    r["varsayilan"] = vs
+    # tur 2 kuralı (önceden yazıldı, esnetilmedi): v6'nın bütün ilk giriş koşularında temas 0 VE sınama 3'te v6 >= v3
+    tam_kosuldu = all(k[(kk, "v6")][1] == k[(kk, "v3")][1] for kk, _, _ in KUMELER6)
+    kural = v6_top[1] == 0 and s3v6[0] >= s3v3[0] and tam_kosuldu
+    beklenen = "v6" if kural else "v3"
+    r["kural2"] = (kural, beklenen, vs)
+    uyum = (f"koddaki değer <code>VARSAYILAN_SURUM = \"{vs}\"</code> kuralla uyumlu" if vs == beklenen else
+            f"<strong class='kotu'>UYUMSUZ</strong>: kural {beklenen} diyor, koddaki değer {vs}")
+    sik = r["2b_sik"]
+    sik_txt = (", ".join(f"{lab_ad(x['sahne'], x['tohum'])} ({sy(say(x['sure_s']), 0)} s)" for x in sik)
+               if sik else "yok")
+    hukum = (f"Varsayılan sürüş {vs}; bu turun kuralıyla da {beklenen} kalıyor ({uyum}). v6'nın {n_kume} MuJoCo "
+             f"kümesindeki {v6_top[0]} ilk giriş koşusunun hepsinde temas {v6_top[1]}; sınama 3'te v6 {s3v6[0]}/20, v3 "
+             f"{s3v3[0]}/20; uzatılmış sürede v6 {uzv6[0]}/{uzv6[1]}, v3 {uzv3[0]}/{uzv3[1]}. 2B'de v6 "
+             f"{r['2b']['v6'][0]}/{r['2b']['v6'][1]}, temas {r['2b']['v6'][2]}. Süre oranı v3'e göre {sy(min(oranlar), 2)}–"
+             f"{sy(max(oranlar), 2)}. v3 de sıfır değil: ilk girişte {v3['ilk'][0]} koşuda {v3['ilk'][1]}, zincirde "
+             f"{v3['zin'][0]} denemede {v3['zin'][1]} temas olayı. Farklar küçük (sınama 3'te 2, sınama 5'te 1 koşu); "
+             "istatistik olarak anlamlı değil.")
+    once_simdi = [
+        ("Varsayılan sürüş", "v3 (v4 ve v5 çarpma verdiği için).",
+         f"{vs}: ilk kararda sınama 5'te {s5v6[0]}/20 (v3 {s5v3[0]}/20); bu turun kuralında sınama 3'te {s3v6[0]}/20 (v3 "
+         f"{s3v3[0]}/20) ve {v6_top[0]} koşuda temas {v6_top[1]}."),
+        ("\"Çarpma sıfır\"",
+         f"Sayfa \"yalnız v3'te tutuyor\" diyordu; o üç kümede (geliştirme, sınama 2, sınama 4; "
+         f"{ek_['top_c']['v3'][1]} koşu) v3 {ek_['top_c']['v3'][0]} çarpmaydı.",
+         f"v6'nın koştuğu bütün kümelerde sıfır: MuJoCo geliştirme, sınama 2, 3, 4, 5 ve uzatılmış süre ({v6_top[0]} "
+         f"koşu), 2B geliştirme tohum 0 ve 1 ({r['2b']['v6'][1]} koşu). v3'ün toplamı {toplam_v3} olay / {s_v3} s; "
+         f"sınama 3'te v3 {s3v3[2]}, sınama 5'te {s5v3[2]} temas. 2B'de v5 {r['2b']['v5'][2]} temas verdi."),
+        ("Temasın nedeni",
+         "Süpürme öngörüsü LiDAR'ın gerisinde kalan duvar ucunu eksik görüyor sanılıyordu.",
+         f"İncelenen {r['sol'][0]} temasın hepsi aynı: iç köşede yerinde sola dönüşten {sy(r['sol'][1])}–"
+         f"{sy(r['sol'][2])} s sonra sola yay ve gövdenin sol yanı duvar ucunu süpürüyor; duvar ucu taramada ve haritada "
+         "vardı. v5'in öngörüsü çarpmayı gördü ama bütün adaylar \"çarpar\" çıktı."),
+        ("Hız", f"v4 yaklaşık %{tam(100 * (1 - ek_['kume'][('gelistirme', 'v4', 'oran')]))} daha kısa sürede bitiriyordu.",
+         f"v6'nın süre oranı v3'e göre {sy(min(oranlar), 3)}–{sy(max(oranlar), 3)} (ortanca, küme başına); 2B'de "
+         f"v5'e göre {sy(r['2b_oran'][0], 3)}."),
+    ]
+    rozet = (rz("İnceleme: geçer", "iyi") + rz("Ek ölçüm: kural sağlandı", "iyi")
+             + rz("Son inceleme: sayılar tuttu, küçük belge düzeltmeleri", "iyi"))
+    olculen = (f"<p>Dört temasın kayıttan tanısı, ardından v6. v6 dondurulduktan sonra yeni sınama 5 üretildi ve koşuldu; "
+               "geliştirme, sınama 2 ve sınama 4 gerileme denetimi. İlk kural: (a) sınama 5'te v6 başarısı v3'ten az "
+               f"olmayacak, (b) o an koşulan kümelerde v6 temas olayı sıfır olacak. İkisi de sağlandı ({s5v6[0]} ≥ "
+               f"{s5v3[0]}). Bu turun ikinci adımında kod değişmeden aynı dondurulmuş kopyadan üç ek ölçüm koşuldu: v6 "
+               "sınama 3'te ve uzatılmış sürede, deneme zinciri v6 beyniyle (Yeniden deneme bölümü), 2B'de tohum 1. Kural "
+               "koşudan önce yazıldı ve esnetilmedi: v6'nın bütün ilk giriş koşularında temas sıfır VE sınama 3'te v6 "
+               "başarısı v3'ten az değilse v6 kalır; tek temas ya da daha düşük başarı v3'e döndürür.</p>")
+    oneri = [
+        f"<strong>Kural:</strong> {v6_top[0]} koşuda temas {v6_top[1]}, sınama 3'te {s3v6[0]} ≥ {s3v3[0]}, kümeler "
+        f"{'tam' if tam_kosuldu else 'eksik'} koşuldu → {beklenen}; {uyum}. Deneme zinciri için ayrı kural da "
+        "sağlandı (Yeniden deneme bölümü).",
+        "<strong>Değişiklik:</strong> v6 süpürme denetimini son taramaya ek olarak son 2 s'nin taramaları, gövdenin 1,6 m "
+        "çevresindeki harita hücreleri ve sanal başlangıç noktalarıyla yapıyor; yerinde dönüş denetimi de bu noktaları "
+        "kullanıyor. Kabul edilen aday yoksa robot geri çekilip yeniden planlıyor. Izgara, dik açı ya da labirent bilgisi "
+        "yok. Bu turda algoritma değişmedi.",
+        f"<strong>Duvar payı:</strong> v6'nın {v6_top[0]} koşusunda en küçük pay "
+        f"{sy(min(k[(kk, 'v6')][5] for kk, _, _ in KUMELER6) * 1000, 0)} mm, 5 mm altına inen koşu yok; v3'te sınama 2, "
+        f"3 ve 5'te {k[('sinama2', 'v3')][6]} / {k[('sinama3', 'v3')][6]} / {k[('sinama5', 'v3')][6]} koşu.",
+        f"<strong>2B'de v6'nın sıkışması (düzeltilmedi):</strong> {sik_txt}. Belirlenimci yeniden koşu aynı sonucu "
+        "verdi: son dakikada her yeniden planda yolun ilk bacağı değişiyor ve robot yerinde ileri geri dönüp yerinden "
+        "çıkamıyor; hakem 60 s hareketsizlikten sonra bitiriyor. Süpürme reddi ya da geri çekilme yok, v6'ya özgü olduğu "
+        "gösterilmedi. MuJoCo v6 koşularında sıkışma yok.",
+        "<strong>Yeni bulgu (düzeltilmedi):</strong> v3'ün sınama 5 teması başka bir mekanizma: duvar izleme kipinde "
+        "yerinde sağa dönüşte sağ ön köşe duvar yüzüne değiyor. v6 bu kipi denetlemiyor.",
+    ]
+    iyimser = [
+        "Teker azami hızı 0,39 m/s bir tahmin; fren zarfı ve komut gecikmesi varsayım.",
+        "Geçmiş taramaların konum tahminiyle taşınmasındaki 2 s'lik kayma ölçülmedi.",
+        "Pi 5'te v6'nın hesap yükü ölçülmedi (2B'de koşu başına gerçek süre v5'ten yaklaşık %20–30 fazla, gürültülü "
+        "ölçüm).",
+    ]
+    aciklar = [
+        "Duvar izleme kipinde yerinde dönüş süpürme denetimi yok (v3'ün sınama 5 temasının nedeni).",
+        "Sınama 3 v6 için tam taze değil: v6'nın temas tanısında bu kümenin bir v3 kaydı kullanıldı.",
+        "Bundan sonraki varsayılan kararları için hiç görülmemiş yeni bir sınama kümesi gerekiyor; sınama 3, 4 ve 5 artık "
+        "görülmüş sayılır.",
+        "2B'deki yerinde dönüş ile yeniden plan salınımı düzeltilmedi; denenecekse yeni bir geliştirme kümesinde.",
+        "Uzatılmış kümede v3'ün duvar payı tanısı yok (tabloda \"-\").",
+    ]
+    ust = {
+        "test": "Köşe hızı ve çarpmasız sürüş (v3–v6)",
+        "hukum": f"Varsayılan {vs} kalıyor; bu turun kuralı sağlandı: v6'nın {v6_top[0]} ilk giriş koşusunda temas "
+                 f"{v6_top[1]}, sınama 3'te v6 {s3v6[0]}/20 (v3 {s3v3[0]}/20), uzatılmış sürede {uzv6[0]}/{uzv6[1]} (v3 "
+                 f"{uzv3[0]}/{uzv3[1]}); 2B'de {r['2b']['v6'][1]} koşuda temas {r['2b']['v6'][2]}. Süre oranı v3'e göre "
+                 f"{sy(min(oranlar), 2)}–{sy(max(oranlar), 2)}. v3'ün kendisi {toplam_v3} temas olayı verdi.",
+        "rozet": rz("İnceleme: geçer", "iyi"),
+        "karar": f"Gerçek robotta varsayılan sürüş {vs} (koddaki değer). Önce teker azami hızı, komut gecikmesi ve v6'nın "
+                 "Pi 5 hesap yükü ölçülmeli; duvar izleme kipindeki yerinde dönüşe süpürme denetimi eklenmeli.",
+    }
+    y = {"hukum": hukum, "rozet": rozet, "os": once_simdi, "olculen": olculen, "ana": ana, "grafik": grafik,
+         "oneri": oneri, "iyimser": iyimser, "aciklar": aciklar}
+    return r, y, ust
+
+
+def inceleme_yeni(Y):
+    u, h, t, s, d, k = Y
+    kartlar = [kart(
+        "Uçurum ve merdiven",
+        "Ana sayılar CSV'lerle tuttu; rastgele seçilen 6 koşu aynı tohumla birebir yeniden üretildi. Denetçi yalnız sensör "
+        "okumalarını, tutma freni yalnız enkoderi okuyor.",
+        "<p>Üç engelleyici. (1) Önceden konmuş \"0 düşme\" ölçütü 10 sensörlü düzenin hükmünde sağlanmamıştı (hakem "
+        f"{u['h1']['dus']} düşme, fiziksel {u['fiz1'][0]}); \"koşullu geçer\" kararı hükümden sonra koşulan bir rapor "
+        "koşusuna ve varsayımsal bir fiziksel eşiğe dayanıyordu. (2) Hüküm ızgarası geliştirmede bilinen en kötü iki "
+        "durumu (kenardan 0,35 m'de dönüş, 8–12 cm yarık) içermiyordu. (3) Kusur ve duyarlılık seçilen düzenle değil, eski "
+        "6 sensörlü düzenle koşulmuştu; 0,25 m/s önerisinin gerekçesi eski düzene aitti.</p>",
+        ["Tohum aralığı belgede 201–210 yazıyordu, kullanılan 201–205; \"seçimde hiç koşulmamış geometri\" yalnız yeni "
+         "gruplar için doğruydu. Düzeltildi.",
+         "Hüküm, sınama 2'nin geometri ızgarasını yeni tohumlarla yineledi; yanlış alarm sahnelerinin 7'si geliştirme "
+         "sahnesi: bunlar \"görülmemiş veri\" sayılmaz.",
+         "Seçim, hükümden önceki son karşılaştırmanın gösterdiği iki zayıflığa rağmen donduruldu; hüküm onları doğruladı.",
+         "Kısa kip modelde ilk iyimser modelle aynı örnekleme yolunda; 10 sensörün tek hatta gecikmesiz okunması iyimser."],
+        f"<p><strong>Hüküm değişti: geçmedi.</strong> Üç engelleyici de doğru bulundu. Önerilen iki düzeltme kodda denendi "
+        f"ve yetmedi; her tekere iki dar iz ve iki yan sensör eklendi ({u['h2']['sensor']} sensör). Yeni hüküm "
+        f"{u['h2']['n']} koşu, hiç kullanılmamış tohumlarla, 9 / 11 / 13 cm yarık ve kenardan 0,35 m dönüş dahil: hakem "
+        f"{u['h2']['dus']} düşme ({u['h2']['uc']} uçurum koşusunda), {u['h2']['durma']} yanlış durma. Ölçüt yine "
+        "sağlanmadı. Kusur ve duyarlılık 14 sensörle yinelendi. Etiket ve belge hataları düzeltildi.</p>"
+        "<p><strong>Onarımın incelemesi: geçer.</strong> Sayılar CSV'lerden yeniden sayıldı ve tuttu (hakem "
+        f"{u['kat_top']['14'][0]} / {u['kat_top']['14'][1]}, fiziksel {u['kat_top']['14'][2]}, yanlış durma "
+        f"{u['kat_top']['14'][3]} / {u['kat_top']['14'][4]}); hüküm görev listeleri bugünkü koddan yeniden üretildi ve ham "
+        "kayıtla aynı çıktı; sızıntı yok. Düzeltilenler: belgelerde \"seçilen\" yerine \"ölçütü sağlamayan en iyi aday\" "
+        "yazıldı, seçim dosyasına durum notu eklendi, önceki \"koşullu geçer\" hükmü \"geçmedi\" oldu, \"bu tohumlar "
+        f"kullanılmadı\" ve \"hiç koşulmamış geometri\" ifadeleri düzeltildi ({u['ayni_gorev'][0]} / "
+        f"{u['ayni_gorev'][1]} görev önceki hükümle aynı sahne ve senaryo). Üç düzen tehlike sınıfına göre yan yana "
+        "kondu; satın alma kararı verilmedi.</p>",
+        ["Bir düzeni onaylamak için yeni düzeltme, ayar ve hiç kullanılmamış tohum ve geometriyle hüküm, ya da ölçütün "
+         "açık kararı.",
+         f"{u['h2']['sensor']} sensörün donanım gerçekliği (iki I2C hattı, dar koni, yan pencere) ölçülmedi.",
+         "Hükümde pay 0,5 cm'ye iniyor; yan sensörler dar şeritte sürmeyi engelliyor.",
+         "6 sensörlü düzen dar yarık, dar açıklığa geri ve dar açıklık yanında dönmede hükümde ölçülmedi."],
+        rozetler=rz("İnceleme: koşullu") + rz("Onarım sonrası: geçmedi", "kotu") + rz("Son inceleme: geçer", "iyi"),
+        onarim_baslik="Onarımda ne değişti"),
+        kart(
+        "Harita eskimesi ve çalışırken taşınma",
+        "Ana sayılar CSV'lerden yeniden sayıldı ve tuttu; üç koşu aynı tohumla yeniden koşuldu, bütün alanlar aynı.",
+        "<p>Yok.</p>",
+        ["Seçilen \"emin değilim\" kuralı, geliştirmede eşit sonuç veren dört aday arasından yalnız aday sözlüğünün "
+         "sırasıyla seçildi; belirsizlik eşiği 0,05 m ızgaranın en alt değeri. Sızıntı yok (kural sınamadan önce yazıldı), "
+         f"ama boşuna durmaların {t['ger_kaynak'][0]}/{t['ger_kaynak'][1]}'inin nedeni bu keyfî seçim.",
+         "Bir kip dosyası sınama koşarken düzenlendi; düzenlemeden önce ve sonraki koşular aynı tohumla yeniden koşulup "
+         "aynı çıktı, ama dosyanın geçmişi olmadığı için ne değiştiği gösterilemiyor.",
+         "Kural yalnız v3 ve izlemeyle, dönüşsüz yüzey olmadan seçildi; algılı kiplere öyle uygulandı.",
+         "\"Uyum &lt; 0,60 hiçbirinde değil\" yalnız algılı kip için doğru; izleme + algıda iki alarm var."],
+        "<p><strong>Onarım gerekmedi.</strong> İnceleme taşınma belgesinde dört şeyi düzeltti: atılan koşulların listesi "
+        "(14 koşul; eğrilme, gürültü ve odometri planda yoktu), poz sıçraması aralığı (sınamada 0,4–11,8 m), izlemenin "
+        "görünmeyen sessiz hatalarının uyum aralığı (0,80–1,00) ve eskimede fark etme oranının yanlış alarm eğilimiyle "
+        "karışık olduğu notu.</p>",
+        ["Tam gerileme, 6 haritalı beyin ve MuJoCo bu turda yok.", "Tek kural (uyum &lt; 0,75) yeni tohumlarla sınanmalı.",
+         "Algılı kipin geçiş testinin düzeltmesi ölçülmedi."],
+        rozetler=rz("İnceleme: geçer", "iyi"), onarim_baslik="Onarım"),
+        kart(
+        "LiDAR'sız sanal ray",
+        "Bütün ana sayılar iki CSV'den yeniden hesaplandı; 6 koşu ve ilk turun başarısız koşusu aynı tohumla birebir "
+        "yeniden üretildi.",
+        f"<p>Tek etiketlik etkenlerin yarısı aslında sınanmamıştı: eksik ve yanlış yer etiketi 12 koşunun "
+        f"{s['etkisiz']['kayip1'][0]}'sında robotun görmediği kısımdaydı ve bu koşular temiz koşuyla birebir aynıydı. "
+        f"Etkili koşularda eksik etiket {s['etkisiz']['kayip1'][1]}/{s['etkisiz']['kayip1'][2]}, yanlış yer "
+        f"{s['etkisiz']['yanlis1'][1]}/{s['etkisiz']['yanlis1'][2]}.</p>",
+        ["Başlatma hatası karşılaştırmasında seçim etkisi var: iyileşme yalnız konumlanan koşulardan (11'e karşı 7).",
+         "Doğrulamalı başlatma orta kurulumda temas olayını artırıyor; özette yorumlanmamıştı.",
+         "İlk tur düzeltmesi bir benzetmeye dayanıyordu; inceleme ilk turun kendi başarısız koşusunu yeniden üretti.",
+         "Varsayılanın değişmediğini gösteren bir regresyon testi yoktu.", "Örneklem küçük; farklar tek koşu düzeyinde."],
+        f"<p><strong>Bulgu kapandı.</strong> Etiket artık aynı koridor ve tohumun kusursuz koşusunda süzgecin kabul ettiği "
+        f"etiketlerden seçiliyor; tohum 1–6 ile koşul başına 24 koşu. Eksik etiket "
+        f"{s['rota']['kayip1_rota'][0]}/24; yanlış yer ilk turun dediğinden ağır çıktı (1 m'de "
+        f"{s['rota']['yanlis1_rota'][0]}/24 ve {s['rota']['yanlis1_rota'][2]} duvar teması). Süreçler arası bir dosya "
+        "yarışı düzeltildi; varsayılan için regresyon testi eklendi.</p>",
+        ["Rastgele bırakılmada eksik ve yanlış yer etiketi koşulmadı.", "Yanlış yerin kırılma noktası 0,25–0,5 m arasında.",
+         "Yeniden başlatmanın tek etiketi çapraz denetlemesi önerildi, uygulanmadı."],
+        rozetler=rz("İnceleme: koşullu") + rz("Onarım: kapandı", "iyi")),
+        kart(
+        "Labirent: haritayla yeniden deneme ve çarpmasız sürüş",
+        "Bütün sayılar CSV'lerden yeniden sayıldı; temas kayıtlardaki temas dizisinden ayrıca doğrulandı; üç koşu aynı "
+        "tohumla birebir yeniden üretildi.",
+        "<p>Yok.</p>",
+        ["v6 sınama 3'te ve uzatılmış kümede koşulmadı; \"temas 0\" yalnız v6'nın koştuğu kümeler için geçerli.",
+         "Varsayılan kuralının \"tam koşuldu\" denetimi yalnız MuJoCo'ya bakıyor; 2B yalnız tohum 0 ile koşuldu.",
+         "v3'ün sınama 5 sonuçlarından ikisi v6 dondurulmadan önce hazırdı; bakıldığına dair iz yok, risk düşük.",
+         "Sonuç belgesinin v5 bölümünde eskimiş \"varsayılan v3\" cümlesi kaldı.",
+         "2B'de v6'nın yeni bir sıkışma başarısızlığı belgede yoktu.",
+         "Tanı aracı bir temas süresini kayıttan farklı sayıyor (2,35 s'ye karşı 1,50 s); hüküm sayıları tutarlı."],
+        "<p><strong>Onarım gerekmedi.</strong> Açıklama belgesinde bir sayı düzeltildi: \"v4/v5'te bu sayı 1–5 koşuydu\" "
+        "yerine küme başına v4'te 3–5, v5'te 0–2, v3'te 0–2.</p>"
+        "<p><strong>Ek ölçüm ve incelemesi: geçer.</strong> İnceleme açıklarını kapatmak için v6 sınama 3'te, uzatılmış "
+        "sürede, deneme zincirinde ve 2B tohum 1'de koşuldu (kod değişmedi). İnceleme bütün sayıları ham CSV'lerden "
+        f"yeniden saydı: {k['v6_top'][0]} ilk giriş koşusunda temas {k['v6_top'][1]}, zincirde v6 "
+        f"{20 - d['sinama4_v6']['dag'][0]}/20 ve v3 {20 - d['sinama4']['dag'][0]}/20. İki koşu aynı tohumla yeniden "
+        "koşuldu ve aynı çıktı; bütün v6 kayıtlarının kod dondurulduktan sonra yazıldığı doğrulandı. Koddaki varsayılan "
+        f"{k['varsayilan']}, kuralla tutarlı. Düzeltilenler küçük: 2B sıkışmasında dönüş yönünün tersine dönme aralığı "
+        "(her plandan sonra, yaklaşık 1 s) ve belgede birkaç yönlendirme. Sonuç belgesindeki eskimiş \"varsayılan v3\" "
+        "cümlesine güncelleme notu kondu.</p>",
+        ["Sonraki kararlar için hiç görülmemiş yeni bir sınama kümesi gerekiyor.",
+         "Duvar izleme kipindeki dönüş denetimi yok; 2B'deki yerinde dönüş salınımı düzeltilmedi.",
+         "Pi 5 hesap yükü ölçülmedi."],
+        rozetler=rz("İnceleme: geçer", "iyi") + rz("Ek ölçüm: geçer", "iyi"), onarim_baslik="Onarım")]
+    return "".join(kartlar)
+
+
 # ================================================================== SAYFA
 CSS = r"""
 :root{--bg:#f6f5f1;--yuzey:#ffffff;--yuzey2:#f0efea;--yazi:#1d1e20;--soluk:#5c5f66;--cizgi:#dddcd5;
@@ -1194,9 +2891,12 @@ table.veri td:first-child{min-width:150px}
 .ince{color:var(--soluk);font-size:.92em}
 .kotu{color:var(--kotu);font-weight:600}
 .iyi{color:var(--iyi)}
-table.karar{font-size:.93rem}
-table.karar td:first-child{font-weight:600;white-space:nowrap}
-table.karar td:nth-child(2){width:46%}
+table.karar{font-size:.93rem;table-layout:fixed}
+table.karar td:first-child{font-weight:600}
+table.karar th:nth-child(1){width:14%}
+table.karar th:nth-child(2){width:24%}
+table.karar th:nth-child(3){width:33%}
+table.karar th:nth-child(4){width:29%}
 .grafik{margin:6px 0 4px;padding:14px;border:1px solid var(--cizgi);border-radius:10px}
 .g-baslik{font-weight:600;margin-bottom:8px;font-size:.95rem}
 .g-lejant{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--soluk);margin-bottom:10px}
@@ -1228,6 +2928,24 @@ font-weight:600;font-variant-numeric:tabular-nums;border-right:1px solid var(--y
 .rozet{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:3px 10px;margin:2px 4px 2px 0}
 .rozet.uyari{background:var(--uyari-z);color:var(--uyari)}
 .rozet.iyi{background:var(--iyi-z);color:var(--iyi)}
+.rozet.kotu{background:var(--kotu-z);color:var(--kotu)}
+sup.bel{color:var(--uyari);font-weight:700;font-size:.72em;margin-left:1px;cursor:help}
+p.hukum.eski-hukum{border-left-color:var(--c-c)}
+.os{display:flex;flex-direction:column;border:1px solid var(--cizgi);border-radius:10px;margin:6px 0 4px}
+.os-satir{display:grid;grid-template-columns:minmax(110px,18%) minmax(0,1fr) minmax(0,1fr);gap:6px 14px;padding:10px 12px;
+border-top:1px solid var(--cizgi);font-size:.9rem}
+.os-satir:first-child{border-top:0}
+.os-konu{font-weight:600}
+.os-once{color:var(--soluk)}
+.os-et{display:block;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--soluk);
+margin-bottom:2px}
+.os-simdi .os-et{color:var(--vurgu)}
+details.eski{margin:18px 0 4px;border:1px dashed var(--cizgi);border-radius:10px;padding:8px 12px;background:var(--yuzey2)}
+details.eski>summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--soluk)}
+details.eski[open]>summary{margin-bottom:8px}
+.eski-ic .kart,.eski-ic .grafik,.eski-ic .tablo-kap{background:var(--yuzey)}
+td.once-hucre{color:var(--soluk);font-size:.9em}
+ul.belge{font-size:.82rem}
 ol.olcum{padding-left:22px}
 ol.olcum li{margin-bottom:10px}
 .olcum .kaynak{display:inline-block;font-size:.75rem;color:var(--soluk);border:1px solid var(--cizgi);border-radius:999px;
@@ -1235,10 +2953,27 @@ padding:0 8px;margin-left:4px}
 footer{color:var(--soluk);font-size:.82rem;margin-top:28px}
 code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.86em;background:var(--yuzey2);
 padding:1px 5px;border-radius:4px}
+table.katman{table-layout:fixed}
+table.katman th:first-child{width:22%}
+table.katman td:first-child{min-width:0;font-weight:600}
+table.katman .th-alt{display:block;font-weight:400;font-size:.95em;margin-top:2px}
+table.katman tr.g-ek td:first-child{font-weight:400;color:var(--soluk)}
+table.katman tr.g-toplam td{background:var(--yuzey2)}
+.uyari{color:var(--uyari);font-weight:600}
 @media (max-width:720px){
+ table.katman{table-layout:auto}
+ table.katman,table.katman tbody,table.katman tr,table.katman td{display:block;width:100%!important}
+ table.katman thead{display:none}
+ table.katman tr{border-bottom:1px solid var(--cizgi);padding:6px 0}
+ table.katman tr:last-child{border-bottom:0}
+ table.katman td{border:0;padding:3px 12px}
+ table.katman td:not(:first-child)::before{content:attr(data-etiket);display:block;font-size:.75rem;color:var(--soluk);
+ font-weight:600}
  h1{font-size:1.55rem} section{padding:16px 14px 10px}
  .iki{grid-template-columns:1fr}
  .g-satir{grid-template-columns:1fr}
+ .os-satir{grid-template-columns:1fr}
+ table.karar{table-layout:auto}
  table.karar,table.karar tbody,table.karar tr,table.karar td{display:block;width:100%!important}
  table.karar thead{display:none}
  table.karar tr{border-bottom:1px solid var(--cizgi);padding:6px 0}
@@ -1266,41 +3001,49 @@ try{localStorage.setItem(k,y);}catch(e){}yaz();});});})();
 """
 
 
-def sayfa(R, govdeler, ustler):
-    u, h, t, s, d, k = R
+def sayfa(R, govdeler, ustler, Y, yeniler, ustler_yeni):
     bugun = _dt.date.today()
     aylar = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
     tarih = f"{bugun.day} {aylar[bugun.month - 1]} {bugun.year}"
     kimlik = ["ucurum", "harita", "tasinma", "sanalray", "deneme", "kose"]
+    adlar = [ustler_yeni[i].get("test") or ustler[i]["test"] for i in range(6)]
     karar_satir = "".join(
-        f"<tr><td><a href='#{kid}'>{e(x['test'])}</a></td><td data-etiket='Hüküm'>{x['hukum']}</td>"
-        f"<td data-etiket='Gerçek robotta değiştirdiği karar'>{x['karar']}</td></tr>"
-        for kid, x in zip(kimlik, ustler))
+        f"<tr><td><a href='#{kid}'>{e(ad)}</a></td>"
+        f"<td data-etiket='Önce (önceki tur)' class='once-hucre'>{x['hukum']}</td>"
+        f"<td data-etiket='Şimdi (bu tur)'>{y['rozet']}<br>{y['hukum']}</td>"
+        f"<td data-etiket='Gerçek robotta karar'>{y['karar']}</td></tr>"
+        for kid, ad, x, y in zip(kimlik, adlar, ustler, ustler_yeni))
     bolumler = "".join(
-        f"<section id='{kid}'><span class='bolum-no'>Bölüm 2 · Test {i + 1} / 6</span><h2>{e(x['test'])}</h2>{g}</section>"
-        for i, (kid, x, g) in enumerate(zip(kimlik, ustler, govdeler)))
+        f"<section id='{kid}'><span class='bolum-no'>Bölüm 2 · Test {i + 1} / 6</span><h2>{e(ad)}</h2>"
+        f"{bolum_yeni(y, g, 'Önceki turun ayrıntısı (tablolar, grafikler, öneriler)')}</section>"
+        for i, (kid, ad, y, g) in enumerate(zip(kimlik, adlar, yeniler, govdeler)))
+    u = Y[0]
+    k_vs = e(Y[5]["varsayilan"])
+    tork = bel(U, "Uçurum", "≈ 0,70 N·m", ["0,70 N·m"], "10° inişte konum tutma için teker başına ≈ 0,70 N·m tork")
     olcumler = [
-        ("Uçurum", "Gerçek VL53L1X ile masada: 120 mm yükseklik, 30° eğim, çapraz yön; parlak, siyah ve halı zeminde ve 3 m "
-                   "boşlukta okuma. Hangi mesafe kipinde saniyede kaç örnek alındığı (uzun kip payı yaklaşık 2 cm azaltır)."),
-        ("Uçurum", "Etkin rampa freniyle (2,0 m/s²) gerçek durma yolu; ilk denemeler 0,25 m/s ile. 10° inişte frenden sonra "
-                   "robotun kayıp kaymadığı: kayıyorsa tutma freni gerekir."),
-        ("Uçurum", "Altı sensörün aynı I2C hattında adreslenmesi (sensör başına bir XSHUT ucu), sensörler arası etkileşim ve "
-                   "etek pencerelerinin ışını kırpıp kırpmadığı."),
-        ("Harita", "Okul koridorunda LiDAR'ın dönüş haritası: rota boyunca taramaları kaydedip yüzey türüne göre (cam kapı, cam "
-                   "bölme, koyu / parlak kaplama) dönüş vermeyen ışın oranı ve etkin en uzun menzil."),
-        ("Harita", "Haritanın ne kadar eskidiği: haritayı bir kez çıkarıp günün farklı saatlerinde aynı yerlerden tarama; "
-                   "haritadan 15 cm'den çok sapan nokta oranı, kapı durumu değişimi ve duvar dibindeki eşya sayısı."),
-        ("Harita", "Gerçek zeminde (koridor taşı, eşik, ıslak zemin) ani teker kayması sıklığı ve büyüklüğü, yer işaretlerine "
-                   "karşı. Not: bu etkenin simülasyondaki \"kırma\" iddiası sınırdaydı."),
-        ("Taşınma", "Robot kaldırılırken tekerin dönüp odometriye sahte yol yazıp yazmadığı; taşınma algısının ve 6 haritalı "
-                    "baştan konum aramanın Pi 5'teki süresi."),
-        ("Sanal ray", "Gerçek koridor ve gerçek ışıkta 15 cm baskı etiketin algılama menzili; hareket bulanıklığı; Pi 5'te "
-                      "algılama süresi; tek etiketten başlatmanın güvenilirliği."),
-        ("Labirent", "Teker azami hızı (simülasyonda 0,39 m/s tahmin) ve Pi'den ESP32'ye komut gecikmesi (0,15 s tepki payı "
-                     "varsayımı); robotu başlangıca koymadaki gerçek yerleştirme hatası (simülasyonda 3 cm / 2°)."),
+        ("Uçurum", "Hangi düzen seçilirse seçilsin (6, 10 ya da 14 VL53L1X): tek I2C hattında 20 ms'de yetişiyor mu (14 "
+                   "sensörde büyük olasılıkla iki hat gerekir), sensör başına XSHUT ucu, sensörler arası etkileşim, etek "
+                   "penceresinin ışını kırpıp kırpmadığı."),
+        ("Uçurum", "Dar koninin (ROI 15°) masada sinyal ve menzil kaybı; kısa kipte 20 ms ve 1,3 m'nin gerçekte tutması; "
+                   "parlak, siyah ve halı zeminde dönüşsüz örnek oranı (%20'yi geçerse robot durur)."),
+        ("Uçurum", f"10° inişte konum tutma için teker başına gereken tork ({tork}) ve motorun sürekli torku; 2,0 m/s² "
+                   "rampa freniyle gerçek durma yolu, 0,25 m/s ile."),
+        ("Harita", "Okul koridorunda LiDAR'ın dönüş haritası: yüzey türüne göre (cam kapı, cam bölme, koyu / parlak kaplama) "
+                   "dönüş vermeyen ışın oranı ve etkin en uzun menzil; kapı durumunun gün içinde ne kadar değiştiği."),
+        ("Taşınma", "Algılı kipin kapı açıklığı ve camda geçiş testi kapatılmış hâli (önce simülasyonda, sonra koridorda); "
+                    "robot kaldırılırken tekerin odometriye sahte yol yazıp yazmadığı; algının Pi 5'teki süresi."),
+        ("Sanal ray", "Kurulumdan sonra robotla bir tur \"etiket ve harita aynı mı\" denetimi (0,5 m kayma bozuyor); etiket "
+                      "yerinin ±5 cm ile ölçülmesi; gerçek ışıkta 15 cm etiketin algılama menzili ve Pi 5'te algılama "
+                      "süresi."),
+        ("Labirent", "v6'nın Pi 5 hesap yükü; teker azami hızı (simülasyonda 0,39 m/s tahmin) ve Pi'den ESP32'ye komut "
+                     "gecikmesi; robotu başlangıca koymadaki gerçek yerleştirme hatası (simülasyonda 3 cm / 2°)."),
     ]
     olcum_html = "<ol class='olcum'>" + "".join(
         f"<li>{m} <span class='kaynak'>{e(kay)}</span></li>" for kay, m in olcumler) + "</ol>"
+    inc_yeni = inceleme_yeni(Y)
+    inc_eski = inceleme_eski(R)
+    belge_html = "<ul class='belge'>" + "".join(
+        f"<li><strong>{e(bl)}:</strong> {e(ac)}</li>" for bl, ac in BELGE) + "</ul>"
     return f"""<!doctype html>
 <html lang="tr">
 <head>
@@ -1316,14 +3059,18 @@ def sayfa(R, govdeler, ustler):
 <div class="ust">
 <div>
 <h1>Altı testin sonucu</h1>
-<p class="alt-baslik">Robotun simülasyonda geçtiği altı test: ne bulundu, gerçek robotta hangi kararı değiştiriyor.
-Bütün sayılar testlerin sonuç tablolarından (CSV) ve sonuç belgelerinden yeniden sayıldı.</p>
+<p class="alt-baslik">Robotun simülasyonda geçtiği altı test, tamamlama turundan sonra: ne bulundu, önceki tura göre ne
+değişti, gerçek robotta hangi kararı değiştiriyor. Sayılar testlerin sonuç tablolarından (CSV) yeniden sayıldı.</p>
 </div>
 <button id="tema-dugme" type="button">Koyu tema</button>
 </div>
-<div class="uyari-kutu"><strong>Hepsi simülasyon.</strong> Bağımsız inceleme dört test hattının dördüne de
-<strong>koşullu</strong> dedi: sayılar tutuyor ve sınama verisi ayara sızmamış, ama her testin iyimser varsayımları ve
-açık kalan işleri var. Bunlar her test bölümünde ve 3. bölümde gizlenmeden yazılı.</div>
+<div class="uyari-kutu"><p><strong>Hepsi simülasyon.</strong> Bu turda önceki turun açık bıraktığı işler ölçüldü ve her
+hattı bağımsız bir inceleme yeniden denetledi. Uçurum testi incelemeden sonra onarıldı ama önceden konan ölçüte göre
+<strong>geçmedi</strong>: en iyi aday olan 14 sensörlü düzen bile ölçütü sağlamadı, onaylanmış düzen yok; 6, 10 ve 14
+sensör tehlike sınıfına göre yan yana gösterildi. Labirentte ek ölçümden sonra varsayılan sürüş {k_vs} kaldı. Sanal raydaki
+bulgu onarımla kapandı; harita ve taşınma hatları geçer aldı.</p>
+<p><sup class='bel'>†</sup> işaretli sayılar CSV'den değil, testin sonuç belgesinden alındı (liste sayfanın sonunda).
+Her bölümün sonunda önceki turun ayrıntısı katlanmış duruyor.</p></div>
 <nav class="icindekiler" aria-label="Bölümler">
 <a href="#karar">Karar tablosu</a><a href="#ucurum">Uçurum</a><a href="#harita">Harita eskimesi</a>
 <a href="#tasinma">Taşınma</a><a href="#sanalray">Sanal ray</a><a href="#deneme">Yeniden deneme</a>
@@ -1333,8 +3080,9 @@ açık kalan işleri var. Bunlar her test bölümünde ve 3. bölümde gizlenmed
 <section id="karar">
 <span class="bolum-no">Bölüm 1</span>
 <h2>Karar tablosu</h2>
-<div class="tablo-kap"><table class="karar"><thead><tr><th>Test</th><th>Hüküm (tek cümle)</th>
-<th>Gerçek robotta değiştirdiği karar</th></tr></thead><tbody>{karar_satir}</tbody></table></div>
+<p class="ince">"Önce" önceki turun hükmü, "şimdi" bu turun. Rozetler bağımsız incelemenin ve onarımın sonucu.</p>
+<div class="tablo-kap"><table class="karar"><thead><tr><th>Test</th><th>Önce (önceki tur)</th><th>Şimdi (bu tur)</th>
+<th>Gerçek robotta karar</th></tr></thead><tbody>{karar_satir}</tbody></table></div>
 </section>
 
 {bolumler}
@@ -1342,21 +3090,25 @@ açık kalan işleri var. Bunlar her test bölümünde ve 3. bölümde gizlenmed
 <section id="inceleme">
 <span class="bolum-no">Bölüm 3</span>
 <h2>Bağımsız inceleme: hükümler ve bulunan sorunlar</h2>
-<p>Her test hattını, onu yürütmeyen ayrı bir inceleme denetledi: sayıları CSV'lerden yeniden saydı, birkaç koşuyu aynı
-tohumla yeniden koştu, sınama verisinin ayara sızıp sızmadığına baktı. Bulduğu sorunlar aşağıda olduğu gibi; onarım
-yapıldıysa ne değiştiği ve neyin açık kaldığı da.</p>
-{inceleme(R)}
+<p>Bu turda her test hattını, onu yürütmeyen ayrı bir inceleme yeniden denetledi: sayıları CSV'lerden yeniden saydı,
+birkaç koşuyu aynı tohumla yeniden koştu, sınama verisinin ayara sızıp sızmadığına baktı. Bulduğu sorunlar aşağıda olduğu
+gibi; onarım yapıldıysa ne değiştiği ve neyin açık kaldığı da. Harita eskimesi ve taşınma tek hat olarak incelendi.</p>
+{inc_yeni}
+<details class="eski"><summary>Önceki turun incelemesi</summary><div class="eski-ic">{inc_eski}</div></details>
 </section>
 
 <section id="olcum">
 <span class="bolum-no">Bölüm 4</span>
 <h2>Gerçek robotta ilk ölçülecekler</h2>
-<p>Testlerin kendi önerilerinden. Simülasyondaki sonuçların çoğu bu ölçümlere dayanan varsayımlarla duruyor; sıra,
-güvenliği en çok etkileyenden başlıyor.</p>
+<p>Bu turun önerilerinden. Simülasyondaki sonuçların çoğu bu ölçümlere dayanan varsayımlarla duruyor; sıra, güvenliği en
+çok etkileyenden başlıyor.</p>
 {olcum_html}
 </section>
 
 <footer>
+<p><strong><sup class='bel'>†</sup> Sonuç belgesinden alınan sayılar</strong> (betik her birinin belgede hâlâ geçtiğini
+denetliyor):</p>
+{belge_html}
 <p>Bu sayfa <code>kod/fizik/deneyler/testler_rapor.py</code> ile {tarih} tarihinde üretildi. Kaynaklar:
 <code>ucurum/sonuc</code>, <code>deneyler/harita_eskimesi/sonuc</code>, <code>deneyler/tasinma/sonuc</code>,
 <code>sanalray/sonuc</code>, <code>kesif/sonuc</code> altındaki CSV'ler ve SONUC.md belgeleri. Yeniden üretmek için
@@ -1375,20 +3127,25 @@ def main():
         sonuclar.append(r)
         govdeler.append(g)
         ustler.append(u)
-    metin = sayfa(sonuclar, govdeler, ustler)
+    Y, yeniler, ustler_yeni = [], [], []
+    for f, eski in zip((ucurum_yeni, harita_yeni, tasinma_yeni, sanalray_yeni, deneme_yeni, kose_yeni), sonuclar):
+        r, y, u = f(eski)
+        Y.append(r)
+        yeniler.append(y)
+        ustler_yeni.append(u)
+    metin = sayfa(sonuclar, govdeler, ustler, Y, yeniler, ustler_yeni)
     CIKTI.write_text(metin, encoding="utf-8")
     if "--sayilar" in sys.argv:
-        u, h, t, s, d, k = sonuclar
-        print("ucurum", {kk: u[kk] for kk in ("ucurum_kosu", "dustu", "yanlis_kosu", "yanlis_durma", "toplam", "hata",
-                                              "pay_dar", "pay_genis", "pay_duz_039", "ilk_kosu", "ilk_dustu")},
-              u["dar_toplam"], u["gel_4kose"], u["gel_5"], u["gel_6"], u["inis_kayma"])
-        print("harita", h["ab_basari"], h["ab_n"], h["okul"], h["okul_k"], h["bas_n"], h["bas_sicrama"], h["bas_vardim"],
-              h["bas_emin"], h["bas_sinirda"], h["mj_ayni"], h["mj_n"])
-        print("tasinma", t["ab_v3_yanlis_vardim"], t["algi_fark"], t["algi_n"], t["algi_fark_med"], t["ger"])
-        print("sanalray", s["ab_b"], s["ab_n"], s["plan5"], s["varis_ort"], s["kayip"])
-        print("deneme", d["deneme_sinama2.csv"]["dag"], d["deneme_gelistirme.csv"]["dag"], d["ilk_ayni"])
-        print("kose", k["top_c"], {kk: v for kk, v in k["kume"].items() if len(kk) == 2 and kk[1] in ("v3", "v4", "v5")},
-              k["s3_uyusmayan"], k["kume"][("gelistirme", "v4", "oran")])
+        u, h, t, s, d, k = Y
+        print("ucurum", u["h1"], u["h2"], u["fiz1"], u["fiz2"], u["fiz2s"], u["k25"], u["k30"], u["k25_eski"],
+              u["rampa"], u["kayma"], u["kusur"], u["parlak"], u["kotu_birlesik"], u["arka_guvenli"])
+        print("harita", [(x[2], round(x[0], 3), round(x[1], 3)) for x in h["sira"]], h["gen"], h["kip_top"])
+        print("tasinma", t["g"], t["alarm"], t["fark"], t["emin"], t["ger_kaynak"])
+        print("sanalray", s["ab"], s["rota"], s["etkisiz"],
+              {kk: (v[0], v[1], v[3], v[4]) for kk, v in s["ky"].items()}, s["bedel"])
+        print("deneme", {kk: (v["dag"], v["ilk_kpi"], v["carpma"]) for kk, v in d.items()
+                         if isinstance(v, dict) and "dag" in v}, d["kopuk"], d["ilk_bas"])
+        print("kose", k["k"], k["v6_top"], k["v3"], k["2b"], k["sol"])
     print(f"yazıldı: {CIKTI.name} ({CIKTI.stat().st_size / 1024:.0f} KB)")
 
 
